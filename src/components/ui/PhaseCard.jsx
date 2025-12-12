@@ -12,16 +12,16 @@ export default function PhaseCard({ phase, index }) {
       viewport={{ once: true }}
     >
       <div className="flex items-start gap-6">
-        <div className="flex items-center gap-4 flex-shrink-0">
-          <span className="font-display font-bold text-gray-400 dark:text-gray-600 text-2xl">
-            {number}
-          </span>
-          <Icon className="w-10 h-10 flex-shrink-0" strokeWidth={1.5} />
-        </div>
+        <span className="font-display font-bold text-gray-400 dark:text-gray-600 text-4xl flex-shrink-0">
+          {number}
+        </span>
         <div className="flex-1">
-          <h3 className="font-display font-bold text-2xl md:text-3xl mb-3">
-            {title}
-          </h3>
+          <div className="flex items-center gap-3 mb-3">
+            <Icon className="w-8 h-8 flex-shrink-0" strokeWidth={1.5} />
+            <h3 className="font-display font-bold">
+              {title}
+            </h3>
+          </div>
           <p>
             {description}
           </p>

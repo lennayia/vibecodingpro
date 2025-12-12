@@ -24,7 +24,7 @@ export default function PricingCard({
       )}
 
       <div className={`mb-6 ${isPopular ? 'mt-4' : ''}`}>
-        <h3 className="font-display font-bold text-3xl mb-2">
+        <h3 className="font-display font-bold mb-2">
           {title}
         </h3>
         <p className="mb-4">{duration}</p>

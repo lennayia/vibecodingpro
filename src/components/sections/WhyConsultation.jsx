@@ -40,7 +40,7 @@ export default function WhyConsultation() {
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
             >
-              <h3 className="font-display font-bold text-2xl mb-4">
+              <h3 className="font-display font-bold mb-4">
                 Bez konzultace
               </h3>
               <ul className="space-y-3">
@@ -60,7 +60,7 @@ export default function WhyConsultation() {
               initial={{ opacity: 0, x: 30 }}
               whileInView={{ opacity: 1, x: 0 }}
             >
-              <h3 className="font-display font-bold text-2xl mb-4">
+              <h3 className="font-display font-bold mb-4">
                 S konzultací
               </h3>
               <ul className="space-y-3">

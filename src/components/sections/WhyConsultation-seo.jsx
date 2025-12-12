@@ -3,19 +3,19 @@ import Section from '../layout/Section'
 import Card from '../ui/Card'
 import Button from '../ui/Button'
 
-export default function WhyConsultationSeo() {
+export default function WhyConsultation() {
   const withoutConsultation = [
     "Ztratíte měsíce pokusů a omylů",
     "Investujete do špatných nástrojů",
-    "Vzdáte to předčasně z frustrace",
+    "Vzdáte to předčasně z důvodu frustrace",
     "Vaše konkurence vás předběhne"
   ]
 
   const withConsultation = [
     "Jasná roadmapa od nultého dne",
-    "Vyhněte se drahým chybám",
-    "Podporovaný průvodce celou cestou",
-    "Hotová aplikace za 6 měsíců"
+    "Vyhnete se většině drahých chyb",
+    "Máte podporujícího průvodce celou cestou",
+    "Začínáte pracovat na své podnikatelské budoucnosti a polopasivním příjmu"
   ]
 
   return (
@@ -27,20 +27,20 @@ export default function WhyConsultationSeo() {
           viewport={{ once: true }}
         >
           <h2 className="font-display font-bold text-5xl md:text-6xl mb-8 text-center" style={{ lineHeight: '1.3' }}>
-            Co vám konzultace ušetří
+            Co vám konzultace přinese
           </h2>
           <div className="mb-16 text-center max-w-3xl mx-auto">
             <div className="space-y-4 mb-20">
-              <p>
-                Nemusíte na to být sami. Nemusíte strávit půl roku nachytřováním ze všech možných různých zdrojů.
+              <p className="text-xl font-light">
+                Nemusíte na to být sami.
               </p>
-              <p className="font-semibold">
-                Ráda vám předám, co jsem se za 6 měsíců s Vibecodingem naučila. Vaše cesta se urychlí.
+              <p className="text-xl font-light">
+                Nemusíte strávit půl roku nachytřováním ze všemožných různých zdrojů. Ráda vám předám, co jsem se za 6 měsíců s vibecodingem naučila. A udělám to prostřednictvím online konzultací.
               </p>
-              <p>
-                A udělám to prostřednictvím online konzultací.
+              <p className="text-xl font-light">
+                Vaše cesta se urychlí.
               </p>
-            </div>
+              </div>
             <Button>
               Objednat konzultaci
             </Button>
@@ -54,8 +54,8 @@ export default function WhyConsultationSeo() {
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
             >
-              <h3 className="font-display font-bold text-2xl mb-4">
-                Bez konzultace
+              <h3 className="font-display font-bold mb-4">
+                Bez konzultace možná
               </h3>
               <ul className="space-y-3">
                 {withoutConsultation.map((item, index) => (
@@ -74,7 +74,7 @@ export default function WhyConsultationSeo() {
               initial={{ opacity: 0, x: 30 }}
               whileInView={{ opacity: 1, x: 0 }}
             >
-              <h3 className="font-display font-bold text-2xl mb-4">
+              <h3 className="font-display font-bold mb-4">
                 S konzultací
               </h3>
               <ul className="space-y-3">
@@ -95,11 +95,11 @@ export default function WhyConsultationSeo() {
             transition={{ delay: 0.3 }}
             viewport={{ once: true }}
           >
-            <p className="mb-4">
-              Investice do konzultace = úspora času, peněz a nervů
+            <p className="mb-4 text-xl font-light">
+              Investicí do konzultace uspoříte čas, peníze i nervy
             </p>
-            <p className="font-semibold">
-              Vaše aplikace vám vrátí investici během prvních měsíců provozu
+            <p className="text-xl font-light">
+              Vaše aplikace vám investovaný čas vrátí
             </p>
           </motion.div>
         </motion.div>

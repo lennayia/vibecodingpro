@@ -13,11 +13,11 @@ export default function ComparisonCard({ data, direction, delay }) {
       whileInView={{ opacity: 1, x: 0 }}
       transition={{ duration: 0.6 }}
     >
-      <div className="mb-6">
-        <h3 className="font-display font-bold text-3xl mb-2">
+      <div className="mb-12 text-center">
+        <h3 className="font-display font-bold mb-2">
           {name}
         </h3>
-        <p>{subtitle}</p>
+        <p className="text-xl font-light">{subtitle}</p>
       </div>
 
       <div className="space-y-4 mb-6">
@@ -31,8 +31,8 @@ export default function ComparisonCard({ data, direction, delay }) {
       </div>
 
       <div className="pt-6 border-t border-gray-200 dark:border-gray-700">
-        <p className="italic">
-          "{quote}"
+        <p className="italic text-center">
+          „{quote}"
         </p>
       </div>
     </Card>

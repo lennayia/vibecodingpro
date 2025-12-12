@@ -16,13 +16,13 @@ export default function ComparisonSeo() {
           <h2 className="font-display font-bold text-5xl md:text-6xl mb-8 text-center" style={{ lineHeight: '1.3' }}>
             Jak aplikace může změnit vaše podnikání
           </h2>
-          <h3 className="font-display font-bold text-3xl md:text-4xl mb-6 text-center">
+          <h3 className="font-display font-bold mb-6 text-center">
             Dvě ženy. Jeden obor. Dvě cesty.
           </h3>
-          <p className="mb-24 text-center max-w-3xl mx-auto">
-            <span className="block">Martina a Julie: obě učí klientky zdravě spát.</span>
-            <span className="block">Stejné znalosti. Stejná vášeň pomáhat.</span>
-            <span className="block mt-6">Ale životy mají jiné.</span>
+          <p className="mb-24 text-center max-w-3xl mx-auto text-xl font-light">
+            <span className="block text-xl font-light">Martina a Julie: obě učí klientky zdravě spát.</span>
+            <span className="block text-xl font-light">Stejné znalosti. Stejná vášeň pomáhat.</span>
+            <span className="block mt-6 text-xl font-light">Ale životy mají jiné.</span>
           </p>
 
           <div className="grid md:grid-cols-2 gap-8">

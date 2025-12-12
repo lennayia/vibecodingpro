@@ -14,17 +14,17 @@ export default function CTASeo() {
         <h2 className="font-display font-bold text-5xl md:text-7xl mb-8">
           Jste ready na vlastní aplikaci?
         </h2>
-        <p className="mb-4">
+        <p className="mb-4 text-xl font-light">
           Přestaňte snít a začněte tvořit. Vaše klientky na vás čekají.
         </p>
-        <p className="mb-12">
+        <p className="mb-12 text-xl font-light">
           Za 6 měsíců budete mít hotovou aplikaci. Za rok budete pomáhat stovkám lidí.
           A cítit se svobodně.
         </p>
         <Button size="lg">
           Objednat konzultaci
         </Button>
-        <p className="text-gray-500 dark:text-gray-500 mt-6">
+        <p className="text-gray-500 dark:text-gray-500 mt-6 text-xl font-light">
           Změna začíná rozhodnutím. Udělejte ho dnes.
         </p>
       </motion.div>

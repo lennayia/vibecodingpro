@@ -51,7 +51,7 @@ export default function PricingSeo() {
           <h2 className="font-display font-bold text-5xl md:text-6xl mb-8 text-center" style={{ lineHeight: '1.3' }}>
             Vyberte si svůj start
           </h2>
-          <p className="mb-16 text-center max-w-3xl mx-auto">
+          <p className="mb-16 text-center max-w-3xl mx-auto text-xl font-light">
             Vyberte si cestu, která vám sedí
           </p>
 

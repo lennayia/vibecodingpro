@@ -31,12 +31,11 @@ export default function HeroSeo() {
 
         <motion.p
           variants={fadeInUp}
-          className="mb-12 max-w-3xl mx-auto text-center"
-          style={{ fontSize: '20px', fontWeight: '300' }}
+          className="mb-12 max-w-3xl mx-auto text-center text-xl font-light"
         >
-          <span className="block" style={{ fontSize: '20px', fontWeight: '300' }}>Už nechcete měnit čas za peníze.</span>
-          <span className="block" style={{ fontSize: '20px', fontWeight: '300' }}>Chcete aplikaci, která doplní vaše podnikání o konkurenční výhodu.</span>
-          <span className="block" style={{ fontSize: '20px', fontWeight: '300' }}>Pracuje za vás 24/7 a pomáhá stovkám klientek – zatímco vy si užíváte růst a svobodu.</span>
+          <span className="block text-xl font-light">Už nechcete měnit čas za peníze.</span>
+          <span className="block text-xl font-light mt-6">Chcete aplikaci, která doplní vaše podnikání o konkurenční výhodu.</span>
+          <span className="block text-xl font-light">Pracuje za vás 24/7 a pomáhá stovkám klientek – zatímco vy si užíváte růst a svobodu.</span>
         </motion.p>
 
         <motion.div

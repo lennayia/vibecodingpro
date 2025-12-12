@@ -4,20 +4,20 @@ import Section from '../layout/Section'
 export default function WhyMeSeo() {
   const credentials = [
     {
-      title: "Sama nejsem programátorka",
-      description: "Prošla jsem si to samé co vy - vím, kde jsou pasti"
+      title: "Ani řádek kódu",
+      description: "Dneska chápu pasti vibecodingu. Sama jsem do nich šlapala a zjišťovala, kudy vede cesta"
     },
     {
-      title: "X funkčních aplikací",
-      description: "CoachPro, PaymentsPro, DigiPro... reálné projekty v praxi"
+      title: "8 aplikací",
+      description: "CoachPro, PaymentsPro, PianoPro... To jsou reálné projekty. Pro reálné lidi"
     },
     {
-      title: "X měsíců vibecoding denně",
-      description: "Vím, co funguje a co je ztráta času"
+      title: "2 500+ hodin chyb, pokusů a průlomů",
+      description: "Předám vám je, a tak to zvládnete rychleji. A nebojte, uděláte si i svoje"
     },
     {
       title: "Učím, co sama dělám",
-      description: "Žádná teorie - jen to, co jsem ověřila"
+      description: "Nepřebírám informace, zkouším a ověřuju na vlastní kůži. Učím z toho, co funguje"
     }
   ]
 
@@ -44,10 +44,10 @@ export default function WhyMeSeo() {
                 viewport={{ once: true }}
               >
                 <div className="grid md:grid-cols-2 gap-6 items-start">
-                  <h3 className="font-display font-bold text-2xl md:text-3xl">
+                  <h3 className="font-display font-bold">
                     {item.title}
                   </h3>
-                  <p className="text-lg">
+                  <p>
                     {item.description}
                   </p>
                 </div>

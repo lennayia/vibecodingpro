@@ -9,7 +9,7 @@ export default function WhyOwnAppSeo() {
     },
     {
       title: "Konec opakování dokola",
-      description: "Už žádné \„Tohle jsem říkala už stokrát.\“ Teď to řekne appka."
+      description: "Už žádné \„Tohle jsem říkala snad stokrát.\“ Teď to řekne appka."
     },
     {
       title: "Škálujete bez vyhoření",
@@ -17,7 +17,7 @@ export default function WhyOwnAppSeo() {
     },
     {
       title: "Vypadáte profesionálně",
-      description: "Gsheets jsou fajn. Ale vlastní appka – to je jiná liga!"
+      description: "G-sheets jsou fajn. Ale vlastní appka – to je jiná liga!"
     }
   ]
 
@@ -44,10 +44,10 @@ export default function WhyOwnAppSeo() {
                 viewport={{ once: true }}
               >
                 <div className="grid md:grid-cols-2 gap-6 items-start">
-                  <h3 className="font-display font-bold text-2xl md:text-3xl">
+                  <h3 className="font-display font-bold">
                     {benefit.title}
                   </h3>
-                  <p className="text-lg">
+                  <p>
                     {benefit.description}
                   </p>
                 </div>
