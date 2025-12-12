@@ -12,6 +12,7 @@ export default function Button({
   return (
     <button
       className={`${baseClass} ${variantClass} ${sizeClass} ${className}`}
+      style={{ padding: '0.875rem 1.75rem' }}
       {...props}
     >
       {children}

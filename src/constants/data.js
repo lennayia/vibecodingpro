@@ -55,29 +55,29 @@ export const benefits = [
 export const comparisonData = {
   martina: {
     name: "Martina",
-    subtitle: "Jen konzultace",
+    subtitle: "poskytuje konzultace",
     type: "negative",
     features: [
-      { text: "<strong>6 konzultací denně</strong> - jedna za druhou, žádný prostor na dech" },
-      { text: "<strong>Opakuje stejné rady</strong> stále dokola - vyčerpávající" },
-      { text: "<strong>Odmítá 3-4 nové klientky týdně</strong> - nemá kapacitu" },
-      { text: "<strong>Večer vyčerpaná</strong> - na rodinu zbývá jen útržky energie" },
-      { text: "<strong>Nemůže na dovolenou</strong> - klientky čekají jen na ni" },
-      { text: "<strong>Příjem omezený</strong> - vydělá jen když aktivně pracuje" }
+      { text: "<strong>7 konzultací denně</strong> - jede jako drak a skoro se nestihne ani nadechnout" },
+      { text: "<strong>Opakuje stejné rady</strong> dokola - to už ji mentálně unavuje a brzdí její kreativitu" },
+      { text: "<strong>Odmítá 3-4 nové klientky týdně</strong> - nemá energetickou kapacitu" },
+      { text: "<strong>Večer je vyčerpaná</strong> - na rodinu jí zbývá jen zlomek energie" },
+      { text: "<strong>Jede na dovolenou</strong> - ale klientky ji potřebují pořád" },
+      { text: "<strong>Příjem je omezený</strong> - vydělá jen aktivní prací" }
     ],
-    quote: "Cítím se jako na běžícím pásu. Pomáhám lidem, ale sama se topím."
+    quote: "Cítím se jako na běžícím pásu. Pomáhám lidem mít energii, ale sama jsem vyčerpaná."
   },
   julie: {
     name: "Julie",
-    subtitle: "Aplikace + premium konzultace",
+    subtitle: "vytvořila aplikaci a poskytuje prémiové konzultace",
     type: "positive",
     features: [
-      { text: "<strong>Aplikace pomáhá 300+ ženám</strong> - spánkové tracky, meditace, personalizované tipy 24/7" },
-      { text: "<strong>Klientky nadšené</strong> - mají podporu kdykoliv, vidí pokrok, cítí se méně samy" },
+      { text: "<strong>Aplikace pomáhá 300+ ženám</strong> - najdou tam spánkové tracky, meditace, personalizované tipy 24/7" },
+      { text: "<strong>Klientky jsou nadšené</strong> - mají podporu kdykoliv, vidí pokrok, cítí se méně samy" },
       { text: "<strong>2-3 premium konzultace týdně</strong> - za vyšší cenu, s klientkami které jsou už připravené" },
-      { text: "<strong>Plná energie</strong> - čas na běhání, rodinu, koníčky" },
-      { text: "<strong>Měsíc na Bali</strong> - aplikace běží sama, příjem pokračuje" },
-      { text: "<strong>Příjem 4x vyšší</strong> - a stále roste" }
+      { text: "<strong>Má energii i čas</strong> - na běhání, rodinu, koníčky" },
+      { text: "<strong>Měsíc na Bali?</strong> - aplikace běží sama, pečuje o klientky" },
+      { text: "<strong>Příjem se stává pasivním</strong> - stále roste i díky VIP konzultacím" }
     ],
     quote: "Konečně žiju. Pomáhám víc lidem než kdy předtím - a sama se cítím naplněná."
   }
