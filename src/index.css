@@ -4,46 +4,249 @@
 
 @layer base {
   :root {
-    --off-white: #f2f2f2;
-    --off-black: #1a1a1a;
-    --light-text: #e1e1e1;
+    /* Colors */
+    --color-bg-light: #f2f2f2;
+    --color-bg-dark: #070716;
+    --color-bg-dark-alt: #05050f;
+    --color-text-light: #070716;
+    --color-text-dark: #f2f2f2;
+    --color-text-muted-light: #374151;
+    --color-text-muted-dark: #eaeaea;
+    --color-accent-light: #0000CD;
+    --color-accent-dark: #0DDD0D;
+    --color-error: #9A0303;
+    --color-error-light: #DC2626;
+    --color-error-dark: #9A0303;
+
+    /* Typography scales */
+    --font-display: 'Manrope', 'Inter', sans-serif;
+    --font-body: 'Inter', system-ui, sans-serif;
+
+    /* Spacing & Timing */
+    --transition-base: 0.3s ease;
+    --transition-slow: 0.6s ease-out;
+
+    /* Color scheme meta */
+    color-scheme: light dark;
   }
 
-  body {
-    background-color: #f2f2f2;
-    color: #070716;
-    font-family: 'Inter', system-ui, sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  }
-
-  .dark body {
-    background-color: #070716;
-    color: #f2f2f2;
+  /* Performance optimizations */
+  * {
+    -webkit-tap-highlight-color: transparent;
   }
 
   html {
     scroll-behavior: smooth;
+    /* @media (prefers-reduced-motion: reduce) {
+      scroll-behavior: auto;
+    } */
+  }
+
+  body {
+    background-color: var(--color-bg-light);
+    color: var(--color-text-light);
+    font-family: var(--font-body);
+    font-size: clamp(14px, 1vw + 0.5rem, 16px); /* Fluid typography */
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  .dark body {
+    background-color: var(--color-bg-dark);
+    color: var(--color-text-dark);
+  }
+
+  /* Typography - Mobile First with Fluid Sizing */
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--color-text-light);
+  }
+
+  .dark h1, .dark h2, .dark h3, .dark h4, .dark h5, .dark h6 {
+    color: var(--color-text-muted-dark);
+  }
+
+  /* Fluid typography with clamp() */
+  h1 {
+    font-size: clamp(3rem, 5vw + 1rem, 6rem); /* 48-96px */
+  }
+
+  h2 {
+    font-size: clamp(2.5rem, 4vw + 1rem, 3.75rem); /* 40-60px */
+  }
+
+  h3 {
+    font-size: clamp(1.5rem, 2vw + 0.5rem, 2.25rem); /* 24-36px */
+  }
+
+  .subtitle {
+    font-size: clamp(1.125rem, 1.5vw + 0.5rem, 1.5rem); /* 18-24px */
+    color: #6b7280;
+  }
+
+  .dark .subtitle {
+    color: var(--color-text-muted-dark);
+  }
+
+  p, span, li, div:not([class*="font-display"]):not([class*="text-"]) {
+    font-size: 1rem;
+    line-height: 1.75;
+    color: var(--color-text-muted-light);
+  }
+
+  .dark p, .dark span, .dark li, .dark div:not([class*="font-display"]):not([class*="text-"]) {
+    color: var(--color-text-dark);
+  }
+
+  /* Accent colors using variables */
+  .text-accent {
+    color: var(--color-accent-light);
+  }
+
+  .dark .text-accent {
+    color: var(--color-accent-dark);
+  }
+
+  .text-error {
+    color: var(--color-error-light);
+  }
+
+  .dark .text-error {
+    color: var(--color-error-dark);
+  }
+
+  /* Base button - optimize hover */
+  button {
+    font-family: var(--font-body);
+    cursor: pointer;
+    transition: transform var(--transition-base);
+    -webkit-user-select: none;
+    user-select: none;
+  }
+
+  button:hover:not(:disabled) {
+    transform: scale(1.05);
+  }
+
+  button:focus-visible {
+    outline: 2px solid var(--color-accent-light);
+    outline-offset: 2px;
+  }
+
+  .dark button:focus-visible {
+    outline-color: var(--color-accent-dark);
+  }
+
+  button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  /* Accessibility */
+  a:focus-visible {
+    outline: 2px solid var(--color-accent-light);
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+
+  .dark a:focus-visible {
+    outline-color: var(--color-accent-dark);
   }
 }
 
 @layer utilities {
+  /* Gradient text */
   .text-gradient {
-    background: linear-gradient(to right, #070716, #0DDD0D, #070716);
+    background: linear-gradient(to right, #070716, #0000CD, #070716);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+    display: inline-block;
   }
 
   .dark .text-gradient {
     background: linear-gradient(to right, #0DDD0D, #f2f2f2, #0DDD0D);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    background-clip: text;
   }
 
+  /* Button styles */
+  .btn {
+    padding: 1rem 2rem;
+    margin: 0;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 1rem;
+    background-color: var(--color-bg-light);
+    color: var(--color-accent-light);
+    border: none;
+    transition: all var(--transition-base);
+    will-change: transform;
+    touch-action: manipulation; /* Better mobile performance */
+    display: inline-block;
+    width: auto;
+  }
+
+  .dark .btn {
+    background-color: var(--color-bg-dark);
+    color: var(--color-accent-dark);
+  }
+
+  .btn-primary {
+    border: 2px solid var(--color-accent-light);
+  }
+
+  .dark .btn-primary {
+    border: 2px solid var(--color-accent-dark);
+  }
+
+  .btn-primary:hover:not(:disabled) {
+    border: 2px solid var(--color-accent-light);
+    box-shadow: 0 0 15px rgba(0, 0, 205, 0.4),
+                0 0 30px rgba(0, 0, 205, 0.2);
+  }
+
+  .dark .btn-primary:hover:not(:disabled) {
+    border: 2px solid var(--color-accent-dark);
+    box-shadow: 0 0 15px rgba(13, 221, 13, 0.5),
+                0 0 30px rgba(13, 221, 13, 0.3);
+  }
+
+  .btn-lg {
+    /* Removed - all buttons now have consistent padding and font-size */
+  }
+
+  .btn-badge {
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+    font-weight: 700;
+    border-radius: 9999px;
+    background-color: transparent;
+    border: 1px solid #d1d5db;
+    color: var(--color-text-light);
+  }
+
+  .dark .btn-badge {
+    border: none;
+    color: var(--color-text-dark);
+  }
+
+  .btn-badge-accent {
+    color: var(--color-accent-light);
+  }
+
+  .dark .btn-badge-accent {
+    color: var(--color-accent-dark);
+  }
+
+  /* Animations with performance in mind */
   .animate-fade-in {
     animation: fadeIn 0.8s ease-in-out;
+    will-change: opacity, transform;
   }
 
   @keyframes fadeIn {
@@ -54,6 +257,18 @@
     to {
       opacity: 1;
       transform: translateY(0);
+    }
+  }
+
+  /* Performance: Reduce motion for accessibility */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
     }
   }
 }
