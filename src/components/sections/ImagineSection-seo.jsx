@@ -33,7 +33,7 @@ export default function ImagineSectionSeo() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
         >
-          <h2 className="font-display font-bold text-5xl md:text-6xl mb-12 text-center" style={{ lineHeight: '1.3' }}>
+          <h2 className="font-display font-bold mb-12 text-center" style={{ lineHeight: '1.3' }}>
             Den s vaší aplikací
           </h2>
 

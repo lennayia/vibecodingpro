@@ -12,8 +12,8 @@ export default function WhyMeSeo() {
       description: "CoachPro, PaymentsPro, PianoPro... To jsou reálné projekty. Pro reálné lidi"
     },
     {
-      title: "2 500+ hodin chyb, pokusů a průlomů",
-      description: "Předám vám je, a tak to zvládnete rychleji. A nebojte, uděláte si i svoje"
+      title: "2 500+ hodin praxe",
+      description: "Chyby, pokusy, průlomy. Předám vám je, a tak vám to půjde líp. A nebojte, chyby si uděláte i svoje"
     },
     {
       title: "Učím, co sama dělám",
@@ -29,7 +29,7 @@ export default function WhyMeSeo() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
         >
-          <h2 className="font-display font-bold text-5xl md:text-6xl mb-16 text-center" style={{ lineHeight: '1.3' }}>
+          <h2 className="font-display font-bold mb-16 text-center" style={{ lineHeight: '1.3' }}>
             Proč zrovna já?
           </h2>
 

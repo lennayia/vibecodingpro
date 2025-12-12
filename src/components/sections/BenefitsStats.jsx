@@ -8,23 +8,25 @@ export default function BenefitsStats() {
     <section className="pt-0 pb-32 px-6 dark:bg-[#070716]">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-8">
-          <h3 className="font-display font-bold mb-4">
-            "Teď pomáhám 200 klientkám měsíčně místo 15"
+          <h3 className="font-display font-bold mb-6">
+            „Pomáhám téměř 320 klientkám měsíčně místo 80.<br />A to jsem s aplikací teprv na začátku.“
           </h3>
-          <p className="text-xl font-light">
-            Jana, nutriční poradkyně
+          <p className="text-xl font-light mb-20">
+            Jana, koučka
           </p>
         </div>
 
         <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
           <div>
-            <p className="font-semibold mb-3">Před:</p>
-            <p>Jana trávila 20 hodin týdně individuálními konzultacemi. Musela odmítat nové klientky. Měla pocit, že její znalosti mají omezenou hodnotu - vydělávala jen když aktivně pracovala.</p>
+            <p className="text-xl font-light mb-3 text-center">Před aplikací</p>
+            <p className="mb-4">Jana trávila 20 hodin týdně konzultacemi. Popravdě, bylo to už za hranou. Odmítala klientky, nemohla jich vzít víc.</p>
+            <p>A trápila se pocitem, že její znalosti pomůžou jen omezené skupině lidí. Ale upřímně – práce ji vyčerpávala. Vydělávala jen počtem odpracovaných konzultací.</p>
           </div>
 
           <div>
-            <p className="font-semibold mb-3">Dnes:</p>
-            <p>Její aplikace nabízí personalizované jídelníčky, trackování pokroku a denní tipy. Funguje 24/7. Jana tráví 5 hodin týdně na vylepšování aplikace a zbytek času věnuje prémiové konzultace za vyšší cenu.</p>
+            <p className="text-xl font-light mb-3 text-center">Dneska</p>
+            <p className="mb-4">Její aplikace radí s životními situacemi, sleduje pokroky a posílá denní tipy, funguje 24 hodin denně. Jana teď pracuje na vylepšování aplikace a zbytek času věnuje prémiovým konzultacím za vyšší cenu. Nebo rodině.</p>
+            <p>Nejlepší je, že si její služby může dovolit mnohem víc klientek než dřív.</p>
           </div>
         </div>
 
@@ -36,11 +38,11 @@ export default function BenefitsStats() {
             transition={{ delay: 0.4 }}
             viewport={{ once: true }}
           >
-            „Cítím se konečně svobodná. Moje práce pomáhá lidem i když spím. A mám čas na rodinu. To je k nezaplacení."
+            „Cítím se svobodná. Moje práce pomáhá lidem, i když spím. A já mám konečně čas žít. To je nejvíc."
           </motion.p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-6 max-w-5xl mx-auto mb-12 items-stretch">
           {benefits.map((benefit, index) => (
             <StatCard
               key={index}

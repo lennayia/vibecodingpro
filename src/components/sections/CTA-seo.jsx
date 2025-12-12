@@ -11,8 +11,8 @@ export default function CTASeo() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
       >
-        <h2 className="font-display font-bold text-5xl md:text-7xl mb-8">
-          Jste ready na vlastní aplikaci?
+        <h2 className="font-display font-bold mb-8">
+          Věřím, že jste ready na vlastní aplikaci
         </h2>
         <p className="mb-4 text-xl font-light">
           Přestaňte snít a začněte tvořit. Vaše klientky na vás čekají.

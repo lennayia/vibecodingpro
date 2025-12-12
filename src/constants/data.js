@@ -46,9 +46,10 @@ export const phases = [
 ]
 
 export const benefits = [
-  { value: "13x", label: "více klientek" },
-  { value: "75%", label: "méně času" },
-  { value: "5x", label: "vyšší příjem" }
+  { value: "4x", label: "víc klientek" },
+  { value: "1 den", label: "týdně navíc" },
+  { value: "2,8x", label: "vyšší příjem" },
+  { value: "2x", label: "víc energie" }
 ]
 
 export const comparisonData = {

@@ -23,7 +23,7 @@ export default function HeroSeo() {
 
         <motion.h1
           variants={fadeInUp}
-          className="font-display font-bold text-6xl md:text-8xl lg:text-9xl mb-8 leading-tight"
+          className="font-display font-bold mb-8"
         >
           Vytvořte si vlastní aplikaci a{' '}
           <span className="text-gradient">škálujte svoje podnikání</span>

@@ -19,7 +19,7 @@ export default function CaseStudy() {
           <Card background="dark">
             <div className="mb-8">
               <h3 className="font-display font-bold mb-4">
-                "Teď pomáhám 200 klientkám měsíčně místo 15"
+                "Teď pomáhám téměř 80 klientkám měsíčně místo 15"
               </h3>
               <p>
                 Jana, nutriční poradkyně

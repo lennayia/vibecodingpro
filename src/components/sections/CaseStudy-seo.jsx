@@ -13,11 +13,11 @@ export default function CaseStudySeo() {
           viewport={{ once: true }}
         >
           <div className="text-center mb-6">
-            <Badge>Příběh úspěchu</Badge>
+            <Badge>Realita</Badge>
           </div>
 
-          <h2 className="font-display font-bold text-5xl md:text-6xl text-center mb-8" style={{ lineHeight: '1.3' }}>
-            Reálný dopad
+          <h2 className="font-display font-bold text-center mb-8" style={{ lineHeight: '1.3' }}>
+            Takhle to může vypadat v praxi
           </h2>
         </motion.div>
       </div>

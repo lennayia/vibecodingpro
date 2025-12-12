@@ -26,7 +26,7 @@ export default function WhyConsultation() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
         >
-          <h2 className="font-display font-bold text-5xl md:text-6xl mb-8 text-center" style={{ lineHeight: '1.3' }}>
+          <h2 className="font-display font-bold mb-8 text-center" style={{ lineHeight: '1.3' }}>
             Co vám konzultace přinese
           </h2>
           <div className="mb-16 text-center max-w-3xl mx-auto">

@@ -13,7 +13,7 @@ export default function ComparisonSeo() {
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
         >
-          <h2 className="font-display font-bold text-5xl md:text-6xl mb-8 text-center" style={{ lineHeight: '1.3' }}>
+          <h2 className="font-display font-bold mb-8 text-center" style={{ lineHeight: '1.3' }}>
             Jak aplikace může změnit vaše podnikání
           </h2>
           <h3 className="font-display font-bold mb-6 text-center">
