@@ -37,6 +37,7 @@
 
   html {
     scroll-behavior: smooth;
+    overflow-x: hidden;
     /* @media (prefers-reduced-motion: reduce) {
       scroll-behavior: auto;
     } */
@@ -51,6 +52,8 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
+    overflow-x: hidden;
+    width: 100%;
   }
 
   .dark body {

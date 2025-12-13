@@ -19,8 +19,8 @@ export default function WhyConsultation() {
   ]
 
   return (
-    <Section background="light">
-      <div className="max-w-6xl mx-auto">
+    <Section background="dark" className="min-h-screen flex items-center justify-center !pt-4 !pb-8 md:!pt-4 md:!pb-8 lg:!pt-8 lg:!pb-16" showScrollIndicator={true}>
+      <div>
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
@@ -75,7 +75,7 @@ export default function WhyConsultation() {
               whileInView={{ opacity: 1, x: 0 }}
             >
               <h3 className="font-display font-bold mb-4">
-                Společně určitě
+                Spolu určitě
               </h3>
               <ul className="space-y-3">
                 {withConsultation.map((item, index) => (

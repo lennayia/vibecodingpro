@@ -4,9 +4,9 @@ import Button from '../ui/Button'
 
 export default function CTASeo() {
   return (
-    <Section background="light">
+    <Section background="light" className="min-h-screen flex items-center justify-center" showScrollIndicator={false}>
       <motion.div
-        className="max-w-4xl mx-auto text-center"
+        className="text-center"
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}

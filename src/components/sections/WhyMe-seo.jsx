@@ -22,8 +22,8 @@ export default function WhyMeSeo() {
   ]
 
   return (
-    <Section background="dark">
-      <div className="max-w-4xl mx-auto">
+    <Section background="dark" className="min-h-screen flex items-center justify-center" showScrollIndicator={true}>
+      <div>
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}

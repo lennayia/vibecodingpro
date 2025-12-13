@@ -5,8 +5,8 @@ import { benefits } from '../../constants/data'
 
 export default function BenefitsStats() {
   return (
-    <section className="pt-0 pb-32 px-6 dark:bg-[#070716]">
-      <div className="max-w-6xl mx-auto">
+    <Section background="dark" className="!pt-0">
+      <div>
         <div className="text-center mb-8">
           <h3 className="font-display font-bold mb-6">
             „Pomáhám téměř 320 klientkám měsíčně místo 80.<br />A to jsem s aplikací teprv na začátku.“
@@ -53,6 +53,6 @@ export default function BenefitsStats() {
           ))}
         </div>
       </div>
-    </section>
+    </Section>
   )
 }

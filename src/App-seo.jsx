@@ -12,11 +12,9 @@ import ComparisonSeo from './components/sections/Comparison-seo'
 import CaseStudySeo from './components/sections/CaseStudy-seo'
 import WhyMeSeo from './components/sections/WhyMe-seo'
 import ImagineSectionSeo from './components/sections/ImagineSection-seo'
-import BenefitsStats from './components/sections/BenefitsStats'
 import PhasesSeo from './components/sections/Phases-seo'
 import BonusesSeo from './components/sections/Bonuses-seo'
-import PricingSeo from './components/sections/Pricing-seo'
-import FAQSeo from './components/sections/FAQ-seo'
+import PricingSeo, { PricingPackagesSeo, PricingGuaranteeSeo } from './components/sections/Pricing-seo'
 import CTASeo from './components/sections/CTA-seo'
 
 function AppSeo() {
@@ -68,11 +66,11 @@ function AppSeo() {
         <PhasesSeo />
         <WhyConsultationSeo />
         <CaseStudySeo />
-        <BenefitsStats />
         <WhyMeSeo />
         <BonusesSeo />
         <PricingSeo />
-        <FAQSeo />
+        <PricingPackagesSeo />
+        <PricingGuaranteeSeo />
         <CTASeo />
       </main>
 

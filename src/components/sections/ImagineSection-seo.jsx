@@ -26,8 +26,8 @@ export default function ImagineSectionSeo() {
   ]
 
   return (
-    <Section background="dark">
-      <div className="max-w-4xl mx-auto">
+    <Section background="light" className="min-h-screen flex items-center justify-center !pt-4 !pb-8 md:!pt-4 md:!pb-8 lg:!pt-8 lg:!pb-16" showScrollIndicator={true}>
+      <div className="!max-w-4xl">
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}

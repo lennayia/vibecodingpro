@@ -1,12 +1,12 @@
 import Card from './Card'
 import FeatureListItem from './FeatureListItem'
 
-export default function ComparisonCard({ data, direction, delay }) {
+export default function ComparisonCard({ data, direction, delay, background = "light" }) {
   const { name, subtitle, type, features, quote } = data
 
   return (
     <Card
-      background="light"
+      background={background}
       animate={true}
       delay={delay}
       initial={{ opacity: 0, x: direction === "left" ? -50 : 50 }}

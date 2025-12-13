@@ -75,8 +75,8 @@ export default function BonusesSeo() {
   ]
 
   return (
-    <Section background="light">
-      <div className="max-w-4xl mx-auto">
+    <Section background="light" className="min-h-screen flex items-center justify-center" showScrollIndicator={true}>
+      <div>
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
@@ -94,10 +94,10 @@ export default function BonusesSeo() {
             </h3>
           </div>
 
-          <div className="overflow-x-auto">
-            <div>
+          <div className="overflow-x-auto w-full">
+            <div className="w-full">
               {/* Header */}
-              <div className="grid grid-cols-[3fr_2fr] gap-4 mb-4 items-center">
+              <div className="grid grid-cols-[2fr_3fr] gap-4 mb-4 items-center">
                 <div></div>
                 <div className="flex justify-center items-center gap-2">
                   {packages.map((pkg, index) => (
@@ -126,7 +126,7 @@ export default function BonusesSeo() {
                       viewport={{ once: true }}
                     >
                       <div
-                        className={`grid grid-cols-[3fr_2fr] gap-4 p-3 sm:p-4 rounded-lg bg-gray-50 dark:bg-[#05050f] items-center ${hasDescription ? 'cursor-pointer hover:bg-gray-100 dark:hover:bg-[#0a0a1a] transition-colors' : ''}`}
+                        className={`grid grid-cols-[2fr_3fr] gap-4 p-3 sm:p-4 rounded-lg bg-gray-50 dark:bg-[#05050f] items-center ${hasDescription ? 'cursor-pointer hover:bg-gray-100 dark:hover:bg-[#0a0a1a] transition-colors' : ''}`}
                         onClick={() => hasDescription && toggleItem(index)}
                       >
                         <div className="flex items-center gap-2">

@@ -105,8 +105,8 @@ export default function FAQSeo() {
   ]
 
   return (
-    <Section background="light">
-      <div className="max-w-4xl mx-auto">
+    <Section background="light" className="min-h-screen flex items-center justify-center" showScrollIndicator={true}>
+      <div>
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
