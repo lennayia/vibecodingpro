@@ -44,7 +44,7 @@ export default function Hero() {
           className="flex justify-center"
         >
           <Button>
-            Objednat konzultaci
+            Ukázat možnosti
           </Button>
         </motion.div>
       </motion.div>

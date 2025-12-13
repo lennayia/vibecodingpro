@@ -9,6 +9,8 @@ export default function PricingSeo() {
     {
       title: "VIBE",
       duration: "2x 1 hodina",
+      serviceType: "konzultace",
+      availableSpots: 5,
       price: "3 500 Kč",
       description: "Pro ženy, které chtějí pochopit<br />a rozhodnout se",
       features: [
@@ -17,7 +19,7 @@ export default function PricingSeo() {
         "7 kroků k aplikaci – podrobně vysvětlených",
         "Analýza vašeho konkrétního záměru",
         "Roadmapa: co dělat krok za krokem",
-        "Q&A"
+        "Q&A – prostor na vaše otázky"
       ],
       resultTitle: "Výsledek:",
       resultDescription: "Jasná roadmapa, víte přesně co a jak – a jestli je to pro vás.<br />Vyhnete se bloudění.",
@@ -26,18 +28,19 @@ export default function PricingSeo() {
           quote: '„Za 2 hodiny jsem pochopila víc než za měsíc googlování."',
           author: "Petra, koučka"
         },
-        {
-          quote: '„Konečně mi někdo vysvětlil, o co go."',
-          author: "Martina, terapeutka"
-        }
       ],
-      bonus: "Po konzultaci dostanete osobní roadmapu v PDF – přesný plán, co dělat dál.",
+      bonuses: [
+        "Po konzultaci dostanete osobní roadmapu v PDF – přesný plán, co dělat dál.",
+        "Sleva 350 Kč na další 2hodinovou konzultaci"
+      ],
       buttonText: "Chci VIBE",
       isPopular: false
     },
     {
       title: "VIBE + CODING",
       duration: "6x 1 hodina",
+      serviceType: "mentoring",
+      availableSpots: 3,
       price: "9 900 Kč",
       description: "Pro ženy, které chtějí pochopit<br />a rovnou začít",
       features: [
@@ -51,13 +54,51 @@ export default function PricingSeo() {
       resultDescription: "Rozumíte, PLUS máte kus hotovo - nástroje běží, projekt existuje, první kód je napsaný.<br />Ušetříte desítky hodin zkoušení.",
       testimonials: [
         {
-          quote: '„Přišla jsem s nápadem, odcházela s rozjetým projektem. Nejlepší investice."',
+          quote: '„Konečně mi někdo vysvětlil, o co go."',
+          author: "Martina, terapeutka"
+        }
+      ],
+      bonuses: [
+        "Kompletní dokumentace – roadmapa, zadání projektu a technický základ v PDF. Máte všechno černé na bílém k dispozici na pořád.",
+        "4 návody krok za krokem – GitHub, Supabase, Vercel + tahák pro komunikaci s AI",
+        "Nahrávky, ke kterým se můžete vracet",
+        "2 týdny email podpora – nezůstanete sama",
+        "Sleva 500 Kč na další 2hodinovou konzultaci"
+      ],
+      buttonText: "Chci mentoring",
+      isPopular: true
+    },
+    {
+      title: "VIBE + CODING",
+      duration: "10x 1 hodina + 30 dní podpora",
+      serviceType: "VIP mentoring",
+      availableSpots: 1,
+      price: "24 900 Kč",
+      description: "Pro ženy, které chtějí pochopit,<br />začít a dokončit",
+      features: [
+        "<span class='font-semibold'>Všechno z VIBE+CODING (6h) +</span>",
+        "<strong>30 dní přímý přístup ke mně (WhatsApp)</strong> – Zaseknete se, napíšete, odpovím do 24 hodin.",
+        "<strong>Společné co-working sessions (4× 1 hod)</strong> – Pracujeme spolu v reálném čase.",
+        "<strong>Dokud to neběží</strong> – Žádné &bdquo;hodně štěstí&ldquo;. Dotáhneme funkční apku."
+      ],
+      resultTitle: "Výsledek:",
+      resultDescription: "<ul class='list-disc pl-5 space-y-2'><li>Funkční aplikace. Rozumíte jí a umíte ji rozvíjet.</li><li>Přímá linka k mentorce</li><li>Garantovaný výsledek, ne jen &bdquo;konzultace&ldquo;</li><li>Osobní vztah</li></ul>",
+      testimonials: [
+        {
+          quote: '„Přišla jsem s nápadem, odcházela s rozjetým projektem. Nejlepší investice do podnikání, co jsem kdy udělala."',
           author: "Katka, mentorka"
         }
       ],
-      bonus: "Kompletní dokumentace – roadmapa, zadání projektu a technický základ v PDF. Máte vše černé na bílém.",
-      buttonText: "Chci VIBE+CODING",
-      isPopular: true
+      bonuses: [
+        "Kompletní dokumentace – roadmapa, zadání projektu a technický základ v PDF. Máte všechno černé na bílém k dispozici na pořád.",
+        "4 návody krok za krokem – GitHub, Supabase, Vercel + tahák pro komunikaci s AI",
+        "Nahrávky, ke kterým se můžete vracet",
+        "2 týdny email podpora – nezůstanete sama",
+        "Check-in call (30 min) – po 2 týdnech zkontrolujeme pokrok",
+        "Sleva 1 000 Kč na další 2hodinovou konzultaci"
+      ],
+      buttonText: "Chci VIP",
+      isPopular: false
     }
   ]
 
@@ -69,12 +110,9 @@ export default function PricingSeo() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
         >
-          <h2 className="font-display font-bold mb-8 text-center" style={{ lineHeight: '1.3' }}>
-            Vyberte si svůj start
+          <h2 className="font-display font-bold mb-16 text-center" style={{ lineHeight: '1.3' }}>
+            Kolik to stojí?
           </h2>
-          <p className="mb-16 text-center max-w-3xl mx-auto text-xl font-light">
-            Která cesta je ta vaše?
-          </p>
 
           <motion.div
             className="mb-16 max-w-3xl mx-auto"
@@ -86,11 +124,11 @@ export default function PricingSeo() {
             <div className="p-8 rounded-2xl bg-gray-100 dark:bg-[#05050f] border border-gray-200 dark:border-gray-700">
               <div className="flex items-center justify-center gap-3 mb-6">
                 <Clock className="w-6 h-6" strokeWidth={2} />
-                <h3 className="font-display font-bold">Zaváděcí cena</h3>
+                <h3 className="font-display font-bold">Zaváděcí ceny</h3>
               </div>
 
               <p className="text-center mb-6 text-xl font-light">
-                Tato cena platí jen do 15. 12. 2025 do 22:00 hod.
+                platí jen do 15. 12. 2025 do 22:00 hod.
               </p>
 
               <div className="mb-6">
@@ -99,7 +137,7 @@ export default function PricingSeo() {
 
               <div className="text-center space-y-3">
                 <p className="font-semibold">
-                  Pak zdražuji na 4 900 / 12 900 Kč
+                  Pak se ceny zvýší na 4 500 / 12 900 / 29 900 Kč
                 </p>
                 <p className="text-xl font-light">
                   Kdo dřív přijde, ten víc ušetří. A taky bude mít dřív vlastní apku.
@@ -108,7 +146,11 @@ export default function PricingSeo() {
             </div>
           </motion.div>
 
-          <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+          <h3 className="font-display font-bold mt-40 mb-40 text-center">
+            Vyberte si cestu, která vám sedí
+          </h3>
+
+          <div className="grid md:grid-cols-3 gap-8 max-w-7xl mx-auto">
             {packages.map((pkg, index) => (
               <PricingCard
                 key={index}

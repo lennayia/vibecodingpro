@@ -6,13 +6,15 @@ import Badge from './Badge'
 export default function PricingCard({
   title,
   duration,
+  serviceType,
+  availableSpots,
   price,
   description,
   features,
   resultTitle,
   resultDescription,
   testimonials,
-  bonus,
+  bonuses,
   buttonText,
   isPopular = false,
   delay = 0
@@ -34,7 +36,15 @@ export default function PricingCard({
         <h3 className="font-display font-bold mb-2">
           {title}
         </h3>
-        <p className="mb-4">{duration}</p>
+        <p className="mb-1">{duration}</p>
+        {serviceType && (
+          <div className="mb-4 flex items-center justify-center gap-2">
+            <p className="font-semibold text-accent">{serviceType}</p>
+            {availableSpots && (
+              <span className="text-sm font-light">({availableSpots} {availableSpots === 1 ? 'místo' : availableSpots <= 4 ? 'místa' : 'míst'})</span>
+            )}
+          </div>
+        )}
         <p dangerouslySetInnerHTML={{ __html: description }} />
       </div>
 
@@ -53,13 +63,20 @@ export default function PricingCard({
         ))}
       </div>
 
-      {bonus && (
+      {bonuses && bonuses.length > 0 && (
         <div className="mb-6">
           <div className="flex items-center gap-2 mb-3">
             <Gift className="w-5 h-5 text-accent" strokeWidth={2} />
             <p className="font-semibold text-accent">BONUS</p>
           </div>
-          <p>{bonus}</p>
+          <ul className="space-y-3">
+            {bonuses.map((bonus, index) => (
+              <li key={index} className="flex items-start gap-3">
+                <span className="text-accent mt-0.5 flex-shrink-0 text-lg">▸</span>
+                <span>{bonus}</span>
+              </li>
+            ))}
+          </ul>
         </div>
       )}
 

@@ -12,7 +12,7 @@ export default function CTASeo() {
         viewport={{ once: true }}
       >
         <h2 className="font-display font-bold mb-8">
-          Věřím, že jste ready na vlastní aplikaci
+          Věřím, že se těšíte na vlastní aplikaci
         </h2>
         <p className="mb-4 text-xl font-light">
           Přestaňte snít a začněte tvořit. Vaše klientky na vás čekají.
@@ -22,7 +22,7 @@ export default function CTASeo() {
           A cítit se svobodně.
         </p>
         <Button size="lg">
-          Objednat konzultaci
+          Chci vibekódovat
         </Button>
         <p className="text-gray-500 dark:text-gray-500 mt-6 text-xl font-light">
           Změna začíná rozhodnutím. Udělejte ho dnes.

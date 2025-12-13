@@ -12,7 +12,7 @@ export default function WhyConsultation() {
   ]
 
   const withConsultation = [
-    "Jasná roadmapa od nultého dne",
+    "Získáte jasnou roadmapu od nultého dne",
     "Vyhnete se většině drahých chyb",
     "Máte podporujícího průvodce celou cestou",
     "Začínáte pracovat na své podnikatelské budoucnosti a polopasivním příjmu"
@@ -27,7 +27,7 @@ export default function WhyConsultation() {
           viewport={{ once: true }}
         >
           <h2 className="font-display font-bold mb-8 text-center" style={{ lineHeight: '1.3' }}>
-            Co vám konzultace přinese
+            Co vám služba přinese
           </h2>
           <div className="mb-16 text-center max-w-3xl mx-auto">
             <div className="space-y-4 mb-20">
@@ -35,14 +35,14 @@ export default function WhyConsultation() {
                 Nemusíte na to být sami.
               </p>
               <p className="text-xl font-light">
-                Nemusíte strávit půl roku nachytřováním ze všemožných různých zdrojů. Ráda vám předám, co jsem se za 6 měsíců s vibecodingem naučila. A udělám to prostřednictvím online konzultací.
+                Nemusíte strávit půl roku nachytřováním ze všemožných různých zdrojů. Ráda vám předám, co jsem se za 6 měsíců s vibecodingem naučila. Dělám to prostřednictvím online sezení 1:1.
               </p>
               <p className="text-xl font-light">
                 Vaše cesta se urychlí.
               </p>
               </div>
             <Button>
-              Objednat konzultaci
+              Vybrat službu
             </Button>
           </div>
 
@@ -55,7 +55,7 @@ export default function WhyConsultation() {
               whileInView={{ opacity: 1, x: 0 }}
             >
               <h3 className="font-display font-bold mb-4">
-                Bez konzultace možná
+                Sami možná
               </h3>
               <ul className="space-y-3">
                 {withoutConsultation.map((item, index) => (
@@ -75,7 +75,7 @@ export default function WhyConsultation() {
               whileInView={{ opacity: 1, x: 0 }}
             >
               <h3 className="font-display font-bold mb-4">
-                S konzultací
+                Společně určitě
               </h3>
               <ul className="space-y-3">
                 {withConsultation.map((item, index) => (
@@ -96,7 +96,7 @@ export default function WhyConsultation() {
             viewport={{ once: true }}
           >
             <p className="mb-4 text-xl font-light">
-              Investicí do konzultace uspoříte čas, peníze i nervy
+              Investicí do spolupráce uspoříte čas, peníze i nervy
             </p>
             <p className="text-xl font-light">
               Vaše aplikace vám investovaný čas vrátí

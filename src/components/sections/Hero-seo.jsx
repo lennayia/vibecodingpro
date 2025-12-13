@@ -17,7 +17,7 @@ export default function HeroSeo() {
           className="mb-6 inline-block"
         >
           <span className="px-4 py-2 bg-gray-100 dark:bg-[#05050f] rounded-full text-sm font-medium border border-gray-200 dark:border-[#070716]">
-            Vibecoding konzultace jako cesta k vaší aplikaci
+            Vibecoding – cesta k vaší aplikaci
           </span>
         </motion.div>
 
@@ -43,7 +43,7 @@ export default function HeroSeo() {
           className="flex justify-center"
         >
           <Button>
-            Objednat konzultaci
+            Ukázat možnosti
           </Button>
         </motion.div>
       </motion.div>

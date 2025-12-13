@@ -14,6 +14,7 @@ import WhyMeSeo from './components/sections/WhyMe-seo'
 import ImagineSectionSeo from './components/sections/ImagineSection-seo'
 import BenefitsStats from './components/sections/BenefitsStats'
 import PhasesSeo from './components/sections/Phases-seo'
+import BonusesSeo from './components/sections/Bonuses-seo'
 import PricingSeo from './components/sections/Pricing-seo'
 import CTASeo from './components/sections/CTA-seo'
 
@@ -68,6 +69,7 @@ function AppSeo() {
         <PhasesSeo />
         <CaseStudySeo />
         <BenefitsStats />
+        <BonusesSeo />
         <PricingSeo />
         <CTASeo />
       </main>
