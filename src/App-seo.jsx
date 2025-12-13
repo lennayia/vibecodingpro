@@ -16,6 +16,7 @@ import BenefitsStats from './components/sections/BenefitsStats'
 import PhasesSeo from './components/sections/Phases-seo'
 import BonusesSeo from './components/sections/Bonuses-seo'
 import PricingSeo from './components/sections/Pricing-seo'
+import FAQSeo from './components/sections/FAQ-seo'
 import CTASeo from './components/sections/CTA-seo'
 
 function AppSeo() {
@@ -71,6 +72,7 @@ function AppSeo() {
         <BenefitsStats />
         <BonusesSeo />
         <PricingSeo />
+        <FAQSeo />
         <CTASeo />
       </main>
 

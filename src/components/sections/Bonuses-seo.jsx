@@ -32,7 +32,7 @@ export default function BonusesSeo() {
     },
     {
       name: "6 návodů krok za krokem + tahák pro AI",
-      description: "Claude Code, VS Code, GitHub, Supabase, Vercel + tahák pro komunikaci s AI. Jednoduchý návod pro práci s nimi.",
+      description: "Jednoduché návody na další nástroje, které je fajn používat + tahák pro komunikaci s AI.",
       vibe: false,
       vibeCode: true,
       vibeCoding: true

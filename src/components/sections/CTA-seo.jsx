@@ -22,7 +22,7 @@ export default function CTASeo() {
           A cítit se svobodně.
         </p>
         <Button size="lg">
-          Chci vibekódovat
+          Už chci začít
         </Button>
         <p className="text-gray-500 dark:text-gray-500 mt-6 text-xl font-light">
           Změna začíná rozhodnutím. Udělejte ho dnes.

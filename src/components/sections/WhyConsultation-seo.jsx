@@ -75,7 +75,7 @@ export default function WhyConsultation() {
               whileInView={{ opacity: 1, x: 0 }}
             >
               <h3 className="font-display font-bold mb-4">
-                Společně určitě
+                Spolu určitě
               </h3>
               <ul className="space-y-3">
                 {withConsultation.map((item, index) => (

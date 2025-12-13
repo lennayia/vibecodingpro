@@ -9,7 +9,7 @@ export default function WhyMeSeo() {
     },
     {
       title: "8 aplikací",
-      description: "CoachPro, PaymentsPro, PianoPro... To jsou reálné projekty. Pro reálné lidi."
+      description: "CoachPro, PaymentsPro, PianoPro... To jsou reálné projekty pro reálné lidi."
     },
     {
       title: "2 500+ hodin praxe",
