@@ -55,7 +55,7 @@ export const benefits = [
 export const comparisonData = {
   martina: {
     name: "Martina",
-    subtitle: "poskytuje konzultace, ale nemá komplexně podporující produkt",
+    subtitle: "poskytuje konzultace, ale nemá podporující produkt",
     type: "negative",
     features: [
       { text: "<strong></strong>7 konzultací denně. Páni, jede jako drak, co sotva dýchá" },

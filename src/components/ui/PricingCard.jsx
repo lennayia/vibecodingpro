@@ -1,4 +1,4 @@
-import { Check, Gift } from 'lucide-react'
+import { Check, Gift, Tag } from 'lucide-react'
 import Card from './Card'
 import Button from './Button'
 import Badge from './Badge'
@@ -15,6 +15,7 @@ export default function PricingCard({
   resultDescription,
   testimonials,
   bonuses,
+  discount,
   buttonText,
   isPopular = false,
   delay = 0
@@ -77,6 +78,16 @@ export default function PricingCard({
               </li>
             ))}
           </ul>
+        </div>
+      )}
+
+      {discount && (
+        <div className="mb-6">
+          <div className="flex items-center gap-2 mb-3">
+            <Tag className="w-5 h-5 text-accent" strokeWidth={2} />
+            <p className="font-semibold text-accent">SLEVA</p>
+          </div>
+          <p>{discount}</p>
         </div>
       )}
 

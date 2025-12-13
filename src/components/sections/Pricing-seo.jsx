@@ -8,12 +8,12 @@ export default function PricingSeo() {
   const packages = [
     {
       title: "VIBE",
-      duration: "2x 1 hodina",
-      serviceType: "konzultace",
       availableSpots: 5,
-      price: "3 500 Kč",
+      serviceType: "konzultace",
+      price: "2 900 Kč",
       description: "Pro ženy, které chtějí pochopit<br />a rozhodnout se",
       features: [
+        "2x 1 hodina",
         "Jak vibecoding funguje a co všechno můžete vytvořit",
         "Které nástroje potřebujete a proč",
         "7 kroků k aplikaci – podrobně vysvětlených",
@@ -30,21 +30,21 @@ export default function PricingSeo() {
         },
       ],
       bonuses: [
-        "Po konzultaci dostanete osobní roadmapu v PDF – přesný plán, co dělat dál.",
-        "Sleva 350 Kč na další 2hodinovou konzultaci"
+        "Osobní roadmapa v PDF"
       ],
+      discount: "300 Kč na další 2hod. konzultaci",
       buttonText: "Chci VIBE",
       isPopular: false
     },
     {
-      title: "VIBE + CODING",
-      duration: "6x 1 hodina",
-      serviceType: "mentoring",
+      title: "VIBE+CODE",
       availableSpots: 3,
+      serviceType: "mentoring",
       price: "9 900 Kč",
       description: "Pro ženy, které chtějí pochopit<br />a rovnou začít",
       features: [
-        "<span class='font-semibold'>Všechno z VIBE (2h) +</span>",
+        "<span class='font-semibold'>6x 1 hodina +++ PLUS +++</span>",
+        "<span class='font-semibold'>Všechno z VIBE (2h)</span>",
         "<strong>Praktické nastavení:</strong> Společně nainstalujeme a rozběhneme všechny nástroje (1h)",
         "<strong>Zadání projektu:</strong> Sepíšeme, co má vaše aplikace umět (1h)",
         "<strong>První kroky:</strong> Rozjedeme projekt a napíšeme první funkce (1h)",
@@ -59,30 +59,31 @@ export default function PricingSeo() {
         }
       ],
       bonuses: [
-        "Kompletní dokumentace – roadmapa, zadání projektu a technický základ v PDF. Máte všechno černé na bílém k dispozici na pořád.",
-        "4 návody krok za krokem – GitHub, Supabase, Vercel + tahák pro komunikaci s AI",
-        "Nahrávky, ke kterým se můžete vracet",
-        "2 týdny email podpora – nezůstanete sama",
-        "Sleva 500 Kč na další 2hodinovou konzultaci"
+        "Všechny z VIBE",
+        "Kompletní dokumentace",
+        "6 návodů krok za krokem",
+        "Nahrávky",
+        "2 týdny e-mail podpora"
       ],
+      discount: "600 Kč na další 2hod. konzultaci",
       buttonText: "Chci mentoring",
       isPopular: true
     },
     {
-      title: "VIBE + CODING",
-      duration: "10x 1 hodina + 30 dní podpora",
-      serviceType: "VIP mentoring",
+      title: "VIBE+CODING",
       availableSpots: 1,
+      serviceType: "VIP mentoring",
       price: "24 900 Kč",
       description: "Pro ženy, které chtějí pochopit,<br />začít a dokončit",
       features: [
-        "<span class='font-semibold'>Všechno z VIBE+CODING (6h) +</span>",
-        "<strong>30 dní přímý přístup ke mně (WhatsApp)</strong> – Zaseknete se, napíšete, odpovím do 24 hodin.",
-        "<strong>Společné co-working sessions (4× 1 hod)</strong> – Pracujeme spolu v reálném čase.",
-        "<strong>Dokud to neběží</strong> – Žádné &bdquo;hodně štěstí&ldquo;. Dotáhneme funkční apku."
+        "<span class='font-semibold'>10x 1 hodina</span>",
+        "<span class='font-semibold'>Všechno z VIBE+CODE (6h) +</span>",
+        "<strong>Společné co-working sessions (4h)</strong> – Pracujeme spolu v reálném čase.",
+        "<strong>Dokud to neběží</strong> – Žádné &bdquo;hodně štěstí&ldquo;. Dotáhneme funkční apku.",
+        "<strong>30 dní přímý přístup ke mně (WhatsApp)</strong> – Zaseknete se, napíšete, odpovím do 24 hodin."
       ],
       resultTitle: "Výsledek:",
-      resultDescription: "<ul class='list-disc pl-5 space-y-2'><li>Funkční aplikace. Rozumíte jí a umíte ji rozvíjet.</li><li>Přímá linka k mentorce</li><li>Garantovaný výsledek, ne jen &bdquo;konzultace&ldquo;</li><li>Osobní vztah</li></ul>",
+      resultDescription: "<ul class='list-disc pl-5 space-y-2'><li>Funkční aplikace. Rozumíte jí a umíte ji rozvíjet.</li><li>Přímá linka k mentorce</li><li>Garantovaný výsledek.</li><li>Osobní vztah</li></ul>",
       testimonials: [
         {
           quote: '„Přišla jsem s nápadem, odcházela s rozjetým projektem. Nejlepší investice do podnikání, co jsem kdy udělala."',
@@ -90,13 +91,10 @@ export default function PricingSeo() {
         }
       ],
       bonuses: [
-        "Kompletní dokumentace – roadmapa, zadání projektu a technický základ v PDF. Máte všechno černé na bílém k dispozici na pořád.",
-        "4 návody krok za krokem – GitHub, Supabase, Vercel + tahák pro komunikaci s AI",
-        "Nahrávky, ke kterým se můžete vracet",
-        "2 týdny email podpora – nezůstanete sama",
-        "Check-in call (30 min) – po 2 týdnech zkontrolujeme pokrok",
-        "Sleva 1 000 Kč na další 2hodinovou konzultaci"
+        "všechny z VIBE+CODE",
+        "Check-in call (30 min) – po 2 týdnech zkontrolujeme pokrok"
       ],
+      discount: "1 000 Kč na další 2hod. konzultaci",
       buttonText: "Chci VIP",
       isPopular: false
     }

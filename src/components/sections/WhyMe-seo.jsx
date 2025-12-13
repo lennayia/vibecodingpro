@@ -5,19 +5,19 @@ export default function WhyMeSeo() {
   const credentials = [
     {
       title: "Ani řádek kódu",
-      description: "Dneska chápu pasti vibecodingu. Sama jsem do nich šlapala a zjišťovala, kudy vede cesta"
+      description: "Dneska chápu pasti vibecodingu. Sama jsem do nich šlapala a zjišťovala, kudy vede cesta."
     },
     {
       title: "8 aplikací",
-      description: "CoachPro, PaymentsPro, PianoPro... To jsou reálné projekty. Pro reálné lidi"
+      description: "CoachPro, PaymentsPro, PianoPro... To jsou reálné projekty. Pro reálné lidi."
     },
     {
       title: "2 500+ hodin praxe",
-      description: "Chyby, pokusy, průlomy. Předám vám je, a tak vám to půjde líp. A nebojte, chyby si uděláte i svoje"
+      description: "Chyby, pokusy, průlomy. Předám vám je, a vy to zvládnete rychleji. A nebojte, chyby si uděláte i svoje."
     },
     {
       title: "Učím, co sama dělám",
-      description: "Nepřebírám informace, zkouším a ověřuju na vlastní kůži. Učím z toho, co funguje"
+      description: "Nepřebírám informace, zkouším a ověřuju na vlastní kůži. Učím z toho, co funguje."
     }
   ]
 

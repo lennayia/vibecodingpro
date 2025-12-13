@@ -12,7 +12,7 @@ export default function CTASeo() {
         viewport={{ once: true }}
       >
         <h2 className="font-display font-bold mb-8">
-          Věřím, že se těšíte na vlastní aplikaci
+          Věřím, že se už těšíte na svoji budoucí aplikaci
         </h2>
         <p className="mb-4 text-xl font-light">
           Přestaňte snít a začněte tvořit. Vaše klientky na vás čekají.
