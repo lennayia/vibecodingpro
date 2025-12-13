@@ -65,11 +65,11 @@ function AppSeo() {
         <WhyOwnAppSeo />
         <ComparisonSeo />
         <ImagineSectionSeo />
-        <WhyConsultationSeo />
-        <WhyMeSeo />
         <PhasesSeo />
+        <WhyConsultationSeo />
         <CaseStudySeo />
         <BenefitsStats />
+        <WhyMeSeo />
         <BonusesSeo />
         <PricingSeo />
         <FAQSeo />

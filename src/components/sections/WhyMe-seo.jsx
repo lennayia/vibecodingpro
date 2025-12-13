@@ -23,7 +23,7 @@ export default function WhyMeSeo() {
 
   return (
     <Section background="dark">
-      <div className="max-w-5xl mx-auto">
+      <div className="max-w-4xl mx-auto">
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}

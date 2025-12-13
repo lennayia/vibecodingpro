@@ -13,7 +13,7 @@ export default function PhasesSeo() {
           viewport={{ once: true }}
         >
           <h2 className="font-display font-bold mb-8 text-center" style={{ lineHeight: '1.3' }}>
-            Jak společně rozběhneme tvorbu vaší aplikace
+            Spolu rozběhneme tvorbu vaší aplikace
           </h2>
           <p className="mb-20 text-center max-w-3xl mx-auto text-xl font-light">
             Krok za krokem od nápadu až po funkční aplikaci

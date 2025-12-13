@@ -5,9 +5,9 @@ import { fadeInUp, stagger } from '../../constants/animations'
 
 export default function HeroSeo() {
   return (
-    <Section background="light" className="min-h-screen flex items-center justify-center pt-20">
+    <Section background="light" className="min-h-screen flex items-center justify-center py-20">
       <motion.div
-        className="max-w-6xl mx-auto text-center"
+        className="max-w-7xl mx-auto text-center"
         initial="initial"
         animate="animate"
         variants={stagger}

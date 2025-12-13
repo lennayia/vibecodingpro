@@ -20,7 +20,7 @@ export default function WhyConsultation() {
 
   return (
     <Section background="light">
-      <div className="max-w-5xl mx-auto">
+      <div className="max-w-6xl mx-auto">
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
@@ -75,7 +75,7 @@ export default function WhyConsultation() {
               whileInView={{ opacity: 1, x: 0 }}
             >
               <h3 className="font-display font-bold mb-4">
-                Spolu určitě
+                Společně určitě
               </h3>
               <ul className="space-y-3">
                 {withConsultation.map((item, index) => (

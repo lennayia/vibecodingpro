@@ -14,7 +14,7 @@ export default function ComparisonSeo() {
           viewport={{ once: true }}
         >
           <h2 className="font-display font-bold mb-8 text-center" style={{ lineHeight: '1.3' }}>
-            Jak aplikace může změnit vaše podnikání
+            Aplikace může změnit vaše podnikání
           </h2>
           <h3 className="font-display font-bold mb-6 text-center">
             Dvě ženy. Jeden obor. Dvě cesty.

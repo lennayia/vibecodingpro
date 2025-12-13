@@ -22,14 +22,14 @@ export default function WhyOwnAppSeo() {
   ]
 
   return (
-    <Section background="dark">
-      <div className="max-w-5xl mx-auto">
+    <Section background="dark" className="min-h-screen flex items-center justify-center">
+      <div className="max-w-4xl mx-auto">
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
         >
-          <h2 className="font-display font-bold mb-16 text-center" style={{ lineHeight: '1.3' }}>
+          <h2 className="font-display font-bold mb-16 text-left md:text-center" style={{ lineHeight: '1.3' }}>
             Proč mít vlastní aplikaci?
           </h2>
 
@@ -43,7 +43,7 @@ export default function WhyOwnAppSeo() {
                 transition={{ delay: index * 0.1 }}
                 viewport={{ once: true }}
               >
-                <div className="grid md:grid-cols-2 gap-6 items-start">
+                <div className="grid md:grid-cols-2 gap-6 items-end">
                   <h3 className="font-display font-bold">
                     {benefit.title}
                   </h3>
