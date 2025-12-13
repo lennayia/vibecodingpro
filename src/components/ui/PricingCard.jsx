@@ -1,4 +1,4 @@
-import { Check, Gift, Tag } from 'lucide-react'
+import { Check, Gift, Tag, Crown } from 'lucide-react'
 import Card from './Card'
 import Button from './Button'
 import Badge from './Badge'
@@ -17,16 +17,25 @@ export default function PricingCard({
   bonuses,
   discount,
   buttonText,
+  badgeText,
+  isExclusive = false,
   isPopular = false,
   delay = 0
 }) {
   return (
     <Card background="light" animate={true} delay={delay} className="relative">
       <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 h-8">
-        {isPopular ? (
-          <span className="badge-popular px-4 py-2 rounded-full text-sm font-bold uppercase tracking-wide">
-            OBLÍBENĚJŠÍ
-          </span>
+        {badgeText ? (
+          <div className="relative">
+            <span className="px-6 py-2 rounded-full font-bold uppercase tracking-wide border-2 border-gray-200 dark:border-gray-700 text-gray-900 dark:text-white bg-white dark:bg-gray-900 inline-block">
+              {badgeText}
+            </span>
+            {isExclusive && (
+              <div className="absolute -top-1 -right-1">
+                <Crown className="w-5 h-5 text-white dark:text-white" strokeWidth={2} />
+              </div>
+            )}
+          </div>
         ) : (
           <span className="invisible">placeholder</span>
         )}
@@ -34,7 +43,7 @@ export default function PricingCard({
 
       <div className="flex flex-col h-full">
         <div className="mb-6 text-center mt-8">
-        <h3 className="font-display font-bold mb-2">
+        <h3 className="font-display font-bold mb-2 text-2xl">
           {title}
         </h3>
         <p className="mb-1">{duration}</p>

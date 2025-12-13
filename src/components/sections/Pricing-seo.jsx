@@ -37,13 +37,13 @@ export default function PricingSeo() {
       isPopular: false
     },
     {
-      title: "VIBE+CODE",
+      title: "VIBE+CODING",
       availableSpots: 3,
       serviceType: "mentoring",
       price: "9 900 Kč",
       description: "Pro ženy, které chtějí pochopit<br />a rovnou začít",
       features: [
-        "<span class='font-semibold'>6x 1 hodina +++ PLUS +++</span>",
+        "<span class='font-semibold'>6x 1 hodina</span>",
         "<span class='font-semibold'>Všechno z VIBE (2h)</span>",
         "<strong>Praktické nastavení:</strong> Společně nainstalujeme a rozběhneme všechny nástroje (1h)",
         "<strong>Zadání projektu:</strong> Sepíšeme, co má vaše aplikace umět (1h)",
@@ -67,10 +67,11 @@ export default function PricingSeo() {
       ],
       discount: "600 Kč na další 2hod. konzultaci",
       buttonText: "Chci mentoring",
+      badgeText: "OBLÍBENĚJŠÍ",
       isPopular: true
     },
     {
-      title: "VIBE+CODING",
+      title: "VIBECODING",
       availableSpots: 1,
       serviceType: "VIP mentoring",
       price: "24 900 Kč",
@@ -91,11 +92,13 @@ export default function PricingSeo() {
         }
       ],
       bonuses: [
-        "všechny z VIBE+CODE",
+        "Všechny z VIBE+CODE",
         "Check-in call (30 min) – po 2 týdnech zkontrolujeme pokrok"
       ],
       discount: "1 000 Kč na další 2hod. konzultaci",
       buttonText: "Chci VIP",
+      badgeText: "EXKLUZIVNÍ",
+      isExclusive: true,
       isPopular: false
     }
   ]
