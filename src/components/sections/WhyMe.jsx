@@ -23,10 +23,14 @@ export default function WhyMeSeo() {
 
   const backgroundImage = (
     <div className="absolute inset-0 z-0">
-      <div className="absolute inset-y-0 right-0 w-1/2">
+      <div className="absolute inset-y-0 right-0 w-1/2" style={{ aspectRatio: '832/1248' }}>
         <img
           src="/lenka.webp"
           alt=""
+          width="832"
+          height="1248"
+          loading="lazy"
+          decoding="async"
           className="h-full w-full object-cover object-[center_-120px] opacity-15"
         />
       </div>
