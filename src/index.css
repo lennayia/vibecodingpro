@@ -18,9 +18,9 @@
     --color-error-light: #DC2626;
     --color-error-dark: #9A0303;
 
-    /* Typography scales */
-    --font-display: 'Manrope', 'Inter', sans-serif;
-    --font-body: 'Inter', system-ui, sans-serif;
+    /* Typography scales - with system font fallbacks */
+    --font-display: 'Manrope', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+    --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, system-ui, sans-serif;
 
     /* Spacing & Timing */
     --transition-base: 0.3s ease;
