@@ -19,6 +19,7 @@ function PricingCard({
   bonuses,
   discount,
   buttonText,
+  buttonLink,
   badgeText,
   isExclusive = false,
   isPopular = false,
@@ -182,9 +183,17 @@ function PricingCard({
       </div>
 
         <div className="flex justify-center mt-auto">
-          <Button>
-            {buttonText}
-          </Button>
+          {buttonLink ? (
+            <a href={buttonLink} target="_blank" rel="noopener noreferrer" className="inline-block">
+              <Button>
+                {buttonText}
+              </Button>
+            </a>
+          ) : (
+            <Button>
+              {buttonText}
+            </Button>
+          )}
         </div>
       </div>
           </div>

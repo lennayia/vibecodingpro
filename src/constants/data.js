@@ -112,13 +112,14 @@ export const pricingPackages = [
     ],
     discount: "300 Kč na další 2hod. konzultaci",
     buttonText: "Chci VIBE",
+    buttonLink: "https://online-byznys.cz/vibecoding-objednavka-vibe/",
     isPopular: false
   },
   {
     title: "VIBE+CODING",
     availableSpots: 3,
     serviceType: "mentoring",
-    price: "9 900 Kč",
+    price: "8 900 Kč",
     description: "Pro ženy, které chtějí pochopit<br />a rovnou začít",
     features: [
       "<span class='font-semibold'>6x 1 hodina</span>",
@@ -145,6 +146,7 @@ export const pricingPackages = [
     ],
     discount: "600 Kč na další 2hod. konzultaci",
     buttonText: "Chci mentoring",
+    buttonLink: "https://online-byznys.cz/vibecoding-objednavka-vibecoding/",
     badgeText: "OBLÍBENĚJŠÍ",
     isPopular: true
   },
@@ -152,7 +154,7 @@ export const pricingPackages = [
     title: "VIBECODING",
     availableSpots: 1,
     serviceType: "VIP mentoring",
-    price: "24 900 Kč",
+    price: "19 900 Kč",
     description: "Pro ženy, které chtějí pochopit,<br />začít a dokončit",
     features: [
       "<span class='font-semibold'>10x 1 hodina</span>",
@@ -175,6 +177,7 @@ export const pricingPackages = [
     ],
     discount: "1 000 Kč na další 2hod. konzultaci",
     buttonText: "Chci VIP",
+    buttonLink: "https://online-byznys.cz/vibecoding-objednavka-vibecoding-vip/",
     badgeText: "EXKLUZIVNÍ",
     isExclusive: true,
     isPopular: false

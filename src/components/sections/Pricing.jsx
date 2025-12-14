@@ -34,7 +34,7 @@ export default function Pricing() {
               </div>
 
               <p className="text-center mb-6 text-xl font-light">
-                platí jen do 15. 12. 2025 do 22:00 hod.
+                platí jen do 17. 12. 2025 do 22:00 hod.
               </p>
 
               <div className="mb-6">
@@ -43,7 +43,7 @@ export default function Pricing() {
 
               <div className="text-center space-y-3">
                 <p className="font-semibold">
-                  Pak se ceny zvýší na 4 500 / 12 900 / 29 900 Kč
+                  Pak se ceny zvýší na 4 500 / 13 900 / 29 900 Kč
                 </p>
                 <p className="text-xl font-light">
                   Kdo dřív přijde, ten víc ušetří. A taky bude mít dřív vlastní apku.
