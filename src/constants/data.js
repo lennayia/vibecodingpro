@@ -203,11 +203,15 @@ export const faqCategories = [
     questions: [
       {
         question: "Co když ještě nevím, jakou aplikaci chci?",
-        answer: "To je v pohodě. První hodinu strávíme právě tímhle – vyjasníme si to společně."
+        answer: "To je v pohodě. První hodinu strávíme právě tímhle – vyjasníme to společně, odejdete s vizí."
       },
       {
         question: "Co když zjistím, že můj nápad je blbost?",
         answer: "Lepší to zjistit za 2 hodiny se mnou než za 3 měsíce práce. I to je výsledek."
+      },
+      {
+        question: "Co když zjistím, že to není pro mě?",
+        answer: "Máte garanci. Pokud vám spolupráce nedá jasno, vrátím vám peníze."
       }
     ]
   },
@@ -234,6 +238,10 @@ export const faqCategories = [
       {
         question: "Za jak dlouho budu mít něco, co můžu ukázat klientkám?",
         answer: "Základní verzi? Za 4–6 týdnů, pokud budete pracovat."
+      },
+      {
+        question: "Za jak dlouho budu mít hotovou aplikaci?",
+        answer: "Záleží na složitosti. Jednoduchá aplikace může běžet za 2–3 měsíce. Složitější za 6."
       }
     ]
   },
@@ -247,6 +255,10 @@ export const faqCategories = [
       {
         question: "Budu závislá na tobě, nebo to zvládnu sama?",
         answer: "Cíl je, abyste byla samostatná. Já jsem průvodce, ne berlička."
+      },
+      {
+        question: "Můžu aplikaci pak rozvíjet sama?",
+        answer: "Přesně to je cíl. Naučíte se vibecoding a budete samostatná."
       }
     ]
   },
@@ -255,11 +267,15 @@ export const faqCategories = [
     questions: [
       {
         question: "Potřebuju drahý počítač?",
-        answer: "Ne. Stačí normální notebook. Mac nebo Windows, jedno."
+        answer: "Ne. Stačí normální notebook. Mac nebo Windows, je to jedno."
       },
       {
         question: "Můžu to dělat odkudkoli?",
         answer: "Ano. Potřebujete jen internet."
+      },
+      {
+        question: "Jak probíhá spolupráce?",
+        answer: "Online, přes video hovor. Pracujeme společně, sdílíme obrazovku, já vás vedu krok za krokem."
       }
     ]
   }
