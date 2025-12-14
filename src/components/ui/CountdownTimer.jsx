@@ -29,31 +29,31 @@ export default function CountdownTimer({ targetDate }) {
   }, [])
 
   const TimeUnit = ({ value, label }) => (
-    <div className="flex flex-col items-center">
-      <div className="bg-gray-100 dark:bg-[#05050f] border border-gray-300 dark:border-gray-600 rounded-xl px-4 py-3 min-w-[70px] flex items-center justify-center">
-        <h3 className="font-display font-bold text-accent text-center">
+    <div className="flex flex-col items-center flex-1">
+      <div className="bg-gray-100 dark:bg-[#05050f] border border-gray-300 dark:border-gray-600 rounded-xl px-2 sm:px-4 py-3 w-full flex items-center justify-center">
+        <h3 className="font-display font-bold text-accent text-center text-xl sm:text-3xl">
           {String(value).padStart(2, '0')}
         </h3>
       </div>
-      <p className="mt-2 text-sm font-light">
+      <p className="mt-2 text-xs sm:text-sm font-light">
         {label}
       </p>
     </div>
   )
 
   return (
-    <div className="flex gap-3 justify-center">
+    <div className="flex gap-1 sm:gap-3 justify-center items-center">
       <TimeUnit value={timeLeft.days} label="dny" />
-      <div className="flex items-center pb-8">
-        <span className="font-display font-bold text-accent">:</span>
+      <div className="flex items-center pb-6 sm:pb-8">
+        <span className="font-display font-bold text-accent text-sm sm:text-base">:</span>
       </div>
       <TimeUnit value={timeLeft.hours} label="hodiny" />
-      <div className="flex items-center pb-8">
-        <span className="font-display font-bold text-accent">:</span>
+      <div className="flex items-center pb-6 sm:pb-8">
+        <span className="font-display font-bold text-accent text-sm sm:text-base">:</span>
       </div>
       <TimeUnit value={timeLeft.minutes} label="minuty" />
-      <div className="flex items-center pb-8">
-        <span className="font-display font-bold text-accent">:</span>
+      <div className="flex items-center pb-6 sm:pb-8">
+        <span className="font-display font-bold text-accent text-sm sm:text-base">:</span>
       </div>
       <TimeUnit value={timeLeft.seconds} label="sekundy" />
     </div>

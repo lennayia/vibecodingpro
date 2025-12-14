@@ -5,7 +5,7 @@ export default function PhaseCard({ phase, index }) {
 
   return (
     <motion.div
-      className="group bg-[#f2f2f2] dark:bg-[#070716] rounded-3xl p-8 hover:scale-[1.02] transition-all duration-300 border border-gray-200 dark:border-[#05050f]"
+      className="group bg-[#f2f2f2] dark:bg-[#070716] rounded-3xl py-8 px-3 hover:scale-[1.02] transition-all duration-300 border border-gray-200 dark:border-[#05050f]"
       initial={{ opacity: 0, x: -30 }}
       whileInView={{ opacity: 1, x: 0 }}
       transition={{ delay: index * 0.05 }}

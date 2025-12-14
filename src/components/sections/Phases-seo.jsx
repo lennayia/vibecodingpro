@@ -19,7 +19,7 @@ export default function PhasesSeo() {
             Krok za krokem od nápadu až po funkční aplikaci
           </p>
 
-          <div className="grid md:grid-cols-2 gap-6">
+          <div className="grid md:grid-cols-2 gap-2 md:gap-6">
             {phases.map((phase, index) => (
               <PhaseCard key={index} phase={phase} index={index} />
             ))}

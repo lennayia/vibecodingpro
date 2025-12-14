@@ -1,19 +1,18 @@
 import ScrollDownIndicator from '../ui/ScrollDownIndicator'
 
-export default function Section({ children, className = "", background = "light", showScrollIndicator = false, maxWidth = null }) {
+export default function Section({ children, className = "", background = "light", showScrollIndicator = false, maxWidth = null, backgroundElement = null }) {
   const bgClasses = {
-    light: "dark:bg-[#0a0a1a]",
-    dark: "dark:bg-[#05050f]",
+    light: "bg-white dark:bg-[#0a0a1a]",
+    dark: "bg-[#f2f2f2] dark:bg-[#05050f]",
     none: ""
   }
 
-  // Určení šířky podle pozadí: light = široké (max-w-6xl/1152px), dark = užší (max-w-4xl/896px)
-  // Pokud je maxWidth specifikován, použije se místo automatického
-  const maxWidthClass = maxWidth || (background === "light" ? "max-w-6xl" : background === "dark" ? "max-w-4xl" : "")
+  const maxWidthClass = maxWidth || "max-w-7xl"
 
   return (
-    <section className={`py-4 md:py-28 lg:py-32 px-2 md:px-4 ${bgClasses[background]} ${className} relative`}>
-      <div className={`${maxWidthClass} w-full mx-auto relative`}>
+    <section className={`py-4 md:py-28 lg:py-32 px-[4%] ${bgClasses[background]} ${className} relative overflow-hidden`}>
+      {backgroundElement}
+      <div className={`${maxWidthClass} w-full mx-auto relative z-10`}>
         {children}
       </div>
       {showScrollIndicator && <ScrollDownIndicator />}

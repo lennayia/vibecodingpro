@@ -32,13 +32,13 @@ export default function CaseStudySeo() {
           </div>
 
           <div className="grid md:grid-cols-2 gap-8 mb-32">
-            <div>
+            <div className="pl-[10px]">
               <p className="text-xl font-light mb-3 text-center">Před aplikací</p>
               <p className="mb-4">Jana trávila 20 hodin týdně konzultacemi. Popravdě, bylo to už za hranou. Odmítala klientky, nemohla jich vzít víc.</p>
               <p>A trápila se pocitem, že její znalosti pomůžou jen omezené skupině lidí. Ale upřímně – práce ji vyčerpávala. Vydělávala jen počtem odpracovaných konzultací.</p>
             </div>
 
-            <div>
+            <div className="pl-[10px]">
               <p className="text-xl font-light mb-3 text-center">Dneska</p>
               <p className="mb-4">Její aplikace radí s životními situacemi, sleduje pokroky a posílá denní tipy, funguje 24 hodin denně. Jana teď pracuje na vylepšování aplikace a zbytek času věnuje prémiovým konzultacím za vyšší cenu. Nebo rodině.</p>
               <p>Nejlepší je, že si její služby může dovolit mnohem víc klientek než dřív.</p>

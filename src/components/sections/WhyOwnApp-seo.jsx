@@ -29,7 +29,7 @@ export default function WhyOwnAppSeo() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
         >
-          <h2 className="font-display font-bold mb-16 text-left md:text-center" style={{ lineHeight: '1.3' }}>
+          <h2 className="font-display font-bold mb-16 text-center" style={{ lineHeight: '1.3' }}>
             Proč mít vlastní aplikaci?
           </h2>
 
@@ -43,7 +43,7 @@ export default function WhyOwnAppSeo() {
                 transition={{ delay: index * 0.1 }}
                 viewport={{ once: true }}
               >
-                <div className="grid md:grid-cols-2 gap-6 items-end">
+                <div className="grid md:grid-cols-2 gap-6 items-end text-left pl-[10px]">
                   <h3 className="font-display font-bold">
                     {benefit.title}
                   </h3>

@@ -381,7 +381,7 @@ export function PricingGuaranteeSeo() {
   ]
 
   return (
-    <Section background="dark" maxWidth="max-w-6xl" className="min-h-screen flex items-center justify-center !pt-2 !pb-12 md:!pt-2 md:!pb-12 lg:!pt-4 lg:!pb-16" showScrollIndicator={true}>
+    <Section background="dark" className="min-h-screen flex items-center justify-center !pt-2 !pb-12 md:!pt-2 md:!pb-12 lg:!pt-4 lg:!pb-16" showScrollIndicator={true}>
       <div className="w-full">
         <motion.div
           initial={{ opacity: 0 }}

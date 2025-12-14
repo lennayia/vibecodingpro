@@ -27,7 +27,7 @@ export default function ImagineSectionSeo() {
 
   return (
     <Section background="light" className="min-h-screen flex items-center justify-center !pt-4 !pb-8 md:!pt-4 md:!pb-8 lg:!pt-8 lg:!pb-16" showScrollIndicator={true}>
-      <div className="!max-w-4xl">
+      <div>
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
@@ -37,7 +37,7 @@ export default function ImagineSectionSeo() {
             Den s vaší aplikací
           </h2>
 
-          <div className="space-y-8">
+          <div className="space-y-8 pl-[10px]">
             {items.map((item, index) => (
               <motion.p
                 key={index}

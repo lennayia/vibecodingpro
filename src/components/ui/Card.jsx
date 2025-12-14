@@ -29,7 +29,7 @@ export default function Card({
 
   return (
     <CardWrapper
-      className={`${bgClasses[background]} ${borderClasses[background]} rounded-3xl p-8 ${className}`}
+      className={`${bgClasses[background]} ${borderClasses[background]} rounded-3xl py-8 px-2 ${className}`}
       {...animationProps}
       {...props}
     >
