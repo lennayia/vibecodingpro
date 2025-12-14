@@ -74,8 +74,8 @@ function App() {
         <main id="main-content" role="main">
           <Hero />
           <ForWhom />
-          <WhatYouCanCreate />
           <PortfolioHolographic />
+          <WhatYouCanCreate />
           <WhyOwnApp />
           <Comparison />
           <ImagineSection />
