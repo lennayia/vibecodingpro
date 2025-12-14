@@ -50,9 +50,13 @@ export default function WhyMeSeo() {
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
       >
-        <h2 className="font-display font-bold mb-16 text-center" style={{ lineHeight: '1.3' }}>
+        <h2 className="font-display font-bold mb-6 text-center" style={{ lineHeight: '1.3' }}>
           Proč zrovna se mnou?
         </h2>
+
+        <p className="text-xl text-center mb-16">
+          Pomáhám podnikatelkám, které chtějí vlastní aplikaci – ale nechtějí se učit programovat.
+        </p>
 
         <div className="space-y-8">
           {credentials.map((item, index) => (
