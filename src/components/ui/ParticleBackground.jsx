@@ -5,6 +5,7 @@ export default function ParticleBackground() {
   const particles = useRef([])
   const mousePos = useRef({ x: null, y: null })
   const animationFrameId = useRef(null)
+  const isVisibleRef = useRef(true)
 
   useEffect(() => {
     const canvas = canvasRef.current
@@ -113,6 +114,12 @@ export default function ParticleBackground() {
 
     // Animation loop
     function animate() {
+      // Only animate if visible
+      if (!isVisibleRef.current) {
+        animationFrameId.current = requestAnimationFrame(animate)
+        return
+      }
+
       ctx.clearRect(0, 0, width, height)
 
       particles.current.forEach(particle => {
@@ -126,6 +133,18 @@ export default function ParticleBackground() {
     }
 
     animate()
+
+    // Intersection Observer to pause animation when not visible
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach(entry => {
+          isVisibleRef.current = entry.isIntersecting
+        })
+      },
+      { threshold: 0 }
+    )
+
+    observer.observe(canvas)
 
     // Mouse move handler
     function handleMouseMove(e) {
@@ -164,6 +183,7 @@ export default function ParticleBackground() {
       window.removeEventListener('mousemove', handleMouseMove)
       window.removeEventListener('mouseleave', handleMouseLeave)
       window.removeEventListener('resize', handleResize)
+      observer.disconnect()
       if (animationFrameId.current) {
         cancelAnimationFrame(animationFrameId.current)
       }
