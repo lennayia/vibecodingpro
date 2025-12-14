@@ -18,7 +18,7 @@ export default function CTA() {
         <h2 className="font-display font-bold mb-8">
           Věřím, že se už těšíte na svoji budoucí aplikaci
         </h2>
-        <ul className="mb-12 text-xl font-light space-y-3 inline-block text-left">
+        <ul className="mb-12 text-xl font-light space-y-3 inline-block text-center">
           <li className="flex items-start gap-3">
             <span className="text-accent mt-1">✦</span>
             <span>Přestaňte snít a začněte tvořit</span>
