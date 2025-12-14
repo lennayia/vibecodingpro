@@ -18,25 +18,25 @@ export default function CTA() {
         <h2 className="font-display font-bold mb-8">
           Věřím, že se už těšíte na svoji budoucí aplikaci
         </h2>
-        <ul className="mb-12 text-xl font-light space-y-3 inline-block text-center">
-          <li className="flex items-start gap-3">
-            <span className="text-accent mt-1">✦</span>
+        <ul className="mb-12 text-xl font-light space-y-3 mx-auto max-w-fit">
+          <li className="flex items-center gap-3 justify-center">
+            <span className="text-accent">✦</span>
             <span>Přestaňte snít a začněte tvořit</span>
           </li>
-          <li className="flex items-start gap-3">
-            <span className="text-accent mt-1">✦</span>
+          <li className="flex items-center gap-3 justify-center">
+            <span className="text-accent">✦</span>
             <span>Vaše klientky na vás čekají</span>
           </li>
-          <li className="flex items-start gap-3">
-            <span className="text-accent mt-1">✦</span>
+          <li className="flex items-center gap-3 justify-center">
+            <span className="text-accent">✦</span>
             <span>Za 6 měsíců budete mít hotovou aplikaci</span>
           </li>
-          <li className="flex items-start gap-3">
-            <span className="text-accent mt-1">✦</span>
+          <li className="flex items-center gap-3 justify-center">
+            <span className="text-accent">✦</span>
             <span>Za rok budete pomáhat stovkám lidí</span>
           </li>
-          <li className="flex items-start gap-3">
-            <span className="text-accent mt-1">✦</span>
+          <li className="flex items-center gap-3 justify-center">
+            <span className="text-accent">✦</span>
             <span>A cítit se svobodně</span>
           </li>
         </ul>
