@@ -2,59 +2,71 @@ import { motion } from 'framer-motion'
 import Section from '../layout/Section'
 import Card from '../ui/Card'
 import Badge from '../ui/Badge'
+import StatCard from '../ui/StatCard'
+import { benefits } from '../../constants/data'
 
-export default function CaseStudy() {
+export default function CaseStudySeo() {
   return (
-    <Section background="light">
-      <div className="max-w-5xl mx-auto">
+    <Section background="light" className="min-h-screen flex items-center justify-center" showScrollIndicator={true}>
+      <div>
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
         >
-          <div className="text-center mb-16">
-            <Badge>Příběh úspěchu</Badge>
+          <div className="text-center mb-6">
+            <Badge>Realita</Badge>
           </div>
 
-          <Card background="dark">
-            <div className="mb-8">
-              <h3 className="font-display font-bold mb-4">
-                "Teď pomáhám téměř 80 klientkám měsíčně místo 15"
-              </h3>
-              <p>
-                Jana, nutriční poradkyně
-              </p>
+          <h2 className="font-display font-bold text-center mb-8" style={{ lineHeight: '1.3' }}>
+            Takhle to může vypadat v praxi
+          </h2>
+
+          <div className="text-center mb-8">
+            <h3 className="font-display font-bold mb-6">
+              „Pomáhám téměř 320 klientkám měsíčně místo 80.<br />A to jsem s aplikací teprv na začátku."
+            </h3>
+            <p className="text-xl font-light mb-20">
+              Jana, koučka
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-8 mb-32">
+            <div className="pl-[10px]">
+              <p className="text-xl font-light mb-3 text-center">Před aplikací</p>
+              <p className="mb-4">Jana trávila 20 hodin týdně konzultacemi. Popravdě, bylo to už za hranou. Odmítala klientky, nemohla jich vzít víc.</p>
+              <p>A trápila se pocitem, že její znalosti pomůžou jen omezené skupině lidí. Ale upřímně – práce ji vyčerpávala. Vydělávala jen počtem odpracovaných konzultací.</p>
             </div>
 
-            <div className="space-y-6">
-              <p>
-                <span className="font-semibold">Před:</span> Jana trávila 20 hodin týdně individuálními konzultacemi. Musela odmítat nové klientky. Měla pocit, že její znalosti mají omezenou hodnotu - vydělávala jen když aktivně pracovala.
-              </p>
-
-              <p>
-                <span className="font-semibold">Dnes:</span> Její aplikace nabízí personalizované jídelníčky, trackování pokroku a denní tipy. Funguje 24/7. Jana tráví 5 hodin týdně na vylepšování aplikace a zbytek času věnuje prémiové konzultace za vyšší cenu.
-              </p>
-
-              <div className="grid md:grid-cols-3 gap-6 mt-8 pt-8 border-t border-gray-200 dark:border-gray-700">
-                <div className="text-center">
-                  <div className="font-display font-bold text-4xl text-accent mb-2">13x</div>
-                  <div>více klientek</div>
-                </div>
-                <div className="text-center">
-                  <div className="font-display font-bold text-4xl text-accent mb-2">75%</div>
-                  <div>méně času</div>
-                </div>
-                <div className="text-center">
-                  <div className="font-display font-bold text-4xl text-accent mb-2">5x</div>
-                  <div>vyšší příjem</div>
-                </div>
-              </div>
-
-              <p className="italic pt-6">
-                "Cítím se konečně svobodná. Moje práce pomáhá lidem i když spím. A mám čas na rodinu. To je k nezaplacení."
-              </p>
+            <div className="pl-[10px]">
+              <p className="text-xl font-light mb-3 text-center">Dneska</p>
+              <p className="mb-4">Její aplikace radí s životními situacemi, sleduje pokroky a posílá denní tipy, funguje 24 hodin denně. Jana teď pracuje na vylepšování aplikace a zbytek času věnuje prémiovým konzultacím za vyšší cenu. Nebo rodině.</p>
+              <p>Nejlepší je, že si její služby může dovolit mnohem víc klientek než dřív.</p>
             </div>
-          </Card>
+          </div>
+
+          <div className="mb-16">
+            <motion.p
+              className="text-center font-light italic max-w-3xl mx-auto mb-12"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.4 }}
+              viewport={{ once: true }}
+            >
+              „Cítím se svobodná. Moje práce pomáhá lidem, i když spím. A já mám konečně čas žít. To je nejvíc."
+            </motion.p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-6 max-w-5xl mx-auto">
+            {benefits.map((benefit, index) => (
+              <StatCard
+                key={index}
+                value={benefit.value}
+                label={benefit.label}
+                delay={index * 0.1}
+              />
+            ))}
+          </div>
         </motion.div>
       </div>
     </Section>

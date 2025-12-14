@@ -1,43 +1,43 @@
 import { motion } from 'framer-motion'
 import Section from '../layout/Section'
 
-export default function ImagineSection() {
+export default function ImagineSectionSeo() {
   const items = [
     {
       text: "Je ráno a vy kontrolujete telefon. ",
-      highlight: "15 nových klientek se registrovalo přes noc.",
-      rest: " Žádné schůzky, žádné emaily. Vaše aplikace jim poskytla přesně to, co potřebovaly."
+      highlight: "Ooo:), 6 nových klientek se registrovalo přes noc!",
+      rest: " Jedna VIP schůzka, tři emaily. Vaše aplikace klientkám poskytla přesně to, co potřebovaly."
     },
     {
       text: "",
-      highlight: "Nemusíte odmítat zákaznice",
-      rest: " kvůli nedostatku času. Vaše kapacita je neomezená. Pomáháte desítkám, stovkám lidí současně - a každý dostává personalizovanou péči."
+      highlight: "Nemusíte klientky odmítat",
+      rest: " kvůli nedostatku času. Vaše kapacita je neomezená. Pomáháte desítkám, možná stovkám lidí současně – přesto každý dostává osobní péči."
     },
     {
-      text: "Vaše klientky vás milují - aplikace jim ",
+      text: "Vaše klientky vás milují – aplikace jim ",
       highlight: "šetří čas, dává jim výsledky",
       rest: " a je k dispozici kdykoliv potřebují. Doporučují vás dál, protože jste inovativní a profesionální."
     },
     {
       text: "Místo aby vás práce vyčerpávala, ",
       highlight: "cítíte se naplněná a svobodná.",
-      rest: " Máte čas na rodinu, koníčky, dovolenou. A váš příjem? Ten roste, i když si dopřejete volno."
+      rest: " Máte čas na rodinu, koníčky, dovolenou. A váš příjem roste, i když si dopřejete volno."
     }
   ]
 
   return (
-    <Section background="dark">
-      <div className="max-w-4xl mx-auto">
+    <Section background="light" className="min-h-screen flex items-center justify-center !pt-4 !pb-8 md:!pt-4 md:!pb-8 lg:!pt-8 lg:!pb-16" showScrollIndicator={true}>
+      <div>
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
         >
-          <h2 className="font-display font-bold text-5xl md:text-6xl mb-12 text-center">
-            Představte si...
+          <h2 className="font-display font-bold mb-12 text-center" style={{ lineHeight: '1.3' }}>
+            Den s vaší aplikací
           </h2>
 
-          <div className="space-y-8">
+          <div className="space-y-8 pl-[10px]">
             {items.map((item, index) => (
               <motion.p
                 key={index}
@@ -53,15 +53,26 @@ export default function ImagineSection() {
               </motion.p>
             ))}
 
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.5 }}
-              viewport={{ once: true }}
-              className="leading-relaxed font-semibold text-center pt-8"
-            >
-              Tohle není sen. Tohle je realita s vlastní aplikací.
-            </motion.p>
+            <div className="pt-16 space-y-2">
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.5 }}
+                viewport={{ once: true }}
+                className="leading-relaxed font-semibold text-center text-xl"
+              >
+                Zdá se vám to jako sen?
+              </motion.p>
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.6 }}
+                viewport={{ once: true }}
+                className="leading-relaxed font-semibold text-center text-xl"
+              >
+                Může to být realita s vaší vlastní aplikací.
+              </motion.p>
+            </div>
           </div>
         </motion.div>
       </div>

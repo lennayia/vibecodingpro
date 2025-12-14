@@ -7,18 +7,19 @@ import ScrollProgress from './components/ui/ScrollProgress'
 
 // Section components
 import Hero from './components/sections/Hero'
-import JulieVsMartina from './components/sections/JulieVsMartina'
-import CaseStudy from './components/sections/CaseStudy'
-import ImagineSection from './components/sections/ImagineSection'
-import BenefitsStats from './components/sections/BenefitsStats'
-import Phases from './components/sections/Phases'
-import Pricing from './components/sections/Pricing'
+import WhyOwnApp from './components/sections/WhyOwnApp'
 import WhyConsultation from './components/sections/WhyConsultation'
+import Comparison from './components/sections/Comparison'
+import CaseStudy from './components/sections/CaseStudy'
+import WhyMe from './components/sections/WhyMe'
+import ImagineSection from './components/sections/ImagineSection'
+import Phases from './components/sections/Phases'
+import Bonuses from './components/sections/Bonuses'
+import Pricing, { PricingPackages, PricingGuarantee } from './components/sections/Pricing'
 import CTA from './components/sections/CTA'
 
 function App() {
   const [isDark, setIsDark] = useState(() => {
-    // Check system preference on initial load
     if (typeof window !== 'undefined') {
       return window.matchMedia('(prefers-color-scheme: dark)').matches
     }
@@ -26,19 +27,15 @@ function App() {
   })
 
   useEffect(() => {
-    // Apply dark class
     const root = document.documentElement
     if (isDark) {
       root.classList.add('dark')
     } else {
       root.classList.remove('dark')
     }
-
-    // Save preference to localStorage
     localStorage.setItem('theme', isDark ? 'dark' : 'light')
   }, [isDark])
 
-  // Listen for system theme changes
   useEffect(() => {
     const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)')
     const handleChange = (e) => {
@@ -47,7 +44,6 @@ function App() {
         setIsDark(e.matches)
       }
     }
-
     mediaQuery.addEventListener('change', handleChange)
     return () => mediaQuery.removeEventListener('change', handleChange)
   }, [])
@@ -55,7 +51,6 @@ function App() {
   return (
     <div className="min-h-screen bg-[#f2f2f2] dark:bg-[#070716] transition-colors duration-300">
       <ScrollProgress />
-      {/* Skip to main content for accessibility */}
       <a
         href="#main-content"
         className="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:p-4 focus:bg-white dark:focus:bg-gray-900 focus:text-black dark:focus:text-white"
@@ -67,13 +62,17 @@ function App() {
 
       <main id="main-content" role="main">
         <Hero />
-        <JulieVsMartina />
-        <CaseStudy />
+        <WhyOwnApp />
+        <Comparison />
         <ImagineSection />
-        <BenefitsStats />
         <Phases />
-        <Pricing />
         <WhyConsultation />
+        <CaseStudy />
+        <WhyMe />
+        <Bonuses />
+        <Pricing />
+        <PricingPackages />
+        <PricingGuarantee />
         <CTA />
       </main>
 

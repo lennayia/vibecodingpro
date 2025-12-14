@@ -2,29 +2,29 @@ import { motion } from 'framer-motion'
 import Section from '../layout/Section'
 import Button from '../ui/Button'
 
-export default function CTA() {
+export default function CTASeo() {
   return (
-    <Section background="light">
+    <Section background="light" className="min-h-screen flex items-center justify-center" showScrollIndicator={false}>
       <motion.div
-        className="max-w-4xl mx-auto text-center"
+        className="text-center"
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
       >
-        <h2 className="font-display font-bold text-5xl md:text-7xl mb-8">
-          Váš nový život začíná teď
+        <h2 className="font-display font-bold mb-8">
+          Věřím, že se už těšíte na svoji budoucí aplikaci
         </h2>
-        <p className="mb-4">
+        <p className="mb-4 text-xl font-light">
           Přestaňte snít a začněte tvořit. Vaše klientky na vás čekají.
         </p>
-        <p className="mb-12">
+        <p className="mb-12 text-xl font-light">
           Za 6 měsíců budete mít hotovou aplikaci. Za rok budete pomáhat stovkám lidí.
           A cítit se svobodně.
         </p>
         <Button size="lg">
-          Objednat konzultaci
+          Už chci začít
         </Button>
-        <p className="text-gray-500 dark:text-gray-500 mt-6">
+        <p className="text-gray-500 dark:text-gray-500 mt-6 text-xl font-light">
           Změna začíná rozhodnutím. Udělejte ho dnes.
         </p>
       </motion.div>
