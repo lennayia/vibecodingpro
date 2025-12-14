@@ -1,13 +1,15 @@
 import { motion } from 'framer-motion'
 import Section from '../layout/Section'
 import Button from '../ui/Button'
+import ParticleBackground from '../ui/ParticleBackground'
 import { fadeInUp, stagger } from '../../constants/animations'
 
 export default function HeroSeo() {
   return (
     <Section background="light" className="min-h-screen flex items-center justify-center !py-4 md:!py-8 lg:!py-12" showScrollIndicator={true}>
+      <ParticleBackground />
       <motion.div
-        className="text-center"
+        className="text-center relative z-10"
         initial="initial"
         animate="animate"
         variants={stagger}
@@ -16,7 +18,7 @@ export default function HeroSeo() {
           variants={fadeInUp}
           className="mb-6 inline-block"
         >
-          <span className="px-4 py-2 bg-gray-100 dark:bg-[#05050f] rounded-full text-sm font-medium border border-gray-200 dark:border-[#070716]">
+          <span className="px-4 py-2 bg-gray-100/80 dark:bg-[#05050f]/80 backdrop-blur-sm rounded-full text-sm font-medium border border-gray-200 dark:border-[#070716]">
             Vibecoding – cesta k vaší aplikaci
           </span>
         </motion.div>
