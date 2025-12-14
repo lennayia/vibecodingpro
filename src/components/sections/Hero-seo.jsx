@@ -3,11 +3,20 @@ import Section from '../layout/Section'
 import Button from '../ui/Button'
 import ParticleBackground from '../ui/ParticleBackground'
 import { fadeInUp, stagger } from '../../constants/animations'
+import { useTypingEffect } from '../../hooks/useTypingEffect'
 
 export default function HeroSeo() {
+  const particleBackground = <ParticleBackground />
+  const typingText = 'Vytvořte si vlastní aplikaci a škálujte svoje podnikání'
+  const { displayedText, showCursor } = useTypingEffect(typingText, 60, 500)
+
   return (
-    <Section background="light" className="min-h-screen flex items-center justify-center !py-4 md:!py-8 lg:!py-12" showScrollIndicator={true}>
-      <ParticleBackground />
+    <Section
+      background="light"
+      className="min-h-screen flex items-center justify-center !py-4 md:!py-8 lg:!py-12"
+      showScrollIndicator={true}
+      backgroundElement={particleBackground}
+    >
       <motion.div
         className="text-center relative z-10"
         initial="initial"
@@ -27,8 +36,15 @@ export default function HeroSeo() {
           variants={fadeInUp}
           className="font-display font-bold mb-8"
         >
-          Vytvořte si vlastní aplikaci a{' '}
-          <span className="text-gradient">škálujte svoje podnikání</span>
+          {displayedText.split('škálujte')[0]}
+          {displayedText.includes('škálujte') && (
+            <span className="text-gradient">
+              {displayedText.split('škálujte')[1] ? 'škálujte' + displayedText.split('škálujte')[1] : displayedText.split('a ')[1]}
+            </span>
+          )}
+          {showCursor && (
+            <span className="inline-block w-1 h-[0.9em] bg-accent ml-1 animate-pulse" />
+          )}
         </motion.h1>
 
         <motion.p

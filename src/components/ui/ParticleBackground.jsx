@@ -11,8 +11,9 @@ export default function ParticleBackground() {
     if (!canvas) return
 
     const ctx = canvas.getContext('2d')
-    let width = window.innerWidth
-    let height = window.innerHeight
+    const parentElement = canvas.parentElement
+    let width = parentElement.clientWidth
+    let height = parentElement.clientHeight
 
     // Responsive particle count
     const isMobile = width < 768
@@ -128,9 +129,10 @@ export default function ParticleBackground() {
 
     // Mouse move handler
     function handleMouseMove(e) {
+      const rect = canvas.getBoundingClientRect()
       mousePos.current = {
-        x: e.clientX,
-        y: e.clientY
+        x: e.clientX - rect.left,
+        y: e.clientY - rect.top
       }
     }
 
@@ -141,8 +143,8 @@ export default function ParticleBackground() {
 
     // Resize handler
     function handleResize() {
-      width = window.innerWidth
-      height = window.innerHeight
+      width = parentElement.clientWidth
+      height = parentElement.clientHeight
       canvas.width = width
       canvas.height = height
 
@@ -171,7 +173,7 @@ export default function ParticleBackground() {
   return (
     <canvas
       ref={canvasRef}
-      className="fixed inset-0 z-0 pointer-events-none"
+      className="absolute inset-0 z-0 pointer-events-none"
       style={{ opacity: 0.6 }}
     />
   )

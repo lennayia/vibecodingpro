@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react'
 // Layout components
 import Navigation from './components/layout/Navigation'
 import Footer from './components/layout/Footer'
+import ScrollProgress from './components/ui/ScrollProgress'
 
 // Section components
 import Hero from './components/sections/Hero'
@@ -53,6 +54,7 @@ function App() {
 
   return (
     <div className="min-h-screen bg-[#f2f2f2] dark:bg-[#070716] transition-colors duration-300">
+      <ScrollProgress />
       {/* Skip to main content for accessibility */}
       <a
         href="#main-content"

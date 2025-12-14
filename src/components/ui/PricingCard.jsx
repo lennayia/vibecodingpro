@@ -1,4 +1,6 @@
 import { Check, Gift, Tag, Crown } from 'lucide-react'
+import { useState, useRef } from 'react'
+import { motion } from 'framer-motion'
 import Card from './Card'
 import Button from './Button'
 import Badge from './Badge'
@@ -22,8 +24,75 @@ export default function PricingCard({
   isPopular = false,
   delay = 0
 }) {
+  const cardRef = useRef(null)
+  const [rotateX, setRotateX] = useState(0)
+  const [rotateY, setRotateY] = useState(0)
+  const [shinePosition, setShinePosition] = useState({ x: 50, y: 50 })
+
+  const handleMouseMove = (e) => {
+    if (window.innerWidth < 768) return // Disable on mobile
+
+    const card = cardRef.current
+    if (!card) return
+
+    const rect = card.getBoundingClientRect()
+    const x = e.clientX - rect.left
+    const y = e.clientY - rect.top
+
+    const centerX = rect.width / 2
+    const centerY = rect.height / 2
+
+    const rotateXValue = ((y - centerY) / centerY) * -8
+    const rotateYValue = ((x - centerX) / centerX) * 8
+
+    setRotateX(rotateXValue)
+    setRotateY(rotateYValue)
+    setShinePosition({
+      x: (x / rect.width) * 100,
+      y: (y / rect.height) * 100
+    })
+  }
+
+  const handleMouseLeave = () => {
+    setRotateX(0)
+    setRotateY(0)
+    setShinePosition({ x: 50, y: 50 })
+  }
+
   return (
-    <Card background="light" animate={true} delay={delay} className="relative">
+    <motion.div
+      ref={cardRef}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+      style={{
+        perspective: '1000px'
+      }}
+    >
+      <motion.div
+        animate={{
+          rotateX,
+          rotateY
+        }}
+        transition={{
+          type: "spring",
+          stiffness: 300,
+          damping: 20
+        }}
+        style={{
+          transformStyle: 'preserve-3d'
+        }}
+      >
+        <Card background="light" animate={true} delay={delay} className="relative overflow-hidden">
+          {/* Shine effect */}
+          <motion.div
+            className="absolute inset-0 pointer-events-none opacity-0 hover:opacity-20 transition-opacity duration-300"
+            style={{
+              background: `radial-gradient(circle at ${shinePosition.x}% ${shinePosition.y}%, rgba(0, 255, 136, 0.3) 0%, transparent 50%)`,
+              zIndex: 1
+            }}
+          />
+
+          <div className="relative z-10">
       <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 h-8">
         {badgeText ? (
           <div className="relative">
@@ -118,6 +187,9 @@ export default function PricingCard({
           </Button>
         </div>
       </div>
-    </Card>
+          </div>
+        </Card>
+      </motion.div>
+    </motion.div>
   )
 }
