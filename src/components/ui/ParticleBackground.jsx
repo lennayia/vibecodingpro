@@ -45,8 +45,8 @@ export default function ParticleBackground() {
 
         this.vx = (Math.random() - 0.5) * 0.5
         this.vy = (Math.random() - 0.5) * 0.5
-        this.radius = Math.random() * 2 + 2
-        this.opacity = Math.random() * 0.3 + 0.1
+        this.radius = Math.random() * 1.5 + 1.5 // Částice (1.5-3px)
+        this.opacity = Math.random() * 0.3 + 0.2 // Jemnější opacity (0.2-0.5)
       }
 
       update() {
@@ -103,9 +103,9 @@ export default function ParticleBackground() {
             ctx.beginPath()
             ctx.moveTo(particles.current[i].x, particles.current[i].y)
             ctx.lineTo(particles.current[j].x, particles.current[j].y)
-            const opacity = (1 - distance / 150) * 0.1
+            const opacity = (1 - distance / 150) * 0.15 // Jemnější čáry
             ctx.strokeStyle = `rgba(0, 255, 136, ${opacity})`
-            ctx.lineWidth = 1
+            ctx.lineWidth = 1 // Normální tloušťka
             ctx.stroke()
           }
         }
