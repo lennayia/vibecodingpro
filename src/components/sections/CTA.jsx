@@ -48,9 +48,14 @@ export default function CTA() {
         <Button size="lg" onClick={handleClick}>
           Už chci začít
         </Button>
-        <h3 className="text-gray-500 dark:text-gray-500 mt-6 font-display font-bold">
-          Změna začíná rozhodnutím. Udělejte ho dnes.
-        </h3>
+        <div className="mt-6">
+          <h3 className="font-display font-bold">
+            Změna začíná rozhodnutím.
+          </h3>
+          <h3 className="font-display font-bold">
+            Udělejte ho dnes.
+          </h3>
+        </div>
       </motion.div>
     </Section>
   )
