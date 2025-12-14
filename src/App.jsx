@@ -9,6 +9,9 @@ import ScrollToTop from './components/ui/ScrollToTop'
 
 // Section components - immediate load (above the fold)
 import Hero from './components/sections/Hero'
+import ForWhom from './components/sections/ForWhom'
+import WhatYouCanCreate from './components/sections/WhatYouCanCreate'
+import PortfolioHolographic from './components/sections/PortfolioHolographic'
 import WhyOwnApp from './components/sections/WhyOwnApp'
 import Comparison from './components/sections/Comparison'
 import ImagineSection from './components/sections/ImagineSection'
@@ -70,6 +73,9 @@ function App() {
 
         <main id="main-content" role="main">
           <Hero />
+          <ForWhom />
+          <WhatYouCanCreate />
+          <PortfolioHolographic />
           <WhyOwnApp />
           <Comparison />
           <ImagineSection />

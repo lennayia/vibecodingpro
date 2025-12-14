@@ -54,7 +54,7 @@ export const benefits = [
 
 export const comparisonData = {
   martina: {
-    name: "Martina",
+    name: "koučka Martina",
     subtitle: "poskytuje konzultace, ale nemá podporující produkt",
     type: "negative",
     features: [
@@ -68,7 +68,7 @@ export const comparisonData = {
     quote: "Jako bych byla na běžícím pásu. Pomáhám lidem mít energii, ale sama jsem vyčerpaná."
   },
   julie: {
-    name: "Julie",
+    name: "lektorka Julie",
     subtitle: "vytvořila aplikaci a poskytuje prémiové konzultace",
     type: "positive",
     features: [

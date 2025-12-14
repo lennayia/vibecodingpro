@@ -15,7 +15,7 @@ export default function CaseStudySeo() {
           viewport={{ once: true }}
         >
           <div className="text-center mb-6">
-            <Badge>Realita</Badge>
+            <Badge>Vibecoding mění hru</Badge>
           </div>
 
           <h2 className="font-display font-bold text-center mb-8" style={{ lineHeight: '1.3' }}>
