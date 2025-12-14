@@ -22,22 +22,27 @@ export default function CTA() {
           <li className="flex items-center gap-3 justify-center">
             <span className="text-accent">✦</span>
             <span>Přestaňte snít a začněte tvořit</span>
+            <span className="text-accent">✦</span>
           </li>
           <li className="flex items-center gap-3 justify-center">
             <span className="text-accent">✦</span>
             <span>Vaše klientky na vás čekají</span>
+            <span className="text-accent">✦</span>
           </li>
           <li className="flex items-center gap-3 justify-center">
             <span className="text-accent">✦</span>
             <span>Za 6 měsíců budete mít hotovou aplikaci</span>
+            <span className="text-accent">✦</span>
           </li>
           <li className="flex items-center gap-3 justify-center">
             <span className="text-accent">✦</span>
             <span>Za rok budete pomáhat stovkám lidí</span>
+            <span className="text-accent">✦</span>
           </li>
           <li className="flex items-center gap-3 justify-center">
             <span className="text-accent">✦</span>
             <span>A cítit se svobodně</span>
+            <span className="text-accent">✦</span>
           </li>
         </ul>
         <Button size="lg" onClick={handleClick}>
