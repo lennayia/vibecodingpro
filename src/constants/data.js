@@ -110,7 +110,7 @@ export const pricingPackages = [
     bonuses: [
       "Osobní roadmapa v PDF"
     ],
-    discount: "300 Kč na další 2hod. konzultaci",
+    discount: "300 Kč na 2 hod. další konzultace",
     buttonText: "Chci VIBE",
     buttonLink: "https://online-byznys.cz/vibecoding-objednavka-vibe/",
     isPopular: false
@@ -144,7 +144,7 @@ export const pricingPackages = [
       "Nahrávky",
       "2 týdny e-mail podpora"
     ],
-    discount: "600 Kč na další 2hod. konzultaci",
+    discount: "600 na 2 hod. další konzultace",
     buttonText: "Chci mentoring",
     buttonLink: "https://online-byznys.cz/vibecoding-objednavka-vibecoding/",
     badgeText: "OBLÍBENĚJŠÍ",
@@ -175,7 +175,7 @@ export const pricingPackages = [
       "Všechny z VIBE+CODE",
       "Check-in call (30 min) – po 2 týdnech zkontrolujeme pokrok"
     ],
-    discount: "1 000 Kč na další 2hod. konzultaci",
+    discount: "1 000 na 2 hod. další konzultace",
     buttonText: "Chci VIP",
     buttonLink: "https://online-byznys.cz/vibecoding-objednavka-vibecoding-vip/",
     badgeText: "EXKLUZIVNÍ",

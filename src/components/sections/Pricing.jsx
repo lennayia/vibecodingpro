@@ -43,7 +43,7 @@ export default function Pricing() {
 
               <div className="text-center space-y-3">
                 <p className="font-semibold">
-                  Pak se ceny zvýší na 4 500 / 13 900 / 29 900 Kč
+                  Pak se ceny zvýší na 4 500 / 13 900 / 29 900 Kč podle variant.
                 </p>
                 <ul className="text-xl font-light space-y-2 inline-block text-left">
                   <li className="flex items-start gap-3">
@@ -56,7 +56,7 @@ export default function Pricing() {
                   </li>
                   <li className="flex items-start gap-3">
                     <span className="text-accent mt-1">✦</span>
-                    <span>Bude mít dřív vlastní apku</span>
+                    <span>Nabídne dřív vlastní apku</span>
                   </li>
                 </ul>
               </div>

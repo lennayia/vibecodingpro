@@ -18,13 +18,28 @@ export default function CTA() {
         <h2 className="font-display font-bold mb-8">
           Věřím, že se už těšíte na svoji budoucí aplikaci
         </h2>
-        <p className="mb-4 text-xl font-light">
-          Přestaňte snít a začněte tvořit. Vaše klientky na vás čekají.
-        </p>
-        <p className="mb-12 text-xl font-light">
-          Za 6 měsíců budete mít hotovou aplikaci. Za rok budete pomáhat stovkám lidí.
-          A cítit se svobodně.
-        </p>
+        <ul className="mb-12 text-xl font-light space-y-3 inline-block text-left">
+          <li className="flex items-start gap-3">
+            <span className="text-accent mt-1">✦</span>
+            <span>Přestaňte snít a začněte tvořit</span>
+          </li>
+          <li className="flex items-start gap-3">
+            <span className="text-accent mt-1">✦</span>
+            <span>Vaše klientky na vás čekají</span>
+          </li>
+          <li className="flex items-start gap-3">
+            <span className="text-accent mt-1">✦</span>
+            <span>Za 6 měsíců budete mít hotovou aplikaci</span>
+          </li>
+          <li className="flex items-start gap-3">
+            <span className="text-accent mt-1">✦</span>
+            <span>Za rok budete pomáhat stovkám lidí</span>
+          </li>
+          <li className="flex items-start gap-3">
+            <span className="text-accent mt-1">✦</span>
+            <span>A cítit se svobodně</span>
+          </li>
+        </ul>
         <Button size="lg" onClick={handleClick}>
           Už chci začít
         </Button>
