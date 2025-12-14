@@ -38,7 +38,7 @@ export default function Pricing() {
               </p>
 
               <div className="mb-6">
-                <CountdownTimer targetDate="2025-12-15T22:00:00" />
+                <CountdownTimer targetDate="2025-12-17T22:00:00" />
               </div>
 
               <div className="text-center space-y-3">
@@ -46,7 +46,7 @@ export default function Pricing() {
                   Pak se ceny zvýší na 4 500 / 13 900 / 29 900 Kč
                 </p>
                 <p className="text-xl font-light">
-                  Kdo dřív přijde, ten víc ušetří. A taky bude mít dřív vlastní apku.
+                  Kdo dřív přijde, na toho se dostane. A víc ušetří. A bude mít dřív vlastní apku.
                 </p>
               </div>
             </div>
