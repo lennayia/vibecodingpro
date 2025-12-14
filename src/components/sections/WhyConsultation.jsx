@@ -1,9 +1,13 @@
 import { motion } from 'framer-motion'
+import { useCallback } from 'react'
 import Section from '../layout/Section'
 import Card from '../ui/Card'
 import Button from '../ui/Button'
 
 export default function WhyConsultation() {
+  const handleClick = useCallback(() => {
+    document.getElementById('pricing-packages-section')?.scrollIntoView({ behavior: 'smooth' })
+  }, [])
   const withoutConsultation = [
     "Ztratíte měsíce pokusů a omylů",
     "Investujete do špatných nástrojů",
@@ -98,9 +102,7 @@ export default function WhyConsultation() {
             <p className="mb-8 text-xl font-light">
               Vaše aplikace vám investovaný čas vrátí
             </p>
-            <Button onClick={() => {
-              document.getElementById('pricing-packages-section')?.scrollIntoView({ behavior: 'smooth' })
-            }}>
+            <Button onClick={handleClick}>
               Vybrat službu
             </Button>
           </motion.div>

@@ -1,8 +1,12 @@
 import { motion } from 'framer-motion'
+import { useCallback } from 'react'
 import Section from '../layout/Section'
 import Button from '../ui/Button'
 
 export default function CTA() {
+  const handleClick = useCallback(() => {
+    document.getElementById('pricing-packages-section')?.scrollIntoView({ behavior: 'smooth' })
+  }, [])
   return (
     <Section background="light" className="min-h-screen flex items-center justify-center" showScrollIndicator={false}>
       <motion.div
@@ -21,9 +25,7 @@ export default function CTA() {
           Za 6 měsíců budete mít hotovou aplikaci. Za rok budete pomáhat stovkám lidí.
           A cítit se svobodně.
         </p>
-        <Button size="lg" onClick={() => {
-          document.getElementById('pricing-packages-section')?.scrollIntoView({ behavior: 'smooth' })
-        }}>
+        <Button size="lg" onClick={handleClick}>
           Už chci začít
         </Button>
         <p className="text-gray-500 dark:text-gray-500 mt-6 text-xl font-light">

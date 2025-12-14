@@ -1,8 +1,12 @@
 import { motion } from 'framer-motion'
+import { useCallback } from 'react'
 import Section from '../layout/Section'
 import Button from '../ui/Button'
 
 export default function ImagineSection() {
+  const handleClick = useCallback(() => {
+    document.getElementById('phases-section')?.scrollIntoView({ behavior: 'smooth' })
+  }, [])
   const items = [
     {
       text: "Je ráno a vy kontrolujete telefon. ",
@@ -80,9 +84,7 @@ export default function ImagineSection() {
                 viewport={{ once: true }}
                 className="flex justify-center pt-4"
               >
-                <Button onClick={() => {
-                  document.getElementById('phases-section')?.scrollIntoView({ behavior: 'smooth' })
-                }}>
+                <Button onClick={handleClick}>
                   Jak to funguje
                 </Button>
               </motion.div>

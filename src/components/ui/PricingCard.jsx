@@ -1,11 +1,11 @@
 import { Check, Gift, Tag, Crown } from 'lucide-react'
-import { useState, useRef } from 'react'
+import { useState, useRef, memo } from 'react'
 import { motion } from 'framer-motion'
 import Card from './Card'
 import Button from './Button'
 import Badge from './Badge'
 
-export default function PricingCard({
+function PricingCard({
   title,
   duration,
   serviceType,
@@ -193,3 +193,5 @@ export default function PricingCard({
     </motion.div>
   )
 }
+
+export default memo(PricingCard)

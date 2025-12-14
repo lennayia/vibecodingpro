@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion'
+import { useCallback } from 'react'
 import Section from '../layout/Section'
 import Button from '../ui/Button'
 import ParticleBackground from '../ui/ParticleBackground'
@@ -9,6 +10,10 @@ export default function Hero() {
   const particleBackground = <ParticleBackground />
   const typingText = 'Vytvořte si vlastní aplikaci a škálujte svoje podnikání'
   const { displayedText, showCursor } = useTypingEffect(typingText, 60, 500)
+
+  const handlePricingClick = useCallback(() => {
+    document.getElementById('pricing-section')?.scrollIntoView({ behavior: 'smooth' })
+  }, [])
 
   return (
     <Section
@@ -60,9 +65,7 @@ export default function Hero() {
           variants={fadeInUp}
           className="flex justify-center"
         >
-          <Button onClick={() => {
-            document.getElementById('pricing-section')?.scrollIntoView({ behavior: 'smooth' })
-          }}>
+          <Button onClick={handlePricingClick}>
             Zobrazit ceník
           </Button>
         </motion.div>
