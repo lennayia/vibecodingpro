@@ -65,9 +65,9 @@ function App() {
         <WhyOwnApp />
         <Comparison />
         <ImagineSection />
+        <CaseStudy />
         <Phases />
         <WhyConsultation />
-        <CaseStudy />
         <WhyMe />
         <Bonuses />
         <Pricing />

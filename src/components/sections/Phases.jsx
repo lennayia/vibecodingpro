@@ -3,10 +3,10 @@ import Section from '../layout/Section'
 import PhaseCard from '../ui/PhaseCard'
 import { phases } from '../../constants/data'
 
-export default function PhasesSeo() {
+export default function Phases() {
   return (
     <Section background="light" className="min-h-screen flex items-center justify-center !pt-4 !pb-8 md:!pt-4 md:!pb-8 lg:!pt-8 lg:!pb-16" showScrollIndicator={true}>
-      <div>
+      <div id="phases-section">
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}

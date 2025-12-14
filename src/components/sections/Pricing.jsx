@@ -106,7 +106,7 @@ export default function Pricing() {
 
   return (
     <Section background="dark" className="min-h-screen flex items-center justify-center" showScrollIndicator={true}>
-      <div>
+      <div id="pricing-section">
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
@@ -254,7 +254,7 @@ export function PricingPackages() {
 
   return (
     <Section background="light" className="min-h-screen flex items-center justify-center" showScrollIndicator={true}>
-      <div>
+      <div id="pricing-packages-section">
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}

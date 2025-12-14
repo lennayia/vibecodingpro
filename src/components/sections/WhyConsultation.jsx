@@ -30,7 +30,7 @@ export default function WhyConsultation() {
             Co vám služba přinese
           </h2>
           <div className="mb-16 text-center max-w-3xl mx-auto">
-            <div className="space-y-4 mb-20">
+            <div className="space-y-4">
               <p className="text-xl font-light">
                 Nemusíte na to být sami.
               </p>
@@ -40,10 +40,7 @@ export default function WhyConsultation() {
               <p className="text-xl font-light">
                 Vaše cesta se urychlí.
               </p>
-              </div>
-            <Button>
-              Vybrat službu
-            </Button>
+            </div>
           </div>
 
           <div className="grid md:grid-cols-2 gap-8">
@@ -98,9 +95,14 @@ export default function WhyConsultation() {
             <p className="mb-4 text-xl font-light">
               Investicí do spolupráce uspoříte čas, peníze i nervy
             </p>
-            <p className="text-xl font-light">
+            <p className="mb-8 text-xl font-light">
               Vaše aplikace vám investovaný čas vrátí
             </p>
+            <Button onClick={() => {
+              document.getElementById('pricing-packages-section')?.scrollIntoView({ behavior: 'smooth' })
+            }}>
+              Vybrat službu
+            </Button>
           </motion.div>
         </motion.div>
       </div>

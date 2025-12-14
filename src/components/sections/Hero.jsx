@@ -5,7 +5,7 @@ import ParticleBackground from '../ui/ParticleBackground'
 import { fadeInUp, stagger } from '../../constants/animations'
 import { useTypingEffect } from '../../hooks/useTypingEffect'
 
-export default function HeroSeo() {
+export default function Hero() {
   const particleBackground = <ParticleBackground />
   const typingText = 'Vytvořte si vlastní aplikaci a škálujte svoje podnikání'
   const { displayedText, showCursor } = useTypingEffect(typingText, 60, 500)
@@ -60,8 +60,10 @@ export default function HeroSeo() {
           variants={fadeInUp}
           className="flex justify-center"
         >
-          <Button>
-            Ukázat možnosti
+          <Button onClick={() => {
+            document.getElementById('pricing-section')?.scrollIntoView({ behavior: 'smooth' })
+          }}>
+            Zobrazit ceník
           </Button>
         </motion.div>
       </motion.div>

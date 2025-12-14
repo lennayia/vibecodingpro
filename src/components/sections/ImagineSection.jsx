@@ -1,7 +1,8 @@
 import { motion } from 'framer-motion'
 import Section from '../layout/Section'
+import Button from '../ui/Button'
 
-export default function ImagineSectionSeo() {
+export default function ImagineSection() {
   const items = [
     {
       text: "Je ráno a vy kontrolujete telefon. ",
@@ -53,7 +54,7 @@ export default function ImagineSectionSeo() {
               </motion.p>
             ))}
 
-            <div className="pt-16 space-y-2">
+            <div className="pt-16 space-y-6">
               <motion.p
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -72,6 +73,19 @@ export default function ImagineSectionSeo() {
               >
                 Může to být realita s vaší vlastní aplikací.
               </motion.p>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.7 }}
+                viewport={{ once: true }}
+                className="flex justify-center pt-4"
+              >
+                <Button onClick={() => {
+                  document.getElementById('phases-section')?.scrollIntoView({ behavior: 'smooth' })
+                }}>
+                  Jak to funguje
+                </Button>
+              </motion.div>
             </div>
           </div>
         </motion.div>
