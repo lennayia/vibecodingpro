@@ -59,11 +59,10 @@ function PortfolioHolographic() {
   return (
     <Section
       background="dark"
-      className="min-h-screen flex items-center justify-center !py-16 md:!py-24 overflow-hidden relative"
+      className="min-h-screen flex items-center justify-center !py-16 md:!py-24 overflow-hidden"
       showScrollIndicator={true}
     >
-      {/* Holographic background effects */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+      <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
         <motion.div
           className="absolute inset-0"
           style={{
