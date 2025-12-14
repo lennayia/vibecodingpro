@@ -270,6 +270,23 @@
     color: var(--color-accent-dark);
   }
 
+  /* Scroll to top button */
+  .bg-accent {
+    background-color: var(--color-accent-light);
+  }
+
+  .dark .bg-accent {
+    background-color: var(--color-accent-dark);
+  }
+
+  .bg-accent\/90 {
+    background-color: rgba(0, 0, 205, 0.9);
+  }
+
+  .dark .bg-accent\/90 {
+    background-color: rgba(13, 221, 13, 0.9);
+  }
+
   /* Animations with performance in mind */
   .animate-fade-in {
     animation: fadeIn 0.8s ease-in-out;

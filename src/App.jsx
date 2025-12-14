@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 import Navigation from './components/layout/Navigation'
 import Footer from './components/layout/Footer'
 import ScrollProgress from './components/ui/ScrollProgress'
+import ScrollToTop from './components/ui/ScrollToTop'
 
 // Section components
 import Hero from './components/sections/Hero'
@@ -51,6 +52,7 @@ function App() {
   return (
     <div className="min-h-screen bg-[#f2f2f2] dark:bg-[#070716] transition-colors duration-300">
       <ScrollProgress />
+      <ScrollToTop />
       <a
         href="#main-content"
         className="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:p-4 focus:bg-white dark:focus:bg-gray-900 focus:text-black dark:focus:text-white"

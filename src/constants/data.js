@@ -82,3 +82,101 @@ export const comparisonData = {
     quote: "Konečně můžu pomoct víc lidem, a přitom žiju svůj život. Cítím se naplněná."
   }
 }
+
+export const pricingPackages = [
+  {
+    title: "VIBE",
+    availableSpots: 5,
+    serviceType: "konzultace",
+    price: "2 900 Kč",
+    description: "Pro ženy, které chtějí pochopit<br />a rozhodnout se",
+    features: [
+      "2x 1 hodina",
+      "Jak vibecoding funguje a co všechno můžete vytvořit",
+      "Které nástroje potřebujete a proč",
+      "7 kroků k aplikaci – podrobně vysvětlených",
+      "Analýza vašeho konkrétního záměru",
+      "Roadmapa: co dělat krok za krokem",
+      "Q&A – prostor na vaše otázky"
+    ],
+    resultTitle: "Výsledek:",
+    resultDescription: "Jasná roadmapa, víte přesně co a jak – a jestli je to pro vás.<br />Vyhnete se bloudění.",
+    testimonials: [
+      {
+        quote: '„Za 2 hodiny jsem pochopila víc než za měsíc googlování."',
+        author: "Petra, koučka"
+      },
+    ],
+    bonuses: [
+      "Osobní roadmapa v PDF"
+    ],
+    discount: "300 Kč na další 2hod. konzultaci",
+    buttonText: "Chci VIBE",
+    isPopular: false
+  },
+  {
+    title: "VIBE+CODING",
+    availableSpots: 3,
+    serviceType: "mentoring",
+    price: "9 900 Kč",
+    description: "Pro ženy, které chtějí pochopit<br />a rovnou začít",
+    features: [
+      "<span class='font-semibold'>6x 1 hodina</span>",
+      "<span class='font-semibold'>Všechno z VIBE (2h)</span>",
+      "<strong>Praktické nastavení:</strong> Společně nainstalujeme a rozběhneme všechny nástroje (1h)",
+      "<strong>Zadání projektu:</strong> Sepíšeme, co má vaše aplikace umět (1h)",
+      "<strong>První kroky:</strong> Rozjedeme projekt a napíšeme první funkce (1h)",
+      "<strong>Další kroky:</strong> Prostor na vaše otázky a řešení konkrétních funkcí (1h)"
+    ],
+    resultTitle: "Výsledek:",
+    resultDescription: "Rozumíte, PLUS máte kus hotovo - nástroje běží, projekt existuje, první kód je napsaný.<br />Ušetříte desítky hodin zkoušení.",
+    testimonials: [
+      {
+        quote: '„Konečně mi někdo vysvětlil, o co go."',
+        author: "Martina, terapeutka"
+      }
+    ],
+    bonuses: [
+      "Všechny z VIBE",
+      "Kompletní dokumentace",
+      "6 návodů krok za krokem",
+      "Nahrávky",
+      "2 týdny e-mail podpora"
+    ],
+    discount: "600 Kč na další 2hod. konzultaci",
+    buttonText: "Chci mentoring",
+    badgeText: "OBLÍBENĚJŠÍ",
+    isPopular: true
+  },
+  {
+    title: "VIBECODING",
+    availableSpots: 1,
+    serviceType: "VIP mentoring",
+    price: "24 900 Kč",
+    description: "Pro ženy, které chtějí pochopit,<br />začít a dokončit",
+    features: [
+      "<span class='font-semibold'>10x 1 hodina</span>",
+      "<span class='font-semibold'>Všechno z VIBE+CODE (6h) +</span>",
+      "<strong>Společné co-working sessions (4h)</strong> – Pracujeme spolu v reálném čase.",
+      "<strong>Dokud to neběží</strong> – Žádné &bdquo;hodně štěstí&ldquo;. Dotáhneme funkční apku.",
+      "<strong>30 dní přímý přístup ke mně (WhatsApp)</strong> – Zaseknete se, napíšete, odpovím do 24 hodin."
+    ],
+    resultTitle: "Výsledek:",
+    resultDescription: "<ul class='list-disc pl-5 space-y-2'><li>Funkční aplikace. Rozumíte jí a umíte ji rozvíjet.</li><li>Přímá linka k mentorce</li><li>Garantovaný výsledek.</li><li>Osobní vztah</li></ul>",
+    testimonials: [
+      {
+        quote: '„Přišla jsem s nápadem, odcházela s rozjetým projektem. Nejlepší investice do podnikání, co jsem kdy udělala."',
+        author: "Katka, mentorka"
+      }
+    ],
+    bonuses: [
+      "Všechny z VIBE+CODE",
+      "Check-in call (30 min) – po 2 týdnech zkontrolujeme pokrok"
+    ],
+    discount: "1 000 Kč na další 2hod. konzultaci",
+    buttonText: "Chci VIP",
+    badgeText: "EXKLUZIVNÍ",
+    isExclusive: true,
+    isPopular: false
+  }
+]
