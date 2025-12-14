@@ -1,15 +1,15 @@
 import { motion } from 'framer-motion'
-import { Check } from 'lucide-react'
+import { memo, useMemo } from 'react'
 import Section from '../layout/Section'
 
-export default function ForWhom() {
-  const targetGroups = [
+function ForWhom() {
+  const targetGroups = useMemo(() => [
     "Koučky a mentorky",
     "Terapeutky a poradkyně",
     "Lektorky a vzdělávačky",
     "Online podnikatelky",
     "Tvůrkyně kurzů a programů"
-  ]
+  ], [])
 
   return (
     <Section background="light" className="min-h-screen flex items-center justify-center !py-4 md:!py-8 lg:!py-12" showScrollIndicator={true}>
@@ -61,3 +61,5 @@ export default function ForWhom() {
     </Section>
   )
 }
+
+export default memo(ForWhom)

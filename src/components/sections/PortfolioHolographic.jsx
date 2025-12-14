@@ -1,32 +1,60 @@
 import { motion, useScroll, useTransform, useMotionValue, useSpring } from 'framer-motion'
-import { useRef, useState } from 'react'
+import { useRef, useState, memo, useMemo, useEffect, useCallback } from 'react'
 import Section from '../layout/Section'
 
-export default function PortfolioHolographic() {
+function PortfolioHolographic() {
   const containerRef = useRef(null)
   const [isDragging, setIsDragging] = useState(false)
+  const [isVisible, setIsVisible] = useState(false)
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start end", "end start"]
   })
 
-  const projects = [
+  const projects = useMemo(() => [
     { name: "CoachPro", image: "/coachpro.webp" },
     { name: "PaymentsPro", image: "/paymentspro.webp" },
     { name: "PianoPro", image: "/pianopro.webp" },
     { name: "LifePro", image: "/lifepro.webp" },
     { name: "StudyPro", image: "/studypro.webp" },
     { name: "ContentPro", image: "/contentpro.webp" }
-  ]
+  ], [])
 
   const dragX = useMotionValue(0)
-  const springConfig = { damping: 30, stiffness: 200 }
+  const springConfig = useMemo(() => ({ damping: 30, stiffness: 200 }), [])
   const rotation = useSpring(
     useTransform(scrollYProgress, [0, 1], [0, 360]),
     springConfig
   )
   const dragRotation = useSpring(useTransform(dragX, [-500, 500], [-180, 180]), springConfig)
+
+  // Event handlers wrapped in useCallback
+  const handleDragStart = useCallback(() => setIsDragging(true), [])
+  const handleDragEnd = useCallback(() => setIsDragging(false), [])
+  const handleDrag = useCallback((_, info) => dragX.set(info.offset.x), [dragX])
+
+  // Intersection Observer - pause animations when not visible
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach(entry => {
+          setIsVisible(entry.isIntersecting)
+        })
+      },
+      { threshold: 0.1 } // Trigger when 10% visible
+    )
+
+    if (containerRef.current) {
+      observer.observe(containerRef.current)
+    }
+
+    return () => {
+      if (containerRef.current) {
+        observer.unobserve(containerRef.current)
+      }
+    }
+  }, [])
 
   return (
     <Section
@@ -41,10 +69,10 @@ export default function PortfolioHolographic() {
           style={{
             background: 'radial-gradient(circle at 50% 50%, rgba(0, 255, 136, 0.05) 0%, transparent 70%)',
           }}
-          animate={{
+          animate={isVisible ? {
             scale: [1, 1.2, 1],
             opacity: [0.3, 0.5, 0.3]
-          }}
+          } : {}}
           transition={{
             duration: 4,
             repeat: Infinity,
@@ -84,16 +112,17 @@ export default function PortfolioHolographic() {
           {/* 3D Holographic Carousel */}
           <motion.div
             className="relative h-[500px] md:h-[700px] flex items-center justify-center cursor-grab active:cursor-grabbing"
+            style={{ willChange: 'transform' }}
             drag="x"
             dragConstraints={{ left: 0, right: 0 }}
             dragElastic={0.1}
-            onDragStart={() => setIsDragging(true)}
-            onDragEnd={() => setIsDragging(false)}
-            onDrag={(_, info) => dragX.set(info.offset.x)}
+            onDragStart={handleDragStart}
+            onDragEnd={handleDragEnd}
+            onDrag={handleDrag}
           >
             <div
               className="relative w-full h-full flex items-center justify-center"
-              style={{ perspective: '2000px' }}
+              style={{ perspective: '2000px', willChange: 'transform' }}
             >
               {projects.map((project, index) => {
                 const totalProjects = projects.length
@@ -137,6 +166,7 @@ export default function PortfolioHolographic() {
                       opacity,
                       scale,
                       rotateY: combinedRotation,
+                      willChange: 'transform, opacity'
                     }}
                   >
                     <HolographicCard project={project} zDepth={z} />
@@ -167,7 +197,7 @@ export default function PortfolioHolographic() {
   )
 }
 
-function HolographicCard({ project, zDepth }) {
+const HolographicCard = memo(function HolographicCard({ project, zDepth }) {
   const [isHovered, setIsHovered] = useState(false)
 
   const glowOpacity = useTransform(
@@ -176,11 +206,15 @@ function HolographicCard({ project, zDepth }) {
     [0.2, 0.8, 0.2]
   )
 
+  const handleHoverStart = useCallback(() => setIsHovered(true), [])
+  const handleHoverEnd = useCallback(() => setIsHovered(false), [])
+
   return (
     <motion.div
       className="relative w-[280px] md:w-[380px] aspect-[4/3]"
-      onHoverStart={() => setIsHovered(true)}
-      onHoverEnd={() => setIsHovered(false)}
+      style={{ willChange: 'transform' }}
+      onHoverStart={handleHoverStart}
+      onHoverEnd={handleHoverEnd}
       whileHover={{ scale: 1.05 }}
       transition={{ type: "spring", stiffness: 300, damping: 20 }}
     >
@@ -191,6 +225,7 @@ function HolographicCard({ project, zDepth }) {
           opacity: glowOpacity,
           background: 'linear-gradient(45deg, rgba(0, 255, 136, 0.4), rgba(0, 200, 255, 0.4))',
           filter: 'blur(20px)',
+          willChange: 'opacity'
         }}
         animate={isHovered ? {
           opacity: [0.3, 0.6, 0.3],
@@ -276,4 +311,6 @@ function HolographicCard({ project, zDepth }) {
       </div>
     </motion.div>
   )
-}
+})
+
+export default memo(PortfolioHolographic)
