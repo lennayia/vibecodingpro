@@ -1,23 +1,28 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, lazy, Suspense } from 'react'
 
 // Layout components
+import ErrorBoundary from './components/ErrorBoundary'
 import Navigation from './components/layout/Navigation'
 import Footer from './components/layout/Footer'
 import ScrollProgress from './components/ui/ScrollProgress'
 import ScrollToTop from './components/ui/ScrollToTop'
 
-// Section components
+// Section components - immediate load (above the fold)
 import Hero from './components/sections/Hero'
 import WhyOwnApp from './components/sections/WhyOwnApp'
-import WhyConsultation from './components/sections/WhyConsultation'
 import Comparison from './components/sections/Comparison'
-import CaseStudy from './components/sections/CaseStudy'
-import WhyMe from './components/sections/WhyMe'
 import ImagineSection from './components/sections/ImagineSection'
+import CaseStudy from './components/sections/CaseStudy'
 import Phases from './components/sections/Phases'
-import Bonuses from './components/sections/Bonuses'
-import Pricing, { PricingPackages, PricingGuarantee } from './components/sections/Pricing'
-import CTA from './components/sections/CTA'
+import WhyConsultation from './components/sections/WhyConsultation'
+import WhyMe from './components/sections/WhyMe'
+
+// Lazy load heavy sections (below the fold)
+const Bonuses = lazy(() => import('./components/sections/Bonuses'))
+const Pricing = lazy(() => import('./components/sections/Pricing'))
+const PricingPackages = lazy(() => import('./components/sections/Pricing').then(module => ({ default: module.PricingPackages })))
+const PricingGuarantee = lazy(() => import('./components/sections/Pricing').then(module => ({ default: module.PricingGuarantee })))
+const CTA = lazy(() => import('./components/sections/CTA'))
 
 function App() {
   const [isDark, setIsDark] = useState(() => {
@@ -50,36 +55,40 @@ function App() {
   }, [])
 
   return (
-    <div className="min-h-screen bg-[#f2f2f2] dark:bg-[#070716] transition-colors duration-300">
-      <ScrollProgress />
-      <ScrollToTop />
-      <a
-        href="#main-content"
-        className="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:p-4 focus:bg-white dark:focus:bg-gray-900 focus:text-black dark:focus:text-white"
-      >
-        Přeskočit na hlavní obsah
-      </a>
+    <ErrorBoundary>
+      <div className="min-h-screen bg-[#f2f2f2] dark:bg-[#070716] transition-colors duration-300">
+        <ScrollProgress />
+        <ScrollToTop />
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:p-4 focus:bg-white dark:focus:bg-gray-900 focus:text-black dark:focus:text-white"
+        >
+          Přeskočit na hlavní obsah
+        </a>
 
-      <Navigation isDark={isDark} setIsDark={setIsDark} />
+        <Navigation isDark={isDark} setIsDark={setIsDark} />
 
-      <main id="main-content" role="main">
-        <Hero />
-        <WhyOwnApp />
-        <Comparison />
-        <ImagineSection />
-        <CaseStudy />
-        <Phases />
-        <WhyConsultation />
-        <WhyMe />
-        <Bonuses />
-        <Pricing />
-        <PricingPackages />
-        <PricingGuarantee />
-        <CTA />
-      </main>
+        <main id="main-content" role="main">
+          <Hero />
+          <WhyOwnApp />
+          <Comparison />
+          <ImagineSection />
+          <CaseStudy />
+          <Phases />
+          <WhyConsultation />
+          <WhyMe />
+          <Suspense fallback={<div className="min-h-screen" />}>
+            <Bonuses />
+            <Pricing />
+            <PricingPackages />
+            <PricingGuarantee />
+            <CTA />
+          </Suspense>
+        </main>
 
-      <Footer />
-    </div>
+        <Footer />
+      </div>
+    </ErrorBoundary>
   )
 }
 
