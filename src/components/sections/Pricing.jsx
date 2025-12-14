@@ -4,7 +4,7 @@ import Section from '../layout/Section'
 import PricingCard from '../ui/PricingCard'
 import CountdownTimer from '../ui/CountdownTimer'
 import { BadgeCheck, Clock, ChevronDown, HelpCircle } from 'lucide-react'
-import { pricingPackages } from '../../constants/data'
+import { pricingPackages, faqCategories } from '../../constants/data'
 
 export default function Pricing() {
 
@@ -104,87 +104,6 @@ export function PricingGuarantee() {
       [key]: !prev[key]
     }))
   }
-
-  const faqCategories = [
-    {
-      title: "Strach z vlastních schopností",
-      questions: [
-        {
-          question: "Co když jsem na to prostě moc blbá?",
-          answer: "Nejste. Pokud umíte napsat e-mail, zvládnete i tohle. Vibecoding není programování – je to komunikace s AI."
-        },
-        {
-          question: "Nikdy jsem nic technického nedotáhla. Proč by to teď mělo být jinak?",
-          answer: "Protože teď nebudete sama. A protože AI dělá těžkou práci za vás."
-        }
-      ]
-    },
-    {
-      title: "Strach z nejistoty",
-      questions: [
-        {
-          question: "Co když ještě nevím, jakou aplikaci chci?",
-          answer: "To je v pohodě. První hodinu strávíme právě tímhle – vyjasníme si to společně."
-        },
-        {
-          question: "Co když zjistím, že můj nápad je blbost?",
-          answer: "Lepší to zjistit za 2 hodiny se mnou než za 3 měsíce práce. I to je výsledek."
-        }
-      ]
-    },
-    {
-      title: "Strach z peněz",
-      questions: [
-        {
-          question: "Kolik mě to bude stát celkově? Nejsou tam skryté náklady?",
-          answer: "Většina nástrojů je zdarma nebo stojí pár stovek měsíčně. Řeknu vám přesně, co budete potřebovat."
-        },
-        {
-          question: "Co když mi to nevydělá?",
-          answer: "Aplikace je nástroj. Jestli vydělá, záleží na vašem byznysu. Já vám pomůžu postavit nástroj – ne byznys model."
-        }
-      ]
-    },
-    {
-      title: "Strach z času",
-      questions: [
-        {
-          question: "Mám malé děti / rozjetý byznys. Kolik času tomu musím reálně dávat?",
-          answer: "Mezi našimi sezeními? Hodinu, dvě týdně. Ale čím víc dáte, tím rychleji to bude."
-        },
-        {
-          question: "Za jak dlouho budu mít něco, co můžu ukázat klientkám?",
-          answer: "Základní verzi? Za 4–6 týdnů, pokud budete pracovat."
-        }
-      ]
-    },
-    {
-      title: "Strach z budoucnosti",
-      questions: [
-        {
-          question: "Co když se něco rozbije a ty nebudeš mít čas?",
-          answer: "Naučím vás, jak základní problémy řešit samy. A na WhatsApp jsem vždycky."
-        },
-        {
-          question: "Budu závislá na tobě, nebo to zvládnu sama?",
-          answer: "Cíl je, abyste byla samostatná. Já jsem průvodce, ne berlička."
-        }
-      ]
-    },
-    {
-      title: "Praktické",
-      questions: [
-        {
-          question: "Potřebuju drahý počítač?",
-          answer: "Ne. Stačí normální notebook. Mac nebo Windows, jedno."
-        },
-        {
-          question: "Můžu to dělat odkudkoli?",
-          answer: "Ano. Potřebujete jen internet."
-        }
-      ]
-    }
-  ]
 
   return (
     <Section background="dark" className="min-h-screen flex items-center justify-center !pt-2 !pb-12 md:!pt-2 md:!pb-12 lg:!pt-4 lg:!pb-16" showScrollIndicator={true}>
