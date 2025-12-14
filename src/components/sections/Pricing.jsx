@@ -45,9 +45,20 @@ export default function Pricing() {
                 <p className="font-semibold">
                   Pak se ceny zvýší na 4 500 / 13 900 / 29 900 Kč
                 </p>
-                <p className="text-xl font-light">
-                  Kdo dřív přijde, na toho se dostane. A víc ušetří. A bude mít dřív vlastní apku.
-                </p>
+                <ul className="text-xl font-light space-y-2 inline-block text-left">
+                  <li className="flex items-start gap-3">
+                    <span className="text-accent mt-1">✦</span>
+                    <span>Kdo dřív přijde, na toho se dostane</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <span className="text-accent mt-1">✦</span>
+                    <span>Víc ušetří</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <span className="text-accent mt-1">✦</span>
+                    <span>Bude mít dřív vlastní apku</span>
+                  </li>
+                </ul>
               </div>
             </div>
           </motion.div>
