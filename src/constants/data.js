@@ -220,7 +220,7 @@ export const faqCategories = [
     questions: [
       {
         question: "Kolik mě to bude stát celkově? Nejsou tam skryté náklady?",
-        answer: "Většina nástrojů je zdarma nebo stojí pár stovek měsíčně. Řeknu vám přesně, co budete potřebovat."
+        answer: "Nástroje jsou zdarma i placené. Je dobré zainvestovat do rozumné verze AI -  od 500 Kč do 2 500 Kč. Řeknu vám, co budete po dobu tvorby potřebovat."
       },
       {
         question: "Co když mi to nevydělá?",
@@ -237,11 +237,11 @@ export const faqCategories = [
       },
       {
         question: "Za jak dlouho budu mít něco, co můžu ukázat klientkám?",
-        answer: "Základní verzi? Za 4–6 týdnů, pokud budete pracovat."
+        answer: "Záleží na složitosti. Základní verzi? Za cca 2–4 týdny, pokud budete pracovat. Složitější za cca 4 měsíce, podle času, který do toho investujete."
       },
       {
         question: "Za jak dlouho budu mít hotovou aplikaci?",
-        answer: "Záleží na složitosti. Jednoduchá aplikace může běžet za 2–3 měsíce. Složitější za 6."
+        answer: "Jednoduchá aplikace může běžet za 2–3 měsíce. Složitější za 6."
       }
     ]
   },
@@ -250,15 +250,15 @@ export const faqCategories = [
     questions: [
       {
         question: "Co když se něco rozbije a ty nebudeš mít čas?",
-        answer: "Naučím vás, jak základní problémy řešit samy. A na WhatsApp jsem vždycky."
+        answer: "Naučím vás, jak řešit základní problémy. A na WhatsApp jsem vždycky."
       },
       {
         question: "Budu závislá na tobě, nebo to zvládnu sama?",
-        answer: "Cíl je, abyste byla samostatná. Já jsem průvodce, ne berlička."
+        answer: "Cíl je vaše samostatnost. Já jsem průvodce, ne berlička."
       },
       {
         question: "Můžu aplikaci pak rozvíjet sama?",
-        answer: "Přesně to je cíl. Naučíte se vibecoding a budete samostatná."
+        answer: "Přesně to je cíl. Naučíte se vibecoding a pofrčíte."
       }
     ]
   },
@@ -271,11 +271,11 @@ export const faqCategories = [
       },
       {
         question: "Můžu to dělat odkudkoli?",
-        answer: "Ano. Potřebujete jen internet."
+        answer: "Ano. Potřebujete jen internet, ale pokud možno stabilní."
       },
       {
         question: "Jak probíhá spolupráce?",
-        answer: "Online, přes video hovor. Pracujeme společně, sdílíme obrazovku, já vás vedu krok za krokem."
+        answer: "Online, přes video hovor. Pracujeme společně, sdílíme obrazovku, já vás vedu krok za krokem tak, jak potřebujete."
       }
     ]
   }

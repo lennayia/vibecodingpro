@@ -218,7 +218,7 @@ export function PricingGuarantee() {
                                   className="p-4 cursor-pointer hover:bg-gray-50 dark:hover:bg-[#05050f] transition-colors flex items-start justify-between gap-3"
                                   onClick={() => toggleQuestion(categoryIndex, questionIndex)}
                                 >
-                                  <p className="font-semibold flex-1">{item.question}</p>
+                                  <p className="font-semibold flex-1 text-lg">{item.question}</p>
                                   <ChevronDown
                                     className={`w-5 h-5 text-gray-400 flex-shrink-0 transition-transform mt-0.5 ${isQuestionExpanded ? 'rotate-180' : ''}`}
                                     strokeWidth={2}
