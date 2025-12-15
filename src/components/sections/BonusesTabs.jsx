@@ -2,6 +2,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { useState } from 'react'
 import Section from '../layout/Section'
 import { Gift, Check, X, ChevronDown } from 'lucide-react'
+import { fadeIn } from '../../constants/animations'
 
 export default function BonusesTabsSeo() {
   const [activeTab, setActiveTab] = useState(0)
@@ -80,11 +81,7 @@ export default function BonusesTabsSeo() {
   return (
     <Section background="light" className="min-h-screen flex items-center justify-center" showScrollIndicator={true}>
       <div>
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-        >
+        <motion.div {...fadeIn}>
           <div className="text-center mb-16">
             <div className="flex items-center justify-center gap-3 mb-4">
               <Gift className="w-8 h-8 text-white dark:text-white" strokeWidth={2} />

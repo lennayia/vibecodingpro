@@ -2,6 +2,7 @@ import { motion } from 'framer-motion'
 import { useCallback } from 'react'
 import Section from '../layout/Section'
 import Button from '../ui/Button'
+import { slideUpLarge } from '../../constants/animations'
 
 export default function CTA() {
   const handleClick = useCallback(() => {
@@ -11,9 +12,7 @@ export default function CTA() {
     <Section background="light" className="min-h-screen flex items-center justify-center" showScrollIndicator={false}>
       <motion.div
         className="text-center"
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
+        {...slideUpLarge}
       >
         <h2 className="font-display font-bold mb-8">
           Věřím, že se už těšíte na svůj budoucí digitální nástroj

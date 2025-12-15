@@ -2,6 +2,7 @@ import { motion } from 'framer-motion'
 import { useState, useRef, useEffect, memo, useMemo } from 'react'
 import Section from '../layout/Section'
 import ParticleBackground from '../ui/ParticleBackground'
+import { fadeIn, slideUp } from '../../constants/animations'
 
 const AnimatedPhotoWithParticles = memo(function AnimatedPhotoWithParticles() {
   const containerRef = useRef(null)
@@ -231,11 +232,7 @@ export default function WhyMeSeo() {
       showScrollIndicator={true}
       backgroundElement={<AnimatedPhotoWithParticles />}
     >
-      <motion.div
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
-      >
+      <motion.div {...fadeIn}>
         <h2 className="font-display font-bold mb-6 text-center" style={{ lineHeight: '1.3' }}>
           Proč zrovna se mnou?
         </h2>
@@ -249,10 +246,8 @@ export default function WhyMeSeo() {
             <motion.div
               key={index}
               className="border-b border-gray-700 pb-8 last:border-b-0"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              {...slideUp}
               transition={{ delay: index * 0.1 }}
-              viewport={{ once: true }}
             >
               <div className="grid md:grid-cols-2 gap-6 items-start">
                 <h3 className="font-display font-bold">

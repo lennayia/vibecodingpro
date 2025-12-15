@@ -2,17 +2,13 @@ import { motion } from 'framer-motion'
 import Section from '../layout/Section'
 import ComparisonCard from '../ui/ComparisonCard'
 import { comparisonData } from '../../constants/data'
+import { fadeIn } from '../../constants/animations'
 
 export default function ComparisonSeo() {
   return (
     <Section background="light" className="min-h-screen flex items-center justify-center !pt-1 !pb-4 md:!pt-2 md:!pb-6 lg:!pt-4 lg:!pb-8" showScrollIndicator={true}>
       <div>
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-        >
+        <motion.div {...fadeIn}>
           <h2 className="font-display font-bold mb-8 text-center" style={{ lineHeight: '1.3' }}>
             Dobré nástroje posouvají
           </h2>
