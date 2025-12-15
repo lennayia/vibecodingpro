@@ -1,6 +1,7 @@
+import { memo } from 'react'
 import { Sun, Moon } from 'lucide-react'
 
-export default function Navigation({ isDark, setIsDark }) {
+function Navigation({ isDark, setIsDark }) {
   return (
     <nav className="fixed top-0 w-full z-50 backdrop-blur-md bg-[#f2f2f2]/80 dark:bg-[#070716]/80 overflow-hidden">
       <style>{`
@@ -61,3 +62,5 @@ export default function Navigation({ isDark, setIsDark }) {
     </nav>
   )
 }
+
+export default memo(Navigation)
