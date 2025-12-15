@@ -85,7 +85,7 @@ const AnimatedPhotoWithParticles = memo(function AnimatedPhotoWithParticles() {
   }, [])
 
   return (
-    <div className="absolute inset-0 z-0" ref={containerRef}>
+    <div className="absolute inset-0 z-0 overflow-hidden" ref={containerRef}>
       <style>{`
   @keyframes verticalRotate {
     0% {
@@ -165,11 +165,11 @@ const AnimatedPhotoWithParticles = memo(function AnimatedPhotoWithParticles() {
 }
 
   .vertical-rotate {
-    animation: verticalRotate 15s linear infinite;
+    animation: verticalRotate 20s linear infinite;
   }
 
   .photo-fade {
-    animation: photoFade 15s linear infinite;
+    animation: photoFade 20s linear infinite;
   }
 `}</style>
 
@@ -181,16 +181,24 @@ const AnimatedPhotoWithParticles = memo(function AnimatedPhotoWithParticles() {
       />
 
       <div
-        className="absolute inset-y-0 right-0 w-1/2"
-        style={{
-          aspectRatio: '832/1248',
-        }}
-      >
-        {/* Vertikální otáčení */}
-        <div className="h-full w-full vertical-rotate" style={{ transformStyle: 'preserve-3d' }}>
-          {/* Přední strana */}
-          <div className="absolute inset-0" style={{ backfaceVisibility: 'hidden' }}>
-            <img
+  className="absolute inset-y-0 right-0 w-2/3 overflow-hidden"
+  style={{
+    aspectRatio: '832/1248',
+    transform: 'translateX(20%)',
+  }}
+>
+  {/* Vertikální otáčení */}
+<div 
+  className="h-full w-full vertical-rotate" 
+  style={{ 
+    transformStyle: 'preserve-3d',
+    maskImage: 'linear-gradient(to right, transparent 0%, black 30%, black 100%)',
+    WebkitMaskImage: 'linear-gradient(to right, transparent 0%, black 30%, black 100%)',
+  }}
+>
+    {/* Přední strana */}
+    <div className="absolute inset-0" style={{ backfaceVisibility: 'hidden' }}>
+      <img
   src="/lenka.webp"
   alt=""
   width="832"
@@ -198,18 +206,22 @@ const AnimatedPhotoWithParticles = memo(function AnimatedPhotoWithParticles() {
   loading="lazy"
   decoding="async"
   className="h-full w-full object-cover object-[center_-120px] photo-fade"
+  style={{
+    maskImage: 'linear-gradient(to right, transparent 0%, black 20%, black 100%)',
+    WebkitMaskImage: 'linear-gradient(to right, transparent 0%, black 20%, black 100%)',
+  }}
 />
-          </div>
+    </div>
 
-          {/* Zadní strana - zrcadlově */}
-          <div
-            className="absolute inset-0"
-            style={{
-              backfaceVisibility: 'hidden',
-              transform: 'rotateY(180deg)'
-            }}
-          >
-            <img
+    {/* Zadní strana - zrcadlově */}
+    <div
+      className="absolute inset-0"
+      style={{
+        backfaceVisibility: 'hidden',
+        transform: 'rotateY(180deg)'
+      }}
+    >
+      <img
   src="/lenka.webp"
   alt=""
   width="832"
@@ -217,12 +229,23 @@ const AnimatedPhotoWithParticles = memo(function AnimatedPhotoWithParticles() {
   loading="lazy"
   decoding="async"
   className="h-full w-full object-cover object-[center_-120px] photo-fade"
+  style={{ 
+    transform: 'scaleX(-1)',
+    maskImage: 'linear-gradient(to left, transparent 0%, black 20%, black 100%)',
+    WebkitMaskImage: 'linear-gradient(to left, transparent 0%, black 20%, black 100%)',
+  }}
 />
-          </div>
-        </div>
-      </div>
+    </div>
+  </div>
 
-      <div className="absolute inset-0 bg-gradient-to-r from-[#f2f2f2] via-[#f2f2f2]/80 to-transparent dark:from-[#05050f] dark:via-[#05050f]/80 dark:to-transparent pointer-events-none" />
+  </div>
+
+      <div 
+  className="absolute inset-0 pointer-events-none" 
+  style={{
+    background: 'linear-gradient(to right, #05050f 0%, #05050f 45%, transparent 60%)',
+  }}
+/>
     </div>
   )
 })
