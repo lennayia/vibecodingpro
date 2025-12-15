@@ -107,65 +107,31 @@ function PortfolioHolographic() {
             8 funkčních aplikací pro reálné klientky. Žádný řádek kódu. Jen vize, strategie a AI.
           </p>
 
-          {/* Mobile only (<640px): Static holographic cards */}
-          <div className="sm:hidden space-y-8 max-w-md mx-auto px-4">
+          {/* Mobile only (<640px): Simple image grid with project images */}
+          <div className="sm:hidden grid grid-cols-2 gap-6 max-w-2xl mx-auto px-4">
             {projects.map((project, index) => (
-              <div key={index} className="relative w-full aspect-[4/3]">
-                {/* Holographic glow - static but visible */}
-                <div
-                  className="absolute -inset-4 rounded-3xl"
+              <div key={index} className="relative">
+                {/* Project image */}
+                <img
+                  src={project.image}
+                  alt={project.name}
+                  loading="lazy"
+                  className="w-full h-auto rounded-xl shadow-2xl"
                   style={{
-                    background: 'linear-gradient(45deg, rgba(0, 255, 136, 0.4), rgba(0, 200, 255, 0.4))',
-                    filter: 'blur(20px)',
-                    opacity: 0.4,
+                    boxShadow: '0 0 30px rgba(0, 255, 136, 0.3)',
                   }}
                 />
-
-                {/* Main card */}
-                <div className="relative w-full h-full rounded-2xl overflow-hidden border-2 border-accent/30 shadow-2xl bg-gray-900/50 backdrop-blur-sm">
-                  {/* Scanlines effect */}
-                  <div
-                    className="absolute inset-0 pointer-events-none opacity-20"
+                {/* Project name overlay */}
+                <div className="mt-3 text-center">
+                  <h3
+                    className="font-display font-bold text-lg"
                     style={{
-                      backgroundImage: 'repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(0, 255, 136, 0.1) 3px, rgba(0, 255, 136, 0.1) 6px)',
+                      color: 'rgb(0, 255, 136)',
+                      textShadow: '0 0 10px rgba(0, 255, 136, 0.5)',
                     }}
-                  />
-
-                  {/* Content */}
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="w-full h-full bg-gradient-to-br from-gray-800 to-gray-900 relative">
-                      <div className="absolute inset-0 flex items-center justify-center">
-                        <h3
-                          className="font-display font-bold text-3xl text-center px-4"
-                          style={{
-                            color: 'rgba(0, 255, 136, 0.8)',
-                            textShadow: '0 0 20px rgba(0, 255, 136, 0.5)',
-                          }}
-                        >
-                          {project.name}
-                        </h3>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Corner accents */}
-                  <div className="absolute top-2 left-2 w-4 h-4 border-t-2 border-l-2 border-accent/50" />
-                  <div className="absolute top-2 right-2 w-4 h-4 border-t-2 border-r-2 border-accent/50" />
-                  <div className="absolute bottom-2 left-2 w-4 h-4 border-b-2 border-l-2 border-accent/50" />
-                  <div className="absolute bottom-2 right-2 w-4 h-4 border-b-2 border-r-2 border-accent/50" />
-
-                  {/* Bottom name bar */}
-                  <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/90 via-black/50 to-transparent backdrop-blur-sm border-t border-accent/20">
-                    <h4
-                      className="font-display font-bold text-lg text-center"
-                      style={{
-                        color: 'rgba(0, 255, 136, 0.9)',
-                        textShadow: '0 0 10px rgba(0, 255, 136, 0.3)',
-                      }}
-                    >
-                      {project.name}
-                    </h4>
-                  </div>
+                  >
+                    {project.name}
+                  </h3>
                 </div>
               </div>
             ))}

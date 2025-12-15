@@ -40,11 +40,10 @@ function ScrollProgress() {
   return (
     <div className="fixed top-0 left-0 right-0 h-1 z-[9999] pointer-events-none">
       <div
-        className="h-full transition-all duration-150 ease-out"
+        className="h-full transition-all duration-150 ease-out bg-accent"
         style={{
           width: `${scrollProgress}%`,
-          backgroundColor: 'var(--color-accent-dark)',
-          boxShadow: '0 0 10px rgba(13, 221, 13, 0.5)'
+          boxShadow: '0 0 10px rgba(0, 255, 136, 0.5)'
         }}
       />
     </div>
