@@ -3,6 +3,7 @@ import { useState } from 'react'
 import Section from '../layout/Section'
 import { ChevronDown, HelpCircle } from 'lucide-react'
 import { faqCategories } from '../../constants/data'
+import { fadeIn, slideUp } from '../../constants/animations'
 
 export default function FAQSeo() {
   const [expandedCategories, setExpandedCategories] = useState([])
@@ -27,11 +28,7 @@ export default function FAQSeo() {
   return (
     <Section background="light" className="min-h-screen flex items-center justify-center" showScrollIndicator={true}>
       <div>
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-        >
+        <motion.div {...fadeIn}>
           <div className="text-center mb-16">
             <div className="flex items-center justify-center gap-3 mb-4">
               <HelpCircle className="w-8 h-8 text-white dark:text-white" strokeWidth={2} />
@@ -51,10 +48,8 @@ export default function FAQSeo() {
               return (
                 <motion.div
                   key={categoryIndex}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
+                  {...slideUp}
                   transition={{ delay: categoryIndex * 0.05 }}
-                  viewport={{ once: true }}
                   className="border-2 border-gray-200 dark:border-gray-700 rounded-xl overflow-hidden"
                 >
                   {/* Category Header */}

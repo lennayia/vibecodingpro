@@ -2,6 +2,7 @@ import { motion } from 'framer-motion'
 import { memo, useMemo } from 'react'
 import { Smartphone, BarChart3, GraduationCap, Globe, Bot, ShoppingBag } from 'lucide-react'
 import Section from '../layout/Section'
+import { fadeIn, slideUp } from '../../constants/animations'
 
 function WhatYouCanCreate() {
   const categories = useMemo(() => [
@@ -40,11 +41,7 @@ function WhatYouCanCreate() {
   return (
     <Section background="dark" className="min-h-screen flex items-center justify-center !py-4 md:!py-8 lg:!py-12" showScrollIndicator={true}>
       <div>
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-        >
+        <motion.div {...fadeIn}>
           <h2 className="font-display font-bold mb-16 text-center" style={{ lineHeight: '1.3' }}>
             Co si můžete vytvořit?
           </h2>
@@ -56,10 +53,8 @@ function WhatYouCanCreate() {
                 <motion.div
                   key={index}
                   className="text-center"
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
+                  {...slideUp}
                   transition={{ delay: index * 0.1 }}
-                  viewport={{ once: true }}
                 >
                   <div className="flex justify-center mb-4">
                     <Icon className="w-16 h-16 text-white" strokeWidth={1.5} />
@@ -77,10 +72,8 @@ function WhatYouCanCreate() {
 
           <motion.div
             className="text-center max-w-2xl mx-auto"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            {...slideUp}
             transition={{ delay: 0.6 }}
-            viewport={{ once: true }}
           >
             <p className="text-xl">
               A to je jen začátek. Možnosti jsou neomezené – ukážu vám, jak na to.
