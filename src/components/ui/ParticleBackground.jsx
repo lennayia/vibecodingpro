@@ -175,10 +175,13 @@ export default function ParticleBackground({
       canvas.width = width
       canvas.height = height
 
-      // Recalculate particle positions
+      // Recalculate particle positions - reset particles that are outside new viewport
       particles.current.forEach(particle => {
-        particle.x = Math.min(particle.x, width)
-        particle.y = Math.min(particle.y, height)
+        if (particle.x > width || particle.y > height) {
+          // Particle is outside new viewport - give it a new random position
+          particle.x = Math.random() * width
+          particle.y = Math.random() * height
+        }
       })
     }
 

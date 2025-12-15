@@ -21,7 +21,7 @@ import WhyConsultation from './components/sections/WhyConsultation'
 import WhyMe from './components/sections/WhyMe'
 
 // Lazy load heavy sections (below the fold)
-const Bonuses = lazy(() => import('./components/sections/Bonuses'))
+const Bonuses = lazy(() => import('./components/sections/BonusesTabs'))
 const Pricing = lazy(() => import('./components/sections/Pricing'))
 const PricingPackages = lazy(() => import('./components/sections/Pricing').then(module => ({ default: module.PricingPackages })))
 const PricingGuarantee = lazy(() => import('./components/sections/Pricing').then(module => ({ default: module.PricingGuarantee })))
