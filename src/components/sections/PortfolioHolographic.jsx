@@ -107,29 +107,49 @@ function PortfolioHolographic() {
             8 funkčních aplikací pro reálné klientky. Žádný řádek kódu. Jen vize, strategie a AI.
           </p>
 
-          {/* Mobile: Simple grid, Desktop: 3D Carousel */}
-          {/* Mobile grid - hidden on desktop with CSS */}
-          <div className="md:hidden grid grid-cols-2 gap-4 max-w-2xl mx-auto px-4">
+          {/* Mobile only (<640px): Static holographic cards */}
+          <div className="sm:hidden grid grid-cols-2 gap-4 max-w-2xl mx-auto px-4 relative" style={{ minHeight: '500px' }}>
             {projects.map((project, index) => (
               <div
                 key={index}
-                className="rounded-2xl p-6 bg-gray-900/50 border-2 border-accent/30 backdrop-blur-sm"
+                className="relative rounded-2xl overflow-hidden border-2 border-accent/30 shadow-2xl bg-gray-900/50 backdrop-blur-sm"
+                style={{
+                  aspectRatio: '4/3'
+                }}
               >
-                <h3
-                  className="text-lg font-bold text-center"
+                {/* Holographic glow - static */}
+                <div
+                  className="absolute -inset-2 rounded-3xl opacity-30"
                   style={{
-                    color: 'rgba(0, 255, 136, 0.9)',
-                    textShadow: '0 0 10px rgba(0, 255, 136, 0.3)',
+                    background: 'linear-gradient(45deg, rgba(0, 255, 136, 0.3), rgba(0, 200, 255, 0.3))',
+                    filter: 'blur(15px)',
                   }}
-                >
-                  {project.name}
-                </h3>
+                />
+
+                {/* Card content */}
+                <div className="relative w-full h-full flex items-center justify-center p-4">
+                  <h3
+                    className="text-lg font-bold text-center"
+                    style={{
+                      color: 'rgba(0, 255, 136, 0.9)',
+                      textShadow: '0 0 10px rgba(0, 255, 136, 0.3)',
+                    }}
+                  >
+                    {project.name}
+                  </h3>
+                </div>
+
+                {/* Corner accents */}
+                <div className="absolute top-2 left-2 w-3 h-3 border-t-2 border-l-2 border-accent/50" />
+                <div className="absolute top-2 right-2 w-3 h-3 border-t-2 border-r-2 border-accent/50" />
+                <div className="absolute bottom-2 left-2 w-3 h-3 border-b-2 border-l-2 border-accent/50" />
+                <div className="absolute bottom-2 right-2 w-3 h-3 border-b-2 border-r-2 border-accent/50" />
               </div>
             ))}
           </div>
 
-          {/* Desktop 3D carousel - hidden on mobile with CSS */}
-          <div className="hidden md:block">
+          {/* Tablet & Desktop (>=640px): 3D carousel with animations */}
+          <div className="hidden sm:block">
             <motion.div
                 className="relative h-[500px] md:h-[700px] flex items-center justify-center cursor-grab active:cursor-grabbing"
                 style={{ willChange: 'transform' }}

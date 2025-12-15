@@ -118,14 +118,14 @@ const AnimatedPhotoWithParticles = memo(function AnimatedPhotoWithParticles() {
     animation: photoFade 20s linear infinite;
   }
 
-  /* Disable heavy animations on mobile for performance */
-  @media (max-width: 767px) {
+  /* Disable heavy animations on mobile only (<640px) for performance */
+  @media (max-width: 639px) {
     .vertical-rotate {
       animation: none !important;
     }
     .photo-fade {
       animation: none !important;
-      opacity: 0.15 !important;
+      opacity: 0.2 !important;
       filter: none !important;
     }
   }

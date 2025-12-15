@@ -13,10 +13,11 @@ export default function ParticleBackground({
   const isVisibleRef = useRef(true)
   const [isMobile, setIsMobile] = useState(false)
 
-  // Detect mobile and disable particles completely for performance
+  // Detect mobile (<640px) and disable particles completely for performance
+  // Tablets (>=640px) get particles
   useEffect(() => {
     const checkMobile = () => {
-      setIsMobile(window.innerWidth < 768)
+      setIsMobile(window.innerWidth < 640)
     }
     checkMobile()
     window.addEventListener('resize', checkMobile)
