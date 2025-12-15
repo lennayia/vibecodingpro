@@ -1,6 +1,18 @@
 import { useRef, useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 
+// Throttle utility - limits function calls to once per interval
+function throttle(func, limit) {
+  let inThrottle
+  return function(...args) {
+    if (!inThrottle) {
+      func.apply(this, args)
+      inThrottle = true
+      setTimeout(() => inThrottle = false, limit)
+    }
+  }
+}
+
 export default function Button({
   children,
   variant = "primary",
@@ -43,8 +55,11 @@ export default function Button({
       }
     }
 
-    document.addEventListener('mousemove', handleMouseMove)
-    return () => document.removeEventListener('mousemove', handleMouseMove)
+    // Throttle to max 60 FPS (16ms interval)
+    const throttledMouseMove = throttle(handleMouseMove, 16)
+
+    document.addEventListener('mousemove', throttledMouseMove)
+    return () => document.removeEventListener('mousemove', throttledMouseMove)
   }, [])
 
   return (
