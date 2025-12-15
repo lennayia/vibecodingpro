@@ -11,7 +11,7 @@ function Section({ children, className = "", background = "light", showScrollInd
   const maxWidthClass = maxWidth || "max-w-7xl"
 
   return (
-    <section className={`py-4 md:py-28 lg:py-32 px-[4%] ${bgClasses[background]} ${className} relative overflow-hidden`}>
+    <section className={`py-4 md:py-28 lg:py-32 px-[4%] ${bgClasses[background]} ${className} relative overflow-hidden`} style={{ position: 'relative' }}>
       {backgroundElement}
       <div className={`${maxWidthClass} w-full mx-auto relative z-10`}>
         {children}

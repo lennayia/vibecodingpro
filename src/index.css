@@ -35,9 +35,13 @@
     -webkit-tap-highlight-color: transparent;
   }
 
+  html, body, #root {
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
   html {
     scroll-behavior: smooth;
-    overflow-x: hidden;
     /* @media (prefers-reduced-motion: reduce) {
       scroll-behavior: auto;
     } */
@@ -270,7 +274,16 @@
     color: var(--color-accent-dark);
   }
 
-  /* Scroll to top button */
+  /* Scroll to top button - prevent transform from breaking fixed positioning */
+  .scroll-to-top-btn {
+    transform: none !important;
+  }
+
+  .scroll-to-top-btn:hover {
+    transform: none !important;
+    opacity: 0.8;
+  }
+
   .bg-accent {
     background-color: var(--color-accent-light);
   }

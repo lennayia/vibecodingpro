@@ -37,9 +37,9 @@ function App() {
 
   return (
     <ErrorBoundary>
+      <ScrollProgress />
+      <ScrollToTop />
       <div className="min-h-screen bg-[#f2f2f2] dark:bg-[#070716] transition-colors duration-300">
-        <ScrollProgress />
-        <ScrollToTop />
         <a
           href="#main-content"
           className="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:p-4 focus:bg-white dark:focus:bg-gray-900 focus:text-black dark:focus:text-white"

@@ -1,4 +1,5 @@
-import { useState, useEffect, useRef, memo } from 'react'
+import { useState, useEffect, useRef } from 'react'
+import { createPortal } from 'react-dom'
 
 function ScrollProgress() {
   const [scrollProgress, setScrollProgress] = useState(0)
@@ -37,17 +38,30 @@ function ScrollProgress() {
     }
   }, [])
 
-  return (
-    <div className="fixed top-0 left-0 right-0 h-1 z-[9999] pointer-events-none">
+  return createPortal(
+    <div
+      style={{
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        right: 0,
+        height: '4px',
+        zIndex: 9999,
+        pointerEvents: 'none',
+        transform: 'none',
+      }}
+    >
       <div
-        className="h-full transition-all duration-150 ease-out bg-accent"
+        className="h-full bg-accent"
         style={{
           width: `${scrollProgress}%`,
-          boxShadow: '0 0 10px rgba(0, 255, 136, 0.5)'
+          boxShadow: '0 0 10px rgba(0, 255, 136, 0.5)',
+          transition: 'width 150ms ease-out',
         }}
       />
-    </div>
+    </div>,
+    document.body
   )
 }
 
-export default memo(ScrollProgress)
+export default ScrollProgress
