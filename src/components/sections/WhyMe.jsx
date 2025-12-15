@@ -1,11 +1,34 @@
 import { motion } from 'framer-motion'
-import { useState, useRef, useEffect, memo } from 'react'
+import { useState, useRef, useEffect, memo, useMemo } from 'react'
 import Section from '../layout/Section'
 
 const AnimatedPhotoWithParticles = memo(function AnimatedPhotoWithParticles() {
   const containerRef = useRef(null)
   const canvasRef = useRef(null)
   const particlesRef = useRef([])
+  const [isVisible, setIsVisible] = useState(false)
+
+  // Intersection Observer - pausovat animace když není viditelná
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach(entry => {
+          setIsVisible(entry.isIntersecting)
+        })
+      },
+      { threshold: 0.1 }
+    )
+
+    if (containerRef.current) {
+      observer.observe(containerRef.current)
+    }
+
+    return () => {
+      if (containerRef.current) {
+        observer.unobserve(containerRef.current)
+      }
+    }
+  }, [])
 
   // Particle system - kolem celé fotky
   useEffect(() => {
@@ -185,19 +208,22 @@ const AnimatedPhotoWithParticles = memo(function AnimatedPhotoWithParticles() {
   style={{
     aspectRatio: '832/1248',
     transform: 'translateX(20%)',
+    willChange: 'transform',
   }}
 >
   {/* Vertikální otáčení */}
-<div 
-  className="h-full w-full vertical-rotate" 
-  style={{ 
+<div
+  className="h-full w-full vertical-rotate"
+  style={{
     transformStyle: 'preserve-3d',
     maskImage: 'linear-gradient(to right, transparent 0%, black 30%, black 100%)',
     WebkitMaskImage: 'linear-gradient(to right, transparent 0%, black 30%, black 100%)',
+    willChange: 'transform',
+    animationPlayState: isVisible ? 'running' : 'paused',
   }}
 >
     {/* Přední strana */}
-    <div className="absolute inset-0" style={{ backfaceVisibility: 'hidden' }}>
+    <div className="absolute inset-0" style={{ backfaceVisibility: 'hidden', willChange: 'transform' }}>
       <img
   src="/lenka.webp"
   alt=""
@@ -209,6 +235,8 @@ const AnimatedPhotoWithParticles = memo(function AnimatedPhotoWithParticles() {
   style={{
     maskImage: 'linear-gradient(to right, transparent 0%, black 20%, black 100%)',
     WebkitMaskImage: 'linear-gradient(to right, transparent 0%, black 20%, black 100%)',
+    willChange: 'opacity, filter',
+    animationPlayState: isVisible ? 'running' : 'paused',
   }}
 />
     </div>
@@ -218,7 +246,8 @@ const AnimatedPhotoWithParticles = memo(function AnimatedPhotoWithParticles() {
       className="absolute inset-0"
       style={{
         backfaceVisibility: 'hidden',
-        transform: 'rotateY(180deg)'
+        transform: 'rotateY(180deg)',
+        willChange: 'transform'
       }}
     >
       <img
@@ -229,10 +258,12 @@ const AnimatedPhotoWithParticles = memo(function AnimatedPhotoWithParticles() {
   loading="lazy"
   decoding="async"
   className="h-full w-full object-cover object-[center_-120px] photo-fade"
-  style={{ 
+  style={{
     transform: 'scaleX(-1)',
     maskImage: 'linear-gradient(to left, transparent 0%, black 20%, black 100%)',
     WebkitMaskImage: 'linear-gradient(to left, transparent 0%, black 20%, black 100%)',
+    willChange: 'opacity, filter',
+    animationPlayState: isVisible ? 'running' : 'paused',
   }}
 />
     </div>
@@ -251,7 +282,7 @@ const AnimatedPhotoWithParticles = memo(function AnimatedPhotoWithParticles() {
 })
 
 export default function WhyMeSeo() {
-  const credentials = [
+  const credentials = useMemo(() => [
     {
       title: "Ani řádek kódu",
       description: "Dneska chápu pasti vibecodingu. Sama jsem do nich šlapala a zjišťovala, kudy vede cesta."
@@ -268,7 +299,7 @@ export default function WhyMeSeo() {
       title: "Učím, co sama dělám",
       description: "Nepřebírám informace, zkouším a ověřuju na vlastní kůži. Učím z toho, co funguje."
     }
-  ]
+  ], [])
 
   return (
     <Section
