@@ -1,6 +1,7 @@
+import { memo } from 'react'
 import { Check, X } from 'lucide-react'
 
-export default function FeatureListItem({ text, type = "positive" }) {
+function FeatureListItem({ text, type = "positive" }) {
   const Icon = type === "positive" ? Check : X
   const colorClass = type === "positive" ? "text-accent" : "text-error"
 
@@ -11,3 +12,5 @@ export default function FeatureListItem({ text, type = "positive" }) {
     </div>
   )
 }
+
+export default memo(FeatureListItem)

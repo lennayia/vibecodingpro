@@ -1,6 +1,7 @@
+import { memo } from 'react'
 import { motion } from 'framer-motion'
 
-export default function Card({
+function Card({
   children,
   className = "",
   background = "light",
@@ -37,3 +38,5 @@ export default function Card({
     </CardWrapper>
   )
 }
+
+export default memo(Card)

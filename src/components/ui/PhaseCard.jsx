@@ -1,6 +1,7 @@
+import { memo } from 'react'
 import { motion } from 'framer-motion'
 
-export default function PhaseCard({ phase, index }) {
+function PhaseCard({ phase, index }) {
   const { number, title, description, Icon } = phase
 
   return (
@@ -30,3 +31,5 @@ export default function PhaseCard({ phase, index }) {
     </motion.div>
   )
 }
+
+export default memo(PhaseCard)

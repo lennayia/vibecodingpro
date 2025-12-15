@@ -1,4 +1,4 @@
-import { useRef, useState, useEffect } from 'react'
+import { useRef, useState, useEffect, memo } from 'react'
 import { motion } from 'framer-motion'
 
 // Throttle utility - limits function calls to once per interval
@@ -13,7 +13,7 @@ function throttle(func, limit) {
   }
 }
 
-export default function Button({
+function Button({
   children,
   variant = "primary",
   size = "default",
@@ -75,3 +75,5 @@ export default function Button({
     </motion.button>
   )
 }
+
+export default memo(Button)

@@ -1,7 +1,7 @@
 import { motion, useInView, useMotionValue, useTransform, animate } from 'framer-motion'
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, memo } from 'react'
 
-export default function StatCard({ value, label, delay = 0 }) {
+function StatCard({ value, label, delay = 0 }) {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true })
   const count = useMotionValue(0)
@@ -58,3 +58,5 @@ export default function StatCard({ value, label, delay = 0 }) {
     </motion.div>
   )
 }
+
+export default memo(StatCard)

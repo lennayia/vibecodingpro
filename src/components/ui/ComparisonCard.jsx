@@ -1,7 +1,8 @@
+import { memo } from 'react'
 import Card from './Card'
 import FeatureListItem from './FeatureListItem'
 
-export default function ComparisonCard({ data, direction, delay, background = "light" }) {
+function ComparisonCard({ data, direction, delay, background = "light" }) {
   const { name, subtitle, type, features, quote } = data
 
   return (
@@ -38,3 +39,5 @@ export default function ComparisonCard({ data, direction, delay, background = "l
     </Card>
   )
 }
+
+export default memo(ComparisonCard)
