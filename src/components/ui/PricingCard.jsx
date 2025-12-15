@@ -177,7 +177,9 @@ function PricingCard({
         {testimonials && testimonials.map((testimonial, index) => (
           <div key={index} className="mt-4 pt-4 border-t border-gray-300 dark:border-gray-600">
             <p className="italic mb-2">{testimonial.quote}</p>
-            <p className="text-sm font-light">– {testimonial.author}</p>
+            {testimonial.author && (
+              <p className="text-sm font-light">– {testimonial.author}</p>
+            )}
           </div>
         ))}
       </div>

@@ -104,13 +104,13 @@ export const pricingPackages = [
     testimonials: [
       {
         quote: '„Za 2 hodiny jsem pochopila víc než za měsíc googlování."',
-        author: "Petra, koučka"
+        author: ""
       },
     ],
     bonuses: [
       "Osobní roadmapa v PDF"
     ],
-    discount: "300 Kč na 2 hod. další konzultace",
+    discount: "300 Kč na další 2h spolupráci",
     buttonText: "Chci VIBE",
     buttonLink: "https://online-byznys.cz/vibecoding-objednavka-vibe/",
     isPopular: false
@@ -134,7 +134,7 @@ export const pricingPackages = [
     testimonials: [
       {
         quote: '„Konečně mi někdo vysvětlil, o co go."',
-        author: "Martina, terapeutka"
+        author: ""
       }
     ],
     bonuses: [
@@ -144,7 +144,7 @@ export const pricingPackages = [
       "Nahrávky",
       "2 týdny e-mail podpora"
     ],
-    discount: "600 na 2 hod. další konzultace",
+    discount: "600 Kč na další 2h spolupráci",
     buttonText: "Chci mentoring",
     buttonLink: "https://online-byznys.cz/vibecoding-objednavka-vibecoding/",
     badgeText: "OBLÍBENĚJŠÍ",
@@ -159,23 +159,23 @@ export const pricingPackages = [
     features: [
       "<span class='font-semibold'>10x 1 hodina</span>",
       "<span class='font-semibold'>Všechno z VIBE+CODING (6h) +</span>",
-      "Co-working sessions v reálném čase (4h)",
+      "Co-working sessions (4h)",
       "Dotáhneme na produkční verzi",
-      "30 dní přímý přístup ke mně (WhatsApp)"
+      "30 dní přístup ke mně (WhatsApp)"
     ],
     resultTitle: "Výsledek:",
     resultDescription: "<ul class='list-disc pl-5 space-y-2'><li>Funkční produkt. Rozumíte mu a umíte ho rozvíjet.</li><li>Přímá linka k mentorce</li><li>Garantovaný výsledek.</li><li>Osobní vztah</li></ul>",
     testimonials: [
       {
         quote: '„Přišla jsem s nápadem, odcházela s rozjetým projektem. Nejlepší investice do podnikání, co jsem kdy udělala."',
-        author: "Katka, mentorka"
+        author: ""
       }
     ],
     bonuses: [
       "Všechny z VIBE+CODING",
-      "Check-in call (30 min) – po 2 týdnech zkontrolujeme pokrok"
+      "Check-in call (30 min) po 2 týdnech"
     ],
-    discount: "1 000 na 2 hod. další konzultace",
+    discount: "1 000 Kč na další 2h spolupráci",
     buttonText: "Chci VIP",
     buttonLink: "https://online-byznys.cz/vibecoding-objednavka-vibecoding-vip/",
     badgeText: "EXKLUZIVNÍ",
