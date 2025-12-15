@@ -75,7 +75,7 @@ export default function ImagineSection() {
                 viewport={{ once: true }}
                 className="leading-relaxed font-semibold text-center text-xl"
               >
-                Možná je to realita.
+                I tohle může být váš den.
               </motion.p>
               <motion.div
                 initial={{ opacity: 0, y: 20 }}

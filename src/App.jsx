@@ -73,8 +73,8 @@ function App() {
 
         <main id="main-content" role="main">
           <Hero />
-          <Comparison />
           <WhatYouCanCreate />
+          <Comparison />
           <PortfolioHolographic />
           <WhatIsVibecoding />
           <WhyOwnApp />
