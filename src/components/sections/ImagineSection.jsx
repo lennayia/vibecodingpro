@@ -5,32 +5,33 @@ import Button from '../ui/Button'
 import { fadeIn, slideUp } from '../../constants/animations'
 import { scrollToSection } from '../../utils/scroll'
 
+const items = [
+  {
+    text: "Je ráno a vy kontrolujete telefon. ",
+    highlight: "Ooo:), 6 nových klientek se registrovalo přes noc!",
+    rest: " Jedna VIP schůzka, tři emaily. Vaše aplikace klientkám poskytla přesně to, co potřebovaly."
+  },
+  {
+    text: "",
+    highlight: "Nemusíte klientky odmítat",
+    rest: " kvůli nedostatku času. Vaše kapacita je neomezená. Pomáháte desítkám, možná stovkám lidí současně – přesto každý dostává osobní péči."
+  },
+  {
+    text: "Vaše klientky vás milují – aplikace jim ",
+    highlight: "šetří čas, dává jim výsledky",
+    rest: " a je k dispozici kdykoliv potřebují. Doporučují vás dál, protože jste inovativní a profesionální."
+  },
+  {
+    text: "Místo aby vás práce vyčerpávala, ",
+    highlight: "cítíte se naplněná a svobodná.",
+    rest: " Máte čas na rodinu, koníčky, dovolenou. A váš příjem roste, i když si dopřejete volno."
+  }
+]
+
 export default function ImagineSection() {
   const handleClick = useCallback(() => {
     scrollToSection('phases-section')
   }, [])
-  const items = [
-    {
-      text: "Je ráno a vy kontrolujete telefon. ",
-      highlight: "Ooo:), 6 nových klientek se registrovalo přes noc!",
-      rest: " Jedna VIP schůzka, tři emaily. Vaše aplikace klientkám poskytla přesně to, co potřebovaly."
-    },
-    {
-      text: "",
-      highlight: "Nemusíte klientky odmítat",
-      rest: " kvůli nedostatku času. Vaše kapacita je neomezená. Pomáháte desítkám, možná stovkám lidí současně – přesto každý dostává osobní péči."
-    },
-    {
-      text: "Vaše klientky vás milují – aplikace jim ",
-      highlight: "šetří čas, dává jim výsledky",
-      rest: " a je k dispozici kdykoliv potřebují. Doporučují vás dál, protože jste inovativní a profesionální."
-    },
-    {
-      text: "Místo aby vás práce vyčerpávala, ",
-      highlight: "cítíte se naplněná a svobodná.",
-      rest: " Máte čas na rodinu, koníčky, dovolenou. A váš příjem roste, i když si dopřejete volno."
-    }
-  ]
 
   return (
     <Section background="light" className="min-h-screen flex items-center justify-center !pt-4 !pb-8 md:!pt-4 md:!pb-8 lg:!pt-8 lg:!pb-16" showScrollIndicator={true}>

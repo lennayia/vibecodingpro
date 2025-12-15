@@ -2,25 +2,26 @@ import { motion } from 'framer-motion'
 import Section from '../layout/Section'
 import { fadeIn, slideUp } from '../../constants/animations'
 
+const benefits = [
+  {
+    title: "Pracuje za vás 24/7",
+    description: "Spíte, přesto pomáháte. Aplikace nespí nikdy."
+  },
+  {
+    title: "Konec opakování dokola",
+    description: "Už žádné \„Tohle jsem říkala snad stokrát.\" Teď to řekne appka."
+  },
+  {
+    title: "Škálujete bez vyhoření",
+    description: "Rostete, ale nedřete. Tak to má být."
+  },
+  {
+    title: "Vypadáte profi",
+    description: "G-sheets jsou fajn. Ale vlastní appka – to je jiná liga!"
+  }
+]
+
 export default function WhyOwnAppSeo() {
-  const benefits = [
-    {
-      title: "Pracuje za vás 24/7",
-      description: "Spíte, přesto pomáháte. Aplikace nespí nikdy."
-    },
-    {
-      title: "Konec opakování dokola",
-      description: "Už žádné \„Tohle jsem říkala snad stokrát.\" Teď to řekne appka."
-    },
-    {
-      title: "Škálujete bez vyhoření",
-      description: "Rostete, ale nedřete. Tak to má být."
-    },
-    {
-      title: "Vypadáte profi",
-      description: "G-sheets jsou fajn. Ale vlastní appka – to je jiná liga!"
-    }
-  ]
 
   return (
     <Section background="dark" className="min-h-screen flex items-center justify-center !py-4 md:!py-8 lg:!py-12" showScrollIndicator={true}>

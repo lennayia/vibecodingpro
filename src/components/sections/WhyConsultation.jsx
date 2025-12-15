@@ -6,23 +6,24 @@ import Button from '../ui/Button'
 import { fadeIn, slideUp } from '../../constants/animations'
 import { scrollToSection } from '../../utils/scroll'
 
+const withoutConsultation = [
+  "Ztratíte měsíce pokusů a omylů",
+  "Investujete do špatných nástrojů",
+  "Vzdáte to předčasně z důvodu frustrace",
+  "Vaše konkurence vás předběhne"
+]
+
+const withConsultation = [
+  "Získáte jasnou roadmapu od nultého dne",
+  "Vyhnete se většině drahých chyb",
+  "Máte podporujícího průvodce celou cestou",
+  "Začínáte pracovat na své podnikatelské budoucnosti a polopasivním příjmu"
+]
+
 export default function WhyConsultation() {
   const handleClick = useCallback(() => {
     scrollToSection('pricing-packages-section')
   }, [])
-  const withoutConsultation = [
-    "Ztratíte měsíce pokusů a omylů",
-    "Investujete do špatných nástrojů",
-    "Vzdáte to předčasně z důvodu frustrace",
-    "Vaše konkurence vás předběhne"
-  ]
-
-  const withConsultation = [
-    "Získáte jasnou roadmapu od nultého dne",
-    "Vyhnete se většině drahých chyb",
-    "Máte podporujícího průvodce celou cestou",
-    "Začínáte pracovat na své podnikatelské budoucnosti a polopasivním příjmu"
-  ]
 
   return (
     <Section background="dark" className="min-h-screen flex items-center justify-center !pt-4 !pb-8 md:!pt-4 md:!pb-8 lg:!pt-8 lg:!pb-16" showScrollIndicator={true}>
