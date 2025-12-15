@@ -7,15 +7,6 @@ function PortfolioHolographic() {
   const containerRef = useRef(null)
   const [isDragging, setIsDragging] = useState(false)
   const [isVisible, setIsVisible] = useState(false)
-  const [isMobile, setIsMobile] = useState(false)
-
-  // Detect mobile on mount
-  useEffect(() => {
-    setIsMobile(window.innerWidth < 768)
-    const handleResize = () => setIsMobile(window.innerWidth < 768)
-    window.addEventListener('resize', handleResize)
-    return () => window.removeEventListener('resize', handleResize)
-  }, [])
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -78,7 +69,7 @@ function PortfolioHolographic() {
           style={{
             background: 'radial-gradient(circle at 50% 50%, rgba(0, 255, 136, 0.05) 0%, transparent 70%)',
           }}
-          animate={(isVisible && !isMobile) ? {
+          animate={isVisible ? {
             scale: [1, 1.2, 1],
             opacity: [0.3, 0.5, 0.3]
           } : {}}
@@ -116,29 +107,30 @@ function PortfolioHolographic() {
             8 funkčních aplikací pro reálné klientky. Žádný řádek kódu. Jen vize, strategie a AI.
           </p>
 
-          {/* 3D Holographic Carousel - disabled on mobile for performance */}
-          {isMobile ? (
-            <div className="grid grid-cols-2 gap-4 max-w-2xl mx-auto px-4">
-              {projects.map((project, index) => (
-                <div
-                  key={index}
-                  className="rounded-2xl p-6 bg-gray-900/50 border-2 border-accent/30 backdrop-blur-sm"
+          {/* Mobile: Simple grid, Desktop: 3D Carousel */}
+          {/* Mobile grid - hidden on desktop with CSS */}
+          <div className="md:hidden grid grid-cols-2 gap-4 max-w-2xl mx-auto px-4">
+            {projects.map((project, index) => (
+              <div
+                key={index}
+                className="rounded-2xl p-6 bg-gray-900/50 border-2 border-accent/30 backdrop-blur-sm"
+              >
+                <h3
+                  className="text-lg font-bold text-center"
+                  style={{
+                    color: 'rgba(0, 255, 136, 0.9)',
+                    textShadow: '0 0 10px rgba(0, 255, 136, 0.3)',
+                  }}
                 >
-                  <h3
-                    className="text-lg font-bold text-center"
-                    style={{
-                      color: 'rgba(0, 255, 136, 0.9)',
-                      textShadow: '0 0 10px rgba(0, 255, 136, 0.3)',
-                    }}
-                  >
-                    {project.name}
-                  </h3>
-                </div>
-              ))}
-            </div>
-          ) : (
-            <>
-              <motion.div
+                  {project.name}
+                </h3>
+              </div>
+            ))}
+          </div>
+
+          {/* Desktop 3D carousel - hidden on mobile with CSS */}
+          <div className="hidden md:block">
+            <motion.div
                 className="relative h-[500px] md:h-[700px] flex items-center justify-center cursor-grab active:cursor-grabbing"
                 style={{ willChange: 'transform' }}
                 drag="x"
@@ -165,13 +157,12 @@ function PortfolioHolographic() {
                 </div>
               </motion.div>
 
-              <div className="flex justify-center gap-4 text-sm text-gray-400 mt-8">
-                <span>↓ Scrollujte ↓</span>
-                <span>|</span>
-                <span>← Táhněte →</span>
-              </div>
-            </>
-          )}
+            <div className="flex justify-center gap-4 text-sm text-gray-400 mt-8">
+              <span>↓ Scrollujte ↓</span>
+              <span>|</span>
+              <span>← Táhněte →</span>
+            </div>
+          </div>
         </motion.div>
       </div>
 
