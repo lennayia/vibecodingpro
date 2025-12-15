@@ -31,6 +31,8 @@ function Navigation({ isDark, setIsDark }) {
           <img
             src={isDark ? "/vibecoding-logo-bile.webp" : "/vibecoding-logo.webp"}
             alt="Vibecoding"
+            width="40"
+            height="40"
             className="h-10 w-auto"
           />
           <span>Vibe</span>
