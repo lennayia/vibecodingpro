@@ -3,6 +3,7 @@ import { useCallback } from 'react'
 import Section from '../layout/Section'
 import Card from '../ui/Card'
 import Button from '../ui/Button'
+import { fadeIn, slideUp } from '../../constants/animations'
 
 export default function WhyConsultation() {
   const handleClick = useCallback(() => {
@@ -25,11 +26,7 @@ export default function WhyConsultation() {
   return (
     <Section background="dark" className="min-h-screen flex items-center justify-center !pt-4 !pb-8 md:!pt-4 md:!pb-8 lg:!pt-8 lg:!pb-16" showScrollIndicator={true}>
       <div>
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-        >
+        <motion.div {...fadeIn}>
           <h2 className="font-display font-bold mb-8 text-center" style={{ lineHeight: '1.3' }}>
             Co vám služba přinese
           </h2>
@@ -91,10 +88,8 @@ export default function WhyConsultation() {
 
           <motion.div
             className="mt-12 text-center"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            {...slideUp}
             transition={{ delay: 0.3 }}
-            viewport={{ once: true }}
           >
             <p className="mb-4 text-xl font-light">
               Investicí do spolupráce uspoříte čas, peníze i nervy

@@ -4,16 +4,13 @@ import Card from '../ui/Card'
 import Badge from '../ui/Badge'
 import StatCard from '../ui/StatCard'
 import { benefits } from '../../constants/data'
+import { fadeIn, slideUp } from '../../constants/animations'
 
 export default function CaseStudySeo() {
   return (
     <Section background="light" className="min-h-screen flex items-center justify-center" showScrollIndicator={true}>
       <div>
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-        >
+        <motion.div {...fadeIn}>
           <div className="text-center mb-6">
             <Badge>Vibecoding mění hru</Badge>
           </div>
@@ -48,10 +45,8 @@ export default function CaseStudySeo() {
           <div className="mb-16">
             <motion.p
               className="text-center font-light italic max-w-3xl mx-auto mb-12"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              {...slideUp}
               transition={{ delay: 0.4 }}
-              viewport={{ once: true }}
             >
               „Cítím se svobodná. Moje práce pomáhá lidem, i když spím. A já mám konečně čas žít. To je nejvíc."
             </motion.p>

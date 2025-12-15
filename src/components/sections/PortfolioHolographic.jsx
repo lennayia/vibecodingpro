@@ -1,6 +1,7 @@
 import { motion, useScroll, useTransform, useMotionValue, useSpring } from 'framer-motion'
 import { useRef, useState, memo, useMemo, useEffect, useCallback } from 'react'
 import Section from '../layout/Section'
+import { fadeIn, slideUp } from '../../constants/animations'
 
 function PortfolioHolographic() {
   const containerRef = useRef(null)
@@ -91,11 +92,7 @@ function PortfolioHolographic() {
       </div>
 
       <div className="w-full relative z-10" ref={containerRef}>
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-        >
+        <motion.div {...fadeIn}>
           <motion.h2
             className="font-display font-bold mb-8 text-center"
             style={{
@@ -188,10 +185,8 @@ function PortfolioHolographic() {
       {/* Separovaný text MIMO holografický container */}
       <motion.div
         className="mt-16 max-w-3xl mx-auto text-center space-y-4 relative z-50"
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
+        {...slideUp}
         transition={{ delay: 0.5 }}
-        viewport={{ once: true }}
       >
         <p className="text-xl">Trochu složitější projekty, ale můžete začít jednodušeji.</p>
         <p className="text-xl">Třeba lehčí webovkou, než je tahle.</p>

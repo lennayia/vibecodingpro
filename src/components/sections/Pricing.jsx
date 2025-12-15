@@ -4,27 +4,22 @@ import PricingCard from '../ui/PricingCard'
 import CountdownTimer from '../ui/CountdownTimer'
 import { BadgeCheck, Clock } from 'lucide-react'
 import { pricingPackages } from '../../constants/data'
+import { fadeIn, slideUp } from '../../constants/animations'
 
 export default function Pricing() {
 
   return (
     <Section background="dark" className="min-h-screen flex items-center justify-center" showScrollIndicator={true}>
       <div id="pricing-section">
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-        >
+        <motion.div {...fadeIn}>
           <h2 className="font-display font-bold mb-16 text-center" style={{ lineHeight: '1.3' }}>
             Kolik to stojí?
           </h2>
 
           <motion.div
             className="mb-16 max-w-3xl mx-auto"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            {...slideUp}
             transition={{ delay: 0.2 }}
-            viewport={{ once: true }}
           >
             <div className="p-8 rounded-2xl bg-gray-100 dark:bg-[#05050f] border border-gray-200 dark:border-gray-700">
               <div className="flex items-center justify-center gap-3 mb-6">
@@ -71,11 +66,7 @@ export function PricingPackages() {
   return (
     <Section background="light" className="min-h-screen flex items-center justify-center" showScrollIndicator={true}>
       <div id="pricing-packages-section">
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-        >
+        <motion.div {...fadeIn}>
           <h3 className="font-display font-bold mb-16 text-center">
             Vyberte si cestu, která vám sedí
           </h3>
@@ -100,17 +91,13 @@ export function PricingGuarantee() {
     <Section background="dark" className="flex items-center justify-center !pt-2 !pb-12 md:!pt-2 md:!pb-12 lg:!pt-4 lg:!pb-16" showScrollIndicator={true}>
       <div className="w-full">
         <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
+          {...fadeIn}
           className="w-full"
         >
           <motion.div
             className="mb-16 text-center max-w-3xl mx-auto"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            {...slideUp}
             transition={{ delay: 0.5 }}
-            viewport={{ once: true }}
           >
             <p>
               Nevíte si rady? <a href="#" className="underline hover:no-underline font-semibold">Napište mi,</a> pomůžu vám vybrat. Možná vám pomůže záruka vrácení peněz nebo odpovědi na otázky, které můžou vzbuzovat obavy.
@@ -119,10 +106,8 @@ export function PricingGuarantee() {
 
           <motion.div
             className="max-w-3xl mx-auto"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            {...slideUp}
             transition={{ delay: 0.6 }}
-            viewport={{ once: true }}
           >
             <div className="pt-2 pb-10 px-8 rounded-2xl bg-gray-50 dark:bg-[#05050f] border-2 border-gray-200 dark:border-gray-700">
               <div className="flex items-center justify-center gap-3 mb-4">

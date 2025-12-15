@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion'
 import Section from '../layout/Section'
+import { fadeIn, slideUp } from '../../constants/animations'
 
 export default function WhyOwnAppSeo() {
   const benefits = [
@@ -9,7 +10,7 @@ export default function WhyOwnAppSeo() {
     },
     {
       title: "Konec opakování dokola",
-      description: "Už žádné \„Tohle jsem říkala snad stokrát.\“ Teď to řekne appka."
+      description: "Už žádné \„Tohle jsem říkala snad stokrát.\" Teď to řekne appka."
     },
     {
       title: "Škálujete bez vyhoření",
@@ -24,11 +25,7 @@ export default function WhyOwnAppSeo() {
   return (
     <Section background="dark" className="min-h-screen flex items-center justify-center !py-4 md:!py-8 lg:!py-12" showScrollIndicator={true}>
       <div>
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-        >
+        <motion.div {...fadeIn}>
           <h2 className="font-display font-bold mb-16 text-center" style={{ lineHeight: '1.3' }}>
             Proč mít třeba vlastní aplikaci?
           </h2>
@@ -38,10 +35,8 @@ export default function WhyOwnAppSeo() {
               <motion.div
                 key={index}
                 className="border-b border-gray-700 pb-8 last:border-b-0"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                {...slideUp}
                 transition={{ delay: index * 0.1 }}
-                viewport={{ once: true }}
               >
                 <div className="grid md:grid-cols-2 gap-6 items-end text-left pl-[10px]">
                   <h3 className="font-display font-bold">
