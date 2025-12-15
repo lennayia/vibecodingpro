@@ -107,31 +107,27 @@ function PortfolioHolographic() {
             8 funkčních aplikací pro reálné klientky. Žádný řádek kódu. Jen vize, strategie a AI.
           </p>
 
-          {/* Mobile only (<640px): Simple image grid with project images */}
-          <div className="sm:hidden grid grid-cols-2 gap-6 max-w-2xl mx-auto px-4">
+          {/* Mobile: Compact image grid */}
+          <div className="sm:hidden grid grid-cols-2 gap-3 max-w-lg mx-auto px-4">
             {projects.map((project, index) => (
-              <div key={index} className="relative">
-                {/* Project image */}
-                <img
-                  src={project.image}
-                  alt={project.name}
-                  loading="lazy"
-                  className="w-full h-auto rounded-xl shadow-2xl"
-                  style={{
-                    boxShadow: '0 0 30px rgba(0, 255, 136, 0.3)',
-                  }}
-                />
-                {/* Project name overlay */}
-                <div className="mt-3 text-center">
-                  <h3
-                    className="font-display font-bold text-lg"
+              <div key={index} className="group">
+                <div className="relative overflow-hidden rounded-lg">
+                  <img
+                    src={project.image}
+                    alt={project.name}
+                    loading="lazy"
+                    className="w-full h-auto object-cover"
                     style={{
-                      color: 'rgb(0, 255, 136)',
-                      textShadow: '0 0 10px rgba(0, 255, 136, 0.5)',
+                      filter: 'brightness(0.9)',
+                      boxShadow: '0 4px 12px rgba(0, 255, 136, 0.2)',
                     }}
-                  >
-                    {project.name}
-                  </h3>
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                  <div className="absolute bottom-0 left-0 right-0 p-2">
+                    <p className="text-accent text-sm font-bold text-center drop-shadow-lg">
+                      {project.name}
+                    </p>
+                  </div>
                 </div>
               </div>
             ))}
