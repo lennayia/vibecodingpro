@@ -108,42 +108,65 @@ function PortfolioHolographic() {
           </p>
 
           {/* Mobile only (<640px): Static holographic cards */}
-          <div className="sm:hidden grid grid-cols-2 gap-4 max-w-2xl mx-auto px-4 relative" style={{ minHeight: '500px' }}>
+          <div className="sm:hidden space-y-8 max-w-md mx-auto px-4">
             {projects.map((project, index) => (
-              <div
-                key={index}
-                className="relative rounded-2xl overflow-hidden border-2 border-accent/30 shadow-2xl bg-gray-900/50 backdrop-blur-sm"
-                style={{
-                  aspectRatio: '4/3'
-                }}
-              >
-                {/* Holographic glow - static */}
+              <div key={index} className="relative w-full aspect-[4/3]">
+                {/* Holographic glow - static but visible */}
                 <div
-                  className="absolute -inset-2 rounded-3xl opacity-30"
+                  className="absolute -inset-4 rounded-3xl"
                   style={{
-                    background: 'linear-gradient(45deg, rgba(0, 255, 136, 0.3), rgba(0, 200, 255, 0.3))',
-                    filter: 'blur(15px)',
+                    background: 'linear-gradient(45deg, rgba(0, 255, 136, 0.4), rgba(0, 200, 255, 0.4))',
+                    filter: 'blur(20px)',
+                    opacity: 0.4,
                   }}
                 />
 
-                {/* Card content */}
-                <div className="relative w-full h-full flex items-center justify-center p-4">
-                  <h3
-                    className="text-lg font-bold text-center"
+                {/* Main card */}
+                <div className="relative w-full h-full rounded-2xl overflow-hidden border-2 border-accent/30 shadow-2xl bg-gray-900/50 backdrop-blur-sm">
+                  {/* Scanlines effect */}
+                  <div
+                    className="absolute inset-0 pointer-events-none opacity-20"
                     style={{
-                      color: 'rgba(0, 255, 136, 0.9)',
-                      textShadow: '0 0 10px rgba(0, 255, 136, 0.3)',
+                      backgroundImage: 'repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(0, 255, 136, 0.1) 3px, rgba(0, 255, 136, 0.1) 6px)',
                     }}
-                  >
-                    {project.name}
-                  </h3>
-                </div>
+                  />
 
-                {/* Corner accents */}
-                <div className="absolute top-2 left-2 w-3 h-3 border-t-2 border-l-2 border-accent/50" />
-                <div className="absolute top-2 right-2 w-3 h-3 border-t-2 border-r-2 border-accent/50" />
-                <div className="absolute bottom-2 left-2 w-3 h-3 border-b-2 border-l-2 border-accent/50" />
-                <div className="absolute bottom-2 right-2 w-3 h-3 border-b-2 border-r-2 border-accent/50" />
+                  {/* Content */}
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="w-full h-full bg-gradient-to-br from-gray-800 to-gray-900 relative">
+                      <div className="absolute inset-0 flex items-center justify-center">
+                        <h3
+                          className="font-display font-bold text-3xl text-center px-4"
+                          style={{
+                            color: 'rgba(0, 255, 136, 0.8)',
+                            textShadow: '0 0 20px rgba(0, 255, 136, 0.5)',
+                          }}
+                        >
+                          {project.name}
+                        </h3>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Corner accents */}
+                  <div className="absolute top-2 left-2 w-4 h-4 border-t-2 border-l-2 border-accent/50" />
+                  <div className="absolute top-2 right-2 w-4 h-4 border-t-2 border-r-2 border-accent/50" />
+                  <div className="absolute bottom-2 left-2 w-4 h-4 border-b-2 border-l-2 border-accent/50" />
+                  <div className="absolute bottom-2 right-2 w-4 h-4 border-b-2 border-r-2 border-accent/50" />
+
+                  {/* Bottom name bar */}
+                  <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/90 via-black/50 to-transparent backdrop-blur-sm border-t border-accent/20">
+                    <h4
+                      className="font-display font-bold text-lg text-center"
+                      style={{
+                        color: 'rgba(0, 255, 136, 0.9)',
+                        textShadow: '0 0 10px rgba(0, 255, 136, 0.3)',
+                      }}
+                    >
+                      {project.name}
+                    </h4>
+                  </div>
+                </div>
               </div>
             ))}
           </div>

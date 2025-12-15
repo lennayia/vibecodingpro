@@ -7,20 +7,20 @@ import Footer from './components/layout/Footer'
 import ScrollProgress from './components/ui/ScrollProgress'
 import ScrollToTop from './components/ui/ScrollToTop'
 
-// Only Hero is above the fold - load immediately
+// Critical sections - load immediately for visual quality
 import Hero from './components/sections/Hero'
+import WhatYouCanCreate from './components/sections/WhatYouCanCreate'
+import Comparison from './components/sections/Comparison'
+import PortfolioHolographic from './components/sections/PortfolioHolographic'
+import WhatIsVibecoding from './components/sections/WhatIsVibecoding'
+import WhyOwnApp from './components/sections/WhyOwnApp'
+import ImagineSection from './components/sections/ImagineSection'
+import CaseStudy from './components/sections/CaseStudy'
+import Phases from './components/sections/Phases'
+import WhyConsultation from './components/sections/WhyConsultation'
+import WhyMe from './components/sections/WhyMe'
 
-// Lazy load everything else for better initial load performance
-const WhatYouCanCreate = lazy(() => import('./components/sections/WhatYouCanCreate'))
-const Comparison = lazy(() => import('./components/sections/Comparison'))
-const PortfolioHolographic = lazy(() => import('./components/sections/PortfolioHolographic'))
-const WhatIsVibecoding = lazy(() => import('./components/sections/WhatIsVibecoding'))
-const WhyOwnApp = lazy(() => import('./components/sections/WhyOwnApp'))
-const ImagineSection = lazy(() => import('./components/sections/ImagineSection'))
-const CaseStudy = lazy(() => import('./components/sections/CaseStudy'))
-const Phases = lazy(() => import('./components/sections/Phases'))
-const WhyConsultation = lazy(() => import('./components/sections/WhyConsultation'))
-const WhyMe = lazy(() => import('./components/sections/WhyMe'))
+// Only lazy load bottom sections (below the fold)
 const Bonuses = lazy(() => import('./components/sections/BonusesTabs'))
 const Pricing = lazy(() => import('./components/sections/Pricing'))
 const PricingPackages = lazy(() => import('./components/sections/Pricing').then(module => ({ default: module.PricingPackages })))
@@ -51,17 +51,17 @@ function App() {
 
         <main id="main-content" role="main">
           <Hero />
-          <Suspense fallback={<div className="min-h-[400px]" />}>
-            <WhatYouCanCreate />
-            <Comparison />
-            <PortfolioHolographic />
-            <WhatIsVibecoding />
-            <WhyOwnApp />
-            <ImagineSection />
-            <CaseStudy />
-            <Phases />
-            <WhyConsultation />
-            <WhyMe />
+          <WhatYouCanCreate />
+          <Comparison />
+          <PortfolioHolographic />
+          <WhatIsVibecoding />
+          <WhyOwnApp />
+          <ImagineSection />
+          <CaseStudy />
+          <Phases />
+          <WhyConsultation />
+          <WhyMe />
+          <Suspense fallback={<div className="min-h-screen" />}>
             <Bonuses />
             <Pricing />
             <PricingPackages />
