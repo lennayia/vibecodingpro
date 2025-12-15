@@ -29,47 +29,37 @@
     <link rel="icon" type="image/webp" href="/vibecoding-logo.webp" />
     <link rel="apple-touch-icon" href="/vibecoding-logo.webp" />
 
-    <!-- DNS Prefetch for external resources -->
-    <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
-    <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
-
-    <!-- Fonts - Optimized for performance -->
+    <!-- Fonts - Simple and reliable -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <!-- Preload critical fonts for faster FCP -->
-    <link
-      rel="preload"
-      as="style"
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Manrope:wght@600;700;800&display=swap"
-    />
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Manrope:wght@600;700;800&display=swap"
       rel="stylesheet"
-      media="print"
-      onload="this.media='all'"
     />
     <style>
-      /* Font display fallback for better CLS */
-      @font-face {
-        font-family: 'Inter';
-        font-display: optional;
-      }
-      @font-face {
-        font-family: 'Manrope';
-        font-display: optional;
-      }
-      /* System font fallback */
-      body {
-        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-      }
       /* Prevent CLS - reserve space for images */
       img {
         max-width: 100%;
         height: auto;
       }
-      /* Minimize layout shift from animations */
-      .font-display {
-        font-family: 'Manrope', ui-sans-serif, system-ui, sans-serif;
+      /* Prevent layout shift during loading */
+      body {
+        min-height: 100vh;
+      }
+      /* Reserve minimum height for sections to prevent CLS */
+      section {
+        min-height: 400px;
+      }
+      /* Optimize animations to prevent layout shifts */
+      [class*="motion"] {
+        will-change: transform, opacity;
+      }
+      /* Ensure framer-motion animations don't cause layout shifts */
+      [style*="opacity: 0"] {
+        visibility: hidden;
+      }
+      [style*="opacity: 1"] {
+        visibility: visible;
       }
     </style>
     <noscript>
