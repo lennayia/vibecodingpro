@@ -137,79 +137,78 @@ const AnimatedPhotoWithParticles = memo(function AnimatedPhotoWithParticles() {
       />
 
       <div
-  className="absolute inset-y-0 right-0 w-1/3 md:w-1/2 lg:w-2/3 overflow-hidden"
-  style={{
-    aspectRatio: '832/1248',
-    transform: 'translateX(20%)',
-    willChange: 'transform',
-  }}
->
-  {/* Vertikální otáčení - disabled on mobile for performance */}
-<div
-  className={isMobile ? "h-full w-full" : "h-full w-full vertical-rotate"}
-  style={{
-    transformStyle: 'preserve-3d',
-    maskImage: 'linear-gradient(to right, transparent 0%, black 30%, black 100%)',
-    WebkitMaskImage: 'linear-gradient(to right, transparent 0%, black 30%, black 100%)',
-    willChange: 'transform',
-    animationPlayState: (isVisible && !isMobile) ? 'running' : 'paused',
-  }}
->
-    {/* Přední strana */}
-    <div className="absolute inset-0" style={{ backfaceVisibility: 'hidden', willChange: 'transform' }}>
-      <img
-  src="/lenka.webp"
-  alt=""
-  width="832"
-  height="1248"
-  loading="lazy"
-  decoding="async"
-  className={isMobile ? "h-full w-full object-cover object-center md:object-[center_-60px] lg:object-[center_-120px]" : "h-full w-full object-cover object-center md:object-[center_-60px] lg:object-[center_-120px] photo-fade"}
-  style={{
-    maskImage: 'linear-gradient(to right, transparent 0%, black 20%, black 100%)',
-    WebkitMaskImage: 'linear-gradient(to right, transparent 0%, black 20%, black 100%)',
-    willChange: 'opacity, filter',
-    animationPlayState: (isVisible && !isMobile) ? 'running' : 'paused',
-  }}
-/>
-    </div>
+        className="absolute inset-y-0 right-0 w-1/3 md:w-1/2 lg:w-2/3 overflow-hidden"
+        style={{
+          aspectRatio: '832/1248',
+          transform: 'translateX(20%)',
+          willChange: 'transform',
+        }}
+      >
+        {/* Vertikální otáčení - disabled on mobile for performance */}
+        <div
+          className={isMobile ? "h-full w-full" : "h-full w-full vertical-rotate"}
+          style={{
+            transformStyle: 'preserve-3d',
+            maskImage: 'linear-gradient(to right, transparent 0%, black 30%, black 100%)',
+            WebkitMaskImage: 'linear-gradient(to right, transparent 0%, black 30%, black 100%)',
+            willChange: 'transform',
+            animationPlayState: (isVisible && !isMobile) ? 'running' : 'paused',
+          }}
+        >
+          {/* Přední strana */}
+          <div className="absolute inset-0" style={{ backfaceVisibility: 'hidden', willChange: 'transform' }}>
+            <img
+              src="/lenka.webp"
+              alt=""
+              width="832"
+              height="1248"
+              loading="lazy"
+              decoding="async"
+              className={isMobile ? "h-full w-full object-cover object-center md:object-[center_-60px] lg:object-[center_-120px]" : "h-full w-full object-cover object-center md:object-[center_-60px] lg:object-[center_-120px] photo-fade"}
+              style={{
+                maskImage: 'linear-gradient(to right, transparent 0%, black 20%, black 100%)',
+                WebkitMaskImage: 'linear-gradient(to right, transparent 0%, black 20%, black 100%)',
+                willChange: 'opacity, filter',
+                animationPlayState: (isVisible && !isMobile) ? 'running' : 'paused',
+              }}
+            />
+          </div>
 
-    {/* Zadní strana - zrcadlově */}
-    <div
-      className="absolute inset-0"
-      style={{
-        backfaceVisibility: 'hidden',
-        transform: 'rotateY(180deg)',
-        willChange: 'transform'
-      }}
-    >
-      <img
-  src="/lenka.webp"
-  alt=""
-  width="832"
-  height="1248"
-  loading="lazy"
-  decoding="async"
-  className={isMobile ? "h-full w-full object-cover object-center md:object-[center_-60px] lg:object-[center_-120px]" : "h-full w-full object-cover object-center md:object-[center_-60px] lg:object-[center_-120px] photo-fade"}
-  style={{
-    transform: 'scaleX(-1)',
-    maskImage: 'linear-gradient(to left, transparent 0%, black 20%, black 100%)',
-    WebkitMaskImage: 'linear-gradient(to left, transparent 0%, black 20%, black 100%)',
-    willChange: 'opacity, filter',
-    animationPlayState: (isVisible && !isMobile) ? 'running' : 'paused',
-  }}
-/>
-    </div>
-  </div>
+          {/* Zadní strana - zrcadlově */}
+          <div
+            className="absolute inset-0"
+            style={{
+              backfaceVisibility: 'hidden',
+              transform: 'rotateY(180deg)',
+              willChange: 'transform'
+            }}
+          >
+            <img
+              src="/lenka.webp"
+              alt=""
+              width="832"
+              height="1248"
+              loading="lazy"
+              decoding="async"
+              className={isMobile ? "h-full w-full object-cover object-center md:object-[center_-60px] lg:object-[center_-120px]" : "h-full w-full object-cover object-center md:object-[center_-60px] lg:object-[center_-120px] photo-fade"}
+              style={{
+                transform: 'scaleX(-1)',
+                maskImage: 'linear-gradient(to left, transparent 0%, black 20%, black 100%)',
+                WebkitMaskImage: 'linear-gradient(to left, transparent 0%, black 20%, black 100%)',
+                willChange: 'opacity, filter',
+                animationPlayState: (isVisible && !isMobile) ? 'running' : 'paused',
+              }}
+            />
+          </div>
+        </div>
+      </div>
 
-  </div>
-
-      <div 
-  className="absolute inset-0 pointer-events-none" 
-  style={{
-    background: 'linear-gradient(to right, #05050f 0%, #05050f 45%, transparent 60%)',
-  }}
-/>
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background: 'linear-gradient(to right, #05050f 0%, #05050f 45%, transparent 60%)',
+        }}
+      />
     </div>
   )
 })
