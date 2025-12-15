@@ -30,8 +30,8 @@ export default function Button({
       const distanceY = e.clientY - buttonCenterY
       const distance = Math.sqrt(distanceX ** 2 + distanceY ** 2)
 
-      const maxDistance = 100
-      const maxMove = 10
+      const maxDistance = 150
+      const maxMove = 20
 
       if (distance < maxDistance) {
         const strength = 1 - distance / maxDistance
@@ -43,8 +43,8 @@ export default function Button({
       }
     }
 
-    window.addEventListener('mousemove', handleMouseMove)
-    return () => window.removeEventListener('mousemove', handleMouseMove)
+    document.addEventListener('mousemove', handleMouseMove)
+    return () => document.removeEventListener('mousemove', handleMouseMove)
   }, [])
 
   return (

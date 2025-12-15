@@ -1,6 +1,11 @@
 import { useEffect, useRef } from 'react'
 
-export default function ParticleBackground() {
+export default function ParticleBackground({
+  particleCount: customParticleCount,
+  showConnections = true,
+  mouseInteraction = true,
+  opacity = 0.6
+}) {
   const canvasRef = useRef(null)
   const particles = useRef([])
   const mousePos = useRef({ x: null, y: null })
@@ -18,7 +23,7 @@ export default function ParticleBackground() {
 
     // Responsive particle count
     const isMobile = width < 768
-    const particleCount = isMobile ? 20 : 80
+    const particleCount = customParticleCount || (isMobile ? 20 : 80)
 
     canvas.width = width
     canvas.height = height
@@ -54,8 +59,8 @@ export default function ParticleBackground() {
         this.x += this.vx
         this.y += this.vy
 
-        // Mouse repulsion
-        if (mousePos.current.x !== null && mousePos.current.y !== null) {
+        // Mouse repulsion (only if enabled)
+        if (mouseInteraction && mousePos.current.x !== null && mousePos.current.y !== null) {
           const dx = mousePos.current.x - this.x
           const dy = mousePos.current.y - this.y
           const distance = Math.sqrt(dx * dx + dy * dy)
@@ -127,7 +132,10 @@ export default function ParticleBackground() {
         particle.draw()
       })
 
-      drawConnections()
+      // Draw connections only if enabled
+      if (showConnections) {
+        drawConnections()
+      }
 
       animationFrameId.current = requestAnimationFrame(animate)
     }
@@ -174,27 +182,32 @@ export default function ParticleBackground() {
       })
     }
 
-    window.addEventListener('mousemove', handleMouseMove)
-    window.addEventListener('mouseleave', handleMouseLeave)
+    // Add mouse event listeners only if mouse interaction is enabled
+    if (mouseInteraction) {
+      window.addEventListener('mousemove', handleMouseMove)
+      window.addEventListener('mouseleave', handleMouseLeave)
+    }
     window.addEventListener('resize', handleResize)
 
     // Cleanup
     return () => {
-      window.removeEventListener('mousemove', handleMouseMove)
-      window.removeEventListener('mouseleave', handleMouseLeave)
+      if (mouseInteraction) {
+        window.removeEventListener('mousemove', handleMouseMove)
+        window.removeEventListener('mouseleave', handleMouseLeave)
+      }
       window.removeEventListener('resize', handleResize)
       observer.disconnect()
       if (animationFrameId.current) {
         cancelAnimationFrame(animationFrameId.current)
       }
     }
-  }, [])
+  }, [customParticleCount, showConnections, mouseInteraction])
 
   return (
     <canvas
       ref={canvasRef}
       className="absolute inset-0 z-0 pointer-events-none"
-      style={{ opacity: 0.6 }}
+      style={{ opacity }}
     />
   )
 }
