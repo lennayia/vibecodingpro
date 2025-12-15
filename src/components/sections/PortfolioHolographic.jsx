@@ -152,55 +152,16 @@ function PortfolioHolographic() {
                   className="relative w-full h-full flex items-center justify-center"
                   style={{ perspective: '2000px', willChange: 'transform' }}
                 >
-                  {projects.map((project, index) => {
-                    const totalProjects = projects.length
-                    const angle = (360 / totalProjects) * index
-                    const radius = 450
-
-                    const combinedRotation = useTransform(
-                      [rotation, dragRotation],
-                      ([scroll, drag]) => scroll + drag + angle
-                    )
-
-                    const x = useTransform(
-                      combinedRotation,
-                      (value) => Math.sin((value * Math.PI) / 180) * radius
-                    )
-
-                    const z = useTransform(
-                      combinedRotation,
-                      (value) => Math.cos((value * Math.PI) / 180) * radius
-                    )
-
-                    const opacity = useTransform(
-                      z,
-                      [-radius, -radius/2, 0, radius/2, radius],
-                      [0.3, 0.5, 1, 0.5, 0.3]
-                    )
-
-                    const scale = useTransform(
-                      z,
-                      [-radius, 0, radius],
-                      [0.6, 1.1, 0.6]
-                    )
-
-                    return (
-                      <motion.div
-                        key={index}
-                        className="absolute"
-                        style={{
-                          x,
-                          z,
-                          opacity,
-                          scale,
-                          rotateY: combinedRotation,
-                          willChange: 'transform, opacity'
-                        }}
-                      >
-                        <HolographicCard project={project} zDepth={z} />
-                      </motion.div>
-                    )
-                  })}
+                  {projects.map((project, index) => (
+                    <CarouselItem
+                      key={index}
+                      project={project}
+                      index={index}
+                      rotation={rotation}
+                      dragRotation={dragRotation}
+                      totalProjects={projects.length}
+                    />
+                  ))}
                 </div>
               </motion.div>
 
@@ -227,6 +188,55 @@ function PortfolioHolographic() {
     </Section>
   )
 }
+
+// Carousel Item component - extracted to use hooks properly
+const CarouselItem = memo(function CarouselItem({ project, index, rotation, dragRotation, totalProjects }) {
+  const angle = (360 / totalProjects) * index
+  const radius = 450
+
+  const combinedRotation = useTransform(
+    [rotation, dragRotation],
+    ([scroll, drag]) => scroll + drag + angle
+  )
+
+  const x = useTransform(
+    combinedRotation,
+    (value) => Math.sin((value * Math.PI) / 180) * radius
+  )
+
+  const z = useTransform(
+    combinedRotation,
+    (value) => Math.cos((value * Math.PI) / 180) * radius
+  )
+
+  const opacity = useTransform(
+    z,
+    [-radius, -radius/2, 0, radius/2, radius],
+    [0.3, 0.5, 1, 0.5, 0.3]
+  )
+
+  const scale = useTransform(
+    z,
+    [-radius, 0, radius],
+    [0.6, 1.1, 0.6]
+  )
+
+  return (
+    <motion.div
+      className="absolute"
+      style={{
+        x,
+        z,
+        opacity,
+        scale,
+        rotateY: combinedRotation,
+        willChange: 'transform, opacity'
+      }}
+    >
+      <HolographicCard project={project} zDepth={z} />
+    </motion.div>
+  )
+})
 
 const HolographicCard = memo(function HolographicCard({ project, zDepth }) {
   const [isHovered, setIsHovered] = useState(false)
