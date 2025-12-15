@@ -1,4 +1,4 @@
-import { useState, useEffect, lazy, Suspense } from 'react'
+import { useEffect, lazy, Suspense } from 'react'
 
 // Layout components
 import ErrorBoundary from './components/ErrorBoundary'
@@ -29,33 +29,10 @@ const FAQ = lazy(() => import('./components/sections/FAQ'))
 const CTA = lazy(() => import('./components/sections/CTA'))
 
 function App() {
-  const [isDark, setIsDark] = useState(() => {
-    if (typeof window !== 'undefined') {
-      return window.matchMedia('(prefers-color-scheme: dark)').matches
-    }
-    return true
-  })
-
+  // Force dark mode permanently
   useEffect(() => {
-    const root = document.documentElement
-    if (isDark) {
-      root.classList.add('dark')
-    } else {
-      root.classList.remove('dark')
-    }
-    localStorage.setItem('theme', isDark ? 'dark' : 'light')
-  }, [isDark])
-
-  useEffect(() => {
-    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)')
-    const handleChange = (e) => {
-      const savedTheme = localStorage.getItem('theme')
-      if (!savedTheme) {
-        setIsDark(e.matches)
-      }
-    }
-    mediaQuery.addEventListener('change', handleChange)
-    return () => mediaQuery.removeEventListener('change', handleChange)
+    document.documentElement.classList.add('dark')
+    localStorage.setItem('theme', 'dark')
   }, [])
 
   return (
@@ -70,7 +47,7 @@ function App() {
           Přeskočit na hlavní obsah
         </a>
 
-        <Navigation isDark={isDark} setIsDark={setIsDark} />
+        <Navigation />
 
         <main id="main-content" role="main">
           <Hero />
