@@ -27,6 +27,11 @@ export default function Navigation({ isDark, setIsDark }) {
 
         {/* Logo s pozadím */}
         <div className="font-display font-bold text-2xl flex items-center gap-3 relative z-10 px-4 -ml-4 bg-[#f2f2f2]/80 dark:bg-[#070716]/80 backdrop-blur-md">
+          <img
+            src={isDark ? "/vibecoding-logo-bile.webp" : "/vibecoding-logo.webp"}
+            alt="Vibecoding"
+            className="h-10 w-auto"
+          />
           <span>Vibe</span>
           <span className="text-accent">|</span>
           <span>Prompt</span>
@@ -36,8 +41,8 @@ export default function Navigation({ isDark, setIsDark }) {
 
         {/* Běžící slogan */}
         <div className="absolute inset-0 flex items-center pointer-events-none overflow-hidden">
-          <div className="marquee-text whitespace-nowrap font-display text-lg text-white opacity-80">
-            Teď víc než kdy dřív platí „Můžete mít všechno, co si dokážete představit."
+          <div className="marquee-text whitespace-nowrap font-light text-lg text-white opacity-100">
+            Teď víc než kdy dřív platí: „Můžeme mít všechno, co si dokážeme představit."
           </div>
         </div>
 
