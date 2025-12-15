@@ -3,7 +3,6 @@ import { useState, useRef, memo } from 'react'
 import { motion } from 'framer-motion'
 import Card from './Card'
 import Button from './Button'
-import Badge from './Badge'
 
 function PricingCard({
   title,
