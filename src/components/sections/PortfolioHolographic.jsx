@@ -118,7 +118,6 @@ function PortfolioHolographic() {
 
           {/* 3D Holographic Carousel - disabled on mobile for performance */}
           {isMobile ? (
-            // Simple static grid on mobile
             <div className="grid grid-cols-2 gap-4 max-w-2xl mx-auto px-4">
               {projects.map((project, index) => (
                 <div
@@ -138,7 +137,6 @@ function PortfolioHolographic() {
               ))}
             </div>
           ) : (
-            // Full 3D carousel on desktop
             <>
               <motion.div
                 className="relative h-[500px] md:h-[700px] flex items-center justify-center cursor-grab active:cursor-grabbing"
