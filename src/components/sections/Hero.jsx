@@ -8,7 +8,7 @@ import { useTypingEffect } from '../../hooks/useTypingEffect'
 
 export default function Hero() {
   const particleBackground = <ParticleBackground />
-  const typingText = 'Vytvořte si vlastní aplikaci a škálujte svoje podnikání'
+  const typingText = 'Vytvořte si vlastní nástroje a škálujte svoje podnikání'
   const { displayedText, showCursor } = useTypingEffect(typingText, 60, 500)
 
   const handlePricingClick = useCallback(() => {
@@ -57,8 +57,8 @@ export default function Hero() {
           className="mb-12 max-w-3xl mx-auto text-center text-xl font-light"
         >
           <span className="block text-xl font-light">Už nechcete měnit čas za peníze.</span>
-          <span className="block text-xl font-light mt-6">Chcete aplikaci, která doplní vaše podnikání o konkurenční výhodu.</span>
-          <span className="block text-xl font-light">Pracuje za vás 24/7 a pomáhá stovkám klientek – zatímco vy si užíváte růst a svobodu.</span>
+          <span className="block text-xl font-light mt-6">Chcete nástroje, které doplní vaše podnikání o konkurenční výhodu.</span>
+          <span className="block text-xl font-light">Pracují za vás 24/7 a pomáhají vám i stovkám vašich klientek – zatímco vy si užíváte růst a svobodu.</span>
         </motion.p>
 
         <motion.div

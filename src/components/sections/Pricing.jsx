@@ -56,7 +56,7 @@ export default function Pricing() {
                   </li>
                   <li className="flex items-start gap-3">
                     <span className="text-accent mt-1">✦</span>
-                    <span>Nabídne dřív vlastní apku</span>
+                    <span>Nabídne dřív vlastní digi produkt</span>
                   </li>
                 </ul>
               </div>

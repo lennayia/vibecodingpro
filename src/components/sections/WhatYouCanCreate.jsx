@@ -27,7 +27,7 @@ function WhatYouCanCreate() {
     },
     {
       Icon: Bot,
-      title: "AI asistenti",
+      title: "AI asistenty",
       description: "Chatboti, kteří odpovídají za vás 24/7"
     },
     {
@@ -83,7 +83,7 @@ function WhatYouCanCreate() {
             viewport={{ once: true }}
           >
             <p className="text-xl">
-              A to je jen začátek. Možnosti jsou neomezené – a já vám ukážu, jak na to.
+              A to je jen začátek. Možnosti jsou neomezené – ukážu vám, jak na to.
             </p>
           </motion.div>
         </motion.div>

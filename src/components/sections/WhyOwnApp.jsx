@@ -30,7 +30,7 @@ export default function WhyOwnAppSeo() {
           viewport={{ once: true }}
         >
           <h2 className="font-display font-bold mb-16 text-center" style={{ lineHeight: '1.3' }}>
-            Proč mít vlastní aplikaci?
+            Proč mít třeba vlastní aplikaci?
           </h2>
 
           <div className="space-y-8">

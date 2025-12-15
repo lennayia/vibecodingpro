@@ -79,11 +79,13 @@ function PortfolioHolographic() {
           }}
         />
 
-        {/* Scanlines */}
+        {/* Scanlines - pouze v horní části */}
         <div
           className="absolute inset-0 pointer-events-none"
           style={{
             backgroundImage: 'repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0, 255, 136, 0.03) 2px, rgba(0, 255, 136, 0.03) 4px)',
+            maskImage: 'linear-gradient(to bottom, white 0%, white 85%, transparent 100%)',
+            WebkitMaskImage: 'linear-gradient(to bottom, white 0%, white 85%, transparent 100%)',
           }}
         />
       </div>
@@ -105,7 +107,7 @@ function PortfolioHolographic() {
           </motion.h2>
 
           <p className="text-xl text-center mb-16 max-w-3xl mx-auto">
-            8 funkčních aplikací pro reálné klientky. Žádný řádek kódu. Jen AI, strategie a vize.
+            8 funkčních aplikací pro reálné klientky. Žádný řádek kódu. Jen vize, strategie a AI.
           </p>
 
           {/* 3D Holographic Carousel */}
@@ -175,23 +177,26 @@ function PortfolioHolographic() {
             </div>
           </motion.div>
 
-          <motion.p
-            className="text-xl text-center max-w-3xl mx-auto mb-4"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3 }}
-            viewport={{ once: true }}
-          >
-            Tohle jsou složitější projekty. Vy můžete začít jednodušeji – třeba jako je tato webovka.
-          </motion.p>
-
-          <div className="flex justify-center gap-4 text-sm text-gray-400">
+          <div className="flex justify-center gap-4 text-sm text-gray-400 mt-8">
             <span>↓ Scrollujte ↓</span>
             <span>|</span>
             <span>← Táhněte →</span>
           </div>
         </motion.div>
       </div>
+
+      {/* Separovaný text MIMO holografický container */}
+      <motion.div
+        className="mt-16 max-w-3xl mx-auto text-center space-y-4 relative z-50"
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.5 }}
+        viewport={{ once: true }}
+      >
+        <p className="text-xl">Trochu složitější projekty, ale můžete začít jednodušeji.</p>
+        <p className="text-xl">Třeba lehčí webovkou, než je tahle.</p>
+        <p className="text-xl font-semibold">Zajímá vás, jak?</p>
+      </motion.div>
     </Section>
   )
 }

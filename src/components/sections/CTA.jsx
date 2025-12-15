@@ -16,7 +16,7 @@ export default function CTA() {
         viewport={{ once: true }}
       >
         <h2 className="font-display font-bold mb-8">
-          Věřím, že se už těšíte na svoji budoucí aplikaci
+          Věřím, že se už těšíte na svůj budoucí digitální nástroj
         </h2>
         <ul className="mb-12 text-xl font-light space-y-3 mx-auto max-w-fit">
           <li className="flex items-center gap-3 justify-center">
@@ -31,12 +31,12 @@ export default function CTA() {
           </li>
           <li className="flex items-center gap-3 justify-center">
             <span className="text-accent">✦</span>
-            <span>Za 6 měsíců budete mít hotovou aplikaci</span>
+            <span>Už brzy můžete mít hotovo</span>
             <span className="text-accent">✦</span>
           </li>
           <li className="flex items-center gap-3 justify-center">
             <span className="text-accent">✦</span>
-            <span>Za rok budete pomáhat stovkám lidí</span>
+            <span>Třeba za rok budete pomáhat stovkám lidí</span>
             <span className="text-accent">✦</span>
           </li>
           <li className="flex items-center gap-3 justify-center">
@@ -53,7 +53,7 @@ export default function CTA() {
             Změna začíná rozhodnutím.
           </h3>
           <h3 className="font-display font-bold">
-            Udělejte ho dnes.
+            Udělejte ho dneska.
           </h3>
         </div>
       </motion.div>

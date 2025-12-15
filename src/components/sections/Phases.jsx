@@ -16,7 +16,7 @@ export default function Phases() {
             Společně rozběhneme tvorbu
           </h2>
           <p className="mb-8 md:mb-12 lg:mb-16 text-center max-w-3xl mx-auto text-xl font-light">
-            Krok za krokem od nápadu až po funkční aplikaci
+            Krok za krokem od nápadu až po funkční digi-nástroj
           </p>
 
           <div className="grid md:grid-cols-2 gap-2 md:gap-6">

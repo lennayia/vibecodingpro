@@ -22,13 +22,13 @@ export const phases = [
   {
     number: "04",
     title: "Startovací dokumenty",
-    description: "Sepíšeme, jak má aplikace vypadat a fungovat.",
+    description: 'Sepíšeme, jak má ta „vaše digi věc" vypadat a fungovat.',
     Icon: FileText
   },
   {
     number: "05",
     title: "První kroky",
-    description: "A jedeme! První verze aplikace vzniká před vašima očima.",
+    description: "A jedeme! První verze vzniká před vašima očima.",
     Icon: Rocket
   },
   {
@@ -40,7 +40,7 @@ export const phases = [
   {
     number: "07",
     title: "Dokončení a spuštění",
-    description: "Otestujete, spustíte a vaše nová aplikace jde do světa pomáhat!",
+    description: "Otestujete, spustíte a vaše dílo jde do světa pomáhat!",
     Icon: Package
   }
 ]
@@ -92,12 +92,12 @@ export const pricingPackages = [
     description: "Pro ženy, které chtějí pochopit<br />a rozhodnout se",
     features: [
       "2x 1 hodina",
-      "Jak vibecoding funguje a co všechno můžete vytvořit",
-      "Které nástroje potřebujete a proč",
-      "7 kroků k aplikaci – podrobně vysvětlených",
-      "Analýza vašeho konkrétního záměru",
-      "Roadmapa: co dělat krok za krokem",
-      "Q&A – prostor na vaše otázky"
+      "Pochopíte, jak vibecoding funguje",
+      "Zjistíte, jestli je to pro vás",
+      "Uvidíte, co všechno můžete vytvořit",
+      "Rozebereme konkrétní záměr",
+      "Dostanete jasný plán, co dělat dá",
+      "Prostor na vaše otázky"
     ],
     resultTitle: "Výsledek:",
     resultDescription: "Jasná roadmapa, víte přesně co a jak – a jestli je to pro vás.<br />Vyhnete se bloudění.",
@@ -124,10 +124,10 @@ export const pricingPackages = [
     features: [
       "<span class='font-semibold'>6x 1 hodina</span>",
       "<span class='font-semibold'>Všechno z VIBE (2h)</span>",
-      "<strong>Praktické nastavení:</strong> Společně nainstalujeme a rozběhneme všechny nástroje (1h)",
-      "<strong>Zadání projektu:</strong> Sepíšeme, co má vaše aplikace umět (1h)",
-      "<strong>První kroky:</strong> Rozjedeme projekt a napíšeme první funkce (1h)",
-      "<strong>Další kroky:</strong> Prostor na vaše otázky a řešení konkrétních funkcí (1h)"
+      "Nastavíme externí nástroje (1h)",
+      "Vytvoříme základy vašeho produktu (1h)",
+      "Napíšeme první funkce (1h)",
+      "Vyřešíme, co vás brzdí (1h)"
     ],
     resultTitle: "Výsledek:",
     resultDescription: "Rozumíte, PLUS máte kus hotovo - nástroje běží, projekt existuje, první kód je napsaný.<br />Ušetříte desítky hodin zkoušení.",
@@ -158,13 +158,13 @@ export const pricingPackages = [
     description: "Pro ženy, které chtějí pochopit,<br />začít a dokončit",
     features: [
       "<span class='font-semibold'>10x 1 hodina</span>",
-      "<span class='font-semibold'>Všechno z VIBE+CODE (6h) +</span>",
-      "<strong>Společné co-working sessions (4h)</strong> – Pracujeme spolu v reálném čase.",
-      "<strong>Dokud to neběží</strong> – Žádné &bdquo;hodně štěstí&ldquo;. Dotáhneme funkční apku.",
-      "<strong>30 dní přímý přístup ke mně (WhatsApp)</strong> – Zaseknete se, napíšete, odpovím do 24 hodin."
+      "<span class='font-semibold'>Všechno z VIBE+CODING (6h) +</span>",
+      "Co-working sessions v reálném čase (4h)",
+      "Dotáhneme na produkční verzi",
+      "30 dní přímý přístup ke mně (WhatsApp)"
     ],
     resultTitle: "Výsledek:",
-    resultDescription: "<ul class='list-disc pl-5 space-y-2'><li>Funkční aplikace. Rozumíte jí a umíte ji rozvíjet.</li><li>Přímá linka k mentorce</li><li>Garantovaný výsledek.</li><li>Osobní vztah</li></ul>",
+    resultDescription: "<ul class='list-disc pl-5 space-y-2'><li>Funkční produkt. Rozumíte mu a umíte ho rozvíjet.</li><li>Přímá linka k mentorce</li><li>Garantovaný výsledek.</li><li>Osobní vztah</li></ul>",
     testimonials: [
       {
         quote: '„Přišla jsem s nápadem, odcházela s rozjetým projektem. Nejlepší investice do podnikání, co jsem kdy udělala."',
@@ -172,7 +172,7 @@ export const pricingPackages = [
       }
     ],
     bonuses: [
-      "Všechny z VIBE+CODE",
+      "Všechny z VIBE+CODING",
       "Check-in call (30 min) – po 2 týdnech zkontrolujeme pokrok"
     ],
     discount: "1 000 na 2 hod. další konzultace",
@@ -202,12 +202,12 @@ export const faqCategories = [
     title: "Strach z nejistoty",
     questions: [
       {
-        question: "Co když ještě nevím, jakou aplikaci chci?",
+        question: "Co když ještě nevím, jaký nástroj chci vytvořit?",
         answer: "To je v pohodě. První hodinu strávíme právě tímhle – vyjasníme to společně, odejdete s vizí."
       },
       {
         question: "Co když zjistím, že můj nápad je blbost?",
-        answer: "Lepší to zjistit za 2 hodiny se mnou než za 3 měsíce práce. I to je výsledek."
+        answer: "Lepší to vědět za 2 hodiny se mnou než za 3 měsíce práce. I to je výsledek."
       },
       {
         question: "Co když zjistím, že to není pro mě?",
@@ -220,11 +220,11 @@ export const faqCategories = [
     questions: [
       {
         question: "Kolik mě to bude stát celkově? Nejsou tam skryté náklady?",
-        answer: "Nástroje jsou zdarma i placené. Je dobré zainvestovat do rozumné verze AI -  od 500 Kč do 2 500 Kč. Řeknu vám, co budete po dobu tvorby potřebovat."
+        answer: "Nástroje jsou zdarma i placené. Je dobré zainvestovat do rozumné verze AI - od 500 Kč do 2 500 Kč. Řeknu vám, co budete po dobu tvorby potřebovat."
       },
       {
         question: "Co když mi to nevydělá?",
-        answer: "Aplikace je nástroj. Jestli vydělá, záleží na vašem byznysu. Já vám pomůžu postavit nástroj – ne byznys model."
+        answer: "Každý nástroj je jen nástroj. Jestli vydělá, záleží na vašem byznysu. Já vám pomůžu postavit nástroj – byznys model je na vás."
       }
     ]
   },
@@ -233,7 +233,7 @@ export const faqCategories = [
     questions: [
       {
         question: "Mám malé děti / rozjetý byznys. Kolik času tomu musím reálně dávat?",
-        answer: "Mezi našimi sezeními? Hodinu, dvě týdně. Ale čím víc dáte, tím rychleji to bude."
+        answer: "Mezi našimi sezeními? Záleží na velikosti projektu, který chceme vyvinout. Malý projekt – málo času. Velký projekt – hodně času. Čím víc dáte, tím rychleji to bude."
       },
       {
         question: "Za jak dlouho budu mít něco, co můžu ukázat klientkám?",
@@ -241,7 +241,7 @@ export const faqCategories = [
       },
       {
         question: "Za jak dlouho budu mít hotovou aplikaci?",
-        answer: "Jednoduchá aplikace může běžet za 2–3 měsíce. Složitější za 6."
+        answer: "Jednoduchá aplikace může běžet za 2–3 měsíce. Složitější za 6 měsíců."
       }
     ]
   },
@@ -249,11 +249,11 @@ export const faqCategories = [
     title: "Strach z budoucnosti",
     questions: [
       {
-        question: "Co když se něco rozbije a ty nebudeš mít čas?",
+        question: "Co když se něco rozbije a nikdo na mě nebude mít čas?",
         answer: "Naučím vás, jak řešit základní problémy. A na WhatsApp jsem vždycky."
       },
       {
-        question: "Budu závislá na tobě, nebo to zvládnu sama?",
+        question: "Budu na někom závislá, nebo to zvládnu sama?",
         answer: "Cíl je vaše samostatnost. Já jsem průvodce, ne berlička."
       },
       {
@@ -267,7 +267,7 @@ export const faqCategories = [
     questions: [
       {
         question: "Potřebuju drahý počítač?",
-        answer: "Ne. Stačí normální notebook. Mac nebo Windows, je to jedno."
+        answer: "Ne. Stačí normální notebook, který funguje na běžné věci. Mac nebo Windows, je to jedno."
       },
       {
         question: "Můžu to dělat odkudkoli?",
@@ -275,7 +275,7 @@ export const faqCategories = [
       },
       {
         question: "Jak probíhá spolupráce?",
-        answer: "Online, přes video hovor. Pracujeme společně, sdílíme obrazovku, já vás vedu krok za krokem tak, jak potřebujete."
+        answer: "Online, přes video hovory. Pracujeme společně, sdílíme obrazovku, já vás vedu krok za krokem tak, jak potřebujete."
       }
     ]
   }

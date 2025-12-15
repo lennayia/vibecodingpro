@@ -100,7 +100,7 @@ export default function WhyConsultation() {
               Investicí do spolupráce uspoříte čas, peníze i nervy
             </p>
             <p className="mb-8 text-xl font-light">
-              Vaše aplikace vám investovaný čas vrátí
+              Vaše nový nástroj vám investovaný čas vrátí
             </p>
             <Button onClick={handleClick}>
               Vybrat službu

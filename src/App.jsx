@@ -9,7 +9,7 @@ import ScrollToTop from './components/ui/ScrollToTop'
 
 // Section components - immediate load (above the fold)
 import Hero from './components/sections/Hero'
-import ForWhom from './components/sections/ForWhom'
+import WhatIsVibecoding from './components/sections/WhatIsVibecoding'
 import WhatYouCanCreate from './components/sections/WhatYouCanCreate'
 import PortfolioHolographic from './components/sections/PortfolioHolographic'
 import WhyOwnApp from './components/sections/WhyOwnApp'
@@ -73,11 +73,11 @@ function App() {
 
         <main id="main-content" role="main">
           <Hero />
-          <ForWhom />
-          <PortfolioHolographic />
-          <WhatYouCanCreate />
-          <WhyOwnApp />
           <Comparison />
+          <WhatYouCanCreate />
+          <PortfolioHolographic />
+          <WhatIsVibecoding />
+          <WhyOwnApp />
           <ImagineSection />
           <CaseStudy />
           <Phases />
