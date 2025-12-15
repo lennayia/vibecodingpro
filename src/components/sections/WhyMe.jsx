@@ -7,6 +7,15 @@ import { fadeIn, slideUp } from '../../constants/animations'
 const AnimatedPhotoWithParticles = memo(function AnimatedPhotoWithParticles() {
   const containerRef = useRef(null)
   const [isVisible, setIsVisible] = useState(false)
+  const [isMobile, setIsMobile] = useState(false)
+
+  // Detect mobile on mount
+  useEffect(() => {
+    setIsMobile(window.innerWidth < 768)
+    const handleResize = () => setIsMobile(window.innerWidth < 768)
+    window.addEventListener('resize', handleResize)
+    return () => window.removeEventListener('resize', handleResize)
+  }, [])
 
   // Intersection Observer - pausovat photo animace když není viditelná
   useEffect(() => {
@@ -135,15 +144,15 @@ const AnimatedPhotoWithParticles = memo(function AnimatedPhotoWithParticles() {
     willChange: 'transform',
   }}
 >
-  {/* Vertikální otáčení */}
+  {/* Vertikální otáčení - disabled on mobile for performance */}
 <div
-  className="h-full w-full vertical-rotate"
+  className={isMobile ? "h-full w-full" : "h-full w-full vertical-rotate"}
   style={{
     transformStyle: 'preserve-3d',
     maskImage: 'linear-gradient(to right, transparent 0%, black 30%, black 100%)',
     WebkitMaskImage: 'linear-gradient(to right, transparent 0%, black 30%, black 100%)',
     willChange: 'transform',
-    animationPlayState: isVisible ? 'running' : 'paused',
+    animationPlayState: (isVisible && !isMobile) ? 'running' : 'paused',
   }}
 >
     {/* Přední strana */}
@@ -155,12 +164,12 @@ const AnimatedPhotoWithParticles = memo(function AnimatedPhotoWithParticles() {
   height="1248"
   loading="lazy"
   decoding="async"
-  className="h-full w-full object-cover object-center md:object-[center_-60px] lg:object-[center_-120px] photo-fade"
+  className={isMobile ? "h-full w-full object-cover object-center md:object-[center_-60px] lg:object-[center_-120px]" : "h-full w-full object-cover object-center md:object-[center_-60px] lg:object-[center_-120px] photo-fade"}
   style={{
     maskImage: 'linear-gradient(to right, transparent 0%, black 20%, black 100%)',
     WebkitMaskImage: 'linear-gradient(to right, transparent 0%, black 20%, black 100%)',
     willChange: 'opacity, filter',
-    animationPlayState: isVisible ? 'running' : 'paused',
+    animationPlayState: (isVisible && !isMobile) ? 'running' : 'paused',
   }}
 />
     </div>
@@ -181,13 +190,13 @@ const AnimatedPhotoWithParticles = memo(function AnimatedPhotoWithParticles() {
   height="1248"
   loading="lazy"
   decoding="async"
-  className="h-full w-full object-cover object-center md:object-[center_-60px] lg:object-[center_-120px] photo-fade"
+  className={isMobile ? "h-full w-full object-cover object-center md:object-[center_-60px] lg:object-[center_-120px]" : "h-full w-full object-cover object-center md:object-[center_-60px] lg:object-[center_-120px] photo-fade"}
   style={{
     transform: 'scaleX(-1)',
     maskImage: 'linear-gradient(to left, transparent 0%, black 20%, black 100%)',
     WebkitMaskImage: 'linear-gradient(to left, transparent 0%, black 20%, black 100%)',
     willChange: 'opacity, filter',
-    animationPlayState: isVisible ? 'running' : 'paused',
+    animationPlayState: (isVisible && !isMobile) ? 'running' : 'paused',
   }}
 />
     </div>

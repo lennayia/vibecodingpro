@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 export default function ParticleBackground({
   particleCount: customParticleCount,
@@ -11,8 +11,22 @@ export default function ParticleBackground({
   const mousePos = useRef({ x: null, y: null })
   const animationFrameId = useRef(null)
   const isVisibleRef = useRef(true)
+  const [isMobile, setIsMobile] = useState(false)
+
+  // Detect mobile and disable particles completely for performance
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768)
+    }
+    checkMobile()
+    window.addEventListener('resize', checkMobile)
+    return () => window.removeEventListener('resize', checkMobile)
+  }, [])
 
   useEffect(() => {
+    // Don't render particles on mobile for performance
+    if (isMobile) return
+
     const canvas = canvasRef.current
     if (!canvas) return
 
@@ -21,9 +35,8 @@ export default function ParticleBackground({
     let width = parentElement.clientWidth
     let height = parentElement.clientHeight
 
-    // Responsive particle count
-    const isMobile = width < 768
-    const particleCount = customParticleCount || (isMobile ? 20 : 80)
+    // Particle count for desktop only
+    const particleCount = customParticleCount || 80
 
     canvas.width = width
     canvas.height = height
@@ -204,7 +217,10 @@ export default function ParticleBackground({
         cancelAnimationFrame(animationFrameId.current)
       }
     }
-  }, [customParticleCount, showConnections, mouseInteraction])
+  }, [customParticleCount, showConnections, mouseInteraction, isMobile])
+
+  // Don't render canvas on mobile
+  if (isMobile) return null
 
   return (
     <canvas

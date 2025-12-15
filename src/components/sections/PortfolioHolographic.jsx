@@ -7,6 +7,15 @@ function PortfolioHolographic() {
   const containerRef = useRef(null)
   const [isDragging, setIsDragging] = useState(false)
   const [isVisible, setIsVisible] = useState(false)
+  const [isMobile, setIsMobile] = useState(false)
+
+  // Detect mobile on mount
+  useEffect(() => {
+    setIsMobile(window.innerWidth < 768)
+    const handleResize = () => setIsMobile(window.innerWidth < 768)
+    window.addEventListener('resize', handleResize)
+    return () => window.removeEventListener('resize', handleResize)
+  }, [])
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -69,7 +78,7 @@ function PortfolioHolographic() {
           style={{
             background: 'radial-gradient(circle at 50% 50%, rgba(0, 255, 136, 0.05) 0%, transparent 70%)',
           }}
-          animate={isVisible ? {
+          animate={(isVisible && !isMobile) ? {
             scale: [1, 1.2, 1],
             opacity: [0.3, 0.5, 0.3]
           } : {}}
@@ -107,78 +116,103 @@ function PortfolioHolographic() {
             8 funkčních aplikací pro reálné klientky. Žádný řádek kódu. Jen vize, strategie a AI.
           </p>
 
-          {/* 3D Holographic Carousel */}
-          <motion.div
-            className="relative h-[500px] md:h-[700px] flex items-center justify-center cursor-grab active:cursor-grabbing"
-            style={{ willChange: 'transform' }}
-            drag="x"
-            dragConstraints={{ left: 0, right: 0 }}
-            dragElastic={0.1}
-            onDragStart={handleDragStart}
-            onDragEnd={handleDragEnd}
-            onDrag={handleDrag}
-          >
-            <div
-              className="relative w-full h-full flex items-center justify-center"
-              style={{ perspective: '2000px', willChange: 'transform' }}
-            >
-              {projects.map((project, index) => {
-                const totalProjects = projects.length
-                const angle = (360 / totalProjects) * index
-                const radius = 450
-
-                const combinedRotation = useTransform(
-                  [rotation, dragRotation],
-                  ([scroll, drag]) => scroll + drag + angle
-                )
-
-                const x = useTransform(
-                  combinedRotation,
-                  (value) => Math.sin((value * Math.PI) / 180) * radius
-                )
-
-                const z = useTransform(
-                  combinedRotation,
-                  (value) => Math.cos((value * Math.PI) / 180) * radius
-                )
-
-                const opacity = useTransform(
-                  z,
-                  [-radius, -radius/2, 0, radius/2, radius],
-                  [0.3, 0.5, 1, 0.5, 0.3]
-                )
-
-                const scale = useTransform(
-                  z,
-                  [-radius, 0, radius],
-                  [0.6, 1.1, 0.6]
-                )
-
-                return (
-                  <motion.div
-                    key={index}
-                    className="absolute"
+          {/* 3D Holographic Carousel - disabled on mobile for performance */}
+          {isMobile ? (
+            // Simple static grid on mobile
+            <div className="grid grid-cols-2 gap-4 max-w-2xl mx-auto px-4">
+              {projects.map((project, index) => (
+                <div
+                  key={index}
+                  className="rounded-2xl p-6 bg-gray-900/50 border-2 border-accent/30 backdrop-blur-sm"
+                >
+                  <h3
+                    className="text-lg font-bold text-center"
                     style={{
-                      x,
-                      z,
-                      opacity,
-                      scale,
-                      rotateY: combinedRotation,
-                      willChange: 'transform, opacity'
+                      color: 'rgba(0, 255, 136, 0.9)',
+                      textShadow: '0 0 10px rgba(0, 255, 136, 0.3)',
                     }}
                   >
-                    <HolographicCard project={project} zDepth={z} />
-                  </motion.div>
-                )
-              })}
+                    {project.name}
+                  </h3>
+                </div>
+              ))}
             </div>
-          </motion.div>
+          ) : (
+            // Full 3D carousel on desktop
+            <>
+              <motion.div
+                className="relative h-[500px] md:h-[700px] flex items-center justify-center cursor-grab active:cursor-grabbing"
+                style={{ willChange: 'transform' }}
+                drag="x"
+                dragConstraints={{ left: 0, right: 0 }}
+                dragElastic={0.1}
+                onDragStart={handleDragStart}
+                onDragEnd={handleDragEnd}
+                onDrag={handleDrag}
+              >
+                <div
+                  className="relative w-full h-full flex items-center justify-center"
+                  style={{ perspective: '2000px', willChange: 'transform' }}
+                >
+                  {projects.map((project, index) => {
+                    const totalProjects = projects.length
+                    const angle = (360 / totalProjects) * index
+                    const radius = 450
 
-          <div className="flex justify-center gap-4 text-sm text-gray-400 mt-8">
-            <span>↓ Scrollujte ↓</span>
-            <span>|</span>
-            <span>← Táhněte →</span>
-          </div>
+                    const combinedRotation = useTransform(
+                      [rotation, dragRotation],
+                      ([scroll, drag]) => scroll + drag + angle
+                    )
+
+                    const x = useTransform(
+                      combinedRotation,
+                      (value) => Math.sin((value * Math.PI) / 180) * radius
+                    )
+
+                    const z = useTransform(
+                      combinedRotation,
+                      (value) => Math.cos((value * Math.PI) / 180) * radius
+                    )
+
+                    const opacity = useTransform(
+                      z,
+                      [-radius, -radius/2, 0, radius/2, radius],
+                      [0.3, 0.5, 1, 0.5, 0.3]
+                    )
+
+                    const scale = useTransform(
+                      z,
+                      [-radius, 0, radius],
+                      [0.6, 1.1, 0.6]
+                    )
+
+                    return (
+                      <motion.div
+                        key={index}
+                        className="absolute"
+                        style={{
+                          x,
+                          z,
+                          opacity,
+                          scale,
+                          rotateY: combinedRotation,
+                          willChange: 'transform, opacity'
+                        }}
+                      >
+                        <HolographicCard project={project} zDepth={z} />
+                      </motion.div>
+                    )
+                  })}
+                </div>
+              </motion.div>
+
+              <div className="flex justify-center gap-4 text-sm text-gray-400 mt-8">
+                <span>↓ Scrollujte ↓</span>
+                <span>|</span>
+                <span>← Táhněte →</span>
+              </div>
+            </>
+          )}
         </motion.div>
       </div>
 
