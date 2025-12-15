@@ -1,6 +1,4 @@
 import { useState, useEffect } from 'react'
-import { motion } from 'framer-motion'
-import { Clock } from 'lucide-react'
 
 export default function CountdownTimer({ targetDate }) {
   const [timeLeft, setTimeLeft] = useState(calculateTimeLeft())
@@ -26,7 +24,7 @@ export default function CountdownTimer({ targetDate }) {
     }, 1000)
 
     return () => clearInterval(timer)
-  }, [])
+  }, [targetDate])
 
   const TimeUnit = ({ value, label }) => (
     <div className="flex flex-col items-center flex-1">
