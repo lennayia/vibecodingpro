@@ -5,7 +5,7 @@ import { Gift, Check, X, ChevronDown } from 'lucide-react'
 
 export default function BonusesSeo() {
   const [expandedItems, setExpandedItems] = useState([])
-  const packages = ["VIBE", "VIBE+CODE", "VIBE+CODING"]
+  const packages = ["VIBE", "VIBE+CODING", "VIBECODING VIP"]
 
   const toggleItem = (index) => {
     if (expandedItems.includes(index)) {

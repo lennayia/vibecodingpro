@@ -103,7 +103,7 @@ function PortfolioHolographic() {
               textShadow: '0 0 20px rgba(0, 255, 136, 0.3)'
             }}
           >
-            Tohle postavila žena, která neumí programovat. Já.
+            Tohle postavila žena, která neumí programovat.
           </motion.h2>
 
           <p className="text-xl text-center mb-16 max-w-3xl mx-auto">
