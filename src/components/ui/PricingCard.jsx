@@ -1,5 +1,5 @@
 import { Check, Gift, Tag, Crown } from 'lucide-react'
-import { useState, useRef, memo } from 'react'
+import { useState, useRef, memo, useCallback } from 'react'
 import { motion } from 'framer-motion'
 import Card from './Card'
 import Button from './Button'
@@ -29,7 +29,7 @@ function PricingCard({
   const [rotateY, setRotateY] = useState(0)
   const [shinePosition, setShinePosition] = useState({ x: 50, y: 50 })
 
-  const handleMouseMove = (e) => {
+  const handleMouseMove = useCallback((e) => {
     if (window.innerWidth < 768) return // Disable on mobile
 
     const card = cardRef.current
@@ -51,13 +51,13 @@ function PricingCard({
       x: (x / rect.width) * 100,
       y: (y / rect.height) * 100
     })
-  }
+  }, [])
 
-  const handleMouseLeave = () => {
+  const handleMouseLeave = useCallback(() => {
     setRotateX(0)
     setRotateY(0)
     setShinePosition({ x: 50, y: 50 })
-  }
+  }, [])
 
   return (
     <motion.div
