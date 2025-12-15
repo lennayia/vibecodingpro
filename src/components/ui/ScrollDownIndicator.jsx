@@ -1,13 +1,14 @@
+import { memo, useCallback } from 'react'
 import { motion } from 'framer-motion'
 import { ChevronDown } from 'lucide-react'
 
-export default function ScrollDownIndicator() {
-  const handleScroll = () => {
+function ScrollDownIndicator() {
+  const handleScroll = useCallback(() => {
     window.scrollBy({
       top: window.innerHeight,
       behavior: 'smooth'
     })
-  }
+  }, [])
 
   return (
     <motion.button
@@ -40,3 +41,5 @@ export default function ScrollDownIndicator() {
     </motion.button>
   )
 }
+
+export default memo(ScrollDownIndicator)

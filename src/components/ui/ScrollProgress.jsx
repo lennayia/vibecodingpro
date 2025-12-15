@@ -1,6 +1,6 @@
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef, memo } from 'react'
 
-export default function ScrollProgress() {
+function ScrollProgress() {
   const [scrollProgress, setScrollProgress] = useState(0)
   const rafRef = useRef(null)
   const lastScrollRef = useRef(0)
@@ -50,3 +50,5 @@ export default function ScrollProgress() {
     </div>
   )
 }
+
+export default memo(ScrollProgress)

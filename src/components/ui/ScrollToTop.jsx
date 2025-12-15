@@ -1,7 +1,7 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, memo, useCallback } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 
-export default function ScrollToTop() {
+function ScrollToTop() {
   const [isVisible, setIsVisible] = useState(false)
 
   useEffect(() => {
@@ -17,12 +17,12 @@ export default function ScrollToTop() {
     return () => window.removeEventListener('scroll', toggleVisibility)
   }, [])
 
-  const scrollToTop = () => {
+  const scrollToTop = useCallback(() => {
     window.scrollTo({
       top: 0,
       behavior: 'smooth'
     })
-  }
+  }, [])
 
   return (
     <AnimatePresence>
@@ -53,3 +53,5 @@ export default function ScrollToTop() {
     </AnimatePresence>
   )
 }
+
+export default memo(ScrollToTop)
