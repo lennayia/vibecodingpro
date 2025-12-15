@@ -24,6 +24,7 @@ export default {
           800: '#166534',
           900: '#14532d',
         },
+        accent: 'rgb(0, 255, 136)', // Neon green
         'off-white': '#f2f2f2',
         'off-black': '#1a1a1a',
         'light-text': '#e1e1e1',
