@@ -3,10 +3,11 @@ import { useCallback } from 'react'
 import Section from '../layout/Section'
 import Button from '../ui/Button'
 import { slideUpLarge } from '../../constants/animations'
+import { scrollToSection } from '../../utils/scroll'
 
 export default function CTA() {
   const handleClick = useCallback(() => {
-    document.getElementById('pricing-packages-section')?.scrollIntoView({ behavior: 'smooth' })
+    scrollToSection('pricing-packages-section')
   }, [])
   return (
     <Section background="light" className="min-h-screen flex items-center justify-center" showScrollIndicator={false}>

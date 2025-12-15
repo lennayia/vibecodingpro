@@ -4,10 +4,11 @@ import Section from '../layout/Section'
 import Card from '../ui/Card'
 import Button from '../ui/Button'
 import { fadeIn, slideUp } from '../../constants/animations'
+import { scrollToSection } from '../../utils/scroll'
 
 export default function WhyConsultation() {
   const handleClick = useCallback(() => {
-    document.getElementById('pricing-packages-section')?.scrollIntoView({ behavior: 'smooth' })
+    scrollToSection('pricing-packages-section')
   }, [])
   const withoutConsultation = [
     "Ztratíte měsíce pokusů a omylů",

@@ -5,6 +5,7 @@ import Button from '../ui/Button'
 import ParticleBackground from '../ui/ParticleBackground'
 import { fadeInUp, stagger } from '../../constants/animations'
 import { useTypingEffect } from '../../hooks/useTypingEffect'
+import { scrollToSection } from '../../utils/scroll'
 
 export default function Hero() {
   const particleBackground = <ParticleBackground />
@@ -12,7 +13,7 @@ export default function Hero() {
   const { displayedText, showCursor } = useTypingEffect(typingText, 60, 500)
 
   const handlePricingClick = useCallback(() => {
-    document.getElementById('pricing-section')?.scrollIntoView({ behavior: 'smooth' })
+    scrollToSection('pricing-section')
   }, [])
 
   return (

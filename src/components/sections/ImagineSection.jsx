@@ -3,10 +3,11 @@ import { useCallback } from 'react'
 import Section from '../layout/Section'
 import Button from '../ui/Button'
 import { fadeIn, slideUp } from '../../constants/animations'
+import { scrollToSection } from '../../utils/scroll'
 
 export default function ImagineSection() {
   const handleClick = useCallback(() => {
-    document.getElementById('phases-section')?.scrollIntoView({ behavior: 'smooth' })
+    scrollToSection('phases-section')
   }, [])
   const items = [
     {
