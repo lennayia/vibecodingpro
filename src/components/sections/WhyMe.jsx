@@ -127,7 +127,7 @@ const AnimatedPhotoWithParticles = memo(function AnimatedPhotoWithParticles() {
       />
 
       <div
-  className="absolute inset-y-0 right-0 w-2/3 overflow-hidden"
+  className="absolute inset-y-0 right-0 w-1/3 md:w-1/2 lg:w-2/3 overflow-hidden"
   style={{
     aspectRatio: '832/1248',
     transform: 'translateX(20%)',
@@ -154,7 +154,7 @@ const AnimatedPhotoWithParticles = memo(function AnimatedPhotoWithParticles() {
   height="1248"
   loading="lazy"
   decoding="async"
-  className="h-full w-full object-cover object-[center_-120px] photo-fade"
+  className="h-full w-full object-cover object-center md:object-[center_-60px] lg:object-[center_-120px] photo-fade"
   style={{
     maskImage: 'linear-gradient(to right, transparent 0%, black 20%, black 100%)',
     WebkitMaskImage: 'linear-gradient(to right, transparent 0%, black 20%, black 100%)',
@@ -180,7 +180,7 @@ const AnimatedPhotoWithParticles = memo(function AnimatedPhotoWithParticles() {
   height="1248"
   loading="lazy"
   decoding="async"
-  className="h-full w-full object-cover object-[center_-120px] photo-fade"
+  className="h-full w-full object-cover object-center md:object-[center_-60px] lg:object-[center_-120px] photo-fade"
   style={{
     transform: 'scaleX(-1)',
     maskImage: 'linear-gradient(to left, transparent 0%, black 20%, black 100%)',
