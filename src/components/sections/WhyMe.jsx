@@ -1,14 +1,13 @@
 import { motion } from 'framer-motion'
 import { useState, useRef, useEffect, memo, useMemo } from 'react'
 import Section from '../layout/Section'
+import ParticleBackground from '../ui/ParticleBackground'
 
 const AnimatedPhotoWithParticles = memo(function AnimatedPhotoWithParticles() {
   const containerRef = useRef(null)
-  const canvasRef = useRef(null)
-  const particlesRef = useRef([])
   const [isVisible, setIsVisible] = useState(false)
 
-  // Intersection Observer - pausovat animace když není viditelná
+  // Intersection Observer - pausovat photo animace když není viditelná
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -26,83 +25,6 @@ const AnimatedPhotoWithParticles = memo(function AnimatedPhotoWithParticles() {
     return () => {
       if (containerRef.current) {
         observer.unobserve(containerRef.current)
-      }
-    }
-  }, [])
-
-  // Particle system - kolem celé fotky
-  useEffect(() => {
-    const canvas = canvasRef.current
-    const container = containerRef.current
-    if (!canvas || !container) return
-
-    const ctx = canvas.getContext('2d')
-    const updateCanvasSize = () => {
-      const rect = container.getBoundingClientRect()
-      canvas.width = rect.width
-      canvas.height = rect.height
-    }
-
-    updateCanvasSize()
-
-    // Create particles
-    class Particle {
-      constructor() {
-        this.reset()
-      }
-
-      reset() {
-        this.x = Math.random() * canvas.width
-        this.y = Math.random() * canvas.height
-        this.vx = (Math.random() - 0.5) * 0.5
-        this.vy = (Math.random() - 0.5) * 0.5
-        this.radius = Math.random() * 1.5 + 1.5
-        this.opacity = Math.random() * 0.3 + 0.2
-      }
-
-      update() {
-        this.x += this.vx
-        this.y += this.vy
-
-        // Wrap around edges
-        if (this.x < 0) this.x = canvas.width
-        if (this.x > canvas.width) this.x = 0
-        if (this.y < 0) this.y = canvas.height
-        if (this.y > canvas.height) this.y = 0
-      }
-
-      draw() {
-        ctx.beginPath()
-        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2)
-        ctx.fillStyle = `rgba(0, 255, 136, ${this.opacity})`
-        ctx.fill()
-      }
-    }
-
-    // Initialize particles
-    particlesRef.current = []
-    for (let i = 0; i < 130; i++) {
-      particlesRef.current.push(new Particle())
-    }
-
-    // Animation loop
-    let animationId
-    function animate() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height)
-
-      particlesRef.current.forEach(particle => {
-        particle.update()
-        particle.draw()
-      })
-
-      animationId = requestAnimationFrame(animate)
-    }
-
-    animate()
-
-    return () => {
-      if (animationId) {
-        cancelAnimationFrame(animationId)
       }
     }
   }, [])
@@ -196,11 +118,12 @@ const AnimatedPhotoWithParticles = memo(function AnimatedPhotoWithParticles() {
   }
 `}</style>
 
-      {/* Particles canvas - ZA fotkou */}
-      <canvas
-        ref={canvasRef}
-        className="absolute inset-0 pointer-events-none"
-        style={{ opacity: 0.6 }}
+      {/* Particles - ZA fotkou */}
+      <ParticleBackground
+        particleCount={130}
+        showConnections={false}
+        mouseInteraction={false}
+        opacity={0.6}
       />
 
       <div
