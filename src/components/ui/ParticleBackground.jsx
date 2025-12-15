@@ -25,9 +25,6 @@ export default function ParticleBackground({
   }, [])
 
   useEffect(() => {
-    // Don't render particles on mobile for performance
-    if (isMobile) return
-
     const canvas = canvasRef.current
     if (!canvas) return
 
@@ -36,8 +33,8 @@ export default function ParticleBackground({
     let width = parentElement.clientWidth
     let height = parentElement.clientHeight
 
-    // Particle count for desktop only
-    const particleCount = customParticleCount || 80
+    // Reduced particle count on mobile, normal on desktop
+    const particleCount = customParticleCount || (isMobile ? 30 : 80)
 
     canvas.width = width
     canvas.height = height
@@ -68,7 +65,10 @@ export default function ParticleBackground({
         this.opacity = Math.random() * 0.3 + 0.2 // Jemnější opacity (0.2-0.5)
       }
 
-      update() {
+      update(isStatic = false) {
+        // Skip movement on mobile (static particles)
+        if (isStatic) return
+
         // Movement
         this.x += this.vx
         this.y += this.vy
@@ -131,10 +131,10 @@ export default function ParticleBackground({
       }
     }
 
-    // Animation loop
+    // Animation loop (or single render on mobile)
     function animate() {
       // Only animate if visible
-      if (!isVisibleRef.current) {
+      if (!isVisibleRef.current && !isMobile) {
         animationFrameId.current = requestAnimationFrame(animate)
         return
       }
@@ -142,7 +142,7 @@ export default function ParticleBackground({
       ctx.clearRect(0, 0, width, height)
 
       particles.current.forEach(particle => {
-        particle.update()
+        particle.update(isMobile) // Pass isMobile - static on mobile
         particle.draw()
       })
 
@@ -151,7 +151,10 @@ export default function ParticleBackground({
         drawConnections()
       }
 
-      animationFrameId.current = requestAnimationFrame(animate)
+      // On mobile, render only once (static). On desktop, keep animating.
+      if (!isMobile) {
+        animationFrameId.current = requestAnimationFrame(animate)
+      }
     }
 
     animate()
@@ -219,9 +222,6 @@ export default function ParticleBackground({
       }
     }
   }, [customParticleCount, showConnections, mouseInteraction, isMobile])
-
-  // Don't render canvas on mobile
-  if (isMobile) return null
 
   return (
     <canvas
