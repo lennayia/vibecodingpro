@@ -20,7 +20,7 @@ function WhatIsVibecoding() {
     >
       <motion.div {...fadeIn}>
         <h2 className="font-display font-bold mb-16 text-center" style={{ lineHeight: '1.3' }}>
-          Vibecoding - co a pro koho to je
+          Vibecoding - co to je a pro koho
         </h2>
 
         {/* Co to je */}
@@ -67,7 +67,7 @@ function WhatIsVibecoding() {
           transition={{ delay: 0.6 }}
         >
           <p className="text-xl mb-3">Společné máte jedno:</p>
-          <p className="text-xl font-semibold">
+          <p className="text-2xl font-semibold">
             Chcete pomoct víc lidem – ale nechcete dřít víc hodin.
           </p>
         </motion.div>

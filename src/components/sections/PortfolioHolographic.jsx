@@ -177,7 +177,7 @@ function PortfolioHolographic() {
         {...slideUp}
         transition={{ delay: 0.5 }}
       >
-        <p className="text-xl">Trochu složitější projekty, ale můžete začít jednodušeji.</p>
+        <p className="text-xl">Od jednoduchých nástrojů po komplexní aplikace, tempo si určíte vy.</p>
         <p className="text-xl">Třeba lehčí webovkou, než je tahle.</p>
         <p className="text-xl font-semibold">Zajímá vás, jak?</p>
       </motion.div>

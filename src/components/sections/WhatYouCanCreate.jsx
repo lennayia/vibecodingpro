@@ -76,7 +76,7 @@ function WhatYouCanCreate() {
             transition={{ delay: 0.6 }}
           >
             <p className="text-xl">
-              A to je jen začátek. Možnosti jsou neomezené – ukážu vám, jak na to.
+              A to je jen začátek. Co chcete vytvořit vy?
             </p>
           </motion.div>
         </motion.div>

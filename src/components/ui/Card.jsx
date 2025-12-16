@@ -10,8 +10,8 @@ function Card({
   ...props
 }) {
   const bgClasses = {
-    light: "bg-gray-50 dark:bg-[#070716]",
-    dark: "bg-gray-50 dark:bg-[#05050f]"
+    light: "bg-gray-50 dark:bg-[#070716]/60",
+    dark: "bg-gray-50 dark:bg-[#05050f]/60"
   }
 
   const borderClasses = {
@@ -30,7 +30,7 @@ function Card({
 
   return (
     <CardWrapper
-      className={`${bgClasses[background]} ${borderClasses[background]} rounded-3xl py-8 px-2 ${className}`}
+      className={`${bgClasses[background]} ${borderClasses[background]} rounded-3xl py-8 px-8 ${className}`}
       {...animationProps}
       {...props}
     >
