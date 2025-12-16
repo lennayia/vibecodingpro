@@ -33,7 +33,7 @@ export default function Hero() {
           variants={fadeInUp}
           className="mb-6 inline-block"
         >
-          <span className="px-4 py-2 bg-gray-100/80 dark:bg-[#05050f]/80 backdrop-blur-sm rounded-full text-sm font-medium border border-gray-200 dark:border-[#070716]">
+          <span className="px-4 py-2 bg-gray-100/80 dark:bg-[#05050f]/80 backdrop-blur-sm rounded-full text-xl font-medium border border-gray-200 dark:border-[#070716]">
             Vibecoding – cesta pro neprogramátory
           </span>
         </motion.div>

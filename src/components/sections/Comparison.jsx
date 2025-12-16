@@ -11,7 +11,8 @@ export default function ComparisonSeo() {
       <div className="absolute inset-0 z-0 opacity-50">
         {/* Gentle Holographic glow - expanded to right */}
         <motion.div
-          className="absolute inset-0 blur-3xl"
+          className="absolute inset-0 blur-xl md:blur-3xl"
+          style={{ willChange: 'transform' }}
           animate={{
             background: [
               'radial-gradient(circle at 70% 30%, rgba(0, 255, 136, 0.3), rgba(0, 200, 255, 0.2) 40%, rgba(0, 255, 136, 0.1) 70%, transparent)',
@@ -36,18 +37,14 @@ export default function ComparisonSeo() {
             className="h-1/3 w-auto object-cover"
             style={{
               filter: 'drop-shadow(0.5px 0 0 rgba(0,255,136,0.15)) drop-shadow(-0.5px 0 0 rgba(0,200,255,0.15))',
+              willChange: 'transform, opacity',
             }}
             animate={{
               opacity: [0.3, 0.28, 0.32, 0.3],
               x: [0, 0.3, -0.3, 0],
-              scale: [1, 1.02, 0.98, 1.01, 1],
               scaleX: [-1, -1.02, -0.98, -1.01, -1],
+              scaleY: [1, 1.02, 0.98, 1.01, 1],
               rotate: [0, 1.5, -1.5, 1, -1, 0],
-              filter: [
-                'drop-shadow(0.5px 0 0 rgba(0,255,136,0.15)) drop-shadow(-0.5px 0 0 rgba(0,200,255,0.15))',
-                'drop-shadow(0.8px 0 0 rgba(0,255,136,0.18)) drop-shadow(-0.8px 0 0 rgba(0,200,255,0.18))',
-                'drop-shadow(0.5px 0 0 rgba(0,255,136,0.15)) drop-shadow(-0.5px 0 0 rgba(0,200,255,0.15))',
-              ],
             }}
             transition={{
               opacity: {
@@ -67,11 +64,6 @@ export default function ComparisonSeo() {
               },
               rotate: {
                 duration: 8,
-                repeat: Infinity,
-                ease: 'easeInOut'
-              },
-              filter: {
-                duration: 6,
                 repeat: Infinity,
                 ease: 'easeInOut'
               }
@@ -80,24 +72,20 @@ export default function ComparisonSeo() {
         </div>
 
         {/* Background image RIGHT - original */}
-        <div className="absolute inset-0 flex items-start justify-end -mr-12 pt-6">
+        <div className="hidden md:flex absolute inset-0 items-start justify-end -mr-12 pt-6">
           <motion.img
             src="/koucka.webp"
             alt=""
             className="h-1/3 w-auto object-cover"
             style={{
-              filter: 'drop-shadow(0.5px 0 0 rgba(0,255,136,0.15)) drop-shadow(-0.5px 0 0 rgba(0,200,255,0.15))'
+              filter: 'drop-shadow(0.5px 0 0 rgba(0,255,136,0.15)) drop-shadow(-0.5px 0 0 rgba(0,200,255,0.15))',
+              willChange: 'transform, opacity',
             }}
             animate={{
               opacity: [0.3, 0.28, 0.32, 0.3],
               x: [0, -0.3, 0.3, 0],
               scale: [1, 1.02, 0.98, 1.01, 1],
               rotate: [0, -1.5, 1.5, -1, 1, 0],
-              filter: [
-                'drop-shadow(0.5px 0 0 rgba(0,255,136,0.15)) drop-shadow(-0.5px 0 0 rgba(0,200,255,0.15))',
-                'drop-shadow(0.8px 0 0 rgba(0,255,136,0.18)) drop-shadow(-0.8px 0 0 rgba(0,200,255,0.18))',
-                'drop-shadow(0.5px 0 0 rgba(0,255,136,0.15)) drop-shadow(-0.5px 0 0 rgba(0,200,255,0.15))',
-              ],
             }}
             transition={{
               opacity: {
@@ -117,11 +105,6 @@ export default function ComparisonSeo() {
               },
               rotate: {
                 duration: 8,
-                repeat: Infinity,
-                ease: 'easeInOut'
-              },
-              filter: {
-                duration: 6,
                 repeat: Infinity,
                 ease: 'easeInOut'
               }
@@ -131,9 +114,10 @@ export default function ComparisonSeo() {
 
         {/* Scanlines - covering whole section */}
         <motion.div
-          className="absolute inset-0 pointer-events-none"
+          className="hidden md:block absolute inset-0 pointer-events-none"
           style={{
             backgroundImage: 'repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0, 255, 136, 0.08) 2px, rgba(0, 255, 136, 0.08) 4px)',
+            willChange: 'transform, opacity',
           }}
           animate={{
             y: [0, -100],
@@ -155,7 +139,8 @@ export default function ComparisonSeo() {
 
         {/* Color shift overlay - covering whole section */}
         <motion.div
-          className="absolute inset-0 mix-blend-overlay"
+          className="hidden md:block absolute inset-0 mix-blend-overlay"
+          style={{ willChange: 'transform' }}
           animate={{
             background: [
               'linear-gradient(180deg, rgba(0,255,136,0) 0%, rgba(0,255,136,0.1) 50%, rgba(0,255,136,0) 100%)',

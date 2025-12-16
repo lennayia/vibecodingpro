@@ -53,8 +53,8 @@ function App() {
           <Hero />
           <WhatYouCanCreate />
           <Comparison />
-          <PortfolioHolographic />
           <WhatIsVibecoding />
+          <PortfolioHolographic />
           <WhyOwnApp />
           <ImagineSection />
           <CaseStudy />

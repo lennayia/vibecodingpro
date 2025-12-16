@@ -43,63 +43,84 @@ export default function CaseStudySeo() {
                 className="order-2 relative"
               >
                 <div className="max-w-[200px] mx-auto relative">
-                  {/* Gentle Holographic glow */}
-                  <motion.div
-                    className="absolute -inset-4 blur-xl"
-                    animate={{
-                      background: [
-                        'radial-gradient(circle at 50% 50%, rgba(0, 255, 136, 0.2), rgba(0, 200, 255, 0.15), transparent)',
-                        'radial-gradient(circle at 55% 45%, rgba(0, 200, 255, 0.2), rgba(0, 255, 136, 0.15), transparent)',
-                        'radial-gradient(circle at 45% 55%, rgba(0, 255, 136, 0.2), rgba(0, 200, 255, 0.15), transparent)',
-                        'radial-gradient(circle at 50% 50%, rgba(0, 255, 136, 0.2), rgba(0, 200, 255, 0.15), transparent)',
-                      ],
-                      scale: [1, 1.02, 1],
-                    }}
-                    transition={{
-                      duration: 12,
-                      repeat: Infinity,
-                      ease: 'easeInOut'
-                    }}
-                  />
-
-                  {/* Image container */}
-                  <div className="relative">
-                    {/* Main image with subtle RGB shift */}
-                    <motion.img
-                      src="/Vibecoding-koucka-jana.webp"
-                      alt="Jana, koučka"
-                      className="w-full h-auto relative z-10 opacity-30"
-                      loading="lazy"
+                  {/* Phone Mockup */}
+                  <div className="relative max-w-[250px] mx-auto" style={{ perspective: '1000px' }}>
+                    <motion.div
+                      className="relative"
                       style={{
-                        filter: 'drop-shadow(0.5px 0 0 rgba(0,255,136,0.15)) drop-shadow(-0.5px 0 0 rgba(0,200,255,0.15))'
+                        rotate: 55,
+                        rotateY: -65,
+                        transformStyle: 'preserve-3d',
                       }}
-                      animate={{
-                        opacity: [0.3, 0.28, 0.32, 0.3],
-                        x: [0, -0.3, 0.3, 0],
-                        filter: [
-                          'drop-shadow(0.5px 0 0 rgba(0,255,136,0.15)) drop-shadow(-0.5px 0 0 rgba(0,200,255,0.15))',
-                          'drop-shadow(0.8px 0 0 rgba(0,255,136,0.18)) drop-shadow(-0.8px 0 0 rgba(0,200,255,0.18))',
-                          'drop-shadow(0.5px 0 0 rgba(0,255,136,0.15)) drop-shadow(-0.5px 0 0 rgba(0,200,255,0.15))',
-                        ],
-                      }}
-                      transition={{
-                        opacity: {
-                          duration: 8,
-                          repeat: Infinity,
-                          ease: 'easeInOut'
-                        },
-                        x: {
-                          duration: 1,
-                          repeat: Infinity,
-                          repeatDelay: 10
-                        },
-                        filter: {
-                          duration: 6,
-                          repeat: Infinity,
-                          ease: 'easeInOut'
-                        }
-                      }}
-                    />
+                    >
+                      {/* iPhone Frame (Main) */}
+                      <div
+                        className="relative"
+                        style={{
+                          width: '210px',
+                          height: '428px',
+                          background: '#1a1a1a',
+                          borderRadius: '38px',
+                          padding: '10px',
+                          boxShadow: '20px 20px 60px rgba(0,0,0,0.9), 8px 8px 24px rgba(0,0,0,0.6), 0 2px 6px rgba(0,0,0,0.15), inset 0 0 6px rgba(255,255,255,0.1), inset 0 -20px 40px rgba(0,0,0,1), inset 0 -12px 24px rgba(0,0,0,0.95)',
+                          zIndex: 10,
+                        }}
+                      >
+                      {/* Notch */}
+                      <div
+                        className="absolute top-0 left-1/2 transform -translate-x-1/2 z-20"
+                        style={{
+                          width: '105px',
+                          height: '22px',
+                          background: '#1a1a1a',
+                          borderBottomLeftRadius: '15px',
+                          borderBottomRightRadius: '15px',
+                        }}
+                      >
+                        {/* Speaker */}
+                        <div
+                          className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+                          style={{
+                            width: '45px',
+                            height: '5px',
+                            background: '#0a0a0a',
+                            borderRadius: '2.5px',
+                          }}
+                        />
+                      </div>
+
+                      {/* Screen */}
+                      <div
+                        className="relative overflow-hidden"
+                        style={{
+                          width: '100%',
+                          height: '100%',
+                          borderRadius: '32px',
+                          background: '#000',
+                        }}
+                      >
+                        {/* Screen Content - Image */}
+                        <motion.img
+                          src="/coachpro-black.webp"
+                          alt="CoachPro App"
+                          className="w-full h-full object-cover relative z-10"
+                          loading="lazy"
+                          style={{
+                            filter: 'drop-shadow(0.5px 0 0 rgba(0,255,136,0.15)) drop-shadow(-0.5px 0 0 rgba(0,200,255,0.15))'
+                          }}
+                          animate={{
+                            filter: [
+                              'drop-shadow(0.5px 0 0 rgba(0,255,136,0.15)) drop-shadow(-0.5px 0 0 rgba(0,200,255,0.15))',
+                              'drop-shadow(0.8px 0 0 rgba(0,255,136,0.18)) drop-shadow(-0.8px 0 0 rgba(0,200,255,0.18))',
+                              'drop-shadow(0.5px 0 0 rgba(0,255,136,0.15)) drop-shadow(-0.5px 0 0 rgba(0,200,255,0.15))',
+                            ],
+                          }}
+                          transition={{
+                            duration: 6,
+                            repeat: Infinity,
+                            ease: 'easeInOut'
+                          }}
+                        />
 
                     {/* Slower scanlines */}
                     <motion.div
@@ -143,30 +164,46 @@ export default function CaseStudySeo() {
                       }}
                     />
 
-                    {/* Color shift overlay */}
-                    <motion.div
-                      className="absolute inset-0 z-30 mix-blend-overlay"
-                      animate={{
-                        background: [
-                          'linear-gradient(180deg, rgba(0,255,136,0) 0%, rgba(0,255,136,0.1) 50%, rgba(0,255,136,0) 100%)',
-                          'linear-gradient(180deg, rgba(0,200,255,0) 0%, rgba(0,200,255,0.1) 50%, rgba(0,200,255,0) 100%)',
-                          'linear-gradient(180deg, rgba(0,255,136,0) 0%, rgba(0,255,136,0.1) 50%, rgba(0,255,136,0) 100%)',
-                        ],
-                        y: [-200, 200],
-                      }}
-                      transition={{
-                        background: {
-                          duration: 10,
-                          repeat: Infinity,
-                          ease: 'linear'
-                        },
-                        y: {
-                          duration: 12,
-                          repeat: Infinity,
-                          ease: 'linear'
-                        }
-                      }}
-                    />
+                      </div>
+                      {/* End of Screen */}
+
+                      {/* Side Button (Power) */}
+                      <div
+                        className="absolute right-0 top-24"
+                        style={{
+                          width: '3px',
+                          height: '45px',
+                          background: '#0a0a0a',
+                          borderTopLeftRadius: '1.5px',
+                          borderBottomLeftRadius: '1.5px',
+                        }}
+                      />
+
+                      {/* Volume Buttons */}
+                      <div
+                        className="absolute left-0 top-21"
+                        style={{
+                          width: '3px',
+                          height: '22px',
+                          background: '#0a0a0a',
+                          borderTopRightRadius: '1.5px',
+                          borderBottomRightRadius: '1.5px',
+                        }}
+                      />
+                      <div
+                        className="absolute left-0 top-48"
+                        style={{
+                          width: '3px',
+                          height: '22px',
+                          background: '#0a0a0a',
+                          borderTopRightRadius: '1.5px',
+                          borderBottomRightRadius: '1.5px',
+                        }}
+                      />
+                      </div>
+                      {/* End of iPhone Frame (Front Face) */}
+                    </motion.div>
+                    {/* End of 3D Phone Container */}
                   </div>
                 </div>
               </motion.div>
