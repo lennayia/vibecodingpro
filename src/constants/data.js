@@ -4,43 +4,50 @@ export const phases = [
   {
     number: "01",
     title: "Vize a příprava",
-    description: "Ujasníte si, co chcete vytvořit a pro koho. Tohle je základ všeho.",
+    yourAction: "Ujasníte si, co chcete vytvořit a pro koho.",
+    mySupport: "Pomůžu vám formulovat jasnou vizi a identifikovat vaši cílovou skupinu.",
     Icon: Target
   },
   {
     number: "02",
     title: "Technické zázemí",
-    description: "Připravíte si nástroje, které budete potřebovat. S tím vám pomůžu.",
+    yourAction: "Připravíte si nástroje a prostředí pro práci.",
+    mySupport: "Nastavím s vámi všechny potřebné nástroje a ukážu, jak s nimi pracovat.",
     Icon: Wrench
   },
   {
     number: "03",
     title: "Komunikace s AI",
-    description: "Naučíte se mluvit s AI tak, aby vás pochopila a udělala, co potřebujete.",
+    yourAction: "Naučíte se efektivně komunikovat s AI.",
+    mySupport: "Ukážu vám osvědčené techniky a vzory, jak dostat z AI to, co potřebujete.",
     Icon: MessageSquare
   },
   {
     number: "04",
     title: "Startovací dokumenty",
-    description: 'Sepíšeme, jak má ta „vaše digi věc" vypadat a fungovat.',
+    yourAction: "Společně popíšeme, jak má vaše řešení vypadat a fungovat.",
+    mySupport: "Pomůžu strukturovat myšlenky do jasných dokumentů, se kterými AI bude pracovat.",
     Icon: FileText
   },
   {
     number: "05",
     title: "První kroky",
-    description: "A jedeme! První verze vzniká před vašima očima.",
+    yourAction: "Začnete tvořit první verzi vašeho nástroje.",
+    mySupport: "Jsem při tom s vámi, řeším překážky a hlídám, aby vše šlo správným směrem.",
     Icon: Rocket
   },
   {
     number: "06",
     title: "Workflow a iterace",
-    description: "Nastavíte si rutinu pro pokračování. Pro vaši větší jistotu.",
+    yourAction: "Nastavíte si rutinu a proces pro pokračování.",
+    mySupport: "Ukážu osvědčené workflow a systémy, které vám dají jistotu do budoucna.",
     Icon: RefreshCw
   },
   {
     number: "07",
     title: "Dokončení a spuštění",
-    description: "Otestujete, spustíte a vaše dílo jde do světa pomáhat!",
+    yourAction: "Otestujete a spustíte váš nástroj do světa.",
+    mySupport: "Pomůžu s finálními testy, nasazením a zajistím, že máte podporu i po startu.",
     Icon: Package
   }
 ]
@@ -92,12 +99,12 @@ export const pricingPackages = [
     description: "Pro ženy, které chtějí pochopit<br />a rozhodnout se",
     features: [
       "2x 1 hodina",
-      "Pochopíte, jak vibecoding funguje",
-      "Zjistíte, jestli je to pro vás",
-      "Uvidíte, co všechno můžete vytvořit",
-      "Rozebereme konkrétní záměr",
-      "Dostanete jasný plán, co dělat dá",
-      "Prostor na vaše otázky"
+      "Jak vibecoding funguje",
+      "Je to pro vás?",
+      "Co všechno můžete vytvořit?",
+      "Konkrétní záměr",
+      "Jasný plán",
+      "Vaše otázky"
     ],
     resultTitle: "Výsledek:",
     resultDescription: "Jasná roadmapa, víte přesně co a jak – a jestli je to pro vás.<br />Vyhnete se bloudění.",
@@ -124,10 +131,10 @@ export const pricingPackages = [
     features: [
       "<span class='font-semibold'>6x 1 hodina</span>",
       "<span class='font-semibold'>Všechno z VIBE (2h)</span>",
-      "Nastavíme externí nástroje (1h)",
-      "Vytvoříme základy vašeho produktu (1h)",
-      "Napíšeme první funkce (1h)",
-      "Vyřešíme, co vás brzdí (1h)"
+      "Externí nástroje (1h)",
+      "Základy vašeho produktu (1h)",
+      "První funkce (1h)",
+      "Co vás brzdí? (1h)"
     ],
     resultTitle: "Výsledek:",
     resultDescription: "Rozumíte, PLUS máte kus hotovo - nástroje běží, projekt existuje, první kód je napsaný.<br />Ušetříte desítky hodin zkoušení.",
@@ -160,7 +167,7 @@ export const pricingPackages = [
       "<span class='font-semibold'>10x 1 hodina</span>",
       "<span class='font-semibold'>Všechno z VIBE+CODING (6h) +</span>",
       "Co-working sessions (4h)",
-      "Dotáhneme na produkční verzi",
+      "Produkční verze",
       "30 dní přístup ke mně (WhatsApp)"
     ],
     resultTitle: "Výsledek:",
@@ -185,19 +192,6 @@ export const pricingPackages = [
 ]
 
 export const faqCategories = [
-  {
-    title: "Strach z vlastních schopností",
-    questions: [
-      {
-        question: "Co když jsem na to prostě moc blbá?",
-        answer: "Nejste. Pokud umíte napsat e-mail, zvládnete i tohle. Vibecoding není programování – je to komunikace s AI."
-      },
-      {
-        question: "Nikdy jsem nic technického nedotáhla. Proč by to teď mělo být jinak?",
-        answer: "Protože teď nebudete sama. A protože AI dělá těžkou práci za vás."
-      }
-    ]
-  },
   {
     title: "Strach z nejistoty",
     questions: [
@@ -259,6 +253,19 @@ export const faqCategories = [
       {
         question: "Můžu aplikaci pak rozvíjet sama?",
         answer: "Přesně to je cíl. Naučíte se vibecoding a pofrčíte."
+      }
+    ]
+  },
+  {
+    title: "Strach z vlastních schopností",
+    questions: [
+      {
+        question: "Co když jsem na to prostě moc blbá?",
+        answer: "Nejste. Pokud umíte napsat e-mail, zvládnete i tohle. Vibecoding není programování – je to komunikace s AI."
+      },
+      {
+        question: "Nikdy jsem nic technického nedotáhla. Proč by to teď mělo být jinak?",
+        answer: "Protože teď nebudete sama. A protože AI dělá těžkou práci za vás."
       }
     ]
   },

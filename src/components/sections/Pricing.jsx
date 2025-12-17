@@ -94,33 +94,10 @@ export function PricingGuarantee() {
           {...fadeIn}
           className="w-full"
         >
-          <motion.div
-            className="mb-16 text-center max-w-3xl mx-auto"
-            {...slideUp}
-            transition={{ delay: 0.5 }}
-          >
-            <p>
-              Nevíte si rady? <a href="#" className="underline hover:no-underline font-semibold">Napište mi,</a> pomůžu vám vybrat. Možná vám pomůže záruka vrácení peněz nebo odpovědi na otázky, které můžou vzbuzovat obavy.
-            </p>
-          </motion.div>
 
-          <motion.div
-            className="max-w-3xl mx-auto"
-            {...slideUp}
-            transition={{ delay: 0.6 }}
-          >
-            <div className="pt-2 pb-10 px-8 rounded-2xl bg-gray-50 dark:bg-[#05050f] border-2 border-gray-200 dark:border-gray-700">
-              <div className="flex items-center justify-center gap-3 mb-4">
-                <BadgeCheck className="w-6 h-6 text-accent" strokeWidth={2} />
-                <h3 className="font-display font-bold text-accent">Osobní garance</h3>
-              </div>
-              <p className="text-center text-xl font-light">
-                Věřím tomu, co dělám. Pokud vám spolupráce nedá jasno, férově vám vrátím peníze.
-              </p>
-            </div>
-          </motion.div>
         </motion.div>
       </div>
     </Section>
   )
 }
+

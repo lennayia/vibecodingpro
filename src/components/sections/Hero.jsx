@@ -62,13 +62,29 @@ export default function Hero() {
           <span className="block text-xl font-light">Pracují za vás 24/7 a pomáhají vám i stovkám vašich klientek – zatímco vy si užíváte růst a svobodu.</span>
         </motion.p>
 
+        {/* Meta message - positioned near bottom, visible on all devices */}
         <motion.div
           variants={fadeInUp}
-          className="flex justify-center"
+          className="flex flex-col items-center max-w-2xl mx-auto mt-8 md:mt-32 lg:mt-40"
         >
-          <Button onClick={handlePricingClick}>
-            Zobrazit ceník
-          </Button>
+          <p className="text-sm opacity-70 text-center mb-3 font-light italic">
+            ⚠️ Varování: Stránka je dlouhá.
+          </p>
+          <div className="flex flex-col items-center justify-center gap-3">
+            <Button
+              onClick={handlePricingClick}
+              variant="primary"
+            >
+              Radši hned přeskočte na ceník →
+            </Button>
+            <span className="opacity-50 text-sm mt-6">Nebo ji prozkoumejte.  Je to showcase různých stylů a možností použití vibecodingu na webu.</span>
+            <Button
+              onClick={() => window.scrollBy({ top: 800, behavior: 'smooth' })}
+              variant="primary"
+            >
+              To si nenechám ujít
+            </Button>
+          </div>
         </motion.div>
       </motion.div>
     </Section>

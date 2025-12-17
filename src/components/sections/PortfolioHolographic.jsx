@@ -15,11 +15,13 @@ function PortfolioHolographic() {
 
   const projects = useMemo(() => [
     { name: "CoachPro", image: "/coachpro.webp" },
+    { name: "ContentPro", image: "/content-pro.webp" },
+    { name: "DigiPro", image: "/digipro.webp" },
+    { name: "Koučovací karty", image: "/koucovaci-karty.webp" },
+    { name: "LifePro", image: "/liffepro.webp" },
     { name: "PaymentsPro", image: "/paymentspro.webp" },
     { name: "PianoPro", image: "/pianopro.webp" },
-    { name: "LifePro", image: "/lifepro.webp" },
-    { name: "StudyPro", image: "/studypro.webp" },
-    { name: "ContentPro", image: "/contentpro.webp" }
+    { name: "StudyPro", image: "/studypro.webp" }
   ], [])
 
   const dragX = useMotionValue(0)
@@ -60,7 +62,7 @@ function PortfolioHolographic() {
   return (
     <Section
       background="dark"
-      className="min-h-screen flex items-center justify-center !py-16 md:!py-24 overflow-hidden"
+      className="min-h-screen flex items-center justify-center !py-8 md:!py-12 overflow-hidden"
       showScrollIndicator={true}
     >
       <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
@@ -94,7 +96,7 @@ function PortfolioHolographic() {
       <div className="w-full relative z-10" ref={containerRef}>
         <motion.div {...fadeIn}>
           <motion.h2
-            className="font-display font-bold mb-8 text-center"
+            className="font-display font-bold mb-4 text-center"
             style={{
               lineHeight: '1.3',
               textShadow: '0 0 20px rgba(0, 255, 136, 0.3)'
@@ -103,40 +105,56 @@ function PortfolioHolographic() {
             Tohle postavila žena, která neumí programovat.
           </motion.h2>
 
-          <p className="text-xl text-center mb-16 max-w-3xl mx-auto">
-            8 funkčních aplikací pro reálné klientky. Žádný řádek kódu. Jen vize, strategie a AI.
+          <p className="text-xl text-center mb-8 max-w-3xl mx-auto">
+            8 funkčních aplikací pro reálné klienty. Žádný řádek kódu. Jen vize, strategie a AI.
           </p>
 
-          {/* Mobile: Compact image grid */}
-          <div className="sm:hidden grid grid-cols-2 gap-3 max-w-lg mx-auto px-4">
-            {projects.map((project, index) => (
-              <div key={index} className="group">
-                <div className="relative overflow-hidden rounded-lg">
-                  <img
-                    src={project.image}
-                    alt={project.name}
-                    loading="lazy"
-                    className="w-full h-auto object-cover"
-                    style={{
-                      filter: 'brightness(0.9)',
-                      boxShadow: '0 4px 12px rgba(0, 255, 136, 0.2)',
-                    }}
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-                  <div className="absolute bottom-0 left-0 right-0 p-2">
-                    <p className="text-accent text-sm font-bold text-center drop-shadow-lg">
-                      {project.name}
-                    </p>
-                  </div>
-                </div>
-              </div>
-            ))}
+          {/* Mobile: Horizontal drag carousel */}
+          <div className="sm:hidden relative px-4">
+            <div className="overflow-hidden">
+              <motion.div
+                className="flex gap-4 cursor-grab active:cursor-grabbing"
+                drag="x"
+                dragConstraints={{ left: -(projects.length * 280 - 280), right: 0 }}
+                dragElastic={0.2}
+                dragTransition={{ bounceStiffness: 200, bounceDamping: 20 }}
+              >
+                {projects.map((project, index) => (
+                  <motion.div
+                    key={index}
+                    className="flex-shrink-0 w-[260px]"
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                  >
+                    <div className="relative overflow-hidden rounded-lg aspect-[4/3] border-2 border-accent/30">
+                      <img
+                        src={project.image}
+                        alt={project.name}
+                        loading="lazy"
+                        className="w-full h-full object-cover"
+                        style={{
+                          filter: 'brightness(0.9)',
+                          boxShadow: '0 4px 12px rgba(0, 255, 136, 0.2)',
+                        }}
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                      <div className="absolute bottom-0 left-0 right-0 p-3 bg-black/40 backdrop-blur-sm">
+                        <p className="text-accent text-sm font-bold text-center drop-shadow-lg">
+                          {project.name}
+                        </p>
+                      </div>
+                    </div>
+                  </motion.div>
+                ))}
+              </motion.div>
+            </div>
+            <p className="text-center text-sm text-gray-400 mt-4">← Táhněte →</p>
           </div>
 
           {/* Tablet & Desktop (>=640px): 3D carousel with animations */}
           <div className="hidden sm:block">
             <motion.div
-                className="relative h-[500px] md:h-[700px] flex items-center justify-center cursor-grab active:cursor-grabbing"
+                className="relative h-[400px] md:h-[550px] flex items-center justify-center cursor-grab active:cursor-grabbing"
                 style={{ willChange: 'transform' }}
                 drag="x"
                 dragConstraints={{ left: 0, right: 0 }}
@@ -161,24 +179,18 @@ function PortfolioHolographic() {
                   ))}
                 </div>
               </motion.div>
-
-            <div className="flex justify-center gap-4 text-sm text-gray-400 mt-8">
-              <span>↓ Scrollujte ↓</span>
-              <span>|</span>
-              <span>← Táhněte →</span>
-            </div>
           </div>
         </motion.div>
       </div>
 
       {/* Separovaný text MIMO holografický container */}
       <motion.div
-        className="mt-16 max-w-3xl mx-auto text-center space-y-4 relative z-50"
+        className="mt-8 max-w-3xl mx-auto text-center space-y-4 relative z-50"
         {...slideUp}
         transition={{ delay: 0.5 }}
       >
-        <p className="text-xl">Od jednoduchých nástrojů po komplexní aplikace, tempo si určíte vy.</p>
-        <p className="text-xl">Třeba lehčí webovkou, než je tahle.</p>
+        <p className="text-xl">Od jednoduchých nástrojů po komplexní aplikace, tempo určujeme sami.</p>
+        <p className="text-xl">Začněte třeba jednodušší webovkou.</p>
         <p className="text-xl font-semibold">Zajímá vás, jak?</p>
       </motion.div>
     </Section>
@@ -310,21 +322,16 @@ const HolographicCard = memo(function HolographicCard({ project, zDepth }) {
           }}
         />
 
-        {/* Content placeholder */}
-        <div className="absolute inset-0 flex items-center justify-center">
-          <div className="w-full h-full bg-gradient-to-br from-gray-800 to-gray-900 relative">
-            <div className="absolute inset-0 flex items-center justify-center">
-              <motion.span
-                className="font-display font-bold text-3xl md:text-4xl"
-                style={{
-                  color: 'rgba(0, 255, 136, 0.8)',
-                  textShadow: '0 0 20px rgba(0, 255, 136, 0.5)',
-                }}
-              >
-                {project.name}
-              </motion.span>
-            </div>
-          </div>
+        {/* Project image background */}
+        <div className="absolute inset-0">
+          <img
+            src={project.image}
+            alt={project.name}
+            className="w-full h-full object-cover"
+            loading="lazy"
+          />
+          {/* Darker overlay for better holographic effect visibility */}
+          <div className="absolute inset-0 bg-black/30" />
         </div>
 
         {/* Corner accents */}

@@ -5,8 +5,8 @@ import { fadeIn, slideUp } from '../../constants/animations'
 
 const benefits = [
   {
-    title: "Pracuje za vás 24/7",
-    description: "Spíte, přesto pomáháte. Aplikace nespí nikdy.",
+    title: "Pracují za vás 24/7",
+    description: "Spíte, přesto pomáháte. Nástroj nespí nikdy.",
     Icon: Clock
   },
   {
@@ -20,7 +20,7 @@ const benefits = [
     Icon: TrendingUp
   },
   {
-    title: "Vypadáte profi",
+    title: "Jste ještě víc profi",
     description: "G-sheets jsou fajn. Ale vlastní apka – to je jiná liga!",
     Icon: Briefcase
   }
@@ -33,7 +33,7 @@ export default function WhyOwnAppSeo() {
       <div>
         <motion.div {...fadeIn}>
           <h2 className="font-display font-bold mb-16 text-center" style={{ lineHeight: '1.3' }}>
-            Proč mít třeba vlastní aplikaci?
+            Proč mít vlastní digi-nástroje
           </h2>
 
           <div className="space-y-8">

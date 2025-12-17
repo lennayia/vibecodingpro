@@ -1,11 +1,11 @@
 import { motion, AnimatePresence } from 'framer-motion'
 import { useState } from 'react'
 import Section from '../layout/Section'
-import { Gift, Check, X, ChevronDown } from 'lucide-react'
+import { Gift, Check, Map, FileCheck, BookOpen, Video, Mail, ClipboardList, Phone, Tag } from 'lucide-react'
 import { fadeIn } from '../../constants/animations'
 
 export default function BonusesTabsSeo() {
-  const [activeTab, setActiveTab] = useState(0)
+  const [activeTab, setActiveTab] = useState(1)
 
   const packages = [
     { name: "VIBE", key: "vibe" },
@@ -17,6 +17,7 @@ export default function BonusesTabsSeo() {
     {
       name: "Osobní roadmapa v PDF",
       description: "Váš osobní plán krok za krokem. Přesně víte, do čeho se pustit dál.",
+      icon: Map,
       vibe: true,
       vibeCode: true,
       vibeCoding: true
@@ -24,6 +25,7 @@ export default function BonusesTabsSeo() {
     {
       name: "Kompletní dokumentace v PDF",
       description: "Zadání projektu a technický základ v PDF. Máte všechno černé na bílém k dispozici na pořád.",
+      icon: FileCheck,
       vibe: false,
       vibeCode: true,
       vibeCoding: true
@@ -31,6 +33,7 @@ export default function BonusesTabsSeo() {
     {
       name: "6 návodů krok za krokem + tahák pro AI",
       description: "Jednoduché návody na další nástroje, které je fajn používat + tahák pro komunikaci s AI.",
+      icon: BookOpen,
       vibe: false,
       vibeCode: true,
       vibeCoding: true
@@ -38,6 +41,7 @@ export default function BonusesTabsSeo() {
     {
       name: "Nahrávky schůzek",
       description: "Můžete se k nim libovolně vracet. Nic vám neuteče ani v případě, že to hned nepochytíte.",
+      icon: Video,
       vibe: false,
       vibeCode: true,
       vibeCoding: true
@@ -45,6 +49,7 @@ export default function BonusesTabsSeo() {
     {
       name: "2 týdny e-mailová podpora",
       description: "Když se zaseknete a nebudete si vědět rady, napište mi. Odpovím do 24 hodin.",
+      icon: Mail,
       vibe: false,
       vibeCode: true,
       vibeCoding: true
@@ -52,6 +57,7 @@ export default function BonusesTabsSeo() {
     {
       name: "Zápisky z jednotlivých schůzek",
       description: "Po každé schůzce dostanete shrnutí – co máte hotové a co je další krok.",
+      icon: ClipboardList,
       vibe: false,
       vibeCode: false,
       vibeCoding: true
@@ -59,6 +65,7 @@ export default function BonusesTabsSeo() {
     {
       name: "Check-in call (30 min)",
       description: "Po 2 týdnech od poslední schůzky se spojíme a podíváme se na váš pokrok. Ujistíte se, že jdete správně.",
+      icon: Phone,
       vibe: false,
       vibeCode: false,
       vibeCoding: true
@@ -66,6 +73,7 @@ export default function BonusesTabsSeo() {
     {
       name: "Sleva na další konzultaci v Kč",
       description: "Chcete pokračovat? Máte zvýhodněnou cenu na další spolupráci v rámci 2hodinové konzultace (z hodnoty 2 900 Kč) a platí 3 měsíce od data zakoupení spolupráce v níže popsaných variantách.",
+      icon: Tag,
       vibe: "300",
       vibeCode: "600",
       vibeCoding: "1 000"
@@ -126,6 +134,7 @@ export default function BonusesTabsSeo() {
                 {getActiveBonuses().map((item, index) => {
                   const pkg = packages[activeTab]
                   const value = item[pkg.key]
+                  const IconComponent = item.icon
 
                   return (
                     <motion.div
@@ -133,18 +142,23 @@ export default function BonusesTabsSeo() {
                       initial={{ opacity: 0, x: -20 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: index * 0.1 }}
-                      className="p-4 rounded-lg bg-gray-50 dark:bg-[#0a0a1a]"
+                      className="p-5 rounded-xl bg-gray-50 dark:bg-[#0a0a1a] border border-gray-200 dark:border-[#070716] hover:border-accent/30 dark:hover:border-accent/30 transition-all"
                     >
-                      <div className="flex items-start gap-3">
-                        {value === true ? (
-                          <Check className="w-6 h-6 text-accent flex-shrink-0 mt-0.5" strokeWidth={2} />
-                        ) : (
-                          <div className="w-6 h-6 flex-shrink-0 flex items-center justify-center">
-                            <span className="text-sm font-bold text-accent">{value}</span>
+                      <div className="flex items-start gap-4">
+                        {/* Icon with accent background */}
+                        <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center">
+                          <IconComponent className="w-6 h-6 text-accent" strokeWidth={1.5} />
+                        </div>
+                        {/* Content */}
+                        <div className="flex-1">
+                          <div className="flex items-start justify-between gap-2 mb-2">
+                            <h4 className="font-bold text-lg">{item.name}</h4>
+                            {value !== true && (
+                              <span className="text-sm font-bold text-accent bg-accent/10 px-3 py-1 rounded-full whitespace-nowrap">
+                                {value} Kč sleva
+                              </span>
+                            )}
                           </div>
-                        )}
-                        <div>
-                          <h4 className="font-semibold mb-1">{item.name}</h4>
                           <p className="text-sm font-light text-gray-700 dark:text-gray-300">
                             {item.description}
                           </p>

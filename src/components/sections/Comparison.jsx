@@ -1,10 +1,23 @@
-import { motion } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
+import { useState } from 'react'
+import { ChevronLeft, ChevronRight } from 'lucide-react'
 import Section from '../layout/Section'
 import ComparisonCard from '../ui/ComparisonCard'
 import { comparisonData } from '../../constants/data'
 import { fadeIn } from '../../constants/animations'
 
 export default function ComparisonSeo() {
+  const [currentSlide, setCurrentSlide] = useState(0)
+  const slides = [comparisonData.martina, comparisonData.julie]
+
+  const nextSlide = () => {
+    setCurrentSlide((prev) => (prev + 1) % slides.length)
+  }
+
+  const prevSlide = () => {
+    setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length)
+  }
+
   return (
     <Section background="light" className="min-h-screen flex items-center justify-center !pt-1 !pb-4 md:!pt-2 md:!pb-6 lg:!pt-4 lg:!pb-8 relative overflow-hidden" showScrollIndicator={true}>
       {/* Holographic background */}
@@ -178,20 +191,70 @@ export default function ComparisonSeo() {
             <span className="block mt-6 text-xl font-light">Ale životy mají jiné.</span>
           </p>
 
-          <div className="grid md:grid-cols-2 gap-8">
-            <ComparisonCard
-              data={comparisonData.martina}
-              direction="left"
-              delay={0}
-              background="dark"
-            />
+          {/* Carousel Container */}
+          <div className="relative max-w-2xl mx-auto">
+            {/* Carousel */}
+            <div className="relative overflow-hidden">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={currentSlide}
+                  initial={{ opacity: 0, x: 100 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: -100 }}
+                  transition={{ duration: 0.3 }}
+                  drag="x"
+                  dragConstraints={{ left: 0, right: 0 }}
+                  dragElastic={0.2}
+                  onDragEnd={(e, { offset, velocity }) => {
+                    const swipe = Math.abs(offset.x) * velocity.x
+                    if (swipe < -500) {
+                      nextSlide()
+                    } else if (swipe > 500) {
+                      prevSlide()
+                    }
+                  }}
+                >
+                  <ComparisonCard
+                    data={slides[currentSlide]}
+                    direction="center"
+                    delay={0}
+                    background="dark"
+                  />
+                </motion.div>
+              </AnimatePresence>
+            </div>
 
-            <ComparisonCard
-              data={comparisonData.julie}
-              direction="right"
-              delay={0}
-              background="dark"
-            />
+            {/* Navigation Arrows */}
+            <button
+              onClick={prevSlide}
+              className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 md:-translate-x-12 bg-accent/10 hover:bg-accent/20 backdrop-blur-sm rounded-full p-2 transition-all z-20"
+              aria-label="Previous slide"
+            >
+              <ChevronLeft className="w-6 h-6 text-accent" strokeWidth={2} />
+            </button>
+            <button
+              onClick={nextSlide}
+              className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 md:translate-x-12 bg-accent/10 hover:bg-accent/20 backdrop-blur-sm rounded-full p-2 transition-all z-20"
+              aria-label="Next slide"
+            >
+              <ChevronRight className="w-6 h-6 text-accent" strokeWidth={2} />
+            </button>
+
+            {/* Dots Indicator */}
+            <div className="flex justify-center gap-2 mt-6">
+              {slides.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => setCurrentSlide(index)}
+                  className={`w-2 h-2 rounded-full transition-all ${
+                    index === currentSlide
+                      ? 'bg-accent w-8'
+                      : 'bg-gray-400 dark:bg-gray-600 hover:bg-accent/50'
+                  }`}
+                  aria-label={`Go to slide ${index + 1}`}
+                />
+              ))}
+            </div>
           </div>
         </motion.div>
       </div>

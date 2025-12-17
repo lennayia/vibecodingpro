@@ -37,7 +37,7 @@ export default function FAQSeo() {
               </h2>
             </div>
             <h3 className="font-display font-bold max-w-2xl mx-auto">
-              Odpovědi na otázky, které vám běží hlavou
+              Odpovědi na otázky, které vám k vibecodingu běží hlavou
             </h3>
           </div>
 

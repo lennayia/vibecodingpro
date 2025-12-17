@@ -1,4 +1,5 @@
-import { motion } from 'framer-motion'
+import { motion, useMotionValue, useTransform, animate } from 'framer-motion'
+import { useEffect } from 'react'
 import Section from '../layout/Section'
 import Card from '../ui/Card'
 import Badge from '../ui/Badge'
@@ -6,9 +7,21 @@ import StatCard from '../ui/StatCard'
 import { benefits } from '../../constants/data'
 import { fadeIn, slideUp } from '../../constants/animations'
 
+function AnimatedCounter({ from, to, duration = 2, className = '' }) {
+  const count = useMotionValue(from)
+  const rounded = useTransform(count, (latest) => Math.round(latest))
+
+  useEffect(() => {
+    const controls = animate(count, to, { duration, delay: 0.5 })
+    return controls.stop
+  }, [count, to, duration])
+
+  return <motion.span className={className}>{rounded}</motion.span>
+}
+
 export default function CaseStudySeo() {
   return (
-    <Section background="light" className="min-h-screen flex items-center justify-center !pt-2 !pb-4 md:!pt-4 md:!pb-6" showScrollIndicator={true}>
+    <Section background="dark" className="min-h-screen flex items-center justify-center !pt-2 !pb-4 md:!pt-4 md:!pb-6" showScrollIndicator={true}>
       <div className="w-full">
         <motion.div {...fadeIn}>
           <div className="text-center mb-6">
@@ -16,16 +29,37 @@ export default function CaseStudySeo() {
           </div>
 
           <h2 className="font-display font-bold text-center mb-8" style={{ lineHeight: '1.3' }}>
-            Takhle to může vypadat v praxi
+            Vibecoding prakticky
           </h2>
 
+          {/* Big Impact Metric */}
+          <motion.div
+            className="max-w-4xl mx-auto mb-0"
+            {...slideUp}
+            transition={{ delay: 0.2 }}
+          >
+            <div className="text-center">
+              <div className="inline-flex items-center gap-4 font-display font-bold">
+                <span className="text-5xl md:text-7xl text-gray-400">80</span>
+                <span className="text-5xl md:text-7xl text-accent">→</span>
+                <AnimatedCounter
+                  from={80}
+                  to={320}
+                  duration={2.5}
+                  className="text-5xl md:text-7xl text-accent"
+                />
+              </div>
+              <p className="text-xl md:text-2xl mt-2 mb-0 font-light">klientek měsíčně</p>
+            </div>
+          </motion.div>
+
           {/* Hero Quote with Image - Minimal Holographic */}
-          <div className="max-w-5xl mx-auto mb-8">
+          <div className="max-w-5xl mx-auto mb-6 -mt-4">
             <div className="grid md:grid-cols-2 gap-8 items-center">
               {/* Quote */}
               <motion.div
                 {...slideUp}
-                transition={{ delay: 0.2 }}
+                transition={{ delay: 0.3 }}
                 className="order-1"
               >
                 <p className="text-xl font-light leading-relaxed italic mb-6">
@@ -39,8 +73,8 @@ export default function CaseStudySeo() {
               {/* Image with holographic effect */}
               <motion.div
                 {...slideUp}
-                transition={{ delay: 0.3 }}
-                className="order-2 relative"
+                transition={{ delay: 0.4 }}
+                className="order-2 relative -mt-12 -ml-16"
               >
                 <div className="max-w-[200px] mx-auto relative">
                   {/* Phone Mockup */}
@@ -211,10 +245,10 @@ export default function CaseStudySeo() {
           </div>
 
           {/* Before/After Cards */}
-          <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto mb-8">
+          <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto mb-6">
             <motion.div
               {...slideUp}
-              transition={{ delay: 0.4 }}
+              transition={{ delay: 0.5 }}
             >
               <Card background="dark" className="h-full">
                 <div className="text-center mb-6">
@@ -235,7 +269,7 @@ export default function CaseStudySeo() {
 
             <motion.div
               {...slideUp}
-              transition={{ delay: 0.5 }}
+              transition={{ delay: 0.6 }}
             >
               <Card background="dark" className="h-full border-2 border-accent/50">
                 <div className="text-center mb-6">
@@ -257,9 +291,9 @@ export default function CaseStudySeo() {
 
           {/* Final Quote */}
           <motion.div
-            className="max-w-3xl mx-auto mb-8 text-center"
+            className="max-w-3xl mx-auto mb-6 text-center"
             {...slideUp}
-            transition={{ delay: 0.6 }}
+            transition={{ delay: 0.7 }}
           >
             <div className="relative">
               <div className="absolute -left-4 -top-4 text-6xl text-accent/20 font-serif">"</div>
@@ -277,7 +311,7 @@ export default function CaseStudySeo() {
                 key={index}
                 value={benefit.value}
                 label={benefit.label}
-                delay={0.7 + index * 0.1}
+                delay={0.8 + index * 0.1}
               />
             ))}
           </div>
