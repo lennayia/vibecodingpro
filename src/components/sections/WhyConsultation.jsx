@@ -48,7 +48,7 @@ export default function WhyConsultation() {
   }
 
   return (
-    <Section background="dark" className="min-h-screen flex items-center justify-center !pt-4 !pb-8 md:!pt-4 md:!pb-8 lg:!pt-8 lg:!pb-16" showScrollIndicator={true}>
+    <Section background="light" className="min-h-screen flex items-center justify-center !pt-4 !pb-8 md:!pt-4 md:!pb-8 lg:!pt-8 lg:!pb-16" showScrollIndicator={true}>
       <div>
         <motion.div {...fadeIn}>
           <h2 className="font-display font-bold mb-8 text-center" style={{ lineHeight: '1.3' }}>

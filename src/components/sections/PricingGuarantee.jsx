@@ -14,7 +14,7 @@ export default function PricingGuarantee() {
           transition={{ delay: 0.3 }}
         >
           <p className="text-xl font-light">
-            Nevíte si rady? <a href="#" className="underline hover:no-underline font-semibold">Napište mi,</a> pomůžu vám vybrat. Možná vám pomůže záruka vrácení peněz nebo odpovědi na otázky, které můžou vzbuzovat obavy.
+            Nevíte si rady? <a href="#" className="underline hover:no-underline font-semibold">Napište mi,</a> pomůžu vám vybrat. Možná vás podpoří záruka vrácení peněz nebo odpovědi na otázky, které můžou vzbuzovat obavy.
           </p>
         </motion.div>
 
@@ -50,28 +50,38 @@ export default function PricingGuarantee() {
           </div>
         </motion.div>
 
-        {/* Stamp tool - positioned relative to entire section */}
+        {/* Stamp tool - STATIC version for small screens (320-640px) */}
+        <img
+          src="/vibecoding-razitko.webp"
+          alt="Razítko"
+          className="block sm:hidden absolute w-40 h-40 object-contain"
+          style={{
+            filter: 'drop-shadow(0 10px 20px rgba(0,0,0,0.5))',
+            right: '10%',
+            top: '50%',
+            zIndex: 100
+          }}
+        />
+
+        {/* Stamp tool - ANIMATED version for larger screens (640px+) */}
         <motion.img
           src="/vibecoding-razitko.webp"
           alt="Razítko"
           initial={{ x: 600, y: -300, opacity: 0, rotate: 0 }}
-          whileInView={{
+          animate={{
             x: 0,
             y: 0,
-            opacity: 1,
-            rotate: [0, -5, 5, -5, 5, -3, 3, 0]
+            opacity: 1
           }}
-          viewport={{ once: true }}
           transition={{
             duration: 1.5,
-            ease: "easeOut",
-            rotate: {
-              delay: 1.5,
-              duration: 1.2,
-              ease: "easeInOut"
-            }
+            delay: 0.5,
+            ease: "easeOut"
           }}
-          className="absolute w-64 h-64 object-contain z-50"
+          onAnimationComplete={() => {
+            // Trigger rotation after fly-in completes
+          }}
+          className="hidden sm:block absolute sm:w-48 sm:h-48 md:w-56 md:h-56 lg:w-64 lg:h-64 object-contain z-50"
           style={{
             filter: 'drop-shadow(0 10px 20px rgba(0,0,0,0.5))',
             right: '25%',

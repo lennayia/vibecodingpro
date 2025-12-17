@@ -53,32 +53,18 @@ export default function CaseStudySeo() {
             </div>
           </motion.div>
 
-          {/* Hero Quote with Image - Minimal Holographic */}
-          <div className="max-w-5xl mx-auto mb-6 -mt-4">
-            <div className="grid md:grid-cols-2 gap-8 items-center">
-              {/* Quote */}
-              <motion.div
-                {...slideUp}
-                transition={{ delay: 0.3 }}
-                className="order-1"
-              >
-                <p className="text-xl font-light leading-relaxed italic mb-6">
-                  „Pomáhám téměř 320 klientkám měsíčně místo 80. A to jsem s aplikací teprv na začátku."
-                </p>
-                <p className="text-lg text-accent font-light">
-                  — Jana, koučka
-                </p>
-              </motion.div>
-
-              {/* Image with holographic effect */}
-              <motion.div
-                {...slideUp}
-                transition={{ delay: 0.4 }}
-                className="order-2 relative -mt-12 -ml-16"
-              >
-                <div className="max-w-[200px] mx-auto relative">
+          {/* Hero Quote with Background Phone */}
+          <div className="max-w-5xl mx-auto mb-6 -mt-4 relative">
+            {/* Phone in background */}
+            <motion.div
+              {...slideUp}
+              transition={{ delay: 0.4 }}
+              className="absolute right-0 top-0 opacity-40 pointer-events-none"
+              style={{ zIndex: 0, transform: 'translateY(-16rem)' }}
+            >
+                <div className="max-w-[200px] relative">
                   {/* Phone Mockup */}
-                  <div className="relative max-w-[250px] mx-auto" style={{ perspective: '1000px' }}>
+                  <div className="relative max-w-[250px]" style={{ perspective: '1000px' }}>
                     <motion.div
                       className="relative"
                       style={{
@@ -240,6 +226,21 @@ export default function CaseStudySeo() {
                     {/* End of 3D Phone Container */}
                   </div>
                 </div>
+              </motion.div>
+
+            {/* Quote in foreground */}
+            <div className="relative" style={{ zIndex: 10 }}>
+              <motion.div
+                {...slideUp}
+                transition={{ delay: 0.3 }}
+                className="max-w-2xl"
+              >
+                <p className="text-xl font-light leading-relaxed italic mb-6">
+                  „Pomáhám téměř 320 klientkám měsíčně místo 80. A to jsem s aplikací teprv na začátku."
+                </p>
+                <p className="text-lg text-accent font-light">
+                  — Jana, koučka
+                </p>
               </motion.div>
             </div>
           </div>
