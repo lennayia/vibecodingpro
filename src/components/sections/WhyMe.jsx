@@ -228,7 +228,7 @@ export default function WhyMeSeo() {
     },
     {
       title: "2 500+ hodin praxe",
-      description: "Chyby, pokusy, průlomy. Předám vám je, a vy to zvládnete rychleji. A nebojte, chyby si uděláte i svoje."
+      description: "Rok 2025: chyby, pokusy, průlomy. Předám vám je, a vy to zvládnete rychleji. A nebojte, o chyby nepřijdete, uděláte si svoje :)"
     },
     {
       title: "Učím, co sama dělám",

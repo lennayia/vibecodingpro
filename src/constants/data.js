@@ -5,7 +5,8 @@ export const phases = [
     number: "01",
     title: "Vize a příprava",
     yourAction: "Ujasníte si, co chcete vytvořit a pro koho.",
-    mySupport: "Pomůžu vám formulovat jasnou vizi a identifikovat vaši cílovou skupinu.",
+    mySupport: "Formulujeme jasnou vizi a identifikujeme vaši cílovou skupinu.",
+    supportLabel: "Společně",
     Icon: Target
   },
   {
@@ -32,7 +33,7 @@ export const phases = [
   {
     number: "05",
     title: "Startovací dokumenty",
-    yourAction: "Sepíšeme, jak má vaše digi věc vypadat a fungovat.",
+    yourAction: "Rozmyslíte, jak má vaše digi věc vypadat a fungovat.",
     mySupport: "Dám vám strukturu a pomůžu s formulacemi.",
     Icon: FileText
   },
@@ -76,6 +77,7 @@ export const phases = [
     title: "Cenová strategie",
     yourAction: "Rozhodnete, jak chcete na nástroji vydělávat.",
     mySupport: "Projdeme možnosti a vybereme model pro vaše podnikání.",
+    supportLabel: "Společně",
     Icon: RefreshCw
   },
   {

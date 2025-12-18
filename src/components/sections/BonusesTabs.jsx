@@ -1,17 +1,13 @@
 import { motion, AnimatePresence } from 'framer-motion'
 import { useState } from 'react'
 import Section from '../layout/Section'
-import { Gift, Check, Map, FileCheck, BookOpen, Video, Mail, ClipboardList, Phone, Tag } from 'lucide-react'
+import { Gift, Check, Map, FileCheck, BookOpen, Video, Mail, ClipboardList, Phone, Tag, ChevronLeft, ChevronRight } from 'lucide-react'
 import { fadeIn } from '../../constants/animations'
 
 export default function BonusesTabsSeo() {
-  const [activeTab, setActiveTab] = useState(1)
+  const [currentSlide, setCurrentSlide] = useState(1)
 
-  const packages = [
-    { name: "VIBE", key: "vibe" },
-    { name: "VIBE+CODING", key: "vibeCode" },
-    { name: "VIBECODING VIP", key: "vibeCoding" }
-  ]
+  const BONUSES_PER_SLIDE = 4 // Number of bonuses per slide
 
   const bonusItems = [
     {
@@ -76,65 +72,145 @@ export default function BonusesTabsSeo() {
       icon: Tag,
       vibe: "300",
       vibeCode: "600",
-      vibeCoding: "1 000"
+      vibeCoding: "900"
     }
   ]
 
-  // Get bonuses for active tab
-  const getActiveBonuses = () => {
-    const pkg = packages[activeTab]
-    return bonusItems.filter(item => item[pkg.key] !== false)
+  // Create slides structure similar to phases
+  const packages = [
+    { name: "VIBE", key: "vibe", previousPackage: null },
+    { name: "VIBE+CODING", key: "vibeCode", previousPackage: "VIBE" },
+    { name: "VIBECODING VIP", key: "vibeCoding", previousPackage: "VIBE+CODING" }
+  ]
+
+  // Group bonuses by package into slides
+  const bonusSlides = []
+  packages.forEach((pkg, pkgIndex) => {
+    let packageBonuses = []
+
+    // Add "Everything from previous variant" item for higher packages
+    if (pkg.previousPackage) {
+      packageBonuses.push({
+        name: `Všechno z varianty ${pkg.previousPackage}`,
+        description: "",
+        icon: Check,
+        isPreviousPackage: true
+      })
+    }
+
+    // Get only NEW bonuses for this package (not in previous packages)
+    const newBonuses = bonusItems.filter(item => {
+      const hasInCurrent = item[pkg.key] !== false
+      if (!hasInCurrent) return false
+
+      // Always include discount bonus (has different values for each package)
+      if (item.icon === Tag) return true
+
+      // Check if this bonus was in any previous package
+      const previousPackages = packages.slice(0, pkgIndex)
+      const wasInPrevious = previousPackages.some(prevPkg => item[prevPkg.key] !== false)
+
+      return !wasInPrevious
+    })
+
+    packageBonuses = packageBonuses.concat(newBonuses)
+
+    // Split package bonuses into slides of BONUSES_PER_SLIDE
+    for (let i = 0; i < packageBonuses.length; i += BONUSES_PER_SLIDE) {
+      bonusSlides.push({
+        package: pkg.name,
+        bonuses: packageBonuses.slice(i, i + BONUSES_PER_SLIDE)
+      })
+    }
+  })
+
+  const nextSlide = () => {
+    setCurrentSlide((prev) => (prev + 1) % bonusSlides.length)
+  }
+
+  const prevSlide = () => {
+    setCurrentSlide((prev) => (prev - 1 + bonusSlides.length) % bonusSlides.length)
   }
 
   return (
-    <Section background="light" className="min-h-screen flex items-center justify-center" showScrollIndicator={true}>
-      <div>
+    <Section background="light" className="min-h-screen flex flex-col !pt-14" showScrollIndicator={true}>
+      <div className="w-full">
         <motion.div {...fadeIn}>
-          <div className="text-center mb-16">
-            <div className="flex items-center justify-center gap-3 mb-4">
-              <Gift className="w-8 h-8 text-white dark:text-white" strokeWidth={2} />
-              <h2 className="font-display font-bold" style={{ lineHeight: '1.3' }}>
-                Co dostanete navíc
-              </h2>
+          {/* Fixed header */}
+          <div className="sticky top-0 z-30 bg-[#f8f8f8] dark:bg-[#05050f] pb-6 pt-8">
+            <div className="text-center mb-8">
+              <div className="flex items-center justify-center gap-3 mb-2">
+                <Gift className="w-8 h-8 text-accent" strokeWidth={2} />
+                <h2 className="font-display font-bold" style={{ lineHeight: '1.3' }}>
+                  Co dostanete navíc
+                </h2>
+              </div>
+              <h3 className="font-display font-bold max-w-2xl mx-auto">
+                <span className="text-gradient">Bonusy, které vám usnadní cestu</span>
+              </h3>
             </div>
-            <h3 className="font-display font-bold max-w-2xl mx-auto">
-              <span className="text-gradient">Bonusy, které vám usnadní cestu</span>
-            </h3>
-          </div>
 
-          {/* Tabs - konzistentní tlačítka */}
-          <div className="flex justify-center gap-3 mb-8 flex-wrap">
-            {packages.map((pkg, index) => (
+            {/* Package selector with arrows */}
+            <div className="relative flex items-center justify-center gap-4">
               <button
-                key={index}
-                onClick={() => setActiveTab(index)}
-                className={`px-6 py-3 font-display font-semibold transition-all ${
-                  activeTab === index
-                    ? 'bg-accent text-gray-900 shadow-lg'
-                    : 'border-2 border-gray-200 dark:border-gray-700 bg-white dark:bg-[#05050f] hover:border-accent dark:hover:border-accent hover:shadow-md'
-                }`}
-                style={{ borderRadius: '50px' }}
+                onClick={prevSlide}
+                className="bg-accent/10 rounded-full p-2 cursor-pointer hover:bg-accent/20 transition-colors"
+                aria-label="Previous slide"
               >
-                {pkg.name}
+                <ChevronLeft className="w-6 h-6 text-accent" strokeWidth={2} />
               </button>
-            ))}
+
+              <motion.div
+                key={bonusSlides[currentSlide].package}
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.3 }}
+                className="relative"
+              >
+                <div className="absolute inset-0 bg-accent/10 blur-lg animate-pulse" />
+                <span className="relative font-display font-bold text-2xl md:text-3xl text-accent drop-shadow-[0_0_20px_rgba(0,255,136,0.6)]">
+                  varianta {bonusSlides[currentSlide].package}
+                </span>
+              </motion.div>
+
+              <button
+                onClick={nextSlide}
+                className="bg-accent/10 rounded-full p-2 cursor-pointer hover:bg-accent/20 transition-colors"
+                aria-label="Next slide"
+              >
+                <ChevronRight className="w-6 h-6 text-accent" strokeWidth={2} />
+              </button>
+            </div>
           </div>
 
-          {/* Bonus list for active tab */}
-          <div className="max-w-2xl mx-auto">
+          {/* Bonus carousel */}
+          <div className="max-w-2xl mx-auto relative">
             <AnimatePresence mode="wait">
               <motion.div
-                key={activeTab}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -20 }}
+                key={currentSlide}
+                initial={{ opacity: 0, x: 100 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -100 }}
                 transition={{ duration: 0.3 }}
                 className="space-y-3"
               >
-                {getActiveBonuses().map((item, index) => {
-                  const pkg = packages[activeTab]
-                  const value = item[pkg.key]
+                {bonusSlides[currentSlide]?.bonuses.map((item, index) => {
+                  const pkg = packages.find(p => p.name === bonusSlides[currentSlide].package)
+                  const pkgIndex = packages.findIndex(p => p.name === bonusSlides[currentSlide].package)
+                  const value = item.isPreviousPackage ? true : item[pkg.key]
                   const IconComponent = item.icon
+
+                  // Calculate discount display for higher packages
+                  let discountDisplay = value
+                  let isIncrementalDiscount = false
+                  if (!item.isPreviousPackage && value !== true && item.icon === Tag && pkgIndex > 0) {
+                    const previousPkg = packages[pkgIndex - 1]
+                    const previousValue = parseInt(item[previousPkg.key])
+                    const currentValue = parseInt(value)
+                    const increment = currentValue - previousValue
+                    discountDisplay = `${increment} Kč (celkem ${currentValue} Kč)`
+                    isIncrementalDiscount = true
+                  }
 
                   return (
                     <motion.div
@@ -153,15 +229,17 @@ export default function BonusesTabsSeo() {
                         <div className="flex-1">
                           <div className="flex items-start justify-between gap-2 mb-2">
                             <h4 className="font-bold text-lg">{item.name}</h4>
-                            {value !== true && (
+                            {!item.isPreviousPackage && value !== true && (
                               <span className="text-sm font-bold text-accent bg-accent/10 px-3 py-1 rounded-full whitespace-nowrap">
-                                {value} Kč sleva
+                                {isIncrementalDiscount ? discountDisplay : `${discountDisplay} Kč sleva`}
                               </span>
                             )}
                           </div>
-                          <p className="text-sm font-light text-gray-700 dark:text-gray-300">
-                            {item.description}
-                          </p>
+                          {item.description && (
+                            <p className="text-sm font-light text-gray-700 dark:text-gray-300">
+                              {item.description}
+                            </p>
+                          )}
                         </div>
                       </div>
                     </motion.div>
@@ -169,6 +247,22 @@ export default function BonusesTabsSeo() {
                 })}
               </motion.div>
             </AnimatePresence>
+
+            {/* Dots indicator */}
+            <div className="flex justify-center gap-3 mt-8 flex-wrap max-w-md mx-auto">
+              {bonusSlides.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => setCurrentSlide(index)}
+                  className={`rounded-full cursor-pointer transition-all ${
+                    index === currentSlide
+                      ? 'bg-accent w-12 h-3'
+                      : 'bg-gray-400 dark:bg-gray-600 w-3 h-3'
+                  }`}
+                  aria-label={`Go to slide ${index + 1}`}
+                />
+              ))}
+            </div>
           </div>
         </motion.div>
       </div>
