@@ -81,7 +81,7 @@ export const comparisonData = {
     features: [
       { text: "<strong>200+ žen má podporu.</strong> Spánkové tracky, meditace, osobní tipy 24/7" },
       { text: "<strong>Klientky jsou nadšené.</strong> Píšou díky, vidí pokrok, cítí se opečované" },
-      { text: "<strong>2-3 premium konzultace týdně</strong> – vyšší cenua, připravené klientky" },
+      { text: "<strong>2-3 premium konzultace týdně</strong> – vyšší cena, připravené klientky" },
       { text: "<strong>Žádné buď a nebo. Má energii i čas</strong> – na běhání, rodinu, koníčky" },
       { text: "<strong>Měsíc na Bali?</strong> – aplikace běží a klientky jsou spokojené" },
       { text: "<strong>Příjem se stává pasivním</strong> – pořád roste i díky VIP konzultacím" }
