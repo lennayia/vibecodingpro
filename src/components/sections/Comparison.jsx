@@ -179,16 +179,16 @@ export default function ComparisonSeo() {
 
       <div className="relative z-10">
         <motion.div {...fadeIn}>
-          <h2 className="font-display font-bold mb-8 text-center" style={{ lineHeight: '1.3' }}>
+          <h2 className="font-display font-bold mb-4 text-center" style={{ lineHeight: '1.3' }}>
             Dobré nástroje posouvají
           </h2>
-          <h3 className="font-display font-bold mb-6 text-center">
+          <h3 className="font-display font-bold mb-4 text-center">
             Dvě ženy. Jeden obor. Dvě cesty.
           </h3>
-          <p className="mb-8 md:mb-12 lg:mb-16 text-center max-w-3xl mx-auto text-xl font-light">
+          <p className="mb-4 md:mb-6 lg:mb-8 text-center max-w-3xl mx-auto text-xl font-light">
             <span className="block text-xl font-light">Martina a Julie: obě učí klientky zdravě spát.</span>
             <span className="block text-xl font-light">Stejné znalosti. Stejná vášeň pomáhat.</span>
-            <span className="block mt-6 text-xl font-light">Ale životy mají jiné.</span>
+            <span className="block mt-6 text-xl font-light">Ale jejich podnikání funguje naprosto odlišně.</span>
           </p>
 
           {/* Carousel Container */}
@@ -227,29 +227,37 @@ export default function ComparisonSeo() {
             {/* Navigation Arrows */}
             <button
               onClick={prevSlide}
-              className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 md:-translate-x-12 bg-accent/10 hover:bg-accent/20 backdrop-blur-sm rounded-full p-2 transition-all z-20"
+              className="absolute left-0 top-1/2 bg-accent/10 rounded-full p-2 z-20 cursor-pointer"
+              style={{
+                transform: 'translate(-1rem, -50%)',
+                transition: 'none'
+              }}
               aria-label="Previous slide"
             >
               <ChevronLeft className="w-6 h-6 text-accent" strokeWidth={2} />
             </button>
             <button
               onClick={nextSlide}
-              className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 md:translate-x-12 bg-accent/10 hover:bg-accent/20 backdrop-blur-sm rounded-full p-2 transition-all z-20"
+              className="absolute right-0 top-1/2 bg-accent/10 rounded-full p-2 z-20 cursor-pointer"
+              style={{
+                transform: 'translate(1rem, -50%)',
+                transition: 'none'
+              }}
               aria-label="Next slide"
             >
               <ChevronRight className="w-6 h-6 text-accent" strokeWidth={2} />
             </button>
 
             {/* Dots Indicator */}
-            <div className="flex justify-center gap-2 mt-6">
+            <div className="flex justify-center gap-3 mt-6 mb-12">
               {slides.map((_, index) => (
                 <button
                   key={index}
                   onClick={() => setCurrentSlide(index)}
-                  className={`w-2 h-2 rounded-full transition-all ${
+                  className={`rounded-full cursor-pointer ${
                     index === currentSlide
-                      ? 'bg-accent w-8'
-                      : 'bg-gray-400 dark:bg-gray-600 hover:bg-accent/50'
+                      ? 'bg-accent w-12 h-3'
+                      : 'bg-gray-400 dark:bg-gray-600 w-5 h-5'
                   }`}
                   aria-label={`Go to slide ${index + 1}`}
                 />

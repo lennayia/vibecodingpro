@@ -62,7 +62,7 @@ function PortfolioHolographic() {
   return (
     <Section
       background="dark"
-      className="min-h-screen flex items-center justify-center !py-8 md:!py-12 overflow-hidden"
+      className="min-h-screen flex items-center justify-center !py-2 md:!py-4 overflow-hidden"
       showScrollIndicator={true}
     >
       <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
@@ -96,7 +96,7 @@ function PortfolioHolographic() {
       <div className="w-full relative z-10" ref={containerRef}>
         <motion.div {...fadeIn}>
           <motion.h2
-            className="font-display font-bold mb-4 text-center"
+            className="font-display font-bold mb-2 text-center"
             style={{
               lineHeight: '1.3',
               textShadow: '0 0 20px rgba(0, 255, 136, 0.3)'
@@ -105,7 +105,7 @@ function PortfolioHolographic() {
             Tohle postavila žena, která neumí programovat.
           </motion.h2>
 
-          <p className="text-xl text-center mb-8 max-w-3xl mx-auto">
+          <p className="text-xl text-center mb-4 max-w-3xl mx-auto">
             8 funkčních aplikací pro reálné klienty. Žádný řádek kódu. Jen vize, strategie a AI.
           </p>
 
