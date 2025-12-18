@@ -1,7 +1,10 @@
 import { motion } from 'framer-motion'
+import { useCallback } from 'react'
 import { Clock, RotateCcw, TrendingUp, Briefcase } from 'lucide-react'
 import Section from '../layout/Section'
+import Button from '../ui/Button'
 import { fadeIn, slideUp } from '../../constants/animations'
+import { scrollToSection } from '../../utils/scroll'
 
 const benefits = [
   {
@@ -27,6 +30,9 @@ const benefits = [
 ]
 
 export default function WhyOwnAppSeo() {
+  const handleClick = useCallback(() => {
+    scrollToSection('phases-section')
+  }, [])
 
   return (
     <Section background="dark" className="min-h-screen flex items-center justify-center !py-4 md:!py-8 lg:!py-12" showScrollIndicator={true}>
@@ -61,6 +67,17 @@ export default function WhyOwnAppSeo() {
               )
             })}
           </div>
+
+          {/* CTA */}
+          <motion.div
+            {...slideUp}
+            transition={{ delay: 0.5 }}
+            className="flex justify-center pt-8"
+          >
+            <Button onClick={handleClick}>
+              Jak to funguje
+            </Button>
+          </motion.div>
         </motion.div>
       </div>
     </Section>

@@ -39,11 +39,11 @@ function WhatYouCanCreate() {
   ], [])
 
   return (
-    <Section background="dark" className="min-h-screen flex items-center justify-center !py-4 md:!py-8 lg:!py-12" showScrollIndicator={true}>
+    <Section background="dark" className="min-h-screen flex items-center justify-center !pt-0 !pb-4 md:!pt-2 md:!pb-8 lg:!pt-4 lg:!pb-12" showScrollIndicator={true}>
       <div>
         <motion.div {...fadeIn}>
-          <h2 className="font-display font-bold mb-16 text-center" style={{ lineHeight: '1.3' }}>
-            Co si můžete vytvořit?
+          <h2 className="font-display font-bold mb-16 text-center -mt-2 md:-mt-4 lg:-mt-6" style={{ lineHeight: '1.3' }}>
+            Co můžete s vibecodingem vytvořit
           </h2>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">

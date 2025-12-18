@@ -68,7 +68,7 @@ export const comparisonData = {
       { text: "<strong></strong>7 konzultací denně. Páni, jede jako drak, co sotva dýchá" },
       { text: "<strong>Stejné rady</strong> pořád dokola. A mentální únava brzdí její kreativitu" },
       { text: "<strong>Odmítá nové klientky.</strong> Chce je, ale nemá energetickou kapacitu" },
-      { text: "<strong>Večer padne</strong> a na rodinu zbývá jen to, co z ní zbylo" },
+      { text: "<strong>Večer padne</strong> a na rodinu zbývá jen to, co z Martiny zbylo" },
       { text: "<strong>Dovolená s tělem na pláži,</strong> ale s hlavou u klientek" },
       { text: "<strong>Když nepracuje, nevydělá.</strong> Cítí se v kleci" }
     ],
@@ -76,12 +76,12 @@ export const comparisonData = {
   },
   julie: {
     name: "lektorka Julie",
-    subtitle: "vytvořila aplikaci a poskytuje prémiové konzultace",
+    subtitle: "tvoří vlastní nástroje a poskytuje prémiové konzultace",
     type: "positive",
     features: [
-      { text: "<strong>200+ žen má podporu.</strong> Spánkové tracky, meditace, personalizované tipy 24/7" },
+      { text: "<strong>200+ žen má podporu.</strong> Spánkové tracky, meditace, osobní tipy 24/7" },
       { text: "<strong>Klientky jsou nadšené.</strong> Píšou díky, vidí pokrok, cítí se opečované" },
-      { text: "<strong>2-3 premium konzultace týdně</strong> – za vyšší cenu a  s klientkami, které jsou už připravené" },
+      { text: "<strong>2-3 premium konzultace týdně</strong> – vyšší cenua, připravené klientky" },
       { text: "<strong>Žádné buď a nebo. Má energii i čas</strong> – na běhání, rodinu, koníčky" },
       { text: "<strong>Měsíc na Bali?</strong> – aplikace běží a klientky jsou spokojené" },
       { text: "<strong>Příjem se stává pasivním</strong> – pořád roste i díky VIP konzultacím" }

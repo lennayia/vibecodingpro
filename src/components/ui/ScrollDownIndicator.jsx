@@ -13,7 +13,7 @@ function ScrollDownIndicator() {
   return (
     <motion.button
       onClick={handleScroll}
-      className="hidden md:flex absolute bottom-8 inset-x-0 mx-auto z-10 items-center justify-center w-12 h-12 rounded-full bg-white/10 dark:bg-white/10 backdrop-blur-sm border border-white/20 hover:bg-white/20 transition-all cursor-pointer"
+      className="hidden md:flex absolute bottom-2 inset-x-0 mx-auto z-10 items-center justify-center w-12 h-12 rounded-full bg-white/10 dark:bg-white/10 backdrop-blur-sm border border-white/20 hover:bg-white/20 transition-all cursor-pointer"
       initial={{ opacity: 0, y: -10 }}
       animate={{
         opacity: 1,

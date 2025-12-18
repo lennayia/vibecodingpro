@@ -1,10 +1,7 @@
 import { motion } from 'framer-motion'
-import { useCallback } from 'react'
 import { Sunrise, Sun, Moon, Palmtree } from 'lucide-react'
 import Section from '../layout/Section'
-import Button from '../ui/Button'
 import { fadeIn, slideUp } from '../../constants/animations'
-import { scrollToSection } from '../../utils/scroll'
 
 const timelineItems = [
   {
@@ -32,21 +29,17 @@ const timelineItems = [
     time: "Každý den",
     period: "Svoboda",
     Icon: Palmtree,
-    title: "Cítíte se naplněná",
+    title: "Cítíte naplnění",
     description: "Místo vyčerpání máte čas na rodinu, koníčky, dovolenou. A váš příjem roste, i když si dopřejete volno."
   }
 ]
 
 export default function ImagineSection() {
-  const handleClick = useCallback(() => {
-    scrollToSection('phases-section')
-  }, [])
-
   return (
     <Section background="light" className="min-h-screen flex items-center justify-center !pt-4 !pb-8 md:!pt-4 md:!pb-8 lg:!pt-8 lg:!pb-16" showScrollIndicator={true}>
       <div className="w-full">
         <motion.div {...fadeIn}>
-          <h2 className="font-display font-bold mb-6 text-center" style={{ lineHeight: '1.3' }}>
+          <h2 className="font-display font-bold mb-4 text-center" style={{ lineHeight: '1.3' }}>
             Den s vaší aplikací
           </h2>
 
@@ -55,7 +48,7 @@ export default function ImagineSection() {
             {/* Vertical line */}
             <div className="absolute left-8 md:left-12 top-0 bottom-0 w-0.5 bg-accent/20" />
 
-            <div className="space-y-6">
+            <div className="space-y-4">
               {timelineItems.map((item, index) => {
                 const Icon = item.Icon
                 return (
@@ -91,32 +84,6 @@ export default function ImagineSection() {
             </div>
           </div>
 
-          {/* CTA */}
-          <div className="pt-8 space-y-2 max-w-2xl mx-auto">
-            <motion.p
-              {...slideUp}
-              transition={{ delay: 0.7 }}
-              className="font-semibold text-center text-2xl"
-            >
-              Zdá se vám to jako sen?
-            </motion.p>
-            <motion.p
-              {...slideUp}
-              transition={{ delay: 0.8 }}
-              className="font-semibold text-center text-2xl"
-            >
-              I tohle může být váš den.
-            </motion.p>
-            <motion.div
-              {...slideUp}
-              transition={{ delay: 0.9 }}
-              className="flex justify-center pt-4"
-            >
-              <Button onClick={handleClick}>
-                Jak to funguje
-              </Button>
-            </motion.div>
-          </div>
         </motion.div>
       </div>
     </Section>
