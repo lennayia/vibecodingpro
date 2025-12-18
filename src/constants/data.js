@@ -131,23 +131,14 @@ export const pricingPackages = [
   {
     title: "VIBE",
     availableSpots: 5,
-    serviceType: "konzultace",
-    price: "2 900 Kč",
-    description: "Pro ženy, které chtějí pochopit<br />a rozhodnout se",
-    features: [
-      "2x 1 hodina",
-      "Jak vibecoding funguje",
-      "Je to pro vás?",
-      "Co všechno můžete vytvořit?",
-      "Konkrétní záměr",
-      "Jasný plán",
-      "Vaše otázky"
-    ],
+    serviceType: "3x konzultace 55 min",
+    price: "3 900 Kč",
+    description: "Pro 5 žen, které chtějí pochopit<br />a rozhodnout se",
     resultTitle: "Výsledek:",
     resultDescription: "Jasná roadmapa, víte přesně co a jak – a jestli je to pro vás.<br />Vyhnete se bloudění.",
     testimonials: [
       {
-        quote: '„Za 2 hodiny jsem pochopila víc než za měsíc googlování."',
+        quote: '„Za 3 hodiny jsem pochopila víc než za měsíc googlování."',
         author: ""
       },
     ],
@@ -162,17 +153,9 @@ export const pricingPackages = [
   {
     title: "VIBE+CODING",
     availableSpots: 3,
-    serviceType: "mentoring",
+    serviceType: "6x 55 min mentoring",
     price: "8 900 Kč",
-    description: "Pro ženy, které chtějí pochopit<br />a rovnou začít",
-    features: [
-      "<span class='font-semibold'>6x 1 hodina</span>",
-      "<span class='font-semibold'>Všechno z VIBE (2h)</span>",
-      "Externí nástroje (1h)",
-      "Základy vašeho produktu (1h)",
-      "První funkce (1h)",
-      "Co vás brzdí? (1h)"
-    ],
+    description: "Pro 3 ženy, které chtějí pochopit<br />a rovnou začít",
     resultTitle: "Výsledek:",
     resultDescription: "Rozumíte, PLUS máte kus hotovo - nástroje běží, projekt existuje, první kód je napsaný.<br />Ušetříte desítky hodin zkoušení.",
     testimonials: [
@@ -195,20 +178,13 @@ export const pricingPackages = [
     isPopular: true
   },
   {
-    title: "VIBECODING",
+    title: "VIBECODING VIP",
     availableSpots: 1,
-    serviceType: "VIP mentoring",
+    serviceType: "10x 55 min VIP mentoring",
     price: "19 900 Kč",
-    description: "Pro ženy, které chtějí pochopit,<br />začít a dokončit",
-    features: [
-      "<span class='font-semibold'>10x 1 hodina</span>",
-      "<span class='font-semibold'>Všechno z VIBE+CODING (6h) +</span>",
-      "Co-working sessions (4h)",
-      "Produkční verze",
-      "30 dní přístup ke mně (WhatsApp)"
-    ],
+    description: "Pro 1 ženu, která chce pochopit,<br />začít a dokončit",
     resultTitle: "Výsledek:",
-    resultDescription: "<ul class='list-disc pl-5 space-y-2'><li>Funkční produkt. Rozumíte mu a umíte ho rozvíjet.</li><li>Přímá linka k mentorce</li><li>Garantovaný výsledek.</li><li>Osobní vztah</li></ul>",
+    resultDescription: "Funkční produkt. Rozumíte mu, umíte ho rozvíjet. Garantovaný výsledek. Přímá linka k mentorce. Osobní vztah.",
     testimonials: [
       {
         quote: '„Přišla jsem s nápadem, odcházela s rozjetým projektem. Nejlepší investice do podnikání, co jsem kdy udělala."',
@@ -219,7 +195,7 @@ export const pricingPackages = [
       "Všechny z VIBE+CODING",
       "Check-in call (30 min) po 2 týdnech"
     ],
-    discount: "1 000 Kč na další 2h spolupráci",
+    discount: "900 Kč na další 2h spolupráci",
     buttonText: "Chci VIP",
     buttonLink: "https://online-byznys.cz/vibecoding-objednavka-vibecoding-vip/",
     badgeText: "EXKLUZIVNÍ",

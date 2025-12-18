@@ -28,16 +28,16 @@ export default function Pricing() {
               </div>
 
               <p className="text-center mb-6 text-xl font-light">
-                platí jen do 17. 12. 2025 do 22:00 hod.
+                platí pro objednání do 24. 12. 2025 do 16:00 hod. Počet míst je omezený.
               </p>
 
               <div className="mb-6">
-                <CountdownTimer targetDate="2025-12-17T22:00:00" />
+                <CountdownTimer targetDate="2025-12-24T16:00:00" />
               </div>
 
               <div className="text-center space-y-3">
                 <p className="font-semibold">
-                  Pak se ceny zvýší na 4 500 / 13 900 / 29 900 Kč podle variant.
+                  Pak se ceny postupně zvýší na 5 500 / 13 900 / 29 900 Kč podle variant.
                 </p>
                 <ul className="text-xl font-light space-y-2 inline-block text-left">
                   <li className="flex items-start gap-3">
@@ -64,10 +64,10 @@ export default function Pricing() {
 
 export function PricingPackages() {
   return (
-    <Section background="light" className="min-h-screen flex items-center justify-center" showScrollIndicator={true}>
-      <div id="pricing-packages-section">
+    <Section background="light" className="min-h-screen flex items-start justify-center" showScrollIndicator={true}>
+      <div id="pricing-packages-section" className="-mt-16">
         <motion.div {...fadeIn}>
-          <h3 className="font-display font-bold mb-16 text-center">
+          <h3 className="font-display font-bold mb-12 text-center">
             Vyberte si cestu, která vám sedí
           </h3>
 

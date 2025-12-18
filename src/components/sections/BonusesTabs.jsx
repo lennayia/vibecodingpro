@@ -68,7 +68,7 @@ export default function BonusesTabsSeo() {
     },
     {
       name: "Sleva na další konzultaci v Kč",
-      description: "Chcete pokračovat? Máte zvýhodněnou cenu na další spolupráci v rámci 2hodinové konzultace (z hodnoty 2 900 Kč) a platí 3 měsíce od data zakoupení spolupráce v níže popsaných variantách.",
+      description: "Chcete pokračovat? Máte zvýhodněnou cenu na další spolupráci v rámci 2hodinové konzultace (z hodnoty 3 900 Kč) a platí 3 měsíce od data zakoupení spolupráce v níže popsaných variantách.",
       icon: Tag,
       vibe: "300",
       vibeCode: "600",
@@ -208,7 +208,7 @@ export default function BonusesTabsSeo() {
                     const previousValue = parseInt(item[previousPkg.key])
                     const currentValue = parseInt(value)
                     const increment = currentValue - previousValue
-                    discountDisplay = `${increment} Kč (celkem ${currentValue} Kč)`
+                    discountDisplay = `Kupón ${increment} Kč (celkem ${currentValue} Kč)`
                     isIncrementalDiscount = true
                   }
 
@@ -231,7 +231,7 @@ export default function BonusesTabsSeo() {
                             <h4 className="font-bold text-lg">{item.name}</h4>
                             {!item.isPreviousPackage && value !== true && (
                               <span className="text-sm font-bold text-accent bg-accent/10 px-3 py-1 rounded-full whitespace-nowrap">
-                                {isIncrementalDiscount ? discountDisplay : `${discountDisplay} Kč sleva`}
+                                {isIncrementalDiscount ? discountDisplay : `Kupón ${discountDisplay} Kč`}
                               </span>
                             )}
                           </div>

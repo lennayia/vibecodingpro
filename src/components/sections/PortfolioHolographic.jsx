@@ -96,16 +96,17 @@ function PortfolioHolographic() {
       <div className="w-full relative z-10" ref={containerRef}>
         <motion.div {...fadeIn}>
           <motion.h2
-            className="font-display font-bold mb-2 text-center"
+            className="font-display font-bold text-center"
             style={{
               lineHeight: '1.3',
-              textShadow: '0 0 20px rgba(0, 255, 136, 0.3)'
+              textShadow: '0 0 20px rgba(0, 255, 136, 0.3)',
+              marginBottom: 'clamp(0.25rem, 1vh, 0.5rem)'
             }}
           >
             Tohle postavila žena, která neumí programovat.
           </motion.h2>
 
-          <p className="text-xl text-center mb-4 max-w-3xl mx-auto">
+          <p className="text-xl text-center max-w-3xl mx-auto" style={{ marginBottom: 'clamp(0.5rem, 1.5vh, 1rem)' }}>
             8 funkčních aplikací pro reálné klienty. Žádný řádek kódu. Jen vize, strategie a AI.
           </p>
 
@@ -148,13 +149,13 @@ function PortfolioHolographic() {
                 ))}
               </motion.div>
             </div>
-            <p className="text-center text-sm text-gray-400 mt-4">← Táhněte →</p>
+            <p className="text-center text-sm text-gray-400" style={{ marginTop: 'clamp(0.5rem, 1vh, 1rem)' }}>← Táhněte →</p>
           </div>
 
           {/* Tablet & Desktop (>=640px): 3D carousel with animations */}
           <div className="hidden sm:block">
             <motion.div
-                className="relative h-[400px] md:h-[550px] flex items-center justify-center cursor-grab active:cursor-grabbing"
+                className="relative h-[350px] md:h-[450px] flex items-center justify-center cursor-grab active:cursor-grabbing"
                 style={{ willChange: 'transform' }}
                 drag="x"
                 dragConstraints={{ left: 0, right: 0 }}
@@ -185,7 +186,8 @@ function PortfolioHolographic() {
 
       {/* Separovaný text MIMO holografický container */}
       <motion.div
-        className="mt-8 max-w-3xl mx-auto text-center space-y-4 relative z-50"
+        className="max-w-3xl mx-auto text-center space-y-4 relative z-50"
+        style={{ marginTop: 'clamp(1rem, 3vh, 2rem)' }}
         {...slideUp}
         transition={{ delay: 0.5 }}
       >
