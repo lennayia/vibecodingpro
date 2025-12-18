@@ -10,44 +10,79 @@ export const phases = [
   },
   {
     number: "02",
-    title: "Technické zázemí",
-    yourAction: "Připravíte si nástroje a prostředí pro práci.",
-    mySupport: "Nastavím s vámi všechny potřebné nástroje a ukážu, jak s nimi pracovat.",
-    Icon: Wrench
+    title: "Uživatelská cesta",
+    yourAction: "Popíšete, jak si představujete ideální cestu uživatelky.",
+    mySupport: "Pomůžu najít místa, kde by se mohla ztratit nebo vzdát.",
+    Icon: Target
   },
   {
     number: "03",
-    title: "Komunikace s AI",
-    yourAction: "Naučíte se efektivně komunikovat s AI.",
-    mySupport: "Ukážu vám osvědčené techniky a vzory, jak dostat z AI to, co potřebujete.",
-    Icon: MessageSquare
+    title: "Technické zázemí",
+    yourAction: "Připravíte si nástroje a prostředí pro práci.",
+    mySupport: "S tím vám pomůžu.",
+    Icon: Wrench
   },
   {
     number: "04",
-    title: "Startovací dokumenty",
-    yourAction: "Společně popíšeme, jak má vaše řešení vypadat a fungovat.",
-    mySupport: "Pomůžu strukturovat myšlenky do jasných dokumentů, se kterými AI bude pracovat.",
-    Icon: FileText
+    title: "Komunikace s AI",
+    yourAction: "Naučíte se mluvit s AI tak, aby vás pochopila.",
+    mySupport: "Ukážu vám osvědčené techniky a vzory, jak z ní dostat to, co potřebujete.",
+    Icon: MessageSquare
   },
   {
     number: "05",
-    title: "První kroky",
-    yourAction: "Začnete tvořit první verzi vašeho nástroje.",
-    mySupport: "Jsem při tom s vámi, řeším překážky a hlídám, aby vše šlo správným směrem.",
-    Icon: Rocket
+    title: "Startovací dokumenty",
+    yourAction: "Sepíšeme, jak má vaše digi věc vypadat a fungovat.",
+    mySupport: "Dám vám strukturu a pomůžu s formulacemi.",
+    Icon: FileText
   },
   {
     number: "06",
-    title: "Workflow a iterace",
-    yourAction: "Nastavíte si rutinu a proces pro pokračování.",
-    mySupport: "Ukážu osvědčené workflow a systémy, které vám dají jistotu do budoucna.",
-    Icon: RefreshCw
+    title: "Struktura a funkce",
+    yourAction: "Rozhodnete, které funkce jsou nutné a které počkají.",
+    mySupport: "Pomůžu rozlišit 'must have' od 'nice to have'.",
+    Icon: FileText
   },
   {
     number: "07",
+    title: "Design a vzhled",
+    yourAction: "Vyberete vizuální styl, který sedí vaší značce.",
+    mySupport: "Ukážu možnosti a pomůžu s rozhodnutím.",
+    Icon: FileText
+  },
+  {
+    number: "08",
+    title: "První kroky",
+    yourAction: "A rozjíždíme to! První verze vzniká před vašima očima.",
+    mySupport: "Jsem při tom s vámi, řeším překážky a hlídám směr.",
+    Icon: Rocket
+  },
+  {
+    number: "09",
+    title: "Obsah a texty",
+    yourAction: "Připravíte texty, které uživatelky uvidí v aplikaci.",
+    mySupport: "Poradím, jak psát jasně a stručně.",
+    Icon: Rocket
+  },
+  {
+    number: "10",
+    title: "Workflow a iterace",
+    yourAction: "Nastavíte si rutinu a proces pro pokračování.",
+    mySupport: "Dám vám jistotu pro samostatnou práci.",
+    Icon: RefreshCw
+  },
+  {
+    number: "11",
+    title: "Cenová strategie",
+    yourAction: "Rozhodnete, jak chcete na nástroji vydělávat.",
+    mySupport: "Projdeme možnosti a vybereme model pro vaše podnikání.",
+    Icon: RefreshCw
+  },
+  {
+    number: "12",
     title: "Dokončení a spuštění",
-    yourAction: "Otestujete a spustíte váš nástroj do světa.",
-    mySupport: "Pomůžu s finálními testy, nasazením a zajistím, že máte podporu i po startu.",
+    yourAction: "Otestujete a pustíte svoje dílo do světa.",
+    mySupport: "Pomůžu s finálními úpravami.",
     Icon: Package
   }
 ]

@@ -48,7 +48,7 @@ export default function WhyConsultation() {
   }
 
   return (
-    <Section background="light" className="min-h-screen flex items-center justify-center !pt-4 !pb-8 md:!pt-4 md:!pb-8 lg:!pt-8 lg:!pb-16" showScrollIndicator={true}>
+    <Section background="dark" className="min-h-screen flex items-center justify-center !pt-4 !pb-8 md:!pt-4 md:!pb-8 lg:!pt-8 lg:!pb-16" showScrollIndicator={true}>
       <div>
         <motion.div {...fadeIn}>
           <h2 className="font-display font-bold mb-8 text-center" style={{ lineHeight: '1.3' }}>
@@ -88,7 +88,7 @@ export default function WhyConsultation() {
                     }
                   }}
                 >
-                  <Card background="light" className="mx-auto max-w-md !bg-gray-50 dark:!bg-[#0a0a1a]/80">
+                  <Card background="light" className="mx-auto max-w-md dark:!bg-[#070716]">
                     <h3 className="font-display font-bold mb-6 text-center text-2xl">
                       {slides[currentSlide].title}
                     </h3>
@@ -107,20 +107,28 @@ export default function WhyConsultation() {
               </AnimatePresence>
             </div>
 
-            {/* Navigation Arrows - more subtle */}
+            {/* Navigation Arrows */}
             <button
               onClick={prevSlide}
-              className="absolute left-0 top-1/2 -translate-y-1/2 text-accent/60 hover:text-accent transition-colors z-20"
+              className="absolute left-0 top-1/2 bg-accent/10 rounded-full p-2 z-20 cursor-pointer"
+              style={{
+                transform: 'translate(-1rem, -50%)',
+                transition: 'none'
+              }}
               aria-label="Previous slide"
             >
-              <ChevronLeft className="w-10 h-10" strokeWidth={1.5} />
+              <ChevronLeft className="w-6 h-6 text-accent" strokeWidth={2} />
             </button>
             <button
               onClick={nextSlide}
-              className="absolute right-0 top-1/2 -translate-y-1/2 text-accent/60 hover:text-accent transition-colors z-20"
+              className="absolute right-0 top-1/2 bg-accent/10 rounded-full p-2 z-20 cursor-pointer"
+              style={{
+                transform: 'translate(1rem, -50%)',
+                transition: 'none'
+              }}
               aria-label="Next slide"
             >
-              <ChevronRight className="w-10 h-10" strokeWidth={1.5} />
+              <ChevronRight className="w-6 h-6 text-accent" strokeWidth={2} />
             </button>
 
             {/* Dots Indicator - larger and more visible */}
@@ -146,10 +154,10 @@ export default function WhyConsultation() {
             transition={{ delay: 0.3 }}
           >
             <p className="mb-4 text-xl font-light">
-              Investicí do spolupráce uspoříte čas, peníze i nervy
+              Investicí do spolupráce uspoříte čas, peníze i nervy.
             </p>
             <p className="mb-8 text-xl font-light">
-              Vaše nové nástroje vám investovaný čas vrátí
+              Vaše nové nástroje vám investovaný čas vrátí.
             </p>
             <Button onClick={handleClick}>
               Vybrat službu

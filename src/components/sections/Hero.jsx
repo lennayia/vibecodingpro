@@ -55,6 +55,7 @@ export default function Hero() {
         }}
       >
         {displayedText.split('navyšujte')[0]}
+        <br className="hidden min-[1200px]:block" />
         {displayedText.includes('navyšujte') && (
           <span className="text-gradient">
             {displayedText.split('navyšujte')[1] ? 'navyšujte' + displayedText.split('navyšujte')[1] : displayedText.split('a ')[1]}
