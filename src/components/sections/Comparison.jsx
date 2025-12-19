@@ -188,13 +188,13 @@ export default function ComparisonSeo() {
           <p className="mb-4 md:mb-6 lg:mb-8 text-center max-w-3xl mx-auto text-xl font-light">
             <span className="block text-xl font-light">Martina a Julie: obě učí klientky zdravě spát.</span>
             <span className="block text-xl font-light">Stejné znalosti. Stejná vášeň pomáhat.</span>
-            <span className="block mt-6 text-xl font-light">Ale jejich podnikání funguje naprosto odlišně.</span>
+            <span className="block mt-6 mb-10 text-xl font-light">Ale jejich podnikání funguje naprosto odlišně.</span>
           </p>
 
           {/* Carousel Container */}
           <div className="relative max-w-2xl mx-auto">
             {/* Carousel */}
-            <div className="relative overflow-hidden">
+            <div className="relative overflow-hidden pt-6">
               <AnimatePresence mode="wait">
                 <motion.div
                   key={currentSlide}

@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion'
 import { memo, useMemo } from 'react'
 import Section from '../layout/Section'
+import BinaryBackground from '../ui/BinaryBackground'
 import { fadeIn, slideUp, slideLeft } from '../../constants/animations'
 
 function WhatIsVibecoding() {
@@ -12,11 +13,14 @@ function WhatIsVibecoding() {
     "Tvůrkyně kurzů a programů"
   ], [])
 
+  const binaryBackground = <BinaryBackground count={40} />
+
   return (
     <Section
       background="light"
       className="min-h-screen flex items-center justify-center !py-4 md:!py-8 lg:!py-12"
       showScrollIndicator={true}
+      backgroundElement={binaryBackground}
     >
       <motion.div {...fadeIn}>
         <h2 className="font-display font-bold mb-4 text-center" style={{ lineHeight: '1.3' }}>
@@ -37,7 +41,7 @@ function WhatIsVibecoding() {
           </motion.p>
 
           <motion.p
-            className="text-xl mb-4"
+            className="text-lg mb-4"
             {...slideUp}
             transition={{ delay: 0.2 }}
           >

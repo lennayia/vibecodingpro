@@ -9,7 +9,7 @@ import { scrollToSection } from '../../utils/scroll'
 
 export default function Hero() {
   const particleBackground = <ParticleBackground />
-  const typingText = 'Tvořte vlastní nástroje a navyšujte svoje příjmy'
+  const typingText = 'Tvořte vlastní nástroje a\u00A0navyšujte svoje příjmy'
   const { displayedText, showCursor } = useTypingEffect(typingText, 60, 500)
 
   const handlePricingClick = useCallback(() => {
@@ -54,11 +54,11 @@ export default function Hero() {
           lineHeight: '1.2'
         }}
       >
-        {displayedText.split('navyšujte')[0]}
-        <br className="hidden min-[1200px]:block" />
+        {displayedText.split('a\u00A0navyšujte')[0]}
+        <br className="hidden min-[700px]:block" />
         {displayedText.includes('navyšujte') && (
           <span className="text-gradient">
-            {displayedText.split('navyšujte')[1] ? 'navyšujte' + displayedText.split('navyšujte')[1] : displayedText.split('a ')[1]}
+            {displayedText.split('a\u00A0navyšujte')[1] ? 'a\u00A0navyšujte' + displayedText.split('a\u00A0navyšujte')[1] : displayedText.split('nástroje ')[1]}
           </span>
         )}
         {showCursor && (

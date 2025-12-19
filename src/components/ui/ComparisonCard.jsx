@@ -14,14 +14,14 @@ function ComparisonCard({ data, direction, delay, background = "light" }) {
       whileInView={{ opacity: 1, x: 0 }}
       transition={{ duration: 0.6 }}
     >
-      <div className="mb-12 text-center">
+      <div className="mb-6 text-center">
         <h3 className="font-display font-bold mb-2">
           {name}
         </h3>
         <p className="text-xl font-light">{subtitle}</p>
       </div>
 
-      <div className="space-y-4 mb-6">
+      <div className="space-y-4 mb-4">
         {features.map((feature, index) => (
           <FeatureListItem
             key={index}
@@ -31,7 +31,7 @@ function ComparisonCard({ data, direction, delay, background = "light" }) {
         ))}
       </div>
 
-      <div className="pt-6 border-t border-gray-200 dark:border-gray-700">
+      <div className="pt-4 border-t border-gray-200 dark:border-gray-700">
         <p className="italic text-center text-xl">
           „{quote}"
         </p>

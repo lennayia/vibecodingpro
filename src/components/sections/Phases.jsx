@@ -27,10 +27,12 @@ const mobilePhaseSlides = [
 export default function Phases() {
   const [currentSlide, setCurrentSlide] = useState(0)
   const [isMobile, setIsMobile] = useState(false)
+  const [showArrows, setShowArrows] = useState(true)
 
   useEffect(() => {
     const checkMobile = () => {
-      setIsMobile(window.innerWidth < 900)
+      setIsMobile(window.innerWidth < 1200)
+      setShowArrows(window.innerWidth >= 600)
     }
 
     checkMobile()
@@ -62,17 +64,17 @@ export default function Phases() {
     <Section background="light" className="min-h-screen flex items-center justify-center !pt-4 !pb-8 md:!pt-4 md:!pb-8 lg:!pt-8 lg:!pb-16" showScrollIndicator={true}>
       <div id="phases-section" className="w-full">
         <motion.div {...fadeIn}>
-          <h2 className="font-display font-bold mb-6 md:mb-8 text-center" style={{ lineHeight: '1.3' }}>
+          <h2 className="font-display font-bold mb-4 md:mb-6 text-center" style={{ lineHeight: '1.3' }}>
             Společně rozběhneme tvorbu
           </h2>
-          <p className="mb-8 text-center max-w-3xl mx-auto text-xl font-light">
+          <p className="mb-6 text-center max-w-3xl mx-auto text-xl font-light">
             Krok za krokem od nápadu až po funkční digi-nástroj
           </p>
 
           {/* Carousel Container */}
-          <div className="max-w-5xl mx-auto relative px-4 min-[500px]:px-12 min-[900px]:px-16">
+          <div className="max-w-5xl mx-auto relative px-4 min-[600px]:px-12 min-[1200px]:px-16">
             {/* Package Badge with Arrows */}
-            <div className="relative flex items-center justify-center gap-4 mb-8">
+            <div className="relative flex items-center justify-center gap-4 mb-6">
               <button
                 onClick={prevSlide}
                 className="bg-accent/10 rounded-full p-2 cursor-pointer hover:bg-accent/20 transition-colors"
@@ -104,7 +106,7 @@ export default function Phases() {
             </div>
 
             {/* Carousel */}
-            <div className="relative overflow-hidden min-h-[500px] min-[500px]:min-h-0">
+            <div className="relative overflow-hidden min-h-[500px] min-[600px]:min-h-0">
               <AnimatePresence mode="wait">
                 <motion.div
                   key={currentSlide}
@@ -123,14 +125,14 @@ export default function Phases() {
                       prevSlide()
                     }
                   }}
-                  className="min-[500px]:static"
+                  className="min-[600px]:static"
                 >
-                  <div className="space-y-0 min-[500px]:space-y-3 min-[900px]:space-y-6">
+                  <div className="space-y-0 min-[600px]:space-y-3 min-[1200px]:space-y-3">
                     {slides[currentSlide].phases.map((phase, index) => (
                       <div key={phase.number} className="relative">
                         {/* Phase Card */}
-                        <div className={`w-full min-[500px]:w-5/6 min-[900px]:w-2/3 mx-auto ${index % 2 === 0 ? 'min-[500px]:ml-0 min-[500px]:mr-auto' : 'min-[500px]:ml-auto min-[500px]:mr-0'}`}>
-                          <div className="group relative bg-[#f2f2f2] dark:bg-[#070716] rounded-2xl min-[500px]:rounded-3xl p-4 min-[500px]:p-6 hover:scale-[1.01] transition-all duration-300 border-2 border-gray-200 dark:border-[#05050f] hover:border-accent/30 overflow-hidden min-[500px]:min-h-0 flex flex-col">
+                        <div className={`w-full min-[600px]:w-5/6 min-[1200px]:w-2/3 mx-auto ${index % 2 === 0 ? 'min-[600px]:ml-0 min-[600px]:mr-auto' : 'min-[600px]:ml-auto min-[600px]:mr-0'} ${index > 0 && !isMobile ? 'min-[600px]:-mt-12 min-[1200px]:mt-0' : ''}`}>
+                          <div className="group relative bg-[#f2f2f2] dark:bg-[#070716] rounded-2xl min-[600px]:rounded-3xl p-3 hover:scale-[1.01] transition-all duration-300 border-2 border-gray-200 dark:border-[#05050f] hover:border-accent/30 overflow-hidden min-[600px]:min-h-0 flex flex-col">
                             {/* Holographic glow on hover */}
                             <motion.div
                               className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
@@ -141,35 +143,35 @@ export default function Phases() {
                             />
 
                             {/* Header */}
-                            <div className="flex items-start gap-3 min-[500px]:gap-4 mb-3 min-[500px]:mb-4 relative z-10">
-                              <div className="flex items-center justify-center w-12 h-12 min-[500px]:w-16 min-[500px]:h-16 rounded-xl min-[500px]:rounded-2xl bg-accent/10 border-2 border-accent/30 flex-shrink-0">
-                                <phase.Icon className="w-6 h-6 min-[500px]:w-8 min-[500px]:h-8 text-accent" strokeWidth={1.5} />
+                            <div className="flex items-start gap-3 mb-3 relative z-10">
+                              <div className="flex items-center justify-center w-12 h-12 rounded-xl bg-accent/10 border-2 border-accent/30 flex-shrink-0">
+                                <phase.Icon className="w-6 h-6 text-accent" strokeWidth={1.5} />
                               </div>
                               <div className="flex-1">
-                                <span className="font-display font-bold text-accent text-xl min-[500px]:text-2xl">
+                                <span className="font-display font-bold text-accent text-xl min-[600px]:text-2xl">
                                   {phase.number}
                                 </span>
-                                <h3 className="font-display font-bold text-lg min-[500px]:text-xl mt-0.5 min-[500px]:mt-1">
+                                <h3 className="font-display font-bold text-lg min-[600px]:text-xl mt-0.5 min-[600px]:mt-1">
                                   {phase.title}
                                 </h3>
                               </div>
                             </div>
 
                             {/* Split Content */}
-                            <div className="space-y-2 min-[500px]:space-y-3 relative z-10 flex-1 flex flex-col justify-start">
+                            <div className="space-y-2 relative z-10 flex-1 flex flex-col justify-start">
                               {/* Your Action */}
-                              <div className="bg-white/50 dark:bg-black/20 rounded-lg min-[500px]:rounded-xl p-3 min-[500px]:p-4 border border-gray-200 dark:border-gray-800">
+                              <div className="bg-white/50 dark:bg-black/20 rounded-lg min-[600px]:rounded-xl px-2 pt-1 pb-0.5 border border-gray-200 dark:border-gray-800">
                                 <div className="flex items-start gap-2">
-                                  <span className="text-xs min-[500px]:text-sm font-semibold text-accent flex-shrink-0">Vy:</span>
-                                  <p className="text-xs min-[500px]:text-sm flex-1">{phase.yourAction}</p>
+                                  <span className="text-xs min-[600px]:text-sm font-semibold text-accent flex-shrink-0">Vy:</span>
+                                  <p className="text-xs min-[600px]:text-sm flex-1">{phase.yourAction}</p>
                                 </div>
                               </div>
 
                               {/* My Support */}
-                              <div className="bg-accent/5 dark:bg-accent/10 rounded-lg min-[500px]:rounded-xl p-3 min-[500px]:p-4 border border-accent/20">
+                              <div className="bg-accent/5 dark:bg-accent/10 rounded-lg min-[600px]:rounded-xl px-2 pt-1 pb-0.5 border border-accent/20">
                                 <div className="flex items-start gap-2">
-                                  <span className="text-xs min-[500px]:text-sm font-semibold text-accent flex-shrink-0">{phase.supportLabel || "Já"}:</span>
-                                  <p className="text-xs min-[500px]:text-sm flex-1">{phase.mySupport}</p>
+                                  <span className="text-xs min-[600px]:text-sm font-semibold text-accent flex-shrink-0">{phase.supportLabel || "Já"}:</span>
+                                  <p className="text-xs min-[600px]:text-sm flex-1">{phase.mySupport}</p>
                                 </div>
                               </div>
                             </div>
@@ -177,9 +179,9 @@ export default function Phases() {
                         </div>
 
                         {/* Diagonal Arrow between phases - only on desktop with multiple phases */}
-                        {!isMobile && index < slides[currentSlide].phases.length - 1 && (
-                          <div className={`w-5/6 min-[900px]:w-2/3 mx-auto ${index % 2 === 0 ? 'ml-0 mr-auto' : 'ml-auto mr-0'}`}>
-                            <div className={`flex ${index % 2 === 0 ? 'justify-start pl-32 min-[900px]:pl-56' : 'justify-end pr-40 min-[900px]:pr-64'} py-4`}>
+                        {showArrows && index < slides[currentSlide].phases.length - 1 && (
+                          <div className={`w-5/6 min-[1200px]:w-2/3 mx-auto ${index % 2 === 0 ? 'ml-0 mr-auto' : 'ml-auto mr-0'}`}>
+                            <div className={`flex ${index % 2 === 0 ? 'justify-start pl-20 min-[1200px]:pl-56' : 'justify-end pr-40 min-[1200px]:pr-64'} py-2`}>
                               <motion.div
                                 initial={{ opacity: 0, y: -10 }}
                                 animate={{ opacity: 1, y: 0 }}
@@ -198,7 +200,7 @@ export default function Phases() {
             </div>
 
             {/* Dots Indicator */}
-            <div className="flex justify-center gap-3 mt-8 flex-wrap max-w-md mx-auto">
+            <div className="flex justify-center gap-3 mt-6 flex-wrap max-w-md mx-auto">
               {slides.map((_, index) => (
                 <button
                   key={index}

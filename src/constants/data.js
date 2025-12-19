@@ -109,7 +109,7 @@ export const comparisonData = {
       { text: "<strong>Dovolená s tělem na pláži,</strong> ale s hlavou u klientek" },
       { text: "<strong>Když nepracuje, nevydělá.</strong> Cítí se v kleci" }
     ],
-    quote: "Jako bych byla na běžícím pásu. Pomáhám lidem mít energii, ale sama jsem vyčerpaná."
+    quote: "Jako bych byla na běžícím pásu. Pomáhám lidem s energií a sama jsem vyčerpaná."
   },
   julie: {
     name: "lektorka Julie",

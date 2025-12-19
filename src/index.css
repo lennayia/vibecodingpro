@@ -327,6 +327,77 @@
     display: none;  /* Chrome, Safari, Opera */
   }
 
+  /* Vertical responsiveness for small screens (10" notebooks, etc.) */
+  @media (max-height: 900px) {
+    /* Keep sections full height but allow content to determine actual height */
+    .min-h-screen {
+      min-height: 100vh !important;
+    }
+
+    /* Reduce section padding significantly to fit content */
+    section {
+      padding-top: clamp(0.5rem, 2vh, 1.5rem) !important;
+      padding-bottom: clamp(0.5rem, 2vh, 1.5rem) !important;
+    }
+
+    /* Adjust heading sizes for small vertical space */
+    h1 {
+      font-size: clamp(1.5rem, 4vw + 0.5rem, 3rem) !important;
+      margin-bottom: clamp(0.5rem, 2vh, 1rem) !important;
+    }
+
+    h2 {
+      font-size: clamp(1.25rem, 2vw + 0.5rem, 2.25rem) !important;
+      margin-bottom: clamp(0.5rem, 2vh, 1rem) !important;
+    }
+
+    h3 {
+      font-size: clamp(1.125rem, 1.5vw + 0.5rem, 1.75rem) !important;
+      margin-bottom: clamp(0.5rem, 2vh, 1rem) !important;
+    }
+
+    /* Reduce spacing in content */
+    p:not(.font-display), .text-xl {
+      font-size: clamp(0.875rem, 1vw + 0.4vh, 1rem) !important;
+      line-height: 1.5 !important;
+      margin-bottom: clamp(0.25rem, 1vh, 0.75rem) !important;
+    }
+
+    /* Reduce button spacing - but NOT carousel dot indicators or navigation arrows */
+    .btn, button:not(.w-3):not(.w-12):not(.w-5):not(.rounded-full) {
+      padding: clamp(0.5rem, 1.5vh, 0.75rem) clamp(1rem, 3vw, 1.5rem) !important;
+      font-size: clamp(0.875rem, 1vw, 1rem) !important;
+    }
+
+    /* Reduce gaps - but NOT for carousel indicators */
+    .gap-4:not(:has(> button.rounded-full)) {
+      gap: 0.5rem !important;
+    }
+  }
+
+  @media (max-height: 650px) {
+    /* Even more aggressive reduction for very small screens */
+    section {
+      padding-top: clamp(0.5rem, 2vh, 1rem) !important;
+      padding-bottom: clamp(0.5rem, 2vh, 1rem) !important;
+    }
+
+    /* Reduce gaps and margins */
+    .gap-8 {
+      gap: 1rem !important;
+    }
+
+    .mb-16, .mt-16 {
+      margin-bottom: 2rem !important;
+      margin-top: 2rem !important;
+    }
+
+    .py-28, .py-32 {
+      padding-top: 1rem !important;
+      padding-bottom: 1rem !important;
+    }
+  }
+
   /* Performance: Reduce motion for accessibility */
   @media (prefers-reduced-motion: reduce) {
     *,
