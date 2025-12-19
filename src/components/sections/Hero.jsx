@@ -2,13 +2,13 @@ import { motion } from 'framer-motion'
 import { useCallback } from 'react'
 import Section from '../layout/Section'
 import Button from '../ui/Button'
-import ParticleBackground from '../ui/ParticleBackground'
+import AnimatedBackground from '../ui/AnimatedBackground'
 import { fadeInUp } from '../../constants/animations'
 import { useTypingEffect } from '../../hooks/useTypingEffect'
 import { scrollToSection } from '../../utils/scroll'
 
 export default function Hero() {
-  const particleBackground = <ParticleBackground />
+  const particleBackground = <AnimatedBackground type="particles" />
   const typingText = 'Tvořte vlastní nástroje a\u00A0navyšujte svoje příjmy'
   const { displayedText, showCursor } = useTypingEffect(typingText, 60, 500)
 

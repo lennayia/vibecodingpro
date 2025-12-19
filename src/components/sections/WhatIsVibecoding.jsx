@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion'
 import { memo, useMemo } from 'react'
 import Section from '../layout/Section'
-import BinaryBackground from '../ui/BinaryBackground'
+import AnimatedBackground from '../ui/AnimatedBackground'
 import { fadeIn, slideUp, slideLeft } from '../../constants/animations'
 
 function WhatIsVibecoding() {
@@ -13,7 +13,7 @@ function WhatIsVibecoding() {
     "Tvůrkyně kurzů a programů"
   ], [])
 
-  const binaryBackground = <BinaryBackground count={40} />
+  const binaryBackground = <AnimatedBackground type="binary" count={40} />
 
   return (
     <Section
