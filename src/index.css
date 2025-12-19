@@ -348,12 +348,10 @@
 
     h2 {
       font-size: clamp(1.25rem, 2vw + 0.5rem, 2.25rem) !important;
-      margin-bottom: clamp(0.5rem, 2vh, 1rem) !important;
     }
 
     h3 {
       font-size: clamp(1.125rem, 1.5vw + 0.5rem, 1.75rem) !important;
-      margin-bottom: clamp(0.5rem, 2vh, 1rem) !important;
     }
 
     /* Reduce spacing in content */
@@ -363,8 +361,8 @@
       margin-bottom: clamp(0.25rem, 1vh, 0.75rem) !important;
     }
 
-    /* Reduce button spacing - but NOT carousel dot indicators or navigation arrows */
-    .btn, button:not(.w-3):not(.w-12):not(.w-5):not(.rounded-full) {
+    /* Reduce button spacing - but NOT carousel dot indicators or navigation arrows or accordion buttons */
+    .btn, button:not(.w-3):not(.w-12):not(.w-5):not(.rounded-full):not(.accordion-btn) {
       padding: clamp(0.5rem, 1.5vh, 0.75rem) clamp(1rem, 3vw, 1.5rem) !important;
       font-size: clamp(0.875rem, 1vw, 1rem) !important;
     }

@@ -31,6 +31,7 @@ function PricingCard({
   const [shinePosition, setShinePosition] = useState({ x: 50, y: 50 })
   const [isAccordionOpen, setIsAccordionOpen] = useState(false)
   const [isBonusAccordionOpen, setIsBonusAccordionOpen] = useState(false)
+  const [isGoalAccordionOpen, setIsGoalAccordionOpen] = useState(false)
 
   const handleMouseMove = useCallback((e) => {
     if (window.innerWidth < 768) return // Disable on mobile
@@ -136,7 +137,7 @@ function PricingCard({
       return phases.slice(0, 6) // Phases 01-06
     } else if (title === "VIBE+CODING") {
       return phases.slice(0, 9) // Phases 01-09
-    } else if (title === "VIBECODING") {
+    } else if (title.includes("VIBECODING")) {
       return phases.slice(0, 12) // Phases 01-12 (all)
     }
     return []
@@ -198,7 +199,7 @@ function PricingCard({
           />
 
           <div className="relative z-10 h-full flex flex-col">
-      <div className="absolute -top-12 left-1/2 transform -translate-x-1/2 z-[100]">
+      <div className="absolute -top-8 left-1/2 transform -translate-x-1/2 z-[100]">
         {badgeText ? (
           <div className="relative">
             <span className="px-4 py-1.5 rounded-full text-xs font-medium uppercase tracking-wider border border-gray-200 dark:border-gray-700 text-gray-900 dark:text-white bg-white dark:bg-gray-900 inline-block">
@@ -216,33 +217,33 @@ function PricingCard({
       </div>
 
       <div className="flex-1 flex flex-col">
-        <div className="text-center" style={{ marginBottom: 'clamp(0.5rem, 2vh, 1rem)' }}>
+        <div className="text-center mb-2">
         <div className="relative inline-block mb-1 mx-auto">
           <div className="absolute inset-0 bg-accent/10 blur-lg animate-pulse" />
-          <h3 className="relative font-display font-bold text-2xl text-accent drop-shadow-[0_0_20px_rgba(0,255,136,0.6)]">
+          <h3 className="relative font-display font-bold text-accent drop-shadow-[0_0_20px_rgba(0,255,136,0.6)]">
             {title}
           </h3>
         </div>
-        <p className="mb-1 text-sm">{duration}</p>
+        <p className="mb-1 font-light">{duration}</p>
         {serviceType && (
-          <div className="mb-3">
-            <p className="font-semibold text-sm text-center">{serviceType}</p>
+          <div className="mb-1">
+            <p className="text-base font-extralight text-center">{serviceType}</p>
           </div>
         )}
-        <p className="text-sm" dangerouslySetInnerHTML={{ __html: description }} />
+        <p className="text-sm font-extralight" dangerouslySetInnerHTML={{ __html: description }} />
       </div>
 
-      <div className="text-center" style={{ marginBottom: 'clamp(0.5rem, 2vh, 1rem)' }}>
-        <h3 className="font-display font-bold text-accent text-xl">
+      <div className="text-center mb-2">
+        <h3 className="font-display font-bold text-accent">
           {price}
         </h3>
       </div>
 
       {/* Accordion for phases */}
-      <div style={{ marginBottom: 'clamp(0.5rem, 2vh, 1rem)' }}>
+      <div className="mb-4">
         <button
           onClick={() => setIsAccordionOpen(!isAccordionOpen)}
-          className="flex items-center justify-center gap-2 text-sm font-semibold text-accent hover:text-accent/80 transition-colors mx-auto py-2 px-4 rounded-lg border border-accent/30 hover:border-accent/50 min-w-[140px]"
+          className="accordion-btn flex items-center justify-center gap-2 text-sm font-semibold text-accent hover:text-accent/80 transition-colors mx-auto py-1 px-2 rounded-lg border border-accent/30 hover:border-accent/50 min-w-[140px]"
         >
           <span>Etapy {packagePhases.length}</span>
           <motion.div
@@ -262,7 +263,7 @@ function PricingCard({
               transition={{ duration: 0.3 }}
               className="overflow-hidden"
             >
-              <div className="mt-3 space-y-2 text-left text-sm px-2">
+              <div className="mt-3 space-y-2 text-left text-sm px-1">
                 {packagePhases.map((phase, index) => (
                   <div key={phase.number} className="flex items-start gap-2">
                     <span className="text-accent font-semibold flex-shrink-0">{phase.number}</span>
@@ -276,10 +277,10 @@ function PricingCard({
       </div>
 
       {packageBonuses.length > 0 && (
-        <div style={{ marginBottom: 'clamp(0.5rem, 2vh, 1rem)' }}>
+        <div className="mb-4">
           <button
             onClick={() => setIsBonusAccordionOpen(!isBonusAccordionOpen)}
-            className="flex items-center justify-center gap-2 text-sm font-semibold text-accent hover:text-accent/80 transition-colors mx-auto py-2 px-4 rounded-lg border border-accent/30 hover:border-accent/50 min-w-[140px]"
+            className="accordion-btn flex items-center justify-center gap-2 text-sm font-semibold text-accent hover:text-accent/80 transition-colors mx-auto py-1 px-2 rounded-lg border border-accent/30 hover:border-accent/50 min-w-[140px]"
           >
             <Gift className="w-4 h-4" strokeWidth={2} />
             <span>Bonusy {packageBonuses.length}</span>
@@ -300,7 +301,7 @@ function PricingCard({
                 transition={{ duration: 0.3 }}
                 className="overflow-hidden"
               >
-                <div className="mt-3 space-y-2 text-left text-sm px-2">
+                <div className="mt-3 space-y-2 text-left text-sm px-1">
                   {packageBonuses.map((bonus, index) => {
                     const IconComponent = bonus.icon
                     const value = bonus[title === "VIBE" ? 'vibe' : title === "VIBE+CODING" ? 'vibeCode' : 'vibeCoding']
@@ -327,32 +328,62 @@ function PricingCard({
       )}
 
       {discount && (
-        <div className="text-center" style={{ marginBottom: 'clamp(0.5rem, 2vh, 1rem)' }}>
+        <div className="text-center mb-4">
           <div className="flex items-center justify-center gap-2 mb-1">
-            <Ticket className="w-4 h-4 text-accent" strokeWidth={2} />
-            <p className="font-semibold text-accent text-sm">KUPÓN {discount.split(' na ')[0]}</p>
+            <Ticket className="w-4 h-4 text-accent flex-shrink-0" strokeWidth={2} />
+            <span className="font-semibold text-accent text-sm leading-none">KUPÓN {discount.split(' na ')[0]}</span>
           </div>
           {discount.includes(' na ') && (
-            <p className="text-xs">na {discount.split(' na ')[1]}</p>
+            <span className="text-xs font-light block">na {discount.split(' na ')[1]}</span>
           )}
         </div>
       )}
 
-      <div className="p-3 bg-gray-100 dark:bg-[#05050f] rounded-xl border border-gray-200 dark:border-gray-700" style={{ marginBottom: 'clamp(0.5rem, 2vh, 1rem)' }}>
-        <p className="font-semibold mb-1 text-sm">{resultTitle}</p>
-        <div className="text-sm" dangerouslySetInnerHTML={{ __html: resultDescription }} />
+      {/* Accordion for goal/result */}
+      <div className="mb-4">
+        <button
+          onClick={() => setIsGoalAccordionOpen(!isGoalAccordionOpen)}
+          className="accordion-btn flex items-center justify-center gap-2 text-sm font-semibold text-accent hover:text-accent/80 transition-colors mx-auto py-1 px-2 rounded-lg border border-accent/30 hover:border-accent/50 min-w-[140px]"
+        >
+          <span>Cíl</span>
+          <motion.div
+            animate={{ rotate: isGoalAccordionOpen ? 180 : 0 }}
+            transition={{ duration: 0.3 }}
+          >
+            <ChevronDown className="w-4 h-4" strokeWidth={2} />
+          </motion.div>
+        </button>
 
-        {testimonials && testimonials.map((testimonial, index) => (
-          <div key={index} className="mt-3 pt-3 border-t border-gray-300 dark:border-gray-600">
-            <p className="italic mb-1 text-xs">{testimonial.quote}</p>
-            {testimonial.author && (
-              <p className="text-xs font-light">– {testimonial.author}</p>
-            )}
-          </div>
-        ))}
+        <AnimatePresence>
+          {isGoalAccordionOpen && (
+            <motion.div
+              initial={{ height: 0, opacity: 0 }}
+              animate={{ height: "auto", opacity: 1 }}
+              exit={{ height: 0, opacity: 0 }}
+              transition={{ duration: 0.3 }}
+              className="overflow-hidden"
+            >
+              <div className="mt-3 space-y-2 text-left text-sm px-1">
+                <div className="p-1.5 bg-gray-100 dark:bg-[#05050f] rounded-xl border border-gray-200 dark:border-gray-700">
+                  <p className="font-semibold mb-0.5 text-sm">{resultTitle}</p>
+                  <div className="text-sm" dangerouslySetInnerHTML={{ __html: resultDescription }} />
+
+                  {testimonials && testimonials.map((testimonial, index) => (
+                    <div key={index} className="mt-2 pt-2 border-t border-gray-300 dark:border-gray-600">
+                      <p className="italic text-xs">{testimonial.quote}</p>
+                      {testimonial.author && (
+                        <p className="text-xs font-light">– {testimonial.author}</p>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
 
-        <div className="flex justify-center mt-auto">
+        <div className="flex justify-center mt-auto pt-5">
           {buttonLink ? (
             <a href={buttonLink} target="_blank" rel="noopener noreferrer" className="inline-block">
               <Button>

@@ -40,7 +40,7 @@ function ComparisonCard({ slide, index: slideIndex, isMobile }) {
   return (
     <div className={`relative h-full ${isPositive ? 'z-10' : 'z-0'}`}>
       {/* Holographic glow for positive card */}
-      {isPositive && !isMobile && (
+      {isPositive && (
         <motion.div
           className="absolute -inset-4 rounded-3xl opacity-0"
           style={{
@@ -76,7 +76,7 @@ function ComparisonCard({ slide, index: slideIndex, isMobile }) {
         `}
       >
         {/* Holographic shine overlay for positive card */}
-        {isPositive && !isMobile && (
+        {isPositive && (
           <motion.div
             className="absolute inset-0 rounded-3xl opacity-30"
             style={{
@@ -94,7 +94,7 @@ function ComparisonCard({ slide, index: slideIndex, isMobile }) {
         )}
 
         {/* Scanlines effect for positive card */}
-        {isPositive && !isMobile && (
+        {isPositive && (
           <div
             className="absolute inset-0 rounded-3xl pointer-events-none opacity-20"
             style={{
@@ -103,15 +103,13 @@ function ComparisonCard({ slide, index: slideIndex, isMobile }) {
           />
         )}
 
-        {/* Corner accents for positive card */}
-        {isPositive && (
-          <>
-            <div className="absolute top-2 left-2 w-4 h-4 border-t-2 border-l-2 border-accent/50" />
-            <div className="absolute top-2 right-2 w-4 h-4 border-t-2 border-r-2 border-accent/50" />
-            <div className="absolute bottom-2 left-2 w-4 h-4 border-b-2 border-l-2 border-accent/50" />
-            <div className="absolute bottom-2 right-2 w-4 h-4 border-b-2 border-r-2 border-accent/50" />
-          </>
-        )}
+        {/* Corner accents */}
+        <>
+          <div className={`absolute top-2 left-2 w-4 h-4 border-t-2 border-l-2 ${isPositive ? 'border-accent/50' : 'border-gray-600/50'}`} />
+          <div className={`absolute top-2 right-2 w-4 h-4 border-t-2 border-r-2 ${isPositive ? 'border-accent/50' : 'border-gray-600/50'}`} />
+          <div className={`absolute bottom-2 left-2 w-4 h-4 border-b-2 border-l-2 ${isPositive ? 'border-accent/50' : 'border-gray-600/50'}`} />
+          <div className={`absolute bottom-2 right-2 w-4 h-4 border-b-2 border-r-2 ${isPositive ? 'border-accent/50' : 'border-gray-600/50'}`} />
+        </>
 
         <div className="relative z-10">
           <h3 className={`
@@ -189,7 +187,7 @@ export default function WhyConsultation() {
           <h2 className="font-display font-bold mb-8 text-center" style={{ lineHeight: '1.3' }}>
             Nebuďte na to sami
           </h2>
-          <div className="mb-16 text-center max-w-3xl mx-auto">
+          <div className="mb-8 text-center max-w-3xl mx-auto">
             <div className="space-y-4">
               <p className="text-xl font-light">
                 Nemusíte strávit půl roku nachytřováním ze všemožných různých zdrojů.
@@ -201,7 +199,7 @@ export default function WhyConsultation() {
           </div>
 
           {/* Desktop: Side-by-side comparison */}
-          <div className="hidden md:block max-w-6xl mx-auto mb-16">
+          <div className="hidden md:block max-w-6xl mx-auto mb-8">
             <div className="grid md:grid-cols-2 gap-8">
               {slides.map((slide, index) => (
                 <ComparisonCard
@@ -215,7 +213,7 @@ export default function WhyConsultation() {
           </div>
 
           {/* Mobile: Carousel */}
-          <div className="md:hidden relative max-w-2xl mx-auto mb-16 px-12">
+          <div className="md:hidden relative max-w-2xl mx-auto mb-8 px-12">
             <div className="relative overflow-hidden">
               <AnimatePresence mode="wait">
                 <motion.div
@@ -287,14 +285,14 @@ export default function WhyConsultation() {
           </div>
 
           <motion.div
-            className="mt-12 text-center"
+            className="mt-6 text-center"
             {...slideUp}
             transition={{ delay: 0.6 }}
           >
             <p className="mb-4 text-xl font-light">
               Investicí do spolupráce uspoříte čas, peníze i nervy.
             </p>
-            <p className="mb-8 text-xl font-light">
+            <p className="mb-16 text-xl font-light">
               Vaše nové nástroje vám investovaný čas vrátí.
             </p>
             <Button onClick={handleClick}>

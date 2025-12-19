@@ -64,12 +64,12 @@ export default function Pricing() {
 
 export function PricingPackages() {
   return (
-    <Section background="light" className="min-h-screen flex items-start justify-center" showScrollIndicator={true}>
-      <div id="pricing-packages-section" className="-mt-16">
+    <Section background="light" className="min-h-screen flex items-center justify-center !pt-4 !pb-8 md:!pt-4 md:!pb-8 lg:!pt-8 lg:!pb-16" showScrollIndicator={true}>
+      <div id="pricing-packages-section">
         <motion.div {...fadeIn}>
-          <h3 className="font-display font-bold mb-12 text-center">
+          <h2 className="font-display font-bold mb-12 text-center">
             Vyberte si cestu, která vám sedí
-          </h3>
+          </h2>
 
           <div className="grid md:grid-cols-3 gap-8">
             {pricingPackages.map((pkg, index) => (

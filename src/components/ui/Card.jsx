@@ -30,7 +30,7 @@ function Card({
 
   return (
     <CardWrapper
-      className={`${bgClasses[background]} ${borderClasses[background]} rounded-3xl py-4 px-8 ${className}`}
+      className={`${bgClasses[background]} ${borderClasses[background]} rounded-3xl py-4 px-3 ${className}`}
       {...animationProps}
       {...props}
     >
