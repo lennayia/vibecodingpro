@@ -96,17 +96,16 @@ function PortfolioHolographic() {
       <div className="w-full relative z-10" ref={containerRef}>
         <motion.div {...fadeIn}>
           <motion.h2
-            className="font-display font-bold text-center"
+            className="font-display font-bold text-center mb-2"
             style={{
               lineHeight: '1.3',
-              textShadow: '0 0 20px rgba(0, 255, 136, 0.3)',
-              marginBottom: 'clamp(0.25rem, 1vh, 0.5rem)'
+              textShadow: '0 0 20px rgba(0, 255, 136, 0.3)'
             }}
           >
             Tohle postavila žena, která neumí programovat.
           </motion.h2>
 
-          <p className="text-xl text-center max-w-3xl mx-auto" style={{ marginBottom: 'clamp(0.5rem, 1.5vh, 1rem)' }}>
+          <p className="text-xl text-center max-w-3xl mx-auto mb-1 custom-spacing">
             8 funkčních aplikací pro reálné klienty. Žádný řádek kódu. Jen vize, strategie a AI.
           </p>
 
@@ -186,14 +185,13 @@ function PortfolioHolographic() {
 
       {/* Separovaný text MIMO holografický container */}
       <motion.div
-        className="max-w-3xl mx-auto text-center space-y-4 relative z-50"
-        style={{ marginTop: 'clamp(1rem, 3vh, 2rem)' }}
+        className="max-w-3xl mx-auto text-center space-y-1 relative z-50 mt-1 pb-10"
         {...slideUp}
         transition={{ delay: 0.5 }}
       >
-        <p className="text-xl">Od jednoduchých nástrojů po komplexní aplikace, tempo určujeme sami.</p>
-        <p className="text-xl">Začněte třeba jednodušší webovkou.</p>
-        <p className="text-xl font-semibold">Zajímá vás, jak?</p>
+        <p className="text-xl custom-spacing">Od jednoduchých nástrojů po komplexní aplikace, tempo určujeme sami.</p>
+        <p className="text-xl custom-spacing">Začněte třeba jednodušší webovkou.</p>
+        <p className="text-xl font-semibold mb-6 custom-spacing">Zajímá vás, jak?</p>
       </motion.div>
     </Section>
   )

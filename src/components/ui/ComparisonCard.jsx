@@ -21,7 +21,7 @@ function ComparisonCard({ data, direction, delay, background = "light" }) {
         <p className="text-xl font-light">{subtitle}</p>
       </div>
 
-      <div className="space-y-4 mb-4">
+      <div className="space-y-2 mb-4">
         {features.map((feature, index) => (
           <FeatureListItem
             key={index}

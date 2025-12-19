@@ -179,16 +179,16 @@ export default function ComparisonSeo() {
 
       <div className="relative z-10">
         <motion.div {...fadeIn}>
-          <h2 className="font-display font-bold mb-4 text-center" style={{ lineHeight: '1.3' }}>
+          <h2 className="font-display font-bold mb-2 text-center" style={{ lineHeight: '1.3' }}>
             Dobré nástroje posouvají
           </h2>
           <h3 className="font-display font-bold mb-4 text-center">
             Dvě ženy. Jeden obor. Dvě cesty.
           </h3>
-          <p className="mb-4 md:mb-6 lg:mb-8 text-center max-w-3xl mx-auto text-xl font-light">
+          <p className="mb-4 text-center max-w-3xl mx-auto text-xl font-light">
             <span className="block text-xl font-light">Martina a Julie: obě učí klientky zdravě spát.</span>
             <span className="block text-xl font-light">Stejné znalosti. Stejná vášeň pomáhat.</span>
-            <span className="block mt-6 mb-10 text-xl font-light">Ale jejich podnikání funguje naprosto odlišně.</span>
+            <span className="block mt-2 mb-4 text-xl font-light">Ale jejich podnikání funguje naprosto odlišně.</span>
           </p>
 
           {/* Carousel Container */}
@@ -249,7 +249,7 @@ export default function ComparisonSeo() {
             </button>
 
             {/* Dots Indicator */}
-            <div className="flex justify-center gap-3 mt-6 mb-12">
+            <div className="flex justify-center gap-3 mt-3 mb-6">
               {slides.map((_, index) => (
                 <button
                   key={index}

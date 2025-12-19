@@ -358,6 +358,10 @@
     p:not(.font-display), .text-xl {
       font-size: clamp(0.875rem, 1vw + 0.4vh, 1rem) !important;
       line-height: 1.5 !important;
+    }
+
+    /* Margin only for elements without custom-spacing */
+    p:not(.font-display):not(.custom-spacing), .text-xl:not(.custom-spacing) {
       margin-bottom: clamp(0.25rem, 1vh, 0.75rem) !important;
     }
 

@@ -23,17 +23,17 @@ function WhatIsVibecoding() {
       backgroundElement={binaryBackground}
     >
       <motion.div {...fadeIn}>
-        <h2 className="font-display font-bold mb-4 text-center" style={{ lineHeight: '1.3' }}>
+        <h2 className="font-display font-bold mb-2 text-center" style={{ lineHeight: '1.3' }}>
           Vibecoding
         </h2>
-        <h3 className="font-display font-bold mb-16 text-center">
+        <h3 className="font-display font-bold mb-8 text-center">
           Co to je a pro koho
         </h3>
 
         {/* Co to je */}
-        <div className="max-w-3xl mx-auto text-center mb-16">
+        <div className="max-w-3xl mx-auto text-center mb-8">
           <motion.p
-            className="text-xl mb-8"
+            className="text-xl mb-4"
             {...slideUp}
             transition={{ delay: 0.1 }}
           >
@@ -57,8 +57,8 @@ function WhatIsVibecoding() {
         </div>
 
         {/* Pro koho */}
-        <div className="max-w-2xl mx-auto mb-12">
-          <ul className="space-y-4">
+        <div className="max-w-2xl mx-auto mb-6">
+          <ul className="space-y-2">
             {targetGroups.map((group, index) => (
               <motion.li
                 key={index}
@@ -79,8 +79,8 @@ function WhatIsVibecoding() {
           {...slideUp}
           transition={{ delay: 0.6 }}
         >
-          <p className="text-xl mb-6">Společné máte dvojí:</p>
-          <div className="space-y-3">
+          <p className="text-xl mb-4">Společné máte dvojí:</p>
+          <div className="space-y-2">
             <p className="flex items-center justify-center gap-3 text-xl font-semibold">
               <span className="text-accent">✦</span>
               <span>Chcete pomoct víc lidem</span>
