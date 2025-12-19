@@ -131,7 +131,7 @@ export const pricingPackages = [
   {
     title: "VIBE",
     availableSpots: 5,
-    serviceType: "3x konzultace 55 min",
+    serviceType: "3x 55 min konzultace",
     price: "3 900 Kč",
     description: "Pro 5 žen, které chtějí pochopit<br />a rozhodnout se",
     resultTitle: "Výsledek:",
