@@ -239,28 +239,30 @@ export default function WhyMeSeo() {
   return (
     <Section
       background="dark"
-      className="min-h-screen flex items-center justify-center !pt-4 !pb-8 md:!pt-4 md:!pb-8 lg:!pt-8 lg:!pb-16"
+      centered={true}
+      className="!pt-4 !pb-8 md:!pt-4 md:!pb-8 lg:!pt-8 lg:!pb-16"
       showScrollIndicator={true}
       backgroundElement={<AnimatedPhotoWithParticles />}
     >
       <motion.div {...fadeIn}>
-        <h2 className="font-display font-bold mb-6 text-center" style={{ lineHeight: '1.3' }}>
+        <h2 className="font-display font-bold text-center" style={{ lineHeight: '1.3', marginBottom: 'clamp(0.75rem, 2vh, 1.5rem)' }}>
           Proč zrovna se mnou?
         </h2>
 
-        <p className="text-xl text-center mb-16">
+        <p className="text-xl text-center" style={{ marginBottom: 'clamp(2rem, 4vh, 4rem)' }}>
           Pomáhám podnikatelkám, které chtějí zhmotnit svoji vizi – ale nechtějí se učit programovat.
         </p>
 
-        <div className="space-y-8">
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 'clamp(1rem, 3vh, 2rem)', paddingTop: 'clamp(2.5rem, 5vh, 5rem)' }}>
           {credentials.map((item, index) => (
             <motion.div
               key={index}
-              className="border-b border-gray-700 pb-8 last:border-b-0"
+              className="border-b border-gray-700 last:border-b-0"
+              style={{ paddingBottom: 'clamp(1rem, 3vh, 2rem)' }}
               {...slideUp}
               transition={{ delay: index * 0.1 }}
             >
-              <div className="grid md:grid-cols-2 gap-6 items-start">
+              <div className="grid md:grid-cols-2 items-start" style={{ gap: 'clamp(0.75rem, 2vh, 1.5rem)' }}>
                 <h3 className="font-display font-bold">
                   {item.title}
                 </h3>

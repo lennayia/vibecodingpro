@@ -36,19 +36,19 @@ const timelineItems = [
 
 export default function ImagineSection() {
   return (
-    <Section background="light" className="min-h-screen flex items-center justify-center !pt-4 !pb-8 md:!pt-4 md:!pb-8 lg:!pt-8 lg:!pb-16" showScrollIndicator={true}>
+    <Section background="light" centered={true} className="!pt-4 !pb-8 md:!pt-4 md:!pb-8 lg:!pt-8 lg:!pb-16" showScrollIndicator={true}>
       <div className="w-full">
         <motion.div {...fadeIn}>
-          <h2 className="font-display font-bold mb-4 text-center" style={{ lineHeight: '1.3' }}>
+          <h2 className="font-display font-bold text-center" style={{ lineHeight: '1.3', marginBottom: 'clamp(0.2rem, 1vh, 1rem)' }}>
             Den s vaší aplikací
           </h2>
 
           {/* Timeline */}
           <div className="max-w-4xl mx-auto relative">
             {/* Vertical line */}
-            <div className="absolute left-8 md:left-12 top-0 bottom-0 w-0.5 bg-accent/20" />
+            <div className="absolute left-5 md:left-12 top-0 bottom-0 w-0.5 bg-accent/20" />
 
-            <div className="space-y-4">
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 'clamp(0.2rem, 1vh, 1rem)' }}>
               {timelineItems.map((item, index) => {
                 const Icon = item.Icon
                 return (
@@ -56,25 +56,25 @@ export default function ImagineSection() {
                     key={index}
                     {...slideUp}
                     transition={{ delay: index * 0.15 }}
-                    className="relative pl-20 md:pl-28"
+                    className="relative pl-12 md:pl-28"
                   >
                     {/* Icon & Time */}
-                    <div className="absolute left-0 flex items-center gap-3">
-                      <div className="w-16 md:w-24 h-16 md:h-24 rounded-full bg-accent/10 border-2 border-accent flex items-center justify-center">
-                        <Icon className="w-8 h-8 md:w-10 md:h-10 text-accent" />
+                    <div className="absolute left-0 flex items-center gap-2">
+                      <div className="w-10 md:w-24 h-10 md:h-24 rounded-full bg-accent/10 border border-accent md:border-2 flex items-center justify-center">
+                        <Icon className="w-5 h-5 md:w-10 md:h-10 text-accent" />
                       </div>
                     </div>
 
                     {/* Content */}
-                    <div className="bg-white dark:bg-[#0a0a1a] p-4 rounded-lg border border-gray-200 dark:border-gray-800 shadow-sm">
-                      <div className="flex items-baseline gap-3 mb-2">
-                        <span className="text-accent font-bold text-lg">{item.time}</span>
-                        <span className="text-sm text-gray-500 dark:text-gray-400">・ {item.period}</span>
+                    <div className="bg-white dark:bg-[#0a0a1a] rounded-lg border border-gray-200 dark:border-gray-800 shadow-sm" style={{ padding: 'clamp(0.4rem, 1.5vh, 1rem)' }}>
+                      <div className="flex items-baseline gap-2" style={{ marginBottom: 'clamp(0.1rem, 0.5vh, 0.5rem)' }}>
+                        <span className="text-accent font-bold text-base md:text-lg">{item.time}</span>
+                        <span className="text-xs md:text-sm text-gray-500 dark:text-gray-400">・ {item.period}</span>
                       </div>
-                      <h3 className="font-display font-bold text-lg mb-2">
+                      <h3 className="font-display font-bold text-base md:text-lg" style={{ marginBottom: 'clamp(0.1rem, 0.5vh, 0.5rem)' }}>
                         {item.title}
                       </h3>
-                      <p className="text-base leading-relaxed">
+                      <p className="text-sm md:text-base" style={{ lineHeight: 'clamp(1.3, 1.5, 1.75)' }}>
                         {item.description}
                       </p>
                     </div>

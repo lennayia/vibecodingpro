@@ -26,7 +26,7 @@ export default function FAQSeo() {
   }
 
   return (
-    <Section background="light" className="min-h-screen flex items-center justify-center" showScrollIndicator={true}>
+    <Section background="light" centered={true} showScrollIndicator={true}>
       <div>
         <motion.div {...fadeIn}>
           <div className="text-center mb-16">

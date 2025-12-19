@@ -7,11 +7,12 @@ const bgClasses = {
   none: ""
 }
 
-function Section({ children, className = "", background = "light", showScrollIndicator = false, maxWidth = null, backgroundElement = null }) {
+function Section({ children, className = "", background = "light", showScrollIndicator = false, maxWidth = null, backgroundElement = null, centered = false }) {
   const maxWidthClass = maxWidth || "max-w-7xl"
+  const centeredClasses = centered ? "min-h-screen flex items-center justify-center" : ""
 
   return (
-    <section className={`py-4 md:py-28 lg:py-32 px-[4%] ${bgClasses[background]} ${className} relative overflow-hidden`} style={{ position: 'relative' }}>
+    <section className={`py-4 md:py-28 lg:py-32 px-[4%] ${bgClasses[background]} ${centeredClasses} ${className} relative overflow-hidden`} style={{ position: 'relative' }}>
       {backgroundElement}
       <div className={`${maxWidthClass} w-full mx-auto relative z-10`}>
         {children}

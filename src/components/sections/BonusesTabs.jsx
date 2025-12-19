@@ -133,12 +133,12 @@ export default function BonusesTabsSeo() {
   }
 
   return (
-    <Section background="light" className="min-h-screen flex flex-col !pt-8" showScrollIndicator={true}>
+    <Section background="light" centered={true} className="!pt-4 !pb-8 md:!pt-4 md:!pb-8 lg:!pt-8 lg:!pb-16" showScrollIndicator={true}>
       <div className="w-full">
         <motion.div {...fadeIn}>
           {/* Fixed header */}
-          <div className="sticky top-0 z-30 bg-[#f8f8f8] dark:bg-[#05050f] pb-6 pt-8">
-            <div className="text-center mb-8">
+          <div className="sticky top-0 z-30 bg-[#f8f8f8] dark:bg-[#05050f]" style={{ paddingBottom: 'clamp(0.75rem, 2vh, 1.5rem)', paddingTop: 'clamp(1rem, 2.5vh, 2rem)' }}>
+            <div className="text-center" style={{ marginBottom: 'clamp(1rem, 2.5vh, 2rem)' }}>
               <div className="flex items-center justify-center gap-3">
                 <Gift className="w-8 h-8 text-accent" strokeWidth={2} />
                 <h2 className="font-display font-bold" style={{ lineHeight: '1.3' }}>
@@ -181,7 +181,7 @@ export default function BonusesTabsSeo() {
           </div>
 
           {/* Bonus carousel */}
-          <div className="max-w-2xl mx-auto relative mt-8">
+          <div className="max-w-2xl mx-auto relative" style={{ marginTop: 'clamp(1rem, 2.5vh, 2rem)' }}>
             <AnimatePresence mode="wait">
               <motion.div
                 key={currentSlide}
@@ -224,7 +224,7 @@ export default function BonusesTabsSeo() {
                         </div>
                         {/* Content */}
                         <div className="flex-1">
-                          <div className="flex items-start justify-between gap-2 mb-2">
+                          <div className="flex items-start justify-between gap-2" style={{ marginBottom: 'clamp(0.25rem, 0.5vh, 0.5rem)' }}>
                             <h4 className="font-bold text-lg">{item.name}</h4>
                             {!item.isPreviousPackage && value !== true && (
                               <span className="text-sm font-bold text-accent bg-accent/10 px-3 py-1 rounded-full whitespace-nowrap">
@@ -246,7 +246,7 @@ export default function BonusesTabsSeo() {
             </AnimatePresence>
 
             {/* Dots indicator */}
-            <div className="flex justify-center gap-3 mt-2 flex-wrap max-w-md mx-auto">
+            <div className="flex justify-center gap-3 flex-wrap max-w-md mx-auto" style={{ marginTop: 'clamp(0.5rem, 1vh, 0.5rem)' }}>
               {bonusSlides.map((_, index) => (
                 <button
                   key={index}

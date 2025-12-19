@@ -30,13 +30,13 @@ export default function Hero() {
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'center',
-        gap: 'clamp(1.5rem, 3vh, 2.5rem)',
-        paddingTop: 'clamp(2rem, 5vh, 4rem)',
+        gap: 'clamp(1rem, 2vh, 1.5rem)',
+        paddingTop: 'clamp(4rem, 8vh, 6rem)',
         paddingBottom: 'clamp(0.5rem, 2vh, 1.5rem)'
       }}
     >
       {/* Badge */}
-      <motion.div variants={fadeInUp} className="inline-block">
+      <motion.div variants={fadeInUp} className="inline-block" style={{ marginBottom: 'clamp(-0.5rem, -1vh, -0.25rem)' }}>
         <span
           className="px-3 py-1.5 md:px-4 md:py-2 bg-gray-100/80 dark:bg-[#05050f]/80 backdrop-blur-sm rounded-full font-medium border border-gray-200 dark:border-[#070716]"
           style={{ fontSize: 'clamp(0.875rem, 1vw + 0.5vh, 1.25rem)' }}
@@ -51,7 +51,8 @@ export default function Hero() {
         className="font-display font-bold"
         style={{
           fontSize: 'clamp(1.75rem, 4vw + 2vh, 4rem)',
-          lineHeight: '1.2'
+          lineHeight: '1.2',
+          marginTop: 'clamp(-0.5rem, -1vh, -0.25rem)'
         }}
       >
         {displayedText.split('a\u00A0navyšujte')[0]}
@@ -75,7 +76,8 @@ export default function Hero() {
           lineHeight: '1.6',
           display: 'flex',
           flexDirection: 'column',
-          gap: 'clamp(0.75rem, 2vh, 1.5rem)'
+          gap: 'clamp(0.1rem, 0.5vh, 0.25rem)',
+          paddingTop: 'clamp(1rem, 2vh, 2rem)'
         }}
       >
         <span className="block font-light">Už nechcete měnit čas za peníze.</span>
@@ -83,33 +85,31 @@ export default function Hero() {
         <span className="block font-light">Pracují za vás 24/7 a pomáhají vám i stovkám vašich klientek – zatímco vy si užíváte růst a svobodu.</span>
       </motion.p>
 
-      {/* Warning + Buttons */}
+      {/* CTA Section */}
       <motion.div
         variants={fadeInUp}
         className="flex flex-col items-center max-w-2xl mx-auto"
         style={{
           gap: 'clamp(0.75rem, 2vh, 1.25rem)',
-          paddingTop: 'clamp(2rem, 4vh, 3rem)',
+          paddingTop: 'clamp(4rem, 8vh, 6rem)',
           paddingBottom: '0'
         }}
       >
-        <p className="text-center font-light">
-          ⚠️ Varování: Stránka je dlouhá.
-        </p>
-        <Button onClick={handlePricingClick} variant="primary">
-          Radši hned přeskočím na ceník →
-        </Button>
         <p
           className="font-light text-center"
-          style={{
-            marginTop: 'clamp(1rem, 2vh, 1.5rem)'
-          }}
         >
-          ⚠️ ⚠️ Varování: Stránka je showcase různých možností použití vibecodingu na webu.
+          Prozkoumejte showcase různých možností vibecodingu.
         </p>
         <Button onClick={handleScrollDown} variant="primary">
           To si nenechám ujít
         </Button>
+        <a
+          onClick={handlePricingClick}
+          className="text-accent hover:underline cursor-pointer font-light"
+          style={{ fontSize: 'clamp(0.875rem, 1vw, 1rem)', marginTop: 'clamp(0.5rem, 1vh, 1rem)' }}
+        >
+          Radši hned přeskočím na ceník →
+        </a>
       </motion.div>
     </motion.div>
   )
@@ -117,7 +117,8 @@ export default function Hero() {
   return (
     <Section
       background="light"
-      className="min-h-screen flex items-center justify-center relative overflow-hidden"
+      centered={true}
+      className="relative overflow-hidden"
       showScrollIndicator={true}
       backgroundElement={particleBackground}
     >

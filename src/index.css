@@ -375,6 +375,19 @@
     .gap-4:not(:has(> button.rounded-full)) {
       gap: 0.5rem !important;
     }
+
+    /* ImagineSection timeline optimizations */
+    .text-base {
+      font-size: clamp(0.875rem, 1vw, 1rem) !important;
+    }
+
+    .text-sm {
+      font-size: clamp(0.75rem, 0.9vw, 0.875rem) !important;
+    }
+
+    .text-xs {
+      font-size: clamp(0.65rem, 0.8vw, 0.75rem) !important;
+    }
   }
 
   @media (max-height: 650px) {

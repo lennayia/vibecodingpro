@@ -35,7 +35,7 @@ export default function WhyOwnAppSeo() {
   }, [])
 
   return (
-    <Section background="dark" className="min-h-screen flex items-center justify-center !py-4 md:!py-8 lg:!py-12" showScrollIndicator={true}>
+    <Section background="dark" centered={true} className="!py-4 md:!py-8 lg:!py-12" showScrollIndicator={true}>
       <div>
         <motion.div {...fadeIn}>
           <h2 className="font-display font-bold mb-16 text-center" style={{ lineHeight: '1.3' }}>

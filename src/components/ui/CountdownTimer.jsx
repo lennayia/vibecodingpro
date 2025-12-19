@@ -33,7 +33,7 @@ export default function CountdownTimer({ targetDate }) {
           {String(value).padStart(2, '0')}
         </h3>
       </div>
-      <p className="mt-2 text-xs sm:text-sm font-light">
+      <p className="mt-2 text-[0.625rem] sm:text-xs font-light">
         {label}
       </p>
     </div>

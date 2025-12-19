@@ -10,7 +10,7 @@ export default function CTA() {
     scrollToSection('pricing-packages-section')
   }, [])
   return (
-    <Section background="light" className="min-h-screen flex items-center justify-center" showScrollIndicator={false}>
+    <Section background="light" centered={true} showScrollIndicator={false}>
       <motion.div
         className="text-center"
         {...slideUpLarge}

@@ -62,7 +62,8 @@ function PortfolioHolographic() {
   return (
     <Section
       background="dark"
-      className="min-h-screen flex items-center justify-center !py-2 md:!py-4 overflow-hidden"
+      centered={true}
+      className="!py-2 md:!py-4 overflow-hidden"
       showScrollIndicator={true}
     >
       <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">

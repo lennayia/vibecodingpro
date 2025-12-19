@@ -18,7 +18,8 @@ function WhatIsVibecoding() {
   return (
     <Section
       background="light"
-      className="min-h-screen flex items-center justify-center !py-4 md:!py-8 lg:!py-12"
+      centered={true}
+      className="!py-4 md:!py-8 lg:!py-12"
       showScrollIndicator={true}
       backgroundElement={binaryBackground}
     >

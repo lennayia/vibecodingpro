@@ -19,7 +19,7 @@ export default function ComparisonSeo() {
   }
 
   return (
-    <Section background="light" className="min-h-screen flex items-center justify-center !pt-1 !pb-4 md:!pt-2 md:!pb-6 lg:!pt-4 lg:!pb-8 relative overflow-hidden" showScrollIndicator={true}>
+    <Section background="light" centered={true} className="!pt-1 !pb-4 md:!pt-2 md:!pb-6 lg:!pt-4 lg:!pb-8 relative overflow-hidden" showScrollIndicator={true}>
       {/* Holographic background */}
       <div className="absolute inset-0 z-0 opacity-50">
         {/* Gentle Holographic glow - expanded to right */}

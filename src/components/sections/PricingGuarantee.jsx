@@ -5,7 +5,7 @@ import { fadeIn, slideUp } from '../../constants/animations'
 
 export default function PricingGuarantee() {
   return (
-    <Section background="dark" className="min-h-screen flex items-center justify-center overflow-visible" showScrollIndicator={true}>
+    <Section background="dark" centered={true} className="overflow-visible" showScrollIndicator={true}>
       <div className="w-full relative overflow-visible">
         {/* Help text */}
         <motion.div
