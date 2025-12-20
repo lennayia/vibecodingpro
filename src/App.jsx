@@ -9,6 +9,8 @@ import VibecodingOrderPage from './pages/VibecodingOrderPage'
 import VipVibecodingOrderPage from './pages/VipVibecodingOrderPage'
 import ThankYouPage from './pages/ThankYouPage'
 import ReservationPage from './pages/ReservationPage'
+import TermsPage from './pages/TermsPage'
+import GdprPage from './pages/GdprPage'
 
 function App() {
   // Force dark mode permanently
@@ -27,6 +29,8 @@ function App() {
           <Route path="/vipvibecoding" element={<VipVibecodingOrderPage />} />
           <Route path="/dekuji" element={<ThankYouPage />} />
           <Route path="/rezervace" element={<ReservationPage />} />
+          <Route path="/obchodni-podminky" element={<TermsPage />} />
+          <Route path="/gdpr" element={<GdprPage />} />
         </Routes>
       </BrowserRouter>
     </ErrorBoundary>
