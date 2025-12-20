@@ -6,11 +6,12 @@ import { fadeIn, slideUp } from '../../constants/animations'
 
 export default function PricingGuaranteeNew() {
   const [shouldShake, setShouldShake] = useState(false)
+  const [shouldShakeRazitko, setShouldShakeRazitko] = useState(false)
 
   return (
     <Section background="dark" centered={true} showScrollIndicator={true}>
       {/* Main container - relative positioning for absolute stamps */}
-      <div className="max-w-4xl mx-auto relative" style={{ minHeight: 'clamp(600px, 80vh, 900px)' }}>
+      <div className="max-w-4xl mx-auto relative" style={{ minHeight: 'clamp(600px, 80vh, 900px)', overflow: 'visible' }}>
 
         {/* Help text */}
         <motion.div
@@ -51,7 +52,7 @@ export default function PricingGuaranteeNew() {
           </div>
         </motion.div>
 
-        {/* Stamp imprint - kousek vlevo a dolů od středu */}
+        {/* Stamp imprint - MOBILE - kousek vlevo a dolů od středu */}
         <motion.img
           src="/vibecodingotisk-razitka.webp"
           alt="Otisk razítka"
@@ -80,18 +81,58 @@ export default function PricingGuaranteeNew() {
             stiffness: 300,
             damping: 10
           }}
-          className="absolute object-contain"
+          className="block sm:hidden absolute object-contain"
           style={{
             width: 'clamp(5.5rem, 13vw, 12rem)',
             height: 'clamp(5.5rem, 13vw, 12rem)',
-            left: '35%',
-            top: '68%',
+            left: 'calc(27% + 2vw)',
+            top: 'calc(68% + 4vh)',
             transform: 'translate(-50%, -50%)',
             zIndex: 5
           }}
         />
 
-        {/* Floating stamp - MOBILE - vpravo a nahoru od středu */}
+        {/* Stamp imprint - DESKTOP - na středu horizontálně */}
+        <motion.img
+          src="/vibecodingotisk-razitka.webp"
+          alt="Otisk razítka"
+          initial={{ y: -200, opacity: 0, rotate: 0 }}
+          whileInView={shouldShake ? {
+            y: 0,
+            opacity: 1,
+            rotate: [0, -6, 6, -4, 4, -2, 2, 0]
+          } : {
+            y: 0,
+            opacity: 1,
+            rotate: 0
+          }}
+          viewport={{ once: true }}
+          transition={shouldShake ? {
+            y: { duration: 0 },
+            opacity: { duration: 0 },
+            rotate: {
+              duration: 1.8,
+              times: [0, 0.15, 0.3, 0.45, 0.6, 0.75, 0.9, 1],
+              ease: "easeInOut"
+            }
+          } : {
+            delay: 1.5,
+            type: "spring",
+            stiffness: 300,
+            damping: 10
+          }}
+          className="hidden sm:block absolute object-contain"
+          style={{
+            width: 'clamp(6rem, 17vw, 16rem)',
+            height: 'clamp(6rem, 17vw, 16rem)',
+            left: '40%',
+            top: 'calc(68% + 4vh)',
+            transform: 'translate(-50%, -50%)',
+            zIndex: 5
+          }}
+        />
+
+        {/* Floating stamp - MOBILE - vpravo a dolů */}
         <img
           src="/vibecoding-razitko.webp"
           alt="Razítko"
@@ -100,9 +141,9 @@ export default function PricingGuaranteeNew() {
             width: 'clamp(9rem, 24vw, 12rem)',
             height: 'clamp(9rem, 24vw, 12rem)',
             filter: 'drop-shadow(0 10px 20px rgba(0,0,0,0.5))',
-            left: '55%',
-            top: '45%',
-            transform: 'translate(-50%, -50%)',
+            left: 'calc(58% + 3vw)',
+            top: 'calc(58% + 4vh)',
+            transform: 'translate(-50%, -50%) rotate(-10deg)',
             zIndex: 10
           }}
         />
@@ -111,19 +152,20 @@ export default function PricingGuaranteeNew() {
         <motion.img
           src="/vibecoding-razitko.webp"
           alt="Razítko"
-          initial={{ x: 600, y: -300, opacity: 0, rotate: 0 }}
-          animate={shouldShake ? {
+          initial={{ x: 150, y: -100, opacity: 0, rotate: -10 }}
+          whileInView={shouldShakeRazitko ? {
             x: 0,
             y: 0,
             opacity: 1,
-            rotate: [0, -6, 6, -4, 4, -2, 2, 0]
+            rotate: [-10, -16, -4, -14, -6, -12, -8, -10]
           } : {
             x: 0,
             y: 0,
             opacity: 1,
-            rotate: 0
+            rotate: -10
           }}
-          transition={shouldShake ? {
+          viewport={{ once: true, amount: 0.3 }}
+          transition={shouldShakeRazitko ? {
             x: { duration: 0 },
             y: { duration: 0 },
             opacity: { duration: 0 },
@@ -138,18 +180,18 @@ export default function PricingGuaranteeNew() {
             ease: "easeOut"
           }}
           onAnimationComplete={() => {
-            if (!shouldShake) {
-              setTimeout(() => setShouldShake(true), 0)
+            if (!shouldShakeRazitko) {
+              setTimeout(() => setShouldShakeRazitko(true), 0)
             }
           }}
           className="hidden sm:block absolute object-contain pointer-events-none"
           style={{
-            width: 'clamp(13rem, 18vw, 20rem)',
-            height: 'clamp(13rem, 18vw, 20rem)',
+            width: 'clamp(9.6rem, 24vw, 30rem)',
+            height: 'clamp(9.6rem, 24vw, 30rem)',
             filter: 'drop-shadow(0 10px 20px rgba(0,0,0,0.5))',
-            left: '55%',
-            top: '45%',
-            transform: 'translate(-50%, -50%)',
+            left: 'calc(60% + 3vw)',
+            top: 'calc(52% - 3.5vh)',
+            transform: 'translate(-50%, -50%) rotate(-10deg)',
             zIndex: 10
           }}
         />
