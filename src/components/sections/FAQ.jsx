@@ -29,8 +29,8 @@ export default function FAQSeo() {
     <Section background="light" centered={true} showScrollIndicator={true}>
       <div>
         <motion.div {...fadeIn}>
-          <div className="text-center mb-16">
-            <div className="flex items-center justify-center gap-3 mb-4">
+          <div className="text-center" style={{ marginBottom: 'clamp(3rem, 6vh, 6rem)' }}>
+            <div className="flex items-center justify-center" style={{ gap: 'clamp(0.75rem, 1.5vh, 1.5rem)', marginBottom: 'clamp(1rem, 2vh, 2rem)' }}>
               <HelpCircle className="w-8 h-8 text-white dark:text-white" strokeWidth={2} />
               <h2 className="font-display font-bold" style={{ lineHeight: '1.3' }}>
                 Ptáte se
@@ -41,7 +41,7 @@ export default function FAQSeo() {
             </h3>
           </div>
 
-          <div className="space-y-4">
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 'clamp(1rem, 2vh, 2rem)' }}>
             {faqCategories.map((category, categoryIndex) => {
               const isCategoryExpanded = expandedCategories.includes(categoryIndex)
 
@@ -54,7 +54,8 @@ export default function FAQSeo() {
                 >
                   {/* Category Header */}
                   <div
-                    className="p-4 sm:p-6 bg-gray-50 dark:bg-[#05050f] cursor-pointer hover:bg-gray-100 dark:hover:bg-[#0a0a1a] transition-colors flex items-center justify-between"
+                    className="bg-gray-50 dark:bg-[#05050f] cursor-pointer hover:bg-gray-100 dark:hover:bg-[#0a0a1a] transition-colors flex items-center justify-between"
+                    style={{ padding: 'clamp(1rem, 2vh, 1.5rem)' }}
                     onClick={() => toggleCategory(categoryIndex)}
                   >
                     <h3 className="font-display font-bold text-lg sm:text-xl">
@@ -76,7 +77,15 @@ export default function FAQSeo() {
                         transition={{ duration: 0.3 }}
                         className="overflow-hidden"
                       >
-                        <div className="p-4 sm:p-6 space-y-3 bg-white dark:bg-[#070716]">
+                        <div
+                          className="bg-white dark:bg-[#070716]"
+                          style={{
+                            padding: 'clamp(1rem, 2vh, 1.5rem)',
+                            display: 'flex',
+                            flexDirection: 'column',
+                            gap: 'clamp(0.75rem, 1.5vh, 1.5rem)'
+                          }}
+                        >
                           {category.questions.map((item, questionIndex) => {
                             const key = `${categoryIndex}-${questionIndex}`
                             const isQuestionExpanded = expandedQuestions[key]
@@ -87,7 +96,11 @@ export default function FAQSeo() {
                                 className="border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden"
                               >
                                 <div
-                                  className="p-4 cursor-pointer hover:bg-gray-50 dark:hover:bg-[#05050f] transition-colors flex items-start justify-between gap-3"
+                                  className="cursor-pointer hover:bg-gray-50 dark:hover:bg-[#05050f] transition-colors flex items-start justify-between"
+                                  style={{
+                                    padding: 'clamp(1rem, 2vh, 1.5rem)',
+                                    gap: 'clamp(0.75rem, 1.5vh, 1.5rem)'
+                                  }}
                                   onClick={() => toggleQuestion(categoryIndex, questionIndex)}
                                 >
                                   <p className="font-semibold flex-1">{item.question}</p>
@@ -106,7 +119,15 @@ export default function FAQSeo() {
                                       transition={{ duration: 0.2 }}
                                       className="overflow-hidden"
                                     >
-                                      <div className="px-4 pb-4 pt-2 bg-gray-50 dark:bg-[#05050f]">
+                                      <div
+                                        className="bg-gray-50 dark:bg-[#05050f]"
+                                        style={{
+                                          paddingLeft: 'clamp(1rem, 2vh, 1.5rem)',
+                                          paddingRight: 'clamp(1rem, 2vh, 1.5rem)',
+                                          paddingBottom: 'clamp(1rem, 2vh, 1.5rem)',
+                                          paddingTop: 'clamp(0.5rem, 1vh, 1rem)'
+                                        }}
+                                      >
                                         <p className="font-light">{item.answer}</p>
                                       </div>
                                     </motion.div>

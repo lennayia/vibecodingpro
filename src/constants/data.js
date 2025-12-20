@@ -147,7 +147,7 @@ export const pricingPackages = [
     ],
     discount: "300 Kč na další 2h spolupráci",
     buttonText: "Chci VIBE",
-    buttonLink: "https://online-byznys.cz/vibecoding-objednavka-vibe/",
+    buttonLink: "/vibe",
     isPopular: false
   },
   {
@@ -173,7 +173,7 @@ export const pricingPackages = [
     ],
     discount: "600 Kč na další 2h spolupráci",
     buttonText: "Chci mentoring",
-    buttonLink: "https://online-byznys.cz/vibecoding-objednavka-vibecoding/",
+    buttonLink: "/vibecoding",
     badgeText: "OBLÍBENĚJŠÍ",
     isPopular: true
   },
@@ -197,7 +197,7 @@ export const pricingPackages = [
     ],
     discount: "900 Kč na další 2h spolupráci",
     buttonText: "Chci VIP",
-    buttonLink: "https://online-byznys.cz/vibecoding-objednavka-vibecoding-vip/",
+    buttonLink: "/vipvibecoding",
     badgeText: "EXKLUZIVNÍ",
     isExclusive: true,
     isPopular: false
@@ -217,8 +217,8 @@ export const faqCategories = [
         answer: "Lepší to vědět za 2 hodiny se mnou než za 3 měsíce práce. I to je výsledek."
       },
       {
-        question: "Co když zjistím, že to není pro mě?",
-        answer: "Máte garanci. Pokud vám spolupráce nedá jasno, vrátím vám peníze."
+        question: "Co když zjistím, že mi spolupráce nevyhovuje?",
+        answer: "Máte garanci. Pokud vám spolupráce nesedne, vrátím vám peníze."
       }
     ]
   },

@@ -15,31 +15,39 @@ export default function CTA() {
         className="text-center"
         {...slideUpLarge}
       >
-        <h2 className="font-display font-bold mb-8">
+        <h2 className="font-display font-bold" style={{ marginBottom: 'clamp(2rem, 4vh, 4rem)' }}>
           Věřím, že se už těšíte na svůj budoucí digitální nástroj
         </h2>
-        <ul className="mb-12 text-xl font-light space-y-3 mx-auto max-w-fit">
-          <li className="flex items-center gap-3 justify-center">
+        <ul
+          className="text-xl font-light mx-auto max-w-fit"
+          style={{
+            marginBottom: 'clamp(3rem, 6vh, 6rem)',
+            display: 'flex',
+            flexDirection: 'column',
+            gap: 'clamp(0.75rem, 1.5vh, 1.5rem)'
+          }}
+        >
+          <li className="flex items-center justify-center" style={{ gap: 'clamp(0.75rem, 1.5vh, 1.5rem)' }}>
             <span className="text-accent">✦</span>
             <span>Přestaňte snít a začněte tvořit</span>
             <span className="text-accent">✦</span>
           </li>
-          <li className="flex items-center gap-3 justify-center">
+          <li className="flex items-center justify-center" style={{ gap: 'clamp(0.75rem, 1.5vh, 1.5rem)' }}>
             <span className="text-accent">✦</span>
             <span>Vaše klientky na vás čekají</span>
             <span className="text-accent">✦</span>
           </li>
-          <li className="flex items-center gap-3 justify-center">
+          <li className="flex items-center justify-center" style={{ gap: 'clamp(0.75rem, 1.5vh, 1.5rem)' }}>
             <span className="text-accent">✦</span>
             <span>Už brzy můžete mít hotovo</span>
             <span className="text-accent">✦</span>
           </li>
-          <li className="flex items-center gap-3 justify-center">
+          <li className="flex items-center justify-center" style={{ gap: 'clamp(0.75rem, 1.5vh, 1.5rem)' }}>
             <span className="text-accent">✦</span>
             <span>Třeba za rok budete pomáhat stovkám lidí</span>
             <span className="text-accent">✦</span>
           </li>
-          <li className="flex items-center gap-3 justify-center">
+          <li className="flex items-center justify-center" style={{ gap: 'clamp(0.75rem, 1.5vh, 1.5rem)' }}>
             <span className="text-accent">✦</span>
             <span>A cítit se svobodně</span>
             <span className="text-accent">✦</span>
@@ -48,7 +56,7 @@ export default function CTA() {
         <Button size="lg" onClick={handleClick}>
           Už chci začít
         </Button>
-        <div className="mt-6">
+        <div style={{ marginTop: 'clamp(1.5rem, 3vh, 3rem)' }}>
           <h3 className="font-display font-bold">
             Změna začíná rozhodnutím.
           </h3>

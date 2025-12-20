@@ -424,4 +424,181 @@
       scroll-behavior: auto !important;
     }
   }
+
+  /* SimpleShop Form Styling - More specific selectors */
+
+  /* All input fields - comprehensive targeting */
+  [data-SimpleShopForm] input[type="text"],
+  [data-SimpleShopForm] input[type="email"],
+  [data-SimpleShopForm] input[type="tel"],
+  [data-SimpleShopForm] input[type="number"],
+  [data-SimpleShopForm] input[type="password"],
+  [data-SimpleShopForm] select,
+  [data-SimpleShopForm] textarea,
+  div[data-SimpleShopForm] input[type="text"],
+  div[data-SimpleShopForm] input[type="email"],
+  div[data-SimpleShopForm] input[type="tel"],
+  div[data-SimpleShopForm] input[type="number"],
+  div[data-SimpleShopForm] select,
+  div[data-SimpleShopForm] textarea,
+  .sss-form input[type="text"],
+  .sss-form input[type="email"],
+  .sss-form input[type="tel"],
+  .sss-form input[type="number"],
+  .sss-form select,
+  .sss-form textarea,
+  form[class*="sss"] input[type="text"],
+  form[class*="sss"] input[type="email"],
+  form[class*="sss"] input[type="tel"],
+  form[class*="sss"] input[type="number"],
+  form[class*="sss"] select,
+  form[class*="sss"] textarea {
+    border-radius: 0.75rem !important; /* 12px - rounded-xl */
+    border: 1px solid #d1d5db !important;
+    padding: 0.75rem 1rem !important;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease !important;
+  }
+
+  /* Dark mode for inputs */
+  .dark [data-SimpleShopForm] input[type="text"],
+  .dark [data-SimpleShopForm] input[type="email"],
+  .dark [data-SimpleShopForm] input[type="tel"],
+  .dark [data-SimpleShopForm] input[type="number"],
+  .dark [data-SimpleShopForm] select,
+  .dark [data-SimpleShopForm] textarea,
+  .dark div[data-SimpleShopForm] input,
+  .dark div[data-SimpleShopForm] select,
+  .dark div[data-SimpleShopForm] textarea,
+  .dark .sss-form input,
+  .dark .sss-form select,
+  .dark .sss-form textarea {
+    border-color: #374151 !important;
+    background-color: #070716 !important;
+    color: #f2f2f2 !important;
+  }
+
+  /* Focus states - comprehensive */
+  [data-SimpleShopForm] input:focus,
+  [data-SimpleShopForm] select:focus,
+  [data-SimpleShopForm] textarea:focus,
+  div[data-SimpleShopForm] input:focus,
+  div[data-SimpleShopForm] select:focus,
+  div[data-SimpleShopForm] textarea:focus,
+  .sss-form input:focus,
+  .sss-form select:focus,
+  .sss-form textarea:focus {
+    border-color: var(--color-accent-light) !important;
+    outline: none !important;
+    box-shadow: 0 0 0 3px rgba(0, 0, 205, 0.1) !important;
+  }
+
+  .dark [data-SimpleShopForm] input:focus,
+  .dark [data-SimpleShopForm] select:focus,
+  .dark [data-SimpleShopForm] textarea:focus,
+  .dark div[data-SimpleShopForm] input:focus,
+  .dark div[data-SimpleShopForm] select:focus,
+  .dark div[data-SimpleShopForm] textarea:focus,
+  .dark .sss-form input:focus,
+  .dark .sss-form select:focus,
+  .dark .sss-form textarea:focus {
+    border-color: var(--color-accent-dark) !important;
+    box-shadow: 0 0 0 3px rgba(13, 221, 13, 0.1) !important;
+  }
+
+  /* Buttons in SimpleShop form */
+  [data-SimpleShopForm] button,
+  [data-SimpleShopForm] input[type="submit"],
+  [data-SimpleShopForm] input[type="button"],
+  div[data-SimpleShopForm] button,
+  div[data-SimpleShopForm] input[type="submit"],
+  .sss-form button,
+  .sss-form input[type="submit"] {
+    border-radius: 0.75rem !important; /* 12px - rounded-xl for consistency */
+    padding: 0.75rem 1.5rem !important;
+    font-weight: 600 !important;
+    transition: all 0.2s ease !important;
+  }
+
+  /* Radio buttons and checkboxes */
+  [data-SimpleShopForm] input[type="radio"],
+  [data-SimpleShopForm] input[type="checkbox"] {
+    border-radius: 0.25rem !important;
+  }
+
+  /* Labels */
+  [data-SimpleShopForm] label {
+    font-weight: 500 !important;
+    margin-bottom: 0.5rem !important;
+    display: block !important;
+  }
+
+  .dark [data-SimpleShopForm] label {
+    color: #f2f2f2 !important;
+  }
+
+  /* Form groups/containers */
+  [data-SimpleShopForm] > div {
+    margin-bottom: 1rem !important;
+  }
+
+  /* SimpleShop specific - variant selection boxes */
+  [data-SimpleShopForm] .sss-variant-item,
+  [data-SimpleShopForm] .variant-item,
+  div[data-SimpleShopForm] > div > div,
+  .sss-variants > div {
+    border-radius: 0.75rem !important;
+  }
+
+  [data-SimpleShopForm] .sss-variant-item,
+  [data-SimpleShopForm] .variant-item {
+    border: 2px solid #d1d5db !important;
+    transition: all 0.2s ease !important;
+  }
+
+  .dark [data-SimpleShopForm] .sss-variant-item,
+  .dark [data-SimpleShopForm] .variant-item {
+    border-color: #374151 !important;
+    background-color: #070716 !important;
+  }
+
+  [data-SimpleShopForm] .sss-variant-item:hover,
+  [data-SimpleShopForm] .variant-item:hover {
+    border-color: var(--color-accent-light) !important;
+  }
+
+  .dark [data-SimpleShopForm] .sss-variant-item:hover,
+  .dark [data-SimpleShopForm] .variant-item:hover {
+    border-color: var(--color-accent-dark) !important;
+  }
+
+  /* Selected variant */
+  [data-SimpleShopForm] .sss-variant-item.selected,
+  [data-SimpleShopForm] .variant-item.selected {
+    border-color: var(--color-accent-light) !important;
+    background-color: rgba(0, 0, 205, 0.05) !important;
+  }
+
+  .dark [data-SimpleShopForm] .sss-variant-item.selected,
+  .dark [data-SimpleShopForm] .variant-item.selected {
+    border-color: var(--color-accent-dark) !important;
+    background-color: rgba(13, 221, 13, 0.05) !important;
+  }
+
+  /* SUPER AGGRESSIVE - Target ALL inputs in order pages */
+  main input[type="text"],
+  main input[type="email"],
+  main input[type="tel"],
+  main input[type="number"],
+  main select,
+  main textarea {
+    border-radius: 0.75rem !important;
+  }
+
+  /* Specifically target the white form container */
+  .bg-white.dark\:bg-\[\#05050f\] input,
+  .bg-white.dark\:bg-\[\#05050f\] select,
+  .bg-white.dark\:bg-\[\#05050f\] textarea {
+    border-radius: 0.75rem !important;
+    padding: 0.75rem 1rem !important;
+  }
 }

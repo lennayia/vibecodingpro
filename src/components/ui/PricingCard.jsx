@@ -1,5 +1,6 @@
 import { Check, Gift, Tag, Crown, ChevronDown, Map, FileCheck, BookOpen, Video, Mail, ClipboardList, Phone, Ticket } from 'lucide-react'
 import { useState, useRef, memo, useCallback } from 'react'
+import { Link } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import Card from './Card'
 import Button from './Button'
@@ -385,11 +386,19 @@ function PricingCard({
 
         <div className="flex justify-center mt-auto" style={{ paddingTop: 'clamp(1.25rem, 2.5vh, 2.5rem)' }}>
           {buttonLink ? (
-            <a href={buttonLink} target="_blank" rel="noopener noreferrer" className="inline-block">
-              <Button>
-                {buttonText}
-              </Button>
-            </a>
+            buttonLink.startsWith('/') ? (
+              <Link to={buttonLink} className="inline-block">
+                <Button>
+                  {buttonText}
+                </Button>
+              </Link>
+            ) : (
+              <a href={buttonLink} target="_blank" rel="noopener noreferrer" className="inline-block">
+                <Button>
+                  {buttonText}
+                </Button>
+              </a>
+            )
           ) : (
             <Button>
               {buttonText}
