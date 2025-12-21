@@ -1,13 +1,12 @@
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion } from 'framer-motion'
 import { useState, useEffect } from 'react'
-import { ChevronLeft, ChevronRight } from 'lucide-react'
 import Section from '../layout/Section'
 import ComparisonCard from '../ui/ComparisonCard'
+import Carousel from '../ui/Carousel'
 import { comparisonData } from '../../constants/data'
 import { fadeIn } from '../../constants/animations'
 
 export default function ComparisonSeo() {
-  const [currentSlide, setCurrentSlide] = useState(0)
   const [isDark, setIsDark] = useState(true)
   const slides = [comparisonData.martina, comparisonData.julie]
 
@@ -28,14 +27,6 @@ export default function ComparisonSeo() {
   // Dark mode: green/cyan tones
   const primaryColor = isDark ? '0, 255, 136' : '0, 0, 205'
   const secondaryColor = isDark ? '0, 200, 255' : '65, 105, 225' // RoyalBlue for light mode
-
-  const nextSlide = () => {
-    setCurrentSlide((prev) => (prev + 1) % slides.length)
-  }
-
-  const prevSlide = () => {
-    setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length)
-  }
 
   return (
     <Section background="light" centered={true} className="!pt-1 !pb-4 md:!pt-2 md:!pb-6 lg:!pt-4 lg:!pb-8 relative overflow-hidden" showScrollIndicator={true}>
@@ -208,85 +199,30 @@ export default function ComparisonSeo() {
           <h3 className="font-display font-bold mb-4 text-center">
             Dvě ženy. Jeden obor. Dvě cesty.
           </h3>
-          <p className="mb-4 text-center max-w-3xl mx-auto text-xl font-light">
+          <p className="mb-2 text-center max-w-3xl mx-auto text-xl font-light">
             <span className="block text-xl font-light">Martina a Julie: obě učí klientky zdravě spát.</span>
             <span className="block text-xl font-light">Stejné znalosti. Stejná vášeň pomáhat.</span>
-            <span className="block mt-2 mb-4 text-xl font-light">Ale jejich podnikání funguje naprosto odlišně.</span>
+            <span className="block mt-2 text-xl font-light">Ale jejich podnikání funguje naprosto odlišně.</span>
           </p>
 
-          {/* Carousel Container */}
-          <div className="relative max-w-2xl mx-auto">
-            {/* Carousel */}
-            <div className="relative overflow-hidden pt-6">
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={currentSlide}
-                  initial={{ opacity: 0, x: 100 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: -100 }}
-                  transition={{ duration: 0.3 }}
-                  drag="x"
-                  dragConstraints={{ left: 0, right: 0 }}
-                  dragElastic={0.2}
-                  onDragEnd={(e, { offset, velocity }) => {
-                    const swipe = Math.abs(offset.x) * velocity.x
-                    if (swipe < -500) {
-                      nextSlide()
-                    } else if (swipe > 500) {
-                      prevSlide()
-                    }
-                  }}
-                >
-                  <ComparisonCard
-                    data={slides[currentSlide]}
-                    direction="center"
-                    delay={0}
-                    background="dark"
-                  />
-                </motion.div>
-              </AnimatePresence>
-            </div>
-
-            {/* Navigation Arrows */}
-            <button
-              onClick={prevSlide}
-              className="absolute left-0 top-1/2 bg-white/90 dark:bg-accent/10 border border-gray-300 dark:border-accent/30 rounded-full p-2 z-20 cursor-pointer hover:bg-white dark:hover:bg-accent/20 transition-colors"
-              style={{
-                transform: 'translate(-1rem, -50%)',
-                transition: 'none'
-              }}
-              aria-label="Previous slide"
-            >
-              <ChevronLeft className="w-6 h-6 text-accent" strokeWidth={2} />
-            </button>
-            <button
-              onClick={nextSlide}
-              className="absolute right-0 top-1/2 bg-white/90 dark:bg-accent/10 border border-gray-300 dark:border-accent/30 rounded-full p-2 z-20 cursor-pointer hover:bg-white dark:hover:bg-accent/20 transition-colors"
-              style={{
-                transform: 'translate(1rem, -50%)',
-                transition: 'none'
-              }}
-              aria-label="Next slide"
-            >
-              <ChevronRight className="w-6 h-6 text-accent" strokeWidth={2} />
-            </button>
-
-            {/* Dots Indicator */}
-            <div className="flex justify-center gap-3 mt-3 mb-6">
-              {slides.map((_, index) => (
-                <button
-                  key={index}
-                  onClick={() => setCurrentSlide(index)}
-                  className={`rounded-full cursor-pointer ${
-                    index === currentSlide
-                      ? 'bg-accent w-12 h-3'
-                      : 'bg-gray-400 dark:bg-gray-600 w-5 h-5'
-                  }`}
-                  aria-label={`Go to slide ${index + 1}`}
-                />
-              ))}
-            </div>
-          </div>
+          {/* Carousel Component */}
+          <Carousel
+            slides={slides}
+            renderSlide={(slide, index) => (
+              <ComparisonCard
+                data={slide}
+                direction="center"
+                delay={0}
+                background="dark"
+              />
+            )}
+            mobileCardWidth="75%"
+            tabletCardWidth="85%"
+            gap={3}
+            showArrows={true}
+            showDots={true}
+            dragEnabled={true}
+          />
         </motion.div>
       </div>
     </Section>

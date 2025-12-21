@@ -28,15 +28,15 @@ export default function CookieBanner() {
   const messages = [
     {
       title: "🍪 Sušenky? Ne, cookies!",
-      text: "Tyhle se nejí, ale pomáhají nám vědět, že jsi tu. Žádné špehování, slibuju.",
+      text: "Tyhle se nejí, ale pomáhají nám vědět, že jste tu. Žádné špehování, slibuju.",
     },
     {
-      title: "🤖 AI ti nedá pokoj...",
-      text: "...dokud neklikneš. Cookies používáme jen na analytiku, ne na prodej tvé duše.",
+      title: "🤖 AI vám nedá pokoj...",
+      text: "...dokud nekliknete. Cookies používáme jen na analytiku, ne na prodej vašeho auta.",
     },
     {
-      title: "🔮 Věštím, že klikneš na Jasně",
-      text: "Cookies nám pomáhají dělat web lepší. A ne, nesledujeme, kolik kávy piješ.",
+      title: "🔮 Věštím, že kliknete na Jasně",
+      text: "Cookies nám pomáhají dělat web lepší. A ne, nesledujeme, kolik kávy pijete.",
     },
   ]
 

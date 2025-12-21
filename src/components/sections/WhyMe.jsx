@@ -224,7 +224,7 @@ export default function WhyMeSeo() {
     },
     {
       title: "8 aplikací",
-      description: "CoachPro, PaymentsPro, PianoPro... To jsou reálné projekty pro reálné lidi."
+      description: "Apka pro koučky a jejich klientky, Správa plateb, výuka hry na piano pro začátečníky... To jsou reálné projekty pro reálné lidi."
     },
     {
       title: "2 500+ hodin praxe",
