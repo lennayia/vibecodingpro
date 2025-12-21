@@ -63,7 +63,7 @@ function PortfolioHolographic() {
     <Section
       background="dark"
       centered={true}
-      className="!py-2 md:!py-4 overflow-hidden"
+      className="!py-12 md:!py-4 overflow-hidden"
       showScrollIndicator={true}
     >
       <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
@@ -97,7 +97,7 @@ function PortfolioHolographic() {
       <div className="w-full relative z-10" ref={containerRef}>
         <motion.div {...fadeIn}>
           <motion.h2
-            className="font-display font-bold text-center mb-2"
+            className="font-display font-bold text-center mb-4 md:mb-2"
             style={{
               lineHeight: '1.3',
               textShadow: '0 0 20px rgba(0, 255, 136, 0.3)'
@@ -106,7 +106,7 @@ function PortfolioHolographic() {
             Tohle postavila žena, která neumí programovat.
           </motion.h2>
 
-          <p className="text-xl text-center max-w-3xl mx-auto mb-1 custom-spacing">
+          <p className="text-xl text-center max-w-3xl mx-auto mb-6 md:mb-1 custom-spacing">
             8 funkčních aplikací pro reálné klienty. Žádný řádek kódu. Jen vize, strategie a AI.
           </p>
 
@@ -149,7 +149,7 @@ function PortfolioHolographic() {
                 ))}
               </motion.div>
             </div>
-            <p className="text-center text-sm text-gray-400" style={{ marginTop: 'clamp(0.5rem, 1vh, 1rem)' }}>← Táhněte →</p>
+            <p className="text-center text-sm text-gray-400 mt-4 md:mt-[clamp(0.5rem,1vh,1rem)]">← Táhněte →</p>
           </div>
 
           {/* Tablet & Desktop (>=640px): 3D carousel with animations */}

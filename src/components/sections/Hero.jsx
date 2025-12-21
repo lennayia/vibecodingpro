@@ -25,15 +25,7 @@ export default function Hero() {
     <motion.div
       initial="initial"
       animate="animate"
-      className="text-center w-full px-4"
-      style={{
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'center',
-        gap: 'clamp(1rem, 2vh, 1.5rem)',
-        paddingTop: 'clamp(4rem, 8vh, 6rem)',
-        paddingBottom: 'clamp(0.5rem, 2vh, 1.5rem)'
-      }}
+      className="text-center w-full px-4 flex flex-col justify-center gap-6 md:gap-[clamp(1rem,2vh,1.5rem)] pt-28 md:pt-[clamp(4rem,8vh,6rem)] pb-10 md:pb-[clamp(0.5rem,2vh,1.5rem)]"
     >
       {/* Badge */}
       <motion.div variants={fadeInUp} className="inline-block" style={{ marginBottom: 'clamp(-0.5rem, -1vh, -0.25rem)' }}>

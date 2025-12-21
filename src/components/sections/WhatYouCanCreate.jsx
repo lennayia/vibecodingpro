@@ -39,14 +39,14 @@ function WhatYouCanCreate() {
   ], [])
 
   return (
-    <Section background="dark" centered={true} className="!pt-0 !pb-4 md:!pt-2 md:!pb-8 lg:!pt-4 lg:!pb-12" showScrollIndicator={true}>
+    <Section background="dark" centered={true} className="!pt-8 md:!pt-2 !pb-12 md:!pb-8 lg:!pt-4 lg:!pb-12" showScrollIndicator={true}>
       <div>
         <motion.div {...fadeIn}>
-          <h2 className="font-display font-bold text-center -mt-2 md:-mt-4 lg:-mt-6" style={{ lineHeight: '1.3', marginBottom: 'clamp(1rem, 3vh, 4rem)' }}>
+          <h2 className="font-display font-bold text-center -mt-2 md:-mt-4 lg:-mt-6 mb-8 md:mb-[clamp(1rem,3vh,4rem)]" style={{ lineHeight: '1.3' }}>
             Co můžete s vibecodingem vytvořit
           </h2>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3" style={{ gap: 'clamp(1rem, 3vh, 2rem)', marginBottom: 'clamp(1rem, 3vh, 4rem)' }}>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-[clamp(1rem,3vh,2rem)] mb-12 md:mb-[clamp(1rem,3vh,4rem)]">
             {categories.map((category, index) => {
               const Icon = category.Icon
               return (
@@ -56,10 +56,10 @@ function WhatYouCanCreate() {
                   {...slideUp}
                   transition={{ delay: index * 0.1 }}
                 >
-                  <div className="flex justify-center" style={{ marginBottom: 'clamp(0.5rem, 1.5vh, 1rem)' }}>
+                  <div className="flex justify-center mb-4 md:mb-[clamp(0.5rem,1.5vh,1rem)]">
                     <Icon className="w-16 h-16 text-gray-800 dark:text-white" strokeWidth={1.5} />
                   </div>
-                  <h3 className="font-display font-bold" style={{ marginBottom: 'clamp(0.25rem, 1vh, 0.75rem)' }}>
+                  <h3 className="font-display font-bold mb-2 md:mb-[clamp(0.25rem,1vh,0.75rem)]">
                     {category.title}
                   </h3>
                   <p className="font-light">

@@ -19,22 +19,22 @@ function WhatIsVibecoding() {
     <Section
       background="light"
       centered={true}
-      className="!py-4 md:!py-8 lg:!py-12"
+      className="!py-12 md:!py-8 lg:!py-12"
       showScrollIndicator={true}
       backgroundElement={binaryBackground}
     >
       <motion.div {...fadeIn}>
-        <h2 className="font-display font-bold mb-2 text-center" style={{ lineHeight: '1.3' }}>
+        <h2 className="font-display font-bold mb-4 md:mb-2 text-center" style={{ lineHeight: '1.3' }}>
           Vibecoding
         </h2>
-        <h3 className="font-display font-bold mb-8 text-center">
+        <h3 className="font-display font-bold mb-10 md:mb-8 text-center">
           Co to je a pro koho
         </h3>
 
         {/* Co to je */}
-        <div className="max-w-3xl mx-auto text-center mb-8">
+        <div className="max-w-3xl mx-auto text-center mb-12 md:mb-8">
           <motion.p
-            className="text-xl mb-4"
+            className="text-xl mb-6 md:mb-4"
             {...slideUp}
             transition={{ delay: 0.1 }}
           >
@@ -42,14 +42,14 @@ function WhatIsVibecoding() {
           </motion.p>
 
           <motion.p
-            className="text-lg mb-4"
+            className="text-lg mb-6 md:mb-4"
             {...slideUp}
             transition={{ delay: 0.2 }}
           >
             Vibecoding = dovednost popsat vizi tak, aby to AI dobře pochopila.
           </motion.p>
           <motion.p
-            className="text-xl"
+            className="text-xl mt-4 md:mt-0"
             {...slideUp}
             transition={{ delay: 0.3 }}
           >
