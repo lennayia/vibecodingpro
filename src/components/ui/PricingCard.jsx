@@ -30,9 +30,11 @@ function PricingCard({
   const [rotateX, setRotateX] = useState(0)
   const [rotateY, setRotateY] = useState(0)
   const [shinePosition, setShinePosition] = useState({ x: 50, y: 50 })
-  const [isAccordionOpen, setIsAccordionOpen] = useState(false)
-  const [isBonusAccordionOpen, setIsBonusAccordionOpen] = useState(false)
-  const [isGoalAccordionOpen, setIsGoalAccordionOpen] = useState(false)
+
+  // For Hero Product (VIBE+CODING), start with accordions OPEN by default
+  const isHeroProduct = title === "VIBE+CODING"
+  const [isAccordionOpen, setIsAccordionOpen] = useState(isHeroProduct)
+  const [isBonusAccordionOpen, setIsBonusAccordionOpen] = useState(isHeroProduct)
 
   const handleMouseMove = useCallback((e) => {
     if (window.innerWidth < 768) return // Disable on mobile
@@ -340,48 +342,24 @@ function PricingCard({
         </div>
       )}
 
-      {/* Accordion for goal/result */}
+      {/* Cíl section - ALWAYS VISIBLE (no accordion) */}
       <div style={{ marginBottom: 'clamp(1rem, 2vh, 2rem)' }}>
-        <button
-          onClick={() => setIsGoalAccordionOpen(!isGoalAccordionOpen)}
-          className="accordion-btn flex items-center justify-center gap-2 text-sm font-semibold text-accent hover:text-accent/80 transition-colors mx-auto py-1 px-2 rounded-lg border border-accent/30 hover:border-accent/50 min-w-[140px]"
-        >
-          <span>Cíl</span>
-          <motion.div
-            animate={{ rotate: isGoalAccordionOpen ? 180 : 0 }}
-            transition={{ duration: 0.3 }}
-          >
-            <ChevronDown className="w-4 h-4" strokeWidth={2} />
-          </motion.div>
-        </button>
+        <div className="text-center" style={{ marginBottom: 'clamp(0.5rem, 1vh, 1rem)' }}>
+          <span className="text-sm font-bold text-accent uppercase tracking-wider">🎯 Cíl</span>
+        </div>
+        <div className="bg-accent/5 dark:bg-accent/10 rounded-xl border-2 border-accent/30 dark:border-accent/20" style={{ padding: 'clamp(0.75rem, 1.5vh, 1.5rem)' }}>
+          <p className="font-bold text-base text-center" style={{ marginBottom: 'clamp(0.5rem, 1vh, 1rem)' }}>{resultTitle}</p>
+          <div className="text-sm font-light text-left" dangerouslySetInnerHTML={{ __html: resultDescription }} />
 
-        <AnimatePresence>
-          {isGoalAccordionOpen && (
-            <motion.div
-              initial={{ height: 0, opacity: 0 }}
-              animate={{ height: "auto", opacity: 1 }}
-              exit={{ height: 0, opacity: 0 }}
-              transition={{ duration: 0.3 }}
-              className="overflow-hidden"
-            >
-              <div className="text-left text-sm px-1" style={{ marginTop: 'clamp(0.75rem, 1.5vh, 1.5rem)', display: 'flex', flexDirection: 'column', gap: 'clamp(0.5rem, 1vh, 1rem)' }}>
-                <div className="bg-gray-100 dark:bg-[#05050f] rounded-xl border border-gray-200 dark:border-gray-700" style={{ padding: 'clamp(0.375rem, 0.75vh, 0.75rem)' }}>
-                  <p className="font-semibold text-sm" style={{ marginBottom: 'clamp(0.125rem, 0.25vh, 0.25rem)' }}>{resultTitle}</p>
-                  <div className="text-sm" dangerouslySetInnerHTML={{ __html: resultDescription }} />
-
-                  {testimonials && testimonials.map((testimonial, index) => (
-                    <div key={index} className="border-t border-gray-300 dark:border-gray-600" style={{ marginTop: 'clamp(0.5rem, 1vh, 1rem)', paddingTop: 'clamp(0.5rem, 1vh, 1rem)' }}>
-                      <p className="italic text-xs">{testimonial.quote}</p>
-                      {testimonial.author && (
-                        <p className="text-xs font-light">– {testimonial.author}</p>
-                      )}
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
+          {testimonials && testimonials.map((testimonial, index) => (
+            <div key={index} className="border-t border-accent/20" style={{ marginTop: 'clamp(0.75rem, 1.5vh, 1.5rem)', paddingTop: 'clamp(0.75rem, 1.5vh, 1.5rem)' }}>
+              <p className="italic text-sm font-light">{testimonial.quote}</p>
+              {testimonial.author && (
+                <p className="text-xs font-light mt-1">– {testimonial.author}</p>
+              )}
+            </div>
+          ))}
+        </div>
       </div>
 
         <div className="flex justify-center mt-auto" style={{ paddingTop: 'clamp(1.25rem, 2.5vh, 2.5rem)' }}>

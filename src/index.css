@@ -120,11 +120,27 @@
 
   /* Accent colors using variables */
   .text-accent {
-    color: var(--color-accent-light);
+    color: var(--color-accent-light) !important;
   }
 
   .dark .text-accent {
-    color: var(--color-accent-dark);
+    color: var(--color-accent-dark) !important;
+  }
+
+  .bg-accent {
+    background-color: var(--color-accent-light) !important;
+  }
+
+  .dark .bg-accent {
+    background-color: var(--color-accent-dark) !important;
+  }
+
+  .border-accent {
+    border-color: var(--color-accent-light) !important;
+  }
+
+  .dark .border-accent {
+    border-color: var(--color-accent-dark) !important;
   }
 
   .text-error {
@@ -228,23 +244,31 @@
   }
 
   .btn-primary {
+    background-color: var(--color-accent-light);
+    color: white;
     border: 2px solid var(--color-accent-light);
   }
 
   .dark .btn-primary {
+    background-color: var(--color-accent-dark);
+    color: var(--color-bg-dark);
     border: 2px solid var(--color-accent-dark);
   }
 
   .btn-primary:hover:not(:disabled) {
+    background-color: var(--color-accent-light);
     border: 2px solid var(--color-accent-light);
     box-shadow: 0 0 15px rgba(0, 0, 205, 0.4),
                 0 0 30px rgba(0, 0, 205, 0.2);
+    transform: scale(1.05);
   }
 
   .dark .btn-primary:hover:not(:disabled) {
+    background-color: var(--color-accent-dark);
     border: 2px solid var(--color-accent-dark);
     box-shadow: 0 0 15px rgba(13, 221, 13, 0.5),
                 0 0 30px rgba(13, 221, 13, 0.3);
+    transform: scale(1.05);
   }
 
   .btn-lg {

@@ -33,6 +33,12 @@ export default function ParticleBackground({
     let width = parentElement.clientWidth
     let height = parentElement.clientHeight
 
+    // Check dark mode
+    const isDark = document.documentElement.classList.contains('dark')
+    // Light mode: blue (#0000CD) = rgb(0, 0, 205)
+    // Dark mode: green (#0DDD0D) = rgb(13, 221, 13)
+    const particleColor = isDark ? '13, 221, 13' : '0, 0, 205'
+
     // Reduced particle count on mobile, normal on desktop
     const particleCount = customParticleCount || (isMobile ? 30 : 80)
 
@@ -99,7 +105,7 @@ export default function ParticleBackground({
       draw() {
         ctx.beginPath()
         ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2)
-        ctx.fillStyle = `rgba(0, 255, 136, ${this.opacity})`
+        ctx.fillStyle = `rgba(${particleColor}, ${this.opacity})`
         ctx.fill()
       }
     }
@@ -123,7 +129,7 @@ export default function ParticleBackground({
             ctx.moveTo(particles.current[i].x, particles.current[i].y)
             ctx.lineTo(particles.current[j].x, particles.current[j].y)
             const opacity = (1 - distance / 150) * 0.15 // Jemnější čáry
-            ctx.strokeStyle = `rgba(0, 255, 136, ${opacity})`
+            ctx.strokeStyle = `rgba(${particleColor}, ${opacity})`
             ctx.lineWidth = 1 // Normální tloušťka
             ctx.stroke()
           }

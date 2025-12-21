@@ -13,10 +13,16 @@ import TermsPage from './pages/TermsPage'
 import GdprPage from './pages/GdprPage'
 
 function App() {
-  // Force dark mode permanently
+  // Initialize theme from localStorage
   useEffect(() => {
-    document.documentElement.classList.add('dark')
-    localStorage.setItem('theme', 'dark')
+    const savedTheme = localStorage.getItem('theme')
+    const prefersDark = savedTheme === 'dark' || !savedTheme
+
+    if (prefersDark) {
+      document.documentElement.classList.add('dark')
+    } else {
+      document.documentElement.classList.remove('dark')
+    }
   }, [])
 
   return (

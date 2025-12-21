@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from 'framer-motion'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
 import Section from '../layout/Section'
 import ComparisonCard from '../ui/ComparisonCard'
@@ -8,7 +8,26 @@ import { fadeIn } from '../../constants/animations'
 
 export default function ComparisonSeo() {
   const [currentSlide, setCurrentSlide] = useState(0)
+  const [isDark, setIsDark] = useState(true)
   const slides = [comparisonData.martina, comparisonData.julie]
+
+  // Track theme changes
+  useEffect(() => {
+    const checkTheme = () => {
+      setIsDark(document.documentElement.classList.contains('dark'))
+    }
+    checkTheme()
+
+    const handleThemeChange = () => checkTheme()
+    window.addEventListener('themeChange', handleThemeChange)
+    return () => window.removeEventListener('themeChange', handleThemeChange)
+  }, [])
+
+  // Colors based on theme
+  // Light mode: blue tones
+  // Dark mode: green/cyan tones
+  const primaryColor = isDark ? '0, 255, 136' : '0, 0, 205'
+  const secondaryColor = isDark ? '0, 200, 255' : '65, 105, 225' // RoyalBlue for light mode
 
   const nextSlide = () => {
     setCurrentSlide((prev) => (prev + 1) % slides.length)
@@ -21,17 +40,17 @@ export default function ComparisonSeo() {
   return (
     <Section background="light" centered={true} className="!pt-1 !pb-4 md:!pt-2 md:!pb-6 lg:!pt-4 lg:!pb-8 relative overflow-hidden" showScrollIndicator={true}>
       {/* Holographic background */}
-      <div className="absolute inset-0 z-0 opacity-50">
+      <div className="absolute inset-0 z-0 opacity-80">
         {/* Gentle Holographic glow - expanded to right */}
         <motion.div
           className="absolute inset-0 blur-xl md:blur-3xl"
           style={{ willChange: 'transform' }}
           animate={{
             background: [
-              'radial-gradient(circle at 70% 30%, rgba(0, 255, 136, 0.3), rgba(0, 200, 255, 0.2) 40%, rgba(0, 255, 136, 0.1) 70%, transparent)',
-              'radial-gradient(circle at 75% 35%, rgba(0, 200, 255, 0.3), rgba(0, 255, 136, 0.2) 40%, rgba(0, 200, 255, 0.1) 70%, transparent)',
-              'radial-gradient(circle at 65% 25%, rgba(0, 255, 136, 0.3), rgba(0, 200, 255, 0.2) 40%, rgba(0, 255, 136, 0.1) 70%, transparent)',
-              'radial-gradient(circle at 70% 30%, rgba(0, 255, 136, 0.3), rgba(0, 200, 255, 0.2) 40%, rgba(0, 255, 136, 0.1) 70%, transparent)',
+              `radial-gradient(circle at 70% 30%, rgba(${primaryColor}, 0.5), rgba(${secondaryColor}, 0.35) 40%, rgba(${primaryColor}, 0.2) 70%, transparent)`,
+              `radial-gradient(circle at 75% 35%, rgba(${secondaryColor}, 0.5), rgba(${primaryColor}, 0.35) 40%, rgba(${secondaryColor}, 0.2) 70%, transparent)`,
+              `radial-gradient(circle at 65% 25%, rgba(${primaryColor}, 0.5), rgba(${secondaryColor}, 0.35) 40%, rgba(${primaryColor}, 0.2) 70%, transparent)`,
+              `radial-gradient(circle at 70% 30%, rgba(${primaryColor}, 0.5), rgba(${secondaryColor}, 0.35) 40%, rgba(${primaryColor}, 0.2) 70%, transparent)`,
             ],
             scale: [1, 1.05, 1],
           }}
@@ -49,11 +68,13 @@ export default function ComparisonSeo() {
             alt=""
             className="h-1/3 w-auto object-cover"
             style={{
-              filter: 'drop-shadow(0.5px 0 0 rgba(0,255,136,0.15)) drop-shadow(-0.5px 0 0 rgba(0,200,255,0.15))',
+              filter: isDark
+                ? `drop-shadow(0.5px 0 0 rgba(${primaryColor},0.3)) drop-shadow(-0.5px 0 0 rgba(${secondaryColor},0.3))`
+                : `hue-rotate(-90deg) saturate(1.2) drop-shadow(0.5px 0 0 rgba(${primaryColor},0.3)) drop-shadow(-0.5px 0 0 rgba(${secondaryColor},0.3))`,
               willChange: 'transform, opacity',
             }}
             animate={{
-              opacity: [0.3, 0.28, 0.32, 0.3],
+              opacity: [0.4, 0.38, 0.42, 0.4],
               x: [0, 0.3, -0.3, 0],
               scaleX: [-1, -1.02, -0.98, -1.01, -1],
               scaleY: [1, 1.02, 0.98, 1.01, 1],
@@ -91,11 +112,13 @@ export default function ComparisonSeo() {
             alt=""
             className="h-1/3 w-auto object-cover"
             style={{
-              filter: 'drop-shadow(0.5px 0 0 rgba(0,255,136,0.15)) drop-shadow(-0.5px 0 0 rgba(0,200,255,0.15))',
+              filter: isDark
+                ? `drop-shadow(0.5px 0 0 rgba(${primaryColor},0.3)) drop-shadow(-0.5px 0 0 rgba(${secondaryColor},0.3))`
+                : `hue-rotate(-90deg) saturate(1.2) drop-shadow(0.5px 0 0 rgba(${primaryColor},0.3)) drop-shadow(-0.5px 0 0 rgba(${secondaryColor},0.3))`,
               willChange: 'transform, opacity',
             }}
             animate={{
-              opacity: [0.3, 0.28, 0.32, 0.3],
+              opacity: [0.4, 0.38, 0.42, 0.4],
               x: [0, -0.3, 0.3, 0],
               scale: [1, 1.02, 0.98, 1.01, 1],
               rotate: [0, -1.5, 1.5, -1, 1, 0],
@@ -129,12 +152,12 @@ export default function ComparisonSeo() {
         <motion.div
           className="hidden md:block absolute inset-0 pointer-events-none"
           style={{
-            backgroundImage: 'repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0, 255, 136, 0.08) 2px, rgba(0, 255, 136, 0.08) 4px)',
+            backgroundImage: `repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(${primaryColor}, 0.15) 2px, rgba(${primaryColor}, 0.15) 4px)`,
             willChange: 'transform, opacity',
           }}
           animate={{
             y: [0, -100],
-            opacity: [0.12, 0.18, 0.12],
+            opacity: [0.2, 0.3, 0.2],
           }}
           transition={{
             y: {
@@ -156,9 +179,9 @@ export default function ComparisonSeo() {
           style={{ willChange: 'transform' }}
           animate={{
             background: [
-              'linear-gradient(180deg, rgba(0,255,136,0) 0%, rgba(0,255,136,0.1) 50%, rgba(0,255,136,0) 100%)',
-              'linear-gradient(180deg, rgba(0,200,255,0) 0%, rgba(0,200,255,0.1) 50%, rgba(0,200,255,0) 100%)',
-              'linear-gradient(180deg, rgba(0,255,136,0) 0%, rgba(0,255,136,0.1) 50%, rgba(0,255,136,0) 100%)',
+              `linear-gradient(180deg, rgba(${primaryColor},0) 0%, rgba(${primaryColor},0.2) 50%, rgba(${primaryColor},0) 100%)`,
+              `linear-gradient(180deg, rgba(${secondaryColor},0) 0%, rgba(${secondaryColor},0.2) 50%, rgba(${secondaryColor},0) 100%)`,
+              `linear-gradient(180deg, rgba(${primaryColor},0) 0%, rgba(${primaryColor},0.2) 50%, rgba(${primaryColor},0) 100%)`,
             ],
             y: [-200, 200],
           }}
@@ -227,7 +250,7 @@ export default function ComparisonSeo() {
             {/* Navigation Arrows */}
             <button
               onClick={prevSlide}
-              className="absolute left-0 top-1/2 bg-accent/10 rounded-full p-2 z-20 cursor-pointer"
+              className="absolute left-0 top-1/2 bg-white/90 dark:bg-accent/10 border border-gray-300 dark:border-accent/30 rounded-full p-2 z-20 cursor-pointer hover:bg-white dark:hover:bg-accent/20 transition-colors"
               style={{
                 transform: 'translate(-1rem, -50%)',
                 transition: 'none'
@@ -238,7 +261,7 @@ export default function ComparisonSeo() {
             </button>
             <button
               onClick={nextSlide}
-              className="absolute right-0 top-1/2 bg-accent/10 rounded-full p-2 z-20 cursor-pointer"
+              className="absolute right-0 top-1/2 bg-white/90 dark:bg-accent/10 border border-gray-300 dark:border-accent/30 rounded-full p-2 z-20 cursor-pointer hover:bg-white dark:hover:bg-accent/20 transition-colors"
               style={{
                 transform: 'translate(1rem, -50%)',
                 transition: 'none'

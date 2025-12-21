@@ -57,7 +57,7 @@ function WhatYouCanCreate() {
                   transition={{ delay: index * 0.1 }}
                 >
                   <div className="flex justify-center" style={{ marginBottom: 'clamp(0.5rem, 1.5vh, 1rem)' }}>
-                    <Icon className="w-16 h-16 text-white" strokeWidth={1.5} />
+                    <Icon className="w-16 h-16 text-gray-800 dark:text-white" strokeWidth={1.5} />
                   </div>
                   <h3 className="font-display font-bold" style={{ marginBottom: 'clamp(0.25rem, 1vh, 0.75rem)' }}>
                     {category.title}
