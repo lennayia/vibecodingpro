@@ -12,46 +12,45 @@ export default function Pricing() {
     <Section background="dark" centered={true} showScrollIndicator={true}>
       <div id="pricing-section">
         <motion.div {...fadeIn}>
-          <h2 className="font-display font-bold text-center" style={{ lineHeight: '1.3', marginBottom: 'clamp(2rem, 4vh, 4rem)' }}>
+          <h2 className="font-display font-bold text-center mb-12 md:mb-[clamp(2rem,4vh,4rem)]" style={{ lineHeight: '1.3' }}>
             Kolik služba stojí?
           </h2>
 
           <motion.div
-            className="max-w-3xl mx-auto"
-            style={{ marginBottom: 'clamp(2rem, 4vh, 4rem)' }}
+            className="max-w-3xl mx-auto mb-12 md:mb-[clamp(2rem,4vh,4rem)]"
             {...slideUp}
             transition={{ delay: 0.2 }}
           >
-            <div className="rounded-2xl bg-gray-100 dark:bg-[#05050f] border border-gray-200 dark:border-gray-700" style={{ padding: 'clamp(1.5rem, 3vh, 2rem)' }}>
-              <div className="flex items-center justify-center" style={{ gap: 'clamp(0.5rem, 1vh, 0.75rem)', marginBottom: 'clamp(1rem, 2vh, 1.5rem)' }}>
+            <div className="rounded-2xl bg-gray-100 dark:bg-[#05050f] border border-gray-200 dark:border-gray-700 p-8 md:p-[clamp(1.5rem,3vh,2rem)]">
+              <div className="flex items-center justify-center gap-4 md:gap-[clamp(0.5rem,1vh,0.75rem)] mb-6 md:mb-[clamp(1rem,2vh,1.5rem)]">
                 <Clock className="w-6 h-6" strokeWidth={2} />
                 <h3 className="font-display font-bold">Zaváděcí ceny</h3>
               </div>
 
-              <p className="text-center text-xl font-light" style={{ marginBottom: 'clamp(1rem, 2vh, 1.5rem)', paddingBottom: 'clamp(1.5rem, 3vh, 3rem)' }}>
+              <p className="text-center text-xl font-light mb-6 md:mb-[clamp(1rem,2vh,1.5rem)] pb-8 md:pb-[clamp(1.5rem,3vh,3rem)]">
                 platí pro objednání do 24. 12. 2025 do 16:00 hod. Počet míst je omezený.
               </p>
 
-              <div style={{ marginBottom: 'clamp(1rem, 2vh, 1.5rem)' }}>
+              <div className="mb-6 md:mb-[clamp(1rem,2vh,1.5rem)]">
                 <CountdownTimer targetDate="2025-12-24T16:00:00" />
               </div>
 
-              <div className="text-center" style={{ display: 'flex', flexDirection: 'column', gap: 'clamp(0.5rem, 1vh, 0.75rem)' }}>
-                <p className="font-semibold" style={{ paddingBottom: 'clamp(3rem, 6vh, 6rem)' }}>
+              <div className="text-center flex flex-col gap-4 md:gap-[clamp(0.5rem,1vh,0.75rem)]">
+                <p className="font-semibold pb-12 md:pb-[clamp(3rem,6vh,6rem)]">
                   Pak se ceny postupně zvýší na 5 500 / 13 900 / 29 900 Kč podle variant.
                 </p>
-                <ul className="text-xl font-light mx-auto max-w-fit" style={{ display: 'flex', flexDirection: 'column', gap: 'clamp(0.25rem, 0.5vh, 0.5rem)' }}>
-                  <li className="flex items-center justify-center" style={{ gap: 'clamp(0.5rem, 1vh, 0.75rem)' }}>
+                <ul className="text-xl font-light mx-auto max-w-fit flex flex-col gap-2 md:gap-[clamp(0.25rem,0.5vh,0.5rem)]">
+                  <li className="flex items-center justify-center gap-4 md:gap-[clamp(0.5rem,1vh,0.75rem)]">
                     <span className="text-accent">✦</span>
                     <span>Kdo dřív přijde, na toho se dostane</span>
                     <span className="text-accent">✦</span>
                   </li>
-                  <li className="flex items-center justify-center" style={{ gap: 'clamp(0.5rem, 1vh, 0.75rem)' }}>
+                  <li className="flex items-center justify-center gap-4 md:gap-[clamp(0.5rem,1vh,0.75rem)]">
                     <span className="text-accent">✦</span>
                     <span>Víc ušetří</span>
                     <span className="text-accent">✦</span>
                   </li>
-                  <li className="flex items-center justify-center" style={{ gap: 'clamp(0.5rem, 1vh, 0.75rem)' }}>
+                  <li className="flex items-center justify-center gap-4 md:gap-[clamp(0.5rem,1vh,0.75rem)]">
                     <span className="text-accent">✦</span>
                     <span>Nabídne dřív vlastní digi produkt</span>
                     <span className="text-accent">✦</span>
@@ -68,14 +67,14 @@ export default function Pricing() {
 
 export function PricingPackages() {
   return (
-    <Section background="light" className="min-h-screen flex items-center justify-center !pt-4 !pb-8 md:!pt-4 md:!pb-8 lg:!pt-8 lg:!pb-16" showScrollIndicator={true}>
+    <Section background="light" className="min-h-screen flex items-center justify-center !pt-12 !pb-12 md:!pt-4 md:!pb-8 lg:!pt-8 lg:!pb-16" showScrollIndicator={true}>
       <div id="pricing-packages-section">
         <motion.div {...fadeIn}>
-          <h2 className="font-display font-bold text-center" style={{ marginBottom: 'clamp(2rem, 3vh, 3rem)' }}>
+          <h2 className="font-display font-bold text-center mb-12 md:mb-[clamp(2rem,3vh,3rem)]">
             Vyberte si cestu, která vám sedí
           </h2>
 
-          <div className="grid md:grid-cols-3" style={{ gap: 'clamp(1rem, 2vh, 2rem)' }}>
+          <div className="grid md:grid-cols-3 gap-8 md:gap-[clamp(1rem,2vh,2rem)]">
             {pricingPackages.map((pkg, index) => (
               <PricingCard
                 key={index}
