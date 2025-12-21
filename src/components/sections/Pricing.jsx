@@ -12,7 +12,7 @@ export default function Pricing() {
     <Section background="dark" centered={true} showScrollIndicator={true}>
       <div id="pricing-section">
         <motion.div {...fadeIn}>
-          <h2 className="font-display font-bold text-center mb-12 md:mb-[clamp(2rem,4vh,4rem)]" style={{ lineHeight: '1.3' }}>
+          <h2 className="font-display font-bold text-center pt-12 md:pt-0 mb-12 md:mb-[clamp(2rem,4vh,4rem)]" style={{ lineHeight: '1.3' }}>
             Kolik služba stojí?
           </h2>
 
