@@ -74,7 +74,7 @@ function ComparisonCard({ slide, index: slideIndex, isMobile }) {
           transition-all duration-500
           hover:scale-[1.02] hover:shadow-2xl
         `}
-        style={{ padding: 'clamp(1.5rem, 3vh, 2rem)' }}
+        className="p-8 md:p-[clamp(1.5rem,3vh,2rem)]"
       >
         {/* Holographic shine overlay for positive card */}
         {isPositive && (
@@ -113,18 +113,17 @@ function ComparisonCard({ slide, index: slideIndex, isMobile }) {
         </>
 
         <div className="relative z-10">
-          <h3 className={`
-            font-display font-bold text-center text-2xl
-            ${isPositive ? 'text-accent' : 'text-gray-400 dark:text-gray-500'}
-          `}
-          style={isPositive ? {
-            textShadow: '0 0 10px rgba(0, 255, 136, 0.3)',
-            marginBottom: 'clamp(0.75rem, 2vh, 1.5rem)'
-          } : { marginBottom: 'clamp(0.75rem, 2vh, 1.5rem)' }}>
+          <h3
+            className={`
+              font-display font-bold text-center text-2xl mb-6 md:mb-[clamp(0.75rem,2vh,1.5rem)]
+              ${isPositive ? 'text-accent' : 'text-gray-400 dark:text-gray-500'}
+            `}
+            style={isPositive ? { textShadow: '0 0 10px rgba(0, 255, 136, 0.3)' } : {}}
+          >
             {slide.title}
           </h3>
 
-          <ul style={{ display: 'flex', flexDirection: 'column', gap: 'clamp(0.5rem, 1.5vh, 1rem)' }}>
+          <ul className="flex flex-col gap-4 md:gap-[clamp(0.5rem,1.5vh,1rem)]">
             {slide.items.map((item, index) => (
               <motion.li
                 key={index}
@@ -181,17 +180,17 @@ export default function WhyConsultation() {
     <Section
       background="dark"
       centered={true}
-      className="!pt-4 !pb-8 md:!pt-4 md:!pb-8 lg:!pt-8 lg:!pb-16"
+      className="!pt-12 !pb-12 md:!pt-4 md:!pb-8 lg:!pt-8 lg:!pb-16"
       showScrollIndicator={true}
       backgroundElement={binaryBackground}
     >
       <div className="w-full relative z-10">
         <motion.div {...fadeIn}>
-          <h2 className="font-display font-bold text-center" style={{ lineHeight: '1.3', marginBottom: 'clamp(1rem, 2.5vh, 2rem)' }}>
+          <h2 className="font-display font-bold text-center mb-8 md:mb-[clamp(1rem,2.5vh,2rem)]" style={{ lineHeight: '1.3' }}>
             Nebuďte na to sami
           </h2>
-          <div className="text-center max-w-3xl mx-auto" style={{ marginBottom: 'clamp(1rem, 2.5vh, 2rem)' }}>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 'clamp(0.25rem, 0.5vh, 0.5rem)' }}>
+          <div className="text-center max-w-3xl mx-auto mb-8 md:mb-[clamp(1rem,2.5vh,2rem)]">
+            <div className="flex flex-col gap-2 md:gap-[clamp(0.25rem,0.5vh,0.5rem)]">
               <p className="text-xl font-light">
                 Nemusíte strávit půl roku nachytřováním ze všemožných různých zdrojů.
               </p>
@@ -202,8 +201,8 @@ export default function WhyConsultation() {
           </div>
 
           {/* Desktop: Side-by-side comparison */}
-          <div className="hidden md:block max-w-6xl mx-auto" style={{ marginBottom: 'clamp(1rem, 2.5vh, 2rem)' }}>
-            <div className="grid md:grid-cols-2" style={{ gap: 'clamp(1rem, 2.5vh, 2rem)' }}>
+          <div className="hidden md:block max-w-6xl mx-auto mb-8 md:mb-[clamp(1rem,2.5vh,2rem)]">
+            <div className="grid md:grid-cols-2 gap-8 md:gap-[clamp(1rem,2.5vh,2rem)]">
               {slides.map((slide, index) => (
                 <ComparisonCard
                   key={index}
@@ -216,7 +215,7 @@ export default function WhyConsultation() {
           </div>
 
           {/* Mobile: Carousel */}
-          <div className="md:hidden relative max-w-2xl mx-auto px-12" style={{ marginBottom: 'clamp(1rem, 2.5vh, 2rem)' }}>
+          <div className="md:hidden relative max-w-2xl mx-auto px-12 mb-8 md:mb-[clamp(1rem,2.5vh,2rem)]">
             <div className="relative overflow-hidden">
               <AnimatePresence mode="wait">
                 <motion.div
@@ -271,7 +270,7 @@ export default function WhyConsultation() {
             </button>
 
             {/* Dots Indicator */}
-            <div className="flex justify-center gap-3" style={{ marginTop: 'clamp(1rem, 2vh, 2rem)' }}>
+            <div className="flex justify-center gap-3 mt-8 md:mt-[clamp(1rem,2vh,2rem)]">
               {slides.map((_, index) => (
                 <button
                   key={index}
@@ -288,15 +287,14 @@ export default function WhyConsultation() {
           </div>
 
           <motion.div
-            className="text-center"
-            style={{ marginTop: 'clamp(1.5rem, 4vh, 3rem)' }}
+            className="text-center mt-12 md:mt-[clamp(1.5rem,4vh,3rem)]"
             {...slideUp}
             transition={{ delay: 0.6 }}
           >
-            <p className="text-xl font-light" style={{ marginBottom: 'clamp(0.5rem, 1.5vh, 1rem)' }}>
+            <p className="text-xl font-light mb-4 md:mb-[clamp(0.5rem,1.5vh,1rem)]">
               Investicí do spolupráce uspoříte čas, peníze i nervy.
             </p>
-            <p className="text-xl font-light custom-spacing" style={{ marginBottom: 'clamp(2rem, 4vh, 4rem)' }}>
+            <p className="text-xl font-light custom-spacing mb-12 md:mb-[clamp(2rem,4vh,4rem)]">
               Vaše nové nástroje vám investovaný čas vrátí.
             </p>
             <Button onClick={handleClick}>

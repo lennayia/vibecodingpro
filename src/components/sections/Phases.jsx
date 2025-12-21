@@ -61,20 +61,20 @@ export default function Phases() {
   }
 
   return (
-    <Section background="light" centered={true} className="!pt-4 !pb-8 md:!pt-4 md:!pb-8 lg:!pt-8 lg:!pb-16" showScrollIndicator={true}>
+    <Section background="light" centered={true} className="!pt-12 !pb-12 md:!pt-4 md:!pb-8 lg:!pt-8 lg:!pb-16" showScrollIndicator={true}>
       <div id="phases-section" className="w-full">
         <motion.div {...fadeIn}>
-          <h2 className="font-display font-bold text-center" style={{ lineHeight: '1.3', marginBottom: 'clamp(0.25rem, 0.5vh, 0.75rem)' }}>
+          <h2 className="font-display font-bold text-center mb-2 md:mb-[clamp(0.25rem,0.5vh,0.75rem)]" style={{ lineHeight: '1.3' }}>
             Společně rozběhneme tvorbu
           </h2>
-          <p className="text-center max-w-3xl mx-auto text-xl font-light" style={{ marginBottom: 'clamp(0.75rem, 2vh, 1.5rem)' }}>
+          <p className="text-center max-w-3xl mx-auto text-xl font-light mb-6 md:mb-[clamp(0.75rem,2vh,1.5rem)]">
             Krok za krokem od nápadu až po funkční digi-nástroj
           </p>
 
           {/* Carousel Container */}
           <div className="max-w-5xl mx-auto relative px-4 min-[600px]:px-12 min-[1200px]:px-16">
             {/* Package Badge with Arrows */}
-            <div className="relative flex items-center justify-center gap-4" style={{ marginTop: 'clamp(1rem, 2.5vh, 2rem)', marginBottom: 'clamp(0.25rem, 0.5vh, 0.5rem)' }}>
+            <div className="relative flex items-center justify-center gap-4 mt-8 md:mt-[clamp(1rem,2.5vh,2rem)] mb-2 md:mb-[clamp(0.25rem,0.5vh,0.5rem)]">
               <button
                 onClick={prevSlide}
                 className="bg-accent/10 rounded-full p-2 cursor-pointer hover:bg-accent/20 transition-colors"
@@ -127,7 +127,7 @@ export default function Phases() {
                   }}
                   className="min-[600px]:static"
                 >
-                  <div style={{ display: 'flex', flexDirection: 'column', gap: 'clamp(0rem, 1.5vh, 0.75rem)' }}>
+                  <div className="flex flex-col gap-4 md:gap-[clamp(0rem,1.5vh,0.75rem)]">
                     {slides[currentSlide].phases.map((phase, index) => (
                       <div key={phase.number} className="relative">
                         {/* Phase Card */}
@@ -143,7 +143,7 @@ export default function Phases() {
                             />
 
                             {/* Header */}
-                            <div className="flex items-start gap-3 relative z-10" style={{ marginBottom: 'clamp(0.5rem, 1.5vh, 0.75rem)' }}>
+                            <div className="flex items-start gap-3 relative z-10 mb-4 md:mb-[clamp(0.5rem,1.5vh,0.75rem)]">
                               <div className="flex items-center justify-center w-12 h-12 rounded-xl bg-accent/10 border-2 border-accent/30 flex-shrink-0">
                                 <phase.Icon className="w-6 h-6 text-accent" strokeWidth={1.5} />
                               </div>
@@ -158,7 +158,7 @@ export default function Phases() {
                             </div>
 
                             {/* Split Content */}
-                            <div className="relative z-10 flex-1 flex flex-col justify-start" style={{ display: 'flex', flexDirection: 'column', gap: 'clamp(0.25rem, 0.5vh, 0.5rem)' }}>
+                            <div className="relative z-10 flex-1 flex flex-col justify-start gap-2 md:gap-[clamp(0.25rem,0.5vh,0.5rem)]">
                               {/* Your Action */}
                               <div className="bg-white/50 dark:bg-black/20 rounded-lg min-[600px]:rounded-xl px-2 pt-1 pb-0.5 border border-gray-200 dark:border-gray-800">
                                 <div className="flex items-start gap-2">
@@ -200,7 +200,7 @@ export default function Phases() {
             </div>
 
             {/* Dots Indicator */}
-            <div className="flex justify-center gap-3 flex-wrap max-w-md mx-auto" style={{ marginTop: 'clamp(0.75rem, 2vh, 1.5rem)' }}>
+            <div className="flex justify-center gap-3 flex-wrap max-w-md mx-auto mt-6 md:mt-[clamp(0.75rem,2vh,1.5rem)]">
               {slides.map((_, index) => (
                 <button
                   key={index}
