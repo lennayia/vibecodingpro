@@ -35,24 +35,24 @@ export default function WhyOwnAppSeo() {
   }, [])
 
   return (
-    <Section background="dark" centered={true} className="!py-4 md:!py-8 lg:!py-12" showScrollIndicator={true}>
+    <Section background="dark" centered={true} className="!py-12 md:!py-4 lg:!py-12" showScrollIndicator={true}>
       <div>
         <motion.div {...fadeIn}>
-          <h2 className="font-display font-bold mb-16 text-center" style={{ lineHeight: '1.3' }}>
+          <h2 className="font-display font-bold mb-12 md:mb-16 text-center" style={{ lineHeight: '1.3' }}>
             Proč mít vlastní digi-nástroje
           </h2>
 
-          <div className="space-y-8">
+          <div className="space-y-6 md:space-y-8">
             {benefits.map((benefit, index) => {
               const Icon = benefit.Icon
               return (
                 <motion.div
                   key={index}
-                  className="border-b border-gray-700 pb-8 last:border-b-0"
+                  className="border-b border-gray-700 pb-6 md:pb-8 last:border-b-0"
                   {...slideUp}
                   transition={{ delay: index * 0.1 }}
                 >
-                  <div className="grid md:grid-cols-2 gap-6 items-end text-left pl-[10px]">
+                  <div className="grid md:grid-cols-2 gap-4 md:gap-6 items-end text-left pl-[10px]">
                     <div className="flex items-center gap-4">
                       <Icon className="w-8 h-8 text-accent flex-shrink-0" />
                       <h3 className="font-display font-bold">
@@ -72,7 +72,7 @@ export default function WhyOwnAppSeo() {
           <motion.div
             {...slideUp}
             transition={{ delay: 0.5 }}
-            className="flex justify-center pt-8"
+            className="flex justify-center pt-10 md:pt-8"
           >
             <Button onClick={handleClick}>
               Jak to funguje

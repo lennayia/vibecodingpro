@@ -36,10 +36,10 @@ const timelineItems = [
 
 export default function ImagineSection() {
   return (
-    <Section background="light" centered={true} className="!pt-4 !pb-8 md:!pt-4 md:!pb-8 lg:!pt-8 lg:!pb-16" showScrollIndicator={true}>
+    <Section background="light" centered={true} className="!pt-12 !pb-12 md:!pt-4 md:!pb-8 lg:!pt-8 lg:!pb-16" showScrollIndicator={true}>
       <div className="w-full">
         <motion.div {...fadeIn}>
-          <h2 className="font-display font-bold text-center" style={{ lineHeight: '1.3', marginBottom: 'clamp(0.2rem, 1vh, 1rem)' }}>
+          <h2 className="font-display font-bold text-center mb-8 md:mb-[clamp(0.2rem,1vh,1rem)]" style={{ lineHeight: '1.3' }}>
             Den s vaší aplikací
           </h2>
 
@@ -48,7 +48,7 @@ export default function ImagineSection() {
             {/* Vertical line */}
             <div className="absolute left-5 md:left-12 top-0 bottom-0 w-0.5 bg-accent/20" />
 
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 'clamp(0.2rem, 1vh, 1rem)' }}>
+            <div className="flex flex-col gap-8 md:gap-[clamp(0.2rem,1vh,1rem)]">
               {timelineItems.map((item, index) => {
                 const Icon = item.Icon
                 return (
@@ -66,12 +66,12 @@ export default function ImagineSection() {
                     </div>
 
                     {/* Content */}
-                    <div className="bg-white dark:bg-[#0a0a1a] rounded-lg border border-gray-200 dark:border-gray-800 shadow-sm" style={{ padding: 'clamp(0.4rem, 1.5vh, 1rem)' }}>
-                      <div className="flex items-baseline gap-2" style={{ marginBottom: 'clamp(0.1rem, 0.5vh, 0.5rem)' }}>
+                    <div className="bg-white dark:bg-[#0a0a1a] rounded-lg border border-gray-200 dark:border-gray-800 shadow-sm p-4 md:p-[clamp(0.4rem,1.5vh,1rem)]">
+                      <div className="flex items-baseline gap-2 mb-2 md:mb-[clamp(0.1rem,0.5vh,0.5rem)]">
                         <span className="text-accent font-bold text-base md:text-lg">{item.time}</span>
                         <span className="text-xs md:text-sm text-gray-500 dark:text-gray-400">・ {item.period}</span>
                       </div>
-                      <h3 className="font-display font-bold text-base md:text-lg" style={{ marginBottom: 'clamp(0.1rem, 0.5vh, 0.5rem)' }}>
+                      <h3 className="font-display font-bold text-base md:text-lg mb-2 md:mb-[clamp(0.1rem,0.5vh,0.5rem)]">
                         {item.title}
                       </h3>
                       <p className="text-sm md:text-base" style={{ lineHeight: 'clamp(1.3, 1.5, 1.75)' }}>

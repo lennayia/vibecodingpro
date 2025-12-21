@@ -100,7 +100,7 @@ function PortfolioHolographic() {
             className="font-display font-bold text-center mb-4 md:mb-2"
             style={{
               lineHeight: '1.3',
-              textShadow: '0 0 20px rgba(0, 255, 136, 0.3)'
+              textShadow: '0 0 20px rgba(0, 0, 205, 0.3)'
             }}
           >
             Tohle postavila žena, která neumí programovat.
