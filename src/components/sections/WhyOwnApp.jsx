@@ -1,10 +1,37 @@
 import { motion } from 'framer-motion'
-import { useCallback } from 'react'
-import { Clock, RotateCcw, TrendingUp, Briefcase } from 'lucide-react'
+import { useCallback, useEffect, useState, useRef } from 'react'
+import { Clock, RotateCcw, TrendingUp, Briefcase, Bell } from 'lucide-react'
 import Section from '../layout/Section'
 import Button from '../ui/Button'
 import { fadeIn, slideUp } from '../../constants/animations'
 import { scrollToSection } from '../../utils/scroll'
+
+// Funkce pro přehrání zvuku notifikace
+const playNotificationSound = () => {
+  try {
+    const audioContext = new (window.AudioContext || window.webkitAudioContext)()
+    const oscillator = audioContext.createOscillator()
+    const gainNode = audioContext.createGain()
+
+    oscillator.connect(gainNode)
+    gainNode.connect(audioContext.destination)
+
+    // Nastavení zvuku - výraznější notifikační tón
+    oscillator.type = 'sine'
+    oscillator.frequency.setValueAtTime(800, audioContext.currentTime)
+    oscillator.frequency.setValueAtTime(1000, audioContext.currentTime + 0.1)
+    oscillator.frequency.setValueAtTime(800, audioContext.currentTime + 0.2)
+
+    // Vyšší hlasitost a delší zvuk
+    gainNode.gain.setValueAtTime(0.5, audioContext.currentTime)
+    gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.5)
+
+    oscillator.start(audioContext.currentTime)
+    oscillator.stop(audioContext.currentTime + 0.5)
+  } catch (error) {
+    console.log('Audio not supported')
+  }
+}
 
 const benefits = [
   {
@@ -30,13 +57,49 @@ const benefits = [
 ]
 
 export default function WhyOwnAppSeo() {
+  const [isVisible, setIsVisible] = useState(false)
+  const [animationKey, setAnimationKey] = useState(0)
+  const sectionRef = useRef(null)
+
   const handleClick = useCallback(() => {
     scrollToSection('phases-section')
   }, [])
 
+  // Přehraje zvuk a spustí animaci při scrollování do sekce
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setIsVisible(true)
+            // Zvýší klíč pro restart animace
+            setAnimationKey(prev => prev + 1)
+            // Delay pro synchronizaci s animací notifikace
+            setTimeout(() => {
+              playNotificationSound()
+            }, 1200)
+          } else {
+            setIsVisible(false)
+          }
+        })
+      },
+      { threshold: 0.3 } // Spustí se když je 30% sekce viditelné
+    )
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current)
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current)
+      }
+    }
+  }, [])
+
   return (
     <Section background="dark" centered={true} className="!py-12 md:!py-4 lg:!py-12" showScrollIndicator={true}>
-      <div>
+      <div ref={sectionRef}>
         <motion.div {...fadeIn}>
           <h2 className="font-display font-bold mb-12 md:mb-16 text-center" style={{ lineHeight: '1.3' }}>
             Proč mít vlastní digi-nástroje
@@ -45,6 +108,7 @@ export default function WhyOwnAppSeo() {
           <div className="space-y-6 md:space-y-8">
             {benefits.map((benefit, index) => {
               const Icon = benefit.Icon
+              const isFirst = index === 0
               return (
                 <motion.div
                   key={index}
@@ -59,9 +123,52 @@ export default function WhyOwnAppSeo() {
                         {benefit.title}
                       </h3>
                     </div>
-                    <p>
-                      {benefit.description}
-                    </p>
+                    <div>
+                      <p className="inline">
+                        {benefit.description}
+                      </p>
+
+                      {/* Animovaná notifikace 3:00 pro první benefit */}
+                      {isFirst && isVisible && (
+                        <motion.div
+                          key={animationKey}
+                          className="inline-flex flex-col items-start gap-1 ml-2"
+                          initial={{ opacity: 0, scale: 0.8 }}
+                          animate={{ opacity: 1, scale: 1 }}
+                          transition={{ duration: 0.8, delay: 1.2 }}
+                        >
+                          <motion.div
+                            className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-accent/20 dark:bg-transparent border border-accent text-gray-900 dark:text-white text-xs font-semibold shadow-md"
+                            animate={{
+                              scale: [1, 1.02, 1, 1.02, 1]
+                            }}
+                            transition={{
+                              duration: 3,
+                              times: [0, 0.3, 0.5, 0.7, 1],
+                              repeat: Infinity,
+                              repeatDelay: 2
+                            }}
+                          >
+                            <motion.div
+                              animate={{
+                                scale: [1, 1.2, 1],
+                                rotate: [0, 15, -15, 0]
+                              }}
+                              transition={{
+                                duration: 2,
+                                repeat: Infinity,
+                                repeatDelay: 3,
+                                ease: "easeInOut"
+                              }}
+                            >
+                              <Bell className="w-3.5 h-3.5" />
+                            </motion.div>
+                            <span>3:12</span>
+                          </motion.div>
+                          <span className="text-xs text-gray-700 dark:text-gray-300 pl-1">Nová registrace</span>
+                        </motion.div>
+                      )}
+                    </div>
                   </div>
                 </motion.div>
               )

@@ -8,7 +8,7 @@ import { useTypingEffect } from '../../hooks/useTypingEffect'
 import { scrollToSection } from '../../utils/scroll'
 
 export default function Hero() {
-  const particleBackground = <AnimatedBackground type="particles" />
+  const particleBackground = <AnimatedBackground type="neural" count={25} />
   const typingText = 'Tvořte vlastní nástroje a\u00A0navyšujte svoje příjmy'
   const { displayedText, showCursor } = useTypingEffect(typingText, 60, 500)
 
@@ -33,7 +33,7 @@ export default function Hero() {
           className="px-3 py-1.5 md:px-4 md:py-2 bg-gray-100/80 dark:bg-[#05050f]/80 backdrop-blur-sm rounded-full font-medium border border-gray-200 dark:border-[#070716]"
           style={{ fontSize: 'clamp(0.875rem, 1vw + 0.5vh, 1.25rem)' }}
         >
-          Vibecoding – cesta pro neprogramátory
+          Vibecoding – cesta pro neprogramátorky
         </span>
       </motion.div>
 

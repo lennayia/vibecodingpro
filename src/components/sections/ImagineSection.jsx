@@ -45,8 +45,20 @@ export default function ImagineSection() {
 
           {/* Timeline */}
           <div className="max-w-4xl mx-auto relative">
-            {/* Vertical line */}
-            <div className="absolute left-5 md:left-12 top-0 bottom-0 w-0.5 bg-accent/20" />
+            {/* Vertical line with gradient from morning to evening using theme colors */}
+            <div
+              className="absolute top-0 bottom-0 left-4 md:left-[2.75rem] w-2 rounded-full z-0"
+              style={{
+                background: 'linear-gradient(to bottom, rgba(0, 0, 205, 0.25), rgba(0, 0, 205, 0.9), rgba(0, 0, 205, 0.05))'
+              }}
+            >
+              <div
+                className="absolute inset-0 opacity-0 dark:opacity-100 transition-opacity rounded-full"
+                style={{
+                  background: 'linear-gradient(to bottom, rgba(13, 221, 13, 0.25), rgba(13, 221, 13, 0.9), rgba(13, 221, 13, 0.05))'
+                }}
+              />
+            </div>
 
             <div className="flex flex-col gap-8 md:gap-[clamp(0.2rem,1vh,1rem)]">
               {timelineItems.map((item, index) => {
@@ -59,9 +71,14 @@ export default function ImagineSection() {
                     className="relative pl-12 md:pl-28"
                   >
                     {/* Icon & Time */}
-                    <div className="absolute left-0 flex items-center gap-2">
-                      <div className="w-10 md:w-24 h-10 md:h-24 rounded-full bg-accent/10 border border-accent md:border-2 flex items-center justify-center">
-                        <Icon className="w-5 h-5 md:w-10 md:h-10 text-accent" />
+                    <div className="absolute left-0 flex items-center gap-2 z-10">
+                      <div className="relative w-10 md:w-24 h-10 md:h-24 rounded-full">
+                        {/* Solid background to hide the line */}
+                        <div className="absolute inset-0 rounded-full bg-[#f8f8f8] dark:bg-[#05050f]" />
+                        {/* Icon circle with accent background */}
+                        <div className="relative w-full h-full rounded-full bg-accent/10 border border-accent md:border-2 flex items-center justify-center">
+                          <Icon className="w-5 h-5 md:w-10 md:h-10 text-accent" />
+                        </div>
                       </div>
                     </div>
 

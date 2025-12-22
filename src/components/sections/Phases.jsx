@@ -61,8 +61,8 @@ export default function Phases() {
   }
 
   return (
-    <Section background="light" centered={true} className="!pt-12 !pb-12 md:!pt-4 md:!pb-8 lg:!pt-8 lg:!pb-16" showScrollIndicator={true}>
-      <div id="phases-section" className="w-full">
+    <Section id="process" background="light" centered={true} className="!pt-12 !pb-12 md:!pt-4 md:!pb-8 lg:!pt-8 lg:!pb-16" showScrollIndicator={true}>
+      <div className="w-full">
         <motion.div {...fadeIn}>
           <h2 className="font-display font-bold text-center mb-2 md:mb-[clamp(0.25rem,0.5vh,0.75rem)]" style={{ lineHeight: '1.3' }}>
             Společně rozběhneme tvorbu

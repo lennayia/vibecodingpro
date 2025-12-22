@@ -29,24 +29,39 @@ export default function ComparisonSeo() {
   const secondaryColor = isDark ? '0, 200, 255' : '65, 105, 225' // RoyalBlue for light mode
 
   return (
-    <Section background="light" centered={true} className="!pt-12 md:!pt-2 !pb-12 md:!pb-6 lg:!pt-4 lg:!pb-8 relative overflow-hidden" showScrollIndicator={true}>
-      {/* Holographic background */}
+    <Section id="story" background="light" centered={true} className="!pt-12 md:!pt-2 !pb-12 md:!pb-6 lg:!pt-4 lg:!pb-8 relative overflow-hidden" showScrollIndicator={true}>
+      {/* Modern Mesh Gradient Background */}
       <div className="absolute inset-0 z-0 opacity-80">
-        {/* Gentle Holographic glow - expanded to right */}
+        {/* Multi-point mesh gradient with organic movement */}
         <motion.div
-          className="absolute inset-0 blur-xl md:blur-3xl"
+          className="absolute inset-0 blur-2xl md:blur-3xl"
           style={{ willChange: 'transform' }}
           animate={{
             background: [
-              `radial-gradient(circle at 70% 30%, rgba(${primaryColor}, 0.5), rgba(${secondaryColor}, 0.35) 40%, rgba(${primaryColor}, 0.2) 70%, transparent)`,
-              `radial-gradient(circle at 75% 35%, rgba(${secondaryColor}, 0.5), rgba(${primaryColor}, 0.35) 40%, rgba(${secondaryColor}, 0.2) 70%, transparent)`,
-              `radial-gradient(circle at 65% 25%, rgba(${primaryColor}, 0.5), rgba(${secondaryColor}, 0.35) 40%, rgba(${primaryColor}, 0.2) 70%, transparent)`,
-              `radial-gradient(circle at 70% 30%, rgba(${primaryColor}, 0.5), rgba(${secondaryColor}, 0.35) 40%, rgba(${primaryColor}, 0.2) 70%, transparent)`,
+              `radial-gradient(circle at 20% 20%, rgba(${primaryColor}, 0.4) 0%, transparent 50%),
+               radial-gradient(circle at 80% 30%, rgba(${secondaryColor}, 0.5) 0%, transparent 50%),
+               radial-gradient(circle at 40% 70%, rgba(${primaryColor}, 0.3) 0%, transparent 50%),
+               radial-gradient(circle at 70% 80%, rgba(${secondaryColor}, 0.4) 0%, transparent 50%)`,
+
+              `radial-gradient(circle at 25% 25%, rgba(${secondaryColor}, 0.5) 0%, transparent 50%),
+               radial-gradient(circle at 75% 35%, rgba(${primaryColor}, 0.4) 0%, transparent 50%),
+               radial-gradient(circle at 35% 75%, rgba(${secondaryColor}, 0.35) 0%, transparent 50%),
+               radial-gradient(circle at 65% 85%, rgba(${primaryColor}, 0.45) 0%, transparent 50%)`,
+
+              `radial-gradient(circle at 30% 15%, rgba(${primaryColor}, 0.45) 0%, transparent 50%),
+               radial-gradient(circle at 85% 25%, rgba(${secondaryColor}, 0.4) 0%, transparent 50%),
+               radial-gradient(circle at 45% 65%, rgba(${primaryColor}, 0.35) 0%, transparent 50%),
+               radial-gradient(circle at 75% 75%, rgba(${secondaryColor}, 0.5) 0%, transparent 50%)`,
+
+              `radial-gradient(circle at 20% 20%, rgba(${primaryColor}, 0.4) 0%, transparent 50%),
+               radial-gradient(circle at 80% 30%, rgba(${secondaryColor}, 0.5) 0%, transparent 50%),
+               radial-gradient(circle at 40% 70%, rgba(${primaryColor}, 0.3) 0%, transparent 50%),
+               radial-gradient(circle at 70% 80%, rgba(${secondaryColor}, 0.4) 0%, transparent 50%)`,
             ],
-            scale: [1, 1.05, 1],
+            scale: [1, 1.08, 1.02, 1],
           }}
           transition={{
-            duration: 12,
+            duration: 20,
             repeat: Infinity,
             ease: 'easeInOut'
           }}

@@ -1,5 +1,5 @@
 import ParticleBackground from './ParticleBackground'
-import BinaryBackground from './BinaryBackground'
+import NeuralBackground from './NeuralBackground'
 
 /**
  * Unified animated background component
@@ -16,8 +16,9 @@ export default function AnimatedBackground({
 }) {
   // Render appropriate background based on type
   switch (type) {
-    case 'binary':
-      return <BinaryBackground count={count || 40} />
+    case 'neural':
+    case 'binary': // Keep binary as alias for backwards compatibility
+      return <NeuralBackground nodeCount={count || 20} />
 
     case 'particles':
     default:

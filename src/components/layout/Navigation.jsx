@@ -1,12 +1,11 @@
-import { memo, useState, useEffect, useCallback } from 'react'
+import { memo, useState, useEffect } from 'react'
 import { createPortal } from 'react-dom'
-import { motion, AnimatePresence } from 'framer-motion'
-import ThemeToggle from '../ui/ThemeToggle'
-import { scrollToSection } from '../../utils/scroll'
+import { AlignRight } from 'lucide-react'
+import SlideOutMenu from '../ui/SlideOutMenu'
 
 function Navigation() {
   const [isDark, setIsDark] = useState(true)
-  const [showCTA, setShowCTA] = useState(false)
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   useEffect(() => {
     // Check theme from localStorage or default to dark
@@ -33,21 +32,6 @@ function Navigation() {
       window.removeEventListener('storage', handleStorage)
       window.removeEventListener('themeChange', handleThemeChange)
     }
-  }, [])
-
-  // Show CTA button after scrolling starts
-  useEffect(() => {
-    const handleScroll = () => {
-      // Show CTA after scrolling 100px
-      setShowCTA(window.scrollY > 100)
-    }
-
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
-
-  const handleCTAClick = useCallback(() => {
-    scrollToSection('pricing-section')
   }, [])
 
   return createPortal(
@@ -86,9 +70,9 @@ function Navigation() {
       `}</style>
 
       {/* Main navigation bar */}
-      <div className="max-w-7xl mx-auto px-6 py-1 flex justify-between items-center relative">
-        {/* Logo */}
-        <div className="font-display font-bold text-2xl flex items-center gap-3 relative z-10">
+      <div className="max-w-7xl mx-auto px-6 py-0.5 flex justify-between items-center relative">
+        {/* Logo - jen ikona */}
+        <div className="relative z-10">
           <img
             src={isDark ? "/vibecoding-logo-bile.webp" : "/vibecoding-logo.webp"}
             alt="Vibecoding"
@@ -96,38 +80,29 @@ function Navigation() {
             height="40"
             className="h-10 w-auto"
           />
-          <span>Vibe</span>
-          <span className="text-accent">|</span>
-          <span>Prompt</span>
-          <span className="text-accent">|</span>
-          <span>Build</span>
         </div>
 
-        {/* Right side: CTA + Theme Toggle */}
+        {/* Right side: CTA + Menu button */}
         <div className="flex items-center gap-3 relative z-10">
-          {/* Sticky CTA Button */}
-          <AnimatePresence>
-            {showCTA && (
-              <motion.button
-                initial={{ opacity: 0, x: 20 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: 20 }}
-                transition={{ duration: 0.3 }}
-                onClick={handleCTAClick}
-                className="hidden md:block px-6 py-2 rounded-full font-semibold text-sm bg-accent text-white dark:text-[#070716] border-2 border-accent hover:shadow-lg transition-all"
-                style={{
-                  boxShadow: isDark
-                    ? '0 0 15px rgba(13, 221, 13, 0.3)'
-                    : '0 0 15px rgba(0, 0, 205, 0.3)'
-                }}
-              >
-                Chci začít
-              </motion.button>
-            )}
-          </AnimatePresence>
+          <button
+            onClick={() => {
+              const pricingSection = document.getElementById('pricing-section')
+              if (pricingSection) {
+                pricingSection.scrollIntoView({ behavior: 'smooth' })
+              }
+            }}
+            className="px-4 py-2 rounded-full font-semibold text-sm bg-accent text-white dark:text-[#070716] border-2 border-accent hover:opacity-90 transition-opacity"
+          >
+            Chci začít
+          </button>
 
-          {/* Theme toggle */}
-          <ThemeToggle />
+          <button
+            onClick={() => setIsMenuOpen(true)}
+            className="p-2 rounded-lg hover:opacity-80 transition-opacity"
+            aria-label="Otevřít menu"
+          >
+            <AlignRight className="w-8 h-8 text-gray-900 dark:text-white" strokeWidth={2.5} />
+          </button>
         </div>
       </div>
 
@@ -135,10 +110,13 @@ function Navigation() {
       <div className="w-full overflow-hidden">
         <div className="pt-0.5 pb-1">
           <div className="marquee-text whitespace-nowrap text-[#374151] dark:text-[#f2f2f2]" style={{ fontSize: '1rem', fontWeight: 400 }}>
-            Teď víc než kdy dřív platí: „Můžeme mít všechno, co si dokážeme představit."
+            <span className="font-bold">Vibe <span className="text-accent">|</span> Prompt <span className="text-accent">|</span> Build</span> — Teď víc než kdy dřív platí: „Můžeme mít všechno, co si dokážeme představit."
           </div>
         </div>
       </div>
+
+      {/* Slide-out menu */}
+      <SlideOutMenu isOpen={isMenuOpen} onClose={() => setIsMenuOpen(false)} />
     </nav>,
     document.body
   )

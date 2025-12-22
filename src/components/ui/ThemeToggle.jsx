@@ -41,13 +41,13 @@ export default function ThemeToggle() {
       title={isDark ? "Přepnout na světlý režim" : "Přepnout na tmavý režim"}
     >
       {isDark ? (
-        <Sun className="w-9 h-9 text-white" strokeWidth={2.5} />
+        <Sun className="w-9 h-9 text-gray-900 dark:text-white" strokeWidth={2.5} />
       ) : (
-        <Moon className="w-9 h-9 text-[#1e3a8a]" strokeWidth={2.5} />
+        <Moon className="w-9 h-9 text-gray-900 dark:text-white" strokeWidth={2.5} />
       )}
 
-      {/* Tooltip */}
-      <span className="absolute -bottom-12 right-0 bg-gray-900 dark:bg-gray-100 text-white dark:text-gray-900 text-xs px-3 py-1.5 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap">
+      {/* Tooltip - vlevo jako u ostatních ikon */}
+      <span className="absolute right-full mr-2 top-1/2 -translate-y-1/2 bg-gray-900 dark:bg-gray-100 text-white dark:text-gray-900 text-xs px-3 py-1.5 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap">
         {isDark ? "Přepnout na světlý režim" : "Přepnout na tmavý režim"}
       </span>
     </button>

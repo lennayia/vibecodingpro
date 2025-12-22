@@ -13,7 +13,7 @@ function WhatIsVibecoding() {
     "Tvůrkyně kurzů a programů"
   ], [])
 
-  const binaryBackground = <AnimatedBackground type="binary" count={40} />
+  const binaryBackground = <AnimatedBackground type="particles" particleCount={40} />
 
   return (
     <Section

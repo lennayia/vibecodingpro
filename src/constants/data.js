@@ -206,6 +206,31 @@ export const pricingPackages = [
 
 export const faqCategories = [
   {
+    title: "O vibecodingu a AI",
+    questions: [
+      {
+        question: "Vibecoding pro koučky a podnikatelky – co to je a jak mi pomůže vytvořit aplikaci?",
+        answer: "Vibecoding je metoda tvorby aplikací pro ženy, které nemají technické vzdělání. Vy popíšete, co vaše klientky potřebují, a AI to za vás naprogramuje. Nemusíte rozumět kódu – stačí umět vysvětlit svou vizi. Jako když vysvětlujete klientce, co má dělat."
+      },
+      {
+        question: "Můžu si jako koučka vytvořit vlastní aplikaci s AI, i když se bojím všeho technického?",
+        answer: "Ano. Vibecoding je přesně pro ženy, které se technologií bojí, ale chtějí být nezávislé. Pokud umíte popsat, co vaše klientky potřebují, AI to dokáže přeložit do funkční aplikace. Nebudete sama – já vás tím provedu krok za krokem."
+      },
+      {
+        question: "Proč by koučka měla používat vibecoding místo Wix, Canvy nebo jiných no-code nástrojů?",
+        answer: "Wix a Canva jsou fajn na začátek, ale rychle narazíte na limity. S vibecodingem vytvoříte přesně to, co vaše klientky potřebují – bez omezení šablon. A naučíte se to, takže nejste závislá na platformě, která vám zítra zdraží."
+      },
+      {
+        question: "Jaké aplikace může vytvořit koučka nebo online podnikatelka pomocí vibecodingu?",
+        answer: "Rezervační systémy pro klientky, online kvízy a diagnostiky, kalkulačky (třeba na cenu služby), členské sekce s materiály, automatické onboarding nových klientek, progress trackery – prostě cokoliv, co vám ušetří čas a pomůže klientkám."
+      },
+      {
+        question: "Musím se naučit programovat, nebo to zvládnu jen s AI jako běžná podnikatelka?",
+        answer: "Programovat se učit nemusíte. Naučíte se vibecoding – mluvit s AI tak, aby vám rozuměla. Je to o komunikaci, ne o kódování. Konzultace vést umíte, proto zvládnete i tohle."
+      }
+    ]
+  },
+  {
     title: "Strach z nejistoty",
     questions: [
       {
@@ -296,6 +321,18 @@ export const faqCategories = [
       {
         question: "Jak probíhá spolupráce?",
         answer: "Online, přes video hovory. Pracujeme společně, sdílíme obrazovku, já vás vedu krok za krokem tak, jak potřebujete."
+      },
+      {
+        question: "Můžu jako koučka vytvořit mobilní aplikaci pro Android a iOS, nebo jen web?",
+        answer: "Ano, s vibecodingem vytvoříte i mobilní aplikace. Obvykle začneme webovou verzí, protože ta je rychlejší a levnější na testování s klientkami. Pak ji můžeme rozšířit na mobily, pokud to vaše klientky budou potřebovat."
+      },
+      {
+        question: "Kolik reálně stojí koučce nebo podnikatelce vytvořit si vlastní digitální nástroj s AI?",
+        answer: "Spolupráce se mnou stojí od 3 900 Kč + AI nástroje cca 500–2 500 Kč/měsíc. Žádné vývojáře za 50 000 Kč, žádné předplatné platforem za tisíce ročně. A hlavně – naučíte se to. Další nástroje už vytvoříte sama, zdarma."
+      },
+      {
+        question: "Budu pak závislá na nějaké platformě, nebo si aplikaci opravdu vlastním?",
+        answer: "Aplikace je vaše a můžete s ní dělat, co chcete – hostovat kdekoli, upravovat, prodávat. Nejste zavřená v žádné platformě typu Wix, která vám zítra zdraží nebo změní podmínky. Máte kontrolu."
       }
     ]
   }
