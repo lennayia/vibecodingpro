@@ -1,7 +1,18 @@
 import { motion } from 'framer-motion'
-import { useMemo } from 'react'
+import { useMemo, useState, useEffect } from 'react'
 
 export default function NeuralBackground({ nodeCount = 15 }) {
+  // Detect if user prefers reduced motion or is on mobile
+  const [shouldAnimate, setShouldAnimate] = useState(true)
+
+  useEffect(() => {
+    // Check for reduced motion preference
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    // Check if mobile (simpler check)
+    const isMobile = window.innerWidth < 768
+
+    setShouldAnimate(!prefersReducedMotion && !isMobile)
+  }, [])
   // Generate nodes in a more structured grid pattern (neural network layers)
   const nodes = useMemo(() => {
     const layers = 5 // Number of layers in neural network
@@ -15,8 +26,8 @@ export default function NeuralBackground({ nodeCount = 15 }) {
         const y = nodesPerLayer > 1 ? (i * 100) / (nodesPerLayer - 1) : 50 // Spread from 0% to 100%
         nodesList.push({
           id: nodesList.length,
-          x: Math.max(5, Math.min(95, x + (Math.random() - 0.5) * 10)), // Keep within 5-95% with small random offset
-          y: Math.max(5, Math.min(95, y + (Math.random() - 0.5) * 10)), // Keep within 5-95% with small random offset
+          x: Math.max(0, Math.min(100, x + (Math.random() - 0.5) * 10)), // Full width 0-100%
+          y: Math.max(0, Math.min(100, y + (Math.random() - 0.5) * 10)), // Full height 0-100%
           layer,
           delay: Math.random() * 3,
         })
@@ -47,6 +58,48 @@ export default function NeuralBackground({ nodeCount = 15 }) {
 
     return lines
   }, [nodes])
+
+  // Return subtle static version on mobile for performance
+  if (!shouldAnimate) {
+    return (
+      <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-50 text-accent dark:text-[#0DDD0D]">
+        <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="connectionGradientStatic" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stopColor="currentColor" stopOpacity="0.2" />
+              <stop offset="50%" stopColor="currentColor" stopOpacity="0.5" />
+              <stop offset="100%" stopColor="currentColor" stopOpacity="0.2" />
+            </linearGradient>
+          </defs>
+
+          {/* Simplified connections */}
+          {connections.filter((line, i) => i % 2 === 0).map((line) => (
+            <line
+              key={line.id}
+              x1={`${line.x1}%`}
+              y1={`${line.y1}%`}
+              x2={`${line.x2}%`}
+              y2={`${line.y2}%`}
+              stroke="url(#connectionGradientStatic)"
+              strokeWidth="1.5"
+            />
+          ))}
+
+          {/* Minimal nodes */}
+          {nodes.filter((node, i) => i % 2 === 0).map((node) => (
+            <circle
+              key={node.id}
+              cx={`${node.x}%`}
+              cy={`${node.y}%`}
+              r="4"
+              fill="currentColor"
+              opacity="0.4"
+            />
+          ))}
+        </svg>
+      </div>
+    )
+  }
 
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-50">
@@ -180,14 +233,14 @@ export default function NeuralBackground({ nodeCount = 15 }) {
               <motion.circle
                 cx={`${node.x}%`}
                 cy={`${node.y}%`}
-                r="8"
+                r="10"
                 stroke="#0000CD"
                 fill="none"
-                strokeWidth="1"
-                initial={{ opacity: 0.1, r: 8 }}
+                strokeWidth="2"
+                initial={{ opacity: 0.3, r: 10 }}
                 animate={{
-                  opacity: [0.1, 0.25, 0.1],
-                  r: [8, 10, 8],
+                  opacity: [0.3, 0.5, 0.3],
+                  r: [10, 12, 10],
                 }}
                 transition={{
                   duration: 3,
@@ -200,13 +253,13 @@ export default function NeuralBackground({ nodeCount = 15 }) {
               <motion.circle
                 cx={`${node.x}%`}
                 cy={`${node.y}%`}
-                r="4"
+                r="5"
                 fill="#0000CD"
                 filter="url(#glow)"
-                initial={{ opacity: 0.3 }}
+                initial={{ opacity: 0.6 }}
                 animate={{
-                  opacity: [0.3, 0.6, 0.3],
-                  r: [4, 5, 4],
+                  opacity: [0.6, 0.9, 0.6],
+                  r: [5, 6, 5],
                 }}
                 transition={{
                   duration: 3,
@@ -222,14 +275,14 @@ export default function NeuralBackground({ nodeCount = 15 }) {
               <motion.circle
                 cx={`${node.x}%`}
                 cy={`${node.y}%`}
-                r="8"
+                r="10"
                 stroke="#0DDD0D"
                 fill="none"
-                strokeWidth="1"
-                initial={{ opacity: 0.1, r: 8 }}
+                strokeWidth="2"
+                initial={{ opacity: 0.3, r: 10 }}
                 animate={{
-                  opacity: [0.1, 0.25, 0.1],
-                  r: [8, 10, 8],
+                  opacity: [0.3, 0.5, 0.3],
+                  r: [10, 12, 10],
                 }}
                 transition={{
                   duration: 3,
@@ -242,13 +295,13 @@ export default function NeuralBackground({ nodeCount = 15 }) {
               <motion.circle
                 cx={`${node.x}%`}
                 cy={`${node.y}%`}
-                r="4"
+                r="5"
                 fill="#0DDD0D"
                 filter="url(#glow)"
-                initial={{ opacity: 0.3 }}
+                initial={{ opacity: 0.6 }}
                 animate={{
-                  opacity: [0.3, 0.6, 0.3],
-                  r: [4, 5, 4],
+                  opacity: [0.6, 0.9, 0.6],
+                  r: [5, 6, 5],
                 }}
                 transition={{
                   duration: 3,

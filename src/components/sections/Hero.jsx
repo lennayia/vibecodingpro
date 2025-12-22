@@ -8,7 +8,8 @@ import { useTypingEffect } from '../../hooks/useTypingEffect'
 import { scrollToSection } from '../../utils/scroll'
 
 export default function Hero() {
-  const particleBackground = <AnimatedBackground type="neural" count={25} />
+  // Optimized for performance and full screen coverage
+  const particleBackground = <AnimatedBackground type="neural" count={15} />
   const typingText = 'Tvořte vlastní nástroje a\u00A0navyšujte svoje příjmy'
   const { displayedText, showCursor } = useTypingEffect(typingText, 60, 500)
 
@@ -25,7 +26,7 @@ export default function Hero() {
     <motion.div
       initial="initial"
       animate="animate"
-      className="text-center w-full px-4 flex flex-col justify-center gap-6 md:gap-[clamp(1rem,2vh,1.5rem)] pt-28 md:pt-[clamp(4rem,8vh,6rem)] pb-10 md:pb-[clamp(0.5rem,2vh,1.5rem)]"
+      className="text-center w-full px-4 flex flex-col justify-center gap-6 md:gap-[clamp(1rem,2vh,1.5rem)] pt-28 md:pt-[clamp(4rem,8vh,6rem)] pb-10 md:pb-[clamp(0.5rem,2vh,1.5rem)] bg-white/50 md:bg-transparent dark:bg-transparent rounded-2xl md:rounded-none"
     >
       {/* Badge */}
       <motion.div variants={fadeInUp} className="inline-block" style={{ marginBottom: 'clamp(-0.5rem, -1vh, -0.25rem)' }}>
