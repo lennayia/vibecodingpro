@@ -23,11 +23,13 @@ export default function Hero() {
 
   // Single screen layout
   const heroContent = (
-    <div
+    <motion.div
+      initial="initial"
+      animate="animate"
       className="text-center w-full px-4 flex flex-col justify-center gap-6 md:gap-[clamp(1rem,2vh,1.5rem)] pt-28 md:pt-[clamp(4rem,8vh,6rem)] pb-10 md:pb-[clamp(0.5rem,2vh,1.5rem)] bg-white/50 md:bg-transparent dark:bg-transparent rounded-2xl md:rounded-none"
     >
       {/* Badge */}
-      <motion.div variants={fadeInUp} className="inline-block" style={{ marginBottom: 'clamp(-0.5rem, -1vh, -0.25rem)', position: 'relative' }}>
+      <motion.div variants={fadeInUp} className="inline-block" style={{ marginBottom: 'clamp(-0.5rem, -1vh, -0.25rem)' }}>
         <span
           className="px-3 py-1.5 md:px-4 md:py-2 bg-gray-100/80 dark:bg-[#05050f]/80 backdrop-blur-sm rounded-full font-medium border border-gray-200 dark:border-[#070716]"
           style={{ fontSize: 'clamp(0.875rem, 1vw + 0.5vh, 1.25rem)' }}
@@ -43,8 +45,7 @@ export default function Hero() {
         style={{
           fontSize: 'clamp(1.75rem, 4vw + 2vh, 4rem)',
           lineHeight: '1.2',
-          marginTop: 'clamp(-0.5rem, -1vh, -0.25rem)',
-          position: 'relative'
+          marginTop: 'clamp(-0.5rem, -1vh, -0.25rem)'
         }}
       >
         {displayedText.split('a\u00A0navyšujte')[0]}
@@ -69,8 +70,7 @@ export default function Hero() {
           display: 'flex',
           flexDirection: 'column',
           gap: 'clamp(0.1rem, 0.5vh, 0.25rem)',
-          paddingTop: 'clamp(1rem, 2vh, 2rem)',
-          position: 'relative'
+          paddingTop: 'clamp(1rem, 2vh, 2rem)'
         }}
       >
         <span className="block font-light">Už nechcete měnit čas za peníze.</span>
@@ -85,8 +85,7 @@ export default function Hero() {
         style={{
           gap: 'clamp(0.75rem, 2vh, 1.25rem)',
           paddingTop: 'clamp(4rem, 8vh, 6rem)',
-          paddingBottom: '0',
-          position: 'relative'
+          paddingBottom: '0'
         }}
       >
         <p
@@ -105,7 +104,7 @@ export default function Hero() {
           Radši hned přeskočím na ceník →
         </a>
       </motion.div>
-    </div>
+    </motion.div>
   )
 
   return (
@@ -116,7 +115,7 @@ export default function Hero() {
       showScrollIndicator={true}
       backgroundElement={particleBackground}
     >
-      <div className="relative z-10 w-full" style={{ position: 'relative' }}>
+      <div className="relative z-10 w-full">
         {heroContent}
       </div>
     </Section>
