@@ -133,10 +133,10 @@ function ComparisonCard({ slide, index: slideIndex, isMobile }) {
                 transition={{ delay: slideIndex * 0.2 + index * 0.1 }}
                 className="flex items-start gap-3"
               >
-                <span className={`${slide.iconColor} mt-1 text-xl font-bold flex-shrink-0`}>
+                <span className={`${slide.iconColor} mt-1 text-lg font-bold flex-shrink-0`}>
                   {slide.icon}
                 </span>
-                <span className={`text-lg ${isPositive ? 'font-medium' : ''}`}>
+                <span className={`text-base ${isPositive ? 'font-medium' : ''}`}>
                   {item}
                 </span>
               </motion.li>
@@ -168,16 +168,15 @@ export default function WhyConsultation() {
     <Section
       background="dark"
       centered={true}
-      className="!pt-12 !pb-12 md:!pt-4 md:!pb-8 lg:!pt-8 lg:!pb-16"
       showScrollIndicator={true}
       backgroundElement={binaryBackground}
     >
       <div className="w-full relative z-10">
         <motion.div {...fadeIn}>
-          <h2 className="font-display font-bold text-center mb-8 md:mb-[clamp(1rem,2.5vh,2rem)]" style={{ lineHeight: '1.3' }}>
+          <h2 className="font-display font-bold text-center mb-6 md:mb-[clamp(1rem,2vh,1.5rem)]" style={{ lineHeight: '1.3' }}>
             Nebuďte na to sami
           </h2>
-          <div className="text-center max-w-3xl mx-auto mb-8 md:mb-[clamp(1rem,2.5vh,2rem)]">
+          <div className="text-center max-w-3xl mx-auto mb-6 md:mb-[clamp(1rem,2vh,1.5rem)]">
             <div className="flex flex-col gap-2 md:gap-[clamp(0.25rem,0.5vh,0.5rem)]">
               <p className="text-xl font-light">
                 Nemusíte strávit půl roku nachytřováním ze všemožných různých zdrojů.
@@ -189,8 +188,8 @@ export default function WhyConsultation() {
           </div>
 
           {/* Desktop: Side-by-side comparison */}
-          <div className="hidden md:block max-w-6xl mx-auto mb-8 md:mb-[clamp(1rem,2.5vh,2rem)]">
-            <div className="grid md:grid-cols-2 gap-8 md:gap-[clamp(1rem,2.5vh,2rem)]">
+          <div className="hidden md:block max-w-6xl mx-auto mb-6 md:mb-[clamp(1rem,2vh,1.5rem)]">
+            <div className="grid md:grid-cols-2 gap-6 md:gap-[clamp(1rem,2vh,1.5rem)]">
               {slides.map((slide, index) => (
                 <ComparisonCard
                   key={index}
@@ -203,7 +202,7 @@ export default function WhyConsultation() {
           </div>
 
           {/* Mobile: Carousel */}
-          <div className="md:hidden mb-8 md:mb-[clamp(1rem,2.5vh,2rem)] -mx-4">
+          <div className="md:hidden mb-6 md:mb-[clamp(1rem,2vh,1.5rem)] -mx-4">
             <Carousel
               slides={slides}
               renderSlide={renderSlide}
@@ -215,14 +214,14 @@ export default function WhyConsultation() {
           </div>
 
           <motion.div
-            className="text-center mt-12 md:mt-[clamp(1.5rem,4vh,3rem)]"
+            className="text-center mt-8 md:mt-[clamp(1.5rem,3vh,2rem)]"
             {...slideUp}
             transition={{ delay: 0.6 }}
           >
-            <p className="text-xl font-light mb-4 md:mb-[clamp(0.5rem,1.5vh,1rem)]">
+            <p className="text-xl font-light mb-3 md:mb-[clamp(0.5rem,1vh,1rem)]">
               Investicí do spolupráce uspoříte čas, peníze i nervy.
             </p>
-            <p className="text-xl font-light custom-spacing mb-12 md:mb-[clamp(2rem,4vh,4rem)]">
+            <p className="text-xl font-light custom-spacing mb-8 md:mb-[clamp(1.5rem,3vh,2rem)]">
               Vaše nové nástroje vám investovaný čas vrátí.
             </p>
             <Button onClick={handleClick}>

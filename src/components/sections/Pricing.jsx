@@ -2,7 +2,7 @@ import { motion } from 'framer-motion'
 import Section from '../layout/Section'
 import PricingCard from '../ui/PricingCard'
 import CountdownTimer from '../ui/CountdownTimer'
-import { BadgeCheck, Clock } from 'lucide-react'
+import { BadgeCheck, Clock, Gift } from 'lucide-react'
 import { pricingPackages } from '../../constants/data'
 import { fadeIn, slideUp } from '../../constants/animations'
 
@@ -28,16 +28,16 @@ export default function Pricing() {
               </div>
 
               <p className="text-center text-xl font-light mb-6 md:mb-[clamp(1rem,2vh,1.5rem)] pb-8 md:pb-[clamp(1.5rem,3vh,3rem)]">
-                platí pro objednání do 24. 12. 2025 do 16:00 hod. Počet míst je omezený.
+                platí pro objednání do 4. 1. 2026 do 23:59 hod. Počet míst je omezený.
               </p>
 
               <div className="mb-6 md:mb-[clamp(1rem,2vh,1.5rem)]">
-                <CountdownTimer targetDate="2025-12-24T16:00:00" />
+                <CountdownTimer targetDate="2026-01-04T22:00:00" />
               </div>
 
               <div className="text-center flex flex-col gap-4 md:gap-[clamp(0.5rem,1vh,0.75rem)]">
                 <p className="font-semibold pb-12 md:pb-[clamp(3rem,6vh,6rem)]">
-                  Pak se ceny postupně zvýší na 5 500 / 13 900 / 29 900 Kč podle variant.
+                  Pak se ceny postupně zvýší až na 5 500 / 13 900 / 29 900 Kč podle variant.
                 </p>
                 <ul className="text-xl font-light mx-auto max-w-fit flex flex-col gap-2 md:gap-[clamp(0.25rem,0.5vh,0.5rem)]">
                   <li className="flex items-center justify-center gap-4 md:gap-[clamp(0.5rem,1vh,0.75rem)]">

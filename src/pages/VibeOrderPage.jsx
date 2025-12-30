@@ -73,7 +73,7 @@ export default function VibeOrderPage() {
               >
                 <p className="font-semibold mb-2 text-accent">Výsledek:</p>
                 <p className="font-light">
-                  Jasná roadmapa, víte přesně co a jak – a jestli je to pro vás. Vyhnete se bloudění.
+                  Jasná roadmapa, víte přesně, co a jak – a jestli je to pro vás. Vyhnete se bloudění.
                 </p>
               </div>
             </div>

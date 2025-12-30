@@ -135,7 +135,7 @@ export const pricingPackages = [
     price: "3 900 Kč",
     description: "Pro 5 žen, které chtějí pochopit<br />a rozhodnout se",
     resultTitle: "Výsledek:",
-    resultDescription: "Jasná roadmapa, víte přesně co a jak – a jestli je to pro vás.<br />Vyhnete se bloudění.",
+    resultDescription: "Jasná roadmapa, víte přesně, co a jak – a jestli je to pro vás.<br />Vyhnete se bloudění.",
     testimonials: [
       {
         quote: '„Za 3 hodiny jsem pochopila víc než za měsíc googlování."',

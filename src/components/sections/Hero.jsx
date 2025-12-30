@@ -46,7 +46,7 @@ export default function Hero() {
       initial="initial"
       animate="animate"
       variants={containerVariants}
-      className="text-center w-full px-4 flex flex-col justify-center gap-6 md:gap-[clamp(1rem,2vh,1.5rem)] pt-28 md:pt-[clamp(4rem,8vh,6rem)] pb-10 md:pb-[clamp(0.5rem,2vh,1.5rem)] bg-white/50 md:bg-transparent dark:bg-transparent rounded-2xl md:rounded-none"
+      className="text-center w-full px-4 flex flex-col justify-center gap-6 md:gap-[clamp(1rem,2vh,1.5rem)] bg-white/50 md:bg-transparent dark:bg-transparent rounded-2xl md:rounded-none"
     >
       {/* Badge */}
       <motion.div variants={itemVariants} className="inline-block" style={{ marginBottom: 'clamp(-0.5rem, -1vh, -0.25rem)' }}>
@@ -121,7 +121,7 @@ export default function Hero() {
           className="text-accent hover:underline cursor-pointer font-light"
           style={{ fontSize: 'clamp(0.875rem, 1vw, 1rem)', marginTop: 'clamp(0.5rem, 1vh, 1rem)' }}
         >
-          Radši hned přeskočím na ceník →
+          Nejdřív jdu na ceník →
         </a>
       </motion.div>
     </motion.div>

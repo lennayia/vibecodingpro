@@ -98,14 +98,14 @@ export default function WhyOwnAppSeo() {
   }, [])
 
   return (
-    <Section background="dark" centered={true} className="!py-12 md:!py-4 lg:!py-12" showScrollIndicator={true}>
+    <Section background="dark" centered={true} showScrollIndicator={true}>
       <div ref={sectionRef}>
         <motion.div {...fadeIn}>
-          <h2 className="font-display font-bold mb-12 md:mb-16 text-center" style={{ lineHeight: '1.3' }}>
+          <h2 className="font-display font-bold mb-8 md:mb-10 text-center" style={{ lineHeight: '1.3' }}>
             Proč mít vlastní digi-nástroje
           </h2>
 
-          <div className="space-y-6 md:space-y-8">
+          <div className="space-y-5 md:space-y-6">
             {benefits.map((benefit, index) => {
               const Icon = benefit.Icon
               const isFirst = index === 0
@@ -116,7 +116,7 @@ export default function WhyOwnAppSeo() {
                   {...slideUp}
                   transition={{ delay: index * 0.1 }}
                 >
-                  <div className="grid md:grid-cols-2 gap-4 md:gap-6 items-end text-left pl-[10px]">
+                  <div className="grid md:grid-cols-2 gap-4 md:gap-6 items-start text-left pl-[10px]">
                     <div className="flex items-center gap-4">
                       <Icon className="w-8 h-8 text-accent flex-shrink-0" />
                       <h3 className="font-display font-bold">
@@ -132,40 +132,47 @@ export default function WhyOwnAppSeo() {
                       {isFirst && isVisible && (
                         <motion.div
                           key={animationKey}
-                          className="inline-flex flex-col items-start gap-1 ml-2"
-                          initial={{ opacity: 0, scale: 0.8 }}
-                          animate={{ opacity: 1, scale: 1 }}
-                          transition={{ duration: 0.8, delay: 1.2 }}
+                          className="flex items-center gap-2 mt-2"
+                          initial={{ opacity: 0, y: -10, scale: 0.9 }}
+                          animate={{ opacity: 1, y: 0, scale: 1 }}
+                          transition={{ duration: 0.5, delay: 1.2, type: "spring" }}
                         >
                           <motion.div
-                            className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-accent/20 dark:bg-transparent border border-accent text-gray-900 dark:text-white text-xs font-semibold shadow-md"
+                            className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-accent/30 dark:bg-accent/20 border-2 border-accent text-gray-900 dark:text-white text-xs font-bold shadow-lg"
+                            style={{
+                              boxShadow: '0 0 15px rgba(0, 255, 136, 0.3)'
+                            }}
                             animate={{
-                              scale: [1, 1.02, 1, 1.02, 1]
+                              scale: [1, 1.08, 1],
+                              boxShadow: [
+                                '0 0 15px rgba(0, 255, 136, 0.3)',
+                                '0 0 25px rgba(0, 255, 136, 0.6)',
+                                '0 0 15px rgba(0, 255, 136, 0.3)'
+                              ]
                             }}
                             transition={{
-                              duration: 3,
-                              times: [0, 0.3, 0.5, 0.7, 1],
+                              duration: 2,
                               repeat: Infinity,
-                              repeatDelay: 2
+                              ease: "easeInOut"
                             }}
                           >
                             <motion.div
                               animate={{
-                                scale: [1, 1.2, 1],
-                                rotate: [0, 15, -15, 0]
+                                scale: [1, 1.3, 1],
+                                rotate: [0, 20, -20, 0]
                               }}
                               transition={{
-                                duration: 2,
+                                duration: 1.5,
                                 repeat: Infinity,
-                                repeatDelay: 3,
+                                repeatDelay: 2,
                                 ease: "easeInOut"
                               }}
                             >
-                              <Bell className="w-3.5 h-3.5" />
+                              <Bell className="w-3.5 h-3.5 text-accent" />
                             </motion.div>
                             <span>3:12</span>
                           </motion.div>
-                          <span className="text-xs text-gray-700 dark:text-gray-300 pl-1">Nová registrace</span>
+                          <span className="text-xs text-accent font-semibold">Nová registrace</span>
                         </motion.div>
                       )}
                     </div>
@@ -179,7 +186,7 @@ export default function WhyOwnAppSeo() {
           <motion.div
             {...slideUp}
             transition={{ delay: 0.5 }}
-            className="flex justify-center pt-10 md:pt-8"
+            className="flex justify-center pt-6"
           >
             <Button onClick={handleClick}>
               Jak to funguje

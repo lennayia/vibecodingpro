@@ -63,7 +63,7 @@ function PortfolioHolographic() {
     <Section
       background="dark"
       centered={true}
-      className="!py-12 md:!py-4 overflow-hidden"
+      className="overflow-hidden"
       showScrollIndicator={true}
     >
       <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
@@ -97,7 +97,7 @@ function PortfolioHolographic() {
       <div className="w-full relative z-10" ref={containerRef}>
         <motion.div {...fadeIn}>
           <motion.h2
-            className="font-display font-bold text-center mb-4 md:mb-2"
+            className="font-display font-bold text-center mb-3 md:mb-1"
             style={{
               lineHeight: '1.3',
               textShadow: '0 0 20px rgba(0, 0, 205, 0.3)'
@@ -106,8 +106,8 @@ function PortfolioHolographic() {
             Tohle postavila žena, která neumí programovat.
           </motion.h2>
 
-          <p className="text-xl text-center max-w-3xl mx-auto mb-6 md:mb-1 custom-spacing">
-            8 funkčních aplikací pro reálné klienty. Ani řádek kódu. Jen vize, strategie a AI.
+          <p className="text-xl text-center max-w-3xl mx-auto mb-8 md:mb-4 custom-spacing">
+            Praktické aplikace, moduly, weby. Ani řádek kódu – jen vize, strategie a AI.
           </p>
 
           {/* Mobile: Horizontal drag carousel */}
@@ -155,7 +155,7 @@ function PortfolioHolographic() {
           {/* Tablet & Desktop (>=640px): 3D carousel with animations */}
           <div className="hidden sm:block">
             <motion.div
-                className="relative h-[350px] md:h-[450px] flex items-center justify-center cursor-grab active:cursor-grabbing"
+                className="relative h-[280px] md:h-[350px] flex items-center justify-center cursor-grab active:cursor-grabbing"
                 style={{ willChange: 'transform' }}
                 drag="x"
                 dragConstraints={{ left: 0, right: 0 }}
@@ -186,13 +186,13 @@ function PortfolioHolographic() {
 
       {/* Separovaný text MIMO holografický container */}
       <motion.div
-        className="max-w-3xl mx-auto text-center space-y-1 relative z-50 mt-1 pb-10"
+        className="max-w-3xl mx-auto text-center space-y-1 relative z-50"
         {...slideUp}
         transition={{ delay: 0.5 }}
       >
         <p className="text-xl custom-spacing">Od jednoduchých nástrojů po komplexní aplikace, tempo určujeme sami.</p>
         <p className="text-xl custom-spacing">Začněte třeba jednodušší webovkou.</p>
-        <p className="text-xl font-semibold mb-6 custom-spacing">Zajímá vás, jak?</p>
+        <p className="text-xl font-semibold custom-spacing">Zajímá vás, jak?</p>
       </motion.div>
     </Section>
   )

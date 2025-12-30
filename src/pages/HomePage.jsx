@@ -22,6 +22,7 @@ import WhyMe from '../components/sections/WhyMe'
 
 // Only lazy load bottom sections (below the fold)
 const Bonuses = lazy(() => import('../components/sections/BonusesTabs'))
+const PromoCoupon = lazy(() => import('../components/sections/PromoCoupon'))
 const Pricing = lazy(() => import('../components/sections/Pricing'))
 const PricingPackages = lazy(() => import('../components/sections/Pricing').then(module => ({ default: module.PricingPackages })))
 const PricingGuarantee = lazy(() => import('../components/sections/PricingGuarantee'))
@@ -59,6 +60,7 @@ export default function HomePage() {
           <Suspense fallback={<div className="min-h-screen" />}>
             <Bonuses />
             <Pricing />
+            <PromoCoupon />
             <PricingPackages />
             <PricingGuarantee />
             <PricingGuaranteeNew />

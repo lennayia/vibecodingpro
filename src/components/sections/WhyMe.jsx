@@ -219,16 +219,20 @@ const AnimatedPhotoWithParticles = memo(function AnimatedPhotoWithParticles() {
 export default function WhyMeSeo() {
   const credentials = useMemo(() => [
     {
-      title: "Ani řádek kódu",
-      description: "Dneska chápu pasti vibecodingu. Sama jsem do nich šlapala a zjišťovala, kudy vede cesta."
+      title: "8+ složitých aplikací",
+      description: "Apka pro koučky a jejich klientky, Správa plateb, výuka hry na piano pro začátečníky, prezentační web jako např. tento... To jsou reálné projekty pro reálné lidi."
     },
     {
-      title: "8 aplikací",
-      description: "Apka pro koučky a jejich klientky, Správa plateb, výuka hry na piano pro začátečníky... To jsou reálné projekty pro reálné lidi."
+      title: "100+ modulů",
+      description: "Notifikační systém, přihlašovací systém, e-mailingový nástroj, objednávací a platební modul, správa barevných schémat, systém pro online feedback... A mnoho dalšího."
     },
     {
       title: "2 500+ hodin praxe",
       description: "Rok 2025: chyby, pokusy, průlomy. Předám vám je, a vy to zvládnete rychleji. A nebojte, o chyby nepřijdete, uděláte si svoje :)"
+    },
+    {
+      title: "Na začátku byla 0",
+      description: "Dneska chápu pasti vibecodingu. Sama jsem do nich šlapala a zjišťovala, kudy vede cesta."
     },
     {
       title: "Učím, co sama dělám",
@@ -240,28 +244,27 @@ export default function WhyMeSeo() {
     <Section
       background="dark"
       centered={true}
-      className="!pt-12 !pb-12 md:!pt-4 md:!pb-8 lg:!pt-8 lg:!pb-16"
       showScrollIndicator={true}
       backgroundElement={<AnimatedPhotoWithParticles />}
     >
       <motion.div {...fadeIn}>
-        <h2 className="font-display font-bold text-center mb-6 md:mb-[clamp(0.75rem,2vh,1.5rem)]" style={{ lineHeight: '1.3' }}>
+        <h2 className="font-display font-bold text-center mb-4 md:mb-[clamp(0.75rem,1.5vh,1rem)]" style={{ lineHeight: '1.3' }}>
           Proč zrovna se mnou?
         </h2>
 
-        <p className="text-xl text-center mb-12 md:mb-[clamp(2rem,4vh,4rem)]">
+        <p className="text-xl text-center mb-6 md:mb-[clamp(1rem,2vh,1.5rem)]">
           Pomáhám podnikatelkám, které chtějí zhmotnit svoji vizi – ale nechtějí se učit programovat.
         </p>
 
-        <div className="flex flex-col gap-8 md:gap-[clamp(1rem,3vh,2rem)] pt-12 md:pt-[clamp(2.5rem,5vh,5rem)]">
+        <div className="flex flex-col gap-4 md:gap-[clamp(0.75rem,1.5vh,1rem)] pt-6 md:pt-[clamp(1rem,2vh,1.5rem)]">
           {credentials.map((item, index) => (
             <motion.div
               key={index}
-              className="border-b border-gray-700 last:border-b-0 pb-8 md:pb-[clamp(1rem,3vh,2rem)]"
+              className="border-b border-gray-700 last:border-b-0 pb-6 md:pb-[clamp(0.75rem,2vh,1.5rem)]"
               {...slideUp}
               transition={{ delay: index * 0.1 }}
             >
-              <div className="grid md:grid-cols-2 items-start gap-6 md:gap-[clamp(0.75rem,2vh,1.5rem)]">
+              <div className="grid md:grid-cols-2 items-start gap-4 md:gap-[clamp(0.5rem,1.5vh,1rem)]">
                 <h3 className="font-display font-bold">
                   {item.title}
                 </h3>

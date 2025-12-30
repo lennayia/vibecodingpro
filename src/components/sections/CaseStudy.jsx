@@ -88,6 +88,19 @@ export default function CaseStudySeo() {
           Její služby si může dovolit <strong className="text-accent">mnohem víc klientek</strong>.
         </p>
       ]
+    },
+    {
+      title: "Pochvaluje si",
+      titleColor: "text-accent",
+      border: "border-2 border-accent/30",
+      content: [
+        <p key="1" className="font-light">
+          „Pomáhám téměř 320 klientkám měsíčně místo 80. A to jsem s aplikací teprv na začátku.
+        </p>,
+        <p key="2" className="font-light">
+          Cítím se svobodná. Moje práce pomáhá lidem, i když spím. A já mám konečně čas žít. To je nejvíc."
+        </p>
+      ]
     }
   ]
 
@@ -105,7 +118,7 @@ export default function CaseStudySeo() {
   )
 
   return (
-    <Section background="dark" centered={true} className="!pt-12 !pb-12 md:!pt-2 md:!pb-4 relative overflow-hidden" showScrollIndicator={true}>
+    <Section background="dark" centered={true} className="relative overflow-hidden" showScrollIndicator={true}>
       {/* Phone in background - covering whole section */}
       <div className="absolute inset-0 pointer-events-none z-0">
         <motion.div
@@ -283,17 +296,17 @@ export default function CaseStudySeo() {
 
       <div className="w-full relative z-10">
         <motion.div {...fadeIn}>
-          <div className="text-center mb-2 md:mb-[clamp(0.25rem,0.5vh,0.5rem)]">
+          <div className="text-center mb-3 md:mb-[clamp(0.5rem,1vh,1rem)]">
             <Badge>Vibecoding mění hru</Badge>
           </div>
 
-          <h2 className="font-display font-bold text-center mb-4 md:mb-[clamp(0.5rem,1.5vh,1rem)]" style={{ lineHeight: '1.3' }}>
+          <h2 className="font-display font-bold text-center mb-6 md:mb-[clamp(1rem,2vh,1.5rem)]" style={{ lineHeight: '1.3' }}>
             Vibecoding prakticky
           </h2>
 
           {/* Big Impact Metric */}
           <motion.div
-            className="max-w-4xl mx-auto mb-4 md:mb-[clamp(0.5rem,1.5vh,1rem)]"
+            className="max-w-4xl mx-auto mb-8 md:mb-[clamp(1.5rem,3vh,2rem)]"
             {...slideUp}
             transition={{ delay: 0.2 }}
           >
@@ -311,26 +324,8 @@ export default function CaseStudySeo() {
             </div>
           </motion.div>
 
-          {/* Hero Quote */}
-<motion.div
-  {...slideUp}
-  transition={{ delay: 0.3 }}
-  className="max-w-xl mx-auto text-center rounded-2xl border border-gray-200 dark:border-gray-800 bg-white/30 dark:bg-black/20 mb-4 md:mb-[clamp(0.5rem,1.5vh,1rem)] mt-4 md:mt-[clamp(0.5rem,1.5vh,1rem)] p-1 md:p-[clamp(0.1rem,0.2vh,0.2rem)]"
->
-  <div className="font-light italic text-base mb-2 md:mb-[clamp(0.25rem,0.5vh,0.5rem)]" style={{ lineHeight: '1.3' }}>
-    <span className="block">
-      <span className="text-5xl text-accent/30 font-serif leading-none mr-1 inline-block" style={{ transform: 'rotate(180deg) translateY(-0.2em)', verticalAlign: 'bottom' }}>"</span>
-      Pomáhám téměř 320 klientkám měsíčně místo 80.
-    </span>
-    <span className="block -mt-2">
-      A to jsem s aplikací teprv na začátku.
-      <span className="text-5xl text-accent/30 font-serif leading-none ml-1 inline-block" style={{ verticalAlign: 'middle' }}>"</span>
-    </span>
-  </div>
-</motion.div>
-
-          {/* Before/After Cards Carousel */}
-          <div className="mb-4 md:mb-[clamp(0.5rem,1vh,0.5rem)] -mx-4 md:mx-0">
+          {/* Before/After/Reference Cards Carousel */}
+          <div className="mb-8 md:mb-[clamp(1.5rem,3vh,2rem)] -mx-4 md:mx-0">
             <Carousel
               slides={cards}
               renderSlide={renderCard}
@@ -341,27 +336,8 @@ export default function CaseStudySeo() {
             />
           </div>
 
-          {/* Final Quote */}
-<motion.div
-  className="max-w-xl mx-auto text-center rounded-2xl border border-gray-200 dark:border-gray-800 bg-white/30 dark:bg-black/20 mb-4 md:mb-[clamp(0.5rem,1.5vh,1rem)] p-1 md:p-[clamp(0.1rem,0.2vh,0.2rem)]"
-  {...slideUp}
-  transition={{ delay: 0.7 }}
->
-  <div className="text-base font-light italic" style={{ lineHeight: '1.3' }}>
-    <span className="block">
-      <span className="text-5xl text-accent/30 font-serif leading-none mr-1 inline-block" style={{ transform: 'rotate(180deg) translateY(-0.2em)', verticalAlign: 'bottom' }}>"</span>
-      Cítím se svobodná. Moje práce pomáhá lidem, i když spím.
-    </span>
-    <span className="block -mt-2">
-      A já mám konečně čas žít. To je nejvíc.
-      <span className="text-5xl text-accent/30 font-serif leading-none ml-1 inline-block" style={{ verticalAlign: 'middle' }}>"</span>
-    </span>
-  </div>
-</motion.div>
-
-
           {/* Stats */}
-          <div className="grid grid-cols-2 md:grid-cols-4 max-w-5xl mx-auto gap-4 md:gap-[clamp(0.25rem,1vh,1rem)]">
+          <div className="grid grid-cols-2 md:grid-cols-4 max-w-5xl mx-auto gap-4 md:gap-[clamp(0.5rem,1.5vh,1rem)]">
             {benefits.map((benefit, index) => (
               <motion.div
                 key={index}

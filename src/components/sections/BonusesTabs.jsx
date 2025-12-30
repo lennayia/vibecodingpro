@@ -133,18 +133,16 @@ export default function BonusesTabsSeo() {
   }
 
   return (
-    <Section background="light" centered={true} className="!pt-12 !pb-12 md:!pt-4 md:!pb-8 lg:!pt-8 lg:!pb-16" showScrollIndicator={true}>
+    <Section background="light" centered={true} showScrollIndicator={true}>
       <div className="w-full">
         <motion.div {...fadeIn}>
           {/* Fixed header */}
-          <div className="sticky top-0 z-30 bg-[#f8f8f8] dark:bg-[#05050f] pb-6 md:pb-[clamp(0.75rem,2vh,1.5rem)] pt-8 md:pt-[clamp(1rem,2.5vh,2rem)]">
-            <div className="text-center mb-8 md:mb-[clamp(1rem,2.5vh,2rem)]">
-              <div className="flex items-center justify-center gap-3">
-                <Gift className="w-8 h-8 text-accent" strokeWidth={2} />
-                <h2 className="font-display font-bold" style={{ lineHeight: '1.3' }}>
-                  Bonusy, které vám usnadní cestu
-                </h2>
-              </div>
+          <div className="text-center mb-6 md:mb-[clamp(1rem,2vh,1.5rem)]">
+            <div className="flex items-center justify-center gap-3 mb-4 md:mb-[clamp(0.75rem,1.5vh,1rem)]">
+              <Gift className="w-8 h-8 text-accent" strokeWidth={2} />
+              <h2 className="font-display font-bold" style={{ lineHeight: '1.3' }}>
+                Bonusy, které vám usnadní cestu
+              </h2>
             </div>
 
             {/* Package selector with arrows */}
@@ -159,10 +157,10 @@ export default function BonusesTabsSeo() {
 
               <motion.div
                 key={bonusSlides[currentSlide].package}
-                initial={{ opacity: 0, y: -10 }}
-                animate={{ opacity: 1, y: 0 }}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
                 transition={{ duration: 0.3 }}
-                className="relative"
+                className="relative min-w-[200px] flex justify-center"
               >
                 <div className="absolute inset-0 bg-accent/10 blur-lg animate-pulse" />
                 <h3 className="relative font-display font-bold text-accent drop-shadow-[0_0_20px_rgba(0,255,136,0.6)]">
@@ -181,7 +179,7 @@ export default function BonusesTabsSeo() {
           </div>
 
           {/* Bonus carousel */}
-          <div className="max-w-2xl mx-auto relative mt-8 md:mt-[clamp(1rem,2.5vh,2rem)]">
+          <div className="max-w-2xl mx-auto relative mt-6 md:mt-[clamp(1rem,2vh,1.5rem)] min-h-[400px] flex items-start">
             <AnimatePresence mode="wait">
               <motion.div
                 key={currentSlide}
@@ -189,7 +187,7 @@ export default function BonusesTabsSeo() {
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -100 }}
                 transition={{ duration: 0.3 }}
-                className="flex flex-col gap-[2px]"
+                className="flex flex-col gap-[2px] w-full"
               >
                 {bonusSlides[currentSlide]?.bonuses.map((item, index) => {
                   const pkg = packages.find(p => p.name === bonusSlides[currentSlide].package)

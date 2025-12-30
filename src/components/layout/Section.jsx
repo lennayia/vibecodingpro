@@ -9,10 +9,11 @@ const bgClasses = {
 
 function Section({ children, className = "", background = "light", showScrollIndicator = false, maxWidth = null, backgroundElement = null, centered = false, id = undefined }) {
   const maxWidthClass = maxWidth || "max-w-7xl"
-  const centeredClasses = centered ? "min-h-screen flex items-center justify-center" : ""
+  const centeredClasses = centered ? "min-h-[calc(100vh-4rem)] mt-16 flex items-center justify-center" : ""
+  const paddingClasses = centered ? "px-[4%]" : "py-4 md:py-28 lg:py-32 px-[4%]"
 
   return (
-    <section id={id} className={`py-4 md:py-28 lg:py-32 px-[4%] ${bgClasses[background]} ${centeredClasses} ${className} relative overflow-hidden`}>
+    <section id={id} className={`${paddingClasses} ${bgClasses[background]} ${centeredClasses} ${className} relative overflow-hidden`}>
       {backgroundElement}
       <div className={`${maxWidthClass} w-full mx-auto relative z-10`}>
         {children}
