@@ -8,7 +8,13 @@ import { fadeIn } from '../../constants/animations'
 
 export default function ComparisonSeo() {
   // Initialize based on actual dark mode state (safe for SSR)
-  const [isDark, setIsDark] = useState(false)
+  // Default to dark mode for SSR to prevent flash of light mode colors
+  const [isDark, setIsDark] = useState(() => {
+    if (typeof window !== 'undefined') {
+      return document.documentElement.classList.contains('dark')
+    }
+    return true
+  })
   const slides = [comparisonData.martina, comparisonData.julie]
 
   // Track theme changes
