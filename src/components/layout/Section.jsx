@@ -12,7 +12,7 @@ function Section({ children, className = "", background = "light", showScrollInd
   const centeredClasses = centered ? "min-h-screen flex items-center justify-center" : ""
 
   return (
-    <section id={id} className={`py-4 md:py-28 lg:py-32 px-[4%] ${bgClasses[background]} ${centeredClasses} ${className} relative overflow-hidden`} style={{ position: 'relative' }}>
+    <section id={id} className={`py-4 md:py-28 lg:py-32 px-[4%] ${bgClasses[background]} ${centeredClasses} ${className} relative overflow-hidden`}>
       {backgroundElement}
       <div className={`${maxWidthClass} w-full mx-auto relative z-10`}>
         {children}

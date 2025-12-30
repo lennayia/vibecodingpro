@@ -1,6 +1,5 @@
 import { memo, useState, useEffect } from 'react'
 import { createPortal } from 'react-dom'
-import { AlignRight } from 'lucide-react'
 import SlideOutMenu from '../ui/SlideOutMenu'
 
 function Navigation() {
@@ -8,11 +7,9 @@ function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   useEffect(() => {
-    // Check theme from localStorage or default to dark
     const savedTheme = localStorage.getItem('theme')
     setIsDark(savedTheme === 'dark' || !savedTheme)
 
-    // Listen for theme changes
     const handleStorage = () => {
       const theme = localStorage.getItem('theme')
       setIsDark(theme === 'dark' || !theme)
@@ -20,7 +17,6 @@ function Navigation() {
 
     window.addEventListener('storage', handleStorage)
 
-    // Custom event for same-page theme changes
     const handleThemeChange = () => {
       const theme = localStorage.getItem('theme')
       setIsDark(theme === 'dark' || !theme)
@@ -36,7 +32,7 @@ function Navigation() {
 
   return createPortal(
     <nav
-      className="sticky-header w-full backdrop-blur-md bg-[#f2f2f2]/80 dark:bg-[#070716]/80"
+      className="sticky-header w-full backdrop-blur-2xl bg-white/60 dark:bg-black/60 shadow-[0_4px_20px_rgba(0,0,0,0.15)] dark:shadow-[0_4px_20px_rgba(0,0,205,0.25)]"
       style={{
         position: 'fixed',
         top: 0,
@@ -45,6 +41,9 @@ function Navigation() {
         zIndex: 9999
       }}
     >
+      {/* Glassmorphism gradient overlays */}
+      <div className="absolute inset-0 bg-gradient-to-b from-white/50 via-white/20 to-transparent dark:from-[#000080]/20 dark:via-[#000080]/8 dark:to-transparent pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-r from-white/20 via-white/40 to-white/20 dark:from-transparent dark:via-[#000080]/15 dark:to-transparent pointer-events-none" />
       <style>{`
         @keyframes marquee {
           0% {
@@ -71,7 +70,7 @@ function Navigation() {
 
       {/* Main navigation bar */}
       <div className="max-w-7xl mx-auto px-6 py-0.5 flex justify-between items-center relative">
-        {/* Logo - jen ikona */}
+        {/* Logo */}
         <div className="relative z-10">
           <img
             src={isDark ? "/vibecoding-logo-bile.webp" : "/vibecoding-logo.webp"}
@@ -81,42 +80,46 @@ function Navigation() {
             className="h-10 w-auto"
           />
         </div>
-
-        {/* Right side: CTA + Menu button */}
-        <div className="flex items-center gap-3 relative z-10">
-          <button
-            onClick={() => {
-              const pricingSection = document.getElementById('pricing-section')
-              if (pricingSection) {
-                pricingSection.scrollIntoView({ behavior: 'smooth' })
-              }
-            }}
-            className="px-4 py-2 rounded-full font-semibold text-sm bg-accent text-white dark:text-[#070716] border-2 border-accent hover:opacity-90 transition-opacity"
-          >
-            Chci začít
-          </button>
-
-          <button
-            onClick={() => setIsMenuOpen(true)}
-            className="p-2 rounded-lg hover:opacity-80 transition-opacity"
-            aria-label="Otevřít menu"
-          >
-            <AlignRight className="w-8 h-8 text-gray-900 dark:text-white" strokeWidth={2.5} />
-          </button>
-        </div>
       </div>
 
-      {/* Běžící slogan - pod hlavní navigací */}
+      {/* Fixed right side: CTA button + Menu */}
+      <div
+        className="flex items-center gap-3 transition-all duration-300"
+        style={{
+          position: 'fixed',
+          top: '0.5rem',
+          right: isMenuOpen ? 'calc(4rem + 1.5rem)' : '1.5rem',
+          zIndex: 10000
+        }}
+      >
+        <button
+          onClick={() => {
+            const pricingSection = document.getElementById('pricing-section')
+            if (pricingSection) {
+              pricingSection.scrollIntoView({ behavior: 'smooth' })
+            }
+          }}
+          className="px-4 py-2 rounded-full font-semibold text-sm bg-[#0000CD] dark:bg-[#0DDD0D] text-white dark:text-[#070716] border-2 border-[#0000CD] dark:border-[#0DDD0D] hover:opacity-90 transition-opacity"
+        >
+          Chci začít
+        </button>
+
+        {/* Menu s plovoucím dropdownem */}
+        <SlideOutMenu
+          isOpen={isMenuOpen}
+          onOpen={() => setIsMenuOpen(true)}
+          onClose={() => setIsMenuOpen(false)}
+        />
+      </div>
+
+      {/* Běžící slogan */}
       <div className="w-full overflow-hidden">
         <div className="pt-0.5 pb-1">
           <div className="marquee-text whitespace-nowrap text-[#374151] dark:text-[#f2f2f2]" style={{ fontSize: '1rem', fontWeight: 400 }}>
-            <span className="font-bold">Vibe <span className="text-accent">|</span> Prompt <span className="text-accent">|</span> Build</span> — Teď víc než kdy dřív platí: „Můžeme mít všechno, co si dokážeme představit."
+            <span className="font-bold">Vibe <span className="text-[#0000CD] dark:text-[#0DDD0D]">|</span> Prompt <span className="text-[#0000CD] dark:text-[#0DDD0D]">|</span> Build</span> — Teď víc než kdy dřív platí: „Můžeme mít všechno, co si dokážeme představit."
           </div>
         </div>
       </div>
-
-      {/* Slide-out menu */}
-      <SlideOutMenu isOpen={isMenuOpen} onClose={() => setIsMenuOpen(false)} />
     </nav>,
     document.body
   )
