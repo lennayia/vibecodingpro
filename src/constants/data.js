@@ -222,7 +222,7 @@ export const faqCategories = [
       },
       {
         question: "Jaké aplikace může vytvořit koučka nebo online podnikatelka pomocí vibecodingu?",
-        answer: "Rezervační systémy pro klientky, online kvízy a diagnostiky, kalkulačky (třeba na cenu služby), členské sekce s materiály, automatické onboarding nových klientek, progress trackery – prostě cokoliv, co vám ušetří čas a pomůže klientkám."
+        answer: "Rezervační systémy pro klientky, online kvízy a diagnostiky, kalkulačky (třeba na cenu služby), členské sekce s materiály, automatický onboarding nových klientek, progress trackery – prostě cokoliv, co vám ušetří čas a pomůže klientkám."
       },
       {
         question: "Musím se naučit programovat, nebo to zvládnu jen s AI jako běžná podnikatelka?",
@@ -265,15 +265,11 @@ export const faqCategories = [
     questions: [
       {
         question: "Mám malé děti / rozjetý byznys. Kolik času tomu musím reálně dávat?",
-        answer: "Mezi našimi sezeními? Záleží na velikosti projektu, který chceme vyvinout. Malý projekt – málo času. Velký projekt – hodně času. Čím víc dáte, tím rychleji to bude."
+        answer: "Mezi našimi sezeními? Záleží na velikosti projektu, který chcete vyvinout. Malý projekt – málo času. Velký projekt – hodně času. Čím víc dáte, tím rychleji to bude."
       },
       {
         question: "Za jak dlouho budu mít něco, co můžu ukázat klientkám?",
-        answer: "Záleží na složitosti. Základní verzi? Za cca 2–4 týdny, pokud budete pracovat. Složitější za cca 4 měsíce, podle času, který do toho investujete."
-      },
-      {
-        question: "Za jak dlouho budu mít hotovou aplikaci?",
-        answer: "Jednoduchá aplikace může běžet za 2–3 měsíce. Složitější za 6 měsíců."
+        answer: "Záleží na složitosti. Jednoduchou webovou stránku? Za pár desítek minut. Základní verzi aplikace? Za cca 2–4 týdny, pokud budete pracovat. Složitější za cca 4 měsíce, podle času, který do toho investujete."
       }
     ]
   },
@@ -298,7 +294,7 @@ export const faqCategories = [
     title: "Strach z vlastních schopností",
     questions: [
       {
-        question: "Co když jsem na to prostě moc blbá?",
+        question: "Co když jsem na tohle prostě 'hloupá'?",
         answer: "Nejste. Pokud umíte napsat e-mail, zvládnete i tohle. Vibecoding není programování – je to komunikace s AI."
       },
       {
@@ -328,11 +324,11 @@ export const faqCategories = [
       },
       {
         question: "Kolik reálně stojí koučce nebo podnikatelce vytvořit si vlastní digitální nástroj s AI?",
-        answer: "Spolupráce se mnou stojí od 3 900 Kč + AI nástroje cca 500–2 500 Kč/měsíc. Žádné vývojáře za 50 000 Kč, žádné předplatné platforem za tisíce ročně. A hlavně – naučíte se to. Další nástroje už vytvoříte sama, zdarma."
+        answer: "Spolupráce se mnou stojí od 3 900 Kč + AI nástroje cca 500–2 500 Kč/měsíc. Neplatíte vývojáře za 50 000 Kč, žádné předplatné platforem za velké tisíce ročně. Hlavně – naučíte se to. Další nástroje už vytvoříte sama, s AI, která vám sedne a postačí."
       },
       {
         question: "Budu pak závislá na nějaké platformě, nebo si aplikaci opravdu vlastním?",
-        answer: "Aplikace je vaše a můžete s ní dělat, co chcete – hostovat kdekoli, upravovat, prodávat. Nejste zavřená v žádné platformě typu Wix, která vám zítra zdraží nebo změní podmínky. Máte kontrolu."
+        answer: "Aplikace je vaše a můžete s ní dělat, co chcete – hostovat kdekoli, upravovat, prodávat. Nejste zavřená v žádné platformě, která vám zítra zdraží nebo změní podmínky. Máte kontrolu."
       }
     ]
   }
