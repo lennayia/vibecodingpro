@@ -79,6 +79,17 @@
     <meta name="theme-color" content="#0000CD" media="(prefers-color-scheme: light)" />
     <meta name="theme-color" content="#0DDD0D" media="(prefers-color-scheme: dark)" />
 
+    <!-- Dark mode initialization - prevents flash of wrong colors -->
+    <script>
+      (function() {
+        const savedTheme = localStorage.getItem('theme');
+        const prefersDark = savedTheme === 'dark' || !savedTheme;
+        if (prefersDark) {
+          document.documentElement.classList.add('dark');
+        }
+      })();
+    </script>
+
     <!-- Robots -->
     <meta name="robots" content="index, follow" />
 
