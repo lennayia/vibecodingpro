@@ -65,7 +65,7 @@ export default function Phases() {
       <div className="w-full">
         <motion.div {...fadeIn}>
           <h2 className="font-display font-bold text-center mb-2 md:mb-[clamp(0.25rem,0.5vh,0.75rem)]" style={{ lineHeight: '1.3' }}>
-            Společně rozběhneme tvorbu
+            Spolu rozběhneme tvorbu
           </h2>
           <p className="text-center max-w-3xl mx-auto text-xl font-light mb-6 md:mb-[clamp(0.75rem,2vh,1.5rem)]">
             Krok za krokem od nápadu až po funkční digi-nástroj

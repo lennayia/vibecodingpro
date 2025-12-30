@@ -32,11 +32,44 @@ export default function SlideOutMenu({ isOpen, onOpen, onClose }) {
       {/* Plovoucí slider menu */}
       <AnimatePresence>
         {isOpen && (
-          <motion.div
+          <>
+            {/* Neviditelná dotykové oblast pro swipe - zavře menu při tažení jakýmkoliv směrem */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              drag
+              dragConstraints={{ left: 0, right: 0, top: 0, bottom: 0 }}
+              dragElastic={0.1}
+              onDragStart={() => {
+                // Při jakémkoliv tažení zavřít menu
+                onClose()
+              }}
+              style={{
+                position: 'fixed',
+                top: 0,
+                left: 0,
+                right: '4rem',
+                height: '100vh',
+                zIndex: 99998,
+                cursor: 'default'
+              }}
+            />
+
+            <motion.div
             initial={{ x: '100%' }}
             animate={{ x: 0 }}
             exit={{ x: '100%' }}
             transition={{ type: 'spring', damping: 30, stiffness: 300 }}
+            drag="x"
+            dragConstraints={{ left: 0, right: 0 }}
+            dragElastic={{ left: 0, right: 0.5 }}
+            onDragEnd={(e, { offset, velocity }) => {
+              // Zavřít menu pokud je taženo víc než 100px doprava nebo rychlost > 500
+              if (offset.x > 100 || velocity.x > 500) {
+                onClose()
+              }
+            }}
             style={{
               position: 'fixed',
               top: '0.5rem',
@@ -47,9 +80,9 @@ export default function SlideOutMenu({ isOpen, onOpen, onClose }) {
               backdropFilter: 'blur(20px)',
               WebkitBackdropFilter: 'blur(20px)',
               boxShadow: '-10px 0 40px rgba(0, 0, 205, 0.3), -5px 0 20px rgba(0, 0, 205, 0.2)',
-              borderRadius: '12px'
+              borderRadius: '12px 0 0 12px'
             }}
-            className="flex flex-col items-center py-4 gap-4"
+            className="flex flex-col items-center py-4 gap-4 cursor-grab active:cursor-grabbing"
           >
             {/* Close button */}
             <button
@@ -94,6 +127,7 @@ export default function SlideOutMenu({ isOpen, onOpen, onClose }) {
               })}
             </nav>
           </motion.div>
+          </>
         )}
       </AnimatePresence>
     </>

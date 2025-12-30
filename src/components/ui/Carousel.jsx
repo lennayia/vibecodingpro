@@ -167,33 +167,56 @@ export default function Carousel({
           {/* Peek card - next (right) - Always show with infinite loop */}
           {slides.length > 1 && (
             <div
-              className="absolute right-0 top-0 bottom-0 pointer-events-none"
+              className="absolute top-0 bottom-0 pointer-events-none overflow-hidden rounded-2xl"
               style={{
-                width: '25%',
-                opacity: 0.4,
+                right: '-5rem',
+                width: '45%',
                 zIndex: -1
               }}
             >
-              {renderSlide(slides[(currentSlide + 1) % slides.length], (currentSlide + 1) % slides.length)}
+              <div className="relative w-full h-full">
+                {renderSlide(slides[(currentSlide + 1) % slides.length], (currentSlide + 1) % slides.length)}
+                {/* Light gray mist overlay */}
+                <div
+                  className="absolute inset-0 bg-gray-200 dark:bg-gray-700"
+                  style={{ opacity: 0.5 }}
+                />
+              </div>
             </div>
           )}
 
           {/* Mobile dots indicator */}
           {showDots && slides.length > 1 && (
-            <div className="flex justify-center gap-2 mt-6">
-              {slides.map((_, index) => (
-                <button
-                  key={index}
-                  onClick={() => setCurrentSlide(index)}
-                  className={`rounded-full cursor-pointer transition-all ${
-                    index === currentSlide
-                      ? 'bg-accent w-8 h-2'
-                      : 'bg-gray-400 dark:bg-gray-600 w-2 h-2'
-                  }`}
-                  aria-label={`Go to slide ${index + 1}`}
-                />
-              ))}
-            </div>
+            <>
+              <style>{`
+                .carousel-dot-active {
+                  background-color: #0000CD;
+                }
+                .dark .carousel-dot-active {
+                  background-color: #0DDD0D;
+                }
+                .carousel-dot-inactive {
+                  background-color: rgba(156, 163, 175, 0.5);
+                }
+                .dark .carousel-dot-inactive {
+                  background-color: rgba(156, 163, 175, 0.5);
+                }
+              `}</style>
+              <div className="flex justify-center items-center gap-2 mt-6">
+                {slides.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => setCurrentSlide(index)}
+                    className={`rounded-full cursor-pointer transition-all ${
+                      index === currentSlide
+                        ? 'carousel-dot-active w-8 h-2'
+                        : 'carousel-dot-inactive w-2 h-2'
+                    }`}
+                    aria-label={`Go to slide ${index + 1}`}
+                  />
+                ))}
+              </div>
+            </>
           )}
         </div>
 
@@ -222,42 +245,58 @@ export default function Carousel({
       {/* Navigation Arrows - desktop only */}
       {showArrows && slides.length > 1 && (
         <>
+          <style>{`
+            .carousel-arrow-bg {
+              background-color: rgba(0, 0, 205, 0.2);
+              border: 1px solid rgba(0, 0, 205, 0.3);
+            }
+            .dark .carousel-arrow-bg {
+              background-color: rgba(13, 221, 13, 0.2);
+              border: 1px solid rgba(13, 221, 13, 0.3);
+            }
+            .carousel-arrow-bg:hover {
+              background-color: rgba(0, 0, 205, 0.3);
+            }
+            .dark .carousel-arrow-bg:hover {
+              background-color: rgba(13, 221, 13, 0.3);
+            }
+          `}</style>
           <button
             onClick={prevSlide}
-            className="hidden md:block absolute left-0 top-1/2 bg-white/90 dark:bg-accent/10 border border-gray-300 dark:border-accent/30 rounded-full p-2 z-20 cursor-pointer hover:bg-white dark:hover:bg-accent/20 transition-colors"
+            className="carousel-arrow-bg hidden md:block absolute left-0 top-1/2 rounded-full p-2 z-20 cursor-pointer transition-colors"
             style={{
               transform: 'translate(-1rem, -50%)',
               transition: 'none'
             }}
             aria-label="Previous slide"
           >
-            <ChevronLeft className="w-6 h-6 text-accent" strokeWidth={2} />
+            <ChevronLeft className="w-6 h-6 text-accent dark:text-accent-dark" strokeWidth={2} />
           </button>
           <button
             onClick={nextSlide}
-            className="hidden md:block absolute right-0 top-1/2 bg-white/90 dark:bg-accent/10 border border-gray-300 dark:border-accent/30 rounded-full p-2 z-20 cursor-pointer hover:bg-white dark:hover:bg-accent/20 transition-colors"
+            className="carousel-arrow-bg hidden md:block absolute right-0 top-1/2 rounded-full p-2 z-20 cursor-pointer transition-colors"
             style={{
               transform: 'translate(1rem, -50%)',
               transition: 'none'
             }}
             aria-label="Next slide"
           >
-            <ChevronRight className="w-6 h-6 text-accent" strokeWidth={2} />
+            <ChevronRight className="w-6 h-6 text-accent dark:text-accent-dark" strokeWidth={2} />
           </button>
         </>
       )}
 
       {/* Dots Indicator - desktop only */}
       {showDots && slides.length > 1 && (
-        <div className="hidden md:flex justify-center gap-3 mt-3 mb-6">
+        <div className="hidden md:flex justify-center items-center gap-3 mt-3 mb-6">
           {slides.map((_, index) => (
             <button
               key={index}
               onClick={() => setCurrentSlide(index)}
               className={`rounded-full cursor-pointer ${
                 index === currentSlide
-                  ? 'bg-accent w-12 h-3'
-                  : 'bg-gray-400 dark:bg-gray-600 w-5 h-5'
+                  ? 'carousel-dot-active w-12 h-3'
+                  : 'carousel-dot-inactive w-5 h-5'
               }`}
               aria-label={`Go to slide ${index + 1}`}
             />

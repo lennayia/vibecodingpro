@@ -107,7 +107,7 @@ function PortfolioHolographic() {
           </motion.h2>
 
           <p className="text-xl text-center max-w-3xl mx-auto mb-6 md:mb-1 custom-spacing">
-            8 funkčních aplikací pro reálné klienty. Žádný řádek kódu. Jen vize, strategie a AI.
+            8 funkčních aplikací pro reálné klienty. Ani řádek kódu. Jen vize, strategie a AI.
           </p>
 
           {/* Mobile: Horizontal drag carousel */}

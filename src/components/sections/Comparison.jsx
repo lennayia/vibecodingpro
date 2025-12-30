@@ -216,7 +216,7 @@ export default function ComparisonSeo() {
           </h3>
           <p className="mb-8 md:mb-2 text-center max-w-3xl mx-auto text-xl font-light">
             <span className="block text-xl font-light">Martina a Julie: obě učí klientky zdravě spát.</span>
-            <span className="block text-xl font-light">Stejné znalosti. Stejná vášeň pomáhat.</span>
+            <span className="block text-xl font-light">Stejné znalosti, stejná vášeň pomáhat.</span>
             <span className="block mt-4 md:mt-2 text-xl font-light">Ale jejich podnikání funguje naprosto odlišně.</span>
           </p>
 
