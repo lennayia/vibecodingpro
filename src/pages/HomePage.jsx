@@ -25,7 +25,6 @@ const Bonuses = lazy(() => import('../components/sections/BonusesTabs'))
 const PromoCoupon = lazy(() => import('../components/sections/PromoCoupon'))
 const Pricing = lazy(() => import('../components/sections/Pricing'))
 const PricingPackages = lazy(() => import('../components/sections/Pricing').then(module => ({ default: module.PricingPackages })))
-const PricingGuarantee = lazy(() => import('../components/sections/PricingGuarantee'))
 const PricingGuaranteeNew = lazy(() => import('../components/sections/PricingGuaranteeNew'))
 const FAQ = lazy(() => import('../components/sections/FAQ'))
 const CTA = lazy(() => import('../components/sections/CTA'))
@@ -62,7 +61,6 @@ export default function HomePage() {
             <Pricing />
             <PromoCoupon />
             <PricingPackages />
-            <PricingGuarantee />
             <PricingGuaranteeNew />
             <FAQ />
             <CTA />

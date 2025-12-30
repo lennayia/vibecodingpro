@@ -88,19 +88,3 @@ export function PricingPackages() {
     </Section>
   )
 }
-
-export function PricingGuarantee() {
-  return (
-    <Section background="dark" className="flex items-center justify-center !pt-2 !pb-12 md:!pt-2 md:!pb-12 lg:!pt-4 lg:!pb-16" showScrollIndicator={true}>
-      <div className="w-full">
-        <motion.div
-          {...fadeIn}
-          className="w-full"
-        >
-
-        </motion.div>
-      </div>
-    </Section>
-  )
-}
-
