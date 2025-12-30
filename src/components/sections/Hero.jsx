@@ -3,7 +3,6 @@ import { useCallback } from 'react'
 import Section from '../layout/Section'
 import Button from '../ui/Button'
 import AnimatedBackground from '../ui/AnimatedBackground'
-import { fadeInUp } from '../../constants/animations'
 import { useTypingEffect } from '../../hooks/useTypingEffect'
 import { scrollToSection } from '../../utils/scroll'
 
@@ -12,6 +11,26 @@ export default function Hero() {
   const particleBackground = <AnimatedBackground type="neural" count={15} />
   const typingText = 'Tvořte vlastní nástroje a\u00A0navyšujte svoje příjmy'
   const { displayedText, showCursor } = useTypingEffect(typingText, 60, 500)
+
+  // Custom slower animations for Hero
+  const containerVariants = {
+    initial: {},
+    animate: {
+      transition: {
+        staggerChildren: 0.25,
+        delayChildren: 0.2
+      }
+    }
+  }
+
+  const itemVariants = {
+    initial: { opacity: 0, y: 40 },
+    animate: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.8, ease: "easeOut" }
+    }
+  }
 
   const handlePricingClick = useCallback(() => {
     scrollToSection('pricing-section')
@@ -26,10 +45,11 @@ export default function Hero() {
     <motion.div
       initial="initial"
       animate="animate"
+      variants={containerVariants}
       className="text-center w-full px-4 flex flex-col justify-center gap-6 md:gap-[clamp(1rem,2vh,1.5rem)] pt-28 md:pt-[clamp(4rem,8vh,6rem)] pb-10 md:pb-[clamp(0.5rem,2vh,1.5rem)] bg-white/50 md:bg-transparent dark:bg-transparent rounded-2xl md:rounded-none"
     >
       {/* Badge */}
-      <motion.div variants={fadeInUp} className="inline-block" style={{ marginBottom: 'clamp(-0.5rem, -1vh, -0.25rem)' }}>
+      <motion.div variants={itemVariants} className="inline-block" style={{ marginBottom: 'clamp(-0.5rem, -1vh, -0.25rem)' }}>
         <span
           className="px-3 py-1.5 md:px-4 md:py-2 bg-gray-100/80 dark:bg-[#05050f]/80 backdrop-blur-sm rounded-full font-medium border border-gray-200 dark:border-[#070716]"
           style={{ fontSize: 'clamp(0.875rem, 1vw + 0.5vh, 1.25rem)' }}
@@ -40,7 +60,7 @@ export default function Hero() {
 
       {/* Heading */}
       <motion.h1
-        variants={fadeInUp}
+        variants={itemVariants}
         className="font-display font-bold"
         style={{
           fontSize: 'clamp(1.75rem, 4vw + 2vh, 4rem)',
@@ -62,7 +82,7 @@ export default function Hero() {
 
       {/* Paragraph */}
       <motion.p
-        variants={fadeInUp}
+        variants={itemVariants}
         className="max-w-3xl mx-auto text-center font-light"
         style={{
           fontSize: 'clamp(0.875rem, 1.2vw + 0.8vh, 1.25rem)',
@@ -80,7 +100,7 @@ export default function Hero() {
 
       {/* CTA Section */}
       <motion.div
-        variants={fadeInUp}
+        variants={itemVariants}
         className="flex flex-col items-center max-w-2xl mx-auto"
         style={{
           gap: 'clamp(0.75rem, 2vh, 1.25rem)',

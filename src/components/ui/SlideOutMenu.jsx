@@ -39,17 +39,17 @@ export default function SlideOutMenu({ isOpen, onOpen, onClose }) {
             transition={{ type: 'spring', damping: 30, stiffness: 300 }}
             style={{
               position: 'fixed',
-              top: 0,
+              top: '0.5rem',
               right: 0,
-              height: '100vh',
               width: '4rem',
               zIndex: 99999,
               background: 'rgba(7, 7, 22, 0.6)',
               backdropFilter: 'blur(20px)',
               WebkitBackdropFilter: 'blur(20px)',
               boxShadow: '-10px 0 40px rgba(0, 0, 205, 0.3), -5px 0 20px rgba(0, 0, 205, 0.2)',
+              borderRadius: '12px'
             }}
-            className="flex flex-col items-center pt-4 gap-4"
+            className="flex flex-col items-center py-4 gap-4"
           >
             {/* Close button */}
             <button

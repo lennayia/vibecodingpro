@@ -69,20 +69,12 @@ function Navigation() {
       `}</style>
 
       {/* Main navigation bar */}
-      <div className="max-w-7xl mx-auto px-6 py-0.5 flex justify-between items-center relative">
-        {/* Logo */}
-        <div className="relative z-10">
-          <img
-            src={isDark ? "/vibecoding-logo-bile.webp" : "/vibecoding-logo.webp"}
-            alt="Vibecoding"
-            width="40"
-            height="40"
-            className="h-10 w-auto"
-          />
-        </div>
+      <div className="max-w-7xl mx-auto px-6 py-0.5 relative">
+        {/* Spacer to maintain height */}
+        <div className="h-10 w-10" aria-hidden="true"></div>
       </div>
 
-      {/* Fixed right side: CTA button + Menu */}
+      {/* Fixed right side: Logo + CTA button + Menu */}
       <div
         className="flex items-center gap-3 transition-all duration-300"
         style={{
@@ -92,6 +84,15 @@ function Navigation() {
           zIndex: 10000
         }}
       >
+        {/* Logo */}
+        <img
+          src={isDark ? "/vibecoding-logo-bile.webp" : "/vibecoding-logo.webp"}
+          alt="Vibecoding"
+          width="40"
+          height="40"
+          className="h-10 w-auto"
+        />
+
         <button
           onClick={() => {
             const pricingSection = document.getElementById('pricing-section')
