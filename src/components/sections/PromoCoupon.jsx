@@ -41,7 +41,7 @@ export default function PromoCoupon() {
             </div>
 
             <p className="text-xl md:text-2xl font-light max-w-3xl mx-auto">
-              Začněte nový rok s vlastními digitálními nástroji ještě snadněji
+              Začněte rok 2026 s vlastními digitálními nástroji ještě snadněji
             </p>
           </motion.div>
 
@@ -149,19 +149,19 @@ export default function PromoCoupon() {
                 {/* Coupon code */}
                 <div className="text-center mb-6 md:mb-[clamp(1rem,2vh,1.5rem)]">
                   <p className="text-lg font-light mb-3 md:mb-[clamp(0.5rem,1vh,0.75rem)]">
-                    Použijte kód při objednávce:
+                    Při objednávce použijte kód a získejte 25% slevu:
                   </p>
 
                   <div className="flex flex-col sm:flex-row items-center justify-center gap-4 md:gap-[clamp(0.75rem,1.5vh,1rem)]">
-                    <div className="bg-black/30 border-2 border-accent/50 rounded-xl px-6 md:px-[clamp(1.5rem,2vh,2rem)] py-3 md:py-[clamp(0.75rem,1.5vh,1rem)] backdrop-blur-sm">
-                      <p className="font-mono text-3xl md:text-4xl font-black text-accent tracking-wider">
+                    <div className="bg-accent rounded-xl px-6 md:px-[clamp(1.5rem,2vh,2rem)] py-3 md:py-[clamp(0.75rem,1.5vh,1rem)] shadow-lg">
+                      <p className="font-mono text-3xl md:text-4xl font-black text-black tracking-wider">
                         {couponCode}
                       </p>
                     </div>
 
                     <button
                       onClick={handleCopy}
-                      className="bg-accent hover:bg-accent/90 text-black font-bold px-5 md:px-[clamp(1.25rem,2vh,1.5rem)] py-2.5 md:py-[clamp(0.6rem,1.2vh,0.75rem)] rounded-xl transition-all flex items-center gap-2 shadow-lg hover:shadow-accent/50"
+                      className="bg-black/30 hover:bg-black/40 border-2 border-accent/50 hover:border-accent text-white font-bold px-5 md:px-[clamp(1.25rem,2vh,1.5rem)] py-2.5 md:py-[clamp(0.6rem,1.2vh,0.75rem)] rounded-xl transition-all flex items-center gap-2 backdrop-blur-sm"
                     >
                       {copied ? (
                         <>

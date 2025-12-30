@@ -1,4 +1,4 @@
-import { Check, Gift, Tag, Crown, ChevronDown, Map, FileCheck, BookOpen, Video, Mail, ClipboardList, Phone, Ticket } from 'lucide-react'
+import { Check, Gift, Tag, Crown, ChevronDown, Map, FileCheck, BookOpen, Video, Mail, ClipboardList, Phone, Ticket, Target } from 'lucide-react'
 import { useState, useRef, memo, useCallback } from 'react'
 import { Link } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
@@ -266,11 +266,11 @@ function PricingCard({
               transition={{ duration: 0.3 }}
               className="overflow-hidden"
             >
-              <div className="text-left text-sm px-1" style={{ marginTop: 'clamp(0.75rem, 1.5vh, 1.5rem)', display: 'flex', flexDirection: 'column', gap: 'clamp(0.5rem, 1vh, 1rem)' }}>
+              <div className="text-left text-xs px-1" style={{ marginTop: 'clamp(0.5rem, 1vh, 0.75rem)', display: 'flex', flexDirection: 'column', gap: 'clamp(0.15rem, 0.3vh, 0.3rem)' }}>
                 {packagePhases.map((phase, index) => (
-                  <div key={phase.number} className="flex items-start gap-2">
-                    <span className="text-accent font-semibold flex-shrink-0">{phase.number}</span>
-                    <span className="font-light">{phase.title}</span>
+                  <div key={phase.number} className="font-light flex items-center gap-1.5 leading-none">
+                    <span className="text-accent font-semibold text-xs flex-shrink-0 leading-none">{phase.number}</span>
+                    <span className="leading-none">{phase.title}</span>
                   </div>
                 ))}
               </div>
@@ -304,19 +304,17 @@ function PricingCard({
                 transition={{ duration: 0.3 }}
                 className="overflow-hidden"
               >
-                <div className="text-left text-sm px-1" style={{ marginTop: 'clamp(0.75rem, 1.5vh, 1.5rem)', display: 'flex', flexDirection: 'column', gap: 'clamp(0.5rem, 1vh, 1rem)' }}>
+                <div className="text-left text-xs px-1" style={{ marginTop: 'clamp(0.5rem, 1vh, 0.75rem)', display: 'flex', flexDirection: 'column', gap: 'clamp(0.15rem, 0.3vh, 0.3rem)' }}>
                   {packageBonuses.map((bonus, index) => {
                     const IconComponent = bonus.icon
                     const value = bonus[title === "VIBE" ? 'vibe' : title === "VIBE+CODING" ? 'vibeCode' : 'vibeCoding']
 
                     return (
-                      <div key={index} className="flex items-start gap-2">
-                        <div className="flex-shrink-0 w-5 h-5 flex items-center justify-center">
-                          <IconComponent className="w-4 h-4 text-accent" strokeWidth={1.5} />
-                        </div>
-                        <span className="font-light flex-1">{bonus.name}</span>
+                      <div key={index} className="font-light flex items-baseline gap-1.5 leading-none">
+                        <IconComponent className="w-3 h-3 text-accent flex-shrink-0" strokeWidth={1.5} />
+                        <span className="flex-1 leading-none">{bonus.name}</span>
                         {value !== true && typeof value === 'string' && (
-                          <span className="text-xs font-bold text-accent bg-accent/10 px-2 py-0.5 rounded-full whitespace-nowrap">
+                          <span className="text-[10px] font-bold text-accent bg-accent/10 px-1.5 py-0.5 rounded-full whitespace-nowrap leading-none">
                             {bonus.icon === Tag ? `Kupón ${value}` : value}
                           </span>
                         )}
@@ -342,11 +340,8 @@ function PricingCard({
         </div>
       )}
 
-      {/* Cíl section - ALWAYS VISIBLE (no accordion) */}
+      {/* Result section - ALWAYS VISIBLE (no accordion) */}
       <div style={{ marginBottom: 'clamp(1rem, 2vh, 2rem)' }}>
-        <div className="text-center" style={{ marginBottom: 'clamp(0.5rem, 1vh, 1rem)' }}>
-          <span className="text-sm font-bold text-accent uppercase tracking-wider">🎯 Cíl</span>
-        </div>
         <div className="bg-accent/5 dark:bg-accent/10 rounded-xl border-2 border-accent/30 dark:border-accent/20" style={{ padding: 'clamp(0.75rem, 1.5vh, 1.5rem)' }}>
           <p className="font-bold text-base text-center" style={{ marginBottom: 'clamp(0.5rem, 1vh, 1rem)' }}>{resultTitle}</p>
           <div className="text-sm font-light text-left" dangerouslySetInnerHTML={{ __html: resultDescription }} />
