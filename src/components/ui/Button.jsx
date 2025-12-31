@@ -21,7 +21,7 @@ function Button({
   ...props
 }) {
   const baseClass = "btn"
-  const variantClass = variant === "primary" ? "btn-primary" : ""
+  const variantClass = variant === "primary" ? "btn-primary" : variant === "secondary" ? "btn-secondary" : ""
   const sizeClass = size === "lg" ? "btn-lg" : ""
 
   const buttonRef = useRef(null)
@@ -66,7 +66,6 @@ function Button({
     <motion.button
       ref={buttonRef}
       className={`${baseClass} ${variantClass} ${sizeClass} ${className}`}
-      style={{ padding: '0.875rem 1.75rem' }}
       animate={{ x: position.x, y: position.y }}
       transition={{ type: "spring", stiffness: 150, damping: 15, mass: 0.1 }}
       {...props}

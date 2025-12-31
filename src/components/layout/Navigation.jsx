@@ -32,7 +32,7 @@ function Navigation() {
 
   return createPortal(
     <nav
-      className="sticky-header w-full backdrop-blur-2xl bg-white/60 dark:bg-black/60 shadow-[0_4px_20px_rgba(0,0,0,0.15)] dark:shadow-[0_4px_20px_rgba(0,0,205,0.25)]"
+      className="sticky-header w-full backdrop-blur-2xl bg-[#FFFDF9]/60 dark:bg-black/60 shadow-[0_4px_20px_rgba(181,108,78,0.15)] dark:shadow-[0_4px_20px_rgba(0,0,205,0.25)]"
       style={{
         position: 'fixed',
         top: 0,
@@ -42,8 +42,8 @@ function Navigation() {
       }}
     >
       {/* Glassmorphism gradient overlays */}
-      <div className="absolute inset-0 bg-gradient-to-b from-white/50 via-white/20 to-transparent dark:from-[#000080]/20 dark:via-[#000080]/8 dark:to-transparent pointer-events-none" />
-      <div className="absolute inset-0 bg-gradient-to-r from-white/20 via-white/40 to-white/20 dark:from-transparent dark:via-[#000080]/15 dark:to-transparent pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-b from-[#FFFDF9]/50 via-[#FFFDF9]/20 to-transparent dark:from-[#000080]/20 dark:via-[#000080]/8 dark:to-transparent pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-r from-[#FFFDF9]/20 via-[#FFFDF9]/40 to-[#FFFDF9]/20 dark:from-transparent dark:via-[#000080]/15 dark:to-transparent pointer-events-none" />
       <style>{`
         @keyframes marquee {
           0% {
@@ -100,7 +100,7 @@ function Navigation() {
               pricingSection.scrollIntoView({ behavior: 'smooth' })
             }
           }}
-          className="px-4 py-2 rounded-full font-semibold text-sm bg-[#0000CD] dark:bg-[#0DDD0D] text-white dark:text-[#070716] border-2 border-[#0000CD] dark:border-[#0DDD0D] hover:opacity-90 transition-opacity"
+          className="px-4 py-2 rounded-full font-semibold text-sm bg-[#B56C4E] dark:bg-[#0DDD0D] text-white dark:text-[#070716] border-2 border-[#B56C4E] dark:border-[#0DDD0D] hover:opacity-90 transition-opacity"
         >
           Chci začít
         </button>
@@ -116,8 +116,8 @@ function Navigation() {
       {/* Běžící slogan */}
       <div className="w-full overflow-hidden">
         <div className="pt-0.5 pb-1">
-          <div className="marquee-text whitespace-nowrap text-[#374151] dark:text-[#f2f2f2]" style={{ fontSize: '1rem', fontWeight: 400 }}>
-            <span className="font-bold">Vibe <span className="text-[#0000CD] dark:text-[#0DDD0D]">|</span> Prompt <span className="text-[#0000CD] dark:text-[#0DDD0D]">|</span> Build</span> — Teď víc než kdy dřív platí: „Můžeme mít všechno, co si dokážeme představit."
+          <div className="marquee-text whitespace-nowrap text-[#2E2E2E] dark:text-[#f2f2f2]" style={{ fontSize: '1rem', fontWeight: 400 }}>
+            <span className="font-bold">Vibe <span className="text-[#B56C4E] dark:text-[#0DDD0D]">|</span> Prompt <span className="text-[#B56C4E] dark:text-[#0DDD0D]">|</span> Build</span> — Teď víc než kdy dřív platí: „Můžeme mít všechno, co si dokážeme představit."
           </div>
         </div>
       </div>

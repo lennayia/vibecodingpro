@@ -5,21 +5,22 @@
 @layer base {
   :root {
     /* Colors */
-    --color-bg-light: #f2f2f2;
+    --color-bg-light: #FFFDF9;
     --color-bg-dark: #070716;
     --color-bg-dark-alt: #05050f;
-    --color-text-light: #070716;
+    --color-text-light: #2E2E2E;
     --color-text-dark: #f2f2f2;
     --color-text-muted-light: #374151;
     --color-text-muted-dark: #eaeaea;
-    --color-accent-light: #0000CD;
+    --color-accent-light: #B56C4E; /* Rusty copper for light mode */
     --color-accent-dark: #0DDD0D;
+    --color-secondary-light: #D4C5B5; /* Sand/beige secondary */
     --color-error: #9A0303;
     --color-error-light: #DC2626;
     --color-error-dark: #9A0303;
 
     /* Typography scales - with system font fallbacks */
-    --font-display: 'Manrope', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+    --font-display: 'Cormorant Garamond', serif; /* Elegant serif for light mode */
     --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, system-ui, sans-serif;
 
     /* Spacing & Timing */
@@ -28,6 +29,11 @@
 
     /* Color scheme meta */
     color-scheme: light dark;
+  }
+
+  /* Dark mode keeps Manrope (sans-serif) */
+  .dark {
+    --font-display: 'Manrope', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
   }
 
   /* Performance optimizations */
@@ -75,6 +81,7 @@
 
   .dark h1, .dark h2, .dark h3, .dark h4, .dark h5, .dark h6 {
     color: var(--color-text-muted-dark);
+    font-family: 'Manrope', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
   }
 
   /* Fluid typography with clamp() */
@@ -193,7 +200,7 @@
 @layer utilities {
   /* Gradient text */
   .text-gradient {
-    background: linear-gradient(to right, #070716, #0000CD, #070716);
+    background: linear-gradient(to right, #2E2E2E, #B56C4E, #2E2E2E);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -221,17 +228,18 @@
     color: var(--color-bg-dark);
   }
 
-  /* Button styles */
+  /* Button styles - Soft UI 2026 */
   .btn {
-    padding: 1rem 2rem;
+    padding: 0.75rem 1.5rem;
     margin: 0;
-    border-radius: 50px;
-    font-weight: 600;
+    border-radius: 12px;
+    font-weight: 500;
     font-size: 1rem;
+    letter-spacing: 0.01em;
     background-color: var(--color-bg-light);
     color: var(--color-accent-light);
     border: none;
-    transition: all var(--transition-base);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     will-change: transform;
     touch-action: manipulation; /* Better mobile performance */
     display: inline-block;
@@ -244,31 +252,114 @@
   }
 
   .btn-primary {
-    background-color: var(--color-accent-light);
+    background: linear-gradient(180deg, #B8785C 0%, #A0522D 100%);
     color: white;
-    border: 2px solid var(--color-accent-light);
+    border: none;
+    box-shadow:
+      0 2px 4px rgba(160, 82, 45, 0.3),
+      0 6px 12px rgba(160, 82, 45, 0.25),
+      0 12px 24px rgba(160, 82, 45, 0.15),
+      inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    position: relative;
+    z-index: 10;
+    cursor: pointer;
   }
 
   .dark .btn-primary {
-    background-color: var(--color-accent-dark);
+    background: linear-gradient(180deg, #0FEE0F 0%, #0DDD0D 100%);
     color: var(--color-bg-dark);
-    border: 2px solid var(--color-accent-dark);
+    border: none;
+    box-shadow:
+      0 2px 4px rgba(13, 221, 13, 0.25),
+      0 6px 12px rgba(13, 221, 13, 0.3),
+      0 12px 24px rgba(13, 221, 13, 0.2),
+      inset 0 1px 0 rgba(255, 255, 255, 0.35);
+    z-index: 10;
+    cursor: pointer;
   }
 
   .btn-primary:hover:not(:disabled) {
-    background-color: var(--color-accent-light);
-    border: 2px solid var(--color-accent-light);
-    box-shadow: 0 0 15px rgba(0, 0, 205, 0.4),
-                0 0 30px rgba(0, 0, 205, 0.2);
-    transform: scale(1.05);
+    background: linear-gradient(180deg, #C88564 0%, #A0522D 100%);
+    box-shadow:
+      0 4px 8px rgba(160, 82, 45, 0.35),
+      0 8px 16px rgba(160, 82, 45, 0.3),
+      0 16px 32px rgba(160, 82, 45, 0.2),
+      inset 0 1px 0 rgba(255, 255, 255, 0.4);
+    transform: translateY(-2px);
   }
 
   .dark .btn-primary:hover:not(:disabled) {
-    background-color: var(--color-accent-dark);
-    border: 2px solid var(--color-accent-dark);
-    box-shadow: 0 0 15px rgba(13, 221, 13, 0.5),
-                0 0 30px rgba(13, 221, 13, 0.3);
-    transform: scale(1.05);
+    background: linear-gradient(180deg, #1FFF1F 0%, #0DDD0D 100%);
+    box-shadow:
+      0 4px 8px rgba(13, 221, 13, 0.35),
+      0 8px 16px rgba(13, 221, 13, 0.35),
+      0 16px 32px rgba(13, 221, 13, 0.25),
+      inset 0 1px 0 rgba(255, 255, 255, 0.45);
+    transform: translateY(-2px);
+  }
+
+  .btn-primary:active:not(:disabled) {
+    background: linear-gradient(180deg, #A0522D 0%, #8B4513 100%);
+    box-shadow:
+      0 1px 2px rgba(160, 82, 45, 0.3),
+      inset 0 2px 4px rgba(0, 0, 0, 0.2);
+    transform: translateY(1px);
+  }
+
+  .dark .btn-primary:active:not(:disabled) {
+    background: linear-gradient(180deg, #0DDD0D 0%, #0ACC0A 100%);
+    box-shadow:
+      0 1px 2px rgba(13, 221, 13, 0.3),
+      inset 0 2px 4px rgba(0, 0, 0, 0.25);
+    transform: translateY(1px);
+  }
+
+  /* Ghost/Secondary button - subtle, elegant */
+  .btn-secondary {
+    background: transparent;
+    color: #2E2E2E;
+    border: 1.5px solid rgba(181, 108, 78, 0.3);
+    box-shadow: none;
+    font-weight: 400;
+  }
+
+  .dark .btn-secondary {
+    color: #e1e1e1;
+    border: 1.5px solid rgba(13, 221, 13, 0.3);
+  }
+
+  .btn-secondary:hover:not(:disabled) {
+    background: rgba(181, 108, 78, 0.05);
+    border: 1.5px solid rgba(181, 108, 78, 0.5);
+    box-shadow:
+      0 2px 4px rgba(181, 108, 78, 0.15),
+      0 4px 8px rgba(181, 108, 78, 0.1),
+      inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    transform: translateY(-1px);
+  }
+
+  .dark .btn-secondary:hover:not(:disabled) {
+    background: rgba(13, 221, 13, 0.05);
+    border: 1.5px solid rgba(13, 221, 13, 0.5);
+    box-shadow:
+      0 2px 4px rgba(13, 221, 13, 0.15),
+      0 4px 8px rgba(13, 221, 13, 0.1),
+      inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    transform: translateY(-1px);
+  }
+
+  .btn-secondary:active:not(:disabled) {
+    background: rgba(181, 108, 78, 0.1);
+    border: 1.5px solid rgba(181, 108, 78, 0.6);
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+    transform: translateY(0px);
+  }
+
+  .dark .btn-secondary:active:not(:disabled) {
+    background: rgba(13, 221, 13, 0.1);
+    border: 1.5px solid rgba(13, 221, 13, 0.6);
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.15);
+    transform: translateY(0px);
   }
 
   .btn-lg {
@@ -624,5 +715,35 @@
   .bg-white.dark\:bg-\[\#05050f\] textarea {
     border-radius: 0.75rem !important;
     padding: 0.75rem 1rem !important;
+  }
+
+  /* Vignette gradient overlay for Hero text readability - Cloud Dancer (Pantone 2026) */
+  .vignette-gradient {
+    background: radial-gradient(ellipse 900px 700px at center, rgba(245, 244, 242, 0.95) 0%, rgba(245, 244, 242, 0.7) 40%, rgba(245, 244, 242, 0.3) 70%, transparent 100%);
+    padding: clamp(2rem, 6vh, 4rem) clamp(1rem, 4vw, 2rem);
+  }
+
+  /* Asymmetric vignette on desktop - positioned left */
+  @media (min-width: 768px) {
+    .vignette-gradient {
+      background: radial-gradient(ellipse 1000px 800px at 30% center, rgba(245, 244, 242, 0.95) 0%, rgba(245, 244, 242, 0.7) 35%, rgba(245, 244, 242, 0.3) 60%, transparent 100%);
+    }
+  }
+
+  .dark .vignette-gradient {
+    background: transparent;
+    padding: clamp(2rem, 6vh, 4rem) clamp(1rem, 4vw, 2rem);
+  }
+
+  /* Elegant rusty copper divider line under H1 */
+  .copper-divider-line {
+    width: clamp(100px, 30%, 200px);
+    height: 1px;
+    background: linear-gradient(to right, transparent, #B56C4E, transparent);
+    opacity: 0.3;
+  }
+
+  .dark .copper-divider-line {
+    background: linear-gradient(to right, transparent, #0DDD0D, transparent);
   }
 }
