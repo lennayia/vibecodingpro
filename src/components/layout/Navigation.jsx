@@ -1,10 +1,16 @@
-import { memo, useState, useEffect } from 'react'
+import { memo, useState, useEffect, useCallback } from 'react'
 import { createPortal } from 'react-dom'
 import SlideOutMenu from '../ui/SlideOutMenu'
+import Button from '../ui/Button'
+import { scrollToSection } from '../../utils/scroll'
 
 function Navigation() {
   const [isDark, setIsDark] = useState(true)
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+
+  const handlePricingClick = useCallback(() => {
+    scrollToSection('pricing-section')
+  }, [])
 
   useEffect(() => {
     const savedTheme = localStorage.getItem('theme')
@@ -33,13 +39,6 @@ function Navigation() {
   return createPortal(
     <nav
       className="sticky-header w-full backdrop-blur-2xl bg-[#FFFDF9]/60 dark:bg-black/60 shadow-[0_4px_20px_rgba(181,108,78,0.15)] dark:shadow-[0_4px_20px_rgba(0,0,205,0.25)]"
-      style={{
-        position: 'fixed',
-        top: 0,
-        left: 0,
-        right: 0,
-        zIndex: 9999
-      }}
     >
       {/* Glassmorphism gradient overlays */}
       <div className="absolute inset-0 bg-gradient-to-b from-[#FFFDF9]/50 via-[#FFFDF9]/20 to-transparent dark:from-[#000080]/20 dark:via-[#000080]/8 dark:to-transparent pointer-events-none" />
@@ -76,13 +75,7 @@ function Navigation() {
 
       {/* Fixed right side: Logo + CTA button + Menu */}
       <div
-        className="flex items-center gap-3 transition-all duration-300"
-        style={{
-          position: 'fixed',
-          top: '0.5rem',
-          right: isMenuOpen ? 'calc(4rem + 1.5rem)' : '1.5rem',
-          zIndex: 10000
-        }}
+        className={`nav-logo-container flex items-center gap-3 ${isMenuOpen ? 'right-[calc(4rem+1.5rem)]' : 'right-6'}`}
       >
         {/* Logo */}
         <img
@@ -93,17 +86,9 @@ function Navigation() {
           className="h-10 w-auto"
         />
 
-        <button
-          onClick={() => {
-            const pricingSection = document.getElementById('pricing-section')
-            if (pricingSection) {
-              pricingSection.scrollIntoView({ behavior: 'smooth' })
-            }
-          }}
-          className="px-4 py-2 rounded-full font-semibold text-sm bg-[#B56C4E] dark:bg-[#0DDD0D] text-white dark:text-[#070716] border-2 border-[#B56C4E] dark:border-[#0DDD0D] hover:opacity-90 transition-opacity"
-        >
+        <Button onClick={handlePricingClick} variant="primary">
           Chci začít
-        </button>
+        </Button>
 
         {/* Menu s plovoucím dropdownem */}
         <SlideOutMenu
@@ -116,7 +101,7 @@ function Navigation() {
       {/* Běžící slogan */}
       <div className="w-full overflow-hidden">
         <div className="pt-0.5 pb-1">
-          <div className="marquee-text whitespace-nowrap text-[#2E2E2E] dark:text-[#f2f2f2]" style={{ fontSize: '1rem', fontWeight: 400 }}>
+          <div className="marquee-text whitespace-nowrap text-[#2E2E2E] dark:text-[#f2f2f2]">
             <span className="font-bold">Vibe <span className="text-[#B56C4E] dark:text-[#0DDD0D]">|</span> Prompt <span className="text-[#B56C4E] dark:text-[#0DDD0D]">|</span> Build</span> — Teď víc než kdy dřív platí: „Můžeme mít všechno, co si dokážeme představit."
           </div>
         </div>

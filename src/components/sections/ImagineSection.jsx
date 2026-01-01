@@ -39,7 +39,7 @@ export default function ImagineSection() {
     <Section background="light" centered={true} className="!pt-12 !pb-12 md:!pt-4 md:!pb-8 lg:!pt-8 lg:!pb-16" showScrollIndicator={true}>
       <div className="w-full">
         <motion.div {...fadeIn}>
-          <h2 className="font-display font-bold text-center mb-8 md:mb-[clamp(0.2rem,1vh,1rem)]" style={{ lineHeight: '1.3' }}>
+          <h2 className="font-display font-bold text-center mb-8 md:mb-[clamp(0.2rem,1vh,1rem)]" leading-tight>
             Den s vaší aplikací
           </h2>
 
@@ -49,7 +49,7 @@ export default function ImagineSection() {
             <div
               className="absolute top-0 bottom-0 left-4 md:left-[2.75rem] w-2 rounded-full z-0"
               style={{
-                background: 'linear-gradient(to bottom, rgba(0, 0, 205, 0.25), rgba(0, 0, 205, 0.9), rgba(0, 0, 205, 0.05))'
+                background: 'linear-gradient(to bottom, rgba(181, 108, 78, 0.25), rgba(181, 108, 78, 0.9), rgba(181, 108, 78, 0.05))'
               }}
             >
               <div
@@ -83,7 +83,7 @@ export default function ImagineSection() {
                     </div>
 
                     {/* Content */}
-                    <div className="bg-white dark:bg-[#0a0a1a] rounded-lg border border-gray-200 dark:border-gray-800 shadow-sm p-4 md:p-[clamp(0.4rem,1.5vh,1rem)]">
+                    <div className="bg-white dark:bg-[#0a0a1a] rounded-xl border border-gray-200 dark:border-gray-800 shadow-sm p-4 md:p-[clamp(0.4rem,1.5vh,1rem)]">
                       <div className="flex items-baseline gap-2 mb-2 md:mb-[clamp(0.1rem,0.5vh,0.5rem)]">
                         <span className="text-accent font-bold text-base md:text-lg">{item.time}</span>
                         <span className="text-xs md:text-sm text-gray-500 dark:text-gray-400">・ {item.period}</span>

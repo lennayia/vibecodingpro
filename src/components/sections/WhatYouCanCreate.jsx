@@ -42,7 +42,7 @@ function WhatYouCanCreate() {
     <Section id="what-you-can-create" background="dark" centered={true} className="!pt-8 md:!pt-2 !pb-12 md:!pb-8 lg:!pt-4 lg:!pb-12" showScrollIndicator={true}>
       <div>
         <motion.div {...fadeIn}>
-          <h2 className="font-display font-bold text-center -mt-2 md:-mt-4 lg:-mt-6 mb-8 md:mb-[clamp(1rem,3vh,4rem)]" style={{ lineHeight: '1.3' }}>
+          <h2 className="font-display font-bold text-center -mt-2 md:-mt-4 lg:-mt-6 mb-8 md:mb-[clamp(1rem,3vh,4rem)]" leading-tight>
             Co můžete s vibecodingem vytvořit
           </h2>
 

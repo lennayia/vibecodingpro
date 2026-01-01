@@ -7,6 +7,12 @@ function PortfolioHolographic() {
   const containerRef = useRef(null)
   const [isDragging, setIsDragging] = useState(false)
   const [isVisible, setIsVisible] = useState(false)
+  const [isDark, setIsDark] = useState(() => {
+    if (typeof window !== 'undefined') {
+      return document.documentElement.classList.contains('dark')
+    }
+    return true
+  })
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -31,6 +37,25 @@ function PortfolioHolographic() {
     springConfig
   )
   const dragRotation = useSpring(useTransform(dragX, [-500, 500], [-180, 180]), springConfig)
+
+  // Track theme changes
+  useEffect(() => {
+    const checkTheme = () => {
+      setIsDark(document.documentElement.classList.contains('dark'))
+    }
+    checkTheme()
+
+    const handleThemeChange = () => checkTheme()
+    window.addEventListener('themeChange', handleThemeChange)
+    return () => window.removeEventListener('themeChange', handleThemeChange)
+  }, [])
+
+  // Holographic colors based on global theme
+  // Section is always dark, but colors adapt:
+  // - Light mode (global): copper holographic effects
+  // - Dark mode (global): green holographic effects (original)
+  const primaryColor = isDark ? '0, 255, 136' : '181, 108, 78' // Green in dark, Copper in light
+  const secondaryColor = isDark ? '0, 200, 255' : '212, 197, 181' // Cyan in dark, Beige in light
 
   // Event handlers wrapped in useCallback
   const handleDragStart = useCallback(() => setIsDragging(true), [])
@@ -61,7 +86,7 @@ function PortfolioHolographic() {
 
   return (
     <Section
-      background="dark"
+      background="holographic"
       centered={true}
       className="overflow-hidden"
       showScrollIndicator={true}
@@ -70,7 +95,7 @@ function PortfolioHolographic() {
         <motion.div
           className="absolute inset-0"
           style={{
-            background: 'radial-gradient(circle at 50% 50%, rgba(0, 255, 136, 0.05) 0%, transparent 70%)',
+            background: `radial-gradient(circle at 50% 50%, rgba(${primaryColor}, 0.05) 0%, transparent 70%)`,
           }}
           animate={isVisible ? {
             scale: [1, 1.2, 1],
@@ -87,7 +112,7 @@ function PortfolioHolographic() {
         <div
           className="absolute inset-0 pointer-events-none"
           style={{
-            backgroundImage: 'repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0, 255, 136, 0.03) 2px, rgba(0, 255, 136, 0.03) 4px)',
+            backgroundImage: `repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(${primaryColor}, 0.03) 2px, rgba(${primaryColor}, 0.03) 4px)`,
             maskImage: 'linear-gradient(to bottom, white 0%, white 85%, transparent 100%)',
             WebkitMaskImage: 'linear-gradient(to bottom, white 0%, white 85%, transparent 100%)',
           }}
@@ -97,10 +122,9 @@ function PortfolioHolographic() {
       <div className="w-full relative z-10" ref={containerRef}>
         <motion.div {...fadeIn}>
           <motion.h2
-            className="font-display font-bold text-center mb-3 md:mb-1"
+            className="font-display font-bold text-center mb-3 md:mb-1 leading-tight"
             style={{
-              lineHeight: '1.3',
-              textShadow: '0 0 20px rgba(0, 0, 205, 0.3)'
+              textShadow: `0 0 20px rgba(${primaryColor}, 0.3)`
             }}
           >
             Tohle postavila žena, která neumí programovat.
@@ -135,7 +159,7 @@ function PortfolioHolographic() {
                         className="w-full h-full object-cover"
                         style={{
                           filter: 'brightness(0.9)',
-                          boxShadow: '0 4px 12px rgba(0, 255, 136, 0.2)',
+                          boxShadow: `0 4px 12px rgba(${primaryColor}, 0.2)`,
                         }}
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
@@ -155,8 +179,7 @@ function PortfolioHolographic() {
           {/* Tablet & Desktop (>=640px): 3D carousel with animations */}
           <div className="hidden sm:block">
             <motion.div
-                className="relative h-[280px] md:h-[350px] flex items-center justify-center cursor-grab active:cursor-grabbing"
-                style={{ willChange: 'transform' }}
+                className="relative h-[280px] md:h-[350px] flex items-center justify-center cursor-grab active:cursor-grabbing will-change-transform"
                 drag="x"
                 dragConstraints={{ left: 0, right: 0 }}
                 dragElastic={0.1}
@@ -176,6 +199,8 @@ function PortfolioHolographic() {
                       rotation={rotation}
                       dragRotation={dragRotation}
                       totalProjects={projects.length}
+                      primaryColor={primaryColor}
+                      secondaryColor={secondaryColor}
                     />
                   ))}
                 </div>
@@ -199,7 +224,7 @@ function PortfolioHolographic() {
 }
 
 // Carousel Item component - extracted to use hooks properly
-const CarouselItem = memo(function CarouselItem({ project, index, rotation, dragRotation, totalProjects }) {
+const CarouselItem = memo(function CarouselItem({ project, index, rotation, dragRotation, totalProjects, primaryColor, secondaryColor }) {
   const angle = (360 / totalProjects) * index
   const radius = 450
 
@@ -242,12 +267,12 @@ const CarouselItem = memo(function CarouselItem({ project, index, rotation, drag
         willChange: 'transform, opacity'
       }}
     >
-      <HolographicCard project={project} zDepth={z} />
+      <HolographicCard project={project} zDepth={z} primaryColor={primaryColor} secondaryColor={secondaryColor} />
     </motion.div>
   )
 })
 
-const HolographicCard = memo(function HolographicCard({ project, zDepth }) {
+const HolographicCard = memo(function HolographicCard({ project, zDepth, primaryColor, secondaryColor }) {
   const [isHovered, setIsHovered] = useState(false)
 
   const glowOpacity = useTransform(
@@ -261,8 +286,7 @@ const HolographicCard = memo(function HolographicCard({ project, zDepth }) {
 
   return (
     <motion.div
-      className="relative w-[280px] md:w-[380px] aspect-[4/3]"
-      style={{ willChange: 'transform' }}
+      className="relative w-[280px] md:w-[380px] aspect-[4/3] will-change-transform"
       onHoverStart={handleHoverStart}
       onHoverEnd={handleHoverEnd}
       whileHover={{ scale: 1.05 }}
@@ -273,7 +297,7 @@ const HolographicCard = memo(function HolographicCard({ project, zDepth }) {
         className="absolute -inset-4 rounded-3xl opacity-0"
         style={{
           opacity: glowOpacity,
-          background: 'linear-gradient(45deg, rgba(0, 255, 136, 0.4), rgba(0, 200, 255, 0.4))',
+          background: `linear-gradient(45deg, rgba(${primaryColor}, 0.4), rgba(${secondaryColor}, 0.4))`,
           filter: 'blur(20px)',
           willChange: 'opacity'
         }}
@@ -292,7 +316,7 @@ const HolographicCard = memo(function HolographicCard({ project, zDepth }) {
         <motion.div
           className="absolute inset-0 opacity-30"
           style={{
-            background: 'linear-gradient(135deg, transparent 30%, rgba(0, 255, 136, 0.3) 50%, transparent 70%)',
+            background: `linear-gradient(135deg, transparent 30%, rgba(${primaryColor}, 0.3) 50%, transparent 70%)`,
           }}
           animate={{
             backgroundPosition: ['0% 0%', '200% 200%'],
@@ -308,7 +332,7 @@ const HolographicCard = memo(function HolographicCard({ project, zDepth }) {
         <div
           className="absolute inset-0 pointer-events-none opacity-20"
           style={{
-            backgroundImage: 'repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(0, 255, 136, 0.1) 3px, rgba(0, 255, 136, 0.1) 6px)',
+            backgroundImage: `repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(${primaryColor}, 0.1) 3px, rgba(${primaryColor}, 0.1) 6px)`,
           }}
         />
 
@@ -346,8 +370,8 @@ const HolographicCard = memo(function HolographicCard({ project, zDepth }) {
           <motion.h3
             className="font-display font-bold text-lg md:text-xl"
             style={{
-              color: 'rgba(0, 255, 136, 0.9)',
-              textShadow: '0 0 10px rgba(0, 255, 136, 0.3)',
+              color: `rgba(${primaryColor}, 0.9)`,
+              textShadow: `0 0 10px rgba(${primaryColor}, 0.3)`,
             }}
           >
             {project.name}

@@ -32,6 +32,7 @@ function ScrollToTop() {
       aria-label="Zpět nahoru"
       className="scroll-to-top-btn"
       style={{
+        // Fixed positioning required for portal, inline to override global button styles
         position: 'fixed',
         right: '24px',
         bottom: '24px',
@@ -40,8 +41,8 @@ function ScrollToTop() {
         background: 'transparent',
         border: 'none',
         cursor: 'pointer',
-        opacity: isVisible ? 1 : 0,
-        transform: 'none',
+        opacity: isVisible ? 1 : 0, // Dynamic opacity
+        transform: 'none', // Override button hover transform
         transition: 'opacity 0.3s ease',
       }}
     >

@@ -67,8 +67,7 @@ export default function CookieBanner() {
           animate={{ y: 0, opacity: 1 }}
           exit={{ y: 100, opacity: 0 }}
           transition={{ type: "spring", damping: 25, stiffness: 200 }}
-          className="bottom-4 left-4 right-4 md:left-auto md:right-6 md:max-w-md z-[9999]"
-          style={{ position: 'fixed' }}
+          className="fixed bottom-4 left-4 right-4 md:left-auto md:right-6 md:max-w-md z-[9999]"
         >
           <div className="relative bg-[#1a1a2e] backdrop-blur-lg border-2 border-accent/30 rounded-2xl p-5 shadow-2xl shadow-accent/20">
             {/* Zavírací tlačítko */}

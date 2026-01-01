@@ -13,7 +13,7 @@ function ComparisonCard({ data, direction, delay, background = "light" }) {
       initial={{ opacity: 0, x: direction === "left" ? -50 : 50 }}
       whileInView={{ opacity: 1, x: 0 }}
       transition={{ duration: 0.6 }}
-      className="!px-2"
+      className="!pl-12 !pr-6"
     >
       <div className="mb-6 text-center">
         <h3 className="font-display font-bold mb-2">

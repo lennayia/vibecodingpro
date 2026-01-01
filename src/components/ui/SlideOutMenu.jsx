@@ -5,19 +5,8 @@ import ThemeToggle from './ThemeToggle'
 import { useState, useEffect } from 'react'
 
 export default function SlideOutMenu({ isOpen, onOpen, onClose }) {
-  const [isDark, setIsDark] = useState(true)
   const [activeSection, setActiveSection] = useState('')
   const [dragStartPos, setDragStartPos] = useState(null)
-
-  useEffect(() => {
-    const checkTheme = () => {
-      setIsDark(document.documentElement.classList.contains('dark'))
-    }
-    checkTheme()
-    const observer = new MutationObserver(checkTheme)
-    observer.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] })
-    return () => observer.disconnect()
-  }, [])
 
   // Track active section with Intersection Observer
   useEffect(() => {
@@ -136,21 +125,7 @@ export default function SlideOutMenu({ isOpen, onOpen, onClose }) {
                 onClose()
               }
             }}
-            style={{
-              position: 'fixed',
-              top: '0.5rem',
-              right: 0,
-              width: '4rem',
-              zIndex: 99999,
-              background: isDark ? 'rgba(7, 7, 22, 0.6)' : 'rgba(255, 253, 249, 0.85)',
-              backdropFilter: 'blur(20px)',
-              WebkitBackdropFilter: 'blur(20px)',
-              boxShadow: isDark
-                ? '-10px 0 40px rgba(0, 0, 205, 0.3), -5px 0 20px rgba(0, 0, 205, 0.2)'
-                : '-10px 0 40px rgba(181, 108, 78, 0.2), -5px 0 20px rgba(181, 108, 78, 0.15)',
-              borderRadius: '12px 0 0 12px'
-            }}
-            className="flex flex-col items-center py-4 gap-4 cursor-grab active:cursor-grabbing"
+            className="menu-panel flex flex-col items-center py-4 gap-4 cursor-grab active:cursor-grabbing"
           >
             {/* Close button */}
             <button
@@ -165,7 +140,7 @@ export default function SlideOutMenu({ isOpen, onOpen, onClose }) {
             </button>
 
             {/* Divider */}
-            <div style={{ width: '32px', height: '1px', background: isDark ? 'rgba(0, 0, 205, 0.4)' : 'rgba(181, 108, 78, 0.3)' }} />
+            <div className="menu-divider" />
 
             {/* Theme toggle */}
             <div className="flex justify-center">
@@ -173,7 +148,7 @@ export default function SlideOutMenu({ isOpen, onOpen, onClose }) {
             </div>
 
             {/* Divider */}
-            <div style={{ width: '32px', height: '1px', background: isDark ? 'rgba(0, 0, 205, 0.4)' : 'rgba(181, 108, 78, 0.3)' }} />
+            <div className="menu-divider" />
 
             {/* Navigation links */}
             <nav className="flex flex-col gap-3">

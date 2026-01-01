@@ -49,9 +49,9 @@ export default function Hero() {
       className="text-center md:text-left w-full md:max-w-[60%] flex flex-col justify-center gap-6 md:gap-[clamp(1rem,2vh,1.5rem)] relative vignette-gradient md:ml-[5%]"
     >
       {/* Badge */}
-      <motion.div variants={itemVariants} className="inline-block" style={{ marginBottom: 'clamp(-0.5rem, -1vh, -0.25rem)' }}>
+      <motion.div variants={itemVariants} className="inline-block hero-badge-spacing">
         <span
-          className="px-3 py-1.5 md:px-4 md:py-2 backdrop-blur-sm rounded-full font-normal border border-[#B56C4E]/40 dark:border-[#0DDD0D]/40 text-[#B56C4E] dark:text-[#0DDD0D] text-sm"
+          className="px-3 py-1.5 md:px-4 md:py-2 backdrop-blur-sm rounded-xl font-normal border border-accent/40 text-accent text-sm"
         >
           Máte vizi? To stačí.
         </span>
@@ -59,29 +59,17 @@ export default function Hero() {
 
       {/* Brand Name */}
       <motion.div variants={itemVariants} className="flex flex-col items-center md:items-start">
-        <motion.h1
-          className="font-display font-medium text-gradient"
-          style={{
-            fontSize: 'clamp(1.75rem, 4vw + 2vh, 4rem)',
-            lineHeight: '1.1',
-            letterSpacing: '0.02em'
-          }}
-        >
+        <motion.h1 className="font-display font-medium text-gradient text-fluid-hero-h1">
           Vibecoding
         </motion.h1>
         {/* Elegant copper divider line */}
-        <div className="copper-divider-line mt-4" style={{ marginBottom: 'clamp(1rem, 2vh, 2rem)' }} />
+        <div className="copper-divider-line mt-4 hero-divider-spacing" />
       </motion.div>
 
       {/* Main Heading */}
       <motion.h1
         variants={itemVariants}
-        className="font-display font-bold dark:font-medium"
-        style={{
-          fontSize: 'clamp(1.75rem, 4vw + 2vh, 4rem)',
-          lineHeight: '1.2',
-          marginTop: 'clamp(-0.5rem, -1vh, -0.25rem)'
-        }}
+        className="font-display font-bold dark:font-medium hero-main-heading"
       >
         {displayedText.split('. ')[0]}{displayedText.includes('. ') && '.'}
         <br className="hidden min-[700px]:block" />
@@ -98,13 +86,7 @@ export default function Hero() {
       {/* Subheading/Tagline */}
       <motion.h2
         variants={itemVariants}
-        className="font-display font-semibold text-gradient"
-        style={{
-          fontSize: 'clamp(1.25rem, 2.5vw + 1vh, 2.5rem)',
-          lineHeight: '1.3',
-          marginTop: 'clamp(0.5rem, 1vh, 1rem)',
-          letterSpacing: '0.02em'
-        }}
+        className="font-display font-semibold text-gradient text-fluid-hero-h2"
       >
         Tvořte. Automatizujte. Vydělávejte.
       </motion.h2>
@@ -112,36 +94,25 @@ export default function Hero() {
       {/* Paragraph - List with elegant bullets */}
       <motion.ul
         variants={itemVariants}
-        className="max-w-3xl mx-auto md:mx-0 text-center md:text-left font-light space-y-2 text-base text-[#2E2E2E] dark:text-[#e1e1e1]"
-        style={{
-          lineHeight: '1.6',
-          marginTop: 'clamp(-1rem, -2vh, -0.5rem)',
-          listStyle: 'none'
-        }}
+        className="max-w-3xl mx-auto md:mx-0 text-center md:text-left font-light space-y-2 text-base text-[#2E2E2E] dark:text-[#e1e1e1] hero-list"
       >
         <li className="flex items-center justify-center md:justify-start gap-3">
-          <span className="text-[#B56C4E] dark:text-[#0DDD0D] font-mono" style={{ fontSize: '1.2em' }}>&gt;</span>
-          <span style={{ fontWeight: 300 }}>Ať systémy pracují za vás 24/7</span>
+          <span className="text-accent font-mono text-[1.2em]">&gt;</span>
+          <span className="font-light">Ať systémy pracují za vás 24/7</span>
         </li>
         <li className="flex items-center justify-center md:justify-start gap-3">
-          <span className="text-[#B56C4E] dark:text-[#0DDD0D] font-mono" style={{ fontSize: '1.2em' }}>&gt;</span>
-          <span style={{ fontWeight: 300 }}>Vy si užívejte růst a svobodu</span>
+          <span className="text-accent font-mono text-[1.2em]">&gt;</span>
+          <span className="font-light">Vy si užívejte růst a svobodu</span>
         </li>
       </motion.ul>
 
       {/* CTA Section */}
       <motion.div
         variants={itemVariants}
-        className="flex flex-col items-center md:items-start max-w-2xl mx-auto md:mx-0"
-        style={{
-          gap: 'clamp(0.75rem, 2vh, 1.25rem)',
-          paddingTop: 'clamp(4rem, 8vh, 6rem)',
-          paddingBottom: '0'
-        }}
+        className="flex flex-col items-center md:items-start max-w-2xl mx-auto md:mx-0 hero-cta-spacing"
       >
         <p
-          className="text-center md:text-left text-base text-[#2E2E2E] dark:text-[#e1e1e1]"
-          style={{ lineHeight: '1.6', fontWeight: 300 }}
+          className="text-center md:text-left text-base text-[#2E2E2E] dark:text-[#e1e1e1] leading-relaxed font-light"
         >
           Podívejte se, co všechno můžete vytvořit.
         </p>

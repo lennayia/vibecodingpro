@@ -27,6 +27,11 @@
     --transition-base: 0.3s ease;
     --transition-slow: 0.6s ease-out;
 
+    /* SlideOutMenu variables */
+    --menu-bg: rgba(255, 253, 249, 0.85);
+    --menu-shadow: -10px 0 40px rgba(181, 108, 78, 0.2), -5px 0 20px rgba(181, 108, 78, 0.15);
+    --menu-divider: rgba(181, 108, 78, 0.3);
+
     /* Color scheme meta */
     color-scheme: light dark;
   }
@@ -34,6 +39,11 @@
   /* Dark mode keeps Manrope (sans-serif) */
   .dark {
     --font-display: 'Manrope', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+
+    /* SlideOutMenu dark mode overrides */
+    --menu-bg: rgba(7, 7, 22, 0.6);
+    --menu-shadow: -10px 0 40px rgba(0, 0, 205, 0.3), -5px 0 20px rgba(0, 0, 205, 0.2);
+    --menu-divider: rgba(0, 0, 205, 0.4);
   }
 
   /* Performance optimizations */
@@ -148,6 +158,14 @@
 
   .dark .border-accent {
     border-color: var(--color-accent-dark) !important;
+  }
+
+  .border-accent\/40 {
+    border-color: rgba(181, 108, 78, 0.4) !important;
+  }
+
+  .dark .border-accent\/40 {
+    border-color: rgba(13, 221, 13, 0.4) !important;
   }
 
   .text-error {
@@ -399,16 +417,16 @@
     opacity: 0.8;
   }
 
-  .bg-accent {
-    background-color: var(--color-accent-light);
+  .bg-accent\/10 {
+    background-color: rgba(181, 108, 78, 0.1);
   }
 
-  .dark .bg-accent {
-    background-color: var(--color-accent-dark);
+  .dark .bg-accent\/10 {
+    background-color: rgba(13, 221, 13, 0.1);
   }
 
   .bg-accent\/90 {
-    background-color: rgba(0, 0, 205, 0.9);
+    background-color: rgba(181, 108, 78, 0.9);
   }
 
   .dark .bg-accent\/90 {
@@ -745,5 +763,149 @@
 
   .dark .copper-divider-line {
     background: linear-gradient(to right, transparent, #0DDD0D, transparent);
+  }
+
+  /* Hero section utility classes - fluid typography and spacing */
+  .hero-badge-spacing {
+    margin-bottom: clamp(-0.5rem, -1vh, -0.25rem);
+  }
+
+  .text-fluid-hero-h1 {
+    font-size: clamp(1.75rem, 4vw + 2vh, 4rem);
+    line-height: 1.1;
+    letter-spacing: 0.02em;
+  }
+
+  .text-fluid-hero-h2 {
+    font-size: clamp(1.25rem, 2.5vw + 1vh, 2.5rem);
+    line-height: 1.3;
+    letter-spacing: 0.02em;
+    margin-top: clamp(0.5rem, 1vh, 1rem);
+  }
+
+  .hero-divider-spacing {
+    margin-bottom: clamp(1rem, 2vh, 2rem);
+  }
+
+  .hero-main-heading {
+    font-size: clamp(1.75rem, 4vw + 2vh, 4rem);
+    line-height: 1.2;
+    margin-top: clamp(-0.5rem, -1vh, -0.25rem);
+  }
+
+  .hero-list {
+    line-height: 1.6;
+    margin-top: clamp(-1rem, -2vh, -0.5rem);
+    list-style: none;
+  }
+
+  .hero-cta-spacing {
+    gap: clamp(0.75rem, 2vh, 1.25rem);
+    padding-top: clamp(4rem, 8vh, 6rem);
+    padding-bottom: 0;
+  }
+
+  /* SlideOutMenu utility classes */
+  .menu-panel {
+    position: fixed;
+    top: 0.5rem;
+    right: 0;
+    width: 4rem;
+    z-index: 99999;
+    background: var(--menu-bg);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    box-shadow: var(--menu-shadow);
+    border-radius: 12px 0 0 12px;
+  }
+
+  .menu-divider {
+    width: 32px;
+    height: 1px;
+    background: var(--menu-divider);
+  }
+
+  /* Navigation utility classes */
+  .nav-logo-container {
+    position: fixed;
+    top: 0.5rem;
+    z-index: 10000;
+    transition: right 0.3s;
+  }
+
+  .sticky-header {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    width: 100% !important;
+    z-index: 9999 !important;
+  }
+
+  /* PricingCard utilities */
+  .pricing-card-gradient {
+    background: linear-gradient(135deg, rgba(181, 108, 78, 0.05) 0%, rgba(181, 108, 78, 0.02) 100%);
+  }
+
+  .dark .pricing-card-gradient {
+    background: linear-gradient(135deg, rgba(13, 221, 13, 0.08) 0%, rgba(13, 221, 13, 0.03) 100%);
+  }
+
+  .pricing-card-popular {
+    border: 2px solid #B56C4E;
+    box-shadow: 0 0 30px rgba(181, 108, 78, 0.3);
+  }
+
+  .dark .pricing-card-popular {
+    border-color: #0DDD0D;
+    box-shadow: 0 0 30px rgba(13, 221, 13, 0.3);
+  }
+
+  /* Spacing utilities using clamp */
+  .spacing-section-y {
+    padding-top: clamp(2rem, 8vh, 4rem);
+    padding-bottom: clamp(2rem, 8vh, 4rem);
+  }
+
+  .spacing-section-x {
+    padding-left: clamp(1rem, 4vw, 2rem);
+    padding-right: clamp(1rem, 4vw, 2rem);
+  }
+
+  .spacing-heading-mb {
+    margin-bottom: clamp(1rem, 3vh, 2rem);
+  }
+
+  .spacing-card-gap {
+    gap: clamp(1rem, 2vh, 1.5rem);
+  }
+
+  /* Additional utility classes for refactoring */
+  .text-body {
+    color: #2E2E2E;
+  }
+
+  .dark .text-body {
+    color: #e1e1e1;
+  }
+
+  /* Holographic sections - sand headings, soft white text */
+  .holographic-text {
+    color: #f2f2f2 !important;
+  }
+
+  .holographic-text h1,
+  .holographic-text h2,
+  .holographic-text h3,
+  .holographic-text h4,
+  .holographic-text h5,
+  .holographic-text h6 {
+    color: #D4C5B5 !important;
+  }
+
+  .holographic-text p,
+  .holographic-text span,
+  .holographic-text li {
+    color: #f2f2f2 !important;
   }
 }

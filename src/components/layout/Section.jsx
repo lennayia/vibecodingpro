@@ -3,18 +3,23 @@ import ScrollDownIndicator from '../ui/ScrollDownIndicator'
 
 const bgClasses = {
   light: "bg-white dark:bg-[#0a0a1a]",
-  dark: "bg-[#f2f2f2] dark:bg-[#05050f]",
-  gradient: "bg-gradient-to-b from-[#FFFDF9] via-[#FFFDF9] to-[#D4C5B5]/20 dark:from-[#0a0a1a] dark:to-[#0a0a1a]",
+  dark: "bg-[#f2f2f2] dark:bg-[#05050f]", // Responzivní: světlé v light mode, tmavé v dark mode
+  holographic: "bg-[#05050f]", // Vždy tmavé pozadí pro holografické efekty
+  gradient: "bg-gradient-to-b from-[#FFFDF9] via-[#FFFDF9] to-[#FFFDF9] dark:from-[#0a0a1a] dark:to-[#0a0a1a]",
   none: ""
 }
 
 function Section({ children, className = "", background = "light", showScrollIndicator = false, maxWidth = null, backgroundElement = null, centered = false, id = undefined }) {
   const maxWidthClass = maxWidth || "max-w-7xl"
-  const centeredClasses = centered ? "min-h-[calc(100vh-4rem)] mt-16 flex items-center justify-center" : ""
+  const centeredClasses = centered ? "min-h-screen pt-16 flex items-center justify-center" : ""
   const paddingClasses = centered ? "px-[4%]" : "py-4 md:py-28 lg:py-32 px-[4%]"
+  // Force dark text styles when background is always dark (for holographic sections)
+  const forceDarkMode = background === "holographic" ? "dark" : ""
+  // Use sand/beige colors for holographic sections
+  const holographicText = background === "holographic" ? "holographic-text" : ""
 
   return (
-    <section id={id} className={`${paddingClasses} ${bgClasses[background]} ${centeredClasses} ${className} relative overflow-hidden`}>
+    <section id={id} className={`${paddingClasses} ${bgClasses[background]} ${centeredClasses} ${forceDarkMode} ${holographicText} ${className} relative overflow-hidden`}>
       {backgroundElement}
       <div className={`${maxWidthClass} w-full mx-auto relative z-10`}>
         {children}

@@ -29,20 +29,19 @@ export default function ComparisonSeo() {
     return () => window.removeEventListener('themeChange', handleThemeChange)
   }, [])
 
-  // Colors based on theme
-  // Light mode: blue tones
-  // Dark mode: green/cyan tones
-  const primaryColor = isDark ? '0, 255, 136' : '0, 0, 205'
-  const secondaryColor = isDark ? '0, 200, 255' : '65, 105, 225' // RoyalBlue for light mode
+  // Section is always dark, but colors adapt to theme:
+  // Light mode: copper holographic effects
+  // Dark mode: green holographic effects
+  const primaryColor = isDark ? '0, 255, 136' : '181, 108, 78' // Green in dark, Copper in light
+  const secondaryColor = isDark ? '0, 200, 255' : '212, 197, 181' // Cyan in dark, Beige in light
 
   return (
-    <Section id="story" background="light" centered={true} className="!pt-12 md:!pt-2 !pb-12 md:!pb-6 lg:!pt-4 lg:!pb-8 relative overflow-hidden" showScrollIndicator={true}>
+    <Section id="story" background="holographic" centered={true} className="!pt-12 md:!pt-2 !pb-12 md:!pb-6 lg:!pt-4 lg:!pb-8 relative overflow-hidden" showScrollIndicator={true}>
       {/* Modern Mesh Gradient Background */}
       <div className="absolute inset-0 z-0 opacity-80">
         {/* Multi-point mesh gradient with organic movement */}
         <motion.div
-          className="absolute inset-0 blur-2xl md:blur-3xl"
-          style={{ willChange: 'transform' }}
+          className="absolute inset-0 blur-2xl md:blur-3xl will-change-transform"
           animate={{
             background: [
               `radial-gradient(circle at 20% 20%, rgba(${primaryColor}, 0.4) 0%, transparent 50%),
@@ -165,12 +164,12 @@ export default function ComparisonSeo() {
         <motion.div
           className="hidden md:block absolute inset-0 pointer-events-none"
           style={{
-            backgroundImage: `repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(${primaryColor}, 0.15) 2px, rgba(${primaryColor}, 0.15) 4px)`,
+            backgroundImage: `repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(${primaryColor}, 0.35) 2px, rgba(${primaryColor}, 0.35) 4px)`,
             willChange: 'transform, opacity',
           }}
           animate={{
             y: [0, -100],
-            opacity: [0.2, 0.3, 0.2],
+            opacity: [0.4, 0.6, 0.4],
           }}
           transition={{
             y: {
@@ -188,8 +187,7 @@ export default function ComparisonSeo() {
 
         {/* Color shift overlay - covering whole section */}
         <motion.div
-          className="hidden md:block absolute inset-0 mix-blend-overlay"
-          style={{ willChange: 'transform' }}
+          className="hidden md:block absolute inset-0 mix-blend-overlay will-change-transform"
           animate={{
             background: [
               `linear-gradient(180deg, rgba(${primaryColor},0) 0%, rgba(${primaryColor},0.2) 50%, rgba(${primaryColor},0) 100%)`,
@@ -215,7 +213,7 @@ export default function ComparisonSeo() {
 
       <div className="relative z-10">
         <motion.div {...fadeIn}>
-          <h2 className="font-display font-bold mb-4 md:mb-2 text-center" style={{ lineHeight: '1.3' }}>
+          <h2 className="font-display font-bold mb-4 md:mb-2 text-center leading-tight">
             Dobré nástroje posouvají
           </h2>
           <h3 className="font-display font-bold mb-6 md:mb-4 text-center">

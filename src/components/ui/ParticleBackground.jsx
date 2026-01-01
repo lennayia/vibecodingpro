@@ -12,6 +12,12 @@ export default function ParticleBackground({
   const animationFrameId = useRef(null)
   const isVisibleRef = useRef(true)
   const [isMobile, setIsMobile] = useState(false)
+  const [isDark, setIsDark] = useState(() => {
+    if (typeof window !== 'undefined') {
+      return document.documentElement.classList.contains('dark')
+    }
+    return true
+  })
 
   // Detect mobile (<640px) and disable particles completely for performance
   // Tablets (>=640px) get particles
@@ -24,6 +30,18 @@ export default function ParticleBackground({
     return () => window.removeEventListener('resize', checkMobile)
   }, [])
 
+  // Track theme changes
+  useEffect(() => {
+    const checkTheme = () => {
+      setIsDark(document.documentElement.classList.contains('dark'))
+    }
+    checkTheme()
+
+    const handleThemeChange = () => checkTheme()
+    window.addEventListener('themeChange', handleThemeChange)
+    return () => window.removeEventListener('themeChange', handleThemeChange)
+  }, [])
+
   useEffect(() => {
     const canvas = canvasRef.current
     if (!canvas) return
@@ -33,11 +51,8 @@ export default function ParticleBackground({
     let width = parentElement.clientWidth
     let height = parentElement.clientHeight
 
-    // Check dark mode
-    const isDark = document.documentElement.classList.contains('dark')
-    // Light mode: blue (#0000CD) = rgb(0, 0, 205)
-    // Dark mode: green (#0DDD0D) = rgb(13, 221, 13)
-    const particleColor = isDark ? '13, 221, 13' : '0, 0, 205'
+    // Always use copper brand color for particles
+    const particleColor = '181, 108, 78' // Copper
 
     // Reduced particle count on mobile, normal on desktop
     const particleCount = customParticleCount || (isMobile ? 30 : 80)
@@ -227,13 +242,13 @@ export default function ParticleBackground({
         cancelAnimationFrame(animationFrameId.current)
       }
     }
-  }, [customParticleCount, showConnections, mouseInteraction, isMobile])
+  }, [customParticleCount, showConnections, mouseInteraction, isMobile, isDark])
 
   return (
     <canvas
       ref={canvasRef}
       className="absolute inset-0 z-0 pointer-events-none"
-      style={{ opacity }}
+      style={{ opacity }} // Dynamic opacity based on prop
     />
   )
 }

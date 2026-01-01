@@ -34,7 +34,7 @@ export default function PromoCoupon() {
           >
             <div className="flex items-center justify-center gap-3 md:gap-[clamp(0.5rem,1vh,0.75rem)] mb-4 md:mb-[clamp(0.75rem,1.5vh,1rem)]">
               <Gift className="w-10 h-10 md:w-12 md:h-12 text-accent" strokeWidth={2} />
-              <h2 className="font-display font-bold" style={{ lineHeight: '1.3' }}>
+              <h2 className="font-display font-bold" leading-tight>
                 Povánoční dárek od VibecodingPro
               </h2>
               <Gift className="w-10 h-10 md:w-12 md:h-12 text-accent" strokeWidth={2} />
@@ -96,11 +96,7 @@ export default function PromoCoupon() {
               {/* Corner ribbon with -25% */}
               <div className="absolute -top-1 -right-1 overflow-hidden w-36 h-36 md:w-44 md:h-44 rounded-tr-3xl">
                 <motion.div
-                  className="absolute top-8 -right-11 md:top-10 md:-right-14 w-44 md:w-52 bg-accent text-black text-center font-black py-2 md:py-3 shadow-2xl"
-                  style={{
-                    transform: 'rotate(45deg)',
-                    transformOrigin: 'center center'
-                  }}
+                  className="absolute top-8 -right-11 md:top-10 md:-right-14 w-44 md:w-52 bg-accent text-black text-center font-black py-2 md:py-3 shadow-2xl rotate-45 origin-center"
                   animate={{
                     boxShadow: [
                       '0 4px 20px rgba(0, 255, 136, 0.5)',
@@ -114,7 +110,7 @@ export default function PromoCoupon() {
                     ease: "easeInOut"
                   }}
                 >
-                  <span className="text-2xl md:text-3xl" style={{ textShadow: '2px 2px 4px rgba(0, 0, 0, 0.2)' }}>
+                  <span className="text-2xl md:text-3xl drop-shadow-md">
                     -25%
                   </span>
                 </motion.div>

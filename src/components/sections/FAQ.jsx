@@ -32,7 +32,7 @@ export default function FAQSeo() {
           <div className="text-center mb-8 md:mb-[clamp(2rem,4vh,4rem)]">
             <div className="flex items-center justify-center gap-4 md:gap-[clamp(0.75rem,1.5vh,1.5rem)] mb-6 md:mb-[clamp(1rem,2vh,2rem)]">
               <HelpCircle className="w-8 h-8 text-white dark:text-white" strokeWidth={2} />
-              <h2 className="font-display font-bold" style={{ lineHeight: '1.3' }}>
+              <h2 className="font-display font-bold leading-tight">
                 Ptáte se
               </h2>
             </div>

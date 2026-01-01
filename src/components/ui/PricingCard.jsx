@@ -171,13 +171,10 @@ function PricingCard({
       ref={cardRef}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      className="h-full"
-      style={{
-        perspective: '1000px'
-      }}
+      className="h-full perspective-1000"
     >
       <motion.div
-        className="h-full"
+        className="h-full transform-3d"
         animate={{
           rotateX,
           rotateY
@@ -187,17 +184,13 @@ function PricingCard({
           stiffness: 300,
           damping: 20
         }}
-        style={{
-          transformStyle: 'preserve-3d'
-        }}
       >
         <Card background="light" animate={true} delay={delay} className="relative overflow-visible shadow-lg hover:shadow-xl transition-shadow duration-300 border-accent/20 dark:border-accent/10 h-full">
           {/* Shine effect */}
           <motion.div
-            className="absolute inset-0 pointer-events-none opacity-0 hover:opacity-20 transition-opacity duration-300"
+            className="absolute inset-0 pointer-events-none opacity-0 hover:opacity-20 transition-opacity duration-300 radial-shine"
             style={{
-              background: `radial-gradient(circle at ${shinePosition.x}% ${shinePosition.y}%, rgba(0, 255, 136, 0.3) 0%, transparent 50%)`,
-              zIndex: 1
+              backgroundPosition: `${shinePosition.x}% ${shinePosition.y}%`
             }}
           />
 
@@ -220,30 +213,30 @@ function PricingCard({
       </div>
 
       <div className="flex-1 flex flex-col">
-        <div className="text-center" style={{ marginBottom: 'clamp(0.5rem, 1vh, 1rem)' }}>
-        <div className="relative inline-block mx-auto" style={{ marginBottom: 'clamp(0.25rem, 0.5vh, 0.5rem)' }}>
+        <div className="text-center mb-clamp-md">
+        <div className="relative inline-block mx-auto mb-clamp-sm">
           <div className="absolute inset-0 bg-accent/10 blur-lg animate-pulse" />
           <h3 className="relative font-display font-bold text-accent drop-shadow-[0_0_20px_rgba(0,255,136,0.6)]">
             {title}
           </h3>
         </div>
-        <p className="font-light" style={{ marginBottom: 'clamp(0.25rem, 0.5vh, 0.5rem)' }}>{duration}</p>
+        <p className="font-light mb-clamp-sm">{duration}</p>
         {serviceType && (
-          <div style={{ marginBottom: 'clamp(0.25rem, 0.5vh, 0.5rem)' }}>
+          <div className="mb-clamp-sm">
             <p className="text-base font-extralight text-center">{serviceType}</p>
           </div>
         )}
         <p className="text-sm font-extralight" dangerouslySetInnerHTML={{ __html: description }} />
       </div>
 
-      <div className="text-center" style={{ marginBottom: 'clamp(0.5rem, 1vh, 1rem)' }}>
+      <div className="text-center mb-clamp-md">
         <h3 className="font-display font-bold text-accent">
           {price}
         </h3>
       </div>
 
       {/* Accordion for phases */}
-      <div style={{ marginBottom: 'clamp(1rem, 2vh, 2rem)' }}>
+      <div className="mb-clamp-lg">
         <button
           onClick={() => setIsAccordionOpen(!isAccordionOpen)}
           className="accordion-btn flex items-center justify-center gap-2 text-sm font-semibold text-accent hover:text-accent/80 transition-colors mx-auto py-1 px-2 rounded-lg border border-accent/30 hover:border-accent/50 min-w-[140px]"
@@ -266,7 +259,7 @@ function PricingCard({
               transition={{ duration: 0.3 }}
               className="overflow-hidden"
             >
-              <div className="text-left text-xs px-1" style={{ marginTop: 'clamp(0.5rem, 1vh, 0.75rem)', display: 'flex', flexDirection: 'column', gap: 'clamp(0.15rem, 0.3vh, 0.3rem)' }}>
+              <div className="text-left text-xs px-1 mt-clamp-phases flex-col-clamp-gap">
                 {packagePhases.map((phase, index) => (
                   <div key={phase.number} className="font-light flex items-center gap-1.5 leading-none">
                     <span className="text-accent font-semibold text-xs flex-shrink-0 leading-none">{phase.number}</span>
@@ -280,7 +273,7 @@ function PricingCard({
       </div>
 
       {packageBonuses.length > 0 && (
-        <div style={{ marginBottom: 'clamp(1rem, 2vh, 2rem)' }}>
+        <div className="mb-clamp-lg">
           <button
             onClick={() => setIsBonusAccordionOpen(!isBonusAccordionOpen)}
             className="accordion-btn flex items-center justify-center gap-2 text-sm font-semibold text-accent hover:text-accent/80 transition-colors mx-auto py-1 px-2 rounded-lg border border-accent/30 hover:border-accent/50 min-w-[140px]"
@@ -304,7 +297,7 @@ function PricingCard({
                 transition={{ duration: 0.3 }}
                 className="overflow-hidden"
               >
-                <div className="text-left text-xs px-1" style={{ marginTop: 'clamp(0.5rem, 1vh, 0.75rem)', display: 'flex', flexDirection: 'column', gap: 'clamp(0.15rem, 0.3vh, 0.3rem)' }}>
+                <div className="text-left text-xs px-1 mt-clamp-phases flex-col-clamp-gap">
                   {packageBonuses.map((bonus, index) => {
                     const IconComponent = bonus.icon
                     const value = bonus[title === "VIBE" ? 'vibe' : title === "VIBE+CODING" ? 'vibeCode' : 'vibeCoding']
@@ -329,8 +322,8 @@ function PricingCard({
       )}
 
       {discount && (
-        <div className="text-center" style={{ marginBottom: 'clamp(1rem, 2vh, 2rem)' }}>
-          <div className="flex items-center justify-center gap-2" style={{ marginBottom: 'clamp(0.25rem, 0.5vh, 0.5rem)' }}>
+        <div className="text-center mb-clamp-lg">
+          <div className="flex items-center justify-center gap-2 mb-clamp-sm">
             <Ticket className="w-4 h-4 text-accent flex-shrink-0" strokeWidth={2} />
             <span className="font-semibold text-accent text-sm leading-none">KUPÓN {discount.split(' na ')[0]}</span>
           </div>
@@ -341,13 +334,13 @@ function PricingCard({
       )}
 
       {/* Result section - ALWAYS VISIBLE (no accordion) */}
-      <div style={{ marginBottom: 'clamp(1rem, 2vh, 2rem)' }}>
-        <div className="bg-accent/5 dark:bg-accent/10 rounded-xl border-2 border-accent/30 dark:border-accent/20" style={{ padding: 'clamp(0.75rem, 1.5vh, 1.5rem)' }}>
-          <p className="font-bold text-base text-center" style={{ marginBottom: 'clamp(0.5rem, 1vh, 1rem)' }}>{resultTitle}</p>
+      <div className="mb-clamp-lg">
+        <div className="bg-accent/5 dark:bg-accent/10 rounded-xl border-2 border-accent/30 dark:border-accent/20 p-clamp-md">
+          <p className="font-bold text-base text-center mb-clamp-md">{resultTitle}</p>
           <div className="text-sm font-light text-left" dangerouslySetInnerHTML={{ __html: resultDescription }} />
 
           {testimonials && testimonials.map((testimonial, index) => (
-            <div key={index} className="border-t border-accent/20" style={{ marginTop: 'clamp(0.75rem, 1.5vh, 1.5rem)', paddingTop: 'clamp(0.75rem, 1.5vh, 1.5rem)' }}>
+            <div key={index} className="border-t border-accent/20 mt-[clamp(0.75rem,1.5vh,1.5rem)] pt-[clamp(0.75rem,1.5vh,1.5rem)]">
               <p className="italic text-sm font-light">{testimonial.quote}</p>
               {testimonial.author && (
                 <p className="text-xs font-light mt-1">– {testimonial.author}</p>
@@ -357,7 +350,7 @@ function PricingCard({
         </div>
       </div>
 
-        <div className="flex justify-center mt-auto" style={{ paddingTop: 'clamp(1.25rem, 2.5vh, 2.5rem)' }}>
+        <div className="flex justify-center mt-auto pt-clamp-lg">
           {buttonLink ? (
             buttonLink.startsWith('/') ? (
               <Link to={buttonLink} className="inline-block">

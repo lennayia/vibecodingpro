@@ -173,7 +173,7 @@ export default function WhyConsultation() {
     >
       <div className="w-full relative z-10">
         <motion.div {...fadeIn}>
-          <h2 className="font-display font-bold text-center mb-6 md:mb-[clamp(1rem,2vh,1.5rem)]" style={{ lineHeight: '1.3' }}>
+          <h2 className="font-display font-bold text-center mb-6 md:mb-[clamp(1rem,2vh,1.5rem)]" leading-tight>
             Nebuďte na to sami
           </h2>
           <div className="text-center max-w-3xl mx-auto mb-6 md:mb-[clamp(1rem,2vh,1.5rem)]">

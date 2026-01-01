@@ -59,7 +59,25 @@ const benefits = [
 export default function WhyOwnAppSeo() {
   const [isVisible, setIsVisible] = useState(false)
   const [animationKey, setAnimationKey] = useState(0)
+  const [isDark, setIsDark] = useState(() => {
+    if (typeof window !== 'undefined') {
+      return document.documentElement.classList.contains('dark')
+    }
+    return true
+  })
   const sectionRef = useRef(null)
+
+  // Track theme changes
+  useEffect(() => {
+    const checkTheme = () => {
+      setIsDark(document.documentElement.classList.contains('dark'))
+    }
+    checkTheme()
+
+    const handleThemeChange = () => checkTheme()
+    window.addEventListener('themeChange', handleThemeChange)
+    return () => window.removeEventListener('themeChange', handleThemeChange)
+  }, [])
 
   const handleClick = useCallback(() => {
     scrollToSection('phases-section')
@@ -101,7 +119,7 @@ export default function WhyOwnAppSeo() {
     <Section background="dark" centered={true} showScrollIndicator={true}>
       <div ref={sectionRef}>
         <motion.div {...fadeIn}>
-          <h2 className="font-display font-bold mb-8 md:mb-10 text-center" style={{ lineHeight: '1.3' }}>
+          <h2 className="font-display font-bold mb-8 md:mb-10 text-center" leading-tight>
             Proč mít vlastní digi-nástroje
           </h2>
 
@@ -138,16 +156,28 @@ export default function WhyOwnAppSeo() {
                           transition={{ duration: 0.5, delay: 1.2, type: "spring" }}
                         >
                           <motion.div
-                            className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-accent/30 dark:bg-accent/20 border-2 border-accent text-gray-900 dark:text-white text-xs font-bold shadow-lg"
+                            className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-bold shadow-lg"
                             style={{
-                              boxShadow: '0 0 15px rgba(0, 255, 136, 0.3)'
+                              borderRadius: '12px',
+                              backgroundColor: isDark ? 'rgba(13, 221, 13, 0.2)' : 'rgba(181, 108, 78, 0.3)',
+                              borderWidth: '2px',
+                              borderStyle: 'solid',
+                              borderColor: isDark ? '#0DDD0D' : '#B56C4E',
+                              color: isDark ? '#ffffff' : '#2E2E2E',
+                              boxShadow: isDark
+                                ? '0 0 15px rgba(0, 255, 136, 0.3)'
+                                : '0 0 15px rgba(181, 108, 78, 0.3)'
                             }}
                             animate={{
                               scale: [1, 1.08, 1],
-                              boxShadow: [
+                              boxShadow: isDark ? [
                                 '0 0 15px rgba(0, 255, 136, 0.3)',
                                 '0 0 25px rgba(0, 255, 136, 0.6)',
                                 '0 0 15px rgba(0, 255, 136, 0.3)'
+                              ] : [
+                                '0 0 15px rgba(181, 108, 78, 0.3)',
+                                '0 0 25px rgba(181, 108, 78, 0.6)',
+                                '0 0 15px rgba(181, 108, 78, 0.3)'
                               ]
                             }}
                             transition={{
@@ -168,7 +198,10 @@ export default function WhyOwnAppSeo() {
                                 ease: "easeInOut"
                               }}
                             >
-                              <Bell className="w-3.5 h-3.5 text-accent" />
+                              <Bell
+                                className="w-3.5 h-3.5"
+                                style={{ color: isDark ? '#0DDD0D' : '#B56C4E' }}
+                              />
                             </motion.div>
                             <span>3:12</span>
                           </motion.div>
