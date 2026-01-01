@@ -24,13 +24,12 @@ export default function Hero() {
   }
 
   const itemVariants = {
-    initial: { opacity: 0, y: 40 },
-    animate: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.8, ease: "easeOut" }
-    }
+  initial: { opacity: 0 },
+  animate: {
+    opacity: 1,
+    transition: { duration: 0.8, ease: "easeOut" }
   }
+}
 
   const handlePricingClick = useCallback(() => {
     scrollToSection('pricing-section')
@@ -42,12 +41,12 @@ export default function Hero() {
 
   // Single screen layout
   const heroContent = (
-    <motion.div
-      initial="initial"
-      animate="animate"
-      variants={containerVariants}
-      className="text-center md:text-left w-full md:max-w-[60%] flex flex-col justify-center gap-6 md:gap-[clamp(1rem,2vh,1.5rem)] relative vignette-gradient md:ml-[5%]"
-    >
+  <motion.div
+    initial="initial"
+    animate="animate"
+    variants={containerVariants}
+    className="text-center md:text-left w-full md:max-w-[60%] flex flex-col relative vignette-gradient md:ml-[5%]"
+  >
       {/* Badge */}
       <motion.div variants={itemVariants} className="inline-block hero-badge-spacing">
         <span
@@ -57,36 +56,37 @@ export default function Hero() {
         </span>
       </motion.div>
 
-      {/* Brand Name */}
-      <motion.div variants={itemVariants} className="flex flex-col items-center md:items-start">
-        <motion.h1 className="font-display font-medium text-gradient text-fluid-hero-h1">
-          Vibecoding
-        </motion.h1>
-        {/* Elegant copper divider line */}
-        <div className="copper-divider-line mt-4 hero-divider-spacing" />
-      </motion.div>
-
-      {/* Main Heading */}
+      {/* Main Heading - combined for SEO (only 1 h1 per page) */}
       <motion.h1
         variants={itemVariants}
-        className="font-display font-bold dark:font-medium hero-main-heading"
+        className="flex flex-col items-center md:items-start gap-0 leading-tight"
       >
-        {displayedText.split('. ')[0]}{displayedText.includes('. ') && '.'}
-        <br className="hidden min-[700px]:block" />
+        {/* Brand Name */}
+        <span className="font-medium text-gradient text-fluid-hero-h1">
+          Vibecoding
+        </span>
+        {/* Elegant copper divider line */}
+        <span className="copper-divider-line mt-4 hero-divider-spacing" />
+        {/* Main Message with typing effect - split into two lines */}
+        <span className="font-bold dark:font-medium text-hero-heading block">
+          {displayedText.split('. ')[0]}{displayedText.includes('. ') && '.'}
+        </span>
         {displayedText.includes('Vyšší') && (
-          <span className="text-gradient">
-            {' '}{displayedText.split('. ')[1]}
+          <span className="font-bold dark:font-medium text-hero-heading block">
+            <span className="text-gradient">
+              {displayedText.split('. ')[1]}
+            </span>
+            {showCursor && (
+              <span className="inline-block w-1 h-[0.9em] bg-accent ml-1 animate-pulse" />
+            )}
           </span>
-        )}
-        {showCursor && (
-          <span className="inline-block w-1 h-[0.9em] bg-accent ml-1 animate-pulse" />
         )}
       </motion.h1>
 
       {/* Subheading/Tagline */}
       <motion.h2
         variants={itemVariants}
-        className="font-display font-semibold text-gradient text-fluid-hero-h2"
+        className="font-semibold text-gradient text-fluid-hero-h2"
       >
         Tvořte. Automatizujte. Vydělávejte.
       </motion.h2>
@@ -135,8 +135,8 @@ export default function Hero() {
       backgroundElement={particleBackground}
     >
       <div className="relative z-10 w-full">
-        {heroContent}
-      </div>
+  {heroContent}
+</div>
     </Section>
   )
 }
