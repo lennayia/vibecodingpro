@@ -51,8 +51,8 @@ function ParticleBackground({
     let width = parentElement.clientWidth
     let height = parentElement.clientHeight
 
-    // Always use copper brand color for particles
-    const particleColor = '181, 108, 78' // Copper
+    // Adaptive particle color: green in dark mode, dark copper/brown in light mode for better contrast
+    const particleColor = isDark ? '13, 221, 13' : '139, 69, 19'
 
     // Reduced particle count on mobile, normal on desktop
     const particleCount = customParticleCount || (isMobile ? 30 : 80)
@@ -83,7 +83,7 @@ function ParticleBackground({
         this.vx = (Math.random() - 0.5) * 0.5
         this.vy = (Math.random() - 0.5) * 0.5
         this.radius = Math.random() * 1.5 + 1.5 // Částice (1.5-3px)
-        this.opacity = Math.random() * 0.3 + 0.2 // Jemnější opacity (0.2-0.5)
+        this.opacity = Math.random() * 0.3 + 0.4 // Vyšší opacity (0.4-0.7)
       }
 
       update(isStatic = false) {
@@ -143,7 +143,7 @@ function ParticleBackground({
             ctx.beginPath()
             ctx.moveTo(particles.current[i].x, particles.current[i].y)
             ctx.lineTo(particles.current[j].x, particles.current[j].y)
-            const opacity = (1 - distance / 150) * 0.15 // Jemnější čáry
+            const opacity = (1 - distance / 150) * 0.25 // Viditelnější čáry
             ctx.strokeStyle = `rgba(${particleColor}, ${opacity})`
             ctx.lineWidth = 1 // Normální tloušťka
             ctx.stroke()

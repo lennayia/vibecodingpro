@@ -207,6 +207,28 @@ export const pricingPackages = [
   }
 ]
 
+export const whatIsVibecodingContent = {
+  heading: "Vibecoding",
+  subheading: "Co to je a pro koho",
+  definition: "Vibecoding = dovednost popsat vizi, aby ji AI správně pochopila.",
+  summary: "Vy máte vizi, AI to odmaká.",
+  intro: "Využijete, pokud jste",
+  targetGroups: [
+    "Koučky a mentorky",
+    "Terapeutky a poradkyně",
+    "Lektorky a učitelky",
+    "Online podnikatelky",
+    "Tvůrkyně kurzů a programů"
+  ],
+  commonGoals: {
+    heading: "Všechny chceme totéž",
+    goals: [
+      "Pomoct víc lidem",
+      "Pracovat míň hodin"
+    ]
+  }
+}
+
 export const faqCategories = [
   {
     title: "O vibecodingu a AI",
