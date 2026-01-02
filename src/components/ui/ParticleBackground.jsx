@@ -1,6 +1,6 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState, memo } from 'react'
 
-export default function ParticleBackground({
+function ParticleBackground({
   particleCount: customParticleCount,
   showConnections = true,
   mouseInteraction = true,
@@ -252,3 +252,5 @@ export default function ParticleBackground({
     />
   )
 }
+
+export default memo(ParticleBackground)
