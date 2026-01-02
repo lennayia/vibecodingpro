@@ -1058,17 +1058,72 @@
     padding-bottom: clamp(2rem, 8vh, 4rem);
   }
 
+  /* Fluid margin-bottom utilities (most common clamp values) */
+  .mb-fluid-xs {
+    margin-bottom: clamp(0.25rem, 0.5vh, 0.5rem);
+  }
+
+  .mb-fluid-sm {
+    margin-bottom: clamp(0.5rem, 1vh, 0.75rem);
+  }
+
+  .mb-fluid-base {
+    margin-bottom: clamp(0.5rem, 1.5vh, 1rem);
+  }
+
+  .mb-fluid-md {
+    margin-bottom: clamp(1rem, 2vh, 1.5rem);
+  }
+
+  .mb-fluid-lg {
+    margin-bottom: clamp(1.5rem, 3vh, 2rem);
+  }
+
+  .mb-fluid-xl {
+    margin-bottom: clamp(2rem, 4vh, 4rem);
+  }
+
+  /* Fluid margin-top utilities (for symmetry) */
+  .mt-fluid-xs {
+    margin-top: clamp(0.25rem, 0.5vh, 0.5rem);
+  }
+
+  .mt-fluid-sm {
+    margin-top: clamp(0.5rem, 1vh, 0.75rem);
+  }
+
+  .mt-fluid-base {
+    margin-top: clamp(0.5rem, 1.5vh, 1rem);
+  }
+
+  .mt-fluid-md {
+    margin-top: clamp(1rem, 2vh, 1.5rem);
+  }
+
+  .mt-fluid-lg {
+    margin-top: clamp(1.5rem, 3vh, 2rem);
+  }
+
+  .mt-fluid-xl {
+    margin-top: clamp(2rem, 4vh, 4rem);
+  }
+
+  /* Fluid gap utilities */
+  .gap-fluid-sm {
+    gap: clamp(0.5rem, 1vh, 0.75rem);
+  }
+
+  .gap-fluid-md {
+    gap: clamp(1rem, 2vh, 1.5rem);
+  }
+
+  .gap-fluid-lg {
+    gap: clamp(1rem, 3vh, 2rem);
+  }
+
   .spacing-section-x {
     padding-left: clamp(1rem, 4vw, 2rem);
     padding-right: clamp(1rem, 4vw, 2rem);
-  }
-
-  .spacing-heading-mb {
-    margin-bottom: clamp(1rem, 3vh, 2rem);
-  }
-
-  .spacing-card-gap {
-    gap: clamp(1rem, 2vh, 1.5rem);
   }
 
   /* Additional utility classes for refactoring */
