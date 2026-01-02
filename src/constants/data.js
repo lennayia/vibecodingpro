@@ -97,6 +97,13 @@ export const benefits = [
 ]
 
 export const comparisonData = {
+  heading: "Dobré nástroje posouvají",
+  subheading: "Dvě ženy, jeden obor, dvě cesty.",
+  intro: {
+    line1: "Martina a Julie: obě učí klientky zdravě spát.",
+    line2: "Stejné znalosti, stejná vášeň pomáhat.",
+    line3: "Ale jejich podnikání funguje naprosto odlišně."
+  },
   martina: {
     name: "Koučka Martina",
     subtitle: "konzultace bez podporujících nástrojů",

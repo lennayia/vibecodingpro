@@ -17,8 +17,8 @@ function Card({
 
   // Glassmorphism borders with subtle glow
   const borderClasses = {
-    light: "border border-white/60 dark:border-accent/20 shadow-lg shadow-accent/5",
-    dark: "border border-white/60 dark:border-accent/20 shadow-lg shadow-accent/5"
+    light: "border border-white/60 dark:border-white/20 shadow-lg shadow-white/5",
+    dark: "border border-white/60 dark:border-white/20 shadow-lg shadow-white/5"
   }
 
   const CardWrapper = animate ? motion.div : "div"

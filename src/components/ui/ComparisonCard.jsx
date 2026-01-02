@@ -19,7 +19,7 @@ function ComparisonCard({ data, direction, delay, background = "light" }) {
         <h3 className="font-display font-bold mb-2">
           {name}
         </h3>
-        <p>{subtitle}</p>
+        <p className="text-white">{subtitle}</p>
       </div>
 
       <div className="space-y-2 mb-4">
@@ -32,8 +32,8 @@ function ComparisonCard({ data, direction, delay, background = "light" }) {
         ))}
       </div>
 
-      <div className="pt-4 border-t border-gray-200 dark:border-gray-700">
-        <p className="italic text-left">
+      <div className="pt-4 border-t border-white/40 dark:border-white/20">
+        <p className="italic text-left text-white">
           „{quote}"
         </p>
       </div>

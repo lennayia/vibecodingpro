@@ -13,7 +13,7 @@ function Section({ children, className = "", background = "light", showScrollInd
   const maxWidthClass = maxWidth || "max-w-7xl"
   const centeredClasses = centered ? "min-h-screen flex items-center justify-center" : ""
   const paddingClasses = centered ? "px-[4%] py-10" : "py-4 md:py-28 lg:py-32 px-[4%]"
-  const contentPadding = "" // No extra padding needed, handled by paddingClasses
+  const contentPadding = centered ? "pt-6" : "" // Top padding for centered content
   const forceDarkMode = background === "holographic" ? "dark" : ""
   const holographicText = background === "holographic" ? "holographic-text" : ""
 

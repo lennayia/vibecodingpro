@@ -1,6 +1,29 @@
 import { motion, AnimatePresence } from 'framer-motion'
-import { useState, useCallback, useRef, useEffect } from 'react'
+import { useState, useCallback, useRef, useEffect, memo } from 'react'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
+
+// Performance: Animation objects outside component
+const mobileCardAnimation = {
+  initial: { x: 300, opacity: 0 },
+  animate: { x: 0, opacity: 1 },
+  exit: { x: -300, opacity: 0 }
+}
+
+const mobileCardTransition = {
+  type: "spring",
+  stiffness: 300,
+  damping: 30
+}
+
+const desktopCardAnimation = {
+  initial: { opacity: 0, x: 100 },
+  animate: { opacity: 1, x: 0 },
+  exit: { opacity: 0, x: -100 }
+}
+
+const desktopCardTransition = {
+  duration: 0.3
+}
 
 /**
  * Carousel - Modulární komponenta pro karusely s peek efektem na mobilu
@@ -19,7 +42,7 @@ import { ChevronLeft, ChevronRight } from 'lucide-react'
  * @param {number} initialSlide - Počáteční slide index (default: 0)
  * @param {string} className - Dodatečné CSS třídy pro wrapper
  */
-export default function Carousel({
+function Carousel({
   slides = [],
   renderSlide,
   mobileCardWidth = "75%",
@@ -155,14 +178,8 @@ export default function Carousel({
             <AnimatePresence initial={false} mode="popLayout">
               <motion.div
                 key={currentSlide}
-                initial={{ x: 300, opacity: 0 }}
-                animate={{ x: 0, opacity: 1 }}
-                exit={{ x: -300, opacity: 0 }}
-                transition={{
-                  type: "spring",
-                  stiffness: 300,
-                  damping: 30
-                }}
+                {...mobileCardAnimation}
+                transition={mobileCardTransition}
                 drag="x"
                 dragConstraints={{ left: 0, right: 0 }}
                 dragElastic={0.1}
@@ -237,10 +254,8 @@ export default function Carousel({
           <AnimatePresence mode="wait">
             <motion.div
               key={currentSlide}
-              initial={{ opacity: 0, x: 100 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -100 }}
-              transition={{ duration: 0.3 }}
+              {...desktopCardAnimation}
+              transition={desktopCardTransition}
               {...(dragEnabled && {
                 drag: "x",
                 dragConstraints: { left: 0, right: 0 },
@@ -260,7 +275,7 @@ export default function Carousel({
           <style>{`
             .carousel-arrow-bg-${carouselId} {
               background-color: ${isDark ? 'rgba(13, 221, 13, 0.2)' : 'rgba(181, 108, 78, 0.2)'};
-              border: 1px solid ${isDark ? 'rgba(13, 221, 13, 0.3)' : 'rgba(181, 108, 78, 0.3)'};
+              border: 1px solid ${isDark ? 'rgba(13, 221, 13, 0.3)' : 'rgba(212, 197, 181, 0.6)'};
             }
             .carousel-arrow-bg-${carouselId}:hover {
               background-color: ${isDark ? 'rgba(13, 221, 13, 0.3)' : 'rgba(181, 108, 78, 0.3)'};
@@ -275,7 +290,7 @@ export default function Carousel({
             }}
             aria-label="Previous slide"
           >
-            <ChevronLeft className="w-6 h-6" style={{ color: isDark ? '#0DDD0D' : '#B56C4E' }} strokeWidth={2} />
+            <ChevronLeft className="w-6 h-6" style={{ color: isDark ? '#0DDD0D' : '#D4C5B9' }} strokeWidth={2} />
           </button>
           <button
             onClick={nextSlide}
@@ -286,7 +301,7 @@ export default function Carousel({
             }}
             aria-label="Next slide"
           >
-            <ChevronRight className="w-6 h-6" style={{ color: isDark ? '#0DDD0D' : '#B56C4E' }} strokeWidth={2} />
+            <ChevronRight className="w-6 h-6" style={{ color: isDark ? '#0DDD0D' : '#D4C5B9' }} strokeWidth={2} />
           </button>
         </>
       )}
@@ -321,3 +336,5 @@ export default function Carousel({
     </div>
   )
 }
+
+export default memo(Carousel)

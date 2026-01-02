@@ -237,16 +237,16 @@ function ComparisonSeo() {
       <div className="relative z-10">
         <motion.div {...fadeIn}>
           <h2 className="font-display font-bold mb-fluid-sm text-center leading-tight">
-            Dobré nástroje posouvají
+            {comparisonData.heading}
           </h2>
-          <h3 className="font-display font-bold mb-fluid-base text-center">
-            Dvě ženy, jeden obor, dvě cesty.
+          <h3 className="font-display font-bold mb-fluid-lg text-center">
+            {comparisonData.subheading}
           </h3>
           <div className="mb-fluid-lg text-center max-w-3xl mx-auto">
             <p>
-              <span className="block">Martina a Julie: obě učí klientky zdravě spát.</span>
-              <span className="block">Stejné znalosti, stejná vášeň pomáhat.</span>
-              <span className="block mt-4 md:mt-2">Ale jejich podnikání funguje naprosto odlišně.</span>
+              <span className="block">{comparisonData.intro.line1}</span>
+              <span className="block">{comparisonData.intro.line2}</span>
+              <span className="block mt-4 md:mt-2">{comparisonData.intro.line3}</span>
             </p>
           </div>
 

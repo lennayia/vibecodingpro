@@ -12,11 +12,11 @@ function WhatYouCanCreate() {
     <Section id="what-you-can-create" background="dark" centered={true} showScrollIndicator={true}>
       <div className="w-full">
         <motion.div {...fadeIn}>
-          <h2 className="font-display font-bold text-center mt-6 mb-12 leading-tight">
+          <h2 className="font-display font-bold text-center mb-8 leading-tight">
             {whatYouCanCreateContent.heading}
           </h2>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-6">
             {whatYouCanCreateContent.categories.map((category, index) => {
               const Icon = category.Icon
               return (
