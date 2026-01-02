@@ -1,6 +1,6 @@
-import { useEffect, useRef, useState, useMemo } from 'react'
+import { useEffect, useRef, useState, useMemo, memo } from 'react'
 
-export default function NeuralBackground({ nodeCount = 15 }) {
+function NeuralBackground({ nodeCount = 15 }) {
   const canvasRef = useRef(null)
   const nodesRef = useRef([])
   const connectionsRef = useRef([])
@@ -407,3 +407,5 @@ export default function NeuralBackground({ nodeCount = 15 }) {
     />
   )
 }
+
+export default memo(NeuralBackground)

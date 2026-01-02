@@ -1,35 +1,46 @@
 import { motion } from 'framer-motion'
-import { useCallback } from 'react'
+import { useCallback, useMemo } from 'react'
 import Section from '../layout/Section'
 import Button from '../ui/Button'
 import AnimatedBackground from '../ui/AnimatedBackground'
 import { useTypingEffect } from '../../hooks/useTypingEffect'
 import { scrollToSection } from '../../utils/scroll'
 
-export default function Hero() {
-  // Optimized for performance and full screen coverage
-  const particleBackground = <AnimatedBackground type="neural" count={15} />
-  const typingText = 'Vlastní nástroje. Vyšší\u00A0příjmy.'
-  const { displayedText, showCursor } = useTypingEffect(typingText, 60, 500)
-
-  // Custom slower animations for Hero
-  const containerVariants = {
-    initial: {},
-    animate: {
-      transition: {
-        staggerChildren: 0.25,
-        delayChildren: 0.2
-      }
+// Performance: Animation variants outside component to avoid re-creating objects
+const containerVariants = {
+  initial: {},
+  animate: {
+    transition: {
+      staggerChildren: 0.25,
+      delayChildren: 0.2
     }
   }
+}
 
-  const itemVariants = {
+const itemVariants = {
   initial: { opacity: 0 },
   animate: {
     opacity: 1,
     transition: { duration: 0.8, ease: "easeOut" }
   }
 }
+
+export default function Hero() {
+  // Neural network background animation
+  const neuralBackground = <AnimatedBackground type="neural" count={15} />
+  const typingText = 'Vlastní nástroje. Vyšší\u00A0příjmy.'
+  const { displayedText, showCursor } = useTypingEffect(typingText, 60, 500)
+
+  // Performance: memoize text parts to avoid re-splitting on every render
+  const textParts = useMemo(() => {
+    const parts = displayedText.split('. ')
+    return {
+      first: parts[0],
+      second: parts[1],
+      hasDot: displayedText.includes('. '),
+      hasSecond: displayedText.includes('Vyšší')
+    }
+  }, [displayedText])
 
   const handlePricingClick = useCallback(() => {
     scrollToSection('pricing-section')
@@ -45,7 +56,7 @@ export default function Hero() {
     initial="initial"
     animate="animate"
     variants={containerVariants}
-    className="text-center md:text-left w-full md:max-w-[60%] flex flex-col relative vignette-gradient md:ml-[5%]"
+    className="hero-text-align w-full md:max-w-[60%] flex flex-col relative vignette-gradient md:ml-[5%]"
   >
       {/* Badge */}
       <motion.div variants={itemVariants} className="inline-block hero-badge-spacing">
@@ -59,7 +70,7 @@ export default function Hero() {
       {/* Main Heading - combined for SEO (only 1 h1 per page) */}
       <motion.h1
         variants={itemVariants}
-        className="flex flex-col items-center md:items-start gap-0 leading-tight"
+        className="flex flex-col hero-items-align gap-0 leading-tight"
       >
         {/* Brand Name */}
         <span className="font-medium text-gradient text-fluid-hero-h1">
@@ -68,13 +79,13 @@ export default function Hero() {
         {/* Elegant copper divider line */}
         <span className="copper-divider-line mt-4 hero-divider-spacing" />
         {/* Main Message with typing effect - split into two lines */}
-        <span className="font-bold dark:font-medium text-hero-heading block">
-          {displayedText.split('. ')[0]}{displayedText.includes('. ') && '.'}
+        <span className="text-hero-heading block">
+          {textParts.first}{textParts.hasDot && '.'}
         </span>
-        {displayedText.includes('Vyšší') && (
-          <span className="font-bold dark:font-medium text-hero-heading block">
+        {textParts.hasSecond && (
+          <span className="text-hero-heading block">
             <span className="text-gradient-always">
-              {displayedText.split('. ')[1]}
+              {textParts.second}
             </span>
             {showCursor && (
               <span className="inline-block w-1 h-[0.9em] bg-accent ml-1 animate-pulse" />
@@ -94,13 +105,13 @@ export default function Hero() {
       {/* Paragraph - List with elegant bullets */}
       <motion.ul
         variants={itemVariants}
-        className="max-w-3xl mx-auto md:mx-0 text-center md:text-left font-light space-y-2 text-base text-[#2E2E2E] dark:text-[#e1e1e1] hero-list"
+        className="max-w-3xl mx-auto md:mx-0 hero-text-align font-light space-y-2 text-base text-text-light dark:text-text-muted-dark hero-list"
       >
-        <li className="flex items-center justify-center md:justify-start gap-3">
+        <li className="hero-list-item">
           <span className="text-accent font-mono text-[1.2em]">&gt;</span>
           <span className="font-light">Ať systémy pracují za vás 24/7</span>
         </li>
-        <li className="flex items-center justify-center md:justify-start gap-3">
+        <li className="hero-list-item">
           <span className="text-accent font-mono text-[1.2em]">&gt;</span>
           <span className="font-light">Vy si užívejte růst a svobodu</span>
         </li>
@@ -109,10 +120,10 @@ export default function Hero() {
       {/* CTA Section */}
       <motion.div
         variants={itemVariants}
-        className="flex flex-col items-center md:items-start max-w-2xl mx-auto md:mx-0 hero-cta-spacing"
+        className="flex flex-col hero-items-align max-w-2xl mx-auto md:mx-0 hero-cta-spacing"
       >
         <p
-          className="text-center md:text-left text-base text-[#2E2E2E] dark:text-[#e1e1e1] leading-relaxed font-light"
+          className="hero-text-align text-base text-text-light dark:text-text-muted-dark leading-relaxed font-light"
         >
           Podívejte se, co všechno můžete vytvořit.
         </p>
@@ -132,7 +143,7 @@ export default function Hero() {
       centered={true}
       className="relative overflow-hidden"
       showScrollIndicator={true}
-      backgroundElement={particleBackground}
+      backgroundElement={neuralBackground}
     >
       <div className="relative z-10 w-full">
   {heroContent}

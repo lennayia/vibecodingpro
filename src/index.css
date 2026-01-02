@@ -928,12 +928,14 @@
     letter-spacing: 0.02em;
     margin: 0;
     padding: 0;
+    font-weight: 700;
   }
 
   /* Dark mode needs more spacing around h1 spans */
   .dark .text-hero-heading {
     margin-top: clamp(0.5rem, 1vh, 0.75rem) !important;
     margin-bottom: clamp(0.25rem, 0.5vh, 0.5rem) !important;
+    font-weight: 500;
   }
 
   .hero-divider-spacing {
@@ -958,6 +960,40 @@
   .dark .hero-cta-spacing {
     gap: clamp(1.25rem, 2.5vh, 1.75rem) !important;
     padding-top: clamp(1.75rem, 3.5vh, 2.75rem) !important;
+  }
+
+  /* Hero responsive alignment utilities */
+  .hero-text-align {
+    text-align: center;
+  }
+
+  @media (min-width: 768px) {
+    .hero-text-align {
+      text-align: left;
+    }
+  }
+
+  .hero-items-align {
+    align-items: center;
+  }
+
+  @media (min-width: 768px) {
+    .hero-items-align {
+      align-items: flex-start;
+    }
+  }
+
+  .hero-list-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+  }
+
+  @media (min-width: 768px) {
+    .hero-list-item {
+      justify-content: flex-start;
+    }
   }
 
   /* SlideOutMenu utility classes */
