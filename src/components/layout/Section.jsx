@@ -13,13 +13,14 @@ function Section({ children, className = "", background = "light", showScrollInd
   const maxWidthClass = maxWidth || "max-w-7xl"
   const centeredClasses = centered ? "min-h-screen pt-16 flex items-center justify-center" : ""
   const paddingClasses = centered ? "px-[4%]" : "py-4 md:py-28 lg:py-32 px-[4%]"
+  const contentPadding = centered ? "py-8" : "" // Vertical padding for centered content
   const forceDarkMode = background === "holographic" ? "dark" : ""
   const holographicText = background === "holographic" ? "holographic-text" : ""
 
   return (
     <section id={id} className={`${paddingClasses} ${bgClasses[background]} ${centeredClasses} ${forceDarkMode} ${holographicText} ${className} relative overflow-hidden`}>
       {backgroundElement}
-      <div className={`${maxWidthClass} w-full mx-auto relative z-10`}>
+      <div className={`${maxWidthClass} w-full mx-auto relative z-10 ${contentPadding}`}>
         {children}
       </div>
       {showScrollIndicator && <ScrollDownIndicator />}

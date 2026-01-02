@@ -99,31 +99,27 @@ export const benefits = [
 export const comparisonData = {
   martina: {
     name: "Koučka Martina",
-    subtitle: "poskytuje konzultace, ale nemá podporující produkt",
+    subtitle: "konzultace bez podporujících nástrojů",
     type: "negative",
     features: [
-      { text: "<strong></strong>7 konzultací denně. Páni, jede jako drak, co sotva dýchá" },
-      { text: "<strong>Stejné rady</strong> pořád dokola. A mentální únava brzdí její kreativitu" },
-      { text: "<strong>Odmítá nové klientky.</strong> Chce je, ale nemá energetickou kapacitu" },
-      { text: "<strong>Večer padne</strong> a na rodinu zbývá jen to, co z Martiny zbylo" },
-      { text: "<strong>Dovolená s tělem na pláži,</strong> ale s hlavou u klientek" },
-      { text: "<strong>Když nepracuje, nevydělá.</strong> Cítí se v kleci" }
+      { text: "7 konzultací denně, jede jako drak, co sotva dýchá." },
+      { text: "Stejné rady dokola, s pocitem, že se točí v kruhu." },
+      { text: "Říká NE ženám, kterým by chtěla pomoct." },
+      { text: "Večer padne – a na rodinu zbývá to, co zbylo z ní." }
     ],
-    quote: "Jako bych byla na běžícím pásu. Pomáhám lidem s energií a sama jsem vyčerpaná."
+    quote: "Pomáhám lidem s energií a sama jsem vyčerpaná."
   },
   julie: {
     name: "Lektorka Julie",
-    subtitle: "tvoří vlastní nástroje a poskytuje prémiové konzultace",
+    subtitle: "vlastní nástroje + prémiové konzultace",
     type: "positive",
     features: [
-      { text: "<strong>200+ žen má podporu.</strong> Spánkové tracky, meditace, osobní tipy 24/7" },
-      { text: "<strong>Klientky jsou nadšené.</strong> Píšou díky, vidí pokrok, cítí se opečované" },
-      { text: "<strong>2-3 premium konzultace týdně</strong> – vyšší cena, připravené klientky" },
-      { text: "<strong>Žádné buď a nebo. Má energii i čas</strong> – na běhání, rodinu, koníčky" },
-      { text: "<strong>Měsíc na Bali?</strong> – aplikace běží a klientky jsou spokojené" },
-      { text: "<strong>Příjem se stává pasivním</strong> – pořád roste i díky VIP konzultacím" }
+      { text: "200+ žen má její podporu – spánkové tracky, meditace, tipy. Kdykoliv." },
+      { text: "Klientky píšou díky. Vidí pokrok, cítí se opečované." },
+      { text: "2-3 konzultace týdně s těmi, které si vybere." },
+      { text: "Měsíc na Bali? Aplikace běží, klientky jsou spokojené, příjem roste." }
     ],
-    quote: "Konečně můžu pomoct víc lidem, a přitom žiju svůj život. Cítím se naplněná."
+    quote: "Konečně můžu pomoct víc lidem – a přitom žiju svůj život."
   }
 }
 

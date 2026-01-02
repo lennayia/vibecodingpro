@@ -15,11 +15,11 @@ function ComparisonCard({ data, direction, delay, background = "light" }) {
       transition={{ duration: 0.6 }}
       className="!pl-12 !pr-6"
     >
-      <div className="mb-6 text-center">
+      <div className="mb-6 text-left">
         <h3 className="font-display font-bold mb-2">
           {name}
         </h3>
-        <p className="text-xl font-light">{subtitle}</p>
+        <p>{subtitle}</p>
       </div>
 
       <div className="space-y-2 mb-4">
@@ -33,7 +33,7 @@ function ComparisonCard({ data, direction, delay, background = "light" }) {
       </div>
 
       <div className="pt-4 border-t border-gray-200 dark:border-gray-700">
-        <p className="italic text-center text-xl">
+        <p className="italic text-left">
           „{quote}"
         </p>
       </div>

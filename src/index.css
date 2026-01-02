@@ -192,8 +192,8 @@
   }
 
   p:not([class*="text-"]), span:not([class*="text-"]), li:not([class*="text-"]), div:not([class*="font-display"]):not([class*="text-"]) {
-    font-size: 1rem;
-    font-weight: 400;
+    font-size: clamp(0.875rem, 0.8vh + 0.8vw, 1.25rem); /* 14-20px fluid, responsive to width AND height */
+    font-weight: 300;
     line-height: 1.75;
     color: var(--color-text-muted-light);
   }
@@ -553,9 +553,8 @@
     padding-bottom: clamp(0.5rem, 2vh, 1.5rem) !important;
   }
 
-    /* Reduce spacing in content */
+    /* Reduce line-height in content */
     p:not(.font-display), .text-xl {
-      font-size: clamp(0.875rem, 1vw + 0.4vh, 1rem) !important;
       line-height: 1.5 !important;
     }
 
@@ -1146,12 +1145,22 @@
   .holographic-text h4,
   .holographic-text h5,
   .holographic-text h6 {
-    color: #D4C5B5 !important;
+    color: #D4C5B5 !important; /* Light mode - sand */
   }
 
   .holographic-text p,
   .holographic-text span,
   .holographic-text li {
     color: #f2f2f2 !important;
+  }
+
+  /* Dark mode - headings near white */
+  .dark .holographic-text h1,
+  .dark .holographic-text h2,
+  .dark .holographic-text h3,
+  .dark .holographic-text h4,
+  .dark .holographic-text h5,
+  .dark .holographic-text h6 {
+    color: #eaeaea !important; /* Dark mode - near white */
   }
 }

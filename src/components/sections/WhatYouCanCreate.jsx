@@ -10,9 +10,9 @@ const closingTransition = { delay: 0.6 }
 function WhatYouCanCreate() {
   return (
     <Section id="what-you-can-create" background="dark" centered={true} showScrollIndicator={true}>
-      <div className="w-full">
+      <div className="w-full mt-12">
         <motion.div {...fadeIn}>
-          <h2 className="font-display font-bold text-center mt-fluid-xl mb-fluid-xl leading-tight">
+          <h2 className="font-display font-bold text-center mb-fluid-xl leading-tight">
             {whatYouCanCreateContent.heading}
           </h2>
 
