@@ -5,6 +5,7 @@ import Button from '../ui/Button'
 import AnimatedBackground from '../ui/AnimatedBackground'
 import { useTypingEffect } from '../../hooks/useTypingEffect'
 import { scrollToSection } from '../../utils/scroll'
+import { heroContent } from '../../constants/hero'
 
 // Performance: Animation variants outside component to avoid re-creating objects
 const containerVariants = {
@@ -28,7 +29,7 @@ const itemVariants = {
 export default function Hero() {
   // Neural network background animation
   const neuralBackground = <AnimatedBackground type="neural" count={15} />
-  const typingText = 'Vlastní nástroje. Vyšší\u00A0příjmy.'
+  const typingText = heroContent.heading.typingText
   const { displayedText, showCursor } = useTypingEffect(typingText, 60, 500)
 
   // Performance: memoize text parts to avoid re-splitting on every render
@@ -51,7 +52,7 @@ export default function Hero() {
   }, [])
 
   // Single screen layout
-  const heroContent = (
+  const heroLayout = (
   <motion.div
     initial="initial"
     animate="animate"
@@ -63,7 +64,7 @@ export default function Hero() {
         <span
           className="px-3 py-1.5 md:px-4 md:py-2 backdrop-blur-sm rounded-xl font-normal border border-accent/40 text-accent text-sm"
         >
-          Máte vizi? To stačí.
+          {heroContent.badge.text}
         </span>
       </motion.div>
 
@@ -74,7 +75,7 @@ export default function Hero() {
       >
         {/* Brand Name */}
         <span className="font-medium text-gradient text-fluid-hero-h1">
-          Vibecoding
+          {heroContent.heading.brandName}
         </span>
         {/* Elegant copper divider line */}
         <span className="copper-divider-line mt-4 hero-divider-spacing" />
@@ -99,7 +100,7 @@ export default function Hero() {
         variants={itemVariants}
         className="font-semibold text-gradient text-fluid-hero-h2"
       >
-        Tvořte. Automatizujte. Vydělávejte.
+        {heroContent.heading.tagline}
       </motion.h2>
 
       {/* Paragraph - List with elegant bullets */}
@@ -109,11 +110,11 @@ export default function Hero() {
       >
         <li className="hero-list-item">
           <span className="text-accent font-mono text-[1.2em]">&gt;</span>
-          <span className="font-light">Ať systémy pracují za vás 24/7</span>
+          <span className="font-light">{heroContent.features[0]}</span>
         </li>
         <li className="hero-list-item">
           <span className="text-accent font-mono text-[1.2em]">&gt;</span>
-          <span className="font-light">Vy si užívejte růst a svobodu</span>
+          <span className="font-light">{heroContent.features[1]}</span>
         </li>
       </motion.ul>
 
@@ -125,13 +126,13 @@ export default function Hero() {
         <p
           className="hero-text-align text-base text-text-light dark:text-text-muted-dark leading-relaxed font-light"
         >
-          Podívejte se, co všechno můžete vytvořit.
+          {heroContent.cta.description}
         </p>
         <Button onClick={handleScrollDown} variant="primary">
-          To si nenechám ujít
+          {heroContent.cta.primaryButton}
         </Button>
         <Button onClick={handlePricingClick} variant="secondary">
-          Nejdřív jdu na ceník
+          {heroContent.cta.secondaryButton}
         </Button>
       </motion.div>
     </motion.div>
@@ -146,7 +147,7 @@ export default function Hero() {
       backgroundElement={neuralBackground}
     >
       <div className="relative z-10 w-full">
-  {heroContent}
+  {heroLayout}
 </div>
     </Section>
   )
