@@ -10,13 +10,13 @@ const closingTransition = { delay: 0.6 }
 function WhatYouCanCreate() {
   return (
     <Section id="what-you-can-create" background="dark" centered={true} showScrollIndicator={true}>
-      <div className="w-full mt-12">
+      <div className="w-full">
         <motion.div {...fadeIn}>
-          <h2 className="font-display font-bold text-center mb-fluid-xl leading-tight">
+          <h2 className="font-display font-bold text-center mt-6 mb-12 leading-tight">
             {whatYouCanCreateContent.heading}
           </h2>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-fluid-lg mb-fluid-xl">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
             {whatYouCanCreateContent.categories.map((category, index) => {
               const Icon = category.Icon
               return (
@@ -27,7 +27,7 @@ function WhatYouCanCreate() {
                   transition={{ delay: index * 0.1 }}
                 >
                   <div className="flex justify-center mb-fluid-base">
-                    <Icon className="w-16 h-16 text-gray-800 dark:text-white" strokeWidth={1.5} />
+                    <Icon className="w-12 h-12 text-gray-800 dark:text-white" strokeWidth={1.5} />
                   </div>
                   <h3 className="font-display font-bold mb-fluid-sm">
                     {category.title}
@@ -41,11 +41,11 @@ function WhatYouCanCreate() {
           </div>
 
           <motion.div
-            className="text-center max-w-2xl mx-auto"
+            className="text-center max-w-2xl mx-auto mb-0"
             {...slideUp}
             transition={closingTransition}
           >
-            <p className="text-xl">
+            <p className="text-xl mb-0">
               {whatYouCanCreateContent.closing}
             </p>
           </motion.div>

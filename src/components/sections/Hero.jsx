@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { useCallback, useMemo } from 'react'
+import { useCallback, useMemo, memo } from 'react'
 import Section from '../layout/Section'
 import Button from '../ui/Button'
 import AnimatedBackground from '../ui/AnimatedBackground'
@@ -26,7 +26,7 @@ const itemVariants = {
   }
 }
 
-export default function Hero() {
+function Hero() {
   // Neural network background animation
   const neuralBackground = <AnimatedBackground type="neural" count={15} />
   const typingText = heroContent.heading.typingText
@@ -152,3 +152,5 @@ export default function Hero() {
     </Section>
   )
 }
+
+export default memo(Hero)

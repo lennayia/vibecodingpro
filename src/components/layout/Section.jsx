@@ -11,9 +11,9 @@ const bgClasses = {
 
 function Section({ children, className = "", background = "light", showScrollIndicator = false, maxWidth = null, backgroundElement = null, centered = false, id = undefined }) {
   const maxWidthClass = maxWidth || "max-w-7xl"
-  const centeredClasses = centered ? "min-h-screen pt-16 flex items-center justify-center" : ""
-  const paddingClasses = centered ? "px-[4%]" : "py-4 md:py-28 lg:py-32 px-[4%]"
-  const contentPadding = centered ? "py-8" : "" // Vertical padding for centered content
+  const centeredClasses = centered ? "min-h-screen flex items-center justify-center" : ""
+  const paddingClasses = centered ? "px-[4%] py-10" : "py-4 md:py-28 lg:py-32 px-[4%]"
+  const contentPadding = "" // No extra padding needed, handled by paddingClasses
   const forceDarkMode = background === "holographic" ? "dark" : ""
   const holographicText = background === "holographic" ? "holographic-text" : ""
 
