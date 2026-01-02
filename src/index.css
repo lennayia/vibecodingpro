@@ -283,18 +283,33 @@
 }
 
 @layer utilities {
-  /* Gradient text */
+  /* Gradient text - light mode only by default */
   .text-gradient {
     background: linear-gradient(to right, #2E2E2E, #B56C4E, #2E2E2E);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
     display: inline;
-    /* No typography overrides - uses element's own font-size, font-weight, line-height */
-    /* No padding - prevents extra spacing when nested */
   }
 
+  /* Dark mode - vypne gradient (normální text) */
   .dark .text-gradient {
+    background: none;
+    -webkit-background-clip: unset;
+    -webkit-text-fill-color: inherit;
+    color: var(--color-text-muted-dark);
+  }
+
+  /* Gradient vždy (i v dark mode) - pro "Vyšší příjmy." */
+  .text-gradient-always {
+    background: linear-gradient(to right, #2E2E2E, #B56C4E, #2E2E2E);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    display: inline;
+  }
+
+  .dark .text-gradient-always {
     background: linear-gradient(to right, #eaeaea, #0DDD0D, #eaeaea);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;

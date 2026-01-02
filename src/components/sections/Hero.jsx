@@ -73,7 +73,7 @@ export default function Hero() {
         </span>
         {displayedText.includes('Vyšší') && (
           <span className="font-bold dark:font-medium text-hero-heading block">
-            <span className="text-gradient">
+            <span className="text-gradient-always">
               {displayedText.split('. ')[1]}
             </span>
             {showCursor && (
