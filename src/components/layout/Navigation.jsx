@@ -86,9 +86,11 @@ function Navigation() {
           className="h-10 w-auto"
         />
 
-        <Button onClick={handlePricingClick} variant="primary">
-          Chci začít
-        </Button>
+        <div className="relative">
+          <Button onClick={handlePricingClick} variant="primary">
+            Chci začít
+          </Button>
+        </div>
 
         {/* Menu s plovoucím dropdownem */}
         <SlideOutMenu

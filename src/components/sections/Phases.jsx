@@ -72,7 +72,7 @@ export default function Phases() {
     <Section id="process" background="light" centered={true} className="!pt-12 !pb-12 md:!pt-4 md:!pb-8 lg:!pt-8 lg:!pb-16" showScrollIndicator={true}>
       <div className="w-full">
         <motion.div {...fadeIn}>
-          <h2 className="font-display font-bold text-center mb-2 md:mb-[clamp(0.25rem,0.5vh,0.75rem)]" leading-tight>
+          <h2 className="font-display font-bold text-center mb-2 md:mb-[clamp(0.25rem,0.5vh,0.75rem)] leading-tight">
             Spolu rozběhneme tvorbu
           </h2>
           <p className="text-center max-w-3xl mx-auto text-xl font-light mb-6 md:mb-[clamp(0.75rem,2vh,1.5rem)]">

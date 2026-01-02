@@ -119,7 +119,7 @@ export default function WhyOwnAppSeo() {
     <Section background="dark" centered={true} showScrollIndicator={true}>
       <div ref={sectionRef}>
         <motion.div {...fadeIn}>
-          <h2 className="font-display font-bold mb-8 md:mb-10 text-center" leading-tight>
+          <h2 className="font-display font-bold mb-8 md:mb-10 text-center leading-tight">
             Proč mít vlastní digi-nástroje
           </h2>
 

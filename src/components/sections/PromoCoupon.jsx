@@ -34,7 +34,7 @@ export default function PromoCoupon() {
           >
             <div className="flex items-center justify-center gap-3 md:gap-[clamp(0.5rem,1vh,0.75rem)] mb-4 md:mb-[clamp(0.75rem,1.5vh,1rem)]">
               <Gift className="w-10 h-10 md:w-12 md:h-12 text-accent" strokeWidth={2} />
-              <h2 className="font-display font-bold" leading-tight>
+              <h2 className="font-display font-bold leading-tight">
                 Povánoční dárek od VibecodingPro
               </h2>
               <Gift className="w-10 h-10 md:w-12 md:h-12 text-accent" strokeWidth={2} />

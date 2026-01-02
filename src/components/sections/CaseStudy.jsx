@@ -300,7 +300,7 @@ export default function CaseStudySeo() {
             <Badge>Vibecoding mění hru</Badge>
           </div>
 
-          <h2 className="font-display font-bold text-center mb-6 md:mb-[clamp(1rem,2vh,1.5rem)]" leading-tight>
+          <h2 className="font-display font-bold text-center mb-6 md:mb-[clamp(1rem,2vh,1.5rem)] leading-tight">
             Vibecoding prakticky
           </h2>
 
