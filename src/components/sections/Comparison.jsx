@@ -1,12 +1,99 @@
 import { motion } from 'framer-motion'
-import { useState, useEffect, useMemo } from 'react'
+import { useState, useEffect, useMemo, memo } from 'react'
 import Section from '../layout/Section'
 import ComparisonCard from '../ui/ComparisonCard'
 import Carousel from '../ui/Carousel'
 import { comparisonData } from '../../constants/data'
 import { fadeIn } from '../../constants/animations'
 
-export default function ComparisonSeo() {
+// Performance: Animation objects outside component
+const meshGradientAnimation = {
+  scale: [1, 1.08, 1.02, 1],
+}
+
+const meshGradientTransition = {
+  duration: 20,
+  repeat: Infinity,
+  ease: 'easeInOut'
+}
+
+const imageOpacityAnimation = {
+  opacity: [0.4, 0.38, 0.42, 0.4],
+}
+
+const imageOpacityTransition = {
+  duration: 8,
+  repeat: Infinity,
+  ease: 'easeInOut'
+}
+
+const imageXTransition = {
+  duration: 1,
+  repeat: Infinity,
+  repeatDelay: 10
+}
+
+const imageScaleTransition = {
+  duration: 6,
+  repeat: Infinity,
+  ease: 'easeInOut'
+}
+
+const imageRotateTransition = {
+  duration: 8,
+  repeat: Infinity,
+  ease: 'easeInOut'
+}
+
+const leftImageAnimation = {
+  x: [0, 0.3, -0.3, 0],
+  scaleX: [-1, -1.02, -0.98, -1.01, -1],
+  scaleY: [1, 1.02, 0.98, 1.01, 1],
+  rotate: [0, 1.5, -1.5, 1, -1, 0],
+}
+
+const rightImageAnimation = {
+  x: [0, -0.3, 0.3, 0],
+  scale: [1, 1.02, 0.98, 1.01, 1],
+  rotate: [0, -1.5, 1.5, -1, 1, 0],
+}
+
+const scanlinesAnimation = {
+  y: [0, -100],
+  opacity: [0.4, 0.6, 0.4],
+}
+
+const scanlinesTransition = {
+  y: {
+    duration: 8,
+    repeat: Infinity,
+    ease: 'linear'
+  },
+  opacity: {
+    duration: 5,
+    repeat: Infinity,
+    ease: 'easeInOut'
+  }
+}
+
+const colorShiftTransition = {
+  background: {
+    duration: 10,
+    repeat: Infinity,
+    ease: 'linear'
+  },
+  y: {
+    duration: 12,
+    repeat: Infinity,
+    ease: 'linear'
+  }
+}
+
+const colorShiftAnimation = {
+  y: [-200, 200],
+}
+
+function ComparisonSeo() {
   // Initialize based on actual dark mode state (safe for SSR)
   // Default to dark mode for SSR to prevent flash of light mode colors
   const [isDark, setIsDark] = useState(() => {
@@ -45,6 +132,7 @@ export default function ComparisonSeo() {
         <motion.div
           className="absolute inset-0 blur-2xl md:blur-3xl will-change-transform"
           animate={{
+            ...meshGradientAnimation,
             background: [
               `radial-gradient(circle at 20% 20%, rgba(${primaryColor}, 0.4) 0%, transparent 50%),
                radial-gradient(circle at 80% 30%, rgba(${secondaryColor}, 0.5) 0%, transparent 50%),
@@ -66,13 +154,8 @@ export default function ComparisonSeo() {
                radial-gradient(circle at 40% 70%, rgba(${primaryColor}, 0.3) 0%, transparent 50%),
                radial-gradient(circle at 70% 80%, rgba(${secondaryColor}, 0.4) 0%, transparent 50%)`,
             ],
-            scale: [1, 1.08, 1.02, 1],
           }}
-          transition={{
-            duration: 20,
-            repeat: Infinity,
-            ease: 'easeInOut'
-          }}
+          transition={meshGradientTransition}
         />
 
         {/* Background image LEFT - horizontally flipped */}
@@ -88,33 +171,14 @@ export default function ComparisonSeo() {
               willChange: 'transform, opacity',
             }}
             animate={{
-              opacity: [0.4, 0.38, 0.42, 0.4],
-              x: [0, 0.3, -0.3, 0],
-              scaleX: [-1, -1.02, -0.98, -1.01, -1],
-              scaleY: [1, 1.02, 0.98, 1.01, 1],
-              rotate: [0, 1.5, -1.5, 1, -1, 0],
+              ...imageOpacityAnimation,
+              ...leftImageAnimation,
             }}
             transition={{
-              opacity: {
-                duration: 8,
-                repeat: Infinity,
-                ease: 'easeInOut'
-              },
-              x: {
-                duration: 1,
-                repeat: Infinity,
-                repeatDelay: 10
-              },
-              scale: {
-                duration: 6,
-                repeat: Infinity,
-                ease: 'easeInOut'
-              },
-              rotate: {
-                duration: 8,
-                repeat: Infinity,
-                ease: 'easeInOut'
-              }
+              opacity: imageOpacityTransition,
+              x: imageXTransition,
+              scale: imageScaleTransition,
+              rotate: imageRotateTransition,
             }}
           />
         </div>
@@ -132,32 +196,14 @@ export default function ComparisonSeo() {
               willChange: 'transform, opacity',
             }}
             animate={{
-              opacity: [0.4, 0.38, 0.42, 0.4],
-              x: [0, -0.3, 0.3, 0],
-              scale: [1, 1.02, 0.98, 1.01, 1],
-              rotate: [0, -1.5, 1.5, -1, 1, 0],
+              ...imageOpacityAnimation,
+              ...rightImageAnimation,
             }}
             transition={{
-              opacity: {
-                duration: 8,
-                repeat: Infinity,
-                ease: 'easeInOut'
-              },
-              x: {
-                duration: 1,
-                repeat: Infinity,
-                repeatDelay: 10
-              },
-              scale: {
-                duration: 6,
-                repeat: Infinity,
-                ease: 'easeInOut'
-              },
-              rotate: {
-                duration: 8,
-                repeat: Infinity,
-                ease: 'easeInOut'
-              }
+              opacity: imageOpacityTransition,
+              x: imageXTransition,
+              scale: imageScaleTransition,
+              rotate: imageRotateTransition,
             }}
           />
         </div>
@@ -169,47 +215,22 @@ export default function ComparisonSeo() {
             backgroundImage: `repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(${primaryColor}, 0.35) 2px, rgba(${primaryColor}, 0.35) 4px)`,
             willChange: 'transform, opacity',
           }}
-          animate={{
-            y: [0, -100],
-            opacity: [0.4, 0.6, 0.4],
-          }}
-          transition={{
-            y: {
-              duration: 8,
-              repeat: Infinity,
-              ease: 'linear'
-            },
-            opacity: {
-              duration: 5,
-              repeat: Infinity,
-              ease: 'easeInOut'
-            }
-          }}
+          animate={scanlinesAnimation}
+          transition={scanlinesTransition}
         />
 
         {/* Color shift overlay - covering whole section */}
         <motion.div
           className="hidden md:block absolute inset-0 mix-blend-overlay will-change-transform"
           animate={{
+            ...colorShiftAnimation,
             background: [
               `linear-gradient(180deg, rgba(${primaryColor},0) 0%, rgba(${primaryColor},0.2) 50%, rgba(${primaryColor},0) 100%)`,
               `linear-gradient(180deg, rgba(${secondaryColor},0) 0%, rgba(${secondaryColor},0.2) 50%, rgba(${secondaryColor},0) 100%)`,
               `linear-gradient(180deg, rgba(${primaryColor},0) 0%, rgba(${primaryColor},0.2) 50%, rgba(${primaryColor},0) 100%)`,
             ],
-            y: [-200, 200],
           }}
-          transition={{
-            background: {
-              duration: 10,
-              repeat: Infinity,
-              ease: 'linear'
-            },
-            y: {
-              duration: 12,
-              repeat: Infinity,
-              ease: 'linear'
-            }
-          }}
+          transition={colorShiftTransition}
         />
       </div>
 
@@ -252,3 +273,5 @@ export default function ComparisonSeo() {
     </Section>
   )
 }
+
+export default memo(ComparisonSeo)
