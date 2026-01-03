@@ -1,7 +1,7 @@
 import { motion, AnimatePresence } from 'framer-motion'
 import { ChevronRight, AlignRight } from 'lucide-react'
 import { scrollToSection } from '../../utils/scroll'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import Tooltip from './Tooltip'
 import { anchorLinks } from '../../constants/data'
 
@@ -11,7 +11,7 @@ export default function SlideOutMenu({ isOpen, onOpen, onClose }) {
 
   // Track active section with Intersection Observer
   useEffect(() => {
-    const sections = ['what-you-can-create', 'story', 'process', 'pricing-section']
+    const sections = anchorLinks.map(link => link.id)
 
     const observer = new IntersectionObserver(
       (entries) => {
@@ -45,10 +45,10 @@ export default function SlideOutMenu({ isOpen, onOpen, onClose }) {
     return () => observer.disconnect()
   }, [])
 
-  const handleLinkClick = (id) => {
+  const handleLinkClick = useCallback((id) => {
     scrollToSection(id)
     onClose()
-  }
+  }, [onClose])
 
   // Window-level drag detection to close menu
   useEffect(() => {

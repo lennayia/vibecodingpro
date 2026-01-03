@@ -22,7 +22,7 @@ function Section({ children, className = "", background = "light", showScrollInd
       <div className={`${maxWidthClass} w-full mx-auto relative z-10 ${contentPadding}`}>
         {children}
       </div>
-      {showScrollIndicator && <ScrollDownIndicator />}
+      {showScrollIndicator && <ScrollDownIndicator isDarkBg={background === "holographic"} />}
     </section>
   )
 }

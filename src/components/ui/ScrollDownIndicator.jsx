@@ -27,7 +27,7 @@ const chevronTransition = {
   ease: "easeInOut"
 }
 
-function ScrollDownIndicator() {
+function ScrollDownIndicator({ isDarkBg = false }) {
   const handleScroll = useCallback(() => {
     window.scrollBy({
       top: window.innerHeight,
@@ -48,7 +48,10 @@ function ScrollDownIndicator() {
         animate={chevronAnimation}
         transition={chevronTransition}
       >
-        <ChevronDown className="w-6 h-6 text-[#B56C4E] dark:text-white" strokeWidth={2} />
+        <ChevronDown
+          className={`w-6 h-6 ${isDarkBg ? 'text-white' : 'text-[#2E2E2E] dark:text-white'}`}
+          strokeWidth={2}
+        />
       </motion.div>
     </motion.button>
   )

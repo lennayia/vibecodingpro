@@ -15,6 +15,14 @@ function Navigation() {
     scrollToSection('pricing-section')
   }, [])
 
+  const handleMenuOpen = useCallback(() => {
+    setIsMenuOpen(true)
+  }, [])
+
+  const handleMenuClose = useCallback(() => {
+    setIsMenuOpen(false)
+  }, [])
+
   return createPortal(
     <nav
       className="sticky-header w-full backdrop-blur-2xl bg-[#C9987E]/75 dark:bg-black/60 shadow-[0_6px_30px_rgba(181,108,78,0.45)] dark:shadow-[0_4px_20px_rgba(0,0,205,0.25)]"
@@ -53,8 +61,8 @@ function Navigation() {
           <ThemeToggle />
           <SlideOutMenu
             isOpen={isMenuOpen}
-            onOpen={() => setIsMenuOpen(true)}
-            onClose={() => setIsMenuOpen(false)}
+            onOpen={handleMenuOpen}
+            onClose={handleMenuClose}
           />
         </div>
       </div>
