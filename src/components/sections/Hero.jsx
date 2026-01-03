@@ -8,6 +8,7 @@ import { scrollToSection } from '../../utils/scroll'
 import { heroContent } from '../../constants/hero'
 import { SECTION_IDS } from '../../constants/data'
 import '../../styles/hero.css'
+import '../../styles/shared.css'
 
 // Animation timing constants
 const ANIMATION_TIMINGS = {

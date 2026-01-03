@@ -4,6 +4,7 @@ import Section from '../layout/Section'
 import AnimatedBackground from '../ui/AnimatedBackground'
 import { fadeIn, slideUp, slideLeft } from '../../constants/animations'
 import { whatIsVibecodingContent } from '../../constants/data'
+import '../../styles/shared.css'
 
 // Animation configuration
 const ANIMATION_CONFIG = {

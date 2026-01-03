@@ -1,0 +1,16 @@
+/* ============================================
+   SHARED UI COMPONENTS
+   Sdílené UI komponenty použitelné napříč aplikací
+   ============================================ */
+
+/* Copper divider line - elegantní oddělovací čára */
+.copper-divider-line {
+  display: block;
+  width: 80px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #B56C4E, transparent);
+}
+
+.dark .copper-divider-line {
+  background: linear-gradient(90deg, transparent, #0DDD0D, transparent);
+}
