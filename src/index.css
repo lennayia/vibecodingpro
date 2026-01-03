@@ -653,8 +653,8 @@
       margin-bottom: clamp(0.25rem, 1vh, 0.75rem) !important;
     }
 
-    /* Reduce button spacing - but NOT carousel dot indicators or navigation arrows or accordion buttons */
-    .btn, button:not(.w-3):not(.w-12):not(.w-5):not(.rounded-full):not(.accordion-btn) {
+    /* Reduce button spacing - but NOT carousel dot indicators or navigation arrows or accordion buttons or navigation button */
+    .btn:not(.nav-btn-fluid), button:not(.w-3):not(.w-12):not(.w-5):not(.rounded-full):not(.accordion-btn):not(.nav-btn-fluid) {
       padding: clamp(0.5rem, 1.5vh, 0.75rem) clamp(1rem, 3vw, 1.5rem) !important;
       font-size: clamp(0.875rem, 1vw, 1rem) !important;
     }
@@ -685,6 +685,33 @@
 
     .text-xs {
       font-size: clamp(0.65rem, 0.8vw, 0.75rem) !important;
+    }
+
+    /* CRITICAL: Force navigation to use same fixed values at <900px */
+    .nav-gap-fluid {
+      gap: 1rem !important;
+    }
+
+    .nav-gap-inner-fluid {
+      gap: 0.75rem !important;
+    }
+
+    .nav-btn-fluid {
+      padding: 0.5rem 0.75rem !important;
+      font-size: 0.75rem !important;
+    }
+
+    .nav-logo-fluid {
+      height: 2rem !important;
+    }
+
+    .nav-icon-fluid {
+      width: 1.5rem !important;
+      height: 1.5rem !important;
+    }
+
+    .menu-panel {
+      width: 3rem !important;
     }
   }
 
@@ -1090,7 +1117,7 @@
     position: fixed;
     top: 0.5rem;
     right: 0;
-    width: 4rem;
+    width: clamp(3rem, 2vw + 2vh, 6rem) !important;
     z-index: 99999;
     background: var(--menu-bg);
     backdrop-filter: blur(20px);
@@ -1111,6 +1138,34 @@
     top: 0.5rem;
     z-index: 10000;
     transition: right 0.3s;
+  }
+
+  /* Navigation - FIXED for ALL screen sizes */
+  .nav-gap-fluid {
+    gap: 1rem !important;
+  }
+
+  .nav-gap-inner-fluid {
+    gap: 0.75rem !important;
+  }
+
+  .nav-btn-fluid {
+    padding: 0.5rem 0.75rem !important;
+    font-size: 0.75rem !important;
+  }
+
+  .nav-logo-fluid {
+    height: 2rem !important;
+    width: auto !important;
+  }
+
+  .nav-icon-fluid {
+    width: 1.5rem !important;
+    height: 1.5rem !important;
+  }
+
+  .menu-panel {
+    width: 3rem !important;
   }
 
   .sticky-header {
@@ -1268,3 +1323,4 @@
     color: var(--color-accent-dark) !important;
   }
 }
+

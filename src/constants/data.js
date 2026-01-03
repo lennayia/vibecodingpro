@@ -232,7 +232,7 @@ export const whatIsVibecodingContent = {
 export const portfolioHolographicContent = {
   heading: "Tohle postavila žena, která neumí programovat.",
   subheading: "Praktické aplikace, moduly, weby. Ani řádek kódu – jen vize, strategie a AI.",
-  dragInstruction: "← Táhněte →",
+  dragInstruction: "← Potáhněte do strany →",
   projects: [
     { name: "CoachPro", image: "/coachpro.webp" },
     { name: "ContentPro", image: "/content-pro.webp" },

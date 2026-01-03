@@ -99,10 +99,10 @@ export default function SlideOutMenu({ isOpen, onOpen, onClose }) {
       {!isOpen && (
         <button
           onClick={onOpen}
-          className="rounded-lg hover:opacity-80 transition-opacity"
+          className="hover:opacity-80 transition-opacity"
           aria-label="Otevřít menu"
         >
-          <AlignRight className="w-8 h-8 text-gray-900 dark:text-white" strokeWidth={2.5} />
+          <AlignRight className="nav-icon-fluid text-gray-900 dark:text-white" strokeWidth={2.5} />
         </button>
       )}
 
@@ -132,7 +132,7 @@ export default function SlideOutMenu({ isOpen, onOpen, onClose }) {
               className="relative p-2 rounded-lg hover:opacity-80 transition-opacity group"
               aria-label="Zavřít menu"
             >
-              <ChevronRight className="w-8 h-8 text-[#2E2E2E] dark:text-white" strokeWidth={2.5} />
+              <ChevronRight className="nav-icon-fluid text-[#2E2E2E] dark:text-white" strokeWidth={2.5} />
               <span className="absolute right-full mr-2 top-1/2 -translate-y-1/2 bg-gray-900 text-white text-xs px-3 py-1.5 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap">
                 Zavřít
               </span>
@@ -153,7 +153,7 @@ export default function SlideOutMenu({ isOpen, onOpen, onClose }) {
                     aria-label={link.label}
                   >
                     <Icon
-                      className={`w-8 h-8 transition-colors ${
+                      className={`nav-icon-fluid transition-colors ${
                         activeSection === link.id
                           ? 'text-[#B56C4E] dark:text-[#0DDD0D]'
                           : 'text-[#2E2E2E] dark:text-white'

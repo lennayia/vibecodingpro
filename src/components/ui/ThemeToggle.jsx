@@ -36,14 +36,14 @@ export default function ThemeToggle() {
   return (
     <button
       onClick={toggleTheme}
-      className="relative z-10 rounded-lg hover:opacity-80 transition-opacity group"
+      className="relative z-10 hover:opacity-80 transition-opacity group"
       aria-label="Přepnout motiv"
       title={isDark ? "Přepnout na světlý režim" : "Přepnout na tmavý režim"}
     >
       {isDark ? (
-        <Sun className="w-8 h-8 text-[#0DDD0D]" strokeWidth={3} />
+        <Sun className="nav-icon-fluid text-[#0DDD0D]" strokeWidth={3} />
       ) : (
-        <Moon className="w-8 h-8 text-[#B56C4E]" strokeWidth={3} />
+        <Moon className="nav-icon-fluid text-[#B56C4E]" strokeWidth={3} />
       )}
 
       {/* Tooltip - vlevo jako u ostatních ikon */}

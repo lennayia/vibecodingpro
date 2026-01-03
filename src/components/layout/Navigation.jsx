@@ -81,20 +81,20 @@ function Navigation() {
           alt="Vibecoding"
           width="36"
           height="36"
-          className="h-9 w-auto"
+          className="nav-logo-fluid"
         />
       </div>
 
       {/* Fixed right: CTA button + Theme Toggle + Menu */}
       <div
-        className={`nav-logo-container flex items-center gap-3 ${isMenuOpen ? 'right-[calc(4rem+1.5rem)]' : 'right-6'}`}
+        className={`nav-logo-container flex items-center nav-gap-fluid ${isMenuOpen ? 'right-[4.5rem]' : 'right-6'}`}
       >
-        <Button onClick={handlePricingClick} variant="primary">
+        <Button onClick={handlePricingClick} variant="primary" className="nav-btn-fluid">
           Chci začít
         </Button>
 
-        {/* Theme Toggle + Menu with minimal spacing */}
-        <div className="flex items-center gap-1">
+        {/* Theme Toggle + Menu */}
+        <div className="flex items-center nav-gap-inner-fluid">
           <ThemeToggle />
           <SlideOutMenu
             isOpen={isMenuOpen}
