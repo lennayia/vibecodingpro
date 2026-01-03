@@ -161,7 +161,7 @@ function PortfolioHolographic() {
                       />
                       <div className="absolute inset-0 portfolio-mobile-card-overlay" />
                       <div className="absolute bottom-0 left-0 right-0 p-3 portfolio-mobile-card-footer">
-                        <p className="text-white text-sm font-bold text-center drop-shadow-lg">
+                        <p className="text-white dark:text-accent text-sm font-bold text-center drop-shadow-lg">
                           {project.name}
                         </p>
                       </div>
@@ -347,7 +347,7 @@ const HolographicCard = memo(function HolographicCard({ project, zDepth }) {
 
         {/* Project name bar */}
         <div className="absolute bottom-0 left-0 right-0 p-4 portfolio-desktop-card-footer border-t border-holo/20">
-          <h3 className="font-display font-bold text-lg md:text-xl text-white drop-shadow-lg">
+          <h3 className="font-display font-bold text-lg md:text-xl text-white dark:text-accent drop-shadow-lg">
             {project.name}
           </h3>
         </div>

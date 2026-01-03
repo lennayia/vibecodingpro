@@ -8,15 +8,33 @@ function NeuralBackground({ nodeCount = 15 }) {
   const animationFrameId = useRef(null)
   const isVisibleRef = useRef(true)
   const [isMobile, setIsMobile] = useState(false)
+  const [isDark, setIsDark] = useState(() => {
+    if (typeof window !== 'undefined') {
+      return document.documentElement.classList.contains('dark')
+    }
+    return true
+  })
 
-  // Detect mobile and reduced motion
+  // Detect mobile
   useEffect(() => {
     const checkMobile = () => {
-      setIsMobile(window.innerWidth < 768)
+      setIsMobile(window.innerWidth < 667)
     }
     checkMobile()
     window.addEventListener('resize', checkMobile)
     return () => window.removeEventListener('resize', checkMobile)
+  }, [])
+
+  // Track theme changes
+  useEffect(() => {
+    const checkTheme = () => {
+      setIsDark(document.documentElement.classList.contains('dark'))
+    }
+    checkTheme()
+
+    const handleThemeChange = () => checkTheme()
+    window.addEventListener('themeChange', handleThemeChange)
+    return () => window.removeEventListener('themeChange', handleThemeChange)
   }, [])
 
   // Generate neural network structure
@@ -398,12 +416,14 @@ function NeuralBackground({ nodeCount = 15 }) {
         cancelAnimationFrame(animationFrameId.current)
       }
     }
-  }, [networkStructure, isMobile])
+  }, [networkStructure, isMobile, isDark])
 
+  // Mobile gets lower opacity, desktop normal
   return (
     <canvas
       ref={canvasRef}
-      className="absolute inset-0 z-0 pointer-events-none opacity-50"
+      className={`absolute inset-0 z-0 pointer-events-none ${isMobile ? 'opacity-30' : 'opacity-50'}`}
+      style={isMobile ? { filter: 'blur(0.5px)' } : undefined}
     />
   )
 }

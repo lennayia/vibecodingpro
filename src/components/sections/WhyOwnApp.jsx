@@ -1,11 +1,12 @@
 import { motion } from 'framer-motion'
-import { useCallback, useEffect, useState, useRef } from 'react'
+import { useCallback, useEffect, useState, useRef, memo } from 'react'
 import { Clock, RotateCcw, TrendingUp, Briefcase, Bell } from 'lucide-react'
 import Section from '../layout/Section'
 import Button from '../ui/Button'
 import { fadeIn, slideUp } from '../../constants/animations'
 import { scrollToSection } from '../../utils/scroll'
 import { SECTION_IDS } from '../../constants/data'
+import '../../styles/shared.css'
 
 // Audio configuration
 const AUDIO_CONFIG = {
@@ -94,7 +95,7 @@ const benefits = [
   }
 ]
 
-export default function WhyOwnAppSeo() {
+function WhyOwnAppSeo() {
   const [isVisible, setIsVisible] = useState(false)
   const [animationKey, setAnimationKey] = useState(0)
   const [isDark, setIsDark] = useState(() => {
@@ -142,13 +143,14 @@ export default function WhyOwnAppSeo() {
       { threshold: OBSERVER_CONFIG.THRESHOLD }
     )
 
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current)
+    const currentRef = sectionRef.current
+    if (currentRef) {
+      observer.observe(currentRef)
     }
 
     return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current)
+      if (currentRef) {
+        observer.unobserve(currentRef)
       }
     }
   }, [])
@@ -157,97 +159,98 @@ export default function WhyOwnAppSeo() {
     <Section background="dark" centered={true} showScrollIndicator={true}>
       <div ref={sectionRef}>
         <motion.div {...fadeIn}>
-          <h2 className="font-display font-bold mb-8 md:mb-10 text-center leading-tight">
+          <h2 className="font-display font-bold mb-[clamp(2rem,8vw,12rem)] text-center leading-tight">
             Proč mít vlastní digi-nástroje
           </h2>
 
-          <div className="space-y-5 md:space-y-6">
+          <div className="space-y-[clamp(2rem,6vw,7rem)]">
             {benefits.map((benefit, index) => {
               const Icon = benefit.Icon
               const isFirst = index === 0
+              const isLast = index === benefits.length - 1
               return (
                 <motion.div
                   key={index}
-                  className="border-b border-gray-700 pb-6 md:pb-8 last:border-b-0"
+                  className="pb-[clamp(0.75rem,1.5vw,2rem)]"
                   {...slideUp}
                   transition={{ delay: index * ANIMATION_CONFIG.BENEFIT_STAGGER }}
                 >
-                  <div className="grid md:grid-cols-2 gap-4 md:gap-6 items-start text-left pl-[10px]">
-                    <div className="flex items-center gap-4">
-                      <Icon className="w-8 h-8 text-accent flex-shrink-0" />
-                      <h3 className="font-display font-bold">
-                        {benefit.title}
-                      </h3>
-                    </div>
-                    <div>
-                      <p className="inline">
-                        {benefit.description}
-                      </p>
+                    <div className="grid md:grid-cols-2 gap-[clamp(1rem,1.5vw,1.5rem)] items-start text-left pl-[clamp(0.5rem,1vw,0.75rem)]">
+                      <div className="flex items-center gap-[clamp(0.75rem,1vw,1rem)]">
+                        <Icon className="w-8 h-8 text-accent flex-shrink-0" />
+                        <h3 className="font-display font-bold">
+                          {benefit.title}
+                        </h3>
+                      </div>
+                      <div>
+                        <p className="inline">
+                          {benefit.description}
+                        </p>
 
-                      {/* Animovaná notifikace 3:00 pro první benefit */}
-                      {isFirst && isVisible && (
-                        <motion.div
-                          key={animationKey}
-                          className="flex items-center gap-2 mt-2"
-                          initial={{ opacity: 0, y: -10, scale: 0.9 }}
-                          animate={{ opacity: 1, y: 0, scale: 1 }}
-                          transition={{ duration: ANIMATION_CONFIG.NOTIFICATION_DURATION, delay: ANIMATION_CONFIG.NOTIFICATION_DELAY, type: "spring" }}
-                        >
+                        {/* Animovaná notifikace 3:00 pro první benefit */}
+                        {isFirst && isVisible && (
                           <motion.div
-                            className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-bold shadow-lg"
-                            style={{
-                              borderRadius: NOTIFICATION_CONFIG.BORDER_RADIUS,
-                              backgroundColor: isDark ? 'rgba(13, 221, 13, 0.2)' : 'rgba(181, 108, 78, 0.3)',
-                              borderWidth: NOTIFICATION_CONFIG.BORDER_WIDTH,
-                              borderStyle: 'solid',
-                              borderColor: isDark ? '#0DDD0D' : '#B56C4E',
-                              color: isDark ? '#ffffff' : '#2E2E2E',
-                              boxShadow: isDark
-                                ? '0 0 15px rgba(0, 255, 136, 0.3)'
-                                : '0 0 15px rgba(181, 108, 78, 0.3)'
-                            }}
-                            animate={{
-                              scale: NOTIFICATION_CONFIG.SCALE_ANIMATION,
-                              boxShadow: isDark ? [
-                                '0 0 15px rgba(0, 255, 136, 0.3)',
-                                '0 0 25px rgba(0, 255, 136, 0.6)',
-                                '0 0 15px rgba(0, 255, 136, 0.3)'
-                              ] : [
-                                '0 0 15px rgba(181, 108, 78, 0.3)',
-                                '0 0 25px rgba(181, 108, 78, 0.6)',
-                                '0 0 15px rgba(181, 108, 78, 0.3)'
-                              ]
-                            }}
-                            transition={{
-                              duration: ANIMATION_CONFIG.BELL_PULSE_DURATION,
-                              repeat: Infinity,
-                              ease: "easeInOut"
-                            }}
+                            key={animationKey}
+                            className="flex items-center gap-[clamp(0.25rem,0.5vw,0.5rem)] mt-[clamp(0.5rem,1vw,1.5rem)]"
+                            initial={{ opacity: 0, y: -10, scale: 0.9 }}
+                            animate={{ opacity: 1, y: 0, scale: 1 }}
+                            transition={{ duration: ANIMATION_CONFIG.NOTIFICATION_DURATION, delay: ANIMATION_CONFIG.NOTIFICATION_DELAY, type: "spring" }}
                           >
                             <motion.div
+                              className="flex items-center gap-[clamp(0.25rem,0.5vw,0.375rem)] px-[clamp(0.5rem,1.5vw,0.75rem)] py-[clamp(0.25rem,0.75vw,0.375rem)] text-[clamp(0.65rem,1vw,0.75rem)] font-bold shadow-lg"
+                              style={{
+                                borderRadius: NOTIFICATION_CONFIG.BORDER_RADIUS,
+                                backgroundColor: isDark ? 'rgba(13, 221, 13, 0.2)' : 'rgba(181, 108, 78, 0.3)',
+                                borderWidth: NOTIFICATION_CONFIG.BORDER_WIDTH,
+                                borderStyle: 'solid',
+                                borderColor: isDark ? '#0DDD0D' : '#B56C4E',
+                                color: isDark ? '#ffffff' : '#2E2E2E',
+                                boxShadow: isDark
+                                  ? '0 0 15px rgba(0, 255, 136, 0.3)'
+                                  : '0 0 15px rgba(181, 108, 78, 0.3)'
+                              }}
                               animate={{
-                                scale: NOTIFICATION_CONFIG.BELL_SCALE,
-                                rotate: NOTIFICATION_CONFIG.BELL_ROTATE
+                                scale: NOTIFICATION_CONFIG.SCALE_ANIMATION,
+                                boxShadow: isDark ? [
+                                  '0 0 15px rgba(0, 255, 136, 0.3)',
+                                  '0 0 25px rgba(0, 255, 136, 0.6)',
+                                  '0 0 15px rgba(0, 255, 136, 0.3)'
+                                ] : [
+                                  '0 0 15px rgba(181, 108, 78, 0.3)',
+                                  '0 0 25px rgba(181, 108, 78, 0.6)',
+                                  '0 0 15px rgba(181, 108, 78, 0.3)'
+                                ]
                               }}
                               transition={{
-                                duration: ANIMATION_CONFIG.BELL_SHAKE_DURATION,
+                                duration: ANIMATION_CONFIG.BELL_PULSE_DURATION,
                                 repeat: Infinity,
-                                repeatDelay: ANIMATION_CONFIG.BELL_SHAKE_DELAY,
                                 ease: "easeInOut"
                               }}
                             >
-                              <Bell
-                                className="w-3.5 h-3.5"
-                                style={{ color: isDark ? '#0DDD0D' : '#B56C4E' }}
-                              />
+                              <motion.div
+                                animate={{
+                                  scale: NOTIFICATION_CONFIG.BELL_SCALE,
+                                  rotate: NOTIFICATION_CONFIG.BELL_ROTATE
+                                }}
+                                transition={{
+                                  duration: ANIMATION_CONFIG.BELL_SHAKE_DURATION,
+                                  repeat: Infinity,
+                                  repeatDelay: ANIMATION_CONFIG.BELL_SHAKE_DELAY,
+                                  ease: "easeInOut"
+                                }}
+                              >
+                                <Bell
+                                  className="w-[clamp(0.65rem,1vw,0.875rem)] h-[clamp(0.65rem,1vw,0.875rem)]"
+                                  style={{ color: isDark ? '#0DDD0D' : '#B56C4E' }}
+                                />
+                              </motion.div>
+                              <span>3:12</span>
                             </motion.div>
-                            <span>3:12</span>
+                            <span className="text-[clamp(0.75rem,1.2vw,1rem)] text-accent font-semibold">Nová registrace</span>
                           </motion.div>
-                          <span className="text-xs text-accent font-semibold">Nová registrace</span>
-                        </motion.div>
-                      )}
+                        )}
+                      </div>
                     </div>
-                  </div>
                 </motion.div>
               )
             })}
@@ -257,7 +260,7 @@ export default function WhyOwnAppSeo() {
           <motion.div
             {...slideUp}
             transition={{ delay: ANIMATION_CONFIG.CTA_DELAY }}
-            className="flex justify-center pt-6"
+            className="flex justify-center pt-[clamp(1.5rem,2vw,2.5rem)]"
           >
             <Button onClick={handleClick}>
               Jak to funguje
@@ -268,3 +271,5 @@ export default function WhyOwnAppSeo() {
     </Section>
   )
 }
+
+export default memo(WhyOwnAppSeo)

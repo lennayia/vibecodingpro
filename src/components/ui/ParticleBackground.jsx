@@ -19,11 +19,10 @@ function ParticleBackground({
     return true
   })
 
-  // Detect mobile (<640px) and disable particles completely for performance
-  // Tablets (>=640px) get particles
+  // Detect mobile
   useEffect(() => {
     const checkMobile = () => {
-      setIsMobile(window.innerWidth < 640)
+      setIsMobile(window.innerWidth < 667)
     }
     checkMobile()
     window.addEventListener('resize', checkMobile)
@@ -244,11 +243,15 @@ function ParticleBackground({
     }
   }, [customParticleCount, showConnections, mouseInteraction, isMobile, isDark])
 
+  // Mobile gets lower opacity and blur, desktop normal
   return (
     <canvas
       ref={canvasRef}
       className="absolute inset-0 z-0 pointer-events-none"
-      style={{ opacity }} // Dynamic opacity based on prop
+      style={{
+        opacity: isMobile ? opacity * 0.5 : opacity,
+        filter: isMobile ? 'blur(0.5px)' : undefined
+      }}
     />
   )
 }

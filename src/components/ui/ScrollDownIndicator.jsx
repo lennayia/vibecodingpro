@@ -38,7 +38,7 @@ function ScrollDownIndicator({ isDarkBg = false }) {
   return (
     <motion.button
       onClick={handleScroll}
-      className="hidden md:flex absolute bottom-2 inset-x-0 mx-auto z-20 items-center justify-center w-12 h-12 rounded-full bg-[#D4C5B5]/30 dark:bg-white/10 backdrop-blur-sm border border-[#D4C5B5]/50 dark:border-white/20 hover:bg-[#D4C5B5]/50 dark:hover:bg-white/20 transition-all cursor-pointer"
+      className="scroll-indicator absolute bottom-2 inset-x-0 mx-auto z-20 items-center justify-center w-12 h-12 rounded-full bg-[#D4C5B5]/30 dark:bg-white/10 backdrop-blur-sm border border-[#D4C5B5]/50 dark:border-white/20 hover:bg-[#D4C5B5]/50 dark:hover:bg-white/20 transition-all cursor-pointer"
       {...buttonAnimation}
       transition={buttonTransition}
       whileHover={buttonHover}

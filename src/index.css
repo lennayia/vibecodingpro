@@ -410,6 +410,17 @@
     background-color: rgba(13, 221, 13, 0.9);
   }
 
+  /* Scroll down indicator - show only on md+ width AND 700px+ height */
+  .scroll-indicator {
+    display: none;
+  }
+
+  @media (min-width: 667px) and (min-height: 700px) {
+    .scroll-indicator {
+      display: flex;
+    }
+  }
+
   /* Animations with performance in mind */
   .animate-fade-in {
     animation: fadeIn 0.8s ease-in-out;

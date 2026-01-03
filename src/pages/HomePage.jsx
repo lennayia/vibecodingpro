@@ -10,7 +10,6 @@ import CookieBanner from '../components/ui/CookieBanner'
 // Critical sections - load immediately for visual quality
 import Hero from '../components/sections/Hero'
 import PortfolioHolographic from '../components/sections/PortfolioHolographic'
-import WhyOwnApp from '../components/sections/WhyOwnApp'
 import ImagineSection from '../components/sections/ImagineSection'
 import CaseStudy from '../components/sections/CaseStudy'
 import Phases from '../components/sections/Phases'
@@ -21,6 +20,7 @@ import WhyMe from '../components/sections/WhyMe'
 const WhatYouCanCreate = lazy(() => import('../components/sections/WhatYouCanCreate'))
 const Comparison = lazy(() => import('../components/sections/Comparison'))
 const WhatIsVibecoding = lazy(() => import('../components/sections/WhatIsVibecoding'))
+const WhyOwnApp = lazy(() => import('../components/sections/WhyOwnApp'))
 const Bonuses = lazy(() => import('../components/sections/BonusesTabs'))
 const PromoCoupon = lazy(() => import('../components/sections/PromoCoupon'))
 const Pricing = lazy(() => import('../components/sections/Pricing'))
@@ -51,8 +51,8 @@ export default function HomePage() {
             <WhatYouCanCreate />
             <Comparison />
             <WhatIsVibecoding />
+            <WhyOwnApp />
           </Suspense>
-          <WhyOwnApp />
           <ImagineSection />
           <CaseStudy />
           <WhyConsultation />
