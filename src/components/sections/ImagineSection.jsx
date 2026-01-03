@@ -1,3 +1,4 @@
+import { memo } from 'react'
 import { motion } from 'framer-motion'
 import { Sunrise, Sun, Moon, Palmtree } from 'lucide-react'
 import Section from '../layout/Section'
@@ -34,33 +35,21 @@ const timelineItems = [
   }
 ]
 
-export default function ImagineSection() {
+function ImagineSection() {
   return (
-    <Section background="light" centered={true} className="!pt-12 !pb-12 md:!pt-4 md:!pb-8 lg:!pt-8 lg:!pb-16" showScrollIndicator={true}>
+    <Section background="light" centered={true} showScrollIndicator={true}>
       <div className="w-full">
         <motion.div {...fadeIn}>
-          <h2 className="font-display font-bold text-center mb-8 md:mb-[clamp(0.2rem,1vh,1rem)] leading-tight">
+          <h2 className="font-display font-bold text-center mb-[clamp(2rem,8vw,12rem)] leading-tight">
             Den s vaší aplikací
           </h2>
 
           {/* Timeline */}
           <div className="max-w-4xl mx-auto relative">
             {/* Vertical line with gradient from morning to evening using theme colors */}
-            <div
-              className="absolute top-0 bottom-0 left-4 md:left-[2.75rem] w-2 rounded-full z-0"
-              style={{
-                background: 'linear-gradient(to bottom, rgba(181, 108, 78, 0.25), rgba(181, 108, 78, 0.9), rgba(181, 108, 78, 0.05))'
-              }}
-            >
-              <div
-                className="absolute inset-0 opacity-0 dark:opacity-100 transition-opacity rounded-full"
-                style={{
-                  background: 'linear-gradient(to bottom, rgba(13, 221, 13, 0.25), rgba(13, 221, 13, 0.9), rgba(13, 221, 13, 0.05))'
-                }}
-              />
-            </div>
+            <div className="absolute top-0 bottom-0 left-4 md:left-[2.75rem] w-2 rounded-full z-0 timeline-gradient" />
 
-            <div className="flex flex-col gap-8 md:gap-[clamp(0.2rem,1vh,1rem)]">
+            <div className="flex flex-col gap-8 md:gap-[clamp(0.2rem,1vw,1rem)]">
               {timelineItems.map((item, index) => {
                 const Icon = item.Icon
                 return (
@@ -83,15 +72,15 @@ export default function ImagineSection() {
                     </div>
 
                     {/* Content */}
-                    <div className="bg-white dark:bg-[#0a0a1a] rounded-xl border border-gray-200 dark:border-gray-800 shadow-sm p-4 md:p-[clamp(0.4rem,1.5vh,1rem)]">
-                      <div className="flex items-baseline gap-2 mb-2 md:mb-[clamp(0.1rem,0.5vh,0.5rem)]">
+                    <div className="bg-white dark:bg-[#0a0a1a] rounded-xl border border-gray-200 dark:border-gray-800 shadow-sm p-4 md:p-[clamp(0.4rem,1.5vw,1rem)]">
+                      <div className="flex items-baseline gap-2 mb-fluid-xs">
                         <span className="text-accent font-bold">{item.time}</span>
                         <span className="text-xs md:text-sm text-gray-500 dark:text-gray-400">・ {item.period}</span>
                       </div>
-                      <h3 className="font-display font-bold mb-2 md:mb-[clamp(0.1rem,0.5vh,0.5rem)]">
+                      <h3 className="font-display font-bold mb-fluid-xs">
                         {item.title}
                       </h3>
-                      <p style={{ lineHeight: 'clamp(1.3, 1.5, 1.75)' }}>
+                      <p>
                         {item.description}
                       </p>
                     </div>
@@ -106,3 +95,5 @@ export default function ImagineSection() {
     </Section>
   )
 }
+
+export default memo(ImagineSection)
