@@ -653,12 +653,6 @@
       margin-bottom: clamp(0.25rem, 1vh, 0.75rem) !important;
     }
 
-    /* Reduce button spacing - but NOT carousel dot indicators or navigation arrows or accordion buttons or navigation button */
-    .btn:not(.nav-btn-fluid), button:not(.w-3):not(.w-12):not(.w-5):not(.rounded-full):not(.accordion-btn):not(.nav-btn-fluid) {
-      padding: clamp(0.5rem, 1.5vh, 0.75rem) clamp(1rem, 3vw, 1.5rem) !important;
-      font-size: clamp(0.875rem, 1vw, 1rem) !important;
-    }
-
     /* Reduce gaps - but NOT for carousel indicators */
     .gap-4:not(:has(> button.rounded-full)) {
       gap: 0.5rem !important;
@@ -685,33 +679,6 @@
 
     .text-xs {
       font-size: clamp(0.65rem, 0.8vw, 0.75rem) !important;
-    }
-
-    /* CRITICAL: Force navigation to use same fixed values at <900px */
-    .nav-gap-fluid {
-      gap: 1rem !important;
-    }
-
-    .nav-gap-inner-fluid {
-      gap: 0.75rem !important;
-    }
-
-    .nav-btn-fluid {
-      padding: 0.5rem 0.75rem !important;
-      font-size: 0.75rem !important;
-    }
-
-    .nav-logo-fluid {
-      height: 2rem !important;
-    }
-
-    .nav-icon-fluid {
-      width: 1.5rem !important;
-      height: 1.5rem !important;
-    }
-
-    .menu-panel {
-      width: 3rem !important;
     }
   }
 
