@@ -9,11 +9,7 @@ import CookieBanner from '../components/ui/CookieBanner'
 
 // Critical sections - load immediately for visual quality
 import Hero from '../components/sections/Hero'
-import WhatYouCanCreate from '../components/sections/WhatYouCanCreate'
-import Comparison from '../components/sections/Comparison'
 import PortfolioHolographic from '../components/sections/PortfolioHolographic'
-import WhatIsVibecoding from '../components/sections/WhatIsVibecoding'
-import WhyOwnApp from '../components/sections/WhyOwnApp'
 import ImagineSection from '../components/sections/ImagineSection'
 import CaseStudy from '../components/sections/CaseStudy'
 import Phases from '../components/sections/Phases'
@@ -21,6 +17,10 @@ import WhyConsultation from '../components/sections/WhyConsultation'
 import WhyMe from '../components/sections/WhyMe'
 
 // Only lazy load bottom sections (below the fold)
+const WhatYouCanCreate = lazy(() => import('../components/sections/WhatYouCanCreate'))
+const Comparison = lazy(() => import('../components/sections/Comparison'))
+const WhatIsVibecoding = lazy(() => import('../components/sections/WhatIsVibecoding'))
+const WhyOwnApp = lazy(() => import('../components/sections/WhyOwnApp'))
 const Bonuses = lazy(() => import('../components/sections/BonusesTabs'))
 const PromoCoupon = lazy(() => import('../components/sections/PromoCoupon'))
 const Pricing = lazy(() => import('../components/sections/Pricing'))
@@ -46,11 +46,13 @@ export default function HomePage() {
 
         <main id="main-content" role="main">
           <Hero />
-          <WhatYouCanCreate />
-          <Comparison />
-          <WhatIsVibecoding />
           <PortfolioHolographic />
-          <WhyOwnApp />
+          <Suspense fallback={<div className="min-h-screen" />}>
+            <WhatYouCanCreate />
+            <Comparison />
+            <WhatIsVibecoding />
+            <WhyOwnApp />
+          </Suspense>
           <ImagineSection />
           <CaseStudy />
           <WhyConsultation />

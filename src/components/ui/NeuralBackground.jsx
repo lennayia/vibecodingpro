@@ -1,6 +1,6 @@
-import { useEffect, useRef, useState, useMemo } from 'react'
+import { useEffect, useRef, useState, useMemo, memo } from 'react'
 
-export default function NeuralBackground({ nodeCount = 15 }) {
+function NeuralBackground({ nodeCount = 15 }) {
   const canvasRef = useRef(null)
   const nodesRef = useRef([])
   const connectionsRef = useRef([])
@@ -8,15 +8,33 @@ export default function NeuralBackground({ nodeCount = 15 }) {
   const animationFrameId = useRef(null)
   const isVisibleRef = useRef(true)
   const [isMobile, setIsMobile] = useState(false)
+  const [isDark, setIsDark] = useState(() => {
+    if (typeof window !== 'undefined') {
+      return document.documentElement.classList.contains('dark')
+    }
+    return true
+  })
 
-  // Detect mobile and reduced motion
+  // Detect mobile
   useEffect(() => {
     const checkMobile = () => {
-      setIsMobile(window.innerWidth < 768)
+      setIsMobile(window.innerWidth < 667)
     }
     checkMobile()
     window.addEventListener('resize', checkMobile)
     return () => window.removeEventListener('resize', checkMobile)
+  }, [])
+
+  // Track theme changes
+  useEffect(() => {
+    const checkTheme = () => {
+      setIsDark(document.documentElement.classList.contains('dark'))
+    }
+    checkTheme()
+
+    const handleThemeChange = () => checkTheme()
+    window.addEventListener('themeChange', handleThemeChange)
+    return () => window.removeEventListener('themeChange', handleThemeChange)
   }, [])
 
   // Generate neural network structure
@@ -113,7 +131,57 @@ export default function NeuralBackground({ nodeCount = 15 }) {
     // Check dark mode dynamically
     const getNodeColor = () => {
       const isDark = document.documentElement.classList.contains('dark')
-      return isDark ? '13, 221, 13' : '0, 0, 205' // Green in dark, blue in light
+      return isDark ? '13, 221, 13' : '181, 108, 78' // Green in dark, rusty copper (#B56C4E) in light
+    }
+
+    // Get node color based on layer depth (for light mode only)
+    const getNodeColorByDepth = (layer, isDark) => {
+      if (isDark) return '13, 221, 13' // Dark mode - all green
+
+      // Light mode - rusty copper tone-on-tone for depth (based on #B56C4E)
+      const colorMap = [
+        '220, 155, 115', // Layer 0 (back) - light rusty copper
+        '208, 140, 100', // Layer 1 - medium-light rusty copper
+        '175, 107, 80',  // Layer 2 (front) - rich rusty copper
+        '208, 140, 100', // Layer 3 - medium-light rusty copper
+        '220, 155, 115'  // Layer 4 (back) - light rusty copper
+      ]
+      return colorMap[layer] || '181, 108, 78'
+    }
+
+    // Get connection opacity based on theme
+    const getConnectionOpacity = () => {
+      const isDark = document.documentElement.classList.contains('dark')
+      return isDark
+        ? { start: 0.05, middle: 0.15, end: 0.05 }  // Dark mode - subtle
+        : { start: 0.25, middle: 0.4, end: 0.25 }   // Light mode - more visible
+    }
+
+    // Get connection opacity multiplier based on layer depth (for light mode)
+    const getConnectionDepthMultiplier = (layer1, layer2, isDark) => {
+      if (isDark) return 1.0 // No depth effect in dark mode
+
+      // Average layer determines depth
+      const avgLayer = (layer1 + layer2) / 2
+      // Layer 2 (center) = 1.0, Layers 0,4 (edges) = 0.4
+      // Linear interpolation from edges to center
+      const distanceFromCenter = Math.abs(avgLayer - 2)
+      return 1.0 - (distanceFromCenter / 2) * 0.6 // 0.4 to 1.0 range
+    }
+
+    // Get node opacity multiplier based on theme
+    const getNodeOpacityMultiplier = () => {
+      const isDark = document.documentElement.classList.contains('dark')
+      return isDark ? 1.0 : 1.5 // Higher opacity for light mode nodes
+    }
+
+    // Get depth multiplier based on layer (for light mode only) - creates 3D effect
+    const getDepthMultiplier = (layer, isDark) => {
+      if (isDark) return 1.0 // No depth effect in dark mode
+      // Layer 2 (center) = front, Layers 0,4 (edges) = back
+      // Stronger contrast: back layers much more subtle
+      const depthMap = [0.4, 0.75, 1.5, 0.75, 0.4] // 5 layers
+      return depthMap[layer] || 1.0
     }
 
     // Wait for parent to have dimensions
@@ -157,8 +225,11 @@ export default function NeuralBackground({ nodeCount = 15 }) {
         return
       }
 
-      // Get current node color based on theme
+      // Get current node color and opacity based on theme
+      const isDark = document.documentElement.classList.contains('dark')
       const nodeColor = getNodeColor()
+      const connectionOpacity = getConnectionOpacity()
+      const nodeOpacityMultiplier = getNodeOpacityMultiplier()
 
       ctx.clearRect(0, 0, width, height)
 
@@ -183,11 +254,18 @@ export default function NeuralBackground({ nodeCount = 15 }) {
         const node1 = conn.fromNode
         const node2 = conn.toNode
 
-        // Gradient for elegant fading lines
+        // Get depth-based colors for both nodes
+        const color1 = getNodeColorByDepth(node1.layer, isDark)
+        const color2 = getNodeColorByDepth(node2.layer, isDark)
+
+        // Get depth-based opacity multiplier
+        const depthMultiplier = getConnectionDepthMultiplier(node1.layer, node2.layer, isDark)
+
+        // Gradient for elegant fading lines with depth colors and opacity
         const gradient = ctx.createLinearGradient(node1.px, node1.py, node2.px, node2.py)
-        gradient.addColorStop(0, `rgba(${nodeColor}, 0.05)`)
-        gradient.addColorStop(0.5, `rgba(${nodeColor}, 0.15)`)
-        gradient.addColorStop(1, `rgba(${nodeColor}, 0.05)`)
+        gradient.addColorStop(0, `rgba(${color1}, ${connectionOpacity.start * depthMultiplier})`)
+        gradient.addColorStop(0.5, `rgba(${color1}, ${connectionOpacity.middle * depthMultiplier})`)
+        gradient.addColorStop(1, `rgba(${color2}, ${connectionOpacity.end * depthMultiplier})`)
 
         ctx.beginPath()
         ctx.moveTo(node1.px, node1.py)
@@ -214,12 +292,15 @@ export default function NeuralBackground({ nodeCount = 15 }) {
           const x = node1.px + (node2.px - node1.px) * signal.progress
           const y = node1.py + (node2.py - node1.py) * signal.progress
 
+          // Use depth-based color (from source node)
+          const signalColor = getNodeColorByDepth(node1.layer, isDark)
+
           // Draw glowing signal
           ctx.shadowBlur = 12
-          ctx.shadowColor = `rgba(${nodeColor}, 0.8)`
+          ctx.shadowColor = `rgba(${signalColor}, 0.8)`
           ctx.beginPath()
           ctx.arc(x, y, signal.size, 0, Math.PI * 2)
-          ctx.fillStyle = `rgba(${nodeColor}, 0.9)`
+          ctx.fillStyle = `rgba(${signalColor}, 0.9)`
           ctx.fill()
           ctx.shadowBlur = 0
 
@@ -257,19 +338,30 @@ export default function NeuralBackground({ nodeCount = 15 }) {
           node.currentRadius = node.baseRadius + pulse * (node.targetRadius - node.baseRadius)
           node.currentOpacity = node.opacity + pulse * (node.targetOpacity - node.opacity)
 
+          // Apply depth effect (light mode only)
+          const depthMultiplier = getDepthMultiplier(node.layer, isDark)
+          const nodeColorByDepth = getNodeColorByDepth(node.layer, isDark)
+          const finalRadius = node.currentRadius * depthMultiplier
+          const finalOpacity = node.currentOpacity * nodeOpacityMultiplier * depthMultiplier
+
           // Draw animated node with subtle glow
           ctx.shadowBlur = 8
-          ctx.shadowColor = `rgba(${nodeColor}, ${node.currentOpacity * 0.6})`
+          ctx.shadowColor = `rgba(${nodeColorByDepth}, ${finalOpacity * 0.6})`
           ctx.beginPath()
-          ctx.arc(node.px, node.py, node.currentRadius, 0, Math.PI * 2)
-          ctx.fillStyle = `rgba(${nodeColor}, ${node.currentOpacity})`
+          ctx.arc(node.px, node.py, finalRadius, 0, Math.PI * 2)
+          ctx.fillStyle = `rgba(${nodeColorByDepth}, ${finalOpacity})`
           ctx.fill()
           ctx.shadowBlur = 0
         } else {
           // Draw static depth node - subtle
+          const depthMultiplier = getDepthMultiplier(node.layer, isDark)
+          const nodeColorByDepth = getNodeColorByDepth(node.layer, isDark)
+          const finalRadius = node.radius * depthMultiplier
+          const finalOpacity = node.opacity * nodeOpacityMultiplier * depthMultiplier
+
           ctx.beginPath()
-          ctx.arc(node.px, node.py, node.radius, 0, Math.PI * 2)
-          ctx.fillStyle = `rgba(${nodeColor}, ${node.opacity})`
+          ctx.arc(node.px, node.py, finalRadius, 0, Math.PI * 2)
+          ctx.fillStyle = `rgba(${nodeColorByDepth}, ${finalOpacity})`
           ctx.fill()
         }
       })
@@ -324,13 +416,16 @@ export default function NeuralBackground({ nodeCount = 15 }) {
         cancelAnimationFrame(animationFrameId.current)
       }
     }
-  }, [networkStructure, isMobile])
+  }, [networkStructure, isMobile, isDark])
 
+  // Mobile gets lower opacity, desktop normal
   return (
     <canvas
       ref={canvasRef}
-      className="absolute inset-0 z-0 pointer-events-none"
-      style={{ opacity: 0.5 }}
+      className={`absolute inset-0 z-0 pointer-events-none ${isMobile ? 'opacity-30' : 'opacity-50'}`}
+      style={isMobile ? { filter: 'blur(0.5px)' } : undefined}
     />
   )
 }
+
+export default memo(NeuralBackground)

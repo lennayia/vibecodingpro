@@ -5,29 +5,43 @@
 @layer base {
   :root {
     /* Colors */
-    --color-bg-light: #f2f2f2;
+    --color-bg-light: #FFFDF9;
     --color-bg-dark: #070716;
     --color-bg-dark-alt: #05050f;
-    --color-text-light: #070716;
+    --color-text-light: #2E2E2E;
     --color-text-dark: #f2f2f2;
     --color-text-muted-light: #374151;
     --color-text-muted-dark: #eaeaea;
-    --color-accent-light: #0000CD;
+    --color-accent-light: #B56C4E; /* Rusty copper for light mode */
     --color-accent-dark: #0DDD0D;
+    --color-secondary-light: #D4C5B5; /* Sand/beige secondary */
     --color-error: #9A0303;
     --color-error-light: #DC2626;
     --color-error-dark: #9A0303;
 
     /* Typography scales - with system font fallbacks */
-    --font-display: 'Manrope', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+    --font-display: 'Cormorant Garamond', serif; /* Elegant serif for light mode */
     --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, system-ui, sans-serif;
 
     /* Spacing & Timing */
     --transition-base: 0.3s ease;
     --transition-slow: 0.6s ease-out;
 
+    /* Holographic section colors - RGB values for use in rgba() */
+    --holo-primary: 181, 108, 78; /* Copper in light mode */
+    --holo-secondary: 212, 197, 181; /* Beige in light mode */
+
     /* Color scheme meta */
     color-scheme: light dark;
+  }
+
+  /* Dark mode keeps Manrope (sans-serif) */
+  .dark {
+    --font-display: 'Manrope', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+
+    /* Holographic section colors - dark mode */
+    --holo-primary: 13, 221, 13; /* Green in dark mode */
+    --holo-secondary: 0, 200, 255; /* Cyan in dark mode */
   }
 
   /* Performance optimizations */
@@ -51,7 +65,7 @@
     background-color: var(--color-bg-light);
     color: var(--color-text-light);
     font-family: var(--font-body);
-    font-size: clamp(0.875rem, 1vw + 0.5625rem, 1.125rem); /* 14-18px, 501-900px */
+    font-size: 1rem; /* Fixed 16px for consistent reading experience */
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -74,21 +88,89 @@
   }
 
   .dark h1, .dark h2, .dark h3, .dark h4, .dark h5, .dark h6 {
-    color: var(--color-text-muted-dark);
+    color: #ffffff;
+    font-family: 'Manrope', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
   }
 
   /* Fluid typography with clamp() */
   h1 {
-    font-size: clamp(2rem, 6.857vw + 0.857rem, 6rem); /* 32-96px, 501-1200px */
+    font-size: clamp(2.4rem, 4.8vw + 1.2rem, 4.8rem); /* +20% */
   }
 
   h2 {
-    font-size: clamp(1.75rem, 2.857vw + 1.607rem, 3.75rem); /* 28-60px, 501-1200px */
+    font-size: clamp(1.8rem, 3vw + 0.9rem, 3rem); /* +20% */
     line-height: 1.3;
   }
 
   h3 {
-    font-size: clamp(1.5rem, 2vw + 1.125rem, 2.25rem); /* 24-36px, 501-900px */
+    font-size: clamp(1.25rem, 1.5vw + 0.5rem, 1.75rem);
+  }
+
+  /* Dark mode heading sizes - 10% larger than original */
+  .dark h1 {
+    font-size: clamp(1.98rem, 3.96vw + 0.99rem, 3.96rem);
+  }
+
+  .dark h2 {
+    font-size: clamp(1.485rem, 2.475vw + 0.74rem, 2.475rem);
+  }
+
+  .dark h3 {
+    font-size: clamp(1.125rem, 1.35vw + 0.45rem, 1.575rem);
+  }
+
+  /* Small viewports (800-900px height) */
+  @media (max-height: 900px) {
+    h1 {
+      font-size: clamp(2.1rem, 4.2vw + 0.9rem, 4.2rem);
+    }
+
+    h2 {
+      font-size: clamp(1.62rem, 2.7vw + 0.72rem, 2.7rem);
+    }
+
+    h3 {
+      font-size: clamp(1.35rem, 1.62vw + 0.54rem, 1.89rem);
+    }
+
+    .dark h1 {
+      font-size: clamp(1.73rem, 3.465vw + 0.74rem, 3.465rem);
+    }
+
+    .dark h2 {
+      font-size: clamp(1.34rem, 2.23vw + 0.59rem, 2.23rem);
+    }
+
+    .dark h3 {
+      font-size: clamp(1.11rem, 1.34vw + 0.45rem, 1.56rem);
+    }
+  }
+
+  /* Extra small viewports (under 800px height) */
+  @media (max-height: 800px) {
+    h1 {
+      font-size: clamp(1.8rem, 3.6vw + 0.6rem, 3rem);
+    }
+
+    h2 {
+      font-size: clamp(1.35rem, 2.4vw + 0.6rem, 2.1rem);
+    }
+
+    h3 {
+      font-size: clamp(1.2rem, 1.62vw + 0.48rem, 1.8rem);
+    }
+
+    .dark h1 {
+      font-size: clamp(1.485rem, 2.97vw + 0.495rem, 2.475rem);
+    }
+
+    .dark h2 {
+      font-size: clamp(1.11rem, 1.98vw + 0.495rem, 1.73rem);
+    }
+
+    .dark h3 {
+      font-size: clamp(0.99rem, 1.34vw + 0.4rem, 1.485rem);
+    }
   }
 
   .subtitle {
@@ -108,8 +190,8 @@
   }
 
   p:not([class*="text-"]), span:not([class*="text-"]), li:not([class*="text-"]), div:not([class*="font-display"]):not([class*="text-"]) {
-    font-size: 1rem;
-    font-weight: 400;
+    font-size: clamp(0.875rem, 0.8vh + 0.8vw, 1.25rem); /* 14-20px fluid, responsive to width AND height */
+    font-weight: 300;
     line-height: 1.75;
     color: var(--color-text-muted-light);
   }
@@ -127,6 +209,15 @@
     color: var(--color-accent-dark) !important;
   }
 
+  /* Holographic accent - uses GLOBAL theme, ignores local .dark class */
+  .holographic-accent {
+    color: var(--color-accent-light) !important;
+  }
+
+  html.dark .holographic-accent {
+    color: var(--color-accent-dark) !important;
+  }
+
   .bg-accent {
     background-color: var(--color-accent-light) !important;
   }
@@ -141,6 +232,87 @@
 
   .dark .border-accent {
     border-color: var(--color-accent-dark) !important;
+  }
+
+  .border-accent\/20 {
+    border-color: rgba(181, 108, 78, 0.2) !important;
+  }
+
+  .dark .border-accent\/20 {
+    border-color: rgba(13, 221, 13, 0.2) !important;
+  }
+
+  .border-accent\/30 {
+    border-color: rgba(181, 108, 78, 0.3) !important;
+  }
+
+  .dark .border-accent\/30 {
+    border-color: rgba(13, 221, 13, 0.3) !important;
+  }
+
+  .border-accent\/40 {
+    border-color: rgba(181, 108, 78, 0.4) !important;
+  }
+
+  .dark .border-accent\/40 {
+    border-color: rgba(13, 221, 13, 0.4) !important;
+  }
+
+  .border-accent\/50 {
+    border-color: rgba(181, 108, 78, 0.5) !important;
+  }
+
+  .dark .border-accent\/50 {
+    border-color: rgba(13, 221, 13, 0.5) !important;
+  }
+
+  /* Holographic section borders - blue in dark mode */
+  .border-holo\/20 {
+    border-color: rgba(181, 108, 78, 0.2) !important;
+  }
+
+  .dark .border-holo\/20 {
+    border-color: rgba(0, 0, 205, 0.2) !important;
+  }
+
+  .border-holo\/30 {
+    border-color: rgba(181, 108, 78, 0.3) !important;
+  }
+
+  .dark .border-holo\/30 {
+    border-color: rgba(0, 0, 205, 0.3) !important;
+  }
+
+  .border-holo\/40 {
+    border-color: rgba(181, 108, 78, 0.4) !important;
+  }
+
+  .dark .border-holo\/40 {
+    border-color: rgba(0, 0, 205, 0.4) !important;
+  }
+
+  .border-holo\/50 {
+    border-color: rgba(181, 108, 78, 0.5) !important;
+  }
+
+  .dark .border-holo\/50 {
+    border-color: rgba(0, 0, 205, 0.5) !important;
+  }
+
+  .border-holo\/60 {
+    border-color: rgba(181, 108, 78, 0.6) !important;
+  }
+
+  .dark .border-holo\/60 {
+    border-color: rgba(0, 0, 205, 0.6) !important;
+  }
+
+  .border-holo\/70 {
+    border-color: rgba(181, 108, 78, 0.7) !important;
+  }
+
+  .dark .border-holo\/70 {
+    border-color: rgba(0, 0, 205, 0.7) !important;
   }
 
   .text-error {
@@ -191,25 +363,6 @@
 }
 
 @layer utilities {
-  /* Gradient text */
-  .text-gradient {
-    background: linear-gradient(to right, #070716, #0000CD, #070716);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    display: inline;
-    font-size: inherit;
-    font-weight: inherit;
-    line-height: inherit;
-    padding-bottom: 0.15em;
-  }
-
-  .dark .text-gradient {
-    background: linear-gradient(to right, #eaeaea, #0DDD0D, #eaeaea);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
-
   /* Popular badge */
   .badge-popular {
     background-color: var(--color-accent-light);
@@ -221,74 +374,7 @@
     color: var(--color-bg-dark);
   }
 
-  /* Button styles */
-  .btn {
-    padding: 1rem 2rem;
-    margin: 0;
-    border-radius: 50px;
-    font-weight: 600;
-    font-size: 1rem;
-    background-color: var(--color-bg-light);
-    color: var(--color-accent-light);
-    border: none;
-    transition: all var(--transition-base);
-    will-change: transform;
-    touch-action: manipulation; /* Better mobile performance */
-    display: inline-block;
-    width: auto;
-  }
-
-  .dark .btn {
-    background-color: var(--color-bg-dark);
-    color: var(--color-accent-dark);
-  }
-
-  .btn-primary {
-    background-color: var(--color-accent-light);
-    color: white;
-    border: 2px solid var(--color-accent-light);
-  }
-
-  .dark .btn-primary {
-    background-color: var(--color-accent-dark);
-    color: var(--color-bg-dark);
-    border: 2px solid var(--color-accent-dark);
-  }
-
-  .btn-primary:hover:not(:disabled) {
-    background-color: var(--color-accent-light);
-    border: 2px solid var(--color-accent-light);
-    box-shadow: 0 0 15px rgba(0, 0, 205, 0.4),
-                0 0 30px rgba(0, 0, 205, 0.2);
-    transform: scale(1.05);
-  }
-
-  .dark .btn-primary:hover:not(:disabled) {
-    background-color: var(--color-accent-dark);
-    border: 2px solid var(--color-accent-dark);
-    box-shadow: 0 0 15px rgba(13, 221, 13, 0.5),
-                0 0 30px rgba(13, 221, 13, 0.3);
-    transform: scale(1.05);
-  }
-
-  .btn-lg {
-    /* Removed - all buttons now have consistent padding and font-size */
-  }
-
-  .btn-badge {
-    padding: 0.5rem 1rem;
-    font-size: 0.875rem;
-    font-weight: 700;
-    border-radius: 9999px;
-    background-color: transparent;
-    border: 1px solid #d1d5db;
-    color: var(--color-text-light);
-  }
-
-  .dark .btn-badge {
-    border: none;
-    color: var(--color-text-dark);
-  }
+  /* Button styles moved to button.css */
 
   .btn-badge-accent {
     color: var(--color-accent-light);
@@ -308,20 +394,31 @@
     opacity: 0.8;
   }
 
-  .bg-accent {
-    background-color: var(--color-accent-light);
+  .bg-accent\/10 {
+    background-color: rgba(181, 108, 78, 0.1);
   }
 
-  .dark .bg-accent {
-    background-color: var(--color-accent-dark);
+  .dark .bg-accent\/10 {
+    background-color: rgba(13, 221, 13, 0.1);
   }
 
   .bg-accent\/90 {
-    background-color: rgba(0, 0, 205, 0.9);
+    background-color: rgba(181, 108, 78, 0.9);
   }
 
   .dark .bg-accent\/90 {
     background-color: rgba(13, 221, 13, 0.9);
+  }
+
+  /* Scroll down indicator - show only on md+ width AND 700px+ height */
+  .scroll-indicator {
+    display: none;
+  }
+
+  @media (min-width: 667px) and (min-height: 700px) {
+    .scroll-indicator {
+      display: flex;
+    }
   }
 
   /* Animations with performance in mind */
@@ -353,46 +450,25 @@
 
   /* Vertical responsiveness for small screens (10" notebooks, etc.) */
   @media (max-height: 900px) {
-    /* Keep sections full height but allow content to determine actual height */
-    .min-h-screen {
-      min-height: 100vh !important;
-    }
+  /* Keep sections full height but allow content to determine actual height */
+  .min-h-screen {
+    min-height: 100vh !important;
+  }
 
-    /* Reduce section padding significantly to fit content */
-    section {
-      padding-top: clamp(0.5rem, 2vh, 1.5rem) !important;
-      padding-bottom: clamp(0.5rem, 2vh, 1.5rem) !important;
-    }
+  /* Reduce section padding significantly to fit content - but NOT hero */
+  section:not(:has(.vignette-gradient)) {
+    padding-top: clamp(0.5rem, 2vh, 1.5rem) !important;
+    padding-bottom: clamp(0.5rem, 2vh, 1.5rem) !important;
+  }
 
-    /* Adjust heading sizes for small vertical space */
-    h1 {
-      font-size: clamp(1.5rem, 4vw + 0.5rem, 3rem) !important;
-      margin-bottom: clamp(0.5rem, 2vh, 1rem) !important;
-    }
-
-    h2 {
-      font-size: clamp(1.25rem, 2vw + 0.5rem, 2.25rem) !important;
-    }
-
-    h3 {
-      font-size: clamp(1.125rem, 1.5vw + 0.5rem, 1.75rem) !important;
-    }
-
-    /* Reduce spacing in content */
+    /* Reduce line-height in content */
     p:not(.font-display), .text-xl {
-      font-size: clamp(0.875rem, 1vw + 0.4vh, 1rem) !important;
       line-height: 1.5 !important;
     }
 
     /* Margin only for elements without custom-spacing */
     p:not(.font-display):not(.custom-spacing), .text-xl:not(.custom-spacing) {
       margin-bottom: clamp(0.25rem, 1vh, 0.75rem) !important;
-    }
-
-    /* Reduce button spacing - but NOT carousel dot indicators or navigation arrows or accordion buttons */
-    .btn, button:not(.w-3):not(.w-12):not(.w-5):not(.rounded-full):not(.accordion-btn) {
-      padding: clamp(0.5rem, 1.5vh, 0.75rem) clamp(1rem, 3vw, 1.5rem) !important;
-      font-size: clamp(0.875rem, 1vw, 1rem) !important;
     }
 
     /* Reduce gaps - but NOT for carousel indicators */
@@ -624,5 +700,151 @@
   .bg-white.dark\:bg-\[\#05050f\] textarea {
     border-radius: 0.75rem !important;
     padding: 0.75rem 1rem !important;
+  }
+
+  /* PricingCard utilities */
+  .pricing-card-gradient {
+    background: linear-gradient(135deg, rgba(181, 108, 78, 0.05) 0%, rgba(181, 108, 78, 0.02) 100%);
+  }
+
+  .dark .pricing-card-gradient {
+    background: linear-gradient(135deg, rgba(13, 221, 13, 0.08) 0%, rgba(13, 221, 13, 0.03) 100%);
+  }
+
+  .pricing-card-popular {
+    border: 2px solid #B56C4E;
+    box-shadow: 0 0 30px rgba(181, 108, 78, 0.3);
+  }
+
+  .dark .pricing-card-popular {
+    border-color: #0DDD0D;
+    box-shadow: 0 0 30px rgba(13, 221, 13, 0.3);
+  }
+
+  /* Spacing utilities using clamp */
+  .spacing-section-y {
+    padding-top: clamp(2rem, 8vh, 4rem);
+    padding-bottom: clamp(2rem, 8vh, 4rem);
+  }
+
+  /* Fluid margin-bottom utilities (most common clamp values) */
+  .mb-fluid-xs {
+    margin-bottom: clamp(0.25rem, 0.5vh, 0.5rem);
+  }
+
+  .mb-fluid-sm {
+    margin-bottom: clamp(0.5rem, 1vh, 0.75rem);
+  }
+
+  .mb-fluid-base {
+    margin-bottom: clamp(0.5rem, 1.5vh, 1rem);
+  }
+
+  .mb-fluid-md {
+    margin-bottom: clamp(1rem, 2vh, 1.5rem);
+  }
+
+  .mb-fluid-lg {
+    margin-bottom: clamp(1.5rem, 3vh, 2rem);
+  }
+
+  .mb-fluid-xl {
+    margin-bottom: clamp(2rem, 4vh, 4rem);
+  }
+
+  /* Fluid margin-top utilities (for symmetry) */
+  .mt-fluid-xs {
+    margin-top: clamp(0.25rem, 0.5vh, 0.5rem);
+  }
+
+  .mt-fluid-sm {
+    margin-top: clamp(0.5rem, 1vh, 0.75rem);
+  }
+
+  .mt-fluid-base {
+    margin-top: clamp(0.5rem, 1.5vh, 1rem);
+  }
+
+  .mt-fluid-md {
+    margin-top: clamp(1rem, 2vh, 1.5rem);
+  }
+
+  .mt-fluid-lg {
+    margin-top: clamp(1.5rem, 3vh, 2rem);
+  }
+
+  .mt-fluid-xl {
+    margin-top: clamp(2rem, 4vh, 4rem);
+  }
+
+  /* Fluid gap utilities */
+  .gap-fluid-sm {
+    gap: clamp(0.5rem, 1vh, 0.75rem);
+  }
+
+  .gap-fluid-md {
+    gap: clamp(1rem, 2vh, 1.5rem);
+  }
+
+  .gap-fluid-lg {
+    gap: clamp(1rem, 3vh, 2rem);
+  }
+
+  .spacing-section-x {
+    padding-left: clamp(1rem, 4vw, 2rem);
+    padding-right: clamp(1rem, 4vw, 2rem);
+  }
+
+  /* Additional utility classes for refactoring */
+  .text-body {
+    color: #2E2E2E;
+  }
+
+  .dark .text-body {
+    color: #e1e1e1;
+  }
+
+  /* Holographic sections - always dark background, so always light text */
+  .holographic-text {
+    color: #f2f2f2 !important;
+  }
+
+  .holographic-text p,
+  .holographic-text span:not(.text-accent),
+  .holographic-text li {
+    color: #f2f2f2 !important;
+  }
+
+  /* Accent color headings in both modes */
+  .holographic-text h1,
+  .holographic-text h2,
+  .holographic-text h3,
+  .holographic-text h4,
+  .holographic-text h5,
+  .holographic-text h6 {
+    color: #f2f2f2 !important; /* Light mode - off-white */
+  }
+
+  .dark .holographic-text h1,
+  .dark .holographic-text h2,
+  .dark .holographic-text h3,
+  .dark .holographic-text h4,
+  .dark .holographic-text h5,
+  .dark .holographic-text h6 {
+    color: #f2f2f2 !important; /* Dark mode - off-white */
+  }
+
+  /* Holographic text glow effect */
+  .holo-text-glow {
+    text-shadow: 0 0 20px rgba(var(--holo-primary), 0.3);
+  }
+
+  /* Project names - override holographic-text heading color */
+  .holographic-text .project-name {
+    color: var(--color-accent-light) !important; /* Light mode - copper */
+  }
+
+  .dark .holographic-text .project-name {
+    color: var(--color-accent-dark) !important; /* Dark mode - green */
   }
 }

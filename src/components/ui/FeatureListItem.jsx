@@ -8,7 +8,7 @@ function FeatureListItem({ text, type = "positive" }) {
   return (
     <div className="flex items-start gap-3">
       <Icon className={`w-5 h-5 ${colorClass} flex-shrink-0 mt-0.5`} strokeWidth={2} />
-      <span className="text-sm" dangerouslySetInnerHTML={{ __html: text }} />
+      <span className="text-white" dangerouslySetInnerHTML={{ __html: text }} />
     </div>
   )
 }

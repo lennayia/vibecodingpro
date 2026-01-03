@@ -11,14 +11,16 @@ function Card({
 }) {
   // Glassmorphism backgrounds with backdrop blur
   const bgClasses = {
-    light: "bg-white/40 dark:bg-[#070716]/30 backdrop-blur-xl",
-    dark: "bg-white/40 dark:bg-[#05050f]/30 backdrop-blur-xl"
+    light: "bg-white/40 dark:bg-[#070716]/80 backdrop-blur-xl",
+    dark: "bg-white/40 dark:bg-[#05050f]/80 backdrop-blur-xl",
+    holographic: "bg-[#B56C4E]/40 dark:bg-[#05050f]/80 backdrop-blur-xl"
   }
 
-  // Glassmorphism borders with subtle glow
+  // Glassmorphism borders
   const borderClasses = {
-    light: "border border-white/60 dark:border-accent/20 shadow-lg shadow-accent/5",
-    dark: "border border-white/60 dark:border-accent/20 shadow-lg shadow-accent/5"
+    light: "border border-white/60 dark:border-white/20 shadow-lg shadow-white/5",
+    dark: "border border-white/60 dark:border-white/20 shadow-lg shadow-white/5",
+    holographic: "border border-holo/60 dark:border-holo/40"
   }
 
   const CardWrapper = animate ? motion.div : "div"
@@ -32,12 +34,12 @@ function Card({
 
   return (
     <CardWrapper
-      className={`${bgClasses[background]} ${borderClasses[background]} rounded-3xl py-4 px-3 relative overflow-hidden ${className}`}
+      className={`${bgClasses[background]} ${borderClasses[background]} rounded-3xl py-4 px-3 relative ${className}`}
       {...animationProps}
       {...props}
     >
       {/* Subtle gradient shine overlay for glassmorphism effect */}
-      <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-white/10 via-transparent to-transparent pointer-events-none" />
+      <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-white/10 via-transparent to-transparent pointer-events-none overflow-hidden" />
 
       {/* Content */}
       <div className="relative z-10">

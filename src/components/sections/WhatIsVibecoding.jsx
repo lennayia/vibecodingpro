@@ -1,74 +1,92 @@
 import { motion } from 'framer-motion'
-import { memo, useMemo } from 'react'
+import { memo } from 'react'
 import Section from '../layout/Section'
 import AnimatedBackground from '../ui/AnimatedBackground'
 import { fadeIn, slideUp, slideLeft } from '../../constants/animations'
+import { whatIsVibecodingContent } from '../../constants/data'
+import '../../styles/shared.css'
+
+// Animation configuration
+const ANIMATION_CONFIG = {
+  DEFINITION_DELAY: 0.1,
+  SUMMARY_DELAY: 0.2,
+  INTRO_DELAY: 0.3,
+  COMMON_GOALS_DELAY: 0.6,
+  TARGET_GROUP_STAGGER: 0.1
+}
+
+// Background configuration
+const BACKGROUND_CONFIG = {
+  PARTICLE_COUNT: 40
+}
+
+// Performance: Animation transitions outside component
+const definitionTransition = { delay: ANIMATION_CONFIG.DEFINITION_DELAY }
+const summaryTransition = { delay: ANIMATION_CONFIG.SUMMARY_DELAY }
+const introTransition = { delay: ANIMATION_CONFIG.INTRO_DELAY }
+const commonGoalsTransition = { delay: ANIMATION_CONFIG.COMMON_GOALS_DELAY }
 
 function WhatIsVibecoding() {
-  const targetGroups = useMemo(() => [
-    "Koučky a mentorky",
-    "Terapeutky a poradkyně",
-    "Lektorky a učitelky",
-    "Online podnikatelky",
-    "Tvůrkyně kurzů a programů"
-  ], [])
-
-  const binaryBackground = <AnimatedBackground type="particles" particleCount={40} />
+  const binaryBackground = <AnimatedBackground type="particles" particleCount={BACKGROUND_CONFIG.PARTICLE_COUNT} />
 
   return (
     <Section
       background="light"
       centered={true}
-      className="!py-12 md:!py-8 lg:!py-12"
+      className="relative overflow-hidden"
       showScrollIndicator={true}
       backgroundElement={binaryBackground}
     >
       <motion.div {...fadeIn}>
-        <h2 className="font-display font-bold mb-4 md:mb-2 text-center" style={{ lineHeight: '1.3' }}>
-          Vibecoding
+        <h2 className="font-display font-bold mb-4 md:mb-2 text-center leading-tight">
+          {whatIsVibecodingContent.heading}
         </h2>
-        <h3 className="font-display font-bold mb-10 md:mb-8 text-center">
-          Co to je a pro koho
+        <h3 className="font-display font-bold mb-12 text-center">
+          {whatIsVibecodingContent.subheading}
         </h3>
 
         {/* Co to je */}
-        <div className="max-w-3xl mx-auto text-center mb-12 md:mb-8">
+        <div className="max-w-3xl mx-auto text-center mb-4">
           <motion.p
-            className="text-xl mb-6 md:mb-4"
+            className="mb-4"
             {...slideUp}
-            transition={{ delay: 0.1 }}
+            transition={definitionTransition}
           >
-            Popisujeme běžným jazykem, co chceme vytvořit, a AI za nás napíše kód. Nepotřebujeme umět programovat v klasickém smyslu, potřebujeme jasnou vizi a s AI kodérem konverzovat.
+            {whatIsVibecodingContent.definition}
           </motion.p>
 
           <motion.p
-            className="text-lg mb-6 md:mb-4"
+            className="text-xl mb-6"
             {...slideUp}
-            transition={{ delay: 0.2 }}
+            transition={summaryTransition}
           >
-            Vibecoding = dovednost popsat vizi tak, aby to AI dobře pochopila.
+            {whatIsVibecodingContent.summary}
           </motion.p>
+
+          <div className="copper-divider-line mx-auto mb-10" />
+
           <motion.p
-            className="text-xl mt-4 md:mt-0"
+            className="text-lg font-bold mb-2"
             {...slideUp}
-            transition={{ delay: 0.3 }}
+            transition={introTransition}
           >
-            Využijete, pokud jste
+            {whatIsVibecodingContent.intro}
           </motion.p>
         </div>
 
         {/* Pro koho */}
-        <div className="max-w-2xl mx-auto mb-6">
+        <div className="max-w-2xl mx-auto mb-12 text-center">
           <ul className="space-y-2">
-            {targetGroups.map((group, index) => (
+            {whatIsVibecodingContent.targetGroups.map((group, index) => (
               <motion.li
                 key={index}
                 className="flex items-center justify-center gap-3"
                 {...slideLeft}
-                transition={{ delay: index * 0.1 }}
+                transition={{ delay: index * ANIMATION_CONFIG.TARGET_GROUP_STAGGER }}
               >
-                <span className="text-white dark:text-gray-400 opacity-30 text-sm">✦</span>
-                <span className="text-xl">{group}</span>
+                <span className="text-[0.625rem] dark:text-white">✦</span>
+                <span>{group}</span>
+                <span className="text-[0.625rem] dark:text-white">✦</span>
               </motion.li>
             ))}
           </ul>
@@ -78,20 +96,17 @@ function WhatIsVibecoding() {
         <motion.div
           className="text-center max-w-2xl mx-auto"
           {...slideUp}
-          transition={{ delay: 0.6 }}
+          transition={commonGoalsTransition}
         >
-          <p className="text-xl mb-4">Společné máte dvojí:</p>
-          <div className="space-y-2">
-            <p className="flex items-center justify-center gap-3 text-xl font-semibold">
-              <span className="text-accent">✦</span>
-              <span>Chcete pomoct víc lidem</span>
-              <span className="text-accent">✦</span>
-            </p>
-            <p className="flex items-center justify-center gap-3 text-xl font-semibold">
-              <span className="text-accent">✦</span>
-              <span>Nechcete dřít víc hodin</span>
-              <span className="text-accent">✦</span>
-            </p>
+          <p className="text-xl mb-6">{whatIsVibecodingContent.commonGoals.heading}</p>
+          <div className="space-y-3">
+            {whatIsVibecodingContent.commonGoals.goals.map((goal, index) => (
+              <p key={index} className="flex items-center justify-center gap-3 font-semibold">
+                <span className="text-accent">✦</span>
+                <span>{goal}</span>
+                <span className="text-accent">✦</span>
+              </p>
+            ))}
           </div>
         </motion.div>
       </motion.div>

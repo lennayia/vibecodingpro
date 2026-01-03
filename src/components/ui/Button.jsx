@@ -1,5 +1,6 @@
 import { useRef, useState, useEffect, memo } from 'react'
 import { motion } from 'framer-motion'
+import '../../styles/button.css'
 
 // Throttle utility - limits function calls to once per interval
 function throttle(func, limit) {
@@ -13,6 +14,19 @@ function throttle(func, limit) {
   }
 }
 
+// Performance: Animation transition outside component
+const buttonTransition = {
+  type: "spring",
+  stiffness: 150,
+  damping: 15,
+  mass: 0.1
+}
+
+// Performance: Constants for magnetic effect
+const MAX_DISTANCE = 150
+const MAX_MOVE = 20
+const THROTTLE_MS = 16 // 60 FPS
+
 function Button({
   children,
   variant = "primary",
@@ -21,7 +35,7 @@ function Button({
   ...props
 }) {
   const baseClass = "btn"
-  const variantClass = variant === "primary" ? "btn-primary" : ""
+  const variantClass = variant === "primary" ? "btn-primary" : variant === "secondary" ? "btn-secondary" : ""
   const sizeClass = size === "lg" ? "btn-lg" : ""
 
   const buttonRef = useRef(null)
@@ -42,21 +56,18 @@ function Button({
       const distanceY = e.clientY - buttonCenterY
       const distance = Math.sqrt(distanceX ** 2 + distanceY ** 2)
 
-      const maxDistance = 150
-      const maxMove = 20
-
-      if (distance < maxDistance) {
-        const strength = 1 - distance / maxDistance
-        const moveX = (distanceX / distance) * maxMove * strength
-        const moveY = (distanceY / distance) * maxMove * strength
+      if (distance < MAX_DISTANCE) {
+        const strength = 1 - distance / MAX_DISTANCE
+        const moveX = (distanceX / distance) * MAX_MOVE * strength
+        const moveY = (distanceY / distance) * MAX_MOVE * strength
         setPosition({ x: moveX, y: moveY })
       } else {
         setPosition({ x: 0, y: 0 })
       }
     }
 
-    // Throttle to max 60 FPS (16ms interval)
-    const throttledMouseMove = throttle(handleMouseMove, 16)
+    // Throttle to max 60 FPS
+    const throttledMouseMove = throttle(handleMouseMove, THROTTLE_MS)
 
     document.addEventListener('mousemove', throttledMouseMove)
     return () => document.removeEventListener('mousemove', throttledMouseMove)
@@ -65,11 +76,11 @@ function Button({
   return (
     <motion.button
       ref={buttonRef}
-      className={`${baseClass} ${variantClass} ${sizeClass} ${className}`}
-      style={{ padding: '0.875rem 1.75rem' }}
-      animate={{ x: position.x, y: position.y }}
-      transition={{ type: "spring", stiffness: 150, damping: 15, mass: 0.1 }}
       {...props}
+      className={`${baseClass} ${variantClass} ${sizeClass} ${className}`}
+      style={{ ...props.style, position: 'relative' }}
+      animate={{ x: position.x, y: position.y }}
+      transition={buttonTransition}
     >
       {children}
     </motion.button>

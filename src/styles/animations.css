@@ -1,0 +1,38 @@
+/* ============================================
+   ANIMATIONS
+   Keyframe animations for the application
+   ============================================ */
+
+/* Marquee animation for navigation slogan - seamless loop with duplicated content */
+@keyframes marquee {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.marquee-container {
+  overflow: hidden;
+  display: flex;
+  isolation: isolate;
+}
+
+.marquee-content {
+  display: flex;
+  will-change: transform;
+  backface-visibility: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Sticky header positioning */
+.sticky-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  z-index: 9999;
+}

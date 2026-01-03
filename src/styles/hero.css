@@ -1,0 +1,225 @@
+/* ============================================
+   HERO SECTION STYLES
+   Styles for Hero section typography, spacing, and effects
+   ============================================ */
+
+/* ============================================
+   TEXT GRADIENT EFFECTS
+   ============================================ */
+
+/* Gradient text - light mode only by default */
+.text-gradient {
+  background: linear-gradient(to right, #2E2E2E, #B56C4E, #2E2E2E);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  display: inline;
+}
+
+/* Dark mode - vypne gradient (normální text) */
+.dark .text-gradient {
+  background: none;
+  -webkit-background-clip: unset;
+  -webkit-text-fill-color: inherit;
+  color: var(--color-text-muted-dark);
+}
+
+/* Gradient vždy (i v dark mode) - pro "Vyšší příjmy." */
+.text-gradient-always {
+  background: linear-gradient(to right, #2E2E2E, #B56C4E, #2E2E2E);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  display: inline;
+}
+
+.dark .text-gradient-always {
+  background: linear-gradient(to right, #eaeaea, #0DDD0D, #eaeaea);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* ============================================
+   VIGNETTE GRADIENT OVERLAY
+   Cloud Dancer (Pantone 2026) - for text readability
+   ============================================ */
+
+.vignette-gradient {
+  background: radial-gradient(ellipse 900px 700px at center, rgba(245, 244, 242, 0.95) 0%, rgba(245, 244, 242, 0.7) 40%, rgba(245, 244, 242, 0.3) 70%, transparent 100%);
+  padding: clamp(1.5rem, 4vh, 3rem) clamp(1rem, 3vw, 1.5rem);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.dark .vignette-gradient {
+  background: transparent;
+  padding-top: clamp(2rem, 4vh, 3rem);
+}
+
+/* Asymmetric vignette on desktop - positioned left */
+@media (min-width: 768px) {
+  .vignette-gradient {
+    background: radial-gradient(ellipse 1000px 800px at 30% center, rgba(245, 244, 242, 0.95) 0%, rgba(245, 244, 242, 0.7) 35%, rgba(245, 244, 242, 0.3) 60%, transparent 100%);
+  }
+}
+
+/* Reduced padding for small viewports */
+@media (max-height: 900px) {
+  .vignette-gradient {
+    padding: clamp(0.5rem, 2vh, 1.5rem) clamp(0.5rem, 2vw, 1rem);
+  }
+  
+  .dark .vignette-gradient {
+    padding-top: clamp(1.5rem, 3vh, 2rem);
+  }
+}
+
+/* Vignette child element spacing */
+.vignette-gradient > *:nth-child(1) {
+  margin-top: 0;
+}
+
+.vignette-gradient > *:nth-child(2),
+.vignette-gradient > *:nth-child(3),
+.vignette-gradient > *:nth-child(4) {
+  margin-top: 1rem;
+}
+
+@media (min-width: 768px) {
+  .vignette-gradient > *:nth-child(2),
+  .vignette-gradient > *:nth-child(3),
+  .vignette-gradient > *:nth-child(4) {
+    margin-top: clamp(1rem, 1.5vh, 1.25rem);
+  }
+}
+
+/* ============================================
+   HERO TYPOGRAPHY
+   ============================================ */
+
+.hero-badge-spacing {
+  margin-bottom: 0;
+}
+
+.text-fluid-hero-h1 {
+  display: block;
+  line-height: 1.2;
+  letter-spacing: 0.02em;
+  margin: 0;
+  padding: 0;
+}
+
+.text-fluid-hero-h2 {
+  line-height: 1.3;
+  letter-spacing: 0.02em;
+}
+
+/* Extra spacing above h2 in hero - must override vignette-gradient nth-child */
+.vignette-gradient > h2.text-fluid-hero-h2 {
+  margin-top: clamp(1.5rem, 3vh, 2.5rem);
+}
+
+.dark .vignette-gradient > h2.text-fluid-hero-h2 {
+  margin-top: clamp(1.75rem, 3.5vh, 2.75rem);
+}
+
+.text-hero-heading {
+  display: block;
+  line-height: 1.1;
+  letter-spacing: 0.02em;
+  margin: 0;
+  padding: 0;
+  font-weight: 700;
+}
+
+/* Dark mode needs more spacing around h1 spans */
+.dark .text-hero-heading {
+  margin-top: clamp(0.5rem, 1vh, 0.75rem);
+  margin-bottom: clamp(0.25rem, 0.5vh, 0.5rem);
+  font-weight: 500;
+}
+
+/* ============================================
+   HERO SPACING
+   ============================================ */
+
+.hero-divider-spacing {
+  margin-bottom: clamp(0.75rem, 1.5vh, 1.25rem);
+}
+
+/* Small viewport override */
+@media (max-width: 767px) {
+  .hero-divider-spacing {
+    margin-bottom: 0.5rem;
+  }
+}
+
+.hero-cta-spacing {
+  gap: clamp(1rem, 2vh, 1.5rem);
+  padding-top: clamp(1.5rem, 3vh, 2.5rem);
+  padding-bottom: 0;
+}
+
+.dark .hero-cta-spacing {
+  gap: clamp(1.25rem, 2.5vh, 1.75rem);
+  padding-top: clamp(1.75rem, 3.5vh, 2.75rem);
+}
+
+/* Small viewport override */
+@media (max-width: 767px) {
+  .hero-cta-spacing {
+    padding-top: 1rem;
+    gap: 0.25rem;
+  }
+}
+
+/* ============================================
+   HERO LIST
+   ============================================ */
+
+.hero-list {
+  line-height: 1.6;
+  list-style: none;
+}
+
+.hero-list li + li {
+  margin-top: 0.1rem;
+}
+
+/* ============================================
+   HERO RESPONSIVE ALIGNMENT
+   ============================================ */
+
+.hero-text-align {
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .hero-text-align {
+    text-align: left;
+  }
+}
+
+.hero-items-align {
+  align-items: center;
+}
+
+@media (min-width: 768px) {
+  .hero-items-align {
+    align-items: flex-start;
+  }
+}
+
+.hero-list-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+}
+
+@media (min-width: 768px) {
+  .hero-list-item {
+    justify-content: flex-start;
+  }
+}

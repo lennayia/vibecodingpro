@@ -1,72 +1,39 @@
-import { memo, useState, useEffect } from 'react'
+import { memo, useState, useCallback } from 'react'
 import { createPortal } from 'react-dom'
 import SlideOutMenu from '../ui/SlideOutMenu'
+import Button from '../ui/Button'
+import ThemeToggle from '../ui/ThemeToggle'
+import GlassmorphismOverlay from '../ui/GlassmorphismOverlay'
+import { scrollToSection } from '../../utils/scroll'
+import { useTheme } from '../../contexts/ThemeContext'
+import { SECTION_IDS } from '../../constants/data'
+import { useMarquee } from '../../hooks/useMarquee'
+import '../../styles/header.css'
+import '../../styles/animations.css'
 
 function Navigation() {
-  const [isDark, setIsDark] = useState(true)
+  const { isDark } = useTheme()
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const marqueeRef = useMarquee(1) // 1px per frame
 
-  useEffect(() => {
-    const savedTheme = localStorage.getItem('theme')
-    setIsDark(savedTheme === 'dark' || !savedTheme)
+  const handlePricingClick = useCallback(() => {
+    scrollToSection(SECTION_IDS.PRICING)
+  }, [])
 
-    const handleStorage = () => {
-      const theme = localStorage.getItem('theme')
-      setIsDark(theme === 'dark' || !theme)
-    }
+  const handleMenuOpen = useCallback(() => {
+    setIsMenuOpen(true)
+  }, [])
 
-    window.addEventListener('storage', handleStorage)
-
-    const handleThemeChange = () => {
-      const theme = localStorage.getItem('theme')
-      setIsDark(theme === 'dark' || !theme)
-    }
-
-    window.addEventListener('themeChange', handleThemeChange)
-
-    return () => {
-      window.removeEventListener('storage', handleStorage)
-      window.removeEventListener('themeChange', handleThemeChange)
-    }
+  const handleMenuClose = useCallback(() => {
+    setIsMenuOpen(false)
   }, [])
 
   return createPortal(
     <nav
-      className="sticky-header w-full backdrop-blur-2xl bg-white/60 dark:bg-black/60 shadow-[0_4px_20px_rgba(0,0,0,0.15)] dark:shadow-[0_4px_20px_rgba(0,0,205,0.25)]"
-      style={{
-        position: 'fixed',
-        top: 0,
-        left: 0,
-        right: 0,
-        zIndex: 9999
-      }}
+      className="sticky-header w-full backdrop-blur-xl bg-[#C9987E]/75 dark:bg-black/60 shadow-[0_6px_30px_rgba(181,108,78,0.45)] dark:shadow-[0_4px_20px_rgba(0,0,205,0.25)]"
     >
       {/* Glassmorphism gradient overlays */}
-      <div className="absolute inset-0 bg-gradient-to-b from-white/50 via-white/20 to-transparent dark:from-[#000080]/20 dark:via-[#000080]/8 dark:to-transparent pointer-events-none" />
-      <div className="absolute inset-0 bg-gradient-to-r from-white/20 via-white/40 to-white/20 dark:from-transparent dark:via-[#000080]/15 dark:to-transparent pointer-events-none" />
-      <style>{`
-        @keyframes marquee {
-          0% {
-            transform: translateX(100%);
-          }
-          100% {
-            transform: translateX(-100%);
-          }
-        }
-
-        .marquee-text {
-          animation: marquee 20s linear infinite;
-        }
-
-        .sticky-header {
-          position: fixed !important;
-          top: 0 !important;
-          left: 0 !important;
-          right: 0 !important;
-          width: 100% !important;
-          z-index: 9999 !important;
-        }
-      `}</style>
+      <GlassmorphismOverlay />
 
       {/* Main navigation bar */}
       <div className="max-w-7xl mx-auto px-6 py-0.5 relative">
@@ -74,50 +41,44 @@ function Navigation() {
         <div className="h-10 w-10" aria-hidden="true"></div>
       </div>
 
-      {/* Fixed right side: Logo + CTA button + Menu */}
-      <div
-        className="flex items-center gap-3 transition-all duration-300"
-        style={{
-          position: 'fixed',
-          top: '0.5rem',
-          right: isMenuOpen ? 'calc(4rem + 1.5rem)' : '1.5rem',
-          zIndex: 10000
-        }}
-      >
-        {/* Logo */}
+      {/* Fixed left: Logo */}
+      <div className="fixed left-6 top-2 z-[10000]">
         <img
           src={isDark ? "/vibecoding-logo-bile.webp" : "/vibecoding-logo.webp"}
           alt="Vibecoding"
-          width="40"
-          height="40"
-          className="h-10 w-auto"
+          width="36"
+          height="36"
+          loading="lazy"
+          className="nav-logo-fluid"
         />
+      </div>
 
-        <button
-          onClick={() => {
-            const pricingSection = document.getElementById('pricing-section')
-            if (pricingSection) {
-              pricingSection.scrollIntoView({ behavior: 'smooth' })
-            }
-          }}
-          className="px-4 py-2 rounded-full font-semibold text-sm bg-[#0000CD] dark:bg-[#0DDD0D] text-white dark:text-[#070716] border-2 border-[#0000CD] dark:border-[#0DDD0D] hover:opacity-90 transition-opacity"
-        >
+      {/* Fixed right: CTA button + Theme Toggle + Menu */}
+      <div
+        className={`nav-logo-container flex items-center nav-gap-fluid ${isMenuOpen ? 'right-[4.5rem]' : 'right-6'}`}
+      >
+        <Button onClick={handlePricingClick} variant="primary" className="nav-btn-fluid">
           Chci začít
-        </button>
+        </Button>
 
-        {/* Menu s plovoucím dropdownem */}
-        <SlideOutMenu
-          isOpen={isMenuOpen}
-          onOpen={() => setIsMenuOpen(true)}
-          onClose={() => setIsMenuOpen(false)}
-        />
+        {/* Theme Toggle + Menu */}
+        <div className="flex items-center nav-gap-inner-fluid">
+          <ThemeToggle />
+          <SlideOutMenu
+            isOpen={isMenuOpen}
+            onOpen={handleMenuOpen}
+            onClose={handleMenuClose}
+          />
+        </div>
       </div>
 
       {/* Běžící slogan */}
       <div className="w-full overflow-hidden">
         <div className="pt-0.5 pb-1">
-          <div className="marquee-text whitespace-nowrap text-[#374151] dark:text-[#f2f2f2]" style={{ fontSize: '1rem', fontWeight: 400 }}>
-            <span className="font-bold">Vibe <span className="text-[#0000CD] dark:text-[#0DDD0D]">|</span> Prompt <span className="text-[#0000CD] dark:text-[#0DDD0D]">|</span> Build</span> — Teď víc než kdy dřív platí: „Můžeme mít všechno, co si dokážeme představit."
+          <div className="marquee-container">
+            <div ref={marqueeRef} className="marquee-content whitespace-nowrap text-[#2E2E2E] dark:text-[#f2f2f2]">
+              <span className="font-bold">Vibe <span className="text-[#B56C4E] dark:text-[#0DDD0D]">|</span> Prompt <span className="text-[#B56C4E] dark:text-[#0DDD0D]">|</span> Build</span> — Teď víc než kdy dřív platí: „Můžeme mít všechno, co si dokážeme představit."
+            </div>
           </div>
         </div>
       </div>

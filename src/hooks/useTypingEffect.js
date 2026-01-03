@@ -20,10 +20,10 @@ export function useTypingEffect(text, speed = 70, delay = 500) {
           clearInterval(typeInterval)
           setIsComplete(true)
 
-          // Hide cursor after 2 seconds
+          // Hide cursor after 500ms
           setTimeout(() => {
             setShowCursor(false)
-          }, 2000)
+          }, 500)
         }
       }, speed)
 

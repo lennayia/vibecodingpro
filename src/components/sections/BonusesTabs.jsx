@@ -140,7 +140,7 @@ export default function BonusesTabsSeo() {
           <div className="text-center mb-6 md:mb-[clamp(1rem,2vh,1.5rem)]">
             <div className="flex items-center justify-center gap-3 mb-4 md:mb-[clamp(0.75rem,1.5vh,1rem)]">
               <Gift className="w-8 h-8 text-accent" strokeWidth={2} />
-              <h2 className="font-display font-bold" style={{ lineHeight: '1.3' }}>
+              <h2 className="font-display font-bold leading-tight">
                 Bonusy, které vám usnadní cestu
               </h2>
             </div>

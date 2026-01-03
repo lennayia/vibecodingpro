@@ -1,6 +1,6 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState, memo } from 'react'
 
-export default function ParticleBackground({
+function ParticleBackground({
   particleCount: customParticleCount,
   showConnections = true,
   mouseInteraction = true,
@@ -12,16 +12,33 @@ export default function ParticleBackground({
   const animationFrameId = useRef(null)
   const isVisibleRef = useRef(true)
   const [isMobile, setIsMobile] = useState(false)
+  const [isDark, setIsDark] = useState(() => {
+    if (typeof window !== 'undefined') {
+      return document.documentElement.classList.contains('dark')
+    }
+    return true
+  })
 
-  // Detect mobile (<640px) and disable particles completely for performance
-  // Tablets (>=640px) get particles
+  // Detect mobile
   useEffect(() => {
     const checkMobile = () => {
-      setIsMobile(window.innerWidth < 640)
+      setIsMobile(window.innerWidth < 667)
     }
     checkMobile()
     window.addEventListener('resize', checkMobile)
     return () => window.removeEventListener('resize', checkMobile)
+  }, [])
+
+  // Track theme changes
+  useEffect(() => {
+    const checkTheme = () => {
+      setIsDark(document.documentElement.classList.contains('dark'))
+    }
+    checkTheme()
+
+    const handleThemeChange = () => checkTheme()
+    window.addEventListener('themeChange', handleThemeChange)
+    return () => window.removeEventListener('themeChange', handleThemeChange)
   }, [])
 
   useEffect(() => {
@@ -33,11 +50,8 @@ export default function ParticleBackground({
     let width = parentElement.clientWidth
     let height = parentElement.clientHeight
 
-    // Check dark mode
-    const isDark = document.documentElement.classList.contains('dark')
-    // Light mode: blue (#0000CD) = rgb(0, 0, 205)
-    // Dark mode: green (#0DDD0D) = rgb(13, 221, 13)
-    const particleColor = isDark ? '13, 221, 13' : '0, 0, 205'
+    // Adaptive particle color: green in dark mode, dark copper/brown in light mode for better contrast
+    const particleColor = isDark ? '13, 221, 13' : '139, 69, 19'
 
     // Reduced particle count on mobile, normal on desktop
     const particleCount = customParticleCount || (isMobile ? 30 : 80)
@@ -68,7 +82,7 @@ export default function ParticleBackground({
         this.vx = (Math.random() - 0.5) * 0.5
         this.vy = (Math.random() - 0.5) * 0.5
         this.radius = Math.random() * 1.5 + 1.5 // Částice (1.5-3px)
-        this.opacity = Math.random() * 0.3 + 0.2 // Jemnější opacity (0.2-0.5)
+        this.opacity = Math.random() * 0.3 + 0.4 // Vyšší opacity (0.4-0.7)
       }
 
       update(isStatic = false) {
@@ -128,7 +142,7 @@ export default function ParticleBackground({
             ctx.beginPath()
             ctx.moveTo(particles.current[i].x, particles.current[i].y)
             ctx.lineTo(particles.current[j].x, particles.current[j].y)
-            const opacity = (1 - distance / 150) * 0.15 // Jemnější čáry
+            const opacity = (1 - distance / 150) * 0.25 // Viditelnější čáry
             ctx.strokeStyle = `rgba(${particleColor}, ${opacity})`
             ctx.lineWidth = 1 // Normální tloušťka
             ctx.stroke()
@@ -227,13 +241,19 @@ export default function ParticleBackground({
         cancelAnimationFrame(animationFrameId.current)
       }
     }
-  }, [customParticleCount, showConnections, mouseInteraction, isMobile])
+  }, [customParticleCount, showConnections, mouseInteraction, isMobile, isDark])
 
+  // Mobile gets lower opacity and blur, desktop normal
   return (
     <canvas
       ref={canvasRef}
       className="absolute inset-0 z-0 pointer-events-none"
-      style={{ opacity }}
+      style={{
+        opacity: isMobile ? opacity * 0.5 : opacity,
+        filter: isMobile ? 'blur(0.5px)' : undefined
+      }}
     />
   )
 }
+
+export default memo(ParticleBackground)

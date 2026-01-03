@@ -2,6 +2,58 @@ import { motion, useScroll, useTransform, useMotionValue, useSpring } from 'fram
 import { useRef, useState, memo, useMemo, useEffect, useCallback } from 'react'
 import Section from '../layout/Section'
 import { fadeIn, slideUp } from '../../constants/animations'
+import { portfolioHolographicContent } from '../../constants/data'
+import '../../styles/portfolio-holographic.css'
+
+// Performance: Transition configs outside component
+const backgroundPulseTransition = { duration: 4, repeat: Infinity, ease: "easeInOut" }
+const dragTransitionConfig = { bounceStiffness: 200, bounceDamping: 20 }
+const closingTextTransition = { delay: 0.5 }
+const cardHoverTransition = { type: "spring", stiffness: 300, damping: 20 }
+const glowPulseTransition = { duration: 2, repeat: Infinity }
+const shineTransition = { duration: 3, repeat: Infinity, ease: "linear" }
+const flickerTransition = { duration: 0.3 }
+
+// Carousel configuration
+const CAROUSEL_CONFIG = {
+  MOBILE_WIDTH: 260,
+  DESKTOP_WIDTH: 380,
+  MOBILE_HEIGHT: 280,
+  DESKTOP_HEIGHT: 350,
+  MOBILE_RADIUS: 350,
+  DESKTOP_RADIUS: 450,
+  PERSPECTIVE: 2000,
+  MOBILE_DRAG_CONSTRAINT_MULTIPLIER: 280,
+  MOBILE_GAP: 12
+}
+
+const DRAG_CONFIG = {
+  ELASTIC_MOBILE: 0.2,
+  ELASTIC_DESKTOP: 0.1
+}
+
+const OBSERVER_CONFIG = {
+  THRESHOLD: 0.1
+}
+
+const TRANSFORM_RANGES = {
+  OPACITY: {
+    Z_RANGE: [-450, -225, 0, 225, 450],
+    OPACITY_RANGE: [0.3, 0.5, 1, 0.5, 0.3]
+  },
+  SCALE: {
+    Z_RANGE: [-450, 0, 450],
+    SCALE_RANGE: [0.6, 1.1, 0.6]
+  }
+}
+
+// Corner accents configuration
+const cornerAccents = [
+  { position: 'top-2 left-2', borders: 'border-t-2 border-l-2' },
+  { position: 'top-2 right-2', borders: 'border-t-2 border-r-2' },
+  { position: 'bottom-2 left-2', borders: 'border-b-2 border-l-2' },
+  { position: 'bottom-2 right-2', borders: 'border-b-2 border-r-2' }
+]
 
 function PortfolioHolographic() {
   const containerRef = useRef(null)
@@ -13,16 +65,7 @@ function PortfolioHolographic() {
     offset: ["start end", "end start"]
   })
 
-  const projects = useMemo(() => [
-    { name: "CoachPro", image: "/coachpro.webp" },
-    { name: "ContentPro", image: "/content-pro.webp" },
-    { name: "DigiPro", image: "/digipro.webp" },
-    { name: "Koučovací karty", image: "/koucovaci-karty.webp" },
-    { name: "LifePro", image: "/liffepro.webp" },
-    { name: "PaymentsPro", image: "/paymentspro.webp" },
-    { name: "PianoPro", image: "/pianopro.webp" },
-    { name: "StudyPro", image: "/studypro.webp" }
-  ], [])
+  const projects = portfolioHolographicContent.projects
 
   const dragX = useMotionValue(0)
   const springConfig = useMemo(() => ({ damping: 30, stiffness: 200 }), [])
@@ -45,7 +88,7 @@ function PortfolioHolographic() {
           setIsVisible(entry.isIntersecting)
         })
       },
-      { threshold: 0.1 } // Trigger when 10% visible
+      { threshold: OBSERVER_CONFIG.THRESHOLD }
     )
 
     if (containerRef.current) {
@@ -61,53 +104,35 @@ function PortfolioHolographic() {
 
   return (
     <Section
-      background="dark"
+      background="holographic"
       centered={true}
       className="overflow-hidden"
       showScrollIndicator={true}
     >
       <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
         <motion.div
-          className="absolute inset-0"
-          style={{
-            background: 'radial-gradient(circle at 50% 50%, rgba(0, 255, 136, 0.05) 0%, transparent 70%)',
-          }}
+          className="absolute inset-0 holo-background-pulse"
           animate={isVisible ? {
             scale: [1, 1.2, 1],
             opacity: [0.3, 0.5, 0.3]
           } : {}}
-          transition={{
-            duration: 4,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
+          transition={backgroundPulseTransition}
         />
 
         {/* Scanlines - pouze v horní části */}
-        <div
-          className="absolute inset-0 pointer-events-none"
-          style={{
-            backgroundImage: 'repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0, 255, 136, 0.03) 2px, rgba(0, 255, 136, 0.03) 4px)',
-            maskImage: 'linear-gradient(to bottom, white 0%, white 85%, transparent 100%)',
-            WebkitMaskImage: 'linear-gradient(to bottom, white 0%, white 85%, transparent 100%)',
-          }}
-        />
+        <div className="absolute inset-0 pointer-events-none holo-scanlines" />
       </div>
 
       <div className="w-full relative z-10" ref={containerRef}>
         <motion.div {...fadeIn}>
           <motion.h2
-            className="font-display font-bold text-center mb-3 md:mb-1"
-            style={{
-              lineHeight: '1.3',
-              textShadow: '0 0 20px rgba(0, 0, 205, 0.3)'
-            }}
+            className="font-display font-bold text-center mb-3 md:mb-1 leading-tight holo-text-glow"
           >
-            Tohle postavila žena, která neumí programovat.
+            {portfolioHolographicContent.heading}
           </motion.h2>
 
-          <p className="text-xl text-center max-w-3xl mx-auto mb-8 md:mb-4 custom-spacing">
-            Praktické aplikace, moduly, weby. Ani řádek kódu – jen vize, strategie a AI.
+          <p className="text-center max-w-3xl mx-auto mb-8 md:mb-4 custom-spacing">
+            {portfolioHolographicContent.subheading}
           </p>
 
           {/* Mobile: Horizontal drag carousel */}
@@ -116,9 +141,9 @@ function PortfolioHolographic() {
               <motion.div
                 className="flex gap-4 cursor-grab active:cursor-grabbing"
                 drag="x"
-                dragConstraints={{ left: -(projects.length * 280 - 280), right: 0 }}
-                dragElastic={0.2}
-                dragTransition={{ bounceStiffness: 200, bounceDamping: 20 }}
+                dragConstraints={{ left: -(projects.length * CAROUSEL_CONFIG.MOBILE_DRAG_CONSTRAINT_MULTIPLIER - CAROUSEL_CONFIG.MOBILE_DRAG_CONSTRAINT_MULTIPLIER), right: 0 }}
+                dragElastic={DRAG_CONFIG.ELASTIC_MOBILE}
+                dragTransition={dragTransitionConfig}
               >
                 {projects.map((project, index) => (
                   <motion.div
@@ -127,20 +152,16 @@ function PortfolioHolographic() {
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
                   >
-                    <div className="relative overflow-hidden rounded-lg aspect-[4/3] border-2 border-accent/30">
+                    <div className="relative overflow-hidden rounded-lg aspect-[4/3] border-2 border-holo/30">
                       <img
                         src={project.image}
                         alt={project.name}
                         loading="lazy"
-                        className="w-full h-full object-cover"
-                        style={{
-                          filter: 'brightness(0.9)',
-                          boxShadow: '0 4px 12px rgba(0, 255, 136, 0.2)',
-                        }}
+                        className="w-full h-full object-cover portfolio-mobile-card"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-                      <div className="absolute bottom-0 left-0 right-0 p-3 bg-black/40 backdrop-blur-sm">
-                        <p className="text-accent text-sm font-bold text-center drop-shadow-lg">
+                      <div className="absolute inset-0 portfolio-mobile-card-overlay" />
+                      <div className="absolute bottom-0 left-0 right-0 p-3 portfolio-mobile-card-footer">
+                        <p className="text-white dark:text-accent text-sm font-bold text-center drop-shadow-lg">
                           {project.name}
                         </p>
                       </div>
@@ -149,24 +170,23 @@ function PortfolioHolographic() {
                 ))}
               </motion.div>
             </div>
-            <p className="text-center text-sm text-gray-400 mt-4 md:mt-[clamp(0.5rem,1vh,1rem)]">← Táhněte →</p>
+            <p className="text-center text-sm text-gray-400 mt-4 md:mt-[clamp(0.5rem,1vh,1rem)]">{portfolioHolographicContent.dragInstruction}</p>
           </div>
 
           {/* Tablet & Desktop (>=640px): 3D carousel with animations */}
           <div className="hidden sm:block">
             <motion.div
-                className="relative h-[280px] md:h-[350px] flex items-center justify-center cursor-grab active:cursor-grabbing"
-                style={{ willChange: 'transform' }}
+                className="relative h-[280px] md:h-[350px] flex items-center justify-center cursor-grab active:cursor-grabbing will-change-transform"
                 drag="x"
                 dragConstraints={{ left: 0, right: 0 }}
-                dragElastic={0.1}
+                dragElastic={DRAG_CONFIG.ELASTIC_DESKTOP}
                 onDragStart={handleDragStart}
                 onDragEnd={handleDragEnd}
                 onDrag={handleDrag}
               >
                 <div
                   className="relative w-full h-full flex items-center justify-center"
-                  style={{ perspective: '2000px', willChange: 'transform' }}
+                  style={{ perspective: `${CAROUSEL_CONFIG.PERSPECTIVE}px`, willChange: 'transform' }}
                 >
                   {projects.map((project, index) => (
                     <CarouselItem
@@ -186,13 +206,15 @@ function PortfolioHolographic() {
 
       {/* Separovaný text MIMO holografický container */}
       <motion.div
-        className="max-w-3xl mx-auto text-center space-y-1 relative z-50"
+        className="max-w-3xl mx-auto text-center relative z-50"
         {...slideUp}
-        transition={{ delay: 0.5 }}
+        transition={closingTextTransition}
       >
-        <p className="text-xl custom-spacing">Od jednoduchých nástrojů po komplexní aplikace, tempo určujeme sami.</p>
-        <p className="text-xl custom-spacing">Začněte třeba jednodušší webovkou.</p>
-        <p className="text-xl font-semibold custom-spacing">Zajímá vás, jak?</p>
+        {portfolioHolographicContent.closingText.map((text, index) => (
+          <p key={index} className={`custom-spacing ${index === 2 ? 'text-xl font-bold mt-fluid-md' : index === 1 ? 'mt-fluid-xs' : ''}`}>
+            {text}
+          </p>
+        ))}
       </motion.div>
     </Section>
   )
@@ -201,7 +223,10 @@ function PortfolioHolographic() {
 // Carousel Item component - extracted to use hooks properly
 const CarouselItem = memo(function CarouselItem({ project, index, rotation, dragRotation, totalProjects }) {
   const angle = (360 / totalProjects) * index
-  const radius = 450
+  // Responsive radius: smaller on mobile for better performance
+  const radius = typeof window !== 'undefined' && window.innerWidth < 768
+    ? CAROUSEL_CONFIG.MOBILE_RADIUS
+    : CAROUSEL_CONFIG.DESKTOP_RADIUS
 
   const combinedRotation = useTransform(
     [rotation, dragRotation],
@@ -220,14 +245,14 @@ const CarouselItem = memo(function CarouselItem({ project, index, rotation, drag
 
   const opacity = useTransform(
     z,
-    [-radius, -radius/2, 0, radius/2, radius],
-    [0.3, 0.5, 1, 0.5, 0.3]
+    TRANSFORM_RANGES.OPACITY.Z_RANGE,
+    TRANSFORM_RANGES.OPACITY.OPACITY_RANGE
   )
 
   const scale = useTransform(
     z,
-    [-radius, 0, radius],
-    [0.6, 1.1, 0.6]
+    TRANSFORM_RANGES.SCALE.Z_RANGE,
+    TRANSFORM_RANGES.SCALE.SCALE_RANGE
   )
 
   return (
@@ -252,8 +277,8 @@ const HolographicCard = memo(function HolographicCard({ project, zDepth }) {
 
   const glowOpacity = useTransform(
     zDepth,
-    [-450, 0, 450],
-    [0.2, 0.8, 0.2]
+    TRANSFORM_RANGES.SCALE.Z_RANGE,
+    [0.4, 1, 0.4]
   )
 
   const handleHoverStart = useCallback(() => setIsHovered(true), [])
@@ -261,56 +286,38 @@ const HolographicCard = memo(function HolographicCard({ project, zDepth }) {
 
   return (
     <motion.div
-      className="relative w-[280px] md:w-[380px] aspect-[4/3]"
-      style={{ willChange: 'transform' }}
+      className="relative w-[280px] md:w-[380px] aspect-[4/3] will-change-transform"
       onHoverStart={handleHoverStart}
       onHoverEnd={handleHoverEnd}
       whileHover={{ scale: 1.05 }}
-      transition={{ type: "spring", stiffness: 300, damping: 20 }}
+      transition={cardHoverTransition}
     >
       {/* Holographic glow */}
       <motion.div
-        className="absolute -inset-4 rounded-3xl opacity-0"
+        className="absolute -inset-4 rounded-3xl opacity-0 blur-[20px] md:blur-[30px] holo-card-glow"
         style={{
           opacity: glowOpacity,
-          background: 'linear-gradient(45deg, rgba(0, 255, 136, 0.4), rgba(0, 200, 255, 0.4))',
-          filter: 'blur(20px)',
           willChange: 'opacity'
         }}
         animate={isHovered ? {
-          opacity: [0.3, 0.6, 0.3],
+          opacity: [0.5, 0.9, 0.5],
         } : {}}
-        transition={{
-          duration: 2,
-          repeat: Infinity,
-        }}
+        transition={glowPulseTransition}
       />
 
       {/* Main card */}
-      <div className="relative w-full h-full rounded-2xl overflow-hidden border-2 border-accent/30 shadow-2xl bg-gray-900/50 backdrop-blur-sm">
+      <div className="relative w-full h-full rounded-2xl overflow-hidden border-2 border-holo/30 shadow-2xl portfolio-desktop-card">
         {/* Holographic shine overlay */}
         <motion.div
-          className="absolute inset-0 opacity-30"
-          style={{
-            background: 'linear-gradient(135deg, transparent 30%, rgba(0, 255, 136, 0.3) 50%, transparent 70%)',
-          }}
+          className="absolute inset-0 opacity-50 holo-card-shine"
           animate={{
             backgroundPosition: ['0% 0%', '200% 200%'],
           }}
-          transition={{
-            duration: 3,
-            repeat: Infinity,
-            ease: "linear"
-          }}
+          transition={shineTransition}
         />
 
         {/* Scanlines effect */}
-        <div
-          className="absolute inset-0 pointer-events-none opacity-20"
-          style={{
-            backgroundImage: 'repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(0, 255, 136, 0.1) 3px, rgba(0, 255, 136, 0.1) 6px)',
-          }}
-        />
+        <div className="absolute inset-0 pointer-events-none opacity-80 holo-card-scanlines" />
 
         {/* Flicker effect on hover */}
         <motion.div
@@ -318,9 +325,7 @@ const HolographicCard = memo(function HolographicCard({ project, zDepth }) {
           animate={isHovered ? {
             opacity: [0, 0.3, 0, 0.2, 0],
           } : { opacity: 0 }}
-          transition={{
-            duration: 0.3,
-          }}
+          transition={flickerTransition}
         />
 
         {/* Project image background */}
@@ -332,26 +337,19 @@ const HolographicCard = memo(function HolographicCard({ project, zDepth }) {
             loading="lazy"
           />
           {/* Darker overlay for better holographic effect visibility */}
-          <div className="absolute inset-0 bg-black/30" />
+          <div className="absolute inset-0 portfolio-desktop-card-overlay" />
         </div>
 
         {/* Corner accents */}
-        <div className="absolute top-2 left-2 w-4 h-4 border-t-2 border-l-2 border-accent/50" />
-        <div className="absolute top-2 right-2 w-4 h-4 border-t-2 border-r-2 border-accent/50" />
-        <div className="absolute bottom-2 left-2 w-4 h-4 border-b-2 border-l-2 border-accent/50" />
-        <div className="absolute bottom-2 right-2 w-4 h-4 border-b-2 border-r-2 border-accent/50" />
+        {cornerAccents.map((accent, i) => (
+          <div key={i} className={`absolute ${accent.position} w-4 h-4 ${accent.borders} border-holo/70`} />
+        ))}
 
         {/* Project name bar */}
-        <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/90 via-black/50 to-transparent backdrop-blur-sm border-t border-accent/20">
-          <motion.h3
-            className="font-display font-bold text-lg md:text-xl"
-            style={{
-              color: 'rgba(0, 255, 136, 0.9)',
-              textShadow: '0 0 10px rgba(0, 255, 136, 0.3)',
-            }}
-          >
+        <div className="absolute bottom-0 left-0 right-0 p-4 portfolio-desktop-card-footer border-t border-holo/20">
+          <h3 className="font-display font-bold text-lg md:text-xl text-white dark:text-accent drop-shadow-lg">
             {project.name}
-          </motion.h3>
+          </h3>
         </div>
       </div>
     </motion.div>

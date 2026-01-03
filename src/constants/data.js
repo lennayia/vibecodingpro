@@ -1,4 +1,4 @@
-import { Target, Wrench, MessageSquare, FileText, Rocket, RefreshCw, Package } from 'lucide-react'
+import { Target, Wrench, MessageSquare, FileText, Rocket, RefreshCw, Package, BookOpen, Lightbulb, Route, Tag } from 'lucide-react'
 
 export const phases = [
   {
@@ -97,33 +97,36 @@ export const benefits = [
 ]
 
 export const comparisonData = {
+  heading: "Dobré nástroje posouvají",
+  subheading: "Dvě ženy, jeden obor, dvě cesty.",
+  intro: {
+    line1: "Martina a Julie: obě učí klientky zdravě spát.",
+    line2: "Stejné znalosti, stejná vášeň pomáhat.",
+    line3: "Ale jejich podnikání funguje naprosto odlišně."
+  },
   martina: {
     name: "Koučka Martina",
-    subtitle: "poskytuje konzultace, ale nemá podporující produkt",
+    subtitle: "konzultace bez podporujících nástrojů",
     type: "negative",
     features: [
-      { text: "<strong></strong>7 konzultací denně. Páni, jede jako drak, co sotva dýchá" },
-      { text: "<strong>Stejné rady</strong> pořád dokola. A mentální únava brzdí její kreativitu" },
-      { text: "<strong>Odmítá nové klientky.</strong> Chce je, ale nemá energetickou kapacitu" },
-      { text: "<strong>Večer padne</strong> a na rodinu zbývá jen to, co z Martiny zbylo" },
-      { text: "<strong>Dovolená s tělem na pláži,</strong> ale s hlavou u klientek" },
-      { text: "<strong>Když nepracuje, nevydělá.</strong> Cítí se v kleci" }
+      { text: "7 konzultací denně, jede jako drak, co sotva dýchá." },
+      { text: "Stejné rady dokola, s pocitem, že se točí v kruhu." },
+      { text: "Říká NE ženám, kterým by chtěla pomoct." },
+      { text: "Večer padne – a na rodinu zbývá to, co zbylo z ní." }
     ],
-    quote: "Jako bych byla na běžícím pásu. Pomáhám lidem s energií a sama jsem vyčerpaná."
+    quote: "Pomáhám lidem s energií a sama jsem vyčerpaná."
   },
   julie: {
     name: "Lektorka Julie",
-    subtitle: "tvoří vlastní nástroje a poskytuje prémiové konzultace",
+    subtitle: "vlastní nástroje + prémiové konzultace",
     type: "positive",
     features: [
-      { text: "<strong>200+ žen má podporu.</strong> Spánkové tracky, meditace, osobní tipy 24/7" },
-      { text: "<strong>Klientky jsou nadšené.</strong> Píšou díky, vidí pokrok, cítí se opečované" },
-      { text: "<strong>2-3 premium konzultace týdně</strong> – vyšší cena, připravené klientky" },
-      { text: "<strong>Žádné buď a nebo. Má energii i čas</strong> – na běhání, rodinu, koníčky" },
-      { text: "<strong>Měsíc na Bali?</strong> – aplikace běží a klientky jsou spokojené" },
-      { text: "<strong>Příjem se stává pasivním</strong> – pořád roste i díky VIP konzultacím" }
+      { text: "200+ žen má její podporu – spánkové tracky, meditace, tipy. Kdykoliv." },
+      { text: "Klientky píšou díky. Vidí pokrok, cítí se opečované." },
+      { text: "2-3 konzultace týdně s těmi, které si vybere." },
+      { text: "Měsíc na Bali? Aplikace běží, klientky jsou spokojené, příjem roste." }
     ],
-    quote: "Konečně můžu pomoct víc lidem, a přitom žiju svůj život. Cítím se naplněná."
+    quote: "Konečně můžu pomoct víc lidem – a přitom žiju svůj život."
   }
 }
 
@@ -203,6 +206,49 @@ export const pricingPackages = [
     isPopular: false
   }
 ]
+
+export const whatIsVibecodingContent = {
+  heading: "Vibecoding",
+  subheading: "Co to je a pro koho",
+  definition: "Vibecoding = dovednost popsat vizi, aby ji AI správně pochopila.",
+  summary: "Vy máte vizi, AI to odmaká.",
+  intro: "Využijete, pokud jste",
+  targetGroups: [
+    "Koučky a mentorky",
+    "Terapeutky a poradkyně",
+    "Lektorky a učitelky",
+    "Online podnikatelky",
+    "Tvůrkyně kurzů a programů"
+  ],
+  commonGoals: {
+    heading: "Všechny chceme totéž",
+    goals: [
+      "Pomoct víc lidem",
+      "Pracovat míň hodin"
+    ]
+  }
+}
+
+export const portfolioHolographicContent = {
+  heading: "Tohle postavila žena, která neumí programovat.",
+  subheading: "Praktické aplikace, moduly, weby. Ani řádek kódu – jen vize, strategie a AI.",
+  dragInstruction: "← Potáhněte do strany →",
+  projects: [
+    { name: "CoachPro", image: "/coachpro.webp" },
+    { name: "ContentPro", image: "/content-pro.webp" },
+    { name: "DigiPro", image: "/digipro.webp" },
+    { name: "Koučovací karty", image: "/koucovaci-karty.webp" },
+    { name: "LifePro", image: "/liffepro.webp" },
+    { name: "PaymentsPro", image: "/paymentspro.webp" },
+    { name: "PianoPro", image: "/pianopro.webp" },
+    { name: "StudyPro", image: "/studypro.webp" }
+  ],
+  closingText: [
+    "Od jednoduchých nástrojů po komplexní aplikace, tempo určujeme sami.",
+    "Začněte třeba jednodušší webovkou.",
+    "Zajímá vás, jak?"
+  ]
+}
 
 export const faqCategories = [
   {
@@ -333,3 +379,19 @@ export const faqCategories = [
     ]
   }
 ]
+
+// Navigation anchor links for SlideOutMenu
+export const anchorLinks = [
+  { id: 'what-you-can-create', label: 'Co vytvoříte', icon: Lightbulb },
+  { id: 'story', label: 'Příběh', icon: BookOpen },
+  { id: 'process', label: 'Proces', icon: Route },
+  { id: 'pricing-section', label: 'Ceník', icon: Tag }
+]
+
+// Section IDs for navigation and scrolling
+export const SECTION_IDS = {
+  WHAT_YOU_CAN_CREATE: 'what-you-can-create',
+  STORY: 'story',
+  PROCESS: 'process',
+  PRICING: 'pricing-section'
+}

@@ -1,20 +1,101 @@
 import { motion, AnimatePresence } from 'framer-motion'
-import { BookOpen, Lightbulb, Route, Tag, ChevronRight, AlignRight } from 'lucide-react'
+import { ChevronRight, AlignRight } from 'lucide-react'
 import { scrollToSection } from '../../utils/scroll'
-import ThemeToggle from './ThemeToggle'
+import { useState, useEffect, useCallback } from 'react'
+import Tooltip from './Tooltip'
+import { anchorLinks } from '../../constants/data'
+
+// Intersection Observer configuration
+const OBSERVER_THRESHOLDS = [0, 0.1, 0.2, 0.3, 0.5, 0.75, 1]
+const OBSERVER_ROOT_MARGIN = '-15% 0px -40% 0px'
+
+// Drag sensitivity
+const DRAG_THRESHOLD_PX = 30  // Minimum movement to close menu
+const DRAG_CLOSE_OFFSET_PX = 100  // Drag distance to trigger close
+const DRAG_CLOSE_VELOCITY = 500  // Drag velocity to trigger close
 
 export default function SlideOutMenu({ isOpen, onOpen, onClose }) {
-  const anchorLinks = [
-    { id: 'story', label: 'Příběh', icon: BookOpen },
-    { id: 'what-you-can-create', label: 'Co vytvoříte', icon: Lightbulb },
-    { id: 'process', label: 'Proces', icon: Route },
-    { id: 'pricing-section', label: 'Ceník', icon: Tag }
-  ]
+  const [activeSection, setActiveSection] = useState('')
+  const [dragStartPos, setDragStartPos] = useState(null)
 
-  const handleLinkClick = (id) => {
+  // Track active section with Intersection Observer
+  useEffect(() => {
+    const sections = anchorLinks.map(link => link.id)
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        // Find the most visible section
+        let maxRatio = 0
+        let mostVisible = null
+
+        entries.forEach(entry => {
+          if (entry.isIntersecting && entry.intersectionRatio > maxRatio) {
+            maxRatio = entry.intersectionRatio
+            mostVisible = entry.target.id
+          }
+        })
+
+        // Set active if we found any visible section (even partially)
+        if (mostVisible && maxRatio > 0.15) {
+          setActiveSection(mostVisible)
+        } else if (maxRatio === 0) {
+          // Clear active if no sections are visible
+          setActiveSection('')
+        }
+      },
+      { threshold: OBSERVER_THRESHOLDS, rootMargin: OBSERVER_ROOT_MARGIN }
+    )
+
+    sections.forEach(id => {
+      const element = document.getElementById(id)
+      if (element) observer.observe(element)
+    })
+
+    return () => observer.disconnect()
+  }, [])
+
+  const handleLinkClick = useCallback((id) => {
     scrollToSection(id)
     onClose()
-  }
+  }, [onClose])
+
+  // Window-level drag detection to close menu
+  useEffect(() => {
+    if (!isOpen) return
+
+    const handlePointerDown = (e) => {
+      // Ignore if clicking on the menu itself
+      const menuElement = document.querySelector('[data-menu-panel]')
+      if (menuElement && menuElement.contains(e.target)) return
+
+      setDragStartPos({ x: e.clientX, y: e.clientY })
+    }
+
+    const handlePointerMove = (e) => {
+      if (dragStartPos) {
+        const deltaX = Math.abs(e.clientX - dragStartPos.x)
+        const deltaY = Math.abs(e.clientY - dragStartPos.y)
+        if (deltaX > DRAG_THRESHOLD_PX || deltaY > DRAG_THRESHOLD_PX) {
+          onClose()
+          setDragStartPos(null)
+        }
+      }
+    }
+
+    const handlePointerUp = () => {
+      setDragStartPos(null)
+    }
+
+    window.addEventListener('pointerdown', handlePointerDown)
+    window.addEventListener('pointermove', handlePointerMove)
+    window.addEventListener('pointerup', handlePointerUp)
+
+    return () => {
+      window.removeEventListener('pointerdown', handlePointerDown)
+      window.removeEventListener('pointermove', handlePointerMove)
+      window.removeEventListener('pointerup', handlePointerUp)
+    }
+  }, [isOpen, dragStartPos, onClose])
 
   return (
     <>
@@ -22,41 +103,18 @@ export default function SlideOutMenu({ isOpen, onOpen, onClose }) {
       {!isOpen && (
         <button
           onClick={onOpen}
-          className="p-2 rounded-lg hover:opacity-80 transition-opacity"
+          className="hover:opacity-80 transition-opacity"
           aria-label="Otevřít menu"
         >
-          <AlignRight className="w-8 h-8 text-gray-900 dark:text-white" strokeWidth={2.5} />
+          <AlignRight className="nav-icon-fluid text-gray-900 dark:text-white" strokeWidth={2.5} />
         </button>
       )}
 
       {/* Plovoucí slider menu */}
       <AnimatePresence>
         {isOpen && (
-          <>
-            {/* Neviditelná dotykové oblast pro swipe - zavře menu při tažení jakýmkoliv směrem */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              drag
-              dragConstraints={{ left: 0, right: 0, top: 0, bottom: 0 }}
-              dragElastic={0.1}
-              onDragStart={() => {
-                // Při jakémkoliv tažení zavřít menu
-                onClose()
-              }}
-              style={{
-                position: 'fixed',
-                top: 0,
-                left: 0,
-                right: '4rem',
-                height: '100vh',
-                zIndex: 99998,
-                cursor: 'default'
-              }}
-            />
-
-            <motion.div
+          <motion.div
+            data-menu-panel
             initial={{ x: '100%' }}
             animate={{ x: 0 }}
             exit={{ x: '100%' }}
@@ -65,24 +123,12 @@ export default function SlideOutMenu({ isOpen, onOpen, onClose }) {
             dragConstraints={{ left: 0, right: 0 }}
             dragElastic={{ left: 0, right: 0.5 }}
             onDragEnd={(e, { offset, velocity }) => {
-              // Zavřít menu pokud je taženo víc než 100px doprava nebo rychlost > 500
-              if (offset.x > 100 || velocity.x > 500) {
+              // Zavřít menu pokud je taženo víc než threshold px doprava nebo rychlost > threshold
+              if (offset.x > DRAG_CLOSE_OFFSET_PX || velocity.x > DRAG_CLOSE_VELOCITY) {
                 onClose()
               }
             }}
-            style={{
-              position: 'fixed',
-              top: '0.5rem',
-              right: 0,
-              width: '4rem',
-              zIndex: 99999,
-              background: 'rgba(7, 7, 22, 0.6)',
-              backdropFilter: 'blur(20px)',
-              WebkitBackdropFilter: 'blur(20px)',
-              boxShadow: '-10px 0 40px rgba(0, 0, 205, 0.3), -5px 0 20px rgba(0, 0, 205, 0.2)',
-              borderRadius: '12px 0 0 12px'
-            }}
-            className="flex flex-col items-center py-4 gap-4 cursor-grab active:cursor-grabbing"
+            className="menu-panel flex flex-col items-center py-4 gap-4 cursor-grab active:cursor-grabbing"
           >
             {/* Close button */}
             <button
@@ -90,44 +136,38 @@ export default function SlideOutMenu({ isOpen, onOpen, onClose }) {
               className="relative p-2 rounded-lg hover:opacity-80 transition-opacity group"
               aria-label="Zavřít menu"
             >
-              <ChevronRight className="w-8 h-8 text-white" strokeWidth={2.5} />
-              <span className="absolute right-full mr-2 top-1/2 -translate-y-1/2 bg-gray-900 text-white text-xs px-3 py-1.5 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap">
-                Zavřít
-              </span>
+              <ChevronRight className="nav-icon-fluid text-[#2E2E2E] dark:text-white" strokeWidth={2.5} />
+              <Tooltip text="Zavřít" />
             </button>
 
             {/* Divider */}
-            <div style={{ width: '32px', height: '1px', background: 'rgba(0, 0, 205, 0.4)' }} />
-
-            {/* Theme toggle */}
-            <div className="flex justify-center">
-              <ThemeToggle />
-            </div>
-
-            {/* Divider */}
-            <div style={{ width: '32px', height: '1px', background: 'rgba(0, 0, 205, 0.4)' }} />
+            <div className="menu-divider" />
 
             {/* Navigation links */}
-            <nav className="flex flex-col gap-1">
+            <nav className="flex flex-col gap-3">
               {anchorLinks.map((link) => {
                 const Icon = link.icon
                 return (
                   <button
                     key={link.id}
                     onClick={() => handleLinkClick(link.id)}
-                    className="relative p-2 rounded-lg hover:opacity-80 transition-opacity group"
+                    className="relative p-2 rounded-lg hover:opacity-80 transition-all group"
                     aria-label={link.label}
                   >
-                    <Icon className="w-8 h-8 text-white" strokeWidth={2.5} />
-                    <span className="absolute right-full mr-2 top-1/2 -translate-y-1/2 bg-gray-900 text-white text-xs px-3 py-1.5 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap">
-                      {link.label}
-                    </span>
+                    <Icon
+                      className={`nav-icon-fluid transition-colors ${
+                        activeSection === link.id
+                          ? 'text-[#B56C4E] dark:text-[#0DDD0D]'
+                          : 'text-[#2E2E2E] dark:text-white'
+                      }`}
+                      strokeWidth={activeSection === link.id ? 3 : 2.5}
+                    />
+                    <Tooltip text={link.label} />
                   </button>
                 )
               })}
             </nav>
           </motion.div>
-          </>
         )}
       </AnimatePresence>
     </>

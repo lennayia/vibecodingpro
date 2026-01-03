@@ -81,8 +81,7 @@ export default function AnchorNav() {
                     {activeSection === link.id && (
                       <motion.div
                         layoutId="activeSection"
-                        className="absolute inset-0 bg-accent dark:bg-accent-dark rounded-full"
-                        style={{ zIndex: -1 }}
+                        className="absolute inset-0 bg-accent dark:bg-accent-dark rounded-full -z-10"
                         transition={{ type: 'spring', stiffness: 380, damping: 30 }}
                       />
                     )}

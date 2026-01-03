@@ -21,9 +21,9 @@ export default function BinaryBackground({ count = 30 }) {
           key={item.id}
           className="absolute font-mono text-accent opacity-5"
           style={{
-            left: item.left,
-            top: item.top,
-            fontSize: `${item.size}rem`,
+            left: item.left, // Dynamic positioning
+            top: item.top, // Dynamic positioning
+            fontSize: `${item.size}rem`, // Dynamic size
           }}
           animate={{
             y: [0, -30, 0],

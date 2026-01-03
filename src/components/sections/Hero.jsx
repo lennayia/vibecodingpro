@@ -1,39 +1,75 @@
 import { motion } from 'framer-motion'
-import { useCallback } from 'react'
+import { useCallback, useMemo, memo, useState, useEffect } from 'react'
 import Section from '../layout/Section'
 import Button from '../ui/Button'
 import AnimatedBackground from '../ui/AnimatedBackground'
 import { useTypingEffect } from '../../hooks/useTypingEffect'
 import { scrollToSection } from '../../utils/scroll'
+import { heroContent } from '../../constants/hero'
+import { SECTION_IDS } from '../../constants/data'
+import '../../styles/hero.css'
+import '../../styles/shared.css'
 
-export default function Hero() {
-  // Optimized for performance and full screen coverage
-  const particleBackground = <AnimatedBackground type="neural" count={15} />
-  const typingText = 'Tvořte vlastní nástroje a\u00A0navyšujte svoje příjmy'
-  const { displayedText, showCursor } = useTypingEffect(typingText, 60, 500)
+// Animation timing constants
+const ANIMATION_TIMINGS = {
+  STAGGER_CHILDREN: 0.25,
+  DELAY_CHILDREN: 0.2,
+  FADE_DURATION: 0.8
+}
 
-  // Custom slower animations for Hero
-  const containerVariants = {
-    initial: {},
-    animate: {
-      transition: {
-        staggerChildren: 0.25,
-        delayChildren: 0.2
-      }
+const TYPING_EFFECT = {
+  SPEED: 60,
+  DELAY: 500
+}
+
+// Performance: Animation variants outside component to avoid re-creating objects
+const containerVariants = {
+  initial: {},
+  animate: {
+    transition: {
+      staggerChildren: ANIMATION_TIMINGS.STAGGER_CHILDREN,
+      delayChildren: ANIMATION_TIMINGS.DELAY_CHILDREN
     }
   }
+}
 
-  const itemVariants = {
-    initial: { opacity: 0, y: 40 },
-    animate: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.8, ease: "easeOut" }
-    }
+const itemVariants = {
+  initial: { opacity: 0 },
+  animate: {
+    opacity: 1,
+    transition: { duration: ANIMATION_TIMINGS.FADE_DURATION, ease: "easeOut" }
   }
+}
+
+function Hero() {
+  // Dark mode detection
+  const [isDark, setIsDark] = useState(true)
+
+  useEffect(() => {
+    const checkDark = () => setIsDark(document.documentElement.classList.contains('dark'))
+    checkDark()
+    window.addEventListener('themeChange', checkDark)
+    return () => window.removeEventListener('themeChange', checkDark)
+  }, [])
+
+  // Neural network background animation
+  const neuralBackground = <AnimatedBackground type="neural" count={15} />
+  const typingText = heroContent.heading.typingText
+  const { displayedText, showCursor } = useTypingEffect(typingText, TYPING_EFFECT.SPEED, TYPING_EFFECT.DELAY)
+
+  // Performance: memoize text parts to avoid re-splitting on every render
+  const textParts = useMemo(() => {
+    const parts = displayedText.split('. ')
+    return {
+      first: parts[0],
+      second: parts[1],
+      hasDot: displayedText.includes('. '),
+      hasSecond: displayedText.includes('Vyšší')
+    }
+  }, [displayedText])
 
   const handlePricingClick = useCallback(() => {
-    scrollToSection('pricing-section')
+    scrollToSection(SECTION_IDS.PRICING)
   }, [])
 
   const handleScrollDown = useCallback(() => {
@@ -41,103 +77,106 @@ export default function Hero() {
   }, [])
 
   // Single screen layout
-  const heroContent = (
-    <motion.div
-      initial="initial"
-      animate="animate"
-      variants={containerVariants}
-      className="text-center w-full px-4 flex flex-col justify-center gap-6 md:gap-[clamp(1rem,2vh,1.5rem)] bg-white/50 md:bg-transparent dark:bg-transparent rounded-2xl md:rounded-none"
-    >
+  const heroLayout = (
+  <motion.div
+    initial="initial"
+    animate="animate"
+    variants={containerVariants}
+    className="hero-text-align w-full md:max-w-[60%] flex flex-col relative vignette-gradient md:ml-[5%]"
+    style={{ marginTop: isDark ? '0.5rem' : '1rem' }}
+  >
       {/* Badge */}
-      <motion.div variants={itemVariants} className="inline-block" style={{ marginBottom: 'clamp(-0.5rem, -1vh, -0.25rem)' }}>
+      <motion.div variants={itemVariants} className="inline-block hero-badge-spacing">
         <span
-          className="px-3 py-1.5 md:px-4 md:py-2 bg-gray-100/80 dark:bg-[#05050f]/80 backdrop-blur-sm rounded-full font-medium border border-gray-200 dark:border-[#070716]"
-          style={{ fontSize: 'clamp(0.875rem, 1vw + 0.5vh, 1.25rem)' }}
+          className="px-3 py-1.5 md:px-4 md:py-2 backdrop-blur-sm rounded-xl font-normal border border-accent/40 text-accent text-sm"
         >
-          Vibecoding – cesta pro neprogramátorky
+          {heroContent.badge.text}
         </span>
       </motion.div>
 
-      {/* Heading */}
+      {/* Main Heading - combined for SEO (only 1 h1 per page) */}
       <motion.h1
         variants={itemVariants}
-        className="font-display font-bold"
-        style={{
-          fontSize: 'clamp(1.75rem, 4vw + 2vh, 4rem)',
-          lineHeight: '1.2',
-          marginTop: 'clamp(-0.5rem, -1vh, -0.25rem)'
-        }}
+        className="flex flex-col hero-items-align gap-0 leading-tight"
       >
-        {displayedText.split('a\u00A0navyšujte')[0]}
-        <br className="hidden min-[700px]:block" />
-        {displayedText.includes('navyšujte') && (
-          <span className="text-gradient">
-            {displayedText.split('a\u00A0navyšujte')[1] ? 'a\u00A0navyšujte' + displayedText.split('a\u00A0navyšujte')[1] : displayedText.split('nástroje ')[1]}
+        {/* Brand Name */}
+        <span className="font-medium text-gradient text-fluid-hero-h1">
+          {heroContent.heading.brandName}
+        </span>
+        {/* Elegant copper divider line */}
+        <span className="copper-divider-line mt-4 hero-divider-spacing" />
+        {/* Main Message with typing effect - split into two lines */}
+        <span className="text-hero-heading block">
+          {textParts.first}{textParts.hasDot && '.'}
+        </span>
+        {textParts.hasSecond && (
+          <span className="text-hero-heading block">
+            <span className="text-gradient-always">
+              {textParts.second}
+            </span>
+            {showCursor && (
+              <span className="inline-block w-1 h-[0.9em] bg-accent ml-1 animate-pulse" />
+            )}
           </span>
-        )}
-        {showCursor && (
-          <span className="inline-block w-1 h-[0.9em] bg-accent ml-1 animate-pulse" />
         )}
       </motion.h1>
 
-      {/* Paragraph */}
-      <motion.p
+      {/* Subheading/Tagline */}
+      <motion.h2
         variants={itemVariants}
-        className="max-w-3xl mx-auto text-center font-light"
-        style={{
-          fontSize: 'clamp(0.875rem, 1.2vw + 0.8vh, 1.25rem)',
-          lineHeight: '1.6',
-          display: 'flex',
-          flexDirection: 'column',
-          gap: 'clamp(0.1rem, 0.5vh, 0.25rem)',
-          paddingTop: 'clamp(1rem, 2vh, 2rem)'
-        }}
+        className="font-semibold text-gradient text-fluid-hero-h2"
       >
-        <span className="block font-light">Už nechcete měnit čas za peníze.</span>
-        <span className="block font-light">Chcete nástroje, které doplní vaše podnikání o konkurenční výhodu.</span>
-        <span className="block font-light">Pracují za vás 24/7 a pomáhají vám i stovkám vašich klientek – zatímco vy si užíváte růst a svobodu.</span>
-      </motion.p>
+        {heroContent.heading.tagline}
+      </motion.h2>
+
+      {/* Paragraph - List with elegant bullets */}
+      <motion.ul
+        variants={itemVariants}
+        className="max-w-3xl mx-auto md:mx-0 hero-text-align font-light space-y-2 text-text-light dark:text-text-muted-dark hero-list"
+      >
+        <li className="hero-list-item">
+          <span className="text-accent font-mono text-[1.2em]">&gt;</span>
+          <span className="font-light">{heroContent.features[0]}</span>
+        </li>
+        <li className="hero-list-item">
+          <span className="text-accent font-mono text-[1.2em]">&gt;</span>
+          <span className="font-light">{heroContent.features[1]}</span>
+        </li>
+      </motion.ul>
 
       {/* CTA Section */}
       <motion.div
         variants={itemVariants}
-        className="flex flex-col items-center max-w-2xl mx-auto"
-        style={{
-          gap: 'clamp(0.75rem, 2vh, 1.25rem)',
-          paddingTop: 'clamp(4rem, 8vh, 6rem)',
-          paddingBottom: '0'
-        }}
+        className="flex flex-col hero-items-align max-w-2xl mx-auto md:mx-0 hero-cta-spacing"
       >
         <p
-          className="font-light text-center"
+          className="hero-text-align text-text-light dark:text-text-muted-dark leading-relaxed font-light"
         >
-          Prozkoumejte showcase různých možností vibecodingu.
+          {heroContent.cta.description}
         </p>
         <Button onClick={handleScrollDown} variant="primary">
-          To si nenechám ujít
+          {heroContent.cta.primaryButton}
         </Button>
-        <a
-          onClick={handlePricingClick}
-          className="text-accent hover:underline cursor-pointer font-light"
-          style={{ fontSize: 'clamp(0.875rem, 1vw, 1rem)', marginTop: 'clamp(0.5rem, 1vh, 1rem)' }}
-        >
-          Nejdřív jdu na ceník →
-        </a>
+        <Button onClick={handlePricingClick} variant="secondary">
+          {heroContent.cta.secondaryButton}
+        </Button>
       </motion.div>
     </motion.div>
   )
 
   return (
     <Section
-      background="light"
+      background="gradient"
       centered={true}
       className="relative overflow-hidden"
       showScrollIndicator={true}
-      backgroundElement={particleBackground}
+      backgroundElement={neuralBackground}
     >
       <div className="relative z-10 w-full">
-        {heroContent}
-      </div>
+  {heroLayout}
+</div>
     </Section>
   )
 }
+
+export default memo(Hero)

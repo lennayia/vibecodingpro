@@ -248,7 +248,7 @@ export default function WhyMeSeo() {
       backgroundElement={<AnimatedPhotoWithParticles />}
     >
       <motion.div {...fadeIn}>
-        <h2 className="font-display font-bold text-center mb-4 md:mb-[clamp(0.75rem,1.5vh,1rem)]" style={{ lineHeight: '1.3' }}>
+        <h2 className="font-display font-bold text-center mb-4 md:mb-[clamp(0.75rem,1.5vh,1rem)] leading-tight">
           Proč zrovna se mnou?
         </h2>
 

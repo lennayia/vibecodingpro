@@ -41,6 +41,7 @@ function ScrollProgress() {
   return createPortal(
     <div
       style={{
+        // Fixed positioning required for portal
         position: 'fixed',
         top: 0,
         left: 0,
@@ -52,11 +53,9 @@ function ScrollProgress() {
       }}
     >
       <div
-        className="h-full bg-accent"
+        className="h-full bg-accent shadow-[0_0_10px_rgba(0,255,136,0.5)] transition-[width] duration-150 ease-out"
         style={{
-          width: `${scrollProgress}%`,
-          boxShadow: '0 0 10px rgba(0, 255, 136, 0.5)',
-          transition: 'width 150ms ease-out',
+          width: `${scrollProgress}%`, // Dynamic width based on scroll
         }}
       />
     </div>,

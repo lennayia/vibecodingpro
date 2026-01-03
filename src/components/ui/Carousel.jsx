@@ -1,6 +1,29 @@
 import { motion, AnimatePresence } from 'framer-motion'
-import { useState, useCallback, useRef, useEffect } from 'react'
+import { useState, useCallback, useRef, useEffect, memo } from 'react'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
+
+// Performance: Animation objects outside component
+const mobileCardAnimation = {
+  initial: { x: 300, opacity: 0 },
+  animate: { x: 0, opacity: 1 },
+  exit: { x: -300, opacity: 0 }
+}
+
+const mobileCardTransition = {
+  type: "spring",
+  stiffness: 300,
+  damping: 30
+}
+
+const desktopCardAnimation = {
+  initial: { opacity: 0, x: 100 },
+  animate: { opacity: 1, x: 0 },
+  exit: { opacity: 0, x: -100 }
+}
+
+const desktopCardTransition = {
+  duration: 0.3
+}
 
 /**
  * Carousel - Modulární komponenta pro karusely s peek efektem na mobilu
@@ -19,7 +42,7 @@ import { ChevronLeft, ChevronRight } from 'lucide-react'
  * @param {number} initialSlide - Počáteční slide index (default: 0)
  * @param {string} className - Dodatečné CSS třídy pro wrapper
  */
-export default function Carousel({
+function Carousel({
   slides = [],
   renderSlide,
   mobileCardWidth = "75%",
@@ -47,10 +70,28 @@ export default function Carousel({
   const carouselId = `carousel-${Math.random().toString(36).substr(2, 9)}`
 
   const [currentSlide, setCurrentSlide] = useState(initialSlide)
+  const [isDark, setIsDark] = useState(() => {
+    if (typeof window !== 'undefined') {
+      return document.documentElement.classList.contains('dark')
+    }
+    return true
+  })
   const scrollContainerRef = useRef(null)
   const touchStartX = useRef(0)
   const touchEndX = useRef(0)
   const scrollTimeout = useRef(null)
+
+  // Track GLOBAL theme changes (not parent .dark class)
+  useEffect(() => {
+    const checkTheme = () => {
+      setIsDark(document.documentElement.classList.contains('dark'))
+    }
+    checkTheme()
+
+    const handleThemeChange = () => checkTheme()
+    window.addEventListener('themeChange', handleThemeChange)
+    return () => window.removeEventListener('themeChange', handleThemeChange)
+  }, [])
 
   const nextSlide = useCallback(() => {
     setCurrentSlide((prev) => (prev + 1) % slides.length)
@@ -137,14 +178,8 @@ export default function Carousel({
             <AnimatePresence initial={false} mode="popLayout">
               <motion.div
                 key={currentSlide}
-                initial={{ x: 300, opacity: 0 }}
-                animate={{ x: 0, opacity: 1 }}
-                exit={{ x: -300, opacity: 0 }}
-                transition={{
-                  type: "spring",
-                  stiffness: 300,
-                  damping: 30
-                }}
+                {...mobileCardAnimation}
+                transition={mobileCardTransition}
                 drag="x"
                 dragConstraints={{ left: 0, right: 0 }}
                 dragElastic={0.1}
@@ -189,16 +224,10 @@ export default function Carousel({
           {showDots && slides.length > 1 && (
             <>
               <style>{`
-                .carousel-dot-active {
-                  background-color: #0000CD;
+                .${carouselId} .carousel-dot-active {
+                  background-color: ${isDark ? '#0DDD0D' : '#B56C4E'};
                 }
-                .dark .carousel-dot-active {
-                  background-color: #0DDD0D;
-                }
-                .carousel-dot-inactive {
-                  background-color: rgba(156, 163, 175, 0.5);
-                }
-                .dark .carousel-dot-inactive {
+                .${carouselId} .carousel-dot-inactive {
                   background-color: rgba(156, 163, 175, 0.5);
                 }
               `}</style>
@@ -225,10 +254,8 @@ export default function Carousel({
           <AnimatePresence mode="wait">
             <motion.div
               key={currentSlide}
-              initial={{ opacity: 0, x: 100 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -100 }}
-              transition={{ duration: 0.3 }}
+              {...desktopCardAnimation}
+              transition={desktopCardTransition}
               {...(dragEnabled && {
                 drag: "x",
                 dragConstraints: { left: 0, right: 0 },
@@ -246,63 +273,68 @@ export default function Carousel({
       {showArrows && slides.length > 1 && (
         <>
           <style>{`
-            .carousel-arrow-bg {
-              background-color: rgba(0, 0, 205, 0.2);
-              border: 1px solid rgba(0, 0, 205, 0.3);
+            .carousel-arrow-bg-${carouselId} {
+              background-color: ${isDark ? 'rgba(13, 221, 13, 0.2)' : 'rgba(181, 108, 78, 0.2)'};
+              border: 1px solid ${isDark ? 'rgba(13, 221, 13, 0.3)' : 'rgba(212, 197, 181, 0.6)'};
             }
-            .dark .carousel-arrow-bg {
-              background-color: rgba(13, 221, 13, 0.2);
-              border: 1px solid rgba(13, 221, 13, 0.3);
-            }
-            .carousel-arrow-bg:hover {
-              background-color: rgba(0, 0, 205, 0.3);
-            }
-            .dark .carousel-arrow-bg:hover {
-              background-color: rgba(13, 221, 13, 0.3);
+            .carousel-arrow-bg-${carouselId}:hover {
+              background-color: ${isDark ? 'rgba(13, 221, 13, 0.3)' : 'rgba(181, 108, 78, 0.3)'};
             }
           `}</style>
           <button
             onClick={prevSlide}
-            className="carousel-arrow-bg hidden md:block absolute left-0 top-1/2 rounded-full p-2 z-20 cursor-pointer transition-colors"
+            className={`carousel-arrow-bg-${carouselId} hidden md:block absolute left-0 top-1/2 rounded-full p-2 z-20 cursor-pointer transition-colors`}
             style={{
               transform: 'translate(-1rem, -50%)',
               transition: 'none'
             }}
             aria-label="Previous slide"
           >
-            <ChevronLeft className="w-6 h-6 text-accent dark:text-accent-dark" strokeWidth={2} />
+            <ChevronLeft className="w-6 h-6" style={{ color: isDark ? '#0DDD0D' : '#D4C5B9' }} strokeWidth={2} />
           </button>
           <button
             onClick={nextSlide}
-            className="carousel-arrow-bg hidden md:block absolute right-0 top-1/2 rounded-full p-2 z-20 cursor-pointer transition-colors"
+            className={`carousel-arrow-bg-${carouselId} hidden md:block absolute right-0 top-1/2 rounded-full p-2 z-20 cursor-pointer transition-colors`}
             style={{
               transform: 'translate(1rem, -50%)',
               transition: 'none'
             }}
             aria-label="Next slide"
           >
-            <ChevronRight className="w-6 h-6 text-accent dark:text-accent-dark" strokeWidth={2} />
+            <ChevronRight className="w-6 h-6" style={{ color: isDark ? '#0DDD0D' : '#D4C5B9' }} strokeWidth={2} />
           </button>
         </>
       )}
 
       {/* Dots Indicator - desktop only */}
       {showDots && slides.length > 1 && (
-        <div className="hidden md:flex justify-center items-center gap-3 mt-3 mb-6">
-          {slides.map((_, index) => (
-            <button
-              key={index}
-              onClick={() => setCurrentSlide(index)}
-              className={`rounded-full cursor-pointer ${
-                index === currentSlide
-                  ? 'carousel-dot-active w-12 h-3'
-                  : 'carousel-dot-inactive w-5 h-5'
-              }`}
-              aria-label={`Go to slide ${index + 1}`}
-            />
-          ))}
-        </div>
+        <>
+          <style>{`
+            .${carouselId}-desktop .carousel-dot-active {
+              background-color: ${isDark ? '#0DDD0D' : '#B56C4E'};
+            }
+            .${carouselId}-desktop .carousel-dot-inactive {
+              background-color: rgba(156, 163, 175, 0.5);
+            }
+          `}</style>
+          <div className={`${carouselId}-desktop hidden md:flex justify-center items-center gap-3 mt-3 mb-6`}>
+            {slides.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => setCurrentSlide(index)}
+                className={`rounded-full cursor-pointer ${
+                  index === currentSlide
+                    ? 'carousel-dot-active w-12 h-3'
+                    : 'carousel-dot-inactive w-5 h-5'
+                }`}
+                aria-label={`Go to slide ${index + 1}`}
+              />
+            ))}
+          </div>
+        </>
       )}
     </div>
   )
 }
+
+export default memo(Carousel)
