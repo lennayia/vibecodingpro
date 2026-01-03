@@ -5,6 +5,15 @@ import { useState, useEffect, useCallback } from 'react'
 import Tooltip from './Tooltip'
 import { anchorLinks } from '../../constants/data'
 
+// Intersection Observer configuration
+const OBSERVER_THRESHOLDS = [0, 0.1, 0.2, 0.3, 0.5, 0.75, 1]
+const OBSERVER_ROOT_MARGIN = '-15% 0px -40% 0px'
+
+// Drag sensitivity
+const DRAG_THRESHOLD_PX = 30  // Minimum movement to close menu
+const DRAG_CLOSE_OFFSET_PX = 100  // Drag distance to trigger close
+const DRAG_CLOSE_VELOCITY = 500  // Drag velocity to trigger close
+
 export default function SlideOutMenu({ isOpen, onOpen, onClose }) {
   const [activeSection, setActiveSection] = useState('')
   const [dragStartPos, setDragStartPos] = useState(null)
@@ -34,7 +43,7 @@ export default function SlideOutMenu({ isOpen, onOpen, onClose }) {
           setActiveSection('')
         }
       },
-      { threshold: [0, 0.1, 0.2, 0.3, 0.5, 0.75, 1], rootMargin: '-15% 0px -40% 0px' }
+      { threshold: OBSERVER_THRESHOLDS, rootMargin: OBSERVER_ROOT_MARGIN }
     )
 
     sections.forEach(id => {
@@ -66,7 +75,7 @@ export default function SlideOutMenu({ isOpen, onOpen, onClose }) {
       if (dragStartPos) {
         const deltaX = Math.abs(e.clientX - dragStartPos.x)
         const deltaY = Math.abs(e.clientY - dragStartPos.y)
-        if (deltaX > 30 || deltaY > 30) {
+        if (deltaX > DRAG_THRESHOLD_PX || deltaY > DRAG_THRESHOLD_PX) {
           onClose()
           setDragStartPos(null)
         }
@@ -114,8 +123,8 @@ export default function SlideOutMenu({ isOpen, onOpen, onClose }) {
             dragConstraints={{ left: 0, right: 0 }}
             dragElastic={{ left: 0, right: 0.5 }}
             onDragEnd={(e, { offset, velocity }) => {
-              // Zavřít menu pokud je taženo víc než 100px doprava nebo rychlost > 500
-              if (offset.x > 100 || velocity.x > 500) {
+              // Zavřít menu pokud je taženo víc než threshold px doprava nebo rychlost > threshold
+              if (offset.x > DRAG_CLOSE_OFFSET_PX || velocity.x > DRAG_CLOSE_VELOCITY) {
                 onClose()
               }
             }}

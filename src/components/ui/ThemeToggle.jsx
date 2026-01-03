@@ -12,7 +12,6 @@ export default function ThemeToggle() {
       onClick={toggleTheme}
       className="relative z-10 hover:opacity-80 transition-opacity group"
       aria-label="Přepnout motiv"
-      title={tooltipText}
     >
       {isDark ? (
         <Sun className="nav-icon-fluid text-[#0DDD0D]" strokeWidth={3} />

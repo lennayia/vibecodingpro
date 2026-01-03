@@ -3,8 +3,10 @@ import { createPortal } from 'react-dom'
 import SlideOutMenu from '../ui/SlideOutMenu'
 import Button from '../ui/Button'
 import ThemeToggle from '../ui/ThemeToggle'
+import GlassmorphismOverlay from '../ui/GlassmorphismOverlay'
 import { scrollToSection } from '../../utils/scroll'
 import { useTheme } from '../../contexts/ThemeContext'
+import { SECTION_IDS } from '../../constants/data'
 import '../../styles/animations.css'
 
 function Navigation() {
@@ -12,7 +14,7 @@ function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   const handlePricingClick = useCallback(() => {
-    scrollToSection('pricing-section')
+    scrollToSection(SECTION_IDS.PRICING)
   }, [])
 
   const handleMenuOpen = useCallback(() => {
@@ -28,8 +30,7 @@ function Navigation() {
       className="sticky-header w-full backdrop-blur-2xl bg-[#C9987E]/75 dark:bg-black/60 shadow-[0_6px_30px_rgba(181,108,78,0.45)] dark:shadow-[0_4px_20px_rgba(0,0,205,0.25)]"
     >
       {/* Glassmorphism gradient overlays */}
-      <div className="absolute inset-0 bg-gradient-to-b from-[#FFFDF9]/50 via-[#FFFDF9]/20 to-transparent dark:from-[#000080]/20 dark:via-[#000080]/8 dark:to-transparent pointer-events-none" />
-      <div className="absolute inset-0 bg-gradient-to-r from-[#FFFDF9]/20 via-[#FFFDF9]/40 to-[#FFFDF9]/20 dark:from-transparent dark:via-[#000080]/15 dark:to-transparent pointer-events-none" />
+      <GlassmorphismOverlay />
 
       {/* Main navigation bar */}
       <div className="max-w-7xl mx-auto px-6 py-0.5 relative">
@@ -44,6 +45,7 @@ function Navigation() {
           alt="Vibecoding"
           width="36"
           height="36"
+          loading="lazy"
           className="nav-logo-fluid"
         />
       </div>

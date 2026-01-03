@@ -387,3 +387,11 @@ export const anchorLinks = [
   { id: 'process', label: 'Proces', icon: Route },
   { id: 'pricing-section', label: 'Ceník', icon: Tag }
 ]
+
+// Section IDs for navigation and scrolling
+export const SECTION_IDS = {
+  WHAT_YOU_CAN_CREATE: 'what-you-can-create',
+  STORY: 'story',
+  PROCESS: 'process',
+  PRICING: 'pricing-section'
+}
