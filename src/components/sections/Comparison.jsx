@@ -6,6 +6,35 @@ import Carousel from '../ui/Carousel'
 import { comparisonData } from '../../constants/data'
 import { fadeIn } from '../../constants/animations'
 
+// Carousel configuration
+const CAROUSEL_CONFIG = {
+  MOBILE_WIDTH: "75%",
+  TABLET_WIDTH: "85%",
+  GAP: 3,
+  SHOW_ARROWS: true,
+  SHOW_DOTS: true,
+  DRAG_ENABLED: true
+}
+
+// ComparisonCard configuration
+const CARD_CONFIG = {
+  DIRECTION: "center",
+  DELAY: 0,
+  BACKGROUND: "holographic"
+}
+
+// Theme color configuration (RGB values)
+const THEME_COLORS = {
+  PRIMARY: {
+    DARK: '13, 221, 13',    // Green (matches --color-accent-dark)
+    LIGHT: '181, 108, 78'   // Copper
+  },
+  SECONDARY: {
+    DARK: '0, 200, 255',    // Cyan
+    LIGHT: '212, 197, 181'  // Beige
+  }
+}
+
 // Performance: Animation objects outside component
 const meshGradientAnimation = {
   scale: [1, 1.08, 1.02, 1],
@@ -118,11 +147,9 @@ function ComparisonSeo() {
     return () => window.removeEventListener('themeChange', handleThemeChange)
   }, [])
 
-  // Section is always dark, but colors adapt to theme:
-  // Light mode: copper holographic effects
-  // Dark mode: green holographic effects
-  const primaryColor = isDark ? '13, 221, 13' : '181, 108, 78' // Green in dark (matches --color-accent-dark), Copper in light
-  const secondaryColor = isDark ? '0, 200, 255' : '212, 197, 181' // Cyan in dark, Beige in light
+  // Section is always dark, but colors adapt to theme
+  const primaryColor = isDark ? THEME_COLORS.PRIMARY.DARK : THEME_COLORS.PRIMARY.LIGHT
+  const secondaryColor = isDark ? THEME_COLORS.SECONDARY.DARK : THEME_COLORS.SECONDARY.LIGHT
 
   return (
     <Section id="story" background="holographic" centered={true} className="relative overflow-hidden" showScrollIndicator={true}>
@@ -256,17 +283,17 @@ function ComparisonSeo() {
             renderSlide={(slide, index) => (
               <ComparisonCard
                 data={slide}
-                direction="center"
-                delay={0}
-                background="holographic"
+                direction={CARD_CONFIG.DIRECTION}
+                delay={CARD_CONFIG.DELAY}
+                background={CARD_CONFIG.BACKGROUND}
               />
             )}
-            mobileCardWidth="75%"
-            tabletCardWidth="85%"
-            gap={3}
-            showArrows={true}
-            showDots={true}
-            dragEnabled={true}
+            mobileCardWidth={CAROUSEL_CONFIG.MOBILE_WIDTH}
+            tabletCardWidth={CAROUSEL_CONFIG.TABLET_WIDTH}
+            gap={CAROUSEL_CONFIG.GAP}
+            showArrows={CAROUSEL_CONFIG.SHOW_ARROWS}
+            showDots={CAROUSEL_CONFIG.SHOW_DOTS}
+            dragEnabled={CAROUSEL_CONFIG.DRAG_ENABLED}
           />
         </motion.div>
       </div>
