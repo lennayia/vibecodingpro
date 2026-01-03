@@ -4,8 +4,20 @@ import Section from '../layout/Section'
 import { fadeIn, slideUp } from '../../constants/animations'
 import { whatYouCanCreateContent } from '../../constants/whatYouCanCreate'
 
+// Animation configuration
+const ANIMATION_CONFIG = {
+  STAGGER_DELAY: 0.1,
+  CLOSING_DELAY: 0.6
+}
+
 // Performance: Transition configs outside component
-const closingTransition = { delay: 0.6 }
+const closingTransition = { delay: ANIMATION_CONFIG.CLOSING_DELAY }
+
+// Icon configuration
+const ICON_CONFIG = {
+  SIZE: 'w-12 h-12',
+  STROKE_WIDTH: 1.5
+}
 
 function WhatYouCanCreate() {
   return (
@@ -24,10 +36,10 @@ function WhatYouCanCreate() {
                   key={index}
                   className="text-center"
                   {...slideUp}
-                  transition={{ delay: index * 0.1 }}
+                  transition={{ delay: index * ANIMATION_CONFIG.STAGGER_DELAY }}
                 >
                   <div className="flex justify-center mb-fluid-base">
-                    <Icon className="w-12 h-12 text-gray-800 dark:text-white" strokeWidth={1.5} />
+                    <Icon className={`${ICON_CONFIG.SIZE} text-gray-800 dark:text-white`} strokeWidth={ICON_CONFIG.STROKE_WIDTH} />
                   </div>
                   <h3 className="font-display font-bold mb-fluid-sm">
                     {category.title}
