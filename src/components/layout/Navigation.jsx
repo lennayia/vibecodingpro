@@ -87,21 +87,21 @@ function Navigation() {
 
       {/* Fixed right: CTA button + Theme Toggle + Menu */}
       <div
-        className={`nav-logo-container flex items-center gap-1 ${isMenuOpen ? 'right-[calc(4rem+1.5rem)]' : 'right-6'}`}
+        className={`nav-logo-container flex items-center gap-2 ${isMenuOpen ? 'right-[calc(4rem+1.5rem)]' : 'right-6'}`}
       >
         <Button onClick={handlePricingClick} variant="primary">
           Chci začít
         </Button>
 
-        {/* Theme Toggle */}
-        <ThemeToggle />
-
-        {/* Menu s plovoucím dropdownem */}
-        <SlideOutMenu
-          isOpen={isMenuOpen}
-          onOpen={() => setIsMenuOpen(true)}
-          onClose={() => setIsMenuOpen(false)}
-        />
+        {/* Theme Toggle + Menu - tighter spacing */}
+        <div className="flex items-center -space-x-2">
+          <ThemeToggle />
+          <SlideOutMenu
+            isOpen={isMenuOpen}
+            onOpen={() => setIsMenuOpen(true)}
+            onClose={() => setIsMenuOpen(false)}
+          />
+        </div>
       </div>
 
       {/* Běžící slogan */}
