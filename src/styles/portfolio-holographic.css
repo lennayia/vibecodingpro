@@ -1,0 +1,101 @@
+/* ============================================
+   PORTFOLIO HOLOGRAPHIC SECTION STYLES
+   Styles for holographic 3D carousel portfolio section
+   ============================================ */
+
+/* ============================================
+   CSS VARIABLES FOR HOLOGRAPHIC EFFECTS
+   ============================================ */
+
+:root {
+  /* Holographic colors - light mode */
+  --holo-primary: 181, 108, 78; /* Copper */
+  --holo-secondary: 201, 152, 126;
+}
+
+.dark {
+  /* Holographic colors - dark mode */
+  --holo-primary: 13, 221, 13; /* Green */
+  --holo-secondary: 0, 205, 0;
+}
+
+/* ============================================
+   HOLOGRAPHIC BACKGROUND EFFECTS
+   ============================================ */
+
+.holo-background-pulse {
+  background: radial-gradient(circle at 50% 50%, rgba(var(--holo-primary), 0.05) 0%, transparent 70%);
+}
+
+.holo-scanlines {
+  background-image: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(var(--holo-primary), 0.03) 2px,
+    rgba(var(--holo-primary), 0.03) 4px
+  );
+  -webkit-mask-image: linear-gradient(to bottom, white 0%, white 85%, transparent 100%);
+  mask-image: linear-gradient(to bottom, white 0%, white 85%, transparent 100%);
+}
+
+/* ============================================
+   HOLOGRAPHIC CARD EFFECTS
+   ============================================ */
+
+.holo-card-glow {
+  background: linear-gradient(45deg, rgba(var(--holo-primary), 0.7), rgba(var(--holo-secondary), 0.7));
+}
+
+.holo-card-shine {
+  background: linear-gradient(135deg, transparent 30%, rgba(var(--holo-primary), 0.6) 50%, transparent 70%);
+}
+
+.holo-card-scanlines {
+  background-image: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(var(--holo-primary), 0.8) 2px,
+    rgba(var(--holo-primary), 0.8) 4px
+  );
+}
+
+/* ============================================
+   MOBILE CAROUSEL CARD STYLES
+   ============================================ */
+
+.portfolio-mobile-card {
+  filter: brightness(0.9);
+  box-shadow: 0 4px 12px rgba(var(--holo-primary), 0.2);
+}
+
+.portfolio-mobile-card-overlay {
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.6) 0%, transparent 50%, transparent 100%);
+}
+
+.portfolio-mobile-card-footer {
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+/* ============================================
+   DESKTOP CAROUSEL CARD STYLES
+   ============================================ */
+
+.portfolio-desktop-card {
+  background: rgba(17, 17, 17, 0.5);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+.portfolio-desktop-card-overlay {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.portfolio-desktop-card-footer {
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.5) 50%, transparent 100%);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}

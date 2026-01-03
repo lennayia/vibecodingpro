@@ -3,6 +3,7 @@ import { useRef, useState, memo, useMemo, useEffect, useCallback } from 'react'
 import Section from '../layout/Section'
 import { fadeIn, slideUp } from '../../constants/animations'
 import { portfolioHolographicContent } from '../../constants/data'
+import '../../styles/portfolio-holographic.css'
 
 // Performance: Transition configs outside component
 const backgroundPulseTransition = { duration: 4, repeat: Infinity, ease: "easeInOut" }
@@ -12,6 +13,39 @@ const cardHoverTransition = { type: "spring", stiffness: 300, damping: 20 }
 const glowPulseTransition = { duration: 2, repeat: Infinity }
 const shineTransition = { duration: 3, repeat: Infinity, ease: "linear" }
 const flickerTransition = { duration: 0.3 }
+
+// Carousel configuration
+const CAROUSEL_CONFIG = {
+  MOBILE_WIDTH: 260,
+  DESKTOP_WIDTH: 380,
+  MOBILE_HEIGHT: 280,
+  DESKTOP_HEIGHT: 350,
+  MOBILE_RADIUS: 350,
+  DESKTOP_RADIUS: 450,
+  PERSPECTIVE: 2000,
+  MOBILE_DRAG_CONSTRAINT_MULTIPLIER: 280,
+  MOBILE_GAP: 12
+}
+
+const DRAG_CONFIG = {
+  ELASTIC_MOBILE: 0.2,
+  ELASTIC_DESKTOP: 0.1
+}
+
+const OBSERVER_CONFIG = {
+  THRESHOLD: 0.1
+}
+
+const TRANSFORM_RANGES = {
+  OPACITY: {
+    Z_RANGE: [-450, -225, 0, 225, 450],
+    OPACITY_RANGE: [0.3, 0.5, 1, 0.5, 0.3]
+  },
+  SCALE: {
+    Z_RANGE: [-450, 0, 450],
+    SCALE_RANGE: [0.6, 1.1, 0.6]
+  }
+}
 
 // Corner accents configuration
 const cornerAccents = [
@@ -54,7 +88,7 @@ function PortfolioHolographic() {
           setIsVisible(entry.isIntersecting)
         })
       },
-      { threshold: 0.1 } // Trigger when 10% visible
+      { threshold: OBSERVER_CONFIG.THRESHOLD }
     )
 
     if (containerRef.current) {
@@ -77,10 +111,7 @@ function PortfolioHolographic() {
     >
       <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
         <motion.div
-          className="absolute inset-0"
-          style={{
-            background: `radial-gradient(circle at 50% 50%, rgba(var(--holo-primary), 0.05) 0%, transparent 70%)`,
-          }}
+          className="absolute inset-0 holo-background-pulse"
           animate={isVisible ? {
             scale: [1, 1.2, 1],
             opacity: [0.3, 0.5, 0.3]
@@ -89,14 +120,7 @@ function PortfolioHolographic() {
         />
 
         {/* Scanlines - pouze v horní části */}
-        <div
-          className="absolute inset-0 pointer-events-none"
-          style={{
-            backgroundImage: `repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(var(--holo-primary), 0.03) 2px, rgba(var(--holo-primary), 0.03) 4px)`,
-            maskImage: 'linear-gradient(to bottom, white 0%, white 85%, transparent 100%)',
-            WebkitMaskImage: 'linear-gradient(to bottom, white 0%, white 85%, transparent 100%)',
-          }}
-        />
+        <div className="absolute inset-0 pointer-events-none holo-scanlines" />
       </div>
 
       <div className="w-full relative z-10" ref={containerRef}>
@@ -117,8 +141,8 @@ function PortfolioHolographic() {
               <motion.div
                 className="flex gap-4 cursor-grab active:cursor-grabbing"
                 drag="x"
-                dragConstraints={{ left: -(projects.length * 280 - 280), right: 0 }}
-                dragElastic={0.2}
+                dragConstraints={{ left: -(projects.length * CAROUSEL_CONFIG.MOBILE_DRAG_CONSTRAINT_MULTIPLIER - CAROUSEL_CONFIG.MOBILE_DRAG_CONSTRAINT_MULTIPLIER), right: 0 }}
+                dragElastic={DRAG_CONFIG.ELASTIC_MOBILE}
                 dragTransition={dragTransitionConfig}
               >
                 {projects.map((project, index) => (
@@ -133,15 +157,11 @@ function PortfolioHolographic() {
                         src={project.image}
                         alt={project.name}
                         loading="lazy"
-                        className="w-full h-full object-cover"
-                        style={{
-                          filter: 'brightness(0.9)',
-                          boxShadow: `0 4px 12px rgba(var(--holo-primary), 0.2)`,
-                        }}
+                        className="w-full h-full object-cover portfolio-mobile-card"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-                      <div className="absolute bottom-0 left-0 right-0 p-3 bg-black/40 backdrop-blur-sm">
-                        <p className="text-accent text-sm font-bold text-center drop-shadow-lg">
+                      <div className="absolute inset-0 portfolio-mobile-card-overlay" />
+                      <div className="absolute bottom-0 left-0 right-0 p-3 portfolio-mobile-card-footer">
+                        <p className="text-white text-sm font-bold text-center drop-shadow-lg">
                           {project.name}
                         </p>
                       </div>
@@ -159,14 +179,14 @@ function PortfolioHolographic() {
                 className="relative h-[280px] md:h-[350px] flex items-center justify-center cursor-grab active:cursor-grabbing will-change-transform"
                 drag="x"
                 dragConstraints={{ left: 0, right: 0 }}
-                dragElastic={0.1}
+                dragElastic={DRAG_CONFIG.ELASTIC_DESKTOP}
                 onDragStart={handleDragStart}
                 onDragEnd={handleDragEnd}
                 onDrag={handleDrag}
               >
                 <div
                   className="relative w-full h-full flex items-center justify-center"
-                  style={{ perspective: '2000px', willChange: 'transform' }}
+                  style={{ perspective: `${CAROUSEL_CONFIG.PERSPECTIVE}px`, willChange: 'transform' }}
                 >
                   {projects.map((project, index) => (
                     <CarouselItem
@@ -204,7 +224,9 @@ function PortfolioHolographic() {
 const CarouselItem = memo(function CarouselItem({ project, index, rotation, dragRotation, totalProjects }) {
   const angle = (360 / totalProjects) * index
   // Responsive radius: smaller on mobile for better performance
-  const radius = typeof window !== 'undefined' && window.innerWidth < 768 ? 350 : 450
+  const radius = typeof window !== 'undefined' && window.innerWidth < 768
+    ? CAROUSEL_CONFIG.MOBILE_RADIUS
+    : CAROUSEL_CONFIG.DESKTOP_RADIUS
 
   const combinedRotation = useTransform(
     [rotation, dragRotation],
@@ -223,14 +245,14 @@ const CarouselItem = memo(function CarouselItem({ project, index, rotation, drag
 
   const opacity = useTransform(
     z,
-    [-radius, -radius/2, 0, radius/2, radius],
-    [0.3, 0.5, 1, 0.5, 0.3]
+    TRANSFORM_RANGES.OPACITY.Z_RANGE,
+    TRANSFORM_RANGES.OPACITY.OPACITY_RANGE
   )
 
   const scale = useTransform(
     z,
-    [-radius, 0, radius],
-    [0.6, 1.1, 0.6]
+    TRANSFORM_RANGES.SCALE.Z_RANGE,
+    TRANSFORM_RANGES.SCALE.SCALE_RANGE
   )
 
   return (
@@ -255,7 +277,7 @@ const HolographicCard = memo(function HolographicCard({ project, zDepth }) {
 
   const glowOpacity = useTransform(
     zDepth,
-    [-450, 0, 450],
+    TRANSFORM_RANGES.SCALE.Z_RANGE,
     [0.4, 1, 0.4]
   )
 
@@ -272,10 +294,9 @@ const HolographicCard = memo(function HolographicCard({ project, zDepth }) {
     >
       {/* Holographic glow */}
       <motion.div
-        className="absolute -inset-4 rounded-3xl opacity-0 blur-[20px] md:blur-[30px]"
+        className="absolute -inset-4 rounded-3xl opacity-0 blur-[20px] md:blur-[30px] holo-card-glow"
         style={{
           opacity: glowOpacity,
-          background: `linear-gradient(45deg, rgba(var(--holo-primary), 0.7), rgba(var(--holo-secondary), 0.7))`,
           willChange: 'opacity'
         }}
         animate={isHovered ? {
@@ -285,13 +306,10 @@ const HolographicCard = memo(function HolographicCard({ project, zDepth }) {
       />
 
       {/* Main card */}
-      <div className="relative w-full h-full rounded-2xl overflow-hidden border-2 border-holo/30 shadow-2xl bg-gray-900/50 backdrop-blur-sm">
+      <div className="relative w-full h-full rounded-2xl overflow-hidden border-2 border-holo/30 shadow-2xl portfolio-desktop-card">
         {/* Holographic shine overlay */}
         <motion.div
-          className="absolute inset-0 opacity-50"
-          style={{
-            background: `linear-gradient(135deg, transparent 30%, rgba(var(--holo-primary), 0.6) 50%, transparent 70%)`,
-          }}
+          className="absolute inset-0 opacity-50 holo-card-shine"
           animate={{
             backgroundPosition: ['0% 0%', '200% 200%'],
           }}
@@ -299,12 +317,7 @@ const HolographicCard = memo(function HolographicCard({ project, zDepth }) {
         />
 
         {/* Scanlines effect */}
-        <div
-          className="absolute inset-0 pointer-events-none opacity-80"
-          style={{
-            backgroundImage: `repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(var(--holo-primary), 0.8) 2px, rgba(var(--holo-primary), 0.8) 4px)`,
-          }}
-        />
+        <div className="absolute inset-0 pointer-events-none opacity-80 holo-card-scanlines" />
 
         {/* Flicker effect on hover */}
         <motion.div
@@ -324,7 +337,7 @@ const HolographicCard = memo(function HolographicCard({ project, zDepth }) {
             loading="lazy"
           />
           {/* Darker overlay for better holographic effect visibility */}
-          <div className="absolute inset-0 bg-black/30" />
+          <div className="absolute inset-0 portfolio-desktop-card-overlay" />
         </div>
 
         {/* Corner accents */}
@@ -333,8 +346,8 @@ const HolographicCard = memo(function HolographicCard({ project, zDepth }) {
         ))}
 
         {/* Project name bar */}
-        <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/90 via-black/50 to-transparent backdrop-blur-sm border-t border-holo/20">
-          <h3 className="project-name font-display font-bold text-lg md:text-xl drop-shadow-lg">
+        <div className="absolute bottom-0 left-0 right-0 p-4 portfolio-desktop-card-footer border-t border-holo/20">
+          <h3 className="font-display font-bold text-lg md:text-xl text-white drop-shadow-lg">
             {project.name}
           </h3>
         </div>
