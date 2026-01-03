@@ -32,6 +32,10 @@
     --menu-shadow: -10px 0 40px rgba(181, 108, 78, 0.2), -5px 0 20px rgba(181, 108, 78, 0.15);
     --menu-divider: rgba(181, 108, 78, 0.3);
 
+    /* Holographic section colors - RGB values for use in rgba() */
+    --holo-primary: 181, 108, 78; /* Copper in light mode */
+    --holo-secondary: 212, 197, 181; /* Beige in light mode */
+
     /* Color scheme meta */
     color-scheme: light dark;
   }
@@ -44,6 +48,10 @@
     --menu-bg: rgba(7, 7, 22, 0.6);
     --menu-shadow: -10px 0 40px rgba(0, 0, 205, 0.3), -5px 0 20px rgba(0, 0, 205, 0.2);
     --menu-divider: rgba(0, 0, 205, 0.4);
+
+    /* Holographic section colors - dark mode */
+    --holo-primary: 13, 221, 13; /* Green in dark mode */
+    --holo-secondary: 0, 200, 255; /* Cyan in dark mode */
   }
 
   /* Performance optimizations */
@@ -211,6 +219,15 @@
     color: var(--color-accent-dark) !important;
   }
 
+  /* Holographic accent - uses GLOBAL theme, ignores local .dark class */
+  .holographic-accent {
+    color: var(--color-accent-light) !important;
+  }
+
+  html.dark .holographic-accent {
+    color: var(--color-accent-dark) !important;
+  }
+
   .bg-accent {
     background-color: var(--color-accent-light) !important;
   }
@@ -227,12 +244,77 @@
     border-color: var(--color-accent-dark) !important;
   }
 
+  .border-accent\/20 {
+    border-color: rgba(181, 108, 78, 0.2) !important;
+  }
+
+  .dark .border-accent\/20 {
+    border-color: rgba(13, 221, 13, 0.2) !important;
+  }
+
+  .border-accent\/30 {
+    border-color: rgba(181, 108, 78, 0.3) !important;
+  }
+
+  .dark .border-accent\/30 {
+    border-color: rgba(13, 221, 13, 0.3) !important;
+  }
+
   .border-accent\/40 {
     border-color: rgba(181, 108, 78, 0.4) !important;
   }
 
   .dark .border-accent\/40 {
     border-color: rgba(13, 221, 13, 0.4) !important;
+  }
+
+  .border-accent\/50 {
+    border-color: rgba(181, 108, 78, 0.5) !important;
+  }
+
+  .dark .border-accent\/50 {
+    border-color: rgba(13, 221, 13, 0.5) !important;
+  }
+
+  /* Holographic section borders - blue in dark mode */
+  .border-holo\/20 {
+    border-color: rgba(181, 108, 78, 0.2) !important;
+  }
+
+  .dark .border-holo\/20 {
+    border-color: rgba(0, 0, 205, 0.2) !important;
+  }
+
+  .border-holo\/30 {
+    border-color: rgba(181, 108, 78, 0.3) !important;
+  }
+
+  .dark .border-holo\/30 {
+    border-color: rgba(0, 0, 205, 0.3) !important;
+  }
+
+  .border-holo\/40 {
+    border-color: rgba(181, 108, 78, 0.4) !important;
+  }
+
+  .dark .border-holo\/40 {
+    border-color: rgba(0, 0, 205, 0.4) !important;
+  }
+
+  .border-holo\/50 {
+    border-color: rgba(181, 108, 78, 0.5) !important;
+  }
+
+  .dark .border-holo\/50 {
+    border-color: rgba(0, 0, 205, 0.5) !important;
+  }
+
+  .border-holo\/60 {
+    border-color: rgba(181, 108, 78, 0.6) !important;
+  }
+
+  .dark .border-holo\/60 {
+    border-color: rgba(0, 0, 205, 0.6) !important;
   }
 
   .text-error {
@@ -1134,33 +1216,33 @@
     color: #e1e1e1;
   }
 
-  /* Holographic sections - sand headings, soft white text */
+  /* Holographic sections - always dark background, so always light text */
   .holographic-text {
     color: #f2f2f2 !important;
   }
 
+  .holographic-text p,
+  .holographic-text span:not(.text-accent),
+  .holographic-text li {
+    color: #f2f2f2 !important;
+  }
+
+  /* Accent color headings in both modes */
   .holographic-text h1,
   .holographic-text h2,
   .holographic-text h3,
   .holographic-text h4,
   .holographic-text h5,
   .holographic-text h6 {
-    color: #D4C5B5 !important; /* Light mode - sand */
+    color: var(--color-accent-light) !important; /* Light mode - copper */
   }
 
-  .holographic-text p,
-  .holographic-text span,
-  .holographic-text li {
-    color: #f2f2f2 !important;
-  }
-
-  /* Dark mode - headings near white */
   .dark .holographic-text h1,
   .dark .holographic-text h2,
   .dark .holographic-text h3,
   .dark .holographic-text h4,
   .dark .holographic-text h5,
   .dark .holographic-text h6 {
-    color: #eaeaea !important; /* Dark mode - near white */
+    color: var(--color-accent-dark) !important; /* Dark mode - green */
   }
 }

@@ -2,33 +2,28 @@ import { motion, useScroll, useTransform, useMotionValue, useSpring } from 'fram
 import { useRef, useState, memo, useMemo, useEffect, useCallback } from 'react'
 import Section from '../layout/Section'
 import { fadeIn, slideUp } from '../../constants/animations'
+import { portfolioHolographicContent } from '../../constants/data'
+
+// Performance: Transition configs outside component
+const backgroundPulseTransition = { duration: 4, repeat: Infinity, ease: "easeInOut" }
+const dragTransitionConfig = { bounceStiffness: 200, bounceDamping: 20 }
+const closingTextTransition = { delay: 0.5 }
+const cardHoverTransition = { type: "spring", stiffness: 300, damping: 20 }
+const glowPulseTransition = { duration: 2, repeat: Infinity }
+const shineTransition = { duration: 3, repeat: Infinity, ease: "linear" }
+const flickerTransition = { duration: 0.3 }
 
 function PortfolioHolographic() {
   const containerRef = useRef(null)
   const [isDragging, setIsDragging] = useState(false)
   const [isVisible, setIsVisible] = useState(false)
-  const [isDark, setIsDark] = useState(() => {
-    if (typeof window !== 'undefined') {
-      return document.documentElement.classList.contains('dark')
-    }
-    return true
-  })
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start end", "end start"]
   })
 
-  const projects = useMemo(() => [
-    { name: "CoachPro", image: "/coachpro.webp" },
-    { name: "ContentPro", image: "/content-pro.webp" },
-    { name: "DigiPro", image: "/digipro.webp" },
-    { name: "Koučovací karty", image: "/koucovaci-karty.webp" },
-    { name: "LifePro", image: "/liffepro.webp" },
-    { name: "PaymentsPro", image: "/paymentspro.webp" },
-    { name: "PianoPro", image: "/pianopro.webp" },
-    { name: "StudyPro", image: "/studypro.webp" }
-  ], [])
+  const projects = portfolioHolographicContent.projects
 
   const dragX = useMotionValue(0)
   const springConfig = useMemo(() => ({ damping: 30, stiffness: 200 }), [])
@@ -37,25 +32,6 @@ function PortfolioHolographic() {
     springConfig
   )
   const dragRotation = useSpring(useTransform(dragX, [-500, 500], [-180, 180]), springConfig)
-
-  // Track theme changes
-  useEffect(() => {
-    const checkTheme = () => {
-      setIsDark(document.documentElement.classList.contains('dark'))
-    }
-    checkTheme()
-
-    const handleThemeChange = () => checkTheme()
-    window.addEventListener('themeChange', handleThemeChange)
-    return () => window.removeEventListener('themeChange', handleThemeChange)
-  }, [])
-
-  // Holographic colors based on global theme
-  // Section is always dark, but colors adapt:
-  // - Light mode (global): copper holographic effects
-  // - Dark mode (global): green holographic effects (original)
-  const primaryColor = isDark ? '0, 255, 136' : '181, 108, 78' // Green in dark, Copper in light
-  const secondaryColor = isDark ? '0, 200, 255' : '212, 197, 181' // Cyan in dark, Beige in light
 
   // Event handlers wrapped in useCallback
   const handleDragStart = useCallback(() => setIsDragging(true), [])
@@ -95,24 +71,20 @@ function PortfolioHolographic() {
         <motion.div
           className="absolute inset-0"
           style={{
-            background: `radial-gradient(circle at 50% 50%, rgba(${primaryColor}, 0.05) 0%, transparent 70%)`,
+            background: `radial-gradient(circle at 50% 50%, rgba(var(--holo-primary), 0.05) 0%, transparent 70%)`,
           }}
           animate={isVisible ? {
             scale: [1, 1.2, 1],
             opacity: [0.3, 0.5, 0.3]
           } : {}}
-          transition={{
-            duration: 4,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
+          transition={backgroundPulseTransition}
         />
 
         {/* Scanlines - pouze v horní části */}
         <div
           className="absolute inset-0 pointer-events-none"
           style={{
-            backgroundImage: `repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(${primaryColor}, 0.03) 2px, rgba(${primaryColor}, 0.03) 4px)`,
+            backgroundImage: `repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(var(--holo-primary), 0.03) 2px, rgba(var(--holo-primary), 0.03) 4px)`,
             maskImage: 'linear-gradient(to bottom, white 0%, white 85%, transparent 100%)',
             WebkitMaskImage: 'linear-gradient(to bottom, white 0%, white 85%, transparent 100%)',
           }}
@@ -124,14 +96,14 @@ function PortfolioHolographic() {
           <motion.h2
             className="font-display font-bold text-center mb-3 md:mb-1 leading-tight"
             style={{
-              textShadow: `0 0 20px rgba(${primaryColor}, 0.3)`
+              textShadow: `0 0 20px rgba(var(--holo-primary), 0.3)`
             }}
           >
-            Tohle postavila žena, která neumí programovat.
+            {portfolioHolographicContent.heading}
           </motion.h2>
 
-          <p className="text-xl text-center max-w-3xl mx-auto mb-8 md:mb-4 custom-spacing">
-            Praktické aplikace, moduly, weby. Ani řádek kódu – jen vize, strategie a AI.
+          <p className="text-center max-w-3xl mx-auto mb-8 md:mb-4 custom-spacing">
+            {portfolioHolographicContent.subheading}
           </p>
 
           {/* Mobile: Horizontal drag carousel */}
@@ -142,7 +114,7 @@ function PortfolioHolographic() {
                 drag="x"
                 dragConstraints={{ left: -(projects.length * 280 - 280), right: 0 }}
                 dragElastic={0.2}
-                dragTransition={{ bounceStiffness: 200, bounceDamping: 20 }}
+                dragTransition={dragTransitionConfig}
               >
                 {projects.map((project, index) => (
                   <motion.div
@@ -151,7 +123,7 @@ function PortfolioHolographic() {
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
                   >
-                    <div className="relative overflow-hidden rounded-lg aspect-[4/3] border-2 border-accent/30">
+                    <div className="relative overflow-hidden rounded-lg aspect-[4/3] border-2 border-holo/30">
                       <img
                         src={project.image}
                         alt={project.name}
@@ -159,7 +131,7 @@ function PortfolioHolographic() {
                         className="w-full h-full object-cover"
                         style={{
                           filter: 'brightness(0.9)',
-                          boxShadow: `0 4px 12px rgba(${primaryColor}, 0.2)`,
+                          boxShadow: `0 4px 12px rgba(var(--holo-primary), 0.2)`,
                         }}
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
@@ -173,7 +145,7 @@ function PortfolioHolographic() {
                 ))}
               </motion.div>
             </div>
-            <p className="text-center text-sm text-gray-400 mt-4 md:mt-[clamp(0.5rem,1vh,1rem)]">← Táhněte →</p>
+            <p className="text-center text-sm text-gray-400 mt-4 md:mt-[clamp(0.5rem,1vh,1rem)]">{portfolioHolographicContent.dragInstruction}</p>
           </div>
 
           {/* Tablet & Desktop (>=640px): 3D carousel with animations */}
@@ -199,8 +171,6 @@ function PortfolioHolographic() {
                       rotation={rotation}
                       dragRotation={dragRotation}
                       totalProjects={projects.length}
-                      primaryColor={primaryColor}
-                      secondaryColor={secondaryColor}
                     />
                   ))}
                 </div>
@@ -211,20 +181,22 @@ function PortfolioHolographic() {
 
       {/* Separovaný text MIMO holografický container */}
       <motion.div
-        className="max-w-3xl mx-auto text-center space-y-1 relative z-50"
+        className="max-w-3xl mx-auto text-center relative z-50"
         {...slideUp}
-        transition={{ delay: 0.5 }}
+        transition={closingTextTransition}
       >
-        <p className="text-xl custom-spacing">Od jednoduchých nástrojů po komplexní aplikace, tempo určujeme sami.</p>
-        <p className="text-xl custom-spacing">Začněte třeba jednodušší webovkou.</p>
-        <p className="text-xl font-semibold custom-spacing">Zajímá vás, jak?</p>
+        {portfolioHolographicContent.closingText.map((text, index) => (
+          <p key={index} className={`custom-spacing ${index === 2 ? 'text-xl font-bold mt-fluid-md' : index === 1 ? 'mt-fluid-xs' : ''}`}>
+            {text}
+          </p>
+        ))}
       </motion.div>
     </Section>
   )
 }
 
 // Carousel Item component - extracted to use hooks properly
-const CarouselItem = memo(function CarouselItem({ project, index, rotation, dragRotation, totalProjects, primaryColor, secondaryColor }) {
+function CarouselItem({ project, index, rotation, dragRotation, totalProjects }) {
   const angle = (360 / totalProjects) * index
   const radius = 450
 
@@ -267,12 +239,12 @@ const CarouselItem = memo(function CarouselItem({ project, index, rotation, drag
         willChange: 'transform, opacity'
       }}
     >
-      <HolographicCard project={project} zDepth={z} primaryColor={primaryColor} secondaryColor={secondaryColor} />
+      <HolographicCard project={project} zDepth={z} />
     </motion.div>
   )
-})
+}
 
-const HolographicCard = memo(function HolographicCard({ project, zDepth, primaryColor, secondaryColor }) {
+function HolographicCard({ project, zDepth }) {
   const [isHovered, setIsHovered] = useState(false)
 
   const glowOpacity = useTransform(
@@ -290,49 +262,42 @@ const HolographicCard = memo(function HolographicCard({ project, zDepth, primary
       onHoverStart={handleHoverStart}
       onHoverEnd={handleHoverEnd}
       whileHover={{ scale: 1.05 }}
-      transition={{ type: "spring", stiffness: 300, damping: 20 }}
+      transition={cardHoverTransition}
     >
       {/* Holographic glow */}
       <motion.div
         className="absolute -inset-4 rounded-3xl opacity-0"
         style={{
           opacity: glowOpacity,
-          background: `linear-gradient(45deg, rgba(${primaryColor}, 0.4), rgba(${secondaryColor}, 0.4))`,
+          background: `linear-gradient(45deg, rgba(var(--holo-primary), 0.4), rgba(var(--holo-secondary), 0.4))`,
           filter: 'blur(20px)',
           willChange: 'opacity'
         }}
         animate={isHovered ? {
           opacity: [0.3, 0.6, 0.3],
         } : {}}
-        transition={{
-          duration: 2,
-          repeat: Infinity,
-        }}
+        transition={glowPulseTransition}
       />
 
       {/* Main card */}
-      <div className="relative w-full h-full rounded-2xl overflow-hidden border-2 border-accent/30 shadow-2xl bg-gray-900/50 backdrop-blur-sm">
+      <div className="relative w-full h-full rounded-2xl overflow-hidden border-2 border-holo/30 shadow-2xl bg-gray-900/50 backdrop-blur-sm">
         {/* Holographic shine overlay */}
         <motion.div
           className="absolute inset-0 opacity-30"
           style={{
-            background: `linear-gradient(135deg, transparent 30%, rgba(${primaryColor}, 0.3) 50%, transparent 70%)`,
+            background: `linear-gradient(135deg, transparent 30%, rgba(var(--holo-primary), 0.3) 50%, transparent 70%)`,
           }}
           animate={{
             backgroundPosition: ['0% 0%', '200% 200%'],
           }}
-          transition={{
-            duration: 3,
-            repeat: Infinity,
-            ease: "linear"
-          }}
+          transition={shineTransition}
         />
 
         {/* Scanlines effect */}
         <div
           className="absolute inset-0 pointer-events-none opacity-20"
           style={{
-            backgroundImage: `repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(${primaryColor}, 0.1) 3px, rgba(${primaryColor}, 0.1) 6px)`,
+            backgroundImage: `repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(var(--holo-primary), 0.1) 3px, rgba(var(--holo-primary), 0.1) 6px)`,
           }}
         />
 
@@ -342,9 +307,7 @@ const HolographicCard = memo(function HolographicCard({ project, zDepth, primary
           animate={isHovered ? {
             opacity: [0, 0.3, 0, 0.2, 0],
           } : { opacity: 0 }}
-          transition={{
-            duration: 0.3,
-          }}
+          transition={flickerTransition}
         />
 
         {/* Project image background */}
@@ -360,26 +323,20 @@ const HolographicCard = memo(function HolographicCard({ project, zDepth, primary
         </div>
 
         {/* Corner accents */}
-        <div className="absolute top-2 left-2 w-4 h-4 border-t-2 border-l-2 border-accent/50" />
-        <div className="absolute top-2 right-2 w-4 h-4 border-t-2 border-r-2 border-accent/50" />
-        <div className="absolute bottom-2 left-2 w-4 h-4 border-b-2 border-l-2 border-accent/50" />
-        <div className="absolute bottom-2 right-2 w-4 h-4 border-b-2 border-r-2 border-accent/50" />
+        <div className="absolute top-2 left-2 w-4 h-4 border-t-2 border-l-2 border-holo/50" />
+        <div className="absolute top-2 right-2 w-4 h-4 border-t-2 border-r-2 border-holo/50" />
+        <div className="absolute bottom-2 left-2 w-4 h-4 border-b-2 border-l-2 border-holo/50" />
+        <div className="absolute bottom-2 right-2 w-4 h-4 border-b-2 border-r-2 border-holo/50" />
 
         {/* Project name bar */}
-        <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/90 via-black/50 to-transparent backdrop-blur-sm border-t border-accent/20">
-          <motion.h3
-            className="font-display font-bold text-lg md:text-xl"
-            style={{
-              color: `rgba(${primaryColor}, 0.9)`,
-              textShadow: `0 0 10px rgba(${primaryColor}, 0.3)`,
-            }}
-          >
+        <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/90 via-black/50 to-transparent backdrop-blur-sm border-t border-holo/20">
+          <h3 className="font-display font-bold text-lg md:text-xl text-accent drop-shadow-lg">
             {project.name}
-          </motion.h3>
+          </h3>
         </div>
       </div>
     </motion.div>
   )
-})
+}
 
 export default memo(PortfolioHolographic)

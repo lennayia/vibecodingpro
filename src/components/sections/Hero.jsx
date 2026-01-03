@@ -106,7 +106,7 @@ function Hero() {
       {/* Paragraph - List with elegant bullets */}
       <motion.ul
         variants={itemVariants}
-        className="max-w-3xl mx-auto md:mx-0 hero-text-align font-light space-y-2 text-base text-text-light dark:text-text-muted-dark hero-list"
+        className="max-w-3xl mx-auto md:mx-0 hero-text-align font-light space-y-2 text-text-light dark:text-text-muted-dark hero-list"
       >
         <li className="hero-list-item">
           <span className="text-accent font-mono text-[1.2em]">&gt;</span>
@@ -124,7 +124,7 @@ function Hero() {
         className="flex flex-col hero-items-align max-w-2xl mx-auto md:mx-0 hero-cta-spacing"
       >
         <p
-          className="hero-text-align text-base text-text-light dark:text-text-muted-dark leading-relaxed font-light"
+          className="hero-text-align text-text-light dark:text-text-muted-dark leading-relaxed font-light"
         >
           {heroContent.cta.description}
         </p>

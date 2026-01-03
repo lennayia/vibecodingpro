@@ -16,7 +16,7 @@ function WhatYouCanCreate() {
             {whatYouCanCreateContent.heading}
           </h2>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-6">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
             {whatYouCanCreateContent.categories.map((category, index) => {
               const Icon = category.Icon
               return (
@@ -41,11 +41,11 @@ function WhatYouCanCreate() {
           </div>
 
           <motion.div
-            className="text-center max-w-2xl mx-auto mb-0"
+            className="text-center max-w-2xl mx-auto mt-fluid-xl md:mt-16 lg:mt-20 mb-0"
             {...slideUp}
             transition={closingTransition}
           >
-            <p className="text-xl mb-0">
+            <p className="text-xl font-bold mb-0">
               {whatYouCanCreateContent.closing}
             </p>
           </motion.div>

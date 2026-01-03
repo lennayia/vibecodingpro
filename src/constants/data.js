@@ -229,6 +229,27 @@ export const whatIsVibecodingContent = {
   }
 }
 
+export const portfolioHolographicContent = {
+  heading: "Tohle postavila žena, která neumí programovat.",
+  subheading: "Praktické aplikace, moduly, weby. Ani řádek kódu – jen vize, strategie a AI.",
+  dragInstruction: "← Táhněte →",
+  projects: [
+    { name: "CoachPro", image: "/coachpro.webp" },
+    { name: "ContentPro", image: "/content-pro.webp" },
+    { name: "DigiPro", image: "/digipro.webp" },
+    { name: "Koučovací karty", image: "/koucovaci-karty.webp" },
+    { name: "LifePro", image: "/liffepro.webp" },
+    { name: "PaymentsPro", image: "/paymentspro.webp" },
+    { name: "PianoPro", image: "/pianopro.webp" },
+    { name: "StudyPro", image: "/studypro.webp" }
+  ],
+  closingText: [
+    "Od jednoduchých nástrojů po komplexní aplikace, tempo určujeme sami.",
+    "Začněte třeba jednodušší webovkou.",
+    "Zajímá vás, jak?"
+  ]
+}
+
 export const faqCategories = [
   {
     title: "O vibecodingu a AI",

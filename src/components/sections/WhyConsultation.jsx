@@ -136,7 +136,7 @@ function ComparisonCard({ slide, index: slideIndex, isMobile }) {
                 <span className={`${slide.iconColor} mt-1 text-lg font-bold flex-shrink-0`}>
                   {slide.icon}
                 </span>
-                <span className={`text-base ${isPositive ? 'font-medium' : ''}`}>
+                <span className={`${isPositive ? 'font-medium' : ''}`}>
                   {item}
                 </span>
               </motion.li>

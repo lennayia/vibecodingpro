@@ -121,7 +121,7 @@ function ComparisonSeo() {
   // Section is always dark, but colors adapt to theme:
   // Light mode: copper holographic effects
   // Dark mode: green holographic effects
-  const primaryColor = isDark ? '0, 255, 136' : '181, 108, 78' // Green in dark, Copper in light
+  const primaryColor = isDark ? '13, 221, 13' : '181, 108, 78' // Green in dark (matches --color-accent-dark), Copper in light
   const secondaryColor = isDark ? '0, 200, 255' : '212, 197, 181' // Cyan in dark, Beige in light
 
   return (
@@ -258,7 +258,7 @@ function ComparisonSeo() {
                 data={slide}
                 direction="center"
                 delay={0}
-                background="dark"
+                background="holographic"
               />
             )}
             mobileCardWidth="75%"

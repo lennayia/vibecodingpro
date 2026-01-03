@@ -33,7 +33,7 @@ function WhatIsVibecoding() {
         {/* Co to je */}
         <div className="max-w-3xl mx-auto text-center mb-4">
           <motion.p
-            className="text-base mb-4"
+            className="mb-4"
             {...slideUp}
             transition={definitionTransition}
           >
@@ -51,7 +51,7 @@ function WhatIsVibecoding() {
           <div className="copper-divider-line mx-auto mb-10" />
 
           <motion.p
-            className="text-base font-bold mb-2"
+            className="text-lg font-bold mb-2"
             {...slideUp}
             transition={introTransition}
           >
@@ -70,7 +70,7 @@ function WhatIsVibecoding() {
                 transition={{ delay: index * 0.1 }}
               >
                 <span className="text-[0.625rem] dark:text-white">✦</span>
-                <span className="text-base">{group}</span>
+                <span>{group}</span>
                 <span className="text-[0.625rem] dark:text-white">✦</span>
               </motion.li>
             ))}
@@ -86,7 +86,7 @@ function WhatIsVibecoding() {
           <p className="text-xl mb-6">{whatIsVibecodingContent.commonGoals.heading}</p>
           <div className="space-y-3">
             {whatIsVibecodingContent.commonGoals.goals.map((goal, index) => (
-              <p key={index} className="flex items-center justify-center gap-3 text-base font-semibold">
+              <p key={index} className="flex items-center justify-center gap-3 font-semibold">
                 <span className="text-accent">✦</span>
                 <span>{goal}</span>
                 <span className="text-accent">✦</span>

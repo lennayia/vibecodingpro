@@ -85,13 +85,13 @@ export default function ImagineSection() {
                     {/* Content */}
                     <div className="bg-white dark:bg-[#0a0a1a] rounded-xl border border-gray-200 dark:border-gray-800 shadow-sm p-4 md:p-[clamp(0.4rem,1.5vh,1rem)]">
                       <div className="flex items-baseline gap-2 mb-2 md:mb-[clamp(0.1rem,0.5vh,0.5rem)]">
-                        <span className="text-accent font-bold text-base md:text-lg">{item.time}</span>
+                        <span className="text-accent font-bold">{item.time}</span>
                         <span className="text-xs md:text-sm text-gray-500 dark:text-gray-400">・ {item.period}</span>
                       </div>
-                      <h3 className="font-display font-bold text-base md:text-lg mb-2 md:mb-[clamp(0.1rem,0.5vh,0.5rem)]">
+                      <h3 className="font-display font-bold mb-2 md:mb-[clamp(0.1rem,0.5vh,0.5rem)]">
                         {item.title}
                       </h3>
-                      <p className="text-sm md:text-base" style={{ lineHeight: 'clamp(1.3, 1.5, 1.75)' }}>
+                      <p style={{ lineHeight: 'clamp(1.3, 1.5, 1.75)' }}>
                         {item.description}
                       </p>
                     </div>
