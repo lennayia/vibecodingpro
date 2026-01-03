@@ -5,14 +5,28 @@ import AnimatedBackground from '../ui/AnimatedBackground'
 import { fadeIn, slideUp, slideLeft } from '../../constants/animations'
 import { whatIsVibecodingContent } from '../../constants/data'
 
+// Animation configuration
+const ANIMATION_CONFIG = {
+  DEFINITION_DELAY: 0.1,
+  SUMMARY_DELAY: 0.2,
+  INTRO_DELAY: 0.3,
+  COMMON_GOALS_DELAY: 0.6,
+  TARGET_GROUP_STAGGER: 0.1
+}
+
+// Background configuration
+const BACKGROUND_CONFIG = {
+  PARTICLE_COUNT: 40
+}
+
 // Performance: Animation transitions outside component
-const definitionTransition = { delay: 0.1 }
-const summaryTransition = { delay: 0.2 }
-const introTransition = { delay: 0.3 }
-const commonGoalsTransition = { delay: 0.6 }
+const definitionTransition = { delay: ANIMATION_CONFIG.DEFINITION_DELAY }
+const summaryTransition = { delay: ANIMATION_CONFIG.SUMMARY_DELAY }
+const introTransition = { delay: ANIMATION_CONFIG.INTRO_DELAY }
+const commonGoalsTransition = { delay: ANIMATION_CONFIG.COMMON_GOALS_DELAY }
 
 function WhatIsVibecoding() {
-  const binaryBackground = <AnimatedBackground type="particles" particleCount={40} />
+  const binaryBackground = <AnimatedBackground type="particles" particleCount={BACKGROUND_CONFIG.PARTICLE_COUNT} />
 
   return (
     <Section
@@ -67,7 +81,7 @@ function WhatIsVibecoding() {
                 key={index}
                 className="flex items-center justify-center gap-3"
                 {...slideLeft}
-                transition={{ delay: index * 0.1 }}
+                transition={{ delay: index * ANIMATION_CONFIG.TARGET_GROUP_STAGGER }}
               >
                 <span className="text-[0.625rem] dark:text-white">✦</span>
                 <span>{group}</span>
