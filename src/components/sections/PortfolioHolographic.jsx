@@ -250,7 +250,7 @@ function HolographicCard({ project, zDepth }) {
   const glowOpacity = useTransform(
     zDepth,
     [-450, 0, 450],
-    [0.2, 0.8, 0.2]
+    [0.4, 1, 0.4]
   )
 
   const handleHoverStart = useCallback(() => setIsHovered(true), [])
@@ -269,12 +269,12 @@ function HolographicCard({ project, zDepth }) {
         className="absolute -inset-4 rounded-3xl opacity-0"
         style={{
           opacity: glowOpacity,
-          background: `linear-gradient(45deg, rgba(var(--holo-primary), 0.4), rgba(var(--holo-secondary), 0.4))`,
-          filter: 'blur(20px)',
+          background: `linear-gradient(45deg, rgba(var(--holo-primary), 0.7), rgba(var(--holo-secondary), 0.7))`,
+          filter: 'blur(30px)',
           willChange: 'opacity'
         }}
         animate={isHovered ? {
-          opacity: [0.3, 0.6, 0.3],
+          opacity: [0.5, 0.9, 0.5],
         } : {}}
         transition={glowPulseTransition}
       />
@@ -283,9 +283,9 @@ function HolographicCard({ project, zDepth }) {
       <div className="relative w-full h-full rounded-2xl overflow-hidden border-2 border-holo/30 shadow-2xl bg-gray-900/50 backdrop-blur-sm">
         {/* Holographic shine overlay */}
         <motion.div
-          className="absolute inset-0 opacity-30"
+          className="absolute inset-0 opacity-50"
           style={{
-            background: `linear-gradient(135deg, transparent 30%, rgba(var(--holo-primary), 0.3) 50%, transparent 70%)`,
+            background: `linear-gradient(135deg, transparent 30%, rgba(var(--holo-primary), 0.6) 50%, transparent 70%)`,
           }}
           animate={{
             backgroundPosition: ['0% 0%', '200% 200%'],
@@ -295,9 +295,9 @@ function HolographicCard({ project, zDepth }) {
 
         {/* Scanlines effect */}
         <div
-          className="absolute inset-0 pointer-events-none opacity-20"
+          className="absolute inset-0 pointer-events-none opacity-80"
           style={{
-            backgroundImage: `repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(var(--holo-primary), 0.1) 3px, rgba(var(--holo-primary), 0.1) 6px)`,
+            backgroundImage: `repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(var(--holo-primary), 0.8) 2px, rgba(var(--holo-primary), 0.8) 4px)`,
           }}
         />
 
@@ -323,10 +323,10 @@ function HolographicCard({ project, zDepth }) {
         </div>
 
         {/* Corner accents */}
-        <div className="absolute top-2 left-2 w-4 h-4 border-t-2 border-l-2 border-holo/50" />
-        <div className="absolute top-2 right-2 w-4 h-4 border-t-2 border-r-2 border-holo/50" />
-        <div className="absolute bottom-2 left-2 w-4 h-4 border-b-2 border-l-2 border-holo/50" />
-        <div className="absolute bottom-2 right-2 w-4 h-4 border-b-2 border-r-2 border-holo/50" />
+        <div className="absolute top-2 left-2 w-4 h-4 border-t-2 border-l-2 border-holo/70" />
+        <div className="absolute top-2 right-2 w-4 h-4 border-t-2 border-r-2 border-holo/70" />
+        <div className="absolute bottom-2 left-2 w-4 h-4 border-b-2 border-l-2 border-holo/70" />
+        <div className="absolute bottom-2 right-2 w-4 h-4 border-b-2 border-r-2 border-holo/70" />
 
         {/* Project name bar */}
         <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/90 via-black/50 to-transparent backdrop-blur-sm border-t border-holo/20">

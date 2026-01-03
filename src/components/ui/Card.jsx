@@ -13,7 +13,7 @@ function Card({
   const bgClasses = {
     light: "bg-white/40 dark:bg-[#070716]/80 backdrop-blur-xl",
     dark: "bg-white/40 dark:bg-[#05050f]/80 backdrop-blur-xl",
-    holographic: "bg-white/40 dark:bg-[#05050f]/80 backdrop-blur-xl"
+    holographic: "bg-[#B56C4E]/40 dark:bg-[#05050f]/80 backdrop-blur-xl"
   }
 
   // Glassmorphism borders

@@ -4,7 +4,7 @@ import ScrollDownIndicator from '../ui/ScrollDownIndicator'
 const bgClasses = {
   light: "bg-[#FFFDF9] dark:bg-[#0a0a1a]",
   dark: "bg-[#F5EDE5] dark:bg-[#05050f]",
-  holographic: "bg-[#1a1410] dark:bg-[#05050f]",
+  holographic: "bg-[#050403] dark:bg-[#05050f]",
   gradient: "bg-gradient-to-b from-[#FFFDF9] via-[#FFFDF9] to-[#FFFDF9] dark:from-[#0a0a1a] dark:to-[#0a0a1a]",
   none: ""
 }
