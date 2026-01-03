@@ -7,12 +7,14 @@ import GlassmorphismOverlay from '../ui/GlassmorphismOverlay'
 import { scrollToSection } from '../../utils/scroll'
 import { useTheme } from '../../contexts/ThemeContext'
 import { SECTION_IDS } from '../../constants/data'
+import { useMarquee } from '../../hooks/useMarquee'
 import '../../styles/header.css'
 import '../../styles/animations.css'
 
 function Navigation() {
   const { isDark } = useTheme()
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const marqueeRef = useMarquee(1) // 1px per frame
 
   const handlePricingClick = useCallback(() => {
     scrollToSection(SECTION_IDS.PRICING)
@@ -28,7 +30,7 @@ function Navigation() {
 
   return createPortal(
     <nav
-      className="sticky-header w-full backdrop-blur-2xl bg-[#C9987E]/75 dark:bg-black/60 shadow-[0_6px_30px_rgba(181,108,78,0.45)] dark:shadow-[0_4px_20px_rgba(0,0,205,0.25)]"
+      className="sticky-header w-full backdrop-blur-xl bg-[#C9987E]/75 dark:bg-black/60 shadow-[0_6px_30px_rgba(181,108,78,0.45)] dark:shadow-[0_4px_20px_rgba(0,0,205,0.25)]"
     >
       {/* Glassmorphism gradient overlays */}
       <GlassmorphismOverlay />
@@ -73,8 +75,10 @@ function Navigation() {
       {/* Běžící slogan */}
       <div className="w-full overflow-hidden">
         <div className="pt-0.5 pb-1">
-          <div className="marquee-text whitespace-nowrap text-[#2E2E2E] dark:text-[#f2f2f2]">
-            <span className="font-bold">Vibe <span className="text-[#B56C4E] dark:text-[#0DDD0D]">|</span> Prompt <span className="text-[#B56C4E] dark:text-[#0DDD0D]">|</span> Build</span> — Teď víc než kdy dřív platí: „Můžeme mít všechno, co si dokážeme představit."
+          <div className="marquee-container">
+            <div ref={marqueeRef} className="marquee-content whitespace-nowrap text-[#2E2E2E] dark:text-[#f2f2f2]">
+              <span className="font-bold">Vibe <span className="text-[#B56C4E] dark:text-[#0DDD0D]">|</span> Prompt <span className="text-[#B56C4E] dark:text-[#0DDD0D]">|</span> Build</span> — Teď víc než kdy dřív platí: „Můžeme mít všechno, co si dokážeme představit."
+            </div>
           </div>
         </div>
       </div>
