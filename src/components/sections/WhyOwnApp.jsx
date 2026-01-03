@@ -5,6 +5,44 @@ import Section from '../layout/Section'
 import Button from '../ui/Button'
 import { fadeIn, slideUp } from '../../constants/animations'
 import { scrollToSection } from '../../utils/scroll'
+import { SECTION_IDS } from '../../constants/data'
+
+// Audio configuration
+const AUDIO_CONFIG = {
+  FREQUENCY_START: 800,
+  FREQUENCY_PEAK: 1000,
+  FREQUENCY_END: 800,
+  GAIN: 0.5,
+  DURATION: 0.5,
+  PEAK_TIME: 0.1,
+  END_TIME: 0.2
+}
+
+// Animation configuration
+const ANIMATION_CONFIG = {
+  BENEFIT_STAGGER: 0.1,
+  NOTIFICATION_DELAY: 1.2,
+  NOTIFICATION_DURATION: 0.5,
+  NOTIFICATION_SOUND_DELAY: 1200,
+  BELL_PULSE_DURATION: 2,
+  BELL_SHAKE_DURATION: 1.5,
+  BELL_SHAKE_DELAY: 2,
+  CTA_DELAY: 0.5
+}
+
+// Observer configuration
+const OBSERVER_CONFIG = {
+  THRESHOLD: 0.3
+}
+
+// Notification badge configuration
+const NOTIFICATION_CONFIG = {
+  BORDER_RADIUS: '12px',
+  BORDER_WIDTH: '2px',
+  SCALE_ANIMATION: [1, 1.08, 1],
+  BELL_SCALE: [1, 1.3, 1],
+  BELL_ROTATE: [0, 20, -20, 0]
+}
 
 // Funkce pro přehrání zvuku notifikace
 const playNotificationSound = () => {
@@ -18,18 +56,18 @@ const playNotificationSound = () => {
 
     // Nastavení zvuku - výraznější notifikační tón
     oscillator.type = 'sine'
-    oscillator.frequency.setValueAtTime(800, audioContext.currentTime)
-    oscillator.frequency.setValueAtTime(1000, audioContext.currentTime + 0.1)
-    oscillator.frequency.setValueAtTime(800, audioContext.currentTime + 0.2)
+    oscillator.frequency.setValueAtTime(AUDIO_CONFIG.FREQUENCY_START, audioContext.currentTime)
+    oscillator.frequency.setValueAtTime(AUDIO_CONFIG.FREQUENCY_PEAK, audioContext.currentTime + AUDIO_CONFIG.PEAK_TIME)
+    oscillator.frequency.setValueAtTime(AUDIO_CONFIG.FREQUENCY_END, audioContext.currentTime + AUDIO_CONFIG.END_TIME)
 
     // Vyšší hlasitost a delší zvuk
-    gainNode.gain.setValueAtTime(0.5, audioContext.currentTime)
-    gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.5)
+    gainNode.gain.setValueAtTime(AUDIO_CONFIG.GAIN, audioContext.currentTime)
+    gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + AUDIO_CONFIG.DURATION)
 
     oscillator.start(audioContext.currentTime)
-    oscillator.stop(audioContext.currentTime + 0.5)
+    oscillator.stop(audioContext.currentTime + AUDIO_CONFIG.DURATION)
   } catch (error) {
-    console.log('Audio not supported')
+    // Audio not supported - silently fail
   }
 }
 
@@ -80,7 +118,7 @@ export default function WhyOwnAppSeo() {
   }, [])
 
   const handleClick = useCallback(() => {
-    scrollToSection('phases-section')
+    scrollToSection(SECTION_IDS.PROCESS)
   }, [])
 
   // Přehraje zvuk a spustí animaci při scrollování do sekce
@@ -95,13 +133,13 @@ export default function WhyOwnAppSeo() {
             // Delay pro synchronizaci s animací notifikace
             setTimeout(() => {
               playNotificationSound()
-            }, 1200)
+            }, ANIMATION_CONFIG.NOTIFICATION_SOUND_DELAY)
           } else {
             setIsVisible(false)
           }
         })
       },
-      { threshold: 0.3 } // Spustí se když je 30% sekce viditelné
+      { threshold: OBSERVER_CONFIG.THRESHOLD }
     )
 
     if (sectionRef.current) {
@@ -132,7 +170,7 @@ export default function WhyOwnAppSeo() {
                   key={index}
                   className="border-b border-gray-700 pb-6 md:pb-8 last:border-b-0"
                   {...slideUp}
-                  transition={{ delay: index * 0.1 }}
+                  transition={{ delay: index * ANIMATION_CONFIG.BENEFIT_STAGGER }}
                 >
                   <div className="grid md:grid-cols-2 gap-4 md:gap-6 items-start text-left pl-[10px]">
                     <div className="flex items-center gap-4">
@@ -153,14 +191,14 @@ export default function WhyOwnAppSeo() {
                           className="flex items-center gap-2 mt-2"
                           initial={{ opacity: 0, y: -10, scale: 0.9 }}
                           animate={{ opacity: 1, y: 0, scale: 1 }}
-                          transition={{ duration: 0.5, delay: 1.2, type: "spring" }}
+                          transition={{ duration: ANIMATION_CONFIG.NOTIFICATION_DURATION, delay: ANIMATION_CONFIG.NOTIFICATION_DELAY, type: "spring" }}
                         >
                           <motion.div
                             className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-bold shadow-lg"
                             style={{
-                              borderRadius: '12px',
+                              borderRadius: NOTIFICATION_CONFIG.BORDER_RADIUS,
                               backgroundColor: isDark ? 'rgba(13, 221, 13, 0.2)' : 'rgba(181, 108, 78, 0.3)',
-                              borderWidth: '2px',
+                              borderWidth: NOTIFICATION_CONFIG.BORDER_WIDTH,
                               borderStyle: 'solid',
                               borderColor: isDark ? '#0DDD0D' : '#B56C4E',
                               color: isDark ? '#ffffff' : '#2E2E2E',
@@ -169,7 +207,7 @@ export default function WhyOwnAppSeo() {
                                 : '0 0 15px rgba(181, 108, 78, 0.3)'
                             }}
                             animate={{
-                              scale: [1, 1.08, 1],
+                              scale: NOTIFICATION_CONFIG.SCALE_ANIMATION,
                               boxShadow: isDark ? [
                                 '0 0 15px rgba(0, 255, 136, 0.3)',
                                 '0 0 25px rgba(0, 255, 136, 0.6)',
@@ -181,20 +219,20 @@ export default function WhyOwnAppSeo() {
                               ]
                             }}
                             transition={{
-                              duration: 2,
+                              duration: ANIMATION_CONFIG.BELL_PULSE_DURATION,
                               repeat: Infinity,
                               ease: "easeInOut"
                             }}
                           >
                             <motion.div
                               animate={{
-                                scale: [1, 1.3, 1],
-                                rotate: [0, 20, -20, 0]
+                                scale: NOTIFICATION_CONFIG.BELL_SCALE,
+                                rotate: NOTIFICATION_CONFIG.BELL_ROTATE
                               }}
                               transition={{
-                                duration: 1.5,
+                                duration: ANIMATION_CONFIG.BELL_SHAKE_DURATION,
                                 repeat: Infinity,
-                                repeatDelay: 2,
+                                repeatDelay: ANIMATION_CONFIG.BELL_SHAKE_DELAY,
                                 ease: "easeInOut"
                               }}
                             >
@@ -218,7 +256,7 @@ export default function WhyOwnAppSeo() {
           {/* CTA */}
           <motion.div
             {...slideUp}
-            transition={{ delay: 0.5 }}
+            transition={{ delay: ANIMATION_CONFIG.CTA_DELAY }}
             className="flex justify-center pt-6"
           >
             <Button onClick={handleClick}>
