@@ -385,6 +385,28 @@
     }
   }
 
+  /* Fluid margin bottom - medium */
+  .mb-fluid-md {
+    margin-bottom: 2rem;
+  }
+
+  @media (min-width: 667px) {
+    .mb-fluid-md {
+      margin-bottom: clamp(1.5rem, 3vw, 2rem);
+    }
+  }
+
+  /* Fluid gap - small */
+  .gap-fluid-sm {
+    gap: 1rem;
+  }
+
+  @media (min-width: 667px) {
+    .gap-fluid-sm {
+      gap: clamp(0.5rem, 1.5vw, 1rem);
+    }
+  }
+
   /* Popular badge */
   .badge-popular {
     background-color: var(--color-accent-light);
