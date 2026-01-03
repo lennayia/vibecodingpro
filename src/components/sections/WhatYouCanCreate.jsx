@@ -10,9 +10,6 @@ const ANIMATION_CONFIG = {
   CLOSING_DELAY: 0.6
 }
 
-// Performance: Transition configs outside component
-const closingTransition = { delay: ANIMATION_CONFIG.CLOSING_DELAY }
-
 // Icon configuration
 const ICON_CONFIG = {
   SIZE: 'w-12 h-12',
@@ -55,7 +52,7 @@ function WhatYouCanCreate() {
           <motion.div
             className="text-center max-w-2xl mx-auto mt-fluid-xl md:mt-16 lg:mt-20 mb-0"
             {...slideUp}
-            transition={closingTransition}
+            transition={{ delay: ANIMATION_CONFIG.CLOSING_DELAY }}
           >
             <p className="text-xl font-bold mb-0">
               {whatYouCanCreateContent.closing}
