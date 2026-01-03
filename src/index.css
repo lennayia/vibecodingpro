@@ -27,11 +27,6 @@
     --transition-base: 0.3s ease;
     --transition-slow: 0.6s ease-out;
 
-    /* SlideOutMenu variables */
-    --menu-bg: rgba(255, 253, 249, 0.5);
-    --menu-shadow: -10px 0 40px rgba(181, 108, 78, 0.2), -5px 0 20px rgba(181, 108, 78, 0.15);
-    --menu-divider: rgba(181, 108, 78, 0.3);
-
     /* Holographic section colors - RGB values for use in rgba() */
     --holo-primary: 181, 108, 78; /* Copper in light mode */
     --holo-secondary: 212, 197, 181; /* Beige in light mode */
@@ -43,11 +38,6 @@
   /* Dark mode keeps Manrope (sans-serif) */
   .dark {
     --font-display: 'Manrope', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
-
-    /* SlideOutMenu dark mode overrides */
-    --menu-bg: rgba(7, 7, 22, 0.5);
-    --menu-shadow: -10px 0 40px rgba(0, 0, 205, 0.3), -5px 0 20px rgba(0, 0, 205, 0.2);
-    --menu-divider: rgba(0, 0, 205, 0.4);
 
     /* Holographic section colors - dark mode */
     --holo-primary: 13, 221, 13; /* Green in dark mode */
@@ -1077,82 +1067,6 @@
     .hero-list-item {
       justify-content: flex-start;
     }
-  }
-
-  /* SlideOutMenu utility classes */
-  .menu-panel {
-    position: fixed;
-    top: 0.5rem;
-    right: 0;
-    width: clamp(3rem, 2vw + 2vh, 6rem) !important;
-    z-index: 99999;
-    background: var(--menu-bg);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    box-shadow: var(--menu-shadow);
-    border-radius: 12px 0 0 12px;
-  }
-
-  .menu-divider {
-    width: 32px;
-    height: 1px;
-    background: var(--menu-divider);
-  }
-
-  /* Navigation utility classes */
-  .nav-logo-container {
-    position: fixed;
-    top: 0.5rem;
-    z-index: 10000;
-    transition: right 0.3s;
-  }
-
-  /* Navigation - FIXED for ALL screen sizes */
-  .nav-gap-fluid {
-    gap: 1rem !important;
-  }
-
-  .nav-gap-inner-fluid {
-    gap: 0.75rem !important;
-  }
-
-  .nav-btn-fluid {
-    padding: 0.5rem 0.75rem !important;
-    font-size: 0.75rem !important;
-  }
-
-  .nav-logo-fluid {
-    height: 2rem !important;
-    width: auto !important;
-    filter: none; /* Default: no filter */
-  }
-
-  /* Light mode only - convert blue logo to copper */
-  body:not(.dark) .nav-logo-fluid {
-    filter: sepia(1) saturate(3) hue-rotate(-40deg) brightness(0.9);
-  }
-
-  /* Dark mode: explicitly no filter */
-  .dark .nav-logo-fluid {
-    filter: none !important;
-  }
-
-  .nav-icon-fluid {
-    width: 1.5rem !important;
-    height: 1.5rem !important;
-  }
-
-  .menu-panel {
-    width: 3rem !important;
-  }
-
-  .sticky-header {
-    position: fixed !important;
-    top: 0 !important;
-    left: 0 !important;
-    right: 0 !important;
-    width: 100% !important;
-    z-index: 9999 !important;
   }
 
   /* PricingCard utilities */

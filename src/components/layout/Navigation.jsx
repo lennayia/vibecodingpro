@@ -7,6 +7,7 @@ import GlassmorphismOverlay from '../ui/GlassmorphismOverlay'
 import { scrollToSection } from '../../utils/scroll'
 import { useTheme } from '../../contexts/ThemeContext'
 import { SECTION_IDS } from '../../constants/data'
+import '../../styles/header.css'
 import '../../styles/animations.css'
 
 function Navigation() {
