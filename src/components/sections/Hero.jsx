@@ -1,19 +1,33 @@
 import { motion } from 'framer-motion'
-import { useCallback, useMemo, memo } from 'react'
+import { useCallback, useMemo, memo, useState, useEffect } from 'react'
 import Section from '../layout/Section'
 import Button from '../ui/Button'
 import AnimatedBackground from '../ui/AnimatedBackground'
 import { useTypingEffect } from '../../hooks/useTypingEffect'
 import { scrollToSection } from '../../utils/scroll'
 import { heroContent } from '../../constants/hero'
+import { SECTION_IDS } from '../../constants/data'
+import '../../styles/hero.css'
+
+// Animation timing constants
+const ANIMATION_TIMINGS = {
+  STAGGER_CHILDREN: 0.25,
+  DELAY_CHILDREN: 0.2,
+  FADE_DURATION: 0.8
+}
+
+const TYPING_EFFECT = {
+  SPEED: 60,
+  DELAY: 500
+}
 
 // Performance: Animation variants outside component to avoid re-creating objects
 const containerVariants = {
   initial: {},
   animate: {
     transition: {
-      staggerChildren: 0.25,
-      delayChildren: 0.2
+      staggerChildren: ANIMATION_TIMINGS.STAGGER_CHILDREN,
+      delayChildren: ANIMATION_TIMINGS.DELAY_CHILDREN
     }
   }
 }
@@ -22,15 +36,25 @@ const itemVariants = {
   initial: { opacity: 0 },
   animate: {
     opacity: 1,
-    transition: { duration: 0.8, ease: "easeOut" }
+    transition: { duration: ANIMATION_TIMINGS.FADE_DURATION, ease: "easeOut" }
   }
 }
 
 function Hero() {
+  // Dark mode detection
+  const [isDark, setIsDark] = useState(true)
+
+  useEffect(() => {
+    const checkDark = () => setIsDark(document.documentElement.classList.contains('dark'))
+    checkDark()
+    window.addEventListener('themeChange', checkDark)
+    return () => window.removeEventListener('themeChange', checkDark)
+  }, [])
+
   // Neural network background animation
   const neuralBackground = <AnimatedBackground type="neural" count={15} />
   const typingText = heroContent.heading.typingText
-  const { displayedText, showCursor } = useTypingEffect(typingText, 60, 500)
+  const { displayedText, showCursor } = useTypingEffect(typingText, TYPING_EFFECT.SPEED, TYPING_EFFECT.DELAY)
 
   // Performance: memoize text parts to avoid re-splitting on every render
   const textParts = useMemo(() => {
@@ -44,7 +68,7 @@ function Hero() {
   }, [displayedText])
 
   const handlePricingClick = useCallback(() => {
-    scrollToSection('pricing-section')
+    scrollToSection(SECTION_IDS.PRICING)
   }, [])
 
   const handleScrollDown = useCallback(() => {
@@ -58,6 +82,7 @@ function Hero() {
     animate="animate"
     variants={containerVariants}
     className="hero-text-align w-full md:max-w-[60%] flex flex-col relative vignette-gradient md:ml-[5%]"
+    style={{ marginTop: isDark ? '1.5rem' : '0' }}
   >
       {/* Badge */}
       <motion.div variants={itemVariants} className="inline-block hero-badge-spacing">
