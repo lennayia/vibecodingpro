@@ -46,10 +46,10 @@ export default function HomePage() {
 
         <main id="main-content" role="main">
           <Hero />
+          <PortfolioHolographic />
           <WhatYouCanCreate />
           <Comparison />
           <WhatIsVibecoding />
-          <PortfolioHolographic />
           <WhyOwnApp />
           <ImagineSection />
           <CaseStudy />

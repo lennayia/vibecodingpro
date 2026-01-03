@@ -418,11 +418,11 @@
 
   /* Button styles - Soft UI 2026 */
   .btn {
-    padding: 0.75rem 1.5rem;
+    padding: 0.625rem 0.875rem;
     margin: 0;
     border-radius: 12px;
     font-weight: 500;
-    font-size: 1rem;
+    font-size: 0.9rem;
     letter-spacing: 0.01em;
     background-color: var(--color-bg-light);
     color: var(--color-accent-light);
@@ -1252,5 +1252,19 @@
   .dark .holographic-text h5,
   .dark .holographic-text h6 {
     color: var(--color-accent-dark) !important; /* Dark mode - green */
+  }
+
+  /* Holographic text glow effect */
+  .holo-text-glow {
+    text-shadow: 0 0 20px rgba(var(--holo-primary), 0.3);
+  }
+
+  /* Project names - override holographic-text heading color */
+  .holographic-text .project-name {
+    color: #ffffff !important;
+  }
+
+  .dark .holographic-text .project-name {
+    color: var(--color-accent-dark) !important;
   }
 }

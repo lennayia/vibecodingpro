@@ -2,6 +2,7 @@ import { memo, useState, useEffect, useCallback } from 'react'
 import { createPortal } from 'react-dom'
 import SlideOutMenu from '../ui/SlideOutMenu'
 import Button from '../ui/Button'
+import ThemeToggle from '../ui/ThemeToggle'
 import { scrollToSection } from '../../utils/scroll'
 
 function Navigation() {
@@ -73,24 +74,27 @@ function Navigation() {
         <div className="h-10 w-10" aria-hidden="true"></div>
       </div>
 
-      {/* Fixed right side: Logo + CTA button + Menu */}
-      <div
-        className={`nav-logo-container flex items-center gap-3 ${isMenuOpen ? 'right-[calc(4rem+1.5rem)]' : 'right-6'}`}
-      >
-        {/* Logo */}
+      {/* Fixed left: Logo */}
+      <div className="fixed left-6 top-2 z-[10000]">
         <img
           src={isDark ? "/vibecoding-logo-bile.webp" : "/vibecoding-logo.webp"}
           alt="Vibecoding"
-          width="40"
-          height="40"
-          className="h-10 w-auto"
+          width="36"
+          height="36"
+          className="h-9 w-auto"
         />
+      </div>
 
-        <div className="relative">
-          <Button onClick={handlePricingClick} variant="primary">
-            Chci začít
-          </Button>
-        </div>
+      {/* Fixed right: CTA button + Theme Toggle + Menu */}
+      <div
+        className={`nav-logo-container flex items-center gap-1 ${isMenuOpen ? 'right-[calc(4rem+1.5rem)]' : 'right-6'}`}
+      >
+        <Button onClick={handlePricingClick} variant="primary">
+          Chci začít
+        </Button>
+
+        {/* Theme Toggle */}
+        <ThemeToggle />
 
         {/* Menu s plovoucím dropdownem */}
         <SlideOutMenu

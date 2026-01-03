@@ -13,6 +13,14 @@ const glowPulseTransition = { duration: 2, repeat: Infinity }
 const shineTransition = { duration: 3, repeat: Infinity, ease: "linear" }
 const flickerTransition = { duration: 0.3 }
 
+// Corner accents configuration
+const cornerAccents = [
+  { position: 'top-2 left-2', borders: 'border-t-2 border-l-2' },
+  { position: 'top-2 right-2', borders: 'border-t-2 border-r-2' },
+  { position: 'bottom-2 left-2', borders: 'border-b-2 border-l-2' },
+  { position: 'bottom-2 right-2', borders: 'border-b-2 border-r-2' }
+]
+
 function PortfolioHolographic() {
   const containerRef = useRef(null)
   const [isDragging, setIsDragging] = useState(false)
@@ -94,10 +102,7 @@ function PortfolioHolographic() {
       <div className="w-full relative z-10" ref={containerRef}>
         <motion.div {...fadeIn}>
           <motion.h2
-            className="font-display font-bold text-center mb-3 md:mb-1 leading-tight"
-            style={{
-              textShadow: `0 0 20px rgba(var(--holo-primary), 0.3)`
-            }}
+            className="font-display font-bold text-center mb-3 md:mb-1 leading-tight holo-text-glow"
           >
             {portfolioHolographicContent.heading}
           </motion.h2>
@@ -196,9 +201,10 @@ function PortfolioHolographic() {
 }
 
 // Carousel Item component - extracted to use hooks properly
-function CarouselItem({ project, index, rotation, dragRotation, totalProjects }) {
+const CarouselItem = memo(function CarouselItem({ project, index, rotation, dragRotation, totalProjects }) {
   const angle = (360 / totalProjects) * index
-  const radius = 450
+  // Responsive radius: smaller on mobile for better performance
+  const radius = typeof window !== 'undefined' && window.innerWidth < 768 ? 350 : 450
 
   const combinedRotation = useTransform(
     [rotation, dragRotation],
@@ -242,9 +248,9 @@ function CarouselItem({ project, index, rotation, dragRotation, totalProjects })
       <HolographicCard project={project} zDepth={z} />
     </motion.div>
   )
-}
+})
 
-function HolographicCard({ project, zDepth }) {
+const HolographicCard = memo(function HolographicCard({ project, zDepth }) {
   const [isHovered, setIsHovered] = useState(false)
 
   const glowOpacity = useTransform(
@@ -266,11 +272,10 @@ function HolographicCard({ project, zDepth }) {
     >
       {/* Holographic glow */}
       <motion.div
-        className="absolute -inset-4 rounded-3xl opacity-0"
+        className="absolute -inset-4 rounded-3xl opacity-0 blur-[20px] md:blur-[30px]"
         style={{
           opacity: glowOpacity,
           background: `linear-gradient(45deg, rgba(var(--holo-primary), 0.7), rgba(var(--holo-secondary), 0.7))`,
-          filter: 'blur(30px)',
           willChange: 'opacity'
         }}
         animate={isHovered ? {
@@ -323,20 +328,19 @@ function HolographicCard({ project, zDepth }) {
         </div>
 
         {/* Corner accents */}
-        <div className="absolute top-2 left-2 w-4 h-4 border-t-2 border-l-2 border-holo/70" />
-        <div className="absolute top-2 right-2 w-4 h-4 border-t-2 border-r-2 border-holo/70" />
-        <div className="absolute bottom-2 left-2 w-4 h-4 border-b-2 border-l-2 border-holo/70" />
-        <div className="absolute bottom-2 right-2 w-4 h-4 border-b-2 border-r-2 border-holo/70" />
+        {cornerAccents.map((accent, i) => (
+          <div key={i} className={`absolute ${accent.position} w-4 h-4 ${accent.borders} border-holo/70`} />
+        ))}
 
         {/* Project name bar */}
         <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/90 via-black/50 to-transparent backdrop-blur-sm border-t border-holo/20">
-          <h3 className="font-display font-bold text-lg md:text-xl text-accent drop-shadow-lg">
+          <h3 className="project-name font-display font-bold text-lg md:text-xl drop-shadow-lg">
             {project.name}
           </h3>
         </div>
       </div>
     </motion.div>
   )
-}
+})
 
 export default memo(PortfolioHolographic)

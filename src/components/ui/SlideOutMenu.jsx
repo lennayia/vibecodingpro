@@ -1,7 +1,6 @@
 import { motion, AnimatePresence } from 'framer-motion'
 import { BookOpen, Lightbulb, Route, Tag, ChevronRight, AlignRight } from 'lucide-react'
 import { scrollToSection } from '../../utils/scroll'
-import ThemeToggle from './ThemeToggle'
 import { useState, useEffect } from 'react'
 
 export default function SlideOutMenu({ isOpen, onOpen, onClose }) {
@@ -100,7 +99,7 @@ export default function SlideOutMenu({ isOpen, onOpen, onClose }) {
       {!isOpen && (
         <button
           onClick={onOpen}
-          className="p-2 rounded-lg hover:opacity-80 transition-opacity"
+          className="rounded-lg hover:opacity-80 transition-opacity"
           aria-label="Otevřít menu"
         >
           <AlignRight className="w-8 h-8 text-gray-900 dark:text-white" strokeWidth={2.5} />
@@ -138,14 +137,6 @@ export default function SlideOutMenu({ isOpen, onOpen, onClose }) {
                 Zavřít
               </span>
             </button>
-
-            {/* Divider */}
-            <div className="menu-divider" />
-
-            {/* Theme toggle */}
-            <div className="flex justify-center">
-              <ThemeToggle />
-            </div>
 
             {/* Divider */}
             <div className="menu-divider" />
