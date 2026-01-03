@@ -1,5 +1,6 @@
 import { useRef, useState, useEffect, memo } from 'react'
 import { motion } from 'framer-motion'
+import '../../styles/button.css'
 
 // Throttle utility - limits function calls to once per interval
 function throttle(func, limit) {

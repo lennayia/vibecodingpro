@@ -1,6 +1,8 @@
 import { memo } from 'react'
 import ScrollDownIndicator from '../ui/ScrollDownIndicator'
+import '../../styles/section.css'
 
+// Background theme configurations
 const bgClasses = {
   light: "bg-[#FFFDF9] dark:bg-[#0a0a1a]",
   dark: "bg-[#F5EDE5] dark:bg-[#05050f]",
@@ -9,11 +11,22 @@ const bgClasses = {
   none: ""
 }
 
+// Layout configuration constants
+const LAYOUT_CONFIG = {
+  MAX_WIDTH_DEFAULT: "max-w-7xl",
+  HORIZONTAL_PADDING: "px-[4%]",
+  CENTERED_VERTICAL_PADDING: "py-10",
+  STANDARD_VERTICAL_PADDING: "py-4 md:py-28 lg:py-32",
+  CONTENT_TOP_PADDING: "pt-6"
+}
+
 function Section({ children, className = "", background = "light", showScrollIndicator = false, maxWidth = null, backgroundElement = null, centered = false, id = undefined }) {
-  const maxWidthClass = maxWidth || "max-w-7xl"
+  const maxWidthClass = maxWidth || LAYOUT_CONFIG.MAX_WIDTH_DEFAULT
   const centeredClasses = centered ? "min-h-screen flex items-center justify-center" : ""
-  const paddingClasses = centered ? "px-[4%] py-10" : "py-4 md:py-28 lg:py-32 px-[4%]"
-  const contentPadding = centered ? "pt-6" : "" // Top padding for centered content
+  const paddingClasses = centered
+    ? `${LAYOUT_CONFIG.HORIZONTAL_PADDING} ${LAYOUT_CONFIG.CENTERED_VERTICAL_PADDING}`
+    : `${LAYOUT_CONFIG.STANDARD_VERTICAL_PADDING} ${LAYOUT_CONFIG.HORIZONTAL_PADDING}`
+  const contentPadding = centered ? LAYOUT_CONFIG.CONTENT_TOP_PADDING : ""
   const holographicText = background === "holographic" ? "holographic-text" : ""
 
   return (

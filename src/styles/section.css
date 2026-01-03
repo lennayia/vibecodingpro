@@ -1,0 +1,15 @@
+/* ============================================
+   SECTION LAYOUT STYLES
+   Styles for Section layout component
+   ============================================ */
+
+/* ============================================
+   HOLOGRAPHIC TEXT EFFECT
+   ============================================ */
+
+.holographic-text {
+  /* Holographic text styles if needed */
+}
+
+/* Note: Most Section styles are handled via Tailwind utilities
+   configured in LAYOUT_CONFIG constants in Section.jsx */
