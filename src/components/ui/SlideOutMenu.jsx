@@ -1,7 +1,9 @@
 import { motion, AnimatePresence } from 'framer-motion'
-import { BookOpen, Lightbulb, Route, Tag, ChevronRight, AlignRight } from 'lucide-react'
+import { ChevronRight, AlignRight } from 'lucide-react'
 import { scrollToSection } from '../../utils/scroll'
 import { useState, useEffect } from 'react'
+import Tooltip from './Tooltip'
+import { anchorLinks } from '../../constants/data'
 
 export default function SlideOutMenu({ isOpen, onOpen, onClose }) {
   const [activeSection, setActiveSection] = useState('')
@@ -42,13 +44,6 @@ export default function SlideOutMenu({ isOpen, onOpen, onClose }) {
 
     return () => observer.disconnect()
   }, [])
-
-  const anchorLinks = [
-    { id: 'what-you-can-create', label: 'Co vytvoříte', icon: Lightbulb },
-    { id: 'story', label: 'Příběh', icon: BookOpen },
-    { id: 'process', label: 'Proces', icon: Route },
-    { id: 'pricing-section', label: 'Ceník', icon: Tag }
-  ]
 
   const handleLinkClick = (id) => {
     scrollToSection(id)
@@ -133,9 +128,7 @@ export default function SlideOutMenu({ isOpen, onOpen, onClose }) {
               aria-label="Zavřít menu"
             >
               <ChevronRight className="nav-icon-fluid text-[#2E2E2E] dark:text-white" strokeWidth={2.5} />
-              <span className="absolute right-full mr-2 top-1/2 -translate-y-1/2 bg-gray-900 text-white text-xs px-3 py-1.5 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap">
-                Zavřít
-              </span>
+              <Tooltip text="Zavřít" />
             </button>
 
             {/* Divider */}
@@ -160,9 +153,7 @@ export default function SlideOutMenu({ isOpen, onOpen, onClose }) {
                       }`}
                       strokeWidth={activeSection === link.id ? 3 : 2.5}
                     />
-                    <span className="absolute right-full mr-2 top-1/2 -translate-y-1/2 bg-gray-900 text-white text-xs px-3 py-1.5 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap">
-                      {link.label}
-                    </span>
+                    <Tooltip text={link.label} />
                   </button>
                 )
               })}

@@ -1,40 +1,18 @@
-import { memo, useState, useEffect, useCallback } from 'react'
+import { memo, useState, useCallback } from 'react'
 import { createPortal } from 'react-dom'
 import SlideOutMenu from '../ui/SlideOutMenu'
 import Button from '../ui/Button'
 import ThemeToggle from '../ui/ThemeToggle'
 import { scrollToSection } from '../../utils/scroll'
+import { useTheme } from '../../contexts/ThemeContext'
+import '../../styles/animations.css'
 
 function Navigation() {
-  const [isDark, setIsDark] = useState(true)
+  const { isDark } = useTheme()
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   const handlePricingClick = useCallback(() => {
     scrollToSection('pricing-section')
-  }, [])
-
-  useEffect(() => {
-    const savedTheme = localStorage.getItem('theme')
-    setIsDark(savedTheme === 'dark' || !savedTheme)
-
-    const handleStorage = () => {
-      const theme = localStorage.getItem('theme')
-      setIsDark(theme === 'dark' || !theme)
-    }
-
-    window.addEventListener('storage', handleStorage)
-
-    const handleThemeChange = () => {
-      const theme = localStorage.getItem('theme')
-      setIsDark(theme === 'dark' || !theme)
-    }
-
-    window.addEventListener('themeChange', handleThemeChange)
-
-    return () => {
-      window.removeEventListener('storage', handleStorage)
-      window.removeEventListener('themeChange', handleThemeChange)
-    }
   }, [])
 
   return createPortal(
@@ -44,29 +22,6 @@ function Navigation() {
       {/* Glassmorphism gradient overlays */}
       <div className="absolute inset-0 bg-gradient-to-b from-[#FFFDF9]/50 via-[#FFFDF9]/20 to-transparent dark:from-[#000080]/20 dark:via-[#000080]/8 dark:to-transparent pointer-events-none" />
       <div className="absolute inset-0 bg-gradient-to-r from-[#FFFDF9]/20 via-[#FFFDF9]/40 to-[#FFFDF9]/20 dark:from-transparent dark:via-[#000080]/15 dark:to-transparent pointer-events-none" />
-      <style>{`
-        @keyframes marquee {
-          0% {
-            transform: translateX(100%);
-          }
-          100% {
-            transform: translateX(-100%);
-          }
-        }
-
-        .marquee-text {
-          animation: marquee 20s linear infinite;
-        }
-
-        .sticky-header {
-          position: fixed !important;
-          top: 0 !important;
-          left: 0 !important;
-          right: 0 !important;
-          width: 100% !important;
-          z-index: 9999 !important;
-        }
-      `}</style>
 
       {/* Main navigation bar */}
       <div className="max-w-7xl mx-auto px-6 py-0.5 relative">

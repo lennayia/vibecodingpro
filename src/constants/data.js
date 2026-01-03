@@ -1,4 +1,4 @@
-import { Target, Wrench, MessageSquare, FileText, Rocket, RefreshCw, Package } from 'lucide-react'
+import { Target, Wrench, MessageSquare, FileText, Rocket, RefreshCw, Package, BookOpen, Lightbulb, Route, Tag } from 'lucide-react'
 
 export const phases = [
   {
@@ -378,4 +378,12 @@ export const faqCategories = [
       }
     ]
   }
+]
+
+// Navigation anchor links for SlideOutMenu
+export const anchorLinks = [
+  { id: 'what-you-can-create', label: 'Co vytvoříte', icon: Lightbulb },
+  { id: 'story', label: 'Příběh', icon: BookOpen },
+  { id: 'process', label: 'Proces', icon: Route },
+  { id: 'pricing-section', label: 'Ceník', icon: Tag }
 ]
