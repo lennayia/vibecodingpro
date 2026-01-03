@@ -39,7 +39,7 @@ function Navigation() {
 
   return createPortal(
     <nav
-      className="sticky-header w-full backdrop-blur-2xl bg-[#FFFDF9]/60 dark:bg-black/60 shadow-[0_4px_20px_rgba(181,108,78,0.15)] dark:shadow-[0_4px_20px_rgba(0,0,205,0.25)]"
+      className="sticky-header w-full backdrop-blur-2xl bg-[#C9987E]/75 dark:bg-black/60 shadow-[0_6px_30px_rgba(181,108,78,0.45)] dark:shadow-[0_4px_20px_rgba(0,0,205,0.25)]"
     >
       {/* Glassmorphism gradient overlays */}
       <div className="absolute inset-0 bg-gradient-to-b from-[#FFFDF9]/50 via-[#FFFDF9]/20 to-transparent dark:from-[#000080]/20 dark:via-[#000080]/8 dark:to-transparent pointer-events-none" />

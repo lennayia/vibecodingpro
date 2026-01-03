@@ -28,7 +28,7 @@
     --transition-slow: 0.6s ease-out;
 
     /* SlideOutMenu variables */
-    --menu-bg: rgba(255, 253, 249, 0.85);
+    --menu-bg: rgba(255, 253, 249, 0.5);
     --menu-shadow: -10px 0 40px rgba(181, 108, 78, 0.2), -5px 0 20px rgba(181, 108, 78, 0.15);
     --menu-divider: rgba(181, 108, 78, 0.3);
 
@@ -45,7 +45,7 @@
     --font-display: 'Manrope', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
 
     /* SlideOutMenu dark mode overrides */
-    --menu-bg: rgba(7, 7, 22, 0.6);
+    --menu-bg: rgba(7, 7, 22, 0.5);
     --menu-shadow: -10px 0 40px rgba(0, 0, 205, 0.3), -5px 0 20px rgba(0, 0, 205, 0.2);
     --menu-divider: rgba(0, 0, 205, 0.4);
 
@@ -98,7 +98,7 @@
   }
 
   .dark h1, .dark h2, .dark h3, .dark h4, .dark h5, .dark h6 {
-    color: var(--color-text-muted-dark);
+    color: #ffffff;
     font-family: 'Manrope', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
   }
 
@@ -1124,6 +1124,17 @@
   .nav-logo-fluid {
     height: 2rem !important;
     width: auto !important;
+    filter: none; /* Default: no filter */
+  }
+
+  /* Light mode only - convert blue logo to copper */
+  body:not(.dark) .nav-logo-fluid {
+    filter: sepia(1) saturate(3) hue-rotate(-40deg) brightness(0.9);
+  }
+
+  /* Dark mode: explicitly no filter */
+  .dark .nav-logo-fluid {
+    filter: none !important;
   }
 
   .nav-icon-fluid {
@@ -1264,7 +1275,7 @@
   .holographic-text h4,
   .holographic-text h5,
   .holographic-text h6 {
-    color: rgba(var(--holo-secondary), 1) !important; /* Light mode - beige secondary */
+    color: #f2f2f2 !important; /* Light mode - off-white */
   }
 
   .dark .holographic-text h1,
@@ -1273,7 +1284,7 @@
   .dark .holographic-text h4,
   .dark .holographic-text h5,
   .dark .holographic-text h6 {
-    color: var(--color-accent-dark) !important; /* Dark mode - green */
+    color: #f2f2f2 !important; /* Dark mode - off-white */
   }
 
   /* Holographic text glow effect */
@@ -1283,11 +1294,11 @@
 
   /* Project names - override holographic-text heading color */
   .holographic-text .project-name {
-    color: #ffffff !important;
+    color: var(--color-accent-light) !important; /* Light mode - copper */
   }
 
   .dark .holographic-text .project-name {
-    color: var(--color-accent-dark) !important;
+    color: var(--color-accent-dark) !important; /* Dark mode - green */
   }
 }
 
