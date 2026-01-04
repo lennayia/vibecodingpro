@@ -1,4 +1,4 @@
-import { Target, Wrench, MessageSquare, FileText, Rocket, RefreshCw, Package, BookOpen, Lightbulb, Route, Tag } from 'lucide-react'
+import { Target, Wrench, MessageSquare, FileText, Rocket, RefreshCw, Package, BookOpen, Lightbulb, Route, Tag, Sunrise, Sun, Moon, Palmtree } from 'lucide-react'
 
 export const phases = [
   {
@@ -458,6 +458,38 @@ export const faqCategories = [
         answer: "Aplikace je vaše a můžete s ní dělat, co chcete – hostovat kdekoli, upravovat, prodávat. Nejste zavřená v žádné platformě, která vám zítra zdraží nebo změní podmínky. Máte kontrolu."
       }
     ]
+  }
+]
+
+// ImagineSection timeline data
+export const timelineItems = [
+  {
+    time: "8:00",
+    period: "Ráno",
+    Icon: Sunrise,
+    title: "Kontrolujete telefon",
+    description: "6 nových klientek se registrovalo přes noc! Jedna VIP schůzka, tři emaily. Vaše aplikace klientkám poskytla přesně to, co potřebovaly."
+  },
+  {
+    time: "12:00",
+    period: "Poledne",
+    Icon: Sun,
+    title: "Neomezená kapacita",
+    description: "Nemusíte klientky odmítat kvůli nedostatku času. Pomáháte desítkám lidí současně – přesto každý dostává osobní péči."
+  },
+  {
+    time: "18:00",
+    period: "Večer",
+    Icon: Moon,
+    title: "Spokojené klientky",
+    description: "Aplikace jim šetří čas, dává výsledky a je k dispozici kdykoliv. Doporučují vás dál, protože jste inovativní a profesionální."
+  },
+  {
+    time: "Každý den",
+    period: "Svoboda",
+    Icon: Palmtree,
+    title: "Cítíte naplnění",
+    description: "Místo vyčerpání máte čas na rodinu, koníčky, dovolenou. A váš příjem roste, i když si dopřejete volno."
   }
 ]
 

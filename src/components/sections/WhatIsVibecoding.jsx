@@ -38,7 +38,7 @@ function WhatIsVibecoding() {
       backgroundElement={binaryBackground}
     >
       <motion.div {...fadeIn}>
-        <h2 className="font-display font-bold mb-4 md:mb-2 text-center leading-tight">
+        <h2 className="font-display font-bold mb-4 text-center leading-tight">
           {whatIsVibecodingContent.heading}
         </h2>
         <h3 className="font-display font-bold mb-12 text-center">

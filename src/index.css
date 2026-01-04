@@ -541,6 +541,173 @@
     }
   }
 
+  /* Additional fluid margin-bottom utilities */
+  .mb-fluid-sm {
+    margin-bottom: 0.75rem;
+  }
+
+  @media (min-width: 667px) {
+    .mb-fluid-sm {
+      margin-bottom: clamp(0.5rem, 1vw, 0.75rem);
+    }
+  }
+
+  .mb-fluid-xl {
+    margin-bottom: 4rem;
+  }
+
+  @media (min-width: 667px) {
+    .mb-fluid-xl {
+      margin-bottom: clamp(2rem, 4vw, 4rem);
+    }
+  }
+
+  /* Fluid margin-top utilities */
+  .mt-fluid-xs {
+    margin-top: 0.5rem;
+  }
+
+  @media (min-width: 667px) {
+    .mt-fluid-xs {
+      margin-top: clamp(0.25rem, 0.5vw, 0.5rem);
+    }
+  }
+
+  .mt-fluid-sm {
+    margin-top: 0.75rem;
+  }
+
+  @media (min-width: 667px) {
+    .mt-fluid-sm {
+      margin-top: clamp(0.5rem, 1vw, 0.75rem);
+    }
+  }
+
+  .mt-fluid-base {
+    margin-top: 1rem;
+  }
+
+  @media (min-width: 667px) {
+    .mt-fluid-base {
+      margin-top: clamp(0.5rem, 1.5vw, 1rem);
+    }
+  }
+
+  .mt-fluid-md {
+    margin-top: 1.5rem;
+  }
+
+  @media (min-width: 667px) {
+    .mt-fluid-md {
+      margin-top: clamp(1rem, 2vw, 1.5rem);
+    }
+  }
+
+  .mt-fluid-xl {
+    margin-top: 4rem;
+  }
+
+  @media (min-width: 667px) {
+    .mt-fluid-xl {
+      margin-top: clamp(2rem, 4vw, 4rem);
+    }
+  }
+
+  /* Additional fluid gap utilities */
+  .gap-fluid-md {
+    gap: 1.5rem;
+  }
+
+  @media (min-width: 667px) {
+    .gap-fluid-md {
+      gap: clamp(1rem, 2vw, 1.5rem);
+    }
+  }
+
+  .gap-fluid-lg {
+    gap: 2rem;
+  }
+
+  @media (min-width: 667px) {
+    .gap-fluid-lg {
+      gap: clamp(1rem, 3vw, 2rem);
+    }
+  }
+
+  /* Section spacing utilities */
+  .spacing-section-x {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+
+  @media (min-width: 667px) {
+    .spacing-section-x {
+      padding-left: clamp(1rem, 4vw, 2rem);
+      padding-right: clamp(1rem, 4vw, 2rem);
+    }
+  }
+
+  .spacing-section-y {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+  }
+
+  @media (min-width: 667px) {
+    .spacing-section-y {
+      padding-top: clamp(2rem, 8vw, 4rem);
+      padding-bottom: clamp(2rem, 8vw, 4rem);
+    }
+  }
+
+  /* ImagineSection specific utilities */
+  .mb-fluid-imagine-hero {
+    margin-bottom: 1rem;
+  }
+
+  @media (min-width: 667px) {
+    .mb-fluid-imagine-hero {
+      margin-bottom: clamp(0.5rem, 1.5vw, 0.75rem);
+    }
+  }
+
+  .gap-fluid-timeline {
+    gap: 0.75rem;
+  }
+
+  @media (min-width: 667px) {
+    .gap-fluid-timeline {
+      gap: clamp(0.25rem, 0.75vw, 0.5rem);
+    }
+  }
+
+  .p-fluid-timeline-card {
+    padding: 0.5rem;
+  }
+
+  @media (min-width: 667px) {
+    .p-fluid-timeline-card {
+      padding: clamp(0.3rem, 1vw, 0.5rem);
+    }
+  }
+
+  /* Timeline icon background - hides the gradient line */
+  .timeline-icon-bg {
+    background-color: #f8f8f8;
+  }
+
+  .dark .timeline-icon-bg {
+    background-color: var(--color-bg-dark-alt);
+  }
+
+  /* Timeline card background */
+  .timeline-card-bg {
+    background-color: white;
+  }
+
+  .dark .timeline-card-bg {
+    background-color: #0a0a1a;
+  }
+
   /* WhyConsultation custom line-height */
   .leading-extra-tight {
     line-height: 1.2;
@@ -922,79 +1089,6 @@
     box-shadow: 0 0 30px rgba(13, 221, 13, 0.3);
   }
 
-  /* Spacing utilities using clamp */
-  .spacing-section-y {
-    padding-top: clamp(2rem, 8vh, 4rem);
-    padding-bottom: clamp(2rem, 8vh, 4rem);
-  }
-
-  /* Fluid margin-bottom utilities (most common clamp values) */
-  .mb-fluid-xs {
-    margin-bottom: clamp(0.25rem, 0.5vh, 0.5rem);
-  }
-
-  .mb-fluid-sm {
-    margin-bottom: clamp(0.5rem, 1vh, 0.75rem);
-  }
-
-  .mb-fluid-base {
-    margin-bottom: clamp(0.5rem, 1.5vh, 1rem);
-  }
-
-  .mb-fluid-md {
-    margin-bottom: clamp(1rem, 2vh, 1.5rem);
-  }
-
-  .mb-fluid-lg {
-    margin-bottom: clamp(1.5rem, 3vh, 2rem);
-  }
-
-  .mb-fluid-xl {
-    margin-bottom: clamp(2rem, 4vh, 4rem);
-  }
-
-  /* Fluid margin-top utilities (for symmetry) */
-  .mt-fluid-xs {
-    margin-top: clamp(0.25rem, 0.5vh, 0.5rem);
-  }
-
-  .mt-fluid-sm {
-    margin-top: clamp(0.5rem, 1vh, 0.75rem);
-  }
-
-  .mt-fluid-base {
-    margin-top: clamp(0.5rem, 1.5vh, 1rem);
-  }
-
-  .mt-fluid-md {
-    margin-top: clamp(1rem, 2vh, 1.5rem);
-  }
-
-  .mt-fluid-lg {
-    margin-top: clamp(1.5rem, 3vh, 2rem);
-  }
-
-  .mt-fluid-xl {
-    margin-top: clamp(2rem, 4vh, 4rem);
-  }
-
-  /* Fluid gap utilities */
-  .gap-fluid-sm {
-    gap: clamp(0.5rem, 1vh, 0.75rem);
-  }
-
-  .gap-fluid-md {
-    gap: clamp(1rem, 2vh, 1.5rem);
-  }
-
-  .gap-fluid-lg {
-    gap: clamp(1rem, 3vh, 2rem);
-  }
-
-  .spacing-section-x {
-    padding-left: clamp(1rem, 4vw, 2rem);
-    padding-right: clamp(1rem, 4vw, 2rem);
-  }
 
   /* Additional utility classes for refactoring */
   .text-body {

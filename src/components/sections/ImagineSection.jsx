@@ -1,46 +1,15 @@
 import { memo } from 'react'
 import { motion } from 'framer-motion'
-import { Sunrise, Sun, Moon, Palmtree } from 'lucide-react'
 import Section from '../layout/Section'
 import { fadeIn, slideUp } from '../../constants/animations'
-
-const timelineItems = [
-  {
-    time: "8:00",
-    period: "Ráno",
-    Icon: Sunrise,
-    title: "Kontrolujete telefon",
-    description: "6 nových klientek se registrovalo přes noc! Jedna VIP schůzka, tři emaily. Vaše aplikace klientkám poskytla přesně to, co potřebovaly."
-  },
-  {
-    time: "12:00",
-    period: "Poledne",
-    Icon: Sun,
-    title: "Neomezená kapacita",
-    description: "Nemusíte klientky odmítat kvůli nedostatku času. Pomáháte desítkám lidí současně – přesto každý dostává osobní péči."
-  },
-  {
-    time: "18:00",
-    period: "Večer",
-    Icon: Moon,
-    title: "Spokojené klientky",
-    description: "Aplikace jim šetří čas, dává výsledky a je k dispozici kdykoliv. Doporučují vás dál, protože jste inovativní a profesionální."
-  },
-  {
-    time: "Každý den",
-    period: "Svoboda",
-    Icon: Palmtree,
-    title: "Cítíte naplnění",
-    description: "Místo vyčerpání máte čas na rodinu, koníčky, dovolenou. A váš příjem roste, i když si dopřejete volno."
-  }
-]
+import { timelineItems } from '../../constants/data'
 
 function ImagineSection() {
   return (
     <Section background="light" centered={true} showScrollIndicator={true}>
       <div className="w-full">
         <motion.div {...fadeIn}>
-          <h2 className="font-display font-bold text-center mb-[clamp(2rem,8vw,12rem)] leading-tight">
+          <h2 className="font-display font-bold text-center mb-3 md:mb-4 leading-tight">
             Den s vaší aplikací
           </h2>
 
@@ -49,7 +18,7 @@ function ImagineSection() {
             {/* Vertical line with gradient from morning to evening using theme colors */}
             <div className="absolute top-0 bottom-0 left-4 md:left-[2.75rem] w-2 rounded-full z-0 timeline-gradient" />
 
-            <div className="flex flex-col gap-8 md:gap-[clamp(0.2rem,1vw,1rem)]">
+            <div className="flex flex-col gap-2 md:gap-3">
               {timelineItems.map((item, index) => {
                 const Icon = item.Icon
                 return (
@@ -63,7 +32,7 @@ function ImagineSection() {
                     <div className="absolute left-0 flex items-center gap-2 z-10">
                       <div className="relative w-10 md:w-24 h-10 md:h-24 rounded-full">
                         {/* Solid background to hide the line */}
-                        <div className="absolute inset-0 rounded-full bg-[#f8f8f8] dark:bg-[#05050f]" />
+                        <div className="absolute inset-0 rounded-full timeline-icon-bg" />
                         {/* Icon circle with accent background */}
                         <div className="relative w-full h-full rounded-full bg-accent/10 border border-accent md:border-2 flex items-center justify-center">
                           <Icon className="w-5 h-5 md:w-10 md:h-10 text-accent" />
@@ -72,15 +41,15 @@ function ImagineSection() {
                     </div>
 
                     {/* Content */}
-                    <div className="bg-white dark:bg-[#0a0a1a] rounded-xl border border-gray-200 dark:border-gray-800 shadow-sm p-4 md:p-[clamp(0.4rem,1.5vw,1rem)]">
-                      <div className="flex items-baseline gap-2 mb-fluid-xs">
+                    <div className="timeline-card-bg rounded-xl border border-gray-200 dark:border-gray-800 shadow-sm pt-1 px-2 pb-1 md:pt-1 md:px-3 md:pb-1">
+                      <div className="flex items-baseline gap-2 mb-1">
                         <span className="text-accent font-bold">{item.time}</span>
                         <span className="text-xs md:text-sm text-gray-500 dark:text-gray-400">・ {item.period}</span>
                       </div>
-                      <h3 className="font-display font-bold mb-fluid-xs">
+                      <h3 className="font-display font-bold mb-1">
                         {item.title}
                       </h3>
-                      <p>
+                      <p className="leading-snug">
                         {item.description}
                       </p>
                     </div>

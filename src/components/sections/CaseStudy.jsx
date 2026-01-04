@@ -12,7 +12,7 @@ import { fadeIn, slideUp } from '../../constants/animations'
 function CaseStudySeo() {
   const renderCard = (card, index) => (
     <Card background="dark" className={`h-full ${card.border}`} key={index}>
-      <div className="text-center mb-4 mb-fluid-xs-v1">
+      <div className="text-center mb-fluid-xs-v1">
         <h3 className={`font-display font-bold text-xl ${card.titleColor}`}>
           {card.title}
         </h3>
@@ -40,11 +40,11 @@ function CaseStudySeo() {
 
       <div className="w-full relative z-10">
         <motion.div {...fadeIn}>
-          <div className="text-center mb-3 mb-fluid-xs-v2">
+          <div className="text-center mb-fluid-xs-v2">
             <Badge>Vibecoding mění hru</Badge>
           </div>
 
-          <h2 className="font-display font-bold text-center mb-[clamp(2rem,8vw,12rem)] leading-tight">
+          <h2 className="font-display font-bold text-center mb-3 md:mb-4 leading-tight">
             Vibecoding prakticky
           </h2>
 
@@ -88,7 +88,7 @@ function CaseStudySeo() {
                 {...slideUp}
                 transition={{ delay: 0.8 + index * 0.1 }}
               >
-                <Card background="dark" className="h-full py-4 px-8 py-fluid-xs px-fluid-sm" animate={false}>
+                <Card background="dark" className="h-full py-fluid-xs px-fluid-sm" animate={false}>
                   <div className="text-center">
                     <AnimatedStatValue
                       value={benefit.value}

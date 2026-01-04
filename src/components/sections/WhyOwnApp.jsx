@@ -171,7 +171,7 @@ function WhyOwnAppSeo() {
               return (
                 <motion.div
                   key={index}
-                  className="pb-[clamp(0.75rem,1.5vw,2rem)]"
+                  className={isFirst ? '-mb-[clamp(1.5rem,4vw,4rem)]' : ''}
                   {...slideUp}
                   transition={{ delay: index * ANIMATION_CONFIG.BENEFIT_STAGGER }}
                 >
