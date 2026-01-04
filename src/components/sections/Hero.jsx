@@ -82,8 +82,7 @@ function Hero() {
     initial="initial"
     animate="animate"
     variants={containerVariants}
-    className="hero-text-align w-full md:max-w-[60%] flex flex-col relative vignette-gradient md:ml-[5%]"
-    style={{ marginTop: isDark ? '0.5rem' : '1rem' }}
+    className="hero-text-align w-full md:max-w-[60%] flex flex-col relative vignette-gradient md:ml-[5%] hero-container-spacing"
   >
       {/* Badge */}
       <motion.div variants={itemVariants} className="inline-block hero-badge-spacing">

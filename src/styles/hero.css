@@ -67,11 +67,18 @@
 /* Reduced padding for small viewports */
 @media (max-height: 900px) {
   .vignette-gradient {
-    padding: clamp(0.5rem, 2vh, 1.5rem) clamp(0.5rem, 2vw, 1rem);
+    padding: clamp(0.25rem, 1vh, 0.75rem) clamp(0.5rem, 2vw, 1rem);
   }
 
   .dark .vignette-gradient {
-    padding-top: clamp(1.5rem, 3vh, 2rem);
+    padding-top: clamp(0.75rem, 1.5vh, 1rem);
+  }
+
+  /* Reduce child element spacing on short viewports */
+  .vignette-gradient > *:nth-child(2),
+  .vignette-gradient > *:nth-child(3),
+  .vignette-gradient > *:nth-child(4) {
+    margin-top: 0.5rem !important;
   }
 }
 
@@ -190,6 +197,10 @@
 /* ============================================
    HERO RESPONSIVE ALIGNMENT
    ============================================ */
+
+.hero-container-spacing {
+  margin-top: 0.5rem;
+}
 
 .hero-text-align {
   text-align: center;

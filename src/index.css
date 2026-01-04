@@ -381,7 +381,7 @@
 
   @media (min-width: 667px) {
     .mb-fluid-xs {
-      margin-bottom: clamp(0.1rem, 0.5vw, 0.5rem);
+      margin-bottom: clamp(0.1rem, 0.25vh + 0.25vw, 0.5rem);
     }
   }
 
@@ -392,7 +392,7 @@
 
   @media (min-width: 667px) {
     .mb-fluid-md {
-      margin-bottom: clamp(1.5rem, 3vw, 2rem);
+      margin-bottom: clamp(1.5rem, 1.5vh + 1.5vw, 2rem);
     }
   }
 
@@ -403,7 +403,7 @@
 
   @media (min-width: 667px) {
     .gap-fluid-sm {
-      gap: clamp(0.5rem, 1.5vw, 1rem);
+      gap: clamp(0.5rem, 0.75vh + 0.75vw, 1rem);
     }
   }
 
@@ -414,7 +414,7 @@
 
   @media (min-width: 667px) {
     .mb-fluid-xs-v1 {
-      margin-bottom: clamp(0.5rem, 1.5vw, 1rem);
+      margin-bottom: clamp(0.5rem, 0.75vh + 0.75vw, 1rem);
     }
   }
 
@@ -430,7 +430,7 @@
 
   @media (min-width: 667px) {
     .mb-fluid-xs-v2 {
-      margin-bottom: clamp(0.5rem, 1vw, 1rem);
+      margin-bottom: clamp(0.5rem, 0.5vh + 0.5vw, 1rem);
     }
   }
 
@@ -442,12 +442,12 @@
 
   @media (min-width: 667px) {
     .py-fluid-xs {
-      padding-top: clamp(0.5rem, 1.5vw, 1rem);
-      padding-bottom: clamp(0.5rem, 1.5vw, 1rem);
+      padding-top: clamp(0.5rem, 0.75vh + 0.75vw, 1rem);
+      padding-bottom: clamp(0.5rem, 0.75vh + 0.75vw, 1rem);
     }
   }
 
-  /* Phases section - fluid utilities with VW */
+  /* Phases section - fluid utilities with VH + VW */
   /* Margin bottom - extra extra small */
   .mb-fluid-phases-xxs {
     margin-bottom: 0.5rem;
@@ -455,7 +455,7 @@
 
   @media (min-width: 667px) {
     .mb-fluid-phases-xxs {
-      margin-bottom: clamp(0.25rem, 0.5vw, 0.75rem);
+      margin-bottom: clamp(0.25rem, 0.25vh + 0.25vw, 0.75rem);
     }
   }
 
@@ -466,7 +466,7 @@
 
   @media (min-width: 667px) {
     .mb-fluid-phases-xs {
-      margin-bottom: clamp(0.5rem, 1.5vw, 0.75rem);
+      margin-bottom: clamp(0.5rem, 0.75vh + 0.75vw, 0.75rem);
     }
   }
 
@@ -477,7 +477,7 @@
 
   @media (min-width: 667px) {
     .mb-fluid-phases-md {
-      margin-bottom: clamp(0.75rem, 2vw, 1.5rem);
+      margin-bottom: clamp(0.75rem, 1vh + 1vw, 1.5rem);
     }
   }
 
@@ -488,7 +488,7 @@
 
   @media (min-width: 667px) {
     .mt-fluid-phases-lg {
-      margin-top: clamp(1rem, 2.5vw, 2rem);
+      margin-top: clamp(1rem, 1.25vh + 1.25vw, 2rem);
     }
   }
 
@@ -499,7 +499,7 @@
 
   @media (min-width: 667px) {
     .gap-fluid-phases-xxs {
-      gap: clamp(0.25rem, 0.5vw, 0.5rem);
+      gap: clamp(0.25rem, 0.25vh + 0.25vw, 0.5rem);
     }
   }
 
@@ -510,7 +510,7 @@
 
   @media (min-width: 667px) {
     .gap-fluid-phases-xs {
-      gap: clamp(0rem, 1.5vw, 0.75rem);
+      gap: clamp(0rem, 0.75vh + 0.75vw, 0.75rem);
     }
   }
 
@@ -521,7 +521,7 @@
 
   @media (min-width: 667px) {
     .gap-fluid-phases-lg {
-      gap: clamp(1rem, 2.5vw, 2rem);
+      gap: clamp(1rem, 1.25vh + 1.25vw, 2rem);
     }
   }
 
@@ -546,7 +546,7 @@
 
   @media (min-width: 667px) {
     .mb-fluid-base {
-      margin-bottom: clamp(1rem, 2vw, 1.5rem);
+      margin-bottom: clamp(1rem, 1vh + 1vw, 1.5rem);
     }
   }
 
@@ -556,7 +556,7 @@
 
   @media (min-width: 667px) {
     .gap-fluid-base {
-      gap: clamp(1rem, 2vw, 1.5rem);
+      gap: clamp(1rem, 1vh + 1vw, 1.5rem);
     }
   }
 
@@ -577,7 +577,7 @@
 
   @media (min-width: 667px) {
     .mb-fluid-lg {
-      margin-bottom: clamp(1.5rem, 3vw, 2rem);
+      margin-bottom: clamp(1.5rem, 1.5vh + 1.5vw, 2rem);
     }
   }
 
@@ -587,7 +587,7 @@
 
   @media (min-width: 667px) {
     .mt-fluid-lg {
-      margin-top: clamp(1.5rem, 3vw, 2rem);
+      margin-top: clamp(1.5rem, 1.5vh + 1.5vw, 2rem);
     }
   }
 
@@ -598,7 +598,7 @@
 
   @media (min-width: 667px) {
     .mb-fluid-sm-md {
-      margin-bottom: clamp(0.75rem, 2vw, 1.5rem);
+      margin-bottom: clamp(0.75rem, 1vh + 1vw, 1.5rem);
     }
   }
 
@@ -609,7 +609,7 @@
 
   @media (min-width: 667px) {
     .gap-fluid-xs {
-      gap: clamp(0.25rem, 0.5vw, 0.5rem);
+      gap: clamp(0.25rem, 0.25vh + 0.25vw, 0.5rem);
     }
   }
 
@@ -620,7 +620,7 @@
 
   @media (min-width: 667px) {
     .mb-fluid-xs-md {
-      margin-bottom: clamp(0.5rem, 1vw, 1rem);
+      margin-bottom: clamp(0.5rem, 0.5vh + 0.5vw, 1rem);
     }
   }
 
@@ -631,7 +631,7 @@
 
   @media (min-width: 667px) {
     .mb-fluid-sm {
-      margin-bottom: clamp(0.5rem, 1vw, 0.75rem);
+      margin-bottom: clamp(0.5rem, 0.5vh + 0.5vw, 0.75rem);
     }
   }
 
@@ -641,7 +641,7 @@
 
   @media (min-width: 667px) {
     .mb-fluid-xl {
-      margin-bottom: clamp(2rem, 4vw, 4rem);
+      margin-bottom: clamp(2rem, 2vh + 2vw, 4rem);
     }
   }
 
@@ -652,7 +652,7 @@
 
   @media (min-width: 667px) {
     .mt-fluid-xs {
-      margin-top: clamp(0.25rem, 0.5vw, 0.5rem);
+      margin-top: clamp(0.25rem, 0.25vh + 0.25vw, 0.5rem);
     }
   }
 
@@ -662,7 +662,7 @@
 
   @media (min-width: 667px) {
     .mt-fluid-sm {
-      margin-top: clamp(0.5rem, 1vw, 0.75rem);
+      margin-top: clamp(0.5rem, 0.5vh + 0.5vw, 0.75rem);
     }
   }
 
@@ -672,7 +672,7 @@
 
   @media (min-width: 667px) {
     .mt-fluid-base {
-      margin-top: clamp(0.5rem, 1.5vw, 1rem);
+      margin-top: clamp(0.5rem, 0.75vh + 0.75vw, 1rem);
     }
   }
 
@@ -682,7 +682,7 @@
 
   @media (min-width: 667px) {
     .mt-fluid-md {
-      margin-top: clamp(1rem, 2vw, 1.5rem);
+      margin-top: clamp(1rem, 1vh + 1vw, 1.5rem);
     }
   }
 
@@ -692,7 +692,7 @@
 
   @media (min-width: 667px) {
     .mt-fluid-xl {
-      margin-top: clamp(2rem, 4vw, 4rem);
+      margin-top: clamp(2rem, 2vh + 2vw, 4rem);
     }
   }
 
@@ -703,7 +703,7 @@
 
   @media (min-width: 667px) {
     .gap-fluid-md {
-      gap: clamp(1rem, 2vw, 1.5rem);
+      gap: clamp(1rem, 1vh + 1vw, 1.5rem);
     }
   }
 
@@ -713,7 +713,7 @@
 
   @media (min-width: 667px) {
     .gap-fluid-lg {
-      gap: clamp(1rem, 3vw, 2rem);
+      gap: clamp(1rem, 1.5vh + 1.5vw, 2rem);
     }
   }
 
@@ -749,7 +749,7 @@
 
   @media (min-width: 667px) {
     .mb-fluid-imagine-hero {
-      margin-bottom: clamp(0.5rem, 1.5vw, 0.75rem);
+      margin-bottom: clamp(0.5rem, 0.75vh + 0.75vw, 0.75rem);
     }
   }
 
@@ -759,7 +759,7 @@
 
   @media (min-width: 667px) {
     .gap-fluid-timeline {
-      gap: clamp(0.25rem, 0.75vw, 0.5rem);
+      gap: clamp(0.25rem, 0.375vh + 0.375vw, 0.5rem);
     }
   }
 
