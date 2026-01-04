@@ -1,0 +1,195 @@
+/* ============================================
+   WHYME SECTION STYLES
+   Animace a efekty pro WhyMe sekci
+   ============================================ */
+
+/* ============================================
+   KEYFRAME ANIMATIONS
+   ============================================ */
+
+@keyframes verticalRotate {
+  0% {
+    transform: perspective(1000px) rotateY(0deg);
+  }
+  25% {
+    transform: perspective(1000px) rotateY(-90deg);
+  }
+  50% {
+    transform: perspective(1000px) rotateY(-180deg);
+  }
+  75% {
+    transform: perspective(1000px) rotateY(-270deg);
+  }
+  100% {
+    transform: perspective(1000px) rotateY(-360deg);
+  }
+}
+
+@keyframes photoFade {
+  0% {
+    opacity: 0.15;
+    filter: blur(0px);
+  }
+  10% {
+    opacity: 0.15;
+    filter: blur(0px);
+  }
+  16% {
+    opacity: 0.05;
+    filter: blur(10px);
+  }
+  22% {
+    opacity: 0;
+    filter: blur(25px);
+  }
+  28% {
+    opacity: 0;
+    filter: blur(25px);
+  }
+  34% {
+    opacity: 0.05;
+    filter: blur(10px);
+  }
+  40% {
+    opacity: 0.15;
+    filter: blur(0px);
+  }
+  60% {
+    opacity: 0.15;
+    filter: blur(0px);
+  }
+  66% {
+    opacity: 0.05;
+    filter: blur(10px);
+  }
+  72% {
+    opacity: 0;
+    filter: blur(25px);
+  }
+  78% {
+    opacity: 0;
+    filter: blur(25px);
+  }
+  84% {
+    opacity: 0.05;
+    filter: blur(10px);
+  }
+  90% {
+    opacity: 0.15;
+    filter: blur(0px);
+  }
+  100% {
+    opacity: 0.15;
+    filter: blur(0px);
+  }
+}
+
+/* ============================================
+   ANIMATION CLASSES
+   ============================================ */
+
+.vertical-rotate {
+  animation: verticalRotate 20s linear infinite;
+}
+
+.photo-fade {
+  animation: photoFade 20s linear infinite;
+}
+
+/* ============================================
+   MOBILE OPTIMIZATIONS
+   Disable heavy animations on mobile (<640px) for performance
+   ============================================ */
+
+@media (max-width: 639px) {
+  .vertical-rotate {
+    animation: none;
+  }
+
+  .photo-fade {
+    animation: none;
+    opacity: 0.2;
+    filter: none;
+  }
+}
+
+/* ============================================
+   PHOTO CONTAINER UTILITIES
+   ============================================ */
+
+.photo-container {
+  aspect-ratio: 832/1248;
+  transform: translateX(20%);
+  will-change: transform;
+}
+
+/* ============================================
+   3D ROTATE CONTAINER
+   ============================================ */
+
+.rotate-container {
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+/* ============================================
+   MASK GRADIENTS
+   ============================================ */
+
+/* Right fade - 30% transition */
+.mask-gradient-right-30 {
+  mask-image: linear-gradient(to right, transparent 0%, black 30%, black 100%);
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 30%, black 100%);
+}
+
+/* Right fade - 20% transition */
+.mask-gradient-right-20 {
+  mask-image: linear-gradient(to right, transparent 0%, black 20%, black 100%);
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 20%, black 100%);
+}
+
+/* Left fade - 20% transition */
+.mask-gradient-left-20 {
+  mask-image: linear-gradient(to left, transparent 0%, black 20%, black 100%);
+  -webkit-mask-image: linear-gradient(to left, transparent 0%, black 20%, black 100%);
+}
+
+/* ============================================
+   PHOTO FACE UTILITIES
+   ============================================ */
+
+.photo-face {
+  backface-visibility: hidden;
+  will-change: transform;
+}
+
+.photo-face-back {
+  backface-visibility: hidden;
+  transform: rotateY(180deg);
+  will-change: transform;
+}
+
+.photo-mirror {
+  transform: scaleX(-1);
+}
+
+.photo-will-change-effects {
+  will-change: opacity, filter;
+}
+
+/* ============================================
+   GRADIENT OVERLAY
+   ============================================ */
+
+/* Light mode - kombinace 3 gradientů: shora, zespodu, zleva */
+.gradient-overlay-whyme {
+  background:
+    linear-gradient(to bottom, #FFFDF9 0%, #FFFDF9 8%, rgba(255, 253, 249, 0.7) 15%, transparent 25%),
+    linear-gradient(to top, #FFFDF9 0%, #FFFDF9 15%, rgba(255, 253, 249, 0.7) 30%, transparent 45%),
+    linear-gradient(to right, #FFFDF9 0%, #FFFDF9 50%, rgba(255, 253, 249, 0.85) 65%, rgba(255, 253, 249, 0.4) 75%, transparent 85%);
+}
+
+/* Dark mode - původní gradient */
+.dark .gradient-overlay-whyme {
+  background: linear-gradient(to right, #05050f 0%, #05050f 45%, transparent 60%);
+}

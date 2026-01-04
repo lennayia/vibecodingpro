@@ -536,6 +536,37 @@
     }
   }
 
+  /* WhyMe section - fluid utilities with VH + VW */
+  /* Margin bottom - small */
+  .mb-fluid-whyme-sm {
+    margin-bottom: clamp(0.75rem, 0.75vh + 0.75vw, 1rem);
+  }
+
+  /* Margin bottom - medium */
+  .mb-fluid-whyme-md {
+    margin-bottom: clamp(1rem, 1vh + 1vw, 1.5rem);
+  }
+
+  /* Gap - extra small */
+  .gap-fluid-whyme-xs {
+    gap: clamp(0.5rem, 0.5vh + 0.5vw, 1rem);
+  }
+
+  /* Gap - small */
+  .gap-fluid-whyme-sm {
+    gap: clamp(0.75rem, 0.75vh + 0.75vw, 1rem);
+  }
+
+  /* Padding top - medium */
+  .pt-fluid-whyme-md {
+    padding-top: clamp(1rem, 1vh + 1vw, 1.5rem);
+  }
+
+  /* Padding bottom - medium */
+  .pb-fluid-whyme-md {
+    padding-bottom: clamp(0.75rem, 1vh + 1vw, 1.5rem);
+  }
+
   /* Fluid padding - horizontal small */
   .px-fluid-sm {
     padding-left: 2rem;
