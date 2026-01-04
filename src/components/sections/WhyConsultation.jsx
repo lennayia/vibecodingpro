@@ -34,13 +34,12 @@ const ComparisonCard = memo(function ComparisonCard({ slide, index: slideIndex, 
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ delay: slideIndex * 0.2 }}
-        style={{ padding: '1.25rem' }}
         className={`
           relative h-full rounded-3xl
-          border-2 backdrop-blur-md
+          border-2 backdrop-blur-md p-5
           ${isPositive
-            ? 'bg-white/10 dark:bg-white/5 border-accent/30 shadow-2xl'
-            : 'bg-black/20 dark:bg-black/30 border-gray-600/30'
+            ? 'bg-[#B56C4E]/5 dark:bg-white/5 border-[#B56C4E]/40 dark:border-accent/30 shadow-2xl'
+            : 'bg-white/40 dark:bg-black/30 border-gray-300/40 dark:border-gray-600/30'
           }
           transition-all duration-500
           hover:scale-[1.02] hover:shadow-2xl
@@ -76,16 +75,15 @@ const ComparisonCard = memo(function ComparisonCard({ slide, index: slideIndex, 
 
         <div className="relative z-10">
           <h3
-            style={{ marginBottom: '0.75rem', lineHeight: 1.2 }}
             className={`
-              font-display font-bold text-center text-2xl
-              ${isPositive ? 'text-accent text-shadow-accent' : 'text-gray-400 dark:text-gray-500'}
+              font-display font-bold text-center text-2xl mb-3 leading-tight
+              ${isPositive ? 'text-accent text-shadow-accent' : 'text-gray-600 dark:text-gray-400'}
             `}
           >
             {slide.title}
           </h3>
 
-          <ul style={{ display: 'flex', flexDirection: 'column', gap: '0.25rem', margin: 0, padding: 0 }}>
+          <ul className="flex flex-col gap-1 m-0 p-0">
             {slide.items.map((item, index) => (
               <motion.li
                 key={index}
@@ -93,22 +91,12 @@ const ComparisonCard = memo(function ComparisonCard({ slide, index: slideIndex, 
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: slideIndex * 0.2 + index * 0.1 }}
-                style={{ 
-  display: 'flex', 
-  alignItems: 'baseline', 
-  gap: '0.5rem', 
-  margin: 0, 
-  padding: '0.2rem 0',
-  lineHeight: 1.3 
-}}
+                className="flex items-baseline gap-2 m-0 py-[0.2rem] leading-snug"
               >
-                <span 
-  className={`${slide.iconColor} font-bold flex-shrink-0`}
-  style={{ fontSize: '1rem', lineHeight: 1.3 }}
->
+                <span className={`${slide.iconColor} font-bold flex-shrink-0 text-base leading-snug`}>
   {slide.icon}
 </span>
-                <span style={{ lineHeight: 1.35, fontSize: '0.9375rem', fontWeight: 300 }}>
+                <span className="leading-snug font-light text-fluid-card-item">
                   {item}
                 </span>
               </motion.li>
@@ -145,33 +133,21 @@ function WhyConsultation() {
     >
       <div className="w-full relative z-10">
         <motion.div {...fadeIn}>
-          <h2 
-            className="font-display font-bold text-center leading-tight"
-            style={{ marginBottom: '1rem' }}
-          >
+          <h2 className="font-display font-bold text-center leading-tight mb-4">
             Nebuďte na to sami
           </h2>
-          <div 
-            className="text-center max-w-3xl mx-auto"
-            style={{ marginBottom: '1.5rem' }}
-          >
-            <p style={{ lineHeight: 1.4, margin: 0 }}>
+          <div className="text-center max-w-3xl mx-auto mb-6">
+            <p className="leading-relaxed m-0">
               Nemusíte strávit půl roku nachytřováním ze všemožných různých zdrojů.
             </p>
-            <p style={{ lineHeight: 1.4, margin: 0 }}>
+            <p className="leading-relaxed m-0">
               Ráda vám předám, co jsem se za 6 měsíců s vibecodingem naučila.
             </p>
           </div>
 
           {/* Desktop: Side-by-side comparison */}
-          <div 
-            className="hidden md:block max-w-6xl mx-auto"
-            style={{ marginBottom: '1.5rem' }}
-          >
-            <div 
-              className="grid md:grid-cols-2"
-              style={{ gap: '1.25rem' }}
-            >
+          <div className="hidden md:block max-w-6xl mx-auto mb-6">
+            <div className="grid md:grid-cols-2 gap-5">
               {whyConsultationSlides.map((slide, index) => (
                 <ComparisonCard
                   key={index}
@@ -184,10 +160,7 @@ function WhyConsultation() {
           </div>
 
           {/* Mobile: Carousel */}
-          <div 
-            className="md:hidden -mx-4"
-            style={{ marginBottom: '1.5rem' }}
-          >
+          <div className="md:hidden -mx-4 mb-6">
             <Carousel
               slides={whyConsultationSlides}
               renderSlide={renderSlide}
@@ -199,15 +172,14 @@ function WhyConsultation() {
           </div>
 
           <motion.div
-            className="text-center"
-            style={{ marginTop: '1.5rem' }}
+            className="text-center mt-6"
             {...slideUp}
             transition={{ delay: 0.6 }}
           >
-            <p style={{ lineHeight: 1.4, marginBottom: '0.25rem' }}>
+            <p className="leading-relaxed mb-1">
               Investicí do spolupráce uspoříte čas, peníze i nervy.
             </p>
-            <p style={{ lineHeight: 1.4, marginBottom: '1.5rem' }}>
+            <p className="leading-relaxed mb-6">
               Vaše nové nástroje vám investovaný čas vrátí.
             </p>
             <Button onClick={handleClick}>

@@ -418,6 +418,11 @@
     }
   }
 
+  /* Fluid text size for WhyConsultation card items */
+  .text-fluid-card-item {
+    font-size: clamp(0.875rem, 1.5vw, 0.9375rem);
+  }
+
   /* Fluid margin bottom - extra small variant 2 */
   .mb-fluid-xs-v2 {
     margin-bottom: 0.75rem;
@@ -714,20 +719,41 @@
   }
 
   /* WhyConsultation gradient effects */
+  /* Light mode: copper holographic effects */
   .holographic-glow {
-    background: linear-gradient(45deg, rgba(0, 255, 136, 0.4), rgba(0, 200, 255, 0.4));
+    background: linear-gradient(45deg, rgba(181, 108, 78, 0.4), rgba(200, 130, 100, 0.4));
     filter: blur(20px);
   }
 
   .holographic-shine {
-    background: linear-gradient(135deg, transparent 30%, rgba(0, 255, 136, 0.3) 50%, transparent 70%);
+    background: linear-gradient(135deg, transparent 30%, rgba(181, 108, 78, 0.3) 50%, transparent 70%);
   }
 
   .holographic-scanlines {
+    background-image: repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(181, 108, 78, 0.1) 3px, rgba(181, 108, 78, 0.1) 6px);
+  }
+
+  /* Dark mode: green holographic effects */
+  .dark .holographic-glow {
+    background: linear-gradient(45deg, rgba(0, 255, 136, 0.4), rgba(0, 200, 255, 0.4));
+    filter: blur(20px);
+  }
+
+  .dark .holographic-shine {
+    background: linear-gradient(135deg, transparent 30%, rgba(0, 255, 136, 0.3) 50%, transparent 70%);
+  }
+
+  .dark .holographic-scanlines {
     background-image: repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(0, 255, 136, 0.1) 3px, rgba(0, 255, 136, 0.1) 6px);
   }
 
+  /* Light mode: copper text shadow */
   .text-shadow-accent {
+    text-shadow: 0 0 10px rgba(181, 108, 78, 0.3);
+  }
+
+  /* Dark mode: green text shadow */
+  .dark .text-shadow-accent {
     text-shadow: 0 0 10px rgba(0, 255, 136, 0.3);
   }
 
