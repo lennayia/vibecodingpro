@@ -69,7 +69,7 @@
   .vignette-gradient {
     padding: clamp(0.5rem, 2vh, 1.5rem) clamp(0.5rem, 2vw, 1rem);
   }
-  
+
   .dark .vignette-gradient {
     padding-top: clamp(1.5rem, 3vh, 2rem);
   }

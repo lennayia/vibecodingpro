@@ -447,6 +447,84 @@
     }
   }
 
+  /* Phases section - fluid utilities with VW */
+  /* Margin bottom - extra extra small */
+  .mb-fluid-phases-xxs {
+    margin-bottom: 0.5rem;
+  }
+
+  @media (min-width: 667px) {
+    .mb-fluid-phases-xxs {
+      margin-bottom: clamp(0.25rem, 0.5vw, 0.75rem);
+    }
+  }
+
+  /* Margin bottom - extra small */
+  .mb-fluid-phases-xs {
+    margin-bottom: 0.75rem;
+  }
+
+  @media (min-width: 667px) {
+    .mb-fluid-phases-xs {
+      margin-bottom: clamp(0.5rem, 1.5vw, 0.75rem);
+    }
+  }
+
+  /* Margin bottom - medium */
+  .mb-fluid-phases-md {
+    margin-bottom: 1rem;
+  }
+
+  @media (min-width: 667px) {
+    .mb-fluid-phases-md {
+      margin-bottom: clamp(0.75rem, 2vw, 1.5rem);
+    }
+  }
+
+  /* Margin top - large */
+  .mt-fluid-phases-lg {
+    margin-top: 2rem;
+  }
+
+  @media (min-width: 667px) {
+    .mt-fluid-phases-lg {
+      margin-top: clamp(1rem, 2.5vw, 2rem);
+    }
+  }
+
+  /* Gap - extra extra small */
+  .gap-fluid-phases-xxs {
+    gap: 0.375rem;
+  }
+
+  @media (min-width: 667px) {
+    .gap-fluid-phases-xxs {
+      gap: clamp(0.25rem, 0.5vw, 0.5rem);
+    }
+  }
+
+  /* Gap - extra small */
+  .gap-fluid-phases-xs {
+    gap: 0.5rem;
+  }
+
+  @media (min-width: 667px) {
+    .gap-fluid-phases-xs {
+      gap: clamp(0rem, 1.5vw, 0.75rem);
+    }
+  }
+
+  /* Gap - large */
+  .gap-fluid-phases-lg {
+    gap: 2rem;
+  }
+
+  @media (min-width: 667px) {
+    .gap-fluid-phases-lg {
+      gap: clamp(1rem, 2.5vw, 2rem);
+    }
+  }
+
   /* Fluid padding - horizontal small */
   .px-fluid-sm {
     padding-left: 2rem;
@@ -747,6 +825,17 @@
     background-image: repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(0, 255, 136, 0.1) 3px, rgba(0, 255, 136, 0.1) 6px);
   }
 
+  /* Holographic hover glow for Phases section */
+  .holographic-hover-glow {
+    background: radial-gradient(circle at 50% 50%, rgba(181, 108, 78, 0.1), transparent 70%);
+    pointer-events: none;
+  }
+
+  .dark .holographic-hover-glow {
+    background: radial-gradient(circle at 50% 50%, rgba(0, 255, 136, 0.1), transparent 70%);
+    pointer-events: none;
+  }
+
   /* Light mode: copper text shadow */
   .text-shadow-accent {
     text-shadow: 0 0 10px rgba(181, 108, 78, 0.3);
@@ -755,6 +844,16 @@
   /* Dark mode: green text shadow */
   .dark .text-shadow-accent {
     text-shadow: 0 0 10px rgba(0, 255, 136, 0.3);
+  }
+
+  /* Light mode: copper drop shadow for package headers */
+  .drop-shadow-package-header {
+    filter: drop-shadow(0 0 20px rgba(181, 108, 78, 0.6));
+  }
+
+  /* Dark mode: green drop shadow for package headers */
+  .dark .drop-shadow-package-header {
+    filter: drop-shadow(0 0 20px rgba(0, 255, 136, 0.6));
   }
 
   /* Popular badge */

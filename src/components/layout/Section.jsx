@@ -20,12 +20,14 @@ const LAYOUT_CONFIG = {
   CONTENT_TOP_PADDING: "pt-6"
 }
 
-function Section({ children, className = "", background = "light", showScrollIndicator = false, maxWidth = null, backgroundElement = null, centered = false, id = undefined }) {
+function Section({ children, className = "", background = "light", showScrollIndicator = false, maxWidth = null, backgroundElement = null, centered = false, id = undefined, customPadding = null }) {
   const maxWidthClass = maxWidth || LAYOUT_CONFIG.MAX_WIDTH_DEFAULT
   const centeredClasses = centered ? "min-h-screen flex items-center justify-center" : ""
-  const paddingClasses = centered
-    ? `${LAYOUT_CONFIG.HORIZONTAL_PADDING} ${LAYOUT_CONFIG.CENTERED_VERTICAL_PADDING}`
-    : `${LAYOUT_CONFIG.STANDARD_VERTICAL_PADDING} ${LAYOUT_CONFIG.HORIZONTAL_PADDING}`
+  const paddingClasses = customPadding
+    ? customPadding
+    : centered
+      ? `${LAYOUT_CONFIG.HORIZONTAL_PADDING} ${LAYOUT_CONFIG.CENTERED_VERTICAL_PADDING}`
+      : `${LAYOUT_CONFIG.STANDARD_VERTICAL_PADDING} ${LAYOUT_CONFIG.HORIZONTAL_PADDING}`
   const contentPadding = centered ? LAYOUT_CONFIG.CONTENT_TOP_PADDING : ""
   const holographicText = background === "holographic" ? "holographic-text" : ""
 
