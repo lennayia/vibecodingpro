@@ -11,10 +11,10 @@ import CookieBanner from '../components/ui/CookieBanner'
 import Hero from '../components/sections/Hero'
 import PortfolioHolographic from '../components/sections/PortfolioHolographic'
 import Phases from '../components/sections/Phases'
-import WhyConsultation from '../components/sections/WhyConsultation'
 import WhyMe from '../components/sections/WhyMe'
 
 // Only lazy load bottom sections (below the fold)
+const WhyConsultation = lazy(() => import('../components/sections/WhyConsultation'))
 const WhatYouCanCreate = lazy(() => import('../components/sections/WhatYouCanCreate'))
 const Comparison = lazy(() => import('../components/sections/Comparison'))
 const WhatIsVibecoding = lazy(() => import('../components/sections/WhatIsVibecoding'))
@@ -54,8 +54,8 @@ export default function HomePage() {
             <WhyOwnApp />
             <ImagineSection />
             <CaseStudy />
+            <WhyConsultation />
           </Suspense>
-          <WhyConsultation />
           <Phases />
           <WhyMe />
           <Suspense fallback={<div className="min-h-screen" />}>

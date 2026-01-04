@@ -1,40 +1,14 @@
 import { motion } from 'framer-motion'
-import { useCallback } from 'react'
+import { useCallback, memo } from 'react'
 import Section from '../layout/Section'
 import Button from '../ui/Button'
 import Carousel from '../ui/Carousel'
 import AnimatedBackground from '../ui/AnimatedBackground'
+import { whyConsultationSlides } from '../../constants/data'
 import { fadeIn, slideUp } from '../../constants/animations'
 import { scrollToSection } from '../../utils/scroll'
 
-const slides = [
-  {
-    title: "Sami možná",
-    items: [
-      "Ztratíte měsíce pokusů a omylů",
-      "Investujete do špatných nástrojů",
-      "Vzdáte to předčasně z důvodu frustrace",
-      "Vaše konkurence vás předběhne"
-    ],
-    icon: "×",
-    iconColor: "text-[#9A0303]",
-    type: "negative"
-  },
-  {
-    title: "Společně určitě",
-    items: [
-      "Získáte jasnou roadmapu od nultého dne",
-      "Vyhnete se většině drahých chyb",
-      "Máte podporujícího průvodce celou cestou",
-      "Začínáte pracovat na rozvoji podnikatelské budoucnosti a polopasivního příjmu"
-    ],
-    icon: "✓",
-    iconColor: "text-accent",
-    type: "positive"
-  }
-]
-
-function ComparisonCard({ slide, index: slideIndex, isMobile }) {
+const ComparisonCard = memo(function ComparisonCard({ slide, index: slideIndex, isMobile }) {
   const isPositive = slide.type === 'positive'
 
   return (
@@ -42,11 +16,7 @@ function ComparisonCard({ slide, index: slideIndex, isMobile }) {
       {/* Holographic glow for positive card */}
       {isPositive && (
         <motion.div
-          className="absolute -inset-4 rounded-3xl opacity-0"
-          style={{
-            background: 'linear-gradient(45deg, rgba(0, 255, 136, 0.4), rgba(0, 200, 255, 0.4))',
-            filter: 'blur(20px)',
-          }}
+          className="absolute -inset-4 rounded-3xl opacity-0 holographic-glow"
           animate={{
             opacity: [0.2, 0.4, 0.2],
           }}
@@ -64,10 +34,10 @@ function ComparisonCard({ slide, index: slideIndex, isMobile }) {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ delay: slideIndex * 0.2 }}
+        style={{ padding: '1.25rem' }}
         className={`
           relative h-full rounded-3xl
           border-2 backdrop-blur-md
-          p-8 md:p-[clamp(1.5rem,3vh,2rem)]
           ${isPositive
             ? 'bg-white/10 dark:bg-white/5 border-accent/30 shadow-2xl'
             : 'bg-black/20 dark:bg-black/30 border-gray-600/30'
@@ -79,10 +49,7 @@ function ComparisonCard({ slide, index: slideIndex, isMobile }) {
         {/* Holographic shine overlay for positive card */}
         {isPositive && (
           <motion.div
-            className="absolute inset-0 rounded-3xl opacity-30"
-            style={{
-              background: 'linear-gradient(135deg, transparent 30%, rgba(0, 255, 136, 0.3) 50%, transparent 70%)',
-            }}
+            className="absolute inset-0 rounded-3xl opacity-30 holographic-shine"
             animate={{
               backgroundPosition: ['0% 0%', '200% 200%'],
             }}
@@ -96,12 +63,7 @@ function ComparisonCard({ slide, index: slideIndex, isMobile }) {
 
         {/* Scanlines effect for positive card */}
         {isPositive && (
-          <div
-            className="absolute inset-0 rounded-3xl pointer-events-none opacity-20"
-            style={{
-              backgroundImage: 'repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(0, 255, 136, 0.1) 3px, rgba(0, 255, 136, 0.1) 6px)',
-            }}
-          />
+          <div className="absolute inset-0 rounded-3xl pointer-events-none opacity-20 holographic-scanlines" />
         )}
 
         {/* Corner accents */}
@@ -114,16 +76,16 @@ function ComparisonCard({ slide, index: slideIndex, isMobile }) {
 
         <div className="relative z-10">
           <h3
+            style={{ marginBottom: '0.75rem', lineHeight: 1.2 }}
             className={`
-              font-display font-bold text-center text-2xl mb-6 md:mb-[clamp(0.75rem,2vh,1.5rem)]
-              ${isPositive ? 'text-accent' : 'text-gray-400 dark:text-gray-500'}
+              font-display font-bold text-center text-2xl
+              ${isPositive ? 'text-accent text-shadow-accent' : 'text-gray-400 dark:text-gray-500'}
             `}
-            style={isPositive ? { textShadow: '0 0 10px rgba(0, 255, 136, 0.3)' } : {}}
           >
             {slide.title}
           </h3>
 
-          <ul className="flex flex-col gap-4 md:gap-[clamp(0.5rem,1.5vh,1rem)]">
+          <ul style={{ display: 'flex', flexDirection: 'column', gap: '0.25rem', margin: 0, padding: 0 }}>
             {slide.items.map((item, index) => (
               <motion.li
                 key={index}
@@ -131,12 +93,22 @@ function ComparisonCard({ slide, index: slideIndex, isMobile }) {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: slideIndex * 0.2 + index * 0.1 }}
-                className="flex items-start gap-3"
+                style={{ 
+  display: 'flex', 
+  alignItems: 'baseline', 
+  gap: '0.5rem', 
+  margin: 0, 
+  padding: '0.2rem 0',
+  lineHeight: 1.3 
+}}
               >
-                <span className={`${slide.iconColor} mt-1 text-lg font-bold flex-shrink-0`}>
-                  {slide.icon}
-                </span>
-                <span className={`${isPositive ? 'font-medium' : ''}`}>
+                <span 
+  className={`${slide.iconColor} font-bold flex-shrink-0`}
+  style={{ fontSize: '1rem', lineHeight: 1.3 }}
+>
+  {slide.icon}
+</span>
+                <span style={{ lineHeight: 1.35, fontSize: '0.9375rem', fontWeight: 300 }}>
                   {item}
                 </span>
               </motion.li>
@@ -146,9 +118,9 @@ function ComparisonCard({ slide, index: slideIndex, isMobile }) {
       </motion.div>
     </div>
   )
-}
+})
 
-export default function WhyConsultation() {
+function WhyConsultation() {
   const handleClick = useCallback(() => {
     scrollToSection('pricing-packages-section')
   }, [])
@@ -173,24 +145,34 @@ export default function WhyConsultation() {
     >
       <div className="w-full relative z-10">
         <motion.div {...fadeIn}>
-          <h2 className="font-display font-bold text-center mb-6 md:mb-[clamp(1rem,2vh,1.5rem)] leading-tight">
+          <h2 
+            className="font-display font-bold text-center leading-tight"
+            style={{ marginBottom: '1rem' }}
+          >
             Nebuďte na to sami
           </h2>
-          <div className="text-center max-w-3xl mx-auto mb-6 md:mb-[clamp(1rem,2vh,1.5rem)]">
-            <div className="flex flex-col gap-2 md:gap-[clamp(0.25rem,0.5vh,0.5rem)]">
-              <p className="text-xl font-light">
-                Nemusíte strávit půl roku nachytřováním ze všemožných různých zdrojů.
-              </p>
-              <p className="text-xl font-light">
-                Ráda vám předám, co jsem se za 6 měsíců s vibecodingem naučila.
-              </p>
-            </div>
+          <div 
+            className="text-center max-w-3xl mx-auto"
+            style={{ marginBottom: '1.5rem' }}
+          >
+            <p style={{ lineHeight: 1.4, margin: 0 }}>
+              Nemusíte strávit půl roku nachytřováním ze všemožných různých zdrojů.
+            </p>
+            <p style={{ lineHeight: 1.4, margin: 0 }}>
+              Ráda vám předám, co jsem se za 6 měsíců s vibecodingem naučila.
+            </p>
           </div>
 
           {/* Desktop: Side-by-side comparison */}
-          <div className="hidden md:block max-w-6xl mx-auto mb-6 md:mb-[clamp(1rem,2vh,1.5rem)]">
-            <div className="grid md:grid-cols-2 gap-6 md:gap-[clamp(1rem,2vh,1.5rem)]">
-              {slides.map((slide, index) => (
+          <div 
+            className="hidden md:block max-w-6xl mx-auto"
+            style={{ marginBottom: '1.5rem' }}
+          >
+            <div 
+              className="grid md:grid-cols-2"
+              style={{ gap: '1.25rem' }}
+            >
+              {whyConsultationSlides.map((slide, index) => (
                 <ComparisonCard
                   key={index}
                   slide={slide}
@@ -202,9 +184,12 @@ export default function WhyConsultation() {
           </div>
 
           {/* Mobile: Carousel */}
-          <div className="md:hidden mb-6 md:mb-[clamp(1rem,2vh,1.5rem)] -mx-4">
+          <div 
+            className="md:hidden -mx-4"
+            style={{ marginBottom: '1.5rem' }}
+          >
             <Carousel
-              slides={slides}
+              slides={whyConsultationSlides}
               renderSlide={renderSlide}
               showArrows={true}
               showDots={true}
@@ -214,14 +199,15 @@ export default function WhyConsultation() {
           </div>
 
           <motion.div
-            className="text-center mt-8 md:mt-[clamp(1.5rem,3vh,2rem)]"
+            className="text-center"
+            style={{ marginTop: '1.5rem' }}
             {...slideUp}
             transition={{ delay: 0.6 }}
           >
-            <p className="text-xl font-light mb-3 md:mb-[clamp(0.5rem,1vh,1rem)]">
+            <p style={{ lineHeight: 1.4, marginBottom: '0.25rem' }}>
               Investicí do spolupráce uspoříte čas, peníze i nervy.
             </p>
-            <p className="text-xl font-light custom-spacing mb-8 md:mb-[clamp(1.5rem,3vh,2rem)]">
+            <p style={{ lineHeight: 1.4, marginBottom: '1.5rem' }}>
               Vaše nové nástroje vám investovaný čas vrátí.
             </p>
             <Button onClick={handleClick}>
@@ -233,3 +219,5 @@ export default function WhyConsultation() {
     </Section>
   )
 }
+
+export default memo(WhyConsultation)

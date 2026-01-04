@@ -96,6 +96,87 @@ export const benefits = [
   { value: "2x", label: "víc energie" }
 ]
 
+export const caseStudyCards = [
+  {
+    title: "Před aplikací",
+    titleColor: "",
+    border: "",
+    paragraphs: [
+      {
+        text: "Jana trávila ",
+        highlight: "20 hodin týdně",
+        rest: " konzultacemi. Bylo to už za hranou. Odmítala klientky, nemohla jich vzít víc."
+      },
+      {
+        text: "Trápila se pocitem, že její znalosti pomůžou jen omezené skupině lidí. Práce ji ",
+        highlight: "vyčerpávala",
+        rest: ". Vydělávala jen počtem odpracovaných konzultací."
+      }
+    ]
+  },
+  {
+    title: "Dneska",
+    titleColor: "text-accent",
+    border: "border-2 border-accent/50",
+    paragraphs: [
+      {
+        text: "Její aplikace radí s životními situacemi, sleduje pokroky a posílá denní tipy, ",
+        highlight: "funguje 24/7",
+        rest: ". Jana pracuje na vylepšování aplikace a věnuje čas prémiovým konzultacím za vyšší cenu. Nebo rodině."
+      },
+      {
+        text: "Její služby si může dovolit ",
+        highlight: "mnohem víc klientek",
+        rest: "."
+      }
+    ]
+  },
+  {
+    title: "Pochvaluje si",
+    titleColor: "text-accent",
+    border: "border-2 border-accent/30",
+    paragraphs: [
+      {
+        text: "„Pomáhám téměř 320 klientkám měsíčně místo 80. A to jsem s aplikací teprv na začátku.",
+        highlight: null,
+        rest: ""
+      },
+      {
+        text: 'Cítím se svobodná. Moje práce pomáhá lidem, i když spím. A já mám konečně čas žít. To je nejvíc."',
+        highlight: null,
+        rest: ""
+      }
+    ]
+  }
+]
+
+export const whyConsultationSlides = [
+  {
+    title: "Sami možná",
+    items: [
+      "Ztratíte měsíce pokusů a omylů",
+      "Investujete do špatných nástrojů",
+      "Vzdáte to předčasně z důvodu frustrace",
+      "Vaše konkurence vás předběhne"
+    ],
+    icon: "×",
+    iconColor: "text-[#9A0303]",
+    type: "negative"
+  },
+  {
+    title: "Společně určitě",
+    items: [
+      "Získáte jasnou roadmapu od nultého dne",
+      "Vyhnete se většině drahých chyb",
+      "Máte podporujícího průvodce celou cestou",
+      "Začínáte pracovat na rozvoji podnikatelské budoucnosti a polopasivního příjmu"
+    ],
+    icon: "✓",
+    iconColor: "text-accent",
+    type: "positive"
+  }
+]
+
 export const comparisonData = {
   heading: "Dobré nástroje posouvají",
   subheading: "Dvě ženy, jeden obor, dvě cesty.",

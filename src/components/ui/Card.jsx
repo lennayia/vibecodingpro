@@ -12,14 +12,14 @@ function Card({
   // Glassmorphism backgrounds with backdrop blur
   const bgClasses = {
     light: "bg-white/40 dark:bg-[#070716]/80 backdrop-blur-xl",
-    dark: "bg-white/40 dark:bg-[#05050f]/80 backdrop-blur-xl",
+    dark: "bg-black/30 dark:bg-[#05050f]/80 backdrop-blur-xl",
     holographic: "bg-[#B56C4E]/40 dark:bg-[#05050f]/80 backdrop-blur-xl"
   }
 
   // Glassmorphism borders
   const borderClasses = {
     light: "border border-white/60 dark:border-white/20 shadow-lg shadow-white/5",
-    dark: "border border-white/60 dark:border-white/20 shadow-lg shadow-white/5",
+    dark: "border border-white/20 dark:border-white/20 shadow-lg shadow-black/20",
     holographic: "border border-holo/60 dark:border-holo/40"
   }
 
