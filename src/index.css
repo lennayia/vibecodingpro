@@ -18,6 +18,9 @@
     --color-error: #9A0303;
     --color-error-light: #DC2626;
     --color-error-dark: #9A0303;
+    
+    /* Accent RGB for Tailwind opacity modifiers */
+    --accent-rgb: 181 108 78;
 
     /* Typography scales - with system font fallbacks */
     --font-display: 'Cormorant Garamond', serif; /* Elegant serif for light mode */
@@ -41,6 +44,9 @@
   /* Dark mode keeps Manrope (sans-serif) */
   .dark {
     --font-display: 'Manrope', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+    
+    /* Accent RGB for Tailwind opacity modifiers */
+    --accent-rgb: 13 221 13;
 
     /* Holographic section colors - dark mode */
     --holo-primary: 13, 221, 13; /* Green in dark mode */
@@ -448,6 +454,11 @@
   }
 
   /* Phases section - fluid utilities with VH + VW */
+  /* Fluid text for Phases buttons and headers */
+  .text-fluid-phases-button {
+    font-size: clamp(0.875rem, 0.75vh + 0.75vw, 1rem);
+  }
+
   /* Margin bottom - extra extra small */
   .mb-fluid-phases-xxs {
     margin-bottom: 0.5rem;
@@ -887,20 +898,38 @@
     opacity: 0.8;
   }
 
-  .bg-accent\/10 {
-    background-color: rgba(181, 108, 78, 0.1);
+  /* Light mode bg-accent opacity modifiers - force override */
+  .bg-accent\/5 {
+    background-color: rgba(181, 108, 78, 0.05) !important;
   }
 
-  .dark .bg-accent\/10 {
-    background-color: rgba(13, 221, 13, 0.1);
+  .bg-accent\/10 {
+    background-color: rgba(181, 108, 78, 0.1) !important;
+  }
+
+  .bg-accent\/20 {
+    background-color: rgba(181, 108, 78, 0.2) !important;
   }
 
   .bg-accent\/90 {
-    background-color: rgba(181, 108, 78, 0.9);
+    background-color: rgba(181, 108, 78, 0.9) !important;
+  }
+
+  /* Dark mode overrides for bg-accent opacity modifiers */
+  .dark .bg-accent\/5 {
+    background-color: rgba(13, 221, 13, 0.05) !important;
+  }
+
+  .dark .bg-accent\/10 {
+    background-color: rgba(13, 221, 13, 0.1) !important;
+  }
+
+  .dark .bg-accent\/20 {
+    background-color: rgba(13, 221, 13, 0.2) !important;
   }
 
   .dark .bg-accent\/90 {
-    background-color: rgba(13, 221, 13, 0.9);
+    background-color: rgba(13, 221, 13, 0.9) !important;
   }
 
   /* Scroll down indicator - show only on md+ width AND 700px+ height */

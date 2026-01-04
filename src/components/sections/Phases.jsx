@@ -23,7 +23,8 @@ const PhaseCard = memo(({ phase, globalIndex, localIndex, showArrow, isLastInPac
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.1 * (localIndex % 3) }}
-          className="group relative bg-[#f2f2f2] dark:bg-[#070716] rounded-2xl min-[600px]:rounded-3xl p-3 hover:scale-[1.01] transition-all duration-300 border-2 border-gray-200 dark:border-[#05050f] hover:border-accent/30 overflow-hidden flex flex-col"
+          // ZMĚNA ZDE: Nahrazeno bg-[#f2f2f2] za bg-accent/[0.03] a border-gray-200 za border-accent/20
+          className="group relative bg-accent/[0.03] dark:bg-dark-primary rounded-2xl min-[600px]:rounded-3xl p-3 hover:scale-[1.01] transition-all duration-300 border-2 border-accent/20 dark:border-dark-secondary hover:border-accent/40 overflow-hidden flex flex-col"
         >
           {/* Holographic glow on hover */}
           <motion.div
@@ -36,10 +37,10 @@ const PhaseCard = memo(({ phase, globalIndex, localIndex, showArrow, isLastInPac
               <phase.Icon className="w-6 h-6 text-accent" strokeWidth={1.5} />
             </div>
             <div className="flex-1">
-              <span className="font-display font-bold text-accent text-xl min-[600px]:text-2xl">
+              <span className="font-display font-bold text-accent">
                 {phase.number}
               </span>
-              <h3 className="font-display font-bold text-lg min-[600px]:text-xl mt-0.5 min-[600px]:mt-1">
+              <h3 className="font-display font-bold mt-0.5 min-[600px]:mt-1">
                 {phase.title}
               </h3>
             </div>
@@ -48,25 +49,26 @@ const PhaseCard = memo(({ phase, globalIndex, localIndex, showArrow, isLastInPac
           {/* Split Content */}
           <div className="relative z-10 flex-1 flex flex-col justify-start gap-2 gap-fluid-phases-xxs">
             {/* Your Action */}
-            <div className="bg-white/50 dark:bg-black/20 rounded-lg min-[600px]:rounded-xl px-2 pt-1 pb-0.5 border border-gray-200 dark:border-gray-800">
+            {/* ZMĚNA ZDE: Upraven border-gray-200 na border-accent/15 pro sladění */}
+            <div className="bg-white/60 dark:bg-black/20 rounded-lg min-[600px]:rounded-xl px-2 pt-1 pb-0.5 border border-accent/15 dark:border-gray-800">
               <div className="flex items-start gap-2">
-                <span className="text-xs min-[600px]:text-sm font-semibold text-accent flex-shrink-0">Vy:</span>
-                <p className="text-xs min-[600px]:text-sm flex-1">{phase.yourAction}</p>
+                <span className="font-semibold text-accent flex-shrink-0">Vy:</span>
+                <p className="flex-1">{phase.yourAction}</p>
               </div>
             </div>
 
             {/* My Support */}
-            <div className="bg-accent/5 dark:bg-accent/10 rounded-lg min-[600px]:rounded-xl px-2 pt-1 pb-0.5 border border-accent/20">
+            <div className="bg-accent/[0.05] dark:bg-accent/10 rounded-lg min-[600px]:rounded-xl px-2 pt-1 pb-0.5 border border-accent/20">
               <div className="flex items-start gap-2">
-                <span className="text-xs min-[600px]:text-sm font-semibold text-accent flex-shrink-0">{phase.supportLabel || "Já"}:</span>
-                <p className="text-xs min-[600px]:text-sm flex-1">{phase.mySupport}</p>
+                <span className="font-semibold text-accent flex-shrink-0">{phase.supportLabel || "Já"}:</span>
+                <p className="flex-1">{phase.mySupport}</p>
               </div>
             </div>
           </div>
         </motion.div>
       </div>
 
-      {/* Diagonal Arrow between phases */}
+      {/* Diagonal Arrow between phases - beze změny */}
       {showArrow && !isLastInPackage && (
         <div className={`w-5/6 min-[1200px]:w-2/3 mx-auto ${globalIndex % 2 === 0 ? 'ml-0 mr-auto' : 'ml-auto mr-0'}`}>
           <div className={`flex ${globalIndex % 2 === 0 ? 'justify-start pl-20 min-[1200px]:pl-56' : 'justify-end pr-40 min-[1200px]:pr-64'} py-2`}>
@@ -108,7 +110,7 @@ const PackageHeader = memo(({ packageName, phasesCount, isExpanded, onToggle }) 
       >
         <div className="absolute inset-0 bg-accent/5 blur-lg opacity-0 group-hover:opacity-100 transition-opacity" />
         <div className="relative flex items-center gap-2">
-          <span className="font-display font-semibold text-sm text-accent">
+          <span className="font-light text-fluid-phases-button">
             {isExpanded ? `Skrýt kroky (${phasesCount})` : `Zobrazit kroky (${phasesCount})`}
           </span>
           <motion.div
@@ -160,7 +162,7 @@ function Phases() {
           <h2 className="font-display font-bold text-center mb-2 mb-fluid-phases-xxs leading-tight">
             Spolu rozběhneme tvorbu
           </h2>
-          <p className="text-center max-w-3xl mx-auto text-xl font-light mb-6 mb-fluid-phases-md">
+          <p className="text-center max-w-3xl mx-auto font-light mb-6 mb-fluid-phases-md">
             Krok za krokem od nápadu až po funkční digi-nástroj
           </p>
 
