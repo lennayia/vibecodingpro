@@ -1,4 +1,4 @@
-import { Target, Wrench, MessageSquare, FileText, Rocket, RefreshCw, Package, BookOpen, Lightbulb, Route, Tag, Sunrise, Sun, Moon, Palmtree } from 'lucide-react'
+import { Target, Wrench, MessageSquare, FileText, Rocket, RefreshCw, Package, BookOpen, Lightbulb, Route, Tag, Sunrise, Sun, Moon, Palmtree, Gift, Check, Map, FileCheck, Video, Mail, ClipboardList, Phone } from 'lucide-react'
 
 export const phases = [
   {
@@ -508,3 +508,77 @@ export const SECTION_IDS = {
   PROCESS: 'process',
   PRICING: 'pricing-section'
 }
+
+// BonusesTabs data
+export const bonusItems = [
+  {
+    name: "Osobní roadmapa v PDF",
+    description: "Váš osobní plán krok za krokem. Přesně víte, do čeho se pustit dál.",
+    icon: Map,
+    vibe: true,
+    vibeCode: true,
+    vibeCoding: true
+  },
+  {
+    name: "Kompletní dokumentace v PDF",
+    description: "Zadání projektu a technický základ v PDF. Máte všechno černé na bílém k dispozici na pořád.",
+    icon: FileCheck,
+    vibe: false,
+    vibeCode: true,
+    vibeCoding: true
+  },
+  {
+    name: "6 návodů krok za krokem + tahák pro AI",
+    description: "Jednoduché návody na další nástroje, které je fajn používat + tahák pro komunikaci s AI.",
+    icon: BookOpen,
+    vibe: false,
+    vibeCode: true,
+    vibeCoding: true
+  },
+  {
+    name: "Nahrávky schůzek",
+    description: "Můžete se k nim libovolně vracet. Nic vám neuteče ani v případě, že to hned nepochytíte.",
+    icon: Video,
+    vibe: false,
+    vibeCode: true,
+    vibeCoding: true
+  },
+  {
+    name: "2 týdny e-mailová podpora",
+    description: "Když se zaseknete a nebudete si vědět rady, napište mi. Odpovím do 24 hodin.",
+    icon: Mail,
+    vibe: false,
+    vibeCode: true,
+    vibeCoding: true
+  },
+  {
+    name: "Zápisky z jednotlivých schůzek",
+    description: "Po každé schůzce dostanete shrnutí – co máte hotové a co je další krok.",
+    icon: ClipboardList,
+    vibe: false,
+    vibeCode: false,
+    vibeCoding: true
+  },
+  {
+    name: "Check-in call (30 min)",
+    description: "Po 2 týdnech od poslední schůzky se spojíme a podíváme se na váš pokrok. Ujistíte se, že jdete správně.",
+    icon: Phone,
+    vibe: false,
+    vibeCode: false,
+    vibeCoding: true
+  },
+  {
+    name: "Sleva na další konzultaci v Kč",
+    description: "Chcete pokračovat? Máte zvýhodněnou cenu na další spolupráci v rámci 2hodinové konzultace (z hodnoty 3 900 Kč) a platí 3 měsíce od data zakoupení spolupráce v níže popsaných variantách.",
+    icon: Tag,
+    vibe: "300",
+    vibeCode: "600",
+    vibeCoding: "900"
+  }
+]
+
+export const bonusPackages = [
+  { name: "VIBE", key: "vibe", previousPackage: null },
+  { name: "VIBE+CODING", key: "vibeCode", previousPackage: "VIBE" },
+  { name: "VIBECODING VIP", key: "vibeCoding", previousPackage: "VIBE+CODING" }
+]
