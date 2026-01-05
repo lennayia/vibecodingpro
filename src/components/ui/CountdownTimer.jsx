@@ -28,7 +28,7 @@ export default function CountdownTimer({ targetDate }) {
 
   const TimeUnit = ({ value, label }) => (
     <div className="flex flex-col items-center flex-1">
-      <div className="bg-white dark:bg-[#05050f] border border-accent dark:border-gray-600 rounded-xl px-3 sm:px-6 py-4 sm:py-6 w-full flex items-center justify-center">
+      <div className="bg-[#FFFDF9] dark:bg-[#05050f] border border-accent/20 dark:border-gray-600 rounded-xl px-3 sm:px-6 py-4 sm:py-6 w-full flex items-center justify-center">
         <div className="font-display dark:font-['Manrope',sans-serif] font-bold text-accent text-center text-3xl sm:text-5xl md:text-6xl dark:scale-90">
           {String(value).padStart(2, '0')}
         </div>

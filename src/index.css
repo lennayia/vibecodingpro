@@ -30,6 +30,11 @@
     --transition-base: 0.3s ease;
     --transition-slow: 0.6s ease-out;
 
+    /* Benefit sizes - mobile first */
+    --benefit-icon-size: 1.5rem;
+    --benefit-title-size: 1rem;
+    --benefit-desc-size: 0.75rem;
+
     /* Holographic section colors - RGB values for use in rgba() */
     --holo-primary: 181, 108, 78; /* Copper in light mode */
     --holo-secondary: 212, 197, 181; /* Beige in light mode */
@@ -118,6 +123,10 @@
     font-size: clamp(1.25rem, 1.5vw + 0.5rem, 1.75rem);
   }
 
+  h4 {
+    font-size: clamp(1.125rem, 1.5vw + 0.5rem, 1.875rem);
+  }
+
   /* Dark mode heading sizes - 10% larger than original */
   .dark h1 {
     font-size: clamp(1.98rem, 3.96vw + 0.99rem, 3.96rem);
@@ -129,6 +138,10 @@
 
   .dark h3 {
     font-size: clamp(1.125rem, 1.35vw + 0.45rem, 1.575rem);
+  }
+
+  .dark h4 {
+    font-size: clamp(1.01rem, 1.35vw + 0.45rem, 1.69rem);
   }
 
   /* Small viewports (800-900px height) */
@@ -371,6 +384,15 @@
 
   .dark a:focus-visible {
     outline-color: var(--color-accent-dark);
+  }
+
+  /* Fluid benefit sizes - responsive with VH + VW */
+  @media (min-width: 667px) {
+    :root {
+      --benefit-icon-size: clamp(1.5rem, 0.75vh + 0.75vw, 2rem);
+      --benefit-title-size: clamp(1rem, 0.5vh + 0.5vw, 1.25rem);
+      --benefit-desc-size: clamp(0.75rem, 0.35vh + 0.35vw, 0.875rem);
+    }
   }
 }
 
@@ -693,6 +715,203 @@
     }
   }
 
+  /* PromoCoupon section - fluid utilities with VH + VW */
+
+  /* Margin bottom - extra extra small */
+  .mb-fluid-promo-xxs {
+    margin-bottom: 0.125rem;
+  }
+
+  @media (min-width: 667px) {
+    .mb-fluid-promo-xxs {
+      margin-bottom: clamp(0.15rem, 0.15vh + 0.15vw, 0.25rem);
+    }
+  }
+
+  /* Margin bottom - extra small */
+  .mb-fluid-promo-xs {
+    margin-bottom: 0.25rem;
+  }
+
+  @media (min-width: 667px) {
+    .mb-fluid-promo-xs {
+      margin-bottom: clamp(0.25rem, 0.25vh + 0.25vw, 0.5rem);
+    }
+  }
+
+  /* Margin bottom - small */
+  .mb-fluid-promo-sm {
+    margin-bottom: 0.375rem;
+  }
+
+  @media (min-width: 667px) {
+    .mb-fluid-promo-sm {
+      margin-bottom: clamp(0.5rem, 0.5vh + 0.5vw, 0.75rem);
+    }
+  }
+
+  /* Margin bottom - medium */
+  .mb-fluid-promo-md {
+    margin-bottom: 0.5rem;
+  }
+
+  @media (min-width: 667px) {
+    .mb-fluid-promo-md {
+      margin-bottom: clamp(0.75rem, 0.75vh + 0.75vw, 1rem);
+    }
+  }
+
+  /* Margin bottom - large */
+  .mb-fluid-promo-lg {
+    margin-bottom: 0.75rem;
+  }
+
+  @media (min-width: 667px) {
+    .mb-fluid-promo-lg {
+      margin-bottom: clamp(1rem, 1vh + 1vw, 1.5rem);
+    }
+  }
+
+  /* Margin bottom - extra large */
+  .mb-fluid-promo-xl {
+    margin-bottom: 1rem;
+  }
+
+  @media (min-width: 667px) {
+    .mb-fluid-promo-xl {
+      margin-bottom: clamp(1.5rem, 1.5vh + 1.5vw, 2rem);
+    }
+  }
+
+  /* Margin top - extra large */
+  .mt-fluid-promo-xl {
+    margin-top: 1rem;
+  }
+
+  @media (min-width: 667px) {
+    .mt-fluid-promo-xl {
+      margin-top: clamp(1.5rem, 1.5vh + 1.5vw, 2rem);
+    }
+  }
+
+  /* Gap - extra small */
+  .gap-fluid-promo-xs {
+    gap: 0.375rem;
+  }
+
+  @media (min-width: 667px) {
+    .gap-fluid-promo-xs {
+      gap: clamp(0.5rem, 0.5vh + 0.5vw, 0.75rem);
+    }
+  }
+
+  /* Gap - small */
+  .gap-fluid-promo-sm {
+    gap: 0.5rem;
+  }
+
+  @media (min-width: 667px) {
+    .gap-fluid-promo-sm {
+      gap: clamp(0.75rem, 0.75vh + 0.75vw, 1rem);
+    }
+  }
+
+  /* Gap - medium */
+  .gap-fluid-promo-md {
+    gap: 0.75rem;
+  }
+
+  @media (min-width: 667px) {
+    .gap-fluid-promo-md {
+      gap: clamp(1rem, 1vh + 1vw, 1.5rem);
+    }
+  }
+
+  /* Padding horizontal - large */
+  .px-fluid-promo-lg {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  @media (min-width: 667px) {
+    .px-fluid-promo-lg {
+      padding-left: clamp(1.5rem, 1vh + 1vw, 2rem);
+      padding-right: clamp(1.5rem, 1vh + 1vw, 2rem);
+    }
+  }
+
+  /* Padding horizontal - extra large */
+  .px-fluid-promo-xl {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+  }
+
+  @media (min-width: 667px) {
+    .px-fluid-promo-xl {
+      padding-left: clamp(1.25rem, 1vh + 1vw, 1.5rem);
+      padding-right: clamp(1.25rem, 1vh + 1vw, 1.5rem);
+    }
+  }
+
+  /* Padding vertical - small */
+  .py-fluid-promo-sm {
+    padding-top: 0.375rem;
+    padding-bottom: 0.375rem;
+  }
+
+  @media (min-width: 667px) {
+    .py-fluid-promo-sm {
+      padding-top: clamp(0.6rem, 0.6vh + 0.6vw, 0.75rem);
+      padding-bottom: clamp(0.6rem, 0.6vh + 0.6vw, 0.75rem);
+    }
+  }
+
+  /* Padding vertical - medium */
+  .py-fluid-promo-md {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+  }
+
+  @media (min-width: 667px) {
+    .py-fluid-promo-md {
+      padding-top: clamp(0.75rem, 0.75vh + 0.75vw, 1rem);
+      padding-bottom: clamp(0.75rem, 0.75vh + 0.75vw, 1rem);
+    }
+  }
+
+  /* Padding top - medium */
+  .pt-fluid-promo-md {
+    padding-top: 0.75rem;
+  }
+
+  @media (min-width: 667px) {
+    .pt-fluid-promo-md {
+      padding-top: clamp(1rem, 1vh + 1vw, 1.5rem);
+    }
+  }
+
+  /* Padding top - large */
+  .pt-fluid-promo-lg {
+    padding-top: 1.5rem;
+  }
+
+  @media (min-width: 667px) {
+    .pt-fluid-promo-lg {
+      padding-top: clamp(2rem, 1.5vh + 1.5vw, 3rem);
+    }
+  }
+
+  /* Padding all sides - large */
+  .p-fluid-promo-lg {
+    padding: 1rem;
+  }
+
+  @media (min-width: 667px) {
+    .p-fluid-promo-lg {
+      padding: clamp(2rem, 2vh + 2vw, 3rem);
+    }
+  }
+
   /* Fluid padding - horizontal small */
   .px-fluid-sm {
     padding-left: 2rem;
@@ -704,6 +923,22 @@
       padding-left: clamp(1rem, 2vw, 2rem);
       padding-right: clamp(1rem, 2vw, 2rem);
     }
+  }
+
+  /* Benefit icons - fluid size using CSS variables */
+  .icon-fluid-benefit {
+    width: var(--benefit-icon-size) !important;
+    height: var(--benefit-icon-size) !important;
+  }
+
+  /* Benefit title - fluid font size using CSS variables */
+  .text-fluid-benefit-title {
+    font-size: var(--benefit-title-size) !important;
+  }
+
+  /* Benefit description - fluid font size using CSS variables */
+  .text-fluid-benefit-desc {
+    font-size: var(--benefit-desc-size) !important;
   }
 
   /* WhyConsultation utility classes */
@@ -1453,4 +1688,97 @@
   .dark .holographic-text .project-name {
     color: var(--color-accent-dark) !important; /* Dark mode - green */
   }
+
+  /* Accent glow shadow for promo ribbon */
+  .shadow-accent-glow {
+    box-shadow: 0 4px 30px rgba(181, 108, 78, 0.6); /* Light mode - copper glow */
+  }
+
+  .dark .shadow-accent-glow {
+    box-shadow: 0 4px 30px rgba(0, 255, 136, 0.6); /* Dark mode - green glow */
+  }
+
+  /* Holographic effects for promo card */
+  .holo-glow-bg {
+    background: linear-gradient(45deg, rgba(181, 108, 78, 0.4), rgba(150, 90, 60, 0.4)); /* Light mode - copper tones */
+    filter: blur(30px);
+  }
+
+  .dark .holo-glow-bg {
+    background: linear-gradient(45deg, rgba(0, 255, 136, 0.4), rgba(0, 200, 255, 0.4)); /* Dark mode - green/cyan */
+    filter: blur(30px);
+  }
+
+  .holo-shine-bg {
+    background: linear-gradient(135deg, transparent 30%, rgba(181, 108, 78, 0.4) 50%, transparent 70%); /* Light mode - copper */
+  }
+
+  .dark .holo-shine-bg {
+    background: linear-gradient(135deg, transparent 30%, rgba(0, 255, 136, 0.4) 50%, transparent 70%); /* Dark mode - green */
+  }
+
+  .holo-scanlines-bg {
+    background-image: repeating-linear-gradient(0deg, transparent, transparent 8px, rgba(181, 108, 78, 0.20) 8px, rgba(181, 108, 78, 0.20) 9px); /* Light mode - copper, optimized */
+    will-change: transform;
+    animation: scanlines-scroll 3s linear infinite;
+  }
+
+  .dark .holo-scanlines-bg {
+    background-image: repeating-linear-gradient(0deg, transparent, transparent 8px, rgba(0, 255, 136, 0.20) 8px, rgba(0, 255, 136, 0.20) 9px); /* Dark mode - green, optimized */
+    will-change: transform;
+    animation: scanlines-scroll 3s linear infinite;
+  }
+
+  @keyframes scanlines-scroll {
+    0% {
+      background-position: 0 0;
+    }
+    100% {
+      background-position: 0 9px;
+    }
+  }
+
+  /* Disable animations on mobile for better performance */
+  @media (max-width: 767px) {
+    .holo-glow-bg,
+    .holo-shine-bg,
+    .holo-scanlines-bg {
+      opacity: 0 !important;
+      animation: none !important;
+    }
+  }
+
+/* Small viewport - promo section spacing reduction (only for small screens) */
+@media (max-height: 800px) and (max-width: 1024px) {
+  .mb-fluid-promo-xxs { margin-bottom: 0.15rem !important; }
+  .mb-fluid-promo-xs { margin-bottom: 0.3rem !important; }
+  .mb-fluid-promo-sm { margin-bottom: 0.45rem !important; }
+  .mb-fluid-promo-md { margin-bottom: 0.6rem !important; }
+  .mb-fluid-promo-lg { margin-bottom: 0.9rem !important; }
+  .mb-fluid-promo-xl { margin-bottom: 1.2rem !important; }
+  .mt-fluid-promo-xl { margin-top: 1.2rem !important; }
+  .gap-fluid-promo-xs { gap: 0.45rem !important; }
+  .gap-fluid-promo-sm { gap: 0.6rem !important; }
+  .gap-fluid-promo-md { gap: 0.9rem !important; }
+  .p-fluid-promo-lg { padding: 1.2rem !important; }
+  .pt-fluid-promo-md { padding-top: 0.9rem !important; }
+  .pt-fluid-promo-lg { padding-top: 1.2rem !important; }
+}
+
+@media (max-height: 700px) and (max-width: 1024px) {
+  .mb-fluid-promo-xxs { margin-bottom: 0.1rem !important; }
+  .mb-fluid-promo-xs { margin-bottom: 0.2rem !important; }
+  .mb-fluid-promo-sm { margin-bottom: 0.35rem !important; }
+  .mb-fluid-promo-md { margin-bottom: 0.5rem !important; }
+  .mb-fluid-promo-lg { margin-bottom: 0.7rem !important; }
+  .mb-fluid-promo-xl { margin-bottom: 1rem !important; }
+  .mt-fluid-promo-xl { margin-top: 1rem !important; }
+  .gap-fluid-promo-xs { gap: 0.35rem !important; }
+  .gap-fluid-promo-sm { gap: 0.5rem !important; }
+  .gap-fluid-promo-md { gap: 0.7rem !important; }
+  .p-fluid-promo-lg { padding: 1rem !important; }
+  .pt-fluid-promo-md { padding-top: 0.7rem !important; }
+  .pt-fluid-promo-lg { padding-top: 1rem !important; }
+}
+
 }

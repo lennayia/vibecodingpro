@@ -1,43 +1,40 @@
 import { motion } from 'framer-motion'
-import { useState } from 'react'
+import { useState, memo, useCallback } from 'react'
 import Section from '../layout/Section'
-import Button from '../ui/Button'
-import { Gift, Copy, Check, Sparkles, Package, Clock, Wallet } from 'lucide-react'
+import { Gift, Copy, Check, Package, Clock, Wallet } from 'lucide-react'
 import { fadeIn, slideUp } from '../../constants/animations'
-import AnimatedBackground from '../ui/AnimatedBackground'
 
-export default function PromoCoupon() {
+function PromoCoupon() {
   const [copied, setCopied] = useState(false)
   const couponCode = "VIBELEDEN"
 
-  const handleCopy = () => {
+  const handleCopy = useCallback(() => {
     navigator.clipboard.writeText(couponCode)
     setCopied(true)
     setTimeout(() => setCopied(false), 2000)
-  }
-
-  const binaryBackground = <AnimatedBackground type="binary" count={50} />
+  }, [couponCode])
 
   return (
     <Section
-      background="dark"
-      centered={true}
-      showScrollIndicator={true}
-      backgroundElement={binaryBackground}
-    >
+  background="none"
+  className="bg-white dark:bg-[#05050f]"
+  centered={true}
+  showScrollIndicator={true}
+  customPadding="py-16 md:py-20 px-[4%]"
+>
       <div className="w-full relative z-10">
         <motion.div {...fadeIn}>
           {/* Main heading */}
           <motion.div
-            className="text-center mb-8 md:mb-[clamp(1.5rem,3vh,2rem)]"
+            className="text-center mt-fluid-promo-xl mb-fluid-promo-xl"
             {...slideUp}
           >
-            <div className="flex items-center justify-center gap-3 md:gap-[clamp(0.5rem,1vh,0.75rem)] mb-4 md:mb-[clamp(0.75rem,1.5vh,1rem)]">
-              <Gift className="w-10 h-10 md:w-12 md:h-12 text-accent" strokeWidth={2} />
+            <div className="flex items-center justify-center gap-3 lg:gap-4 mb-fluid-promo-md flex-wrap">
+              <Gift className="hidden lg:block w-10 lg:w-12 h-10 lg:h-12 text-accent flex-shrink-0" strokeWidth={2} />
               <h2 className="font-display font-bold leading-tight">
                 Povánoční dárek od VibecodingPro
               </h2>
-              <Gift className="w-10 h-10 md:w-12 md:h-12 text-accent" strokeWidth={2} />
+              <Gift className="hidden lg:block w-10 lg:w-12 h-10 lg:h-12 text-accent flex-shrink-0" strokeWidth={2} />
             </div>
 
             <p className="text-xl md:text-2xl font-light max-w-3xl mx-auto">
@@ -47,18 +44,14 @@ export default function PromoCoupon() {
 
           {/* Main promo card */}
           <motion.div
-            className="max-w-4xl mx-auto mb-8 md:mb-[clamp(1.5rem,3vh,2rem)]"
+            className="max-w-4xl mx-auto"
             {...slideUp}
             transition={{ delay: 0.2 }}
           >
-            <div className="relative overflow-hidden rounded-3xl border-2 border-accent/50 bg-gradient-to-br from-accent/10 via-accent/5 to-transparent backdrop-blur-md p-8 md:p-[clamp(2rem,4vh,3rem)]">
+            <div className="relative overflow-hidden rounded-3xl border-2 border-accent/50 bg-gradient-to-br from-accent/10 via-accent/5 to-transparent backdrop-blur-md p-fluid-promo-lg">
               {/* Holographic glow effect */}
               <motion.div
-                className="absolute -inset-4 rounded-3xl opacity-30"
-                style={{
-                  background: 'linear-gradient(45deg, rgba(0, 255, 136, 0.4), rgba(0, 200, 255, 0.4))',
-                  filter: 'blur(30px)',
-                }}
+                className="absolute -inset-4 rounded-3xl opacity-30 holo-glow-bg"
                 animate={{
                   opacity: [0.2, 0.5, 0.2],
                 }}
@@ -71,10 +64,7 @@ export default function PromoCoupon() {
 
               {/* Holographic shine overlay */}
               <motion.div
-                className="absolute inset-0 rounded-3xl opacity-20"
-                style={{
-                  background: 'linear-gradient(135deg, transparent 30%, rgba(0, 255, 136, 0.4) 50%, transparent 70%)',
-                }}
+                className="absolute inset-0 rounded-3xl opacity-20 holo-shine-bg"
                 animate={{
                   backgroundPosition: ['0% 0%', '200% 200%'],
                 }}
@@ -85,24 +75,18 @@ export default function PromoCoupon() {
                 }}
               />
 
-              {/* Scanlines effect */}
+              {/* Scanlines effect - optimized */}
               <div
-                className="absolute inset-0 rounded-3xl pointer-events-none opacity-10"
-                style={{
-                  backgroundImage: 'repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(0, 255, 136, 0.1) 3px, rgba(0, 255, 136, 0.1) 6px)',
-                }}
+                className="absolute inset-0 rounded-3xl pointer-events-none opacity-50 holo-scanlines-bg"
+                style={{ transform: 'translateZ(0)' }}
               />
 
-              {/* Corner ribbon with -25% */}
+              {/* Corner ribbon with -25 % */}
               <div className="absolute -top-1 -right-1 overflow-hidden w-36 h-36 md:w-44 md:h-44 rounded-tr-3xl">
                 <motion.div
-                  className="absolute top-8 -right-11 md:top-10 md:-right-14 w-44 md:w-52 bg-accent text-black text-center font-black py-2 md:py-3 shadow-2xl rotate-45 origin-center"
+                  className="absolute top-8 -right-11 md:top-10 md:-right-14 w-44 md:w-52 bg-accent text-black text-center font-black py-2 md:py-3 shadow-accent-glow rotate-45 origin-center"
                   animate={{
-                    boxShadow: [
-                      '0 4px 20px rgba(0, 255, 136, 0.5)',
-                      '0 4px 30px rgba(0, 255, 136, 0.8)',
-                      '0 4px 20px rgba(0, 255, 136, 0.5)'
-                    ]
+                    opacity: [1, 0.9, 1]
                   }}
                   transition={{
                     duration: 2,
@@ -111,53 +95,65 @@ export default function PromoCoupon() {
                   }}
                 >
                   <span className="text-2xl md:text-3xl drop-shadow-md">
-                    -25%
+                    -25 %
                   </span>
                 </motion.div>
               </div>
 
-              <div className="relative z-10 pt-8 md:pt-[clamp(2rem,3vh,3rem)]">
+              <div className="relative z-10 pt-fluid-promo-md">
                 {/* Benefits */}
-                <div className="grid md:grid-cols-3 gap-6 md:gap-[clamp(1rem,2vh,1.5rem)] mb-8 md:mb-[clamp(1.5rem,3vh,2rem)]">
+                <div className="grid md:grid-cols-3 gap-fluid-promo-md mb-fluid-promo-xl mt-10">
                   <div className="text-center">
-                    <div className="flex justify-center mb-2 md:mb-[clamp(0.25rem,0.5vh,0.5rem)]">
-                      <Package className="w-6 h-6 md:w-7 md:h-7 text-accent" strokeWidth={2} />
+                    <div className="flex justify-center mb-fluid-promo-xs">
+                      <Package
+                        className="text-accent"
+                        strokeWidth={2}
+                        style={{ width: 'min(calc(1.25rem + 0.4vw + 0.2vh), 2rem)', height: 'min(calc(1.25rem + 0.4vw + 0.2vh), 2rem)' }}
+                      />
                     </div>
-                    <p className="text-lg font-semibold mb-1 md:mb-[clamp(0.15rem,0.3vh,0.25rem)]">Na všechny varianty</p>
-                    <p className="text-sm font-light">VIBE, VIBE+CODING i VIP</p>
+                    <p className="text-xl font-semibold mb-fluid-promo-xxs">Na všechny varianty</p>
+                    <p className="font-light" style={{ fontSize: 'min(calc(0.7rem + 0.15vw + 0.075vh), 0.875rem)' }}>VIBE, VIBE+CODING i VIP</p>
                   </div>
                   <div className="text-center">
-                    <div className="flex justify-center mb-2 md:mb-[clamp(0.25rem,0.5vh,0.5rem)]">
-                      <Clock className="w-6 h-6 md:w-7 md:h-7 text-accent" strokeWidth={2} />
+                    <div className="flex justify-center mb-fluid-promo-xs">
+                      <Clock
+                        className="text-accent"
+                        strokeWidth={2}
+                        style={{ width: 'min(calc(1.25rem + 0.4vw + 0.2vh), 2rem)', height: 'min(calc(1.25rem + 0.4vw + 0.2vh), 2rem)' }}
+                      />
                     </div>
-                    <p className="text-lg font-semibold mb-1 md:mb-[clamp(0.15rem,0.3vh,0.25rem)]">Limitovaná nabídka</p>
-                    <p className="text-sm font-light">Platí do 11. 1. 2026 23:59</p>
+                    <p className="text-xl font-semibold mb-fluid-promo-xxs">Limitovaná nabídka</p>
+                    <p className="font-light" style={{ fontSize: 'min(calc(0.7rem + 0.15vw + 0.075vh), 0.875rem)' }}>Platí do 11. 1. 2026 23:59</p>
                   </div>
                   <div className="text-center">
-                    <div className="flex justify-center mb-2 md:mb-[clamp(0.25rem,0.5vh,0.5rem)]">
-                      <Wallet className="w-6 h-6 md:w-7 md:h-7 text-accent" strokeWidth={2} />
+                    <div className="flex justify-center mb-fluid-promo-xs">
+                      <Wallet
+                        className="text-accent"
+                        strokeWidth={2}
+                        style={{ width: 'min(calc(1.25rem + 0.4vw + 0.2vh), 2rem)', height: 'min(calc(1.25rem + 0.4vw + 0.2vh), 2rem)' }}
+                      />
                     </div>
-                    <p className="text-lg font-semibold mb-1 md:mb-[clamp(0.15rem,0.3vh,0.25rem)]">Okamžitá úspora</p>
-                    <p className="text-sm font-light">Až 7 475 Kč vám zůstane v peněžence</p>
+                    <p className="text-xl font-semibold mb-fluid-promo-xxs">Okamžitá úspora</p>
+                    <p className="font-light" style={{ fontSize: 'min(calc(0.7rem + 0.15vw + 0.075vh), 0.875rem)' }}>Až 7 475 Kč vám zůstane v peněžence</p>
                   </div>
                 </div>
 
                 {/* Coupon code */}
-                <div className="text-center mb-6 md:mb-[clamp(1rem,2vh,1.5rem)]">
-                  <p className="text-lg font-light mb-3 md:mb-[clamp(0.5rem,1vh,0.75rem)]">
+                <div className="text-center mb-fluid-promo-lg">
+                  <p className="text-lg font-light mb-fluid-promo-sm">
                     Při objednávce použijte kód a získejte 25% slevu:
                   </p>
 
-                  <div className="flex flex-col sm:flex-row items-center justify-center gap-4 md:gap-[clamp(0.75rem,1.5vh,1rem)]">
-                    <div className="bg-accent rounded-xl px-6 md:px-[clamp(1.5rem,2vh,2rem)] py-3 md:py-[clamp(0.75rem,1.5vh,1rem)] shadow-lg">
-                      <p className="font-mono text-3xl md:text-4xl font-black text-black tracking-wider">
+                  <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+                    <div className="bg-white dark:bg-[#0a0a1a] border-2 border-accent rounded-xl px-6 h-14 flex items-center justify-center shadow-lg">
+                      <span className="font-mono text-2xl font-black text-[#2E2E2E] dark:text-white tracking-wider">
                         {couponCode}
-                      </p>
+                      </span>
                     </div>
 
                     <button
                       onClick={handleCopy}
-                      className="bg-black/30 hover:bg-black/40 border-2 border-accent/50 hover:border-accent text-white font-bold px-5 md:px-[clamp(1.25rem,2vh,1.5rem)] py-2.5 md:py-[clamp(0.6rem,1.2vh,0.75rem)] rounded-xl transition-all flex items-center gap-2 backdrop-blur-sm"
+                      className="bg-white dark:bg-[#0a0a1a] border-2 border-accent rounded-xl px-6 h-14 flex items-center justify-center gap-2 text-[#2E2E2E] dark:text-white font-bold hover:bg-gray-50 dark:hover:bg-[#0a0a1a]/80 transition-colors"
                     >
                       {copied ? (
                         <>
@@ -175,11 +171,11 @@ export default function PromoCoupon() {
                 </div>
 
                 {/* Call to action */}
-                <div className="text-center border-t border-accent/20 pt-6 md:pt-[clamp(1rem,2vh,1.5rem)]">
-                  <p className="text-xl font-semibold mb-4 md:mb-[clamp(0.75rem,1.5vh,1rem)]">
+                <div className="text-center border-t border-accent/20 pt-fluid-promo-md">
+                  <p className="text-xl font-semibold mb-fluid-promo-md">
                     Proč to je skvělá příležitost?
                   </p>
-                  <div className="grid md:grid-cols-2 gap-3 md:gap-[clamp(0.5rem,1vh,0.75rem)] max-w-2xl mx-auto text-left">
+                  <div className="grid md:grid-cols-2 gap-fluid-promo-xs max-w-2xl mx-auto text-left">
                     <p className="flex items-start gap-2">
                       <span className="text-accent mt-1">✓</span>
                       <span className="font-light">Investice do vlastních digitálních nástrojů se vám vrátí několikanásobně</span>
@@ -206,3 +202,5 @@ export default function PromoCoupon() {
     </Section>
   )
 }
+
+export default memo(PromoCoupon)

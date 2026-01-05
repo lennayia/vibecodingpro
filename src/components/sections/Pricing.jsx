@@ -8,7 +8,6 @@ import { pricingPackages } from '../../constants/data'
 import { fadeIn, slideUp } from '../../constants/animations'
 
 function Pricing() {
-
   return (
     <Section background="none" className="bg-white dark:bg-[#05050f]" centered={true} showScrollIndicator={true}>
       <div id="pricing-section">
@@ -22,7 +21,7 @@ function Pricing() {
             {...slideUp}
             transition={{ delay: 0.2 }}
           >
-            <div className="rounded-2xl bg-[#F5EDE5] dark:bg-[#05050f] border border-accent dark:border-gray-700 p-8 md:p-fluid-pricing-lg">
+            <div className="rounded-2xl border border-accent/20 dark:border-gray-700 p-8 md:p-fluid-pricing-lg">
               <div className="flex items-center justify-center gap-4 md:gap-fluid-pricing-sm mb-6 md:mb-fluid-pricing-md">
                 <Clock className="w-6 h-6" strokeWidth={2} />
                 <h3 className="font-display font-bold">Zaváděcí ceny</h3>
