@@ -63,7 +63,7 @@ export default function VibecodingOrderPage() {
                 6x 55 min mentoring
               </p>
               <p className="text-4xl font-bold text-accent mb-2">
-                8 900 Kč
+                9 900 Kč
               </p>
             </div>
 

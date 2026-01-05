@@ -238,7 +238,7 @@ export const pricingPackages = [
     title: "VIBE+CODING",
     availableSpots: 3,
     serviceType: "6x 55 min mentoring",
-    price: "8 900 Kč",
+    price: "9 900 Kč",
     description: "Pro 3 ženy, které chtějí pochopit<br />a rovnou začít",
     resultTitle: "Výsledek:",
     resultDescription: "Rozumíte, PLUS máte kus hotovo - nástroje běží, projekt existuje, první kód je napsaný.<br />Ušetříte desítky hodin zkoušení.",

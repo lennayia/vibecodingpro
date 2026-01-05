@@ -448,6 +448,63 @@
     gap: clamp(0.375rem, 0.375vh + 0.375vw, 0.75rem);
   }
 
+  /* Dark mode heading font utility */
+  .dark-heading-font {
+    @apply dark:font-['Manrope',sans-serif];
+  }
+
+  /* Comparison table cell padding utility */
+  .table-cell-padding {
+    @apply px-1.5 py-0.5;
+  }
+
+  @media (min-width: 768px) {
+    .table-cell-padding {
+      @apply px-2 py-0.5;
+    }
+  }
+
+  /* Comparison section padding utilities */
+  .pt-clamp-comparison {
+    padding-top: clamp(1rem, 1vh + 1vw, 1.5rem);
+  }
+
+  .pb-clamp-comparison {
+    padding-bottom: clamp(1.5rem, 1.5vh + 1.5vw, 2rem);
+  }
+
+  /* Comparison table background utilities */
+  .comparison-bg {
+    @apply bg-white dark:bg-[var(--color-bg-dark-alt)];
+  }
+
+  .comparison-accent-dark {
+    @apply dark:bg-[var(--color-accent-dark)];
+  }
+
+  /* Comparison text utilities - proportional scaling for one-screen fit */
+  .text-fluid-comparison-tip {
+    font-size: clamp(0.6875rem, 0.7vh + 0.7vw, 0.9375rem);
+    line-height: 1.6;
+  }
+
+  .text-fluid-comparison-note {
+    font-size: clamp(0.6875rem, 0.7vh + 0.7vw, 0.9375rem);
+    line-height: 1.6;
+  }
+
+  .text-fluid-comparison-sm {
+    font-size: clamp(0.6875rem, 0.7vh + 0.7vw, 0.9375rem);
+  }
+
+  .text-fluid-comparison-base {
+    font-size: clamp(0.75rem, 0.7vh + 0.7vw, 1rem);
+  }
+
+  .text-fluid-comparison-xs {
+    font-size: clamp(0.625rem, 0.7vh + 0.7vw, 0.875rem);
+  }
+
   /* Fluid margin bottom - extra small */
   .mb-fluid-xs {
     margin-bottom: 0.5rem;
