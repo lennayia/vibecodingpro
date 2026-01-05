@@ -110,35 +110,32 @@ function PromoCoupon() {
                   <div className="text-center">
                     <div className="flex justify-center mb-fluid-promo-xs">
                       <Package
-                        className="text-accent"
+                        className="text-accent promo-icon-fluid"
                         strokeWidth={2}
-                        style={{ width: 'min(calc(1.25rem + 0.4vw + 0.2vh), 2rem)', height: 'min(calc(1.25rem + 0.4vw + 0.2vh), 2rem)' }}
                       />
                     </div>
                     <p className="text-xl font-semibold mb-fluid-promo-xxs">Na všechny varianty</p>
-                    <p className="font-light" style={{ fontSize: 'min(calc(0.7rem + 0.15vw + 0.075vh), 0.875rem)' }}>VIBE, VIBE+CODING i VIP</p>
+                    <p className="font-light promo-text-fluid-sm">VIBE, VIBE+CODING i VIP</p>
                   </div>
                   <div className="text-center">
                     <div className="flex justify-center mb-fluid-promo-xs">
                       <Clock
-                        className="text-accent"
+                        className="text-accent promo-icon-fluid"
                         strokeWidth={2}
-                        style={{ width: 'min(calc(1.25rem + 0.4vw + 0.2vh), 2rem)', height: 'min(calc(1.25rem + 0.4vw + 0.2vh), 2rem)' }}
                       />
                     </div>
                     <p className="text-xl font-semibold mb-fluid-promo-xxs">Limitovaná nabídka</p>
-                    <p className="font-light" style={{ fontSize: 'min(calc(0.7rem + 0.15vw + 0.075vh), 0.875rem)' }}>Platí do 11. 1. 2026 23:59</p>
+                    <p className="font-light promo-text-fluid-sm">Platí do 11. 1. 2026 23:59</p>
                   </div>
                   <div className="text-center">
                     <div className="flex justify-center mb-fluid-promo-xs">
                       <Wallet
-                        className="text-accent"
+                        className="text-accent promo-icon-fluid"
                         strokeWidth={2}
-                        style={{ width: 'min(calc(1.25rem + 0.4vw + 0.2vh), 2rem)', height: 'min(calc(1.25rem + 0.4vw + 0.2vh), 2rem)' }}
                       />
                     </div>
                     <p className="text-xl font-semibold mb-fluid-promo-xxs">Okamžitá úspora</p>
-                    <p className="font-light" style={{ fontSize: 'min(calc(0.7rem + 0.15vw + 0.075vh), 0.875rem)' }}>Až 7 475 Kč vám zůstane v peněžence</p>
+                    <p className="font-light promo-text-fluid-sm">Až 7 475 Kč vám zůstane v peněžence</p>
                   </div>
                 </div>
 
