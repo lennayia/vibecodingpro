@@ -33,7 +33,7 @@ const BonusCard = memo(function BonusCard({ item, index, pkg, pkgIndex }) {
       initial={{ opacity: 0, x: -20 }}
       animate={{ opacity: 1, x: 0 }}
       transition={{ delay: index * 0.1 }}
-      className="p-3 pb-2 rounded-xl bg-white/50 dark:bg-[#0a0a1a]/50 border border-accent/20 dark:border-gray-700 hover:border-accent/40 dark:hover:border-accent/40 transition-all backdrop-blur-sm"
+      className="p-3 pb-2 rounded-xl bg-white/90 dark:bg-[#0a0a1a]/90 border border-accent/20 dark:border-gray-700 hover:border-accent/40 dark:hover:border-accent/40 transition-all backdrop-blur-sm"
     >
       <div className="flex items-start gap-4">
         {/* Icon with accent background */}
@@ -97,7 +97,7 @@ const BonusPackageHeader = memo(function BonusPackageHeader({ packageName }) {
       transition={{ duration: 0.3 }}
       className="relative min-w-[200px] flex justify-center"
     >
-      <div className="absolute inset-0 bg-accent/10 blur-lg animate-pulse" />
+      <div className="absolute inset-0 bg-accent/10 blur-lg animate-pulse" style={{ willChange: 'opacity' }} />
       <h3 className="relative font-display font-bold text-accent drop-shadow-package-header">
         varianta {packageName}
       </h3>

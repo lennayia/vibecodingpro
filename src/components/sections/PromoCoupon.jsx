@@ -48,10 +48,11 @@ function PromoCoupon() {
             {...slideUp}
             transition={{ delay: 0.2 }}
           >
-            <div className="relative overflow-hidden rounded-3xl border-2 border-accent/50 bg-gradient-to-br from-accent/10 via-accent/5 to-transparent backdrop-blur-md p-fluid-promo-lg">
+            <div className="relative overflow-hidden rounded-3xl border-2 border-accent/50 dark:border-[#0ddd0d]/50 bg-gradient-to-br from-accent/10 via-accent/5 to-transparent dark:from-[#0ddd0d]/10 dark:via-[#0ddd0d]/5 backdrop-blur-md p-fluid-promo-lg">
               {/* Holographic glow effect */}
               <motion.div
                 className="absolute -inset-4 rounded-3xl opacity-30 holo-glow-bg"
+                style={{ willChange: 'opacity' }}
                 animate={{
                   opacity: [0.2, 0.5, 0.2],
                 }}
@@ -65,6 +66,7 @@ function PromoCoupon() {
               {/* Holographic shine overlay */}
               <motion.div
                 className="absolute inset-0 rounded-3xl opacity-20 holo-shine-bg"
+                style={{ willChange: 'background-position' }}
                 animate={{
                   backgroundPosition: ['0% 0%', '200% 200%'],
                 }}
@@ -84,7 +86,8 @@ function PromoCoupon() {
               {/* Corner ribbon with -25 % */}
               <div className="absolute -top-1 -right-1 overflow-hidden w-36 h-36 md:w-44 md:h-44 rounded-tr-3xl">
                 <motion.div
-                  className="absolute top-8 -right-11 md:top-10 md:-right-14 w-44 md:w-52 bg-accent text-black text-center font-black py-2 md:py-3 shadow-accent-glow rotate-45 origin-center"
+                  className="absolute top-8 -right-11 md:top-10 md:-right-14 w-44 md:w-52 bg-accent dark:bg-[#0ddd0d] text-black text-center font-black py-2 md:py-3 shadow-accent-glow rotate-45 origin-center"
+                  style={{ willChange: 'opacity' }}
                   animate={{
                     opacity: [1, 0.9, 1]
                   }}

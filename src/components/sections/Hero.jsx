@@ -114,7 +114,7 @@ function Hero() {
               {textParts.second}
             </span>
             {showCursor && (
-              <span className="inline-block w-1 h-[0.9em] bg-accent ml-1 animate-pulse" />
+              <span className="inline-block w-1 h-[0.9em] bg-accent ml-1 animate-pulse" style={{ willChange: 'opacity' }} />
             )}
           </span>
         )}

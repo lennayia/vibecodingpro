@@ -1695,7 +1695,7 @@
   }
 
   .dark .shadow-accent-glow {
-    box-shadow: 0 4px 30px rgba(0, 255, 136, 0.6); /* Dark mode - green glow */
+    box-shadow: 0 4px 30px rgba(13, 221, 13, 0.6); /* Dark mode - green glow */
   }
 
   /* Holographic effects for promo card */
@@ -1705,7 +1705,7 @@
   }
 
   .dark .holo-glow-bg {
-    background: linear-gradient(45deg, rgba(0, 255, 136, 0.4), rgba(0, 200, 255, 0.4)); /* Dark mode - green/cyan */
+    background: linear-gradient(45deg, rgba(13, 221, 13, 0.4), rgba(13, 221, 13, 0.3)); /* Dark mode - unified green */
     filter: blur(30px);
   }
 
@@ -1714,7 +1714,7 @@
   }
 
   .dark .holo-shine-bg {
-    background: linear-gradient(135deg, transparent 30%, rgba(0, 255, 136, 0.4) 50%, transparent 70%); /* Dark mode - green */
+    background: linear-gradient(135deg, transparent 30%, rgba(13, 221, 13, 0.4) 50%, transparent 70%); /* Dark mode - unified green */
   }
 
   .holo-scanlines-bg {
@@ -1724,7 +1724,7 @@
   }
 
   .dark .holo-scanlines-bg {
-    background-image: repeating-linear-gradient(0deg, transparent, transparent 8px, rgba(0, 255, 136, 0.20) 8px, rgba(0, 255, 136, 0.20) 9px); /* Dark mode - green, optimized */
+    background-image: repeating-linear-gradient(0deg, transparent, transparent 8px, rgba(13, 221, 13, 0.20) 8px, rgba(13, 221, 13, 0.20) 9px); /* Dark mode - unified green, optimized */
     will-change: transform;
     animation: scanlines-scroll 3s linear infinite;
   }

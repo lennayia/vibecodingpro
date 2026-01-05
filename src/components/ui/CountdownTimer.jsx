@@ -1,9 +1,23 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback, memo } from 'react'
+
+// Memoized TimeUnit to prevent unnecessary re-renders
+const TimeUnit = memo(({ value, label }) => (
+  <div className="flex flex-col items-center flex-1">
+    <div className="bg-[#FFFDF9] dark:bg-[#05050f] border border-accent/20 dark:border-gray-600 rounded-xl px-3 sm:px-6 py-4 sm:py-6 w-full flex items-center justify-center">
+      <div className="font-display dark:font-['Manrope',sans-serif] font-bold text-accent text-center text-3xl sm:text-5xl md:text-6xl dark:scale-90">
+        {String(value).padStart(2, '0')}
+      </div>
+    </div>
+    <p className="mt-2 text-[0.625rem] sm:text-xs font-light">
+      {label}
+    </p>
+  </div>
+))
+
+TimeUnit.displayName = 'TimeUnit'
 
 export default function CountdownTimer({ targetDate }) {
-  const [timeLeft, setTimeLeft] = useState(calculateTimeLeft())
-
-  function calculateTimeLeft() {
+  const calculateTimeLeft = useCallback(() => {
     const difference = new Date(targetDate) - new Date()
 
     if (difference > 0) {
@@ -16,7 +30,9 @@ export default function CountdownTimer({ targetDate }) {
     }
 
     return { days: 0, hours: 0, minutes: 0, seconds: 0 }
-  }
+  }, [targetDate])
+
+  const [timeLeft, setTimeLeft] = useState(() => calculateTimeLeft())
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -24,20 +40,7 @@ export default function CountdownTimer({ targetDate }) {
     }, 1000)
 
     return () => clearInterval(timer)
-  }, [targetDate])
-
-  const TimeUnit = ({ value, label }) => (
-    <div className="flex flex-col items-center flex-1">
-      <div className="bg-[#FFFDF9] dark:bg-[#05050f] border border-accent/20 dark:border-gray-600 rounded-xl px-3 sm:px-6 py-4 sm:py-6 w-full flex items-center justify-center">
-        <div className="font-display dark:font-['Manrope',sans-serif] font-bold text-accent text-center text-3xl sm:text-5xl md:text-6xl dark:scale-90">
-          {String(value).padStart(2, '0')}
-        </div>
-      </div>
-      <p className="mt-2 text-[0.625rem] sm:text-xs font-light">
-        {label}
-      </p>
-    </div>
-  )
+  }, [calculateTimeLeft])
 
   return (
     <div className="flex gap-1 sm:gap-3 justify-center items-center">
