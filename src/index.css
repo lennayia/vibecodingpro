@@ -32,6 +32,7 @@
 
     /* Fluid spacing - consolidated values */
     --fluid-spacing-xs: clamp(0.25rem, 0.25vh + 0.25vw, 0.5rem);
+    --fluid-spacing-sm: clamp(0.5rem, 0.5vh + 0.5vw, 0.75rem);
 
     /* Benefit sizes - mobile first */
     --benefit-icon-size: 1.5rem;
@@ -680,7 +681,7 @@
 
   @media (min-width: 667px) {
     .gap-fluid-pricing-sm {
-      gap: clamp(0.5rem, 0.5vh + 0.5vw, 0.75rem);
+      gap: var(--fluid-spacing-sm);
     }
   }
 
@@ -814,7 +815,7 @@
 
   @media (min-width: 667px) {
     .gap-fluid-promo-xs {
-      gap: clamp(0.5rem, 0.5vh + 0.5vw, 0.75rem);
+      gap: var(--fluid-spacing-sm);
     }
   }
 
