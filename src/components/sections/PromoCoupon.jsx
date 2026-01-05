@@ -131,7 +131,7 @@ export default function PromoCoupon() {
                       <Clock className="w-6 h-6 md:w-7 md:h-7 text-accent" strokeWidth={2} />
                     </div>
                     <p className="text-lg font-semibold mb-1 md:mb-[clamp(0.15rem,0.3vh,0.25rem)]">Limitovaná nabídka</p>
-                    <p className="text-sm font-light">Platí do 4. 1. 2026 23:59</p>
+                    <p className="text-sm font-light">Platí do 11. 1. 2026 23:59</p>
                   </div>
                   <div className="text-center">
                     <div className="flex justify-center mb-2 md:mb-[clamp(0.25rem,0.5vh,0.5rem)]">

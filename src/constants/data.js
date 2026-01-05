@@ -568,7 +568,7 @@ export const bonusItems = [
     vibeCoding: true
   },
   {
-    name: "Sleva na další konzultaci v Kč",
+    name: "Sleva na další konzultaci",
     description: "Chcete pokračovat? Máte zvýhodněnou cenu na další spolupráci v rámci 2hodinové konzultace (z hodnoty 3 900 Kč) a platí 3 měsíce od data zakoupení spolupráce v níže popsaných variantách.",
     icon: Tag,
     vibe: "300",

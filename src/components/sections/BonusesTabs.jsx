@@ -22,7 +22,7 @@ const BonusCard = memo(function BonusCard({ item, index, pkg, pkgIndex }) {
     const previousValue = parseInt(item[previousPkg.key])
     const currentValue = parseInt(value)
     const increment = currentValue - previousValue
-    discountDisplay = `Kupón ${increment} Kč (celkem ${currentValue} Kč)`
+    discountDisplay = `Kupón ${increment} (celkem ${currentValue})`
     isIncrementalDiscount = true
   }
 
@@ -32,7 +32,7 @@ const BonusCard = memo(function BonusCard({ item, index, pkg, pkgIndex }) {
       initial={{ opacity: 0, x: -20 }}
       animate={{ opacity: 1, x: 0 }}
       transition={{ delay: index * 0.1 }}
-      className="p-3 rounded-xl bg-gray-50 dark:bg-[#0a0a1a] border border-gray-200 dark:border-[#070716] hover:border-accent/30 dark:hover:border-accent/30 transition-all"
+      className="p-3 rounded-xl bg-white dark:bg-[#0a0a1a] border border-gray-200 dark:border-[#070716] hover:border-accent/30 dark:hover:border-accent/30 transition-all"
     >
       <div className="flex items-start gap-4">
         {/* Icon with accent background */}
@@ -97,7 +97,7 @@ const BonusPackageHeader = memo(function BonusPackageHeader({ packageName }) {
       className="relative min-w-[200px] flex justify-center"
     >
       <div className="absolute inset-0 bg-accent/10 blur-lg animate-pulse" />
-      <h3 className="relative font-display font-bold text-accent drop-shadow-[0_0_20px_rgba(0,255,136,0.6)]">
+      <h3 className="relative font-display font-bold text-accent drop-shadow-package-header">
         varianta {packageName}
       </h3>
     </motion.div>
@@ -166,7 +166,7 @@ const BonusesTabsSeo = memo(function BonusesTabsSeo() {
   }, [bonusSlides.length])
 
   return (
-    <Section background="light" centered={true} showScrollIndicator={true}>
+    <Section background="none" className="bg-white dark:bg-[#0a0a1a]" centered={true} showScrollIndicator={true}>
       <div className="w-full">
         <motion.div {...fadeIn}>
           {/* Fixed header */}

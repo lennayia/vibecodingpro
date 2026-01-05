@@ -1,10 +1,10 @@
-import { Check, Gift, Tag, Crown, ChevronDown, Map, FileCheck, BookOpen, Video, Mail, ClipboardList, Phone, Ticket, Target } from 'lucide-react'
+import { Check, Gift, Tag, Crown, ChevronDown, Ticket } from 'lucide-react'
 import { useState, useRef, memo, useCallback } from 'react'
 import { Link } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import Card from './Card'
 import Button from './Button'
-import { phases } from '../../constants/data'
+import { phases, bonusItems } from '../../constants/data'
 
 function PricingCard({
   title,
@@ -65,74 +65,6 @@ function PricingCard({
     setRotateY(0)
     setShinePosition({ x: 50, y: 50 })
   }, [])
-
-  // Bonus items with full details
-  const bonusItems = [
-    {
-      name: "Osobní roadmapa v PDF",
-      description: "Váš osobní plán krok za krokem. Přesně víte, do čeho se pustit dál.",
-      icon: Map,
-      vibe: true,
-      vibeCode: true,
-      vibeCoding: true
-    },
-    {
-      name: "Kompletní dokumentace v PDF",
-      description: "Zadání projektu a technický základ v PDF. Máte všechno černé na bílém k dispozici na pořád.",
-      icon: FileCheck,
-      vibe: false,
-      vibeCode: true,
-      vibeCoding: true
-    },
-    {
-      name: "6 návodů krok za krokem + tahák pro AI",
-      description: "Jednoduché návody na další nástroje, které je fajn používat + tahák pro komunikaci s AI.",
-      icon: BookOpen,
-      vibe: false,
-      vibeCode: true,
-      vibeCoding: true
-    },
-    {
-      name: "Nahrávky schůzek",
-      description: "Můžete se k nim libovolně vracet. Nic vám neuteče ani v případě, že to hned nepochytíte.",
-      icon: Video,
-      vibe: false,
-      vibeCode: true,
-      vibeCoding: true
-    },
-    {
-      name: "2 týdny e-mailová podpora",
-      description: "Když se zaseknete a nebudete si vědět rady, napište mi. Odpovím do 24 hodin.",
-      icon: Mail,
-      vibe: false,
-      vibeCode: true,
-      vibeCoding: true
-    },
-    {
-      name: "Zápisky z jednotlivých schůzek",
-      description: "Po každé schůzce dostanete shrnutí – co máte hotové a co je další krok.",
-      icon: ClipboardList,
-      vibe: false,
-      vibeCode: false,
-      vibeCoding: true
-    },
-    {
-      name: "Check-in call (30 min)",
-      description: "Po 2 týdnech od poslední schůzky se spojíme a podíváme se na váš pokrok. Ujistíte se, že jdete správně.",
-      icon: Phone,
-      vibe: false,
-      vibeCode: false,
-      vibeCoding: true
-    },
-    {
-      name: "Sleva na další konzultaci",
-      description: "Chcete pokračovat? Máte zvýhodněnou cenu na další spolupráci v rámci 2hodinové konzultace (z hodnoty 3 900 Kč) a platí 3 měsíce od data zakoupení spolupráce.",
-      icon: Tag,
-      vibe: "300 Kč",
-      vibeCode: "600 Kč",
-      vibeCoding: "900 Kč"
-    }
-  ]
 
   // Determine which phases to show based on package title
   const getPackagePhases = () => {
@@ -308,7 +240,7 @@ function PricingCard({
                         <span className="flex-1 leading-none">{bonus.name}</span>
                         {value !== true && typeof value === 'string' && (
                           <span className="text-[10px] font-bold text-accent bg-accent/10 px-1.5 py-0.5 rounded-full whitespace-nowrap leading-none">
-                            {bonus.icon === Tag ? `Kupón ${value}` : value}
+                            {bonus.icon === Tag ? `Kupón ${value} Kč` : value}
                           </span>
                         )}
                       </div>

@@ -593,6 +593,106 @@
     margin-top: clamp(0.5rem, 0.5vh + 0.5vw, 1rem);
   }
 
+  /* Pricing.jsx section - fluid utilities with VH + VW */
+  /* Margin bottom - extra large */
+  .mb-fluid-pricing-xl {
+    margin-bottom: 4rem;
+  }
+
+  @media (min-width: 667px) {
+    .mb-fluid-pricing-xl {
+      margin-bottom: clamp(2rem, 2vh + 2vw, 4rem);
+    }
+  }
+
+  /* Margin bottom - medium */
+  .mb-fluid-pricing-md {
+    margin-bottom: 1.5rem;
+  }
+
+  @media (min-width: 667px) {
+    .mb-fluid-pricing-md {
+      margin-bottom: clamp(1rem, 1vh + 1vw, 1.5rem);
+    }
+  }
+
+  /* Margin bottom - large */
+  .mb-fluid-pricing-lg {
+    margin-bottom: 3rem;
+  }
+
+  @media (min-width: 667px) {
+    .mb-fluid-pricing-lg {
+      margin-bottom: clamp(2rem, 1.5vh + 1.5vw, 3rem);
+    }
+  }
+
+  /* Gap - extra small */
+  .gap-fluid-pricing-xs {
+    gap: 0.5rem;
+  }
+
+  @media (min-width: 667px) {
+    .gap-fluid-pricing-xs {
+      gap: clamp(0.25rem, 0.25vh + 0.25vw, 0.5rem);
+    }
+  }
+
+  /* Gap - small */
+  .gap-fluid-pricing-sm {
+    gap: 0.75rem;
+  }
+
+  @media (min-width: 667px) {
+    .gap-fluid-pricing-sm {
+      gap: clamp(0.5rem, 0.5vh + 0.5vw, 0.75rem);
+    }
+  }
+
+  /* Gap - medium */
+  .gap-fluid-pricing-md {
+    gap: 2rem;
+  }
+
+  @media (min-width: 667px) {
+    .gap-fluid-pricing-md {
+      gap: clamp(1rem, 1vh + 1vw, 2rem);
+    }
+  }
+
+  /* Padding - large */
+  .p-fluid-pricing-lg {
+    padding: 2rem;
+  }
+
+  @media (min-width: 667px) {
+    .p-fluid-pricing-lg {
+      padding: clamp(1.5rem, 1.5vh + 1.5vw, 2rem);
+    }
+  }
+
+  /* Padding bottom - large */
+  .pb-fluid-pricing-lg {
+    padding-bottom: 3rem;
+  }
+
+  @media (min-width: 667px) {
+    .pb-fluid-pricing-lg {
+      padding-bottom: clamp(1.5rem, 1.5vh + 1.5vw, 3rem);
+    }
+  }
+
+  /* Padding bottom - extra extra large */
+  .pb-fluid-pricing-xxl {
+    padding-bottom: 6rem;
+  }
+
+  @media (min-width: 667px) {
+    .pb-fluid-pricing-xxl {
+      padding-bottom: clamp(3rem, 3vh + 3vw, 6rem);
+    }
+  }
+
   /* Fluid padding - horizontal small */
   .px-fluid-sm {
     padding-left: 2rem;
