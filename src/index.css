@@ -30,6 +30,9 @@
     --transition-base: 0.3s ease;
     --transition-slow: 0.6s ease-out;
 
+    /* Fluid spacing - consolidated values */
+    --fluid-spacing-xs: clamp(0.25rem, 0.25vh + 0.25vw, 0.5rem);
+
     /* Benefit sizes - mobile first */
     --benefit-icon-size: 1.5rem;
     --benefit-title-size: 1rem;
@@ -612,7 +615,7 @@
 
   /* Margin bottom - small */
   .mb-fluid-bonuses-sm {
-    margin-bottom: clamp(0.25rem, 0.25vh + 0.25vw, 0.5rem);
+    margin-bottom: var(--fluid-spacing-xs);
   }
 
   /* Margin top - large */
@@ -666,7 +669,7 @@
 
   @media (min-width: 667px) {
     .gap-fluid-pricing-xs {
-      gap: clamp(0.25rem, 0.25vh + 0.25vw, 0.5rem);
+      gap: var(--fluid-spacing-xs);
     }
   }
 
