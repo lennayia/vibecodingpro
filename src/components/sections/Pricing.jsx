@@ -72,7 +72,7 @@ function PricingPackages() {
     <Section background="light" customPadding="pt-12 pb-12 md:pt-4 md:pb-8 lg:pt-8 lg:pb-16 px-[4%]" className="min-h-screen flex items-center justify-center" showScrollIndicator={true}>
       <div id="pricing-packages-section">
         <motion.div {...fadeIn}>
-          <h2 className="font-display font-bold text-center mb-12 md:mb-fluid-pricing-lg">
+          <h2 className="font-display font-bold text-center pt-12 md:pt-12 lg:pt-16 mb-12 md:mb-fluid-pricing-lg">
             Vyberte si cestu, která vám sedí
           </h2>
 
