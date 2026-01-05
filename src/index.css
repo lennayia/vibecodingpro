@@ -1701,12 +1701,12 @@
   /* Holographic effects for promo card */
   .holo-glow-bg {
     background: linear-gradient(45deg, rgba(181, 108, 78, 0.4), rgba(150, 90, 60, 0.4)); /* Light mode - copper tones */
-    filter: blur(30px);
+    filter: blur(15px);
   }
 
   .dark .holo-glow-bg {
     background: linear-gradient(45deg, rgba(13, 221, 13, 0.4), rgba(13, 221, 13, 0.3)); /* Dark mode - unified green */
-    filter: blur(30px);
+    filter: blur(15px);
   }
 
   .holo-shine-bg {

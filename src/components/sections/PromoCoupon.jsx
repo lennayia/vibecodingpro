@@ -48,7 +48,7 @@ function PromoCoupon() {
             {...slideUp}
             transition={{ delay: 0.2 }}
           >
-            <div className="relative overflow-hidden rounded-3xl border-2 border-accent/50 dark:border-[#0ddd0d]/50 bg-gradient-to-br from-accent/10 via-accent/5 to-transparent dark:from-[#0ddd0d]/10 dark:via-[#0ddd0d]/5 backdrop-blur-md p-fluid-promo-lg">
+            <div className="relative overflow-hidden rounded-3xl border-2 border-accent/50 dark:border-[#0ddd0d]/50 bg-gradient-to-br from-accent/10 via-accent/5 to-transparent dark:from-[#0ddd0d]/10 dark:via-[#0ddd0d]/5 p-fluid-promo-lg">
               {/* Holographic glow effect */}
               <motion.div
                 className="absolute -inset-4 rounded-3xl opacity-30 holo-glow-bg"
@@ -66,9 +66,10 @@ function PromoCoupon() {
               {/* Holographic shine overlay */}
               <motion.div
                 className="absolute inset-0 rounded-3xl opacity-20 holo-shine-bg"
-                style={{ willChange: 'background-position' }}
+                style={{ willChange: 'transform' }}
                 animate={{
-                  backgroundPosition: ['0% 0%', '200% 200%'],
+                  x: ['0%', '100%'],
+                  y: ['0%', '100%'],
                 }}
                 transition={{
                   duration: 4,
