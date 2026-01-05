@@ -1,5 +1,5 @@
 import { Check, Gift, Tag, Crown, ChevronDown, Ticket } from 'lucide-react'
-import { useState, useRef, memo, useCallback } from 'react'
+import { useState, useRef, memo, useCallback, useMemo } from 'react'
 import { Link } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import Card from './Card'
@@ -66,8 +66,8 @@ function PricingCard({
     setShinePosition({ x: 50, y: 50 })
   }, [])
 
-  // Determine which phases to show based on package title
-  const getPackagePhases = () => {
+  // Memoized: Determine which phases to show based on package title
+  const packagePhases = useMemo(() => {
     if (title === "VIBE") {
       return phases.slice(0, 6) // Phases 01-06
     } else if (title === "VIBE+CODING") {
@@ -76,10 +76,10 @@ function PricingCard({
       return phases.slice(0, 12) // Phases 01-12 (all)
     }
     return []
-  }
+  }, [title])
 
-  // Determine which bonuses to show based on package title
-  const getPackageBonuses = () => {
+  // Memoized: Determine which bonuses to show based on package title
+  const packageBonuses = useMemo(() => {
     let key = ''
     if (title === "VIBE") {
       key = 'vibe'
@@ -93,10 +93,7 @@ function PricingCard({
 
     // Filter bonuses and exclude the discount bonus (it's shown separately below)
     return bonusItems.filter(item => item[key] !== false && item.icon !== Tag)
-  }
-
-  const packagePhases = getPackagePhases()
-  const packageBonuses = getPackageBonuses()
+  }, [title])
 
   return (
     <motion.div
