@@ -20,13 +20,13 @@ function PromoCoupon() {
   className="bg-white dark:bg-[#05050f]"
   centered={true}
   showScrollIndicator={true}
-  customPadding="py-16 md:py-20 px-[4%]"
+  customPadding="pt-6 md:pt-8 lg:pt-4 pb-12 md:pb-14 lg:pb-20 px-[4%]"
 >
       <div className="w-full relative z-10">
         <motion.div {...fadeIn}>
           {/* Main heading */}
           <motion.div
-            className="text-center mt-fluid-promo-xl mb-fluid-promo-xl"
+            className="text-center mt-fluid-promo-xl mb-fluid-promo-xl lg:mt-6 lg:mb-8"
             {...slideUp}
           >
             <div className="flex items-center justify-center gap-3 lg:gap-4 mb-fluid-promo-md flex-wrap">
@@ -48,7 +48,7 @@ function PromoCoupon() {
             {...slideUp}
             transition={{ delay: 0.2 }}
           >
-            <div className="relative overflow-hidden rounded-3xl border-2 border-accent/50 dark:border-[#0ddd0d]/50 bg-gradient-to-br from-accent/10 via-accent/5 to-transparent dark:from-[#0ddd0d]/10 dark:via-[#0ddd0d]/5 p-fluid-promo-lg">
+            <div className="relative overflow-hidden rounded-3xl border-2 border-accent/50 dark:border-[#0ddd0d]/50 bg-gradient-to-br from-accent/10 via-accent/5 to-transparent dark:from-[#0ddd0d]/10 dark:via-[#0ddd0d]/5 p-fluid-promo-lg lg:p-6">
               {/* Holographic glow effect */}
               <motion.div
                 className="absolute -inset-4 rounded-3xl opacity-30 holo-glow-bg"
@@ -104,9 +104,9 @@ function PromoCoupon() {
                 </motion.div>
               </div>
 
-              <div className="relative z-10 pt-fluid-promo-md">
+              <div className="relative z-10">
                 {/* Benefits */}
-                <div className="grid md:grid-cols-3 gap-fluid-promo-md mb-fluid-promo-xl mt-10">
+                <div className="grid md:grid-cols-3 gap-fluid-promo-md mb-fluid-promo-xl mt-12 md:mt-8 lg:mt-6 lg:gap-4 lg:mb-6">
                   <div className="text-center">
                     <div className="flex justify-center mb-fluid-promo-xs">
                       <Package
@@ -140,7 +140,7 @@ function PromoCoupon() {
                 </div>
 
                 {/* Coupon code */}
-                <div className="text-center mb-fluid-promo-lg">
+                <div className="text-center mb-fluid-promo-lg lg:mb-6">
                   <p className="text-lg font-light mb-fluid-promo-sm">
                     Při objednávce použijte kód a získejte 25% slevu:
                   </p>
@@ -172,8 +172,8 @@ function PromoCoupon() {
                 </div>
 
                 {/* Call to action */}
-                <div className="text-center border-t border-accent/20 pt-fluid-promo-md">
-                  <p className="text-xl font-semibold mb-fluid-promo-md">
+                <div className="text-center border-t border-accent/20 pt-fluid-promo-md lg:pt-4">
+                  <p className="text-xl font-semibold mb-fluid-promo-md lg:mb-4">
                     Proč to je skvělá příležitost?
                   </p>
                   <div className="grid md:grid-cols-2 gap-fluid-promo-xs max-w-2xl mx-auto text-left">
