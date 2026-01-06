@@ -802,6 +802,58 @@
     margin-top: clamp(1rem, 1.5vh + 1.5vw, 3rem);
   }
 
+  /* VibeOrderPage text utilities - optimized for tablets 667-768px */
+  .text-fluid-order-heading {
+    font-size: clamp(2rem, 2vh + 2vw, 3rem);
+  }
+
+  .text-fluid-order-package {
+    font-size: clamp(2.5rem, 2.5vh + 2.5vw, 3.75rem);
+  }
+
+  .text-fluid-order-info {
+    font-size: clamp(0.875rem, 0.75vh + 0.75vw, 1.125rem);
+  }
+
+  .text-fluid-order-price {
+    font-size: clamp(2rem, 2vh + 2vw, 2.5rem);
+  }
+
+  .text-fluid-order-capacity {
+    font-size: clamp(0.875rem, 0.8vh + 0.8vw, 1.125rem);
+  }
+
+  /* VibeOrderPage icon utilities */
+  .order-icon-size {
+    width: clamp(1.5rem, 0.8vh + 0.8vw, 2rem);
+    height: clamp(1.5rem, 0.8vh + 0.8vw, 2rem);
+  }
+
+  /* VibeOrderPage spacing utilities - optimized for tablets */
+  .order-main-padding-top {
+    padding-top: clamp(4rem, 8vh, 12rem);
+  }
+
+  .order-main-padding-bottom {
+    padding-bottom: clamp(3rem, 6vh, 8rem);
+  }
+
+  .order-summary-mb {
+    margin-bottom: clamp(2rem, 4vh, 6rem);
+  }
+
+  .order-details-mb {
+    margin-bottom: clamp(1rem, 2vh, 3rem);
+  }
+
+  .order-result-padding {
+    padding: clamp(0.75rem, 1vh + 1vw, 1.5rem);
+  }
+
+  .order-form-padding {
+    padding: clamp(1rem, 2vh, 2rem);
+  }
+
   /* Fluid margin bottom - extra small variant 2 */
   .mb-fluid-xs-v2 {
     margin-bottom: 0.75rem;
