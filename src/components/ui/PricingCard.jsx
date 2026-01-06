@@ -6,6 +6,13 @@ import Card from './Card'
 import Button from './Button'
 import { phases, bonusItems } from '../../constants/data'
 
+// Constants for consistent sizing
+const ICON_SIZE_SM = 'w-3 h-3'
+const ICON_SIZE_MD = 'w-4 h-4'
+const STROKE_WIDTH_REGULAR = 2
+const STROKE_WIDTH_LIGHT = 1.5
+const ACCORDION_MIN_WIDTH = 'min-w-[clamp(8.75rem,12vw,10rem)]'
+
 function PricingCard({
   title,
   duration,
@@ -31,10 +38,9 @@ function PricingCard({
   const [rotateY, setRotateY] = useState(0)
   const [shinePosition, setShinePosition] = useState({ x: 50, y: 50 })
 
-  // For Hero Product (VIBE+CODING), start with accordions OPEN by default
-  const isHeroProduct = title === "VIBE+CODING"
-  const [isAccordionOpen, setIsAccordionOpen] = useState(isHeroProduct)
-  const [isBonusAccordionOpen, setIsBonusAccordionOpen] = useState(isHeroProduct)
+  // All accordions closed by default (comparison table provides overview)
+  const [isAccordionOpen, setIsAccordionOpen] = useState(false)
+  const [isBonusAccordionOpen, setIsBonusAccordionOpen] = useState(false)
 
   const handleMouseMove = useCallback((e) => {
     if (window.innerWidth < 768) return // Disable on mobile
@@ -127,12 +133,12 @@ function PricingCard({
       <div className="absolute -top-8 left-1/2 transform -translate-x-1/2 z-[100]">
         {badgeText ? (
           <div className="relative">
-            <span className="px-4 py-1.5 rounded-full text-xs font-medium uppercase tracking-wider border border-gray-200 dark:border-gray-700 text-gray-900 dark:text-white bg-white dark:bg-gray-900 inline-block">
+            <span className="pricing-badge-padding rounded-full text-fluid-pricing-badge font-medium uppercase tracking-wider border border-gray-200 dark:border-gray-700 text-gray-900 dark:text-white bg-white dark:bg-gray-900 inline-block">
               {badgeText}
             </span>
             {isExclusive && (
               <div className="absolute -top-1 -right-1">
-                <Crown className="w-4 h-4 text-white dark:text-white" strokeWidth={2} />
+                <Crown className={ICON_SIZE_MD} strokeWidth={STROKE_WIDTH_REGULAR} />
               </div>
             )}
           </div>
@@ -152,10 +158,10 @@ function PricingCard({
         <p className="font-light mb-clamp-sm">{duration}</p>
         {serviceType && (
           <div className="mb-clamp-sm">
-            <p className="text-base font-extralight text-center">{serviceType}</p>
+            <p className="text-fluid-pricing-base font-extralight text-center">{serviceType}</p>
           </div>
         )}
-        <p className="text-sm font-extralight" dangerouslySetInnerHTML={{ __html: description }} />
+        <p className="text-fluid-pricing-sm font-extralight" dangerouslySetInnerHTML={{ __html: description }} />
       </div>
 
       <div className="text-center mb-clamp-md">
@@ -168,14 +174,14 @@ function PricingCard({
       <div className="mb-clamp-lg">
         <button
           onClick={() => setIsAccordionOpen(!isAccordionOpen)}
-          className="accordion-btn flex items-center justify-center gap-2 text-sm font-semibold text-accent hover:text-accent/80 transition-colors mx-auto py-1 px-2 rounded-lg border border-accent/30 hover:border-accent/50 min-w-[140px]"
+          className={`accordion-btn flex items-center justify-center pricing-gap-md text-fluid-pricing-sm font-semibold text-accent hover:text-accent/80 transition-colors mx-auto pricing-accordion-padding rounded-lg border border-accent/30 hover:border-accent/50 ${ACCORDION_MIN_WIDTH}`}
         >
           <span>Etapy {packagePhases.length}</span>
           <motion.div
             animate={{ rotate: isAccordionOpen ? 180 : 0 }}
             transition={{ duration: 0.3 }}
           >
-            <ChevronDown className="w-4 h-4" strokeWidth={2} />
+            <ChevronDown className={ICON_SIZE_MD} strokeWidth={STROKE_WIDTH_REGULAR} />
           </motion.div>
         </button>
 
@@ -188,10 +194,10 @@ function PricingCard({
               transition={{ duration: 0.3 }}
               className="overflow-hidden"
             >
-              <div className="text-left text-xs px-1 mt-clamp-phases flex-col-clamp-gap">
+              <div className="text-left text-fluid-pricing-xs pricing-content-padding mt-clamp-phases flex-col-clamp-gap">
                 {packagePhases.map((phase, index) => (
-                  <div key={phase.number} className="font-light flex items-center gap-1.5 leading-none">
-                    <span className="text-accent font-semibold text-xs flex-shrink-0 leading-none">{phase.number}</span>
+                  <div key={phase.number} className="font-light flex items-center pricing-gap-sm leading-none">
+                    <span className="text-accent font-semibold text-fluid-pricing-xs flex-shrink-0 leading-none">{phase.number}</span>
                     <span className="leading-none">{phase.title}</span>
                   </div>
                 ))}
@@ -205,15 +211,15 @@ function PricingCard({
         <div className="mb-clamp-lg">
           <button
             onClick={() => setIsBonusAccordionOpen(!isBonusAccordionOpen)}
-            className="accordion-btn flex items-center justify-center gap-2 text-sm font-semibold text-accent hover:text-accent/80 transition-colors mx-auto py-1 px-2 rounded-lg border border-accent/30 hover:border-accent/50 min-w-[140px]"
+            className={`accordion-btn flex items-center justify-center pricing-gap-md text-fluid-pricing-sm font-semibold text-accent hover:text-accent/80 transition-colors mx-auto pricing-accordion-padding rounded-lg border border-accent/30 hover:border-accent/50 ${ACCORDION_MIN_WIDTH}`}
           >
-            <Gift className="w-4 h-4" strokeWidth={2} />
+            <Gift className={ICON_SIZE_MD} strokeWidth={STROKE_WIDTH_REGULAR} />
             <span>Bonusy {packageBonuses.length}</span>
             <motion.div
               animate={{ rotate: isBonusAccordionOpen ? 180 : 0 }}
               transition={{ duration: 0.3 }}
             >
-              <ChevronDown className="w-4 h-4" strokeWidth={2} />
+              <ChevronDown className={ICON_SIZE_MD} strokeWidth={STROKE_WIDTH_REGULAR} />
             </motion.div>
           </button>
 
@@ -226,17 +232,17 @@ function PricingCard({
                 transition={{ duration: 0.3 }}
                 className="overflow-hidden"
               >
-                <div className="text-left text-xs px-1 mt-clamp-phases flex-col-clamp-gap">
+                <div className="text-left text-fluid-pricing-xs pricing-content-padding mt-clamp-phases flex-col-clamp-gap">
                   {packageBonuses.map((bonus, index) => {
                     const IconComponent = bonus.icon
                     const value = bonus[title === "VIBE" ? 'vibe' : title === "VIBE+CODING" ? 'vibeCode' : 'vibeCoding']
 
                     return (
-                      <div key={index} className="font-light flex items-baseline gap-1.5 leading-none">
-                        <IconComponent className="w-3 h-3 text-accent flex-shrink-0" strokeWidth={1.5} />
+                      <div key={index} className="font-light flex items-baseline pricing-gap-sm leading-none">
+                        <IconComponent className={`${ICON_SIZE_SM} text-accent flex-shrink-0`} strokeWidth={STROKE_WIDTH_LIGHT} />
                         <span className="flex-1 leading-none">{bonus.name}</span>
                         {value !== true && typeof value === 'string' && (
-                          <span className="text-[10px] font-bold text-accent bg-accent/10 px-1.5 py-0.5 rounded-full whitespace-nowrap leading-none">
+                          <span className="text-fluid-pricing-badge font-bold text-accent bg-accent/10 pricing-bonus-badge-padding rounded-full whitespace-nowrap leading-none">
                             {bonus.icon === Tag ? `Kupón ${value} Kč` : value}
                           </span>
                         )}
@@ -252,12 +258,12 @@ function PricingCard({
 
       {discount && (
         <div className="text-center mb-clamp-lg">
-          <div className="flex items-center justify-center gap-2 mb-clamp-sm">
-            <Ticket className="w-4 h-4 text-accent flex-shrink-0" strokeWidth={2} />
-            <span className="font-semibold text-accent text-sm leading-none">KUPÓN {discount.split(' na ')[0]}</span>
+          <div className="flex items-center justify-center pricing-gap-md mb-clamp-sm">
+            <Ticket className={`${ICON_SIZE_MD} text-accent flex-shrink-0`} strokeWidth={STROKE_WIDTH_REGULAR} />
+            <span className="font-semibold text-accent text-fluid-pricing-sm leading-none">KUPÓN {discount.split(' na ')[0]}</span>
           </div>
           {discount.includes(' na ') && (
-            <span className="text-xs font-light block">na {discount.split(' na ')[1]}</span>
+            <span className="text-fluid-pricing-xs font-light block">na {discount.split(' na ')[1]}</span>
           )}
         </div>
       )}
@@ -265,14 +271,14 @@ function PricingCard({
       {/* Result section - ALWAYS VISIBLE (no accordion) */}
       <div className="mb-clamp-lg">
         <div className="bg-accent/5 dark:bg-accent/10 rounded-xl border-2 border-accent/30 dark:border-accent/20 p-clamp-md">
-          <p className="font-bold text-base text-center mb-clamp-md">{resultTitle}</p>
-          <div className="text-sm font-light text-left" dangerouslySetInnerHTML={{ __html: resultDescription }} />
+          <p className="font-bold text-fluid-pricing-base text-center mb-clamp-md">{resultTitle}</p>
+          <div className="text-fluid-pricing-sm font-light text-left" dangerouslySetInnerHTML={{ __html: resultDescription }} />
 
           {testimonials && testimonials.map((testimonial, index) => (
             <div key={index} className="border-t border-accent/20 mt-[clamp(0.75rem,1.5vh,1.5rem)] pt-[clamp(0.75rem,1.5vh,1.5rem)]">
-              <p className="italic text-sm font-light">{testimonial.quote}</p>
+              <p className="italic text-fluid-pricing-sm font-light">{testimonial.quote}</p>
               {testimonial.author && (
-                <p className="text-xs font-light mt-1">– {testimonial.author}</p>
+                <p className="text-fluid-pricing-xs font-light mt-clamp-phases">– {testimonial.author}</p>
               )}
             </div>
           ))}

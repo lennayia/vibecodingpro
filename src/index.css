@@ -417,29 +417,29 @@
     font-size: min(calc(0.7rem + 0.15vw + 0.075vh), 0.875rem);
   }
 
-  /* PricingCard clamp utilities */
+  /* PricingCard clamp utilities - optimized for 667-768px tablets */
   .mb-clamp-sm {
-    margin-bottom: clamp(0.5rem, 0.5vh + 0.5vw, 1rem);
+    margin-bottom: clamp(0.125rem, 0.25vh + 0.25vw, 1rem);
   }
 
   .mb-clamp-md {
-    margin-bottom: clamp(1rem, 1vh + 1vw, 1.5rem);
+    margin-bottom: clamp(0.25rem, 0.4vh + 0.4vw, 1.5rem);
   }
 
   .mb-clamp-lg {
-    margin-bottom: clamp(1.5rem, 1.5vh + 1.5vw, 2.5rem);
+    margin-bottom: clamp(0.375rem, 0.6vh + 0.6vw, 2.5rem);
   }
 
   .mt-clamp-phases {
-    margin-top: clamp(0.5rem, 0.5vh + 0.5vw, 1rem);
+    margin-top: clamp(0.125rem, 0.25vh + 0.25vw, 1rem);
   }
 
   .p-clamp-md {
-    padding: clamp(1rem, 1vh + 1vw, 1.5rem);
+    padding: clamp(0.25rem, 0.4vh + 0.4vw, 1.5rem);
   }
 
   .pt-clamp-lg {
-    padding-top: clamp(1.5rem, 1.5vh + 1.5vw, 2.5rem);
+    padding-top: clamp(0.375rem, 0.6vh + 0.6vw, 2.5rem);
   }
 
   .flex-col-clamp-gap {
@@ -503,6 +503,62 @@
 
   .text-fluid-comparison-xs {
     font-size: clamp(0.625rem, 0.7vh + 0.7vw, 0.875rem);
+  }
+
+  /* Pricing card text utilities */
+  .text-fluid-pricing-xs {
+    font-size: clamp(0.625rem, 0.7vh + 0.7vw, 0.75rem);
+  }
+
+  .text-fluid-pricing-sm {
+    font-size: clamp(0.75rem, 0.8vh + 0.8vw, 0.875rem);
+  }
+
+  .text-fluid-pricing-base {
+    font-size: clamp(0.875rem, 0.9vh + 0.9vw, 1rem);
+  }
+
+  .text-fluid-pricing-badge {
+    font-size: clamp(0.5rem, 0.6vh + 0.6vw, 0.625rem);
+  }
+
+  /* Pricing card spacing utilities */
+  .pricing-badge-padding {
+    padding: clamp(0.125rem, 0.3vh + 0.3vw, 0.375rem) clamp(0.5rem, 0.9vh + 0.9vw, 1rem);
+  }
+
+  .pricing-accordion-padding {
+    padding: clamp(0.0625rem, 0.2vh + 0.2vw, 0.25rem) clamp(0.25rem, 0.4vh + 0.4vw, 0.5rem);
+  }
+
+  .pricing-content-padding {
+    padding-left: clamp(0.0625rem, 0.2vh + 0.2vw, 0.25rem);
+    padding-right: clamp(0.0625rem, 0.2vh + 0.2vw, 0.25rem);
+  }
+
+  .pricing-bonus-badge-padding {
+    padding: clamp(0.03125rem, 0.1vh + 0.1vw, 0.125rem) clamp(0.1875rem, 0.3vh + 0.3vw, 0.375rem);
+  }
+
+  /* Card horizontal padding utility - optimized for 667-768px tablets */
+  .card-px-fluid {
+    padding-left: clamp(0.25rem, 0.3vh + 0.3vw, 0.75rem);
+    padding-right: clamp(0.25rem, 0.3vh + 0.3vw, 0.75rem);
+  }
+
+  /* Card vertical padding utility - optimized for 667-768px tablets */
+  .card-py-fluid {
+    padding-top: clamp(0.25rem, 0.35vh + 0.35vw, 1rem);
+    padding-bottom: clamp(0.25rem, 0.35vh + 0.35vw, 1rem);
+  }
+
+  /* Pricing card gap utilities - optimized for 667-768px tablets */
+  .pricing-gap-sm {
+    gap: clamp(0.25rem, 0.2vh + 0.2vw, 0.375rem);
+  }
+
+  .pricing-gap-md {
+    gap: clamp(0.375rem, 0.25vh + 0.25vw, 0.5rem);
   }
 
   /* Fluid margin bottom - extra small */
