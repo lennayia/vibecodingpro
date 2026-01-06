@@ -464,13 +464,13 @@
     }
   }
 
-  /* Comparison section padding utilities */
+  /* Comparison section padding utilities - balanced responsive scaling */
   .pt-clamp-comparison {
-    padding-top: clamp(1rem, 1vh + 1vw, 1.5rem);
+    padding-top: clamp(0.75rem, 0.6vh + 0.6vw, 1.5rem);
   }
 
   .pb-clamp-comparison {
-    padding-bottom: clamp(1.5rem, 1.5vh + 1.5vw, 2rem);
+    padding-bottom: clamp(1rem, 0.8vh + 0.8vw, 2rem);
   }
 
   /* Comparison table background utilities */
@@ -482,27 +482,27 @@
     @apply dark:bg-[var(--color-accent-dark)];
   }
 
-  /* Comparison text utilities - proportional scaling for one-screen fit */
+  /* Comparison text utilities - balanced responsive scaling */
   .text-fluid-comparison-tip {
-    font-size: clamp(0.6875rem, 0.7vh + 0.7vw, 0.9375rem);
+    font-size: clamp(0.75rem, 0.65vh + 0.65vw, 0.9375rem);
     line-height: 1.6;
   }
 
   .text-fluid-comparison-note {
-    font-size: clamp(0.6875rem, 0.7vh + 0.7vw, 0.9375rem);
+    font-size: clamp(0.75rem, 0.65vh + 0.65vw, 0.9375rem);
     line-height: 1.6;
   }
 
   .text-fluid-comparison-sm {
-    font-size: clamp(0.6875rem, 0.7vh + 0.7vw, 0.9375rem);
+    font-size: clamp(0.9375rem, 0.8vh + 0.8vw, 1.125rem);
   }
 
   .text-fluid-comparison-base {
-    font-size: clamp(0.75rem, 0.7vh + 0.7vw, 1rem);
+    font-size: clamp(1.125rem, 0.9vh + 0.9vw, 1.375rem);
   }
 
   .text-fluid-comparison-xs {
-    font-size: clamp(0.625rem, 0.7vh + 0.7vw, 0.875rem);
+    font-size: clamp(0.875rem, 0.75vh + 0.75vw, 1.0625rem);
   }
 
   /* Pricing card text utilities */

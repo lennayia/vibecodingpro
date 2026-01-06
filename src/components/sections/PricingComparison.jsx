@@ -37,16 +37,16 @@ const ComparisonCell = memo(({ value, highlight, className = '' }) => {
 
 const comparisonData = [
   {
-    feature: 'Konzultace 55 min.',
+    feature: 'Konzultace (1 h)',
     vibe: '3',
     vibeCoding: '6',
     vip: '10'
   },
   {
-    feature: 'Kapacita',
-    vibe: '5 žen',
-    vibeCoding: '2 ženy',
-    vip: '1 žena'
+    feature: 'Kapacita (žen)',
+    vibe: '5',
+    vibeCoding: '2',
+    vip: '1'
   },
   {
     feature: 'Etapy',
@@ -67,13 +67,20 @@ const comparisonData = [
     vip: true
   },
   {
+    feature: '✧  Nahrávky',
+    vibe: true,
+    vibeCoding: true,
+    vip: true
+  },
+  {
     feature: '✧  Kódování s AI',
     vibe: false,
     vibeCoding: true,
     vip: true
   },
   {
-    feature: '✧  MVP *',
+    feature: '✧  MVP',
+    featureHighlight: '*',
     vibe: false,
     vibeCoding: false,
     vip: true
@@ -81,8 +88,8 @@ const comparisonData = [
   {
     feature: 'Bonusy',
     vibe: '1',
-    vibeCoding: '11',
-    vip: '12'
+    vibeCoding: '10',
+    vip: '11'
   },
   {
     feature: '✧  Návody',
@@ -91,40 +98,34 @@ const comparisonData = [
     vip: '10'
   },
   {
-    feature: '✧  Nahrávky',
-    vibe: false,
-    vibeCoding: true,
-    vip: true
-  },
-  {
     feature: '✧  Zápisky',
     vibe: false,
     vibeCoding: false,
     vip: true
   },
   {
-    feature: '✧  Další podpora',
+    feature: '✧  Další podpora (dny)',
     vibe: false,
-    vibeCoding: '2 týdny',
-    vip: '2 týdny'
+    vibeCoding: '14',
+    vip: '30'
   },
   {
-    feature: '✧  Check-in call 30 min.',
+    feature: '✧  Check-in call (1/2 h)',
     vibe: false,
     vibeCoding: false,
-    vip: '2'
+    vip: '3'
   },
   {
-    feature: 'Sleva na další 2 hod.',
-    vibe: '300 Kč',
-    vibeCoding: '600 Kč',
-    vip: '900 Kč'
+    feature: 'Sleva v Kč (další 2 h)',
+    vibe: '300',
+    vibeCoding: '600',
+    vip: '900'
   },
   {
-    feature: 'Cena',
-    vibe: '3 900 Kč',
-    vibeCoding: '9 900 Kč',
-    vip: '19 900 Kč',
+    feature: 'Cena v Kč',
+    vibe: '3 900',
+    vibeCoding: '9 900',
+    vip: '19 900',
     highlight: true
   }
 ]
@@ -155,7 +156,7 @@ function PricingComparison() {
         </motion.p>
 
         <motion.div
-          className="max-w-5xl mx-auto overflow-x-auto pt-clamp-comparison"
+          className="max-w-5xl mx-auto overflow-x-auto"
           {...slideUp}
           transition={{ delay: 0.2 }}
         >
@@ -171,14 +172,10 @@ function PricingComparison() {
                       <ResponsiveText mobile="V" desktop="VIBE" />
                     </div>
                   </th>
-                  <th className="text-center table-cell-padding bg-accent/5 dark:bg-accent/10 relative">
-                    <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 z-10">
-                      <span className="px-3 py-1.5 md:px-4 md:py-2 backdrop-blur-sm rounded-xl font-normal border border-accent/40 text-accent text-fluid-comparison-xs whitespace-nowrap">
-                        DOPORUČENO
-                      </span>
-                    </div>
-                    <div className="font-display dark-heading-font font-bold text-fluid-comparison-base text-accent mt-clamp-phases">
+                  <th className="text-center table-cell-padding bg-accent/5 dark:bg-accent/10">
+                    <div className="font-display dark-heading-font font-bold text-fluid-comparison-base text-accent flex items-center justify-center gap-2">
                       <ResponsiveText mobile="V+C" desktop="VIBE+CODING" />
+                      <Lightbulb className={ICON_SIZE} strokeWidth={STROKE_WIDTH_LIGHTBULB} />
                     </div>
                   </th>
                   <th className="text-center table-cell-padding">
@@ -196,6 +193,7 @@ function PricingComparison() {
                   >
                     <td className={`table-cell-padding text-fluid-comparison-sm ${row.feature.includes('✧') ? 'font-normal' : 'font-semibold'}`}>
                       {row.feature}
+                      {row.featureHighlight && <span className="text-accent"> {row.featureHighlight}</span>}
                     </td>
                     <td className="table-cell-padding text-center">
                       <ComparisonCell value={row.vibe} highlight={row.highlight} />
@@ -218,7 +216,7 @@ function PricingComparison() {
           {...slideUp}
           transition={{ delay: 0.3 }}
         >
-          * MVP = Minimum Viable Product = funkční základ připravený k prodeji i k dalšímu růstu
+          <span className="text-accent">*</span> MVP = Minimum Viable Product = funkční základ připravený k prodeji i k dalšímu růstu
         </motion.p>
 
         <motion.div
@@ -226,7 +224,7 @@ function PricingComparison() {
           {...slideUp}
           transition={{ delay: 0.4 }}
         >
-          <Lightbulb className={`${ICON_SIZE} text-gray-600 dark:text-gray-400 flex-shrink-0 mt-0.5`} strokeWidth={STROKE_WIDTH_LIGHTBULB} />
+          <Lightbulb className={`${ICON_SIZE} text-accent flex-shrink-0 mt-0.5`} strokeWidth={STROKE_WIDTH_LIGHTBULB} />
           <span className="text-fluid-comparison-note">Tip: Pokud si nejste jistí, začněte s VIBE+CODING - získáte pochopení i první výsledky.</span>
         </motion.div>
       </motion.div>
