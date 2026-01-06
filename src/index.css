@@ -689,6 +689,85 @@
     filter: none;
   }
 
+  /* FAQ text utilities - optimized for tablets 667-768px */
+  .text-fluid-faq-category {
+    font-size: clamp(1rem, 0.9vh + 0.9vw, 1.25rem);
+  }
+
+  .text-fluid-faq-question {
+    font-size: clamp(0.875rem, 0.75vh + 0.75vw, 1rem);
+  }
+
+  .text-fluid-faq-answer {
+    font-size: clamp(0.875rem, 0.75vh + 0.75vw, 1rem);
+  }
+
+  /* FAQ icon utilities */
+  .faq-icon-header {
+    width: clamp(1.5rem, 0.8vh + 0.8vw, 2rem);
+    height: clamp(1.5rem, 0.8vh + 0.8vw, 2rem);
+  }
+
+  .faq-icon-category {
+    width: clamp(1.25rem, 0.7vh + 0.7vw, 1.5rem);
+    height: clamp(1.25rem, 0.7vh + 0.7vw, 1.5rem);
+  }
+
+  .faq-icon-question {
+    width: clamp(1rem, 0.6vh + 0.6vw, 1.25rem);
+    height: clamp(1rem, 0.6vh + 0.6vw, 1.25rem);
+  }
+
+  /* FAQ spacing utilities - optimized for tablets */
+  .faq-header-mb {
+    margin-bottom: clamp(1.5rem, 2vh + 2vw, 4rem);
+  }
+
+  .faq-header-icon-gap {
+    gap: clamp(0.75rem, 0.75vh + 0.75vw, 1.5rem);
+  }
+
+  .faq-header-icon-mb {
+    margin-bottom: clamp(1rem, 1vh + 1vw, 2rem);
+  }
+
+  .faq-categories-gap {
+    gap: clamp(0.75rem, 1vh + 1vw, 2rem);
+  }
+
+  .faq-category-padding {
+    padding: clamp(0.75rem, 1vh + 1vw, 1.5rem);
+  }
+
+  .faq-questions-padding {
+    padding: clamp(0.75rem, 1vh + 1vw, 1.5rem);
+  }
+
+  .faq-questions-gap {
+    gap: clamp(0.5rem, 0.75vh + 0.75vw, 1.5rem);
+  }
+
+  .faq-question-padding {
+    padding: clamp(0.75rem, 1vh + 1vw, 1.5rem);
+  }
+
+  .faq-question-gap {
+    gap: clamp(0.5rem, 0.75vh + 0.75vw, 1.5rem);
+  }
+
+  .faq-answer-padding-x {
+    padding-left: clamp(0.75rem, 1vh + 1vw, 1.5rem);
+    padding-right: clamp(0.75rem, 1vh + 1vw, 1.5rem);
+  }
+
+  .faq-answer-padding-b {
+    padding-bottom: clamp(0.75rem, 1vh + 1vw, 1.5rem);
+  }
+
+  .faq-answer-padding-t {
+    padding-top: clamp(0.375rem, 0.5vh + 0.5vw, 1rem);
+  }
+
   /* Fluid margin bottom - extra small variant 2 */
   .mb-fluid-xs-v2 {
     margin-bottom: 0.75rem;
