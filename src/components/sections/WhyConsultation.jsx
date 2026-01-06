@@ -76,7 +76,7 @@ const ComparisonCard = memo(function ComparisonCard({ slide, index: slideIndex, 
         <div className="relative z-10">
           <h3
             className={`
-              font-display font-bold text-center text-2xl mb-3 leading-tight
+              font-display font-bold text-center text-fluid-card-title mb-3 leading-tight
               ${isPositive ? 'text-accent text-shadow-accent' : 'text-gray-600 dark:text-gray-400'}
             `}
           >
@@ -93,7 +93,7 @@ const ComparisonCard = memo(function ComparisonCard({ slide, index: slideIndex, 
                 transition={{ delay: slideIndex * 0.2 + index * 0.1 }}
                 className="flex items-baseline gap-2 m-0 py-[0.2rem] leading-snug"
               >
-                <span className={`${slide.iconColor} font-bold flex-shrink-0 text-base leading-snug`}>
+                <span className={`${slide.iconColor} font-bold flex-shrink-0 text-fluid-card-icon leading-snug`}>
   {slide.icon}
 </span>
                 <span className="leading-snug font-light text-fluid-card-item">

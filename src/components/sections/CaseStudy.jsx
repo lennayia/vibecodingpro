@@ -13,7 +13,7 @@ function CaseStudySeo() {
   const renderCard = (card, index) => (
     <Card background="dark" className={`h-full ${card.border}`} key={index}>
       <div className="text-center mb-fluid-xs-v1">
-        <h3 className={`font-display font-bold text-xl ${card.titleColor}`}>
+        <h3 className={`font-display font-bold text-fluid-case-title ${card.titleColor}`}>
           {card.title}
         </h3>
       </div>
@@ -56,13 +56,13 @@ function CaseStudySeo() {
           >
             <div className="text-center">
               <div className="inline-flex items-center gap-4 font-bold">
-                <span className="text-2xl md:text-4xl text-gray-400">80</span>
-                <span className="text-2xl md:text-4xl text-accent">→</span>
+                <span className="text-fluid-case-metric text-gray-400">80</span>
+                <span className="text-fluid-case-metric text-accent">→</span>
                 <AnimatedCounter
                   from={80}
                   to={320}
                   duration={2.5}
-                  className="text-2xl md:text-4xl text-accent"
+                  className="text-fluid-case-metric text-accent"
                 />
               </div>
             </div>
@@ -93,9 +93,9 @@ function CaseStudySeo() {
                     <AnimatedStatValue
                       value={benefit.value}
                       delay={0.8 + index * 0.1}
-                      className="font-bold text-2xl md:text-3xl text-accent block mb-1 md:mb-2"
+                      className="font-bold text-fluid-case-stat text-accent block mb-1 md:mb-2"
                     />
-                    <p className="font-light text-xs md:text-sm">
+                    <p className="font-light text-fluid-case-label">
                       {benefit.label}
                     </p>
                   </div>
