@@ -680,6 +680,15 @@
     margin-bottom: clamp(1rem, 1.5vh + 1.5vw, 3rem);
   }
 
+  /* Stamp color filter - green to copper in light mode */
+  .stamp-imprint {
+    filter: sepia(0.8) saturate(2.5) hue-rotate(-55deg) brightness(1.1);
+  }
+
+  .dark .stamp-imprint {
+    filter: none;
+  }
+
   /* Fluid margin bottom - extra small variant 2 */
   .mb-fluid-xs-v2 {
     margin-bottom: 0.75rem;

@@ -39,7 +39,7 @@ const PricingGuaranteeNew = memo(function PricingGuaranteeNew() {
 
             {/* Guarantee text */}
             <p className="text-center text-fluid-guarantee-text font-light max-w-2xl mx-auto">
-              Věřím tomu, co dělám. Pokud vám spolupráce do týdne od uběhnutí první 55min. konzultace nedá jasno, férově vám vrátím peníze.
+              Věřím tomu, co dělám. Pokud vám spolupráce do týdne od uběhnutí první hod. konzultace nedá jasno, férově vám vrátím peníze.
             </p>
           </div>
         </motion.div>
@@ -73,7 +73,7 @@ const PricingGuaranteeNew = memo(function PricingGuaranteeNew() {
             stiffness: 300,
             damping: 10
           }}
-          className="block sm:hidden absolute object-contain"
+          className="block sm:hidden absolute object-contain stamp-imprint"
           style={{
             width: 'clamp(5.5rem, 13vw, 12rem)',
             height: 'clamp(5.5rem, 13vw, 12rem)',
@@ -113,7 +113,7 @@ const PricingGuaranteeNew = memo(function PricingGuaranteeNew() {
             stiffness: 300,
             damping: 10
           }}
-          className="hidden sm:block absolute object-contain"
+          className="hidden sm:block absolute object-contain stamp-imprint"
           style={{
             width: 'clamp(6rem, 17vw, 16rem)',
             height: 'clamp(6rem, 17vw, 16rem)',
