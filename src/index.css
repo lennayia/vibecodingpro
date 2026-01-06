@@ -831,7 +831,7 @@
 
   /* VibeOrderPage spacing utilities - optimized for tablets */
   .order-main-padding-top {
-    padding-top: clamp(4rem, 8vh, 12rem);
+    padding-top: clamp(6rem, 12vh, 12rem);
   }
 
   .order-main-padding-bottom {
