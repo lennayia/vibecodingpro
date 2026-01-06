@@ -1,11 +1,11 @@
 import { motion } from 'framer-motion'
-import { useCallback } from 'react'
+import { useCallback, memo } from 'react'
 import Section from '../layout/Section'
 import Button from '../ui/Button'
 import { slideUpLarge } from '../../constants/animations'
 import { scrollToSection } from '../../utils/scroll'
 
-export default function CTA() {
+const CTA = memo(function CTA() {
   const handleClick = useCallback(() => {
     scrollToSection('pricing-packages-section')
   }, [])
@@ -15,33 +15,31 @@ export default function CTA() {
         className="text-center"
         {...slideUpLarge}
       >
-        <h2 className="font-display font-bold mb-8 md:mb-[clamp(2rem,4vh,4rem)]">
+        <h2 className="font-display font-bold text-fluid-cta-heading cta-heading-mb">
           Věřím, že se už těšíte na svůj budoucí digitální nástroj
         </h2>
-        <ul
-          className="text-xl font-light mx-auto max-w-fit mb-10 md:mb-[clamp(3rem,6vh,6rem)] flex flex-col gap-4 md:gap-[clamp(0.75rem,1.5vh,1.5rem)]"
-        >
-          <li className="flex items-center justify-center gap-4 md:gap-[clamp(0.75rem,1.5vh,1.5rem)]">
+        <ul className="text-fluid-cta-list font-light mx-auto max-w-fit cta-list-mb flex flex-col cta-list-gap">
+          <li className="flex items-center justify-center cta-list-item-gap">
             <span className="text-accent">✦</span>
             <span>Přestaňte snít a začněte tvořit</span>
             <span className="text-accent">✦</span>
           </li>
-          <li className="flex items-center justify-center gap-4 md:gap-[clamp(0.75rem,1.5vh,1.5rem)]">
+          <li className="flex items-center justify-center cta-list-item-gap">
             <span className="text-accent">✦</span>
             <span>Vaše klientky na vás čekají</span>
             <span className="text-accent">✦</span>
           </li>
-          <li className="flex items-center justify-center gap-4 md:gap-[clamp(0.75rem,1.5vh,1.5rem)]">
+          <li className="flex items-center justify-center cta-list-item-gap">
             <span className="text-accent">✦</span>
             <span>Už brzy můžete mít hotovo</span>
             <span className="text-accent">✦</span>
           </li>
-          <li className="flex items-center justify-center gap-4 md:gap-[clamp(0.75rem,1.5vh,1.5rem)]">
+          <li className="flex items-center justify-center cta-list-item-gap">
             <span className="text-accent">✦</span>
             <span>Třeba za rok budete pomáhat stovkám lidí</span>
             <span className="text-accent">✦</span>
           </li>
-          <li className="flex items-center justify-center gap-4 md:gap-[clamp(0.75rem,1.5vh,1.5rem)]">
+          <li className="flex items-center justify-center cta-list-item-gap">
             <span className="text-accent">✦</span>
             <span>A cítit se svobodně</span>
             <span className="text-accent">✦</span>
@@ -50,15 +48,17 @@ export default function CTA() {
         <Button size="lg" onClick={handleClick}>
           Už chci začít
         </Button>
-        <div className="mt-8 md:mt-[clamp(1.5rem,3vh,3rem)]">
-          <h3 className="font-display font-bold">
+        <div className="cta-subheading-mt">
+          <h3 className="font-display font-bold text-fluid-cta-subheading">
             Změna začíná rozhodnutím.
           </h3>
-          <h3 className="font-display font-bold">
+          <h3 className="font-display font-bold text-fluid-cta-subheading">
             Udělejte ho dneska.
           </h3>
         </div>
       </motion.div>
     </Section>
   )
-}
+})
+
+export default CTA

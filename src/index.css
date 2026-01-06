@@ -768,6 +768,40 @@
     padding-top: clamp(0.375rem, 0.5vh + 0.5vw, 1rem);
   }
 
+  /* CTA text utilities - optimized for tablets 667-768px */
+  .text-fluid-cta-heading {
+    font-size: clamp(1.25rem, 1vh + 1vw, 2rem);
+  }
+
+  .text-fluid-cta-list {
+    font-size: clamp(0.875rem, 0.75vh + 0.75vw, 1.125rem);
+  }
+
+  .text-fluid-cta-subheading {
+    font-size: clamp(1rem, 0.9vh + 0.9vw, 1.5rem);
+  }
+
+  /* CTA spacing utilities - optimized for tablets */
+  .cta-heading-mb {
+    margin-bottom: clamp(1.5rem, 2vh + 2vw, 4rem);
+  }
+
+  .cta-list-mb {
+    margin-bottom: clamp(2rem, 3vh + 3vw, 6rem);
+  }
+
+  .cta-list-gap {
+    gap: clamp(0.5rem, 0.75vh + 0.75vw, 1.5rem);
+  }
+
+  .cta-list-item-gap {
+    gap: clamp(0.5rem, 0.75vh + 0.75vw, 1.5rem);
+  }
+
+  .cta-subheading-mt {
+    margin-top: clamp(1rem, 1.5vh + 1.5vw, 3rem);
+  }
+
   /* Fluid margin bottom - extra small variant 2 */
   .mb-fluid-xs-v2 {
     margin-bottom: 0.75rem;
