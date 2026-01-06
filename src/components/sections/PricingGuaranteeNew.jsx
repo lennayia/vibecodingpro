@@ -1,52 +1,44 @@
 import { motion } from 'framer-motion'
-import { useState } from 'react'
+import { useState, memo } from 'react'
 import Section from '../layout/Section'
 import { BadgeCheck } from 'lucide-react'
 import { fadeIn, slideUp } from '../../constants/animations'
 
-export default function PricingGuaranteeNew() {
+// Constants for consistent sizing
+const ICON_SIZE = 'guarantee-icon-size'
+const STROKE_WIDTH = 2
+
+const PricingGuaranteeNew = memo(function PricingGuaranteeNew() {
   const [shouldShake, setShouldShake] = useState(false)
   const [shouldShakeRazitko, setShouldShakeRazitko] = useState(false)
 
   return (
     <Section background="dark" centered={true} showScrollIndicator={true}>
       {/* Main container - relative positioning for absolute stamps */}
-      <div className="max-w-4xl mx-auto relative" style={{ minHeight: 'clamp(600px, 80vh, 900px)', overflow: 'visible' }}>
+      <div className="max-w-4xl mx-auto relative guarantee-container-min-height">
 
         {/* Help text */}
         <motion.div
-          className="text-center"
-          style={{ marginBottom: 'clamp(2rem, 4vh, 4rem)' }}
+          className="text-center guarantee-help-mb"
           {...slideUp}
           transition={{ delay: 0.3 }}
         >
-          <p className="text-xl font-light">
+          <p className="text-fluid-guarantee-help font-light">
             Nevíte si rady? <a href="#" className="underline hover:no-underline font-semibold">Napište mi,</a> pomůžu vám vybrat. Možná vás podpoří záruka vrácení peněz nebo odpovědi na otázky, které můžou vzbuzovat obavy.
           </p>
         </motion.div>
 
         {/* Guarantee card - simple, no overflow tricks */}
         <motion.div {...fadeIn}>
-          <div
-            className="rounded-2xl bg-gray-50 dark:bg-[#05050f] border-2 border-gray-200 dark:border-gray-700"
-            style={{
-              paddingTop: 'clamp(2rem, 4vh, 4rem)',
-              paddingBottom: 'clamp(3rem, 6vh, 6rem)',
-              paddingLeft: 'clamp(1.5rem, 3vw, 3rem)',
-              paddingRight: 'clamp(1.5rem, 3vw, 3rem)'
-            }}
-          >
+          <div className="rounded-2xl bg-gray-50 dark:bg-[#05050f] border-2 border-gray-200 dark:border-gray-700 guarantee-card-padding">
             {/* Header */}
-            <div
-              className="flex items-center justify-center"
-              style={{ gap: 'clamp(0.75rem, 1.5vh, 1.5rem)', marginBottom: 'clamp(1.5rem, 3vh, 3rem)' }}
-            >
-              <BadgeCheck className="w-8 h-8 text-accent" strokeWidth={2} />
-              <h2 className="font-display font-bold text-accent text-3xl">Osobní garance</h2>
+            <div className="flex items-center justify-center guarantee-header-gap guarantee-header-mb">
+              <BadgeCheck className={`${ICON_SIZE} text-accent`} strokeWidth={STROKE_WIDTH} />
+              <h2 className="font-display font-bold text-accent text-fluid-guarantee-title">Osobní garance</h2>
             </div>
 
             {/* Guarantee text */}
-            <p className="text-center text-xl font-light max-w-2xl mx-auto">
+            <p className="text-center text-fluid-guarantee-text font-light max-w-2xl mx-auto">
               Věřím tomu, co dělám. Pokud vám spolupráce do týdne od uběhnutí první 55min. konzultace nedá jasno, férově vám vrátím peníze.
             </p>
           </div>
@@ -198,4 +190,6 @@ export default function PricingGuaranteeNew() {
       </div>
     </Section>
   )
-}
+})
+
+export default PricingGuaranteeNew

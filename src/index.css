@@ -636,6 +636,50 @@
     font-size: clamp(0.75rem, 0.65vh + 0.65vw, 0.875rem);
   }
 
+  /* PricingGuaranteeNew text utilities - optimized for tablets 667-768px */
+  .text-fluid-guarantee-help {
+    font-size: clamp(0.875rem, 0.75vh + 0.75vw, 1.125rem);
+  }
+
+  .text-fluid-guarantee-title {
+    font-size: clamp(1.25rem, 1vh + 1vw, 1.875rem);
+  }
+
+  .text-fluid-guarantee-text {
+    font-size: clamp(0.875rem, 0.75vh + 0.75vw, 1.125rem);
+  }
+
+  /* PricingGuaranteeNew icon utilities */
+  .guarantee-icon-size {
+    width: clamp(1.5rem, 0.8vh + 0.8vw, 2rem);
+    height: clamp(1.5rem, 0.8vh + 0.8vw, 2rem);
+  }
+
+  /* PricingGuaranteeNew spacing utilities - optimized for tablets */
+  .guarantee-container-min-height {
+    min-height: clamp(600px, 80vh, 900px);
+    overflow: visible;
+  }
+
+  .guarantee-help-mb {
+    margin-bottom: clamp(1rem, 2vh + 2vw, 4rem);
+  }
+
+  .guarantee-card-padding {
+    padding-top: clamp(1.5rem, 2vh + 2vw, 4rem);
+    padding-bottom: clamp(2rem, 3vh + 3vw, 6rem);
+    padding-left: clamp(1rem, 2vw, 3rem);
+    padding-right: clamp(1rem, 2vw, 3rem);
+  }
+
+  .guarantee-header-gap {
+    gap: clamp(0.5rem, 0.75vh + 0.75vw, 1.5rem);
+  }
+
+  .guarantee-header-mb {
+    margin-bottom: clamp(1rem, 1.5vh + 1.5vw, 3rem);
+  }
+
   /* Fluid margin bottom - extra small variant 2 */
   .mb-fluid-xs-v2 {
     margin-bottom: 0.75rem;
