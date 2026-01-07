@@ -1034,6 +1034,28 @@
     }
   }
 
+  /* Cookie banner button text - responsive without mobile override conflict */
+  button.cookie-btn-text {
+    font-size: 0.875rem !important; /* 14px for mobile */
+  }
+
+  @media (min-width: 668px) {
+    button.cookie-btn-text {
+      font-size: 1rem !important; /* 16px for desktop */
+    }
+  }
+
+  /* Hero button text - responsive without mobile override conflict */
+  .btn {
+    font-size: 0.9rem !important; /* Small for mobile */
+  }
+
+  @media (min-width: 668px) {
+    .btn {
+      font-size: 1.0625rem !important; /* 17px for desktop - slightly larger */
+    }
+  }
+
   /* Fluid margin bottom - extra small variant 2 */
   .mb-fluid-xs-v2 {
     margin-bottom: 0.75rem;

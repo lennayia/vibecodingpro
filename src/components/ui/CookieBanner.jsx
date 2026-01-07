@@ -69,11 +69,11 @@ export default function CookieBanner() {
           transition={{ type: "spring", damping: 25, stiffness: 200 }}
           className="fixed bottom-4 left-4 right-4 md:left-auto md:right-6 md:max-w-md z-[9999]"
         >
-          <div className="relative bg-[#1a1a2e] backdrop-blur-lg border-2 border-accent/30 rounded-2xl p-5 shadow-2xl shadow-accent/20">
+          <div className="relative bg-white dark:bg-[#1a1a2e] backdrop-blur-lg border-2 border-[#B56C4E]/40 dark:border-accent/30 rounded-2xl p-5 shadow-2xl shadow-[#B56C4E]/20 dark:shadow-accent/20">
             {/* Zavírací tlačítko */}
             <button
               onClick={handleDecline}
-              className="absolute top-3 right-3 text-gray-500 hover:text-white transition-colors"
+              className="absolute top-3 right-3 text-gray-500 hover:text-gray-900 dark:hover:text-white transition-colors"
               aria-label="Zavřít"
             >
               <X size={18} />
@@ -83,10 +83,10 @@ export default function CookieBanner() {
             <div className="flex items-start gap-3">
               <Cookie className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" strokeWidth={2} />
               <div className="flex-1">
-                <h3 className="font-bold text-white mb-1">
+                <h3 className="font-bold text-gray-900 dark:text-white mb-1">
                   {randomMessage.title}
                 </h3>
-                <p className="text-sm text-gray-400 leading-relaxed">
+                <p className="text-sm text-gray-700 dark:text-gray-400 leading-relaxed">
                   {randomMessage.text}
                 </p>
               </div>
@@ -96,20 +96,20 @@ export default function CookieBanner() {
             <div className="flex gap-3 mt-4">
               <button
                 onClick={handleAccept}
-                className="flex-1 bg-[#22c55e] hover:bg-[#16a34a] text-white font-medium py-2.5 px-4 rounded-xl transition-all duration-200 hover:scale-[1.02]"
+                className="flex-1 bg-[#B56C4E] hover:bg-[#9A5A3E] dark:bg-[#22c55e] dark:hover:bg-[#16a34a] text-white font-medium cookie-btn-text py-2.5 px-4 rounded-xl transition-all duration-200 hover:scale-[1.02]"
               >
                 Jasně, v pohodě
               </button>
               <button
                 onClick={handleDecline}
-                className="px-4 py-2.5 text-gray-400 hover:text-white border border-gray-700 hover:border-gray-500 rounded-xl transition-all duration-200"
+                className="px-4 py-2.5 cookie-btn-text text-[#B56C4E] dark:text-gray-400 hover:text-[#9A5A3E] dark:hover:text-white border-2 border-[#B56C4E] dark:border-gray-700 hover:border-[#9A5A3E] dark:hover:border-gray-500 rounded-xl transition-all duration-200"
               >
                 Radši ne
               </button>
             </div>
 
             {/* Odkaz na GDPR nebo zpět na prodejku */}
-            <p className="text-xs text-gray-400 mt-3 text-center">
+            <p className="text-xs text-gray-600 dark:text-gray-400 mt-3 text-center">
               {isGdprPage ? (
                 <a href="/" className="text-[#22c55e] hover:text-[#16a34a] font-semibold underline transition-colors">
                   Super, chci zpátky
@@ -117,7 +117,7 @@ export default function CookieBanner() {
               ) : (
                 <>
                   Více info v{' '}
-                  <a href="/gdpr" className="text-gray-300 hover:text-[#22c55e] underline transition-colors">
+                  <a href="/gdpr" className="text-gray-700 dark:text-gray-300 hover:text-[#22c55e] underline transition-colors">
                     Zásadách ochrany osobních údajů
                   </a>
                 </>
