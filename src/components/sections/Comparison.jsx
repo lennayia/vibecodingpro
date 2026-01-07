@@ -76,8 +76,7 @@ const imageRotateTransition = {
 
 const leftImageAnimation = {
   x: [0, 0.3, -0.3, 0],
-  scaleX: [-1, -1.02, -0.98, -1.01, -1],
-  scaleY: [1, 1.02, 0.98, 1.01, 1],
+  scale: [1, 1.02, 0.98, 1.01, 1],
   rotate: [0, 1.5, -1.5, 1, -1, 0],
 }
 
@@ -185,11 +184,13 @@ function ComparisonSeo() {
           transition={meshGradientTransition}
         />
 
-        {/* Background image LEFT - horizontally flipped */}
-        <div className="hidden md:flex absolute inset-0 items-start justify-start -ml-12 pt-16">
+        {/* Background image LEFT */}
+        <div className="hidden md:flex absolute inset-0 items-start justify-start -ml-12 pt-6">
           <motion.img
             src="/Vibecoding-koucka-jana.webp"
             alt=""
+            loading="lazy"
+            decoding="async"
             className="h-1/3 w-auto object-cover"
             style={{
               filter: isDark
@@ -215,6 +216,8 @@ function ComparisonSeo() {
           <motion.img
             src="/koucka.webp"
             alt=""
+            loading="lazy"
+            decoding="async"
             className="h-1/3 w-auto object-cover"
             style={{
               filter: isDark
