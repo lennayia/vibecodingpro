@@ -29,13 +29,21 @@
     <link rel="icon" type="image/webp" href="/vibecoding-logo.webp" />
     <link rel="apple-touch-icon" href="/vibecoding-logo.webp" />
 
-    <!-- Fonts - Optimized loading -->
+    <!-- Resource Hints - Performance optimization -->
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <!-- Async load fonts to prevent render blocking -->
+    <!-- Preload critical font (Inter regular for body text) -->
+    <link
+      rel="preload"
+      as="style"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Cormorant+Garamond:wght@600;700&family=Manrope:wght@700&display=swap&subset=latin,latin-ext"
+    />
+    <!-- Load fonts with subsetting - essential weights + latin-ext for Czech -->
     <link
       rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700;800;900&family=Manrope:wght@600;700;800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Cormorant+Garamond:wght@600;700&family=Manrope:wght@700&display=swap&subset=latin,latin-ext"
       media="print"
       onload="this.media='all'"
     />
@@ -70,7 +78,7 @@
     </style>
     <noscript>
       <link
-        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700;800;900&family=Manrope:wght@600;700;800&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Cormorant+Garamond:wght@600;700&family=Manrope:wght@700&display=swap&subset=latin,latin-ext"
         rel="stylesheet"
       />
     </noscript>
