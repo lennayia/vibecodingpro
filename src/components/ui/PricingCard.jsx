@@ -1,5 +1,5 @@
 import { Check, Gift, Tag, Crown, ChevronDown, Ticket } from 'lucide-react'
-import { useState, useRef, memo, useCallback, useMemo } from 'react'
+import { useState, useRef, memo, useCallback, useMemo, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import Card from './Card'
@@ -37,6 +37,7 @@ function PricingCard({
   const [rotateX, setRotateX] = useState(0)
   const [rotateY, setRotateY] = useState(0)
   const [shinePosition, setShinePosition] = useState({ x: 50, y: 50 })
+  const rectCacheRef = useRef(null)
 
   // All accordions closed by default (comparison table provides overview)
   const [isAccordionOpen, setIsAccordionOpen] = useState(false)
@@ -46,9 +47,10 @@ function PricingCard({
     if (window.innerWidth < 768) return // Disable on mobile
 
     const card = cardRef.current
-    if (!card) return
+    if (!card || !rectCacheRef.current) return
 
-    const rect = card.getBoundingClientRect()
+    // Use cached rect instead of getBoundingClientRect() - prevents forced reflow
+    const rect = rectCacheRef.current
     const x = e.clientX - rect.left
     const y = e.clientY - rect.top
 
@@ -70,6 +72,23 @@ function PricingCard({
     setRotateX(0)
     setRotateY(0)
     setShinePosition({ x: 50, y: 50 })
+  }, [])
+
+  // Cache card rect to prevent forced reflow on mousemove
+  useEffect(() => {
+    const card = cardRef.current
+    if (!card) return
+
+    const updateRect = () => {
+      rectCacheRef.current = card.getBoundingClientRect()
+    }
+
+    updateRect()
+
+    const resizeObserver = new ResizeObserver(updateRect)
+    resizeObserver.observe(card)
+
+    return () => resizeObserver.disconnect()
   }, [])
 
   // Memoized: Determine which phases to show based on package title

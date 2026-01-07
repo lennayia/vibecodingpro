@@ -96,7 +96,7 @@ export default function CookieBanner() {
             <div className="flex gap-3 mt-4">
               <button
                 onClick={handleAccept}
-                className="flex-1 bg-[#B56C4E] hover:bg-[#9A5A3E] dark:bg-[#22c55e] dark:hover:bg-[#16a34a] text-white font-medium cookie-btn-text py-2.5 px-4 rounded-xl transition-all duration-200 hover:scale-[1.02]"
+                className="flex-1 bg-[#B56C4E] hover:bg-[#9A5A3E] dark:bg-[#15803d] dark:hover:bg-[#166534] text-white font-medium cookie-btn-text py-2.5 px-4 rounded-xl transition-all duration-200 hover:scale-[1.02]"
               >
                 Jasně, v pohodě
               </button>
