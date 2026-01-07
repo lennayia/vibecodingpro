@@ -1,0 +1,7 @@
+# robots.txt for vibecodingpro.cz
+
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://www.vibecodingpro.cz/sitemap.xml

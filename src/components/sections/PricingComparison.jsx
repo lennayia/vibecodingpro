@@ -148,7 +148,7 @@ function PricingComparison() {
         </motion.h2>
 
         <motion.p
-          className="block md:hidden text-center text-fluid-comparison-xs font-light mb-clamp-sm text-gray-600 dark:text-gray-400"
+          className="block md:hidden text-center text-fluid-comparison-xs font-light mb-clamp-sm text-gray-700 dark:text-gray-400"
           {...slideUp}
           transition={{ delay: 0.15 }}
         >
@@ -212,7 +212,7 @@ function PricingComparison() {
         </motion.div>
 
         <motion.p
-          className="text-center text-fluid-comparison-note font-light mt-clamp-phases max-w-2xl mx-auto text-gray-600 dark:text-gray-400"
+          className="text-center text-fluid-comparison-note font-light mt-clamp-phases max-w-2xl mx-auto text-gray-700 dark:text-gray-400"
           {...slideUp}
           transition={{ delay: 0.3 }}
         >
@@ -220,7 +220,7 @@ function PricingComparison() {
         </motion.p>
 
         <motion.div
-          className="text-center font-light mt-clamp-phases max-w-2xl mx-auto text-gray-600 dark:text-gray-400 flex items-start justify-center gap-2"
+          className="text-center font-light mt-clamp-phases max-w-2xl mx-auto text-gray-700 dark:text-gray-400 flex items-start justify-center gap-2"
           {...slideUp}
           transition={{ delay: 0.4 }}
         >

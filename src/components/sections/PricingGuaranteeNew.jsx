@@ -48,6 +48,8 @@ const PricingGuaranteeNew = memo(function PricingGuaranteeNew() {
         <motion.img
           src="/vibecodingotisk-razitka.webp"
           alt="Otisk razítka"
+          loading="lazy"
+          decoding="async"
           initial={{ y: -200, opacity: 0, rotate: 0 }}
           whileInView={shouldShake ? {
             y: 0,
@@ -88,6 +90,8 @@ const PricingGuaranteeNew = memo(function PricingGuaranteeNew() {
         <motion.img
           src="/vibecodingotisk-razitka.webp"
           alt="Otisk razítka"
+          loading="lazy"
+          decoding="async"
           initial={{ y: -200, opacity: 0, rotate: 0 }}
           whileInView={shouldShake ? {
             y: 0,
@@ -128,6 +132,8 @@ const PricingGuaranteeNew = memo(function PricingGuaranteeNew() {
         <img
           src="/vibecoding-razitko.webp"
           alt="Razítko"
+          loading="lazy"
+          decoding="async"
           className="block sm:hidden absolute object-contain pointer-events-none"
           style={{
             width: 'clamp(9rem, 24vw, 12rem)',
@@ -144,6 +150,8 @@ const PricingGuaranteeNew = memo(function PricingGuaranteeNew() {
         <motion.img
           src="/vibecoding-razitko.webp"
           alt="Razítko"
+          loading="lazy"
+          decoding="async"
           initial={{ x: 150, y: -100, opacity: 0, rotate: -10 }}
           whileInView={shouldShakeRazitko ? {
             x: 0,

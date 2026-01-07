@@ -109,7 +109,7 @@ export default function CookieBanner() {
             </div>
 
             {/* Odkaz na GDPR nebo zpět na prodejku */}
-            <p className="text-xs text-gray-600 mt-3 text-center">
+            <p className="text-xs text-gray-400 mt-3 text-center">
               {isGdprPage ? (
                 <a href="/" className="text-[#22c55e] hover:text-[#16a34a] font-semibold underline transition-colors">
                   Super, chci zpátky
@@ -117,7 +117,7 @@ export default function CookieBanner() {
               ) : (
                 <>
                   Více info v{' '}
-                  <a href="/gdpr" className="text-gray-500 hover:text-[#22c55e] underline transition-colors">
+                  <a href="/gdpr" className="text-gray-300 hover:text-[#22c55e] underline transition-colors">
                     Zásadách ochrany osobních údajů
                   </a>
                 </>
