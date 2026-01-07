@@ -189,6 +189,8 @@ function ComparisonSeo() {
           <motion.img
             src="/Vibecoding-koucka-jana.webp"
             alt=""
+            width="400"
+            height="400"
             loading="lazy"
             decoding="async"
             className="h-1/3 w-auto object-cover"
@@ -216,6 +218,8 @@ function ComparisonSeo() {
           <motion.img
             src="/koucka.webp"
             alt=""
+            width="368"
+            height="385"
             loading="lazy"
             decoding="async"
             className="h-1/3 w-auto object-cover"

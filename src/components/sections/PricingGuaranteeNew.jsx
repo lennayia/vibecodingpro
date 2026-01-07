@@ -48,6 +48,8 @@ const PricingGuaranteeNew = memo(function PricingGuaranteeNew() {
         <motion.img
           src="/vibecodingotisk-razitka.webp"
           alt="Otisk razítka"
+          width="512"
+          height="238"
           loading="lazy"
           decoding="async"
           initial={{ y: -200, opacity: 0, rotate: 0 }}
@@ -90,6 +92,8 @@ const PricingGuaranteeNew = memo(function PricingGuaranteeNew() {
         <motion.img
           src="/vibecodingotisk-razitka.webp"
           alt="Otisk razítka"
+          width="512"
+          height="238"
           loading="lazy"
           decoding="async"
           initial={{ y: -200, opacity: 0, rotate: 0 }}
@@ -132,6 +136,8 @@ const PricingGuaranteeNew = memo(function PricingGuaranteeNew() {
         <img
           src="/vibecoding-razitko.webp"
           alt="Razítko"
+          width="480"
+          height="276"
           loading="lazy"
           decoding="async"
           className="block sm:hidden absolute object-contain pointer-events-none"
@@ -150,6 +156,8 @@ const PricingGuaranteeNew = memo(function PricingGuaranteeNew() {
         <motion.img
           src="/vibecoding-razitko.webp"
           alt="Razítko"
+          width="480"
+          height="276"
           loading="lazy"
           decoding="async"
           initial={{ x: 150, y: -100, opacity: 0, rotate: -10 }}

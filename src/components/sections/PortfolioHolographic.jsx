@@ -156,6 +156,8 @@ function PortfolioHolographic() {
                       <img
                         src={project.image}
                         alt={project.name}
+                        width={project.width}
+                        height={project.height}
                         loading="lazy"
                         className="w-full h-full object-cover portfolio-mobile-card"
                       />
@@ -335,6 +337,8 @@ const HolographicCard = memo(function HolographicCard({ project, zDepth }) {
           <img
             src={project.image}
             alt={project.name}
+            width={project.width}
+            height={project.height}
             className="w-full h-full object-cover"
             loading="lazy"
           />

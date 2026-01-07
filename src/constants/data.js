@@ -315,14 +315,14 @@ export const portfolioHolographicContent = {
   subheading: "Praktické aplikace, moduly, weby. Ani řádek kódu – jen vize, strategie a AI.",
   dragInstruction: "← Potáhněte do strany →",
   projects: [
-    { name: "CoachPro", image: "/coachpro.webp" },
-    { name: "ContentPro", image: "/content-pro.webp" },
-    { name: "DigiPro", image: "/digipro.webp" },
-    { name: "Koučovací karty", image: "/koucovaci-karty.webp" },
-    { name: "LifePro", image: "/liffepro.webp" },
-    { name: "PaymentsPro", image: "/paymentspro.webp" },
-    { name: "PianoPro", image: "/pianopro.webp" },
-    { name: "StudyPro", image: "/studypro.webp" }
+    { name: "CoachPro", image: "/coachpro.webp", width: 800, height: 797 },
+    { name: "ContentPro", image: "/content-pro.webp", width: 798, height: 798 },
+    { name: "DigiPro", image: "/digipro.webp", width: 854, height: 800 },
+    { name: "Koučovací karty", image: "/koucovaci-karty.webp", width: 799, height: 800 },
+    { name: "LifePro", image: "/liffepro.webp", width: 820, height: 800 },
+    { name: "PaymentsPro", image: "/paymentspro.webp", width: 846, height: 800 },
+    { name: "PianoPro", image: "/pianopro.webp", width: 850, height: 902 },
+    { name: "StudyPro", image: "/studypro.webp", width: 827, height: 800 }
   ],
   closingText: [
     "Od jednoduchých nástrojů po komplexní aplikace, tempo určujeme sami.",
