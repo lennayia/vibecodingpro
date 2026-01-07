@@ -5,8 +5,25 @@ function ScrollProgress() {
   const [scrollProgress, setScrollProgress] = useState(0)
   const rafRef = useRef(null)
   const lastScrollRef = useRef(0)
+  const totalHeightCache = useRef(0)
 
   useEffect(() => {
+    // Cache total height - prevents forced reflow on every scroll
+    const updateTotalHeight = () => {
+      totalHeightCache.current = document.documentElement.scrollHeight - document.documentElement.clientHeight
+    }
+
+    // Initial height
+    updateTotalHeight()
+
+    // Update cached height on resize (debounced)
+    let resizeTimer
+    const handleResize = () => {
+      clearTimeout(resizeTimer)
+      resizeTimer = setTimeout(updateTotalHeight, 200)
+    }
+    window.addEventListener('resize', handleResize, { passive: true })
+
     const handleScroll = () => {
       // Cancel previous frame if still pending
       if (rafRef.current) {
@@ -19,8 +36,7 @@ function ScrollProgress() {
 
         // Only update if scroll changed significantly (optimization)
         if (Math.abs(currentScroll - lastScrollRef.current) > 5) {
-          const totalHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight
-          const progress = (currentScroll / totalHeight) * 100
+          const progress = (currentScroll / totalHeightCache.current) * 100
           setScrollProgress(progress)
           lastScrollRef.current = currentScroll
         }
@@ -32,6 +48,8 @@ function ScrollProgress() {
 
     return () => {
       window.removeEventListener('scroll', handleScroll)
+      window.removeEventListener('resize', handleResize)
+      clearTimeout(resizeTimer)
       if (rafRef.current) {
         cancelAnimationFrame(rafRef.current)
       }

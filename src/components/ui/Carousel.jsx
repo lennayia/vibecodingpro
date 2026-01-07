@@ -80,6 +80,31 @@ function Carousel({
   const touchStartX = useRef(0)
   const touchEndX = useRef(0)
   const scrollTimeout = useRef(null)
+  const cardWidthCache = useRef(0)
+
+  // Cache card width - prevents forced reflow during scroll
+  useEffect(() => {
+    const updateCardWidth = () => {
+      if (scrollContainerRef.current?.children[0]) {
+        cardWidthCache.current = scrollContainerRef.current.children[0].offsetWidth
+      }
+    }
+
+    updateCardWidth()
+
+    // Update on resize (debounced)
+    let resizeTimer
+    const handleResize = () => {
+      clearTimeout(resizeTimer)
+      resizeTimer = setTimeout(updateCardWidth, 200)
+    }
+    window.addEventListener('resize', handleResize, { passive: true })
+
+    return () => {
+      window.removeEventListener('resize', handleResize)
+      clearTimeout(resizeTimer)
+    }
+  }, [slides])
 
   // Track GLOBAL theme changes (not parent .dark class)
   useEffect(() => {
@@ -127,7 +152,7 @@ function Carousel({
       if (!container) return
 
       const scrollLeft = container.scrollLeft
-      const cardWidth = container.children[0]?.offsetWidth || 0
+      const cardWidth = cardWidthCache.current || 0
       const gap = parseInt(gapPx) || 0
 
       // Calculate which slide is currently centered
@@ -141,7 +166,7 @@ function Carousel({
     if (!scrollContainerRef.current) return
 
     const container = scrollContainerRef.current
-    const cardWidth = container.children[0]?.offsetWidth || 0
+    const cardWidth = cardWidthCache.current || 0
     const gap = parseInt(gapPx) || 0
 
     const scrollPosition = currentSlide * (cardWidth + gap)

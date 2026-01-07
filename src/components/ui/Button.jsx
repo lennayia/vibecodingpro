@@ -40,20 +40,36 @@ function Button({
 
   const buttonRef = useRef(null)
   const [position, setPosition] = useState({ x: 0, y: 0 })
+  const buttonRectCache = useRef({ centerX: 0, centerY: 0 })
 
   useEffect(() => {
     if (window.innerWidth < 768) return // Disable on mobile
 
-    const handleMouseMove = (e) => {
-      const button = buttonRef.current
-      if (!button) return
+    const button = buttonRef.current
+    if (!button) return
 
+    // Cache button position - prevents forced reflow on every mousemove
+    const updateButtonRect = () => {
       const rect = button.getBoundingClientRect()
-      const buttonCenterX = rect.left + rect.width / 2
-      const buttonCenterY = rect.top + rect.height / 2
+      buttonRectCache.current = {
+        centerX: rect.left + rect.width / 2,
+        centerY: rect.top + rect.height / 2
+      }
+    }
 
-      const distanceX = e.clientX - buttonCenterX
-      const distanceY = e.clientY - buttonCenterY
+    // Initial rect
+    updateButtonRect()
+
+    // Update cached rect on scroll/resize (debounced)
+    const handleScrollResize = throttle(updateButtonRect, 200)
+    window.addEventListener('scroll', handleScrollResize, { passive: true })
+    window.addEventListener('resize', handleScrollResize, { passive: true })
+
+    const handleMouseMove = (e) => {
+      const { centerX, centerY } = buttonRectCache.current
+
+      const distanceX = e.clientX - centerX
+      const distanceY = e.clientY - centerY
       const distance = Math.sqrt(distanceX ** 2 + distanceY ** 2)
 
       if (distance < MAX_DISTANCE) {
@@ -70,7 +86,12 @@ function Button({
     const throttledMouseMove = throttle(handleMouseMove, THROTTLE_MS)
 
     document.addEventListener('mousemove', throttledMouseMove)
-    return () => document.removeEventListener('mousemove', throttledMouseMove)
+
+    return () => {
+      document.removeEventListener('mousemove', throttledMouseMove)
+      window.removeEventListener('scroll', handleScrollResize)
+      window.removeEventListener('resize', handleScrollResize)
+    }
   }, [])
 
   return (

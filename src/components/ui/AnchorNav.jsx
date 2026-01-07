@@ -14,33 +14,46 @@ export default function AnchorNav() {
   ]
 
   useEffect(() => {
+    // Handle menu visibility on scroll
     const handleScroll = () => {
-      // Show menu after scrolling down 100px (reduced from 300px)
       setIsVisible(window.scrollY > 100)
-
-      // Update active section based on scroll position
-      const sections = links.map(link => ({
-        id: link.id,
-        element: document.getElementById(link.id)
-      })).filter(s => s.element)
-
-      // Find which section is currently in view
-      for (let i = sections.length - 1; i >= 0; i--) {
-        const section = sections[i]
-        const rect = section.element.getBoundingClientRect()
-
-        // Section is considered active if it's in the top 40% of the viewport
-        if (rect.top <= window.innerHeight * 0.4) {
-          setActiveSection(section.id)
-          break
-        }
-      }
     }
 
     window.addEventListener('scroll', handleScroll, { passive: true })
-    handleScroll() // Check initial state
+    handleScroll()
 
-    return () => window.removeEventListener('scroll', handleScroll)
+    // Use IntersectionObserver for section detection (no forced reflow!)
+    const observerOptions = {
+      root: null,
+      rootMargin: '-40% 0px -60% 0px', // Section is active when in top 40% of viewport
+      threshold: 0
+    }
+
+    const observerCallback = (entries) => {
+      // Find the most visible section
+      const visibleSections = entries
+        .filter(entry => entry.isIntersecting)
+        .sort((a, b) => b.intersectionRatio - a.intersectionRatio)
+
+      if (visibleSections.length > 0) {
+        setActiveSection(visibleSections[0].target.id)
+      }
+    }
+
+    const observer = new IntersectionObserver(observerCallback, observerOptions)
+
+    // Observe all sections
+    links.forEach(link => {
+      const element = document.getElementById(link.id)
+      if (element) {
+        observer.observe(element)
+      }
+    })
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll)
+      observer.disconnect()
+    }
   }, [])
 
   const handleClick = (id) => {
