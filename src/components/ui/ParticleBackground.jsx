@@ -191,12 +191,17 @@ function ParticleBackground({
 
     observer.observe(canvas)
 
-    // Mouse move handler
+    // Cache canvas rect to prevent forced reflow on mousemove
+    let canvasRectCache = canvas.getBoundingClientRect()
+    const updateRectCache = () => {
+      canvasRectCache = canvas.getBoundingClientRect()
+    }
+
+    // Mouse move handler - uses cached rect
     function handleMouseMove(e) {
-      const rect = canvas.getBoundingClientRect()
       mousePos.current = {
-        x: e.clientX - rect.left,
-        y: e.clientY - rect.top
+        x: e.clientX - canvasRectCache.left,
+        y: e.clientY - canvasRectCache.top
       }
     }
 
@@ -211,6 +216,9 @@ function ParticleBackground({
       height = parentElement.clientHeight
       canvas.width = width
       canvas.height = height
+
+      // Update cached rect after resize
+      updateRectCache()
 
       // Recalculate particle positions - reset particles that are outside new viewport
       particles.current.forEach(particle => {
