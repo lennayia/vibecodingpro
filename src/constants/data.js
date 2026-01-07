@@ -1,4 +1,4 @@
-import { Target, Wrench, MessageSquare, FileText, Rocket, RefreshCw, Package, BookOpen, Lightbulb, Route, Tag, Sunrise, Sun, Moon, Palmtree, Gift, Check, Map, FileCheck, Video, Mail, ClipboardList, Phone } from 'lucide-react'
+import { Target, Wrench, MessageSquare, FileText, Rocket, RefreshCw, Package, BookOpen, Lightbulb, Route, Tag, Sunrise, Sun, Moon, Palmtree, Map, FileCheck, Video, Mail, ClipboardList, Phone } from 'lucide-react'
 
 export const phases = [
   {

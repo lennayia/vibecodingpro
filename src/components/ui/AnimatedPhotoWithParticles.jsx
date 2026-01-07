@@ -1,6 +1,8 @@
-import { useState, useRef, useEffect, useCallback, memo } from 'react'
-import ParticleBackground from './ParticleBackground'
+import { useState, useRef, useEffect, useCallback, memo, lazy, Suspense } from 'react'
 import '../../styles/whyme.css'
+
+// Lazy load ParticleBackground to enable code splitting
+const ParticleBackground = lazy(() => import('./ParticleBackground'))
 
 const AnimatedPhotoWithParticles = memo(function AnimatedPhotoWithParticles() {
   const containerRef = useRef(null)
@@ -31,12 +33,14 @@ const AnimatedPhotoWithParticles = memo(function AnimatedPhotoWithParticles() {
   return (
     <div className="absolute inset-0 z-0 overflow-hidden" ref={containerRef}>
       {/* Particles - ZA fotkou */}
-      <ParticleBackground
-        particleCount={130}
-        showConnections={false}
-        mouseInteraction={false}
-        opacity={0.6}
-      />
+      <Suspense fallback={null}>
+        <ParticleBackground
+          particleCount={130}
+          showConnections={false}
+          mouseInteraction={false}
+          opacity={0.6}
+        />
+      </Suspense>
 
       <div className="absolute inset-y-0 right-0 w-1/3 md:w-1/2 lg:w-2/3 overflow-hidden photo-container">
         {/* Vertikální otáčení - paused on mobile via CSS */}
