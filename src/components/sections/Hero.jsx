@@ -10,11 +10,20 @@ import { SECTION_IDS } from '../../constants/data'
 import '../../styles/hero.css'
 import '../../styles/shared.css'
 
-// Animation timing constants
+// Animation timing constants - Mobile optimized (faster, simpler)
 const ANIMATION_TIMINGS = {
-  STAGGER_CHILDREN: 0.25,
-  DELAY_CHILDREN: 0.2,
-  FADE_DURATION: 0.8
+  // Desktop: smooth, gradual
+  DESKTOP: {
+    STAGGER_CHILDREN: 0.25,
+    DELAY_CHILDREN: 0.2,
+    FADE_DURATION: 0.8
+  },
+  // Mobile: fast, minimal delay (better LCP)
+  MOBILE: {
+    STAGGER_CHILDREN: 0.1,  // Rychlejší stagger
+    DELAY_CHILDREN: 0,      // Žádný delay - okamžitý start
+    FADE_DURATION: 0.3      // Kratší animace
+  }
 }
 
 const TYPING_EFFECT = {
@@ -22,35 +31,51 @@ const TYPING_EFFECT = {
   DELAY: 500
 }
 
-// Performance: Animation variants outside component to avoid re-creating objects
-const containerVariants = {
-  initial: {},
-  animate: {
-    transition: {
-      staggerChildren: ANIMATION_TIMINGS.STAGGER_CHILDREN,
-      delayChildren: ANIMATION_TIMINGS.DELAY_CHILDREN
-    }
-  }
-}
-
-const itemVariants = {
-  initial: { opacity: 0 },
-  animate: {
-    opacity: 1,
-    transition: { duration: ANIMATION_TIMINGS.FADE_DURATION, ease: "easeOut" }
-  }
-}
-
 function Hero() {
+  // Mobile detection
+  const [isMobile, setIsMobile] = useState(false)
+
   // Dark mode detection
   const [isDark, setIsDark] = useState(true)
 
   useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768)
+    checkMobile()
+    window.addEventListener('resize', checkMobile)
+
     const checkDark = () => setIsDark(document.documentElement.classList.contains('dark'))
     checkDark()
     window.addEventListener('themeChange', checkDark)
-    return () => window.removeEventListener('themeChange', checkDark)
+
+    return () => {
+      window.removeEventListener('resize', checkMobile)
+      window.removeEventListener('themeChange', checkDark)
+    }
   }, [])
+
+  // Adaptive animation variants - faster on mobile
+  const timings = isMobile ? ANIMATION_TIMINGS.MOBILE : ANIMATION_TIMINGS.DESKTOP
+
+  const containerVariants = {
+    initial: {},
+    animate: {
+      transition: {
+        staggerChildren: timings.STAGGER_CHILDREN,
+        delayChildren: timings.DELAY_CHILDREN
+      }
+    }
+  }
+
+  const itemVariants = {
+    initial: { opacity: 0 },
+    animate: {
+      opacity: 1,
+      transition: {
+        duration: timings.FADE_DURATION,
+        ease: isMobile ? "linear" : "easeOut"  // Linear na mobilu = jednodušší výpočet
+      }
+    }
+  }
 
   // Neural network background animation
   const neuralBackground = <AnimatedBackground type="neural" count={15} />

@@ -14,12 +14,19 @@ function throttle(func, limit) {
   }
 }
 
-// Performance: Animation transition outside component
+// Performance: Animation transition - simpler on mobile
 const buttonTransition = {
-  type: "spring",
-  stiffness: 150,
-  damping: 15,
-  mass: 0.1
+  desktop: {
+    type: "spring",
+    stiffness: 150,
+    damping: 15,
+    mass: 0.1
+  },
+  mobile: {
+    type: "tween",  // Jednodušší než spring
+    duration: 0.2,
+    ease: "easeOut"
+  }
 }
 
 // Performance: Constants for magnetic effect
@@ -94,6 +101,10 @@ function Button({
     }
   }, [])
 
+  // Use simpler transition on mobile
+  const isMobile = typeof window !== 'undefined' && window.innerWidth < 768
+  const transition = isMobile ? buttonTransition.mobile : buttonTransition.desktop
+
   return (
     <motion.button
       ref={buttonRef}
@@ -101,7 +112,7 @@ function Button({
       className={`${baseClass} ${variantClass} ${sizeClass} ${className}`}
       style={{ ...props.style, position: 'relative' }}
       animate={{ x: position.x, y: position.y }}
-      transition={buttonTransition}
+      transition={transition}
     >
       {children}
     </motion.button>
