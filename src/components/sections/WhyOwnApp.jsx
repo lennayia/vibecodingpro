@@ -156,7 +156,7 @@ function WhyOwnAppSeo() {
   }, [])
 
   return (
-    <Section background="dark" centered={true} showScrollIndicator={true}>
+    <Section background="dark" centered={true} showScrollIndicator={true} className="mobile-section-spacing-top">
       <div ref={sectionRef}>
         <motion.div {...fadeIn}>
           <h2 className="font-display font-bold mb-[clamp(2rem,8vw,12rem)] text-center leading-tight">
@@ -260,7 +260,7 @@ function WhyOwnAppSeo() {
           <motion.div
             {...slideUp}
             transition={{ delay: ANIMATION_CONFIG.CTA_DELAY }}
-            className="flex justify-center pt-[clamp(1.5rem,2vw,2.5rem)]"
+            className="flex justify-center pt-[clamp(1.5rem,2vw,2.5rem)] mobile-section-spacing-top mobile-section-spacing-bottom"
           >
             <Button onClick={handleClick}>
               Jak to funguje

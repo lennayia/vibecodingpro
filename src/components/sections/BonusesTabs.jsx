@@ -169,7 +169,7 @@ const BonusesTabsSeo = memo(function BonusesTabsSeo() {
   }, [bonusSlides.length])
 
   return (
-    <Section background="none" className="bg-white dark:bg-[#0a0a1a]" centered={true} showScrollIndicator={true} backgroundElement={particleBackground}>
+    <Section background="none" className="bg-white dark:bg-[#0a0a1a] mobile-section-spacing-top" centered={true} showScrollIndicator={true} backgroundElement={particleBackground}>
       <div className="w-full">
         <motion.div {...fadeIn}>
           {/* Fixed header */}

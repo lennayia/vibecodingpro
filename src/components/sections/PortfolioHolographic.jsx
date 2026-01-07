@@ -216,6 +216,8 @@ function PortfolioHolographic() {
           </p>
         ))}
       </motion.div>
+
+      <span className="copper-divider-line mobile-only mx-auto block mt-8" />
     </Section>
   )
 }

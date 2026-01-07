@@ -40,7 +40,7 @@ function CaseStudySeo() {
 
       <div className="w-full relative z-10">
         <motion.div {...fadeIn}>
-          <div className="text-center mb-fluid-xs-v2">
+          <div className="text-center mb-fluid-xs-v2 mobile-section-spacing-top">
             <Badge>Vibecoding mění hru</Badge>
           </div>
 

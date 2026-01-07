@@ -27,7 +27,7 @@ function Footer() {
             Kontakt
           </a>
         </div>
-        <p className="mb-4">Vibecoding © 2025</p>
+        <p className="mb-4">VibecodingPro © 2025</p>
         <p className="text-sm">Postaveno s Claude Code, React a Framer Motion</p>
       </div>
     </footer>

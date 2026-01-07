@@ -49,8 +49,10 @@ function WhatYouCanCreate() {
             })}
           </div>
 
+          <span className="copper-divider-line mobile-only mx-auto block mb-8" />
+
           <motion.div
-            className="text-center max-w-2xl mx-auto mt-fluid-xl md:mt-16 lg:mt-20 mb-0"
+            className="text-center max-w-2xl mx-auto mt-fluid-xl md:mt-16 lg:mt-20 mb-0 mobile-section-spacing-bottom"
             {...slideUp}
             transition={{ delay: ANIMATION_CONFIG.CLOSING_DELAY }}
           >

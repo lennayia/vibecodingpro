@@ -106,7 +106,7 @@ function PricingCard({
       ref={cardRef}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      className="h-full perspective-1000"
+      className={`h-full perspective-1000 ${badgeText ? 'mobile-section-spacing-top' : ''}`}
     >
       <motion.div
         className="h-full transform-3d"

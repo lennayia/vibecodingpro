@@ -9,7 +9,7 @@ import { fadeIn, slideUp } from '../../constants/animations'
 
 function Pricing() {
   return (
-    <Section background="none" className="bg-white dark:bg-[#05050f]" centered={true} showScrollIndicator={true}>
+    <Section background="none" className="bg-white dark:bg-[#05050f] mobile-section-spacing-top" centered={true} showScrollIndicator={true}>
       <div id="pricing-section">
         <motion.div {...fadeIn}>
           <h2 className="font-display font-bold text-center pt-12 md:pt-0 mb-12 md:mb-fluid-pricing-xl leading-tight">
@@ -69,7 +69,7 @@ export default memo(Pricing)
 
 function PricingPackages() {
   return (
-    <Section background="light" customPadding="pt-12 pb-12 md:pt-4 md:pb-8 lg:pt-8 lg:pb-16 px-[4%]" className="min-h-screen flex items-center justify-center" showScrollIndicator={true}>
+    <Section background="light" customPadding="pt-12 pb-12 md:pt-4 md:pb-8 lg:pt-8 lg:pb-16 px-[4%]" className="min-h-screen flex items-center justify-center mobile-section-spacing-top" showScrollIndicator={true}>
       <div id="pricing-packages-section">
         <motion.div {...fadeIn}>
           <h2 className="font-display font-bold text-center pt-12 md:pt-12 lg:pt-16 mb-12 md:mb-fluid-pricing-lg">

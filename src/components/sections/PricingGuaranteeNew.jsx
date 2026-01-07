@@ -13,7 +13,7 @@ const PricingGuaranteeNew = memo(function PricingGuaranteeNew() {
   const [shouldShakeRazitko, setShouldShakeRazitko] = useState(false)
 
   return (
-    <Section background="dark" centered={true} showScrollIndicator={true}>
+    <Section background="dark" centered={true} showScrollIndicator={true} className="mobile-section-spacing-top">
       {/* Main container - relative positioning for absolute stamps */}
       <div className="max-w-4xl mx-auto relative guarantee-container-min-height">
 

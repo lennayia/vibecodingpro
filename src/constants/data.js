@@ -345,7 +345,7 @@ export const faqCategories = [
       },
       {
         question: "Proč by koučka měla používat vibecoding místo Wix, Canvy nebo jiných no-code nástrojů?",
-        answer: "Wix a Canva jsou fajn na začátek, ale rychle narazíte na limity. S vibecodingem vytvoříte přesně to, co vaše klientky potřebují – bez omezení šablon. A naučíte se to, takže nejste závislá na platformě, která vám zítra zdraží."
+        answer: "Wix a Canva jsou fajn na začátek, ale rychle narazíte na limity. S vibecodingem vytvoříte přesně to, co vaše klientky potřebují – bez omezení šablon. A naučíte se to, takže nejste závislá na platformě, která vám možná zítra zdraží."
       },
       {
         question: "Jaké aplikace může vytvořit koučka nebo online podnikatelka pomocí vibecodingu?",
@@ -455,7 +455,7 @@ export const faqCategories = [
       },
       {
         question: "Budu pak závislá na nějaké platformě, nebo si aplikaci opravdu vlastním?",
-        answer: "Aplikace je vaše a můžete s ní dělat, co chcete – hostovat kdekoli, upravovat, prodávat. Nejste zavřená v žádné platformě, která vám zítra zdraží nebo změní podmínky. Máte kontrolu."
+        answer: "Aplikace je vaše a můžete s ní dělat, co chcete – hostovat kdekoli, upravovat, prodávat. Nejste zavřená v žádné platformě, která vá nebo změní podmínky. Máte kontrolu."
       }
     ]
   }

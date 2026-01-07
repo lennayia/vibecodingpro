@@ -33,7 +33,7 @@ function WhatIsVibecoding() {
     <Section
       background="light"
       centered={true}
-      className="relative overflow-hidden"
+      className="relative overflow-hidden mobile-section-spacing-top"
       showScrollIndicator={true}
       backgroundElement={binaryBackground}
     >

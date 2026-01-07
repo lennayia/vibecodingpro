@@ -134,7 +134,7 @@ function PricingComparison() {
   return (
     <Section
       background="none"
-      className="comparison-bg pt-clamp-comparison pb-clamp-comparison"
+      className="comparison-bg pt-clamp-comparison pb-clamp-comparison mobile-section-spacing-top"
       centered={true}
       showScrollIndicator={true}
       customPadding="px-[4%]"

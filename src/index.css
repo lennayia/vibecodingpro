@@ -854,6 +854,186 @@
     padding: clamp(1rem, 2vh, 2rem);
   }
 
+  /* Mobile-only section spacing (320-667px) */
+  @media (max-width: 667px) {
+    .mobile-section-spacing-bottom {
+      padding-bottom: 4rem;
+    }
+
+    .mobile-section-spacing-top {
+      padding-top: 4rem;
+    }
+
+    .mobile-only {
+      display: block;
+    }
+
+    /* Mobile-only fluid text sizes (320-667px) */
+    /* Override ALL custom fluid text utilities AND base elements for mobile */
+
+    /* Base HTML elements - MUST override for mobile */
+    p:not([class*="text-"]),
+    span:not([class*="text-"]):not(.text-accent),
+    li:not([class*="text-"]),
+    div:not([class*="font-display"]):not([class*="text-"]) {
+      font-size: clamp(0.9375rem, 0.9vh + 0.9vw, 1.125rem) !important; /* 15px → 18px */
+      line-height: 1.6 !important;
+    }
+
+    h3 {
+      font-size: clamp(1.125rem, 1.1vh + 1.1vw, 1.5rem) !important; /* 18px → 24px */
+    }
+
+    h4 {
+      font-size: clamp(1.0625rem, 1vh + 1vw, 1.375rem) !important; /* 17px → 22px */
+    }
+
+    h5 {
+      font-size: clamp(1rem, 1vh + 1vw, 1.25rem) !important; /* 16px → 20px */
+    }
+
+    h6 {
+      font-size: clamp(0.9375rem, 0.9vh + 0.9vw, 1.125rem) !important; /* 15px → 18px */
+    }
+
+    /* Comparison text utilities */
+    .text-fluid-comparison-sm {
+      font-size: clamp(0.9375rem, 0.9vh + 0.9vw, 1.125rem) !important; /* 15px → 18px */
+    }
+
+    .text-fluid-comparison-base {
+      font-size: clamp(1.0625rem, 1vh + 1vw, 1.25rem) !important; /* 17px → 20px */
+    }
+
+    .text-fluid-comparison-xs {
+      font-size: clamp(0.875rem, 0.85vh + 0.85vw, 1rem) !important; /* 14px → 16px */
+    }
+
+    .text-fluid-comparison-tip,
+    .text-fluid-comparison-note {
+      font-size: clamp(0.8125rem, 0.75vh + 0.75vw, 0.9375rem) !important; /* 13px → 15px */
+    }
+
+    /* Pricing card text utilities */
+    .text-fluid-pricing-xs {
+      font-size: clamp(0.75rem, 0.75vh + 0.75vw, 0.875rem) !important; /* 12px → 14px */
+    }
+
+    .text-fluid-pricing-sm {
+      font-size: clamp(0.875rem, 0.85vh + 0.85vw, 1rem) !important; /* 14px → 16px */
+    }
+
+    .text-fluid-pricing-base {
+      font-size: clamp(0.9375rem, 0.9vh + 0.9vw, 1.125rem) !important; /* 15px → 18px */
+    }
+
+    .text-fluid-pricing-badge {
+      font-size: clamp(0.625rem, 0.65vh + 0.65vw, 0.75rem) !important; /* 10px → 12px */
+    }
+
+    /* WhyConsultation card text utilities */
+    .text-fluid-card-title {
+      font-size: clamp(1.0625rem, 1vh + 1vw, 1.25rem) !important; /* 17px → 20px */
+    }
+
+    .text-fluid-card-icon {
+      font-size: clamp(0.9375rem, 0.9vh + 0.9vw, 1.125rem) !important; /* 15px → 18px */
+    }
+
+    .text-fluid-card-item {
+      font-size: clamp(0.875rem, 0.85vh + 0.85vw, 1rem) !important; /* 14px → 16px */
+    }
+
+    /* CaseStudy text utilities */
+    .text-fluid-case-title {
+      font-size: clamp(1.0625rem, 1vh + 1vw, 1.25rem) !important; /* 17px → 20px */
+    }
+
+    .text-fluid-case-label {
+      font-size: clamp(0.8125rem, 0.75vh + 0.75vw, 0.9375rem) !important; /* 13px → 15px */
+    }
+
+    /* PricingGuaranteeNew text utilities */
+    .text-fluid-guarantee-help,
+    .text-fluid-guarantee-text {
+      font-size: clamp(0.9375rem, 0.9vh + 0.9vw, 1.125rem) !important; /* 15px → 18px */
+    }
+
+    .text-fluid-guarantee-title {
+      font-size: clamp(1.125rem, 1.1vh + 1.1vw, 1.5rem) !important; /* 18px → 24px */
+    }
+
+    /* FAQ text utilities */
+    .text-fluid-faq-category {
+      font-size: clamp(1rem, 1vh + 1vw, 1.25rem) !important; /* 16px → 20px */
+    }
+
+    .text-fluid-faq-question,
+    .text-fluid-faq-answer {
+      font-size: clamp(0.9375rem, 0.9vh + 0.9vw, 1.125rem) !important; /* 15px → 18px */
+    }
+
+    /* CTA text utilities */
+    .text-fluid-cta-heading {
+      font-size: clamp(1.125rem, 1.1vh + 1.1vw, 1.5rem) !important; /* 18px → 24px */
+    }
+
+    .text-fluid-cta-list {
+      font-size: clamp(0.9375rem, 0.9vh + 0.9vw, 1.125rem) !important; /* 15px → 18px */
+    }
+
+    .text-fluid-cta-subheading {
+      font-size: clamp(1rem, 1vh + 1vw, 1.25rem) !important; /* 16px → 20px */
+    }
+
+    /* VibeOrderPage text utilities */
+    .text-fluid-order-info,
+    .text-fluid-order-capacity {
+      font-size: clamp(0.9375rem, 0.9vh + 0.9vw, 1.125rem) !important; /* 15px → 18px */
+    }
+
+    /* Benefit text utilities */
+    .text-fluid-benefit-title {
+      font-size: clamp(1rem, 1vh + 1vw, 1.25rem) !important; /* 16px → 20px */
+    }
+
+    .text-fluid-benefit-desc {
+      font-size: clamp(0.8125rem, 0.8vh + 0.8vw, 0.9375rem) !important; /* 13px → 15px */
+    }
+
+    /* Phases text utilities */
+    .text-fluid-phases-button {
+      font-size: clamp(0.9375rem, 0.9vh + 0.9vw, 1.125rem) !important; /* 15px → 18px */
+    }
+
+    /* Generic Tailwind text classes */
+    .text-base, .text-base p {
+      font-size: clamp(0.9375rem, 0.9vh + 0.9vw, 1.125rem) !important; /* 15px → 18px */
+    }
+
+    .text-sm, .text-sm p {
+      font-size: clamp(0.875rem, 0.85vh + 0.85vw, 1rem) !important; /* 14px → 16px */
+    }
+
+    .text-xs, .text-xs p {
+      font-size: clamp(0.75rem, 0.75vh + 0.75vw, 0.875rem) !important; /* 12px → 14px */
+    }
+
+    .text-lg, .text-lg p {
+      font-size: clamp(1.0625rem, 1vh + 1vw, 1.25rem) !important; /* 17px → 20px */
+    }
+
+    .text-xl {
+      font-size: clamp(1.125rem, 1.1vh + 1.1vw, 1.375rem) !important; /* 18px → 22px */
+    }
+  }
+
+  @media (min-width: 668px) {
+    .mobile-only {
+      display: none;
+    }
+  }
+
   /* Fluid margin bottom - extra small variant 2 */
   .mb-fluid-xs-v2 {
     margin-bottom: 0.75rem;

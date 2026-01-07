@@ -130,6 +130,7 @@ function WhyConsultation() {
       centered={true}
       showScrollIndicator={true}
       backgroundElement={binaryBackground}
+      className="mobile-section-spacing-top"
     >
       <div className="w-full relative z-10">
         <motion.div {...fadeIn}>
@@ -172,7 +173,7 @@ function WhyConsultation() {
           </div>
 
           <motion.div
-            className="text-center mt-6"
+            className="text-center mt-6 mobile-section-spacing-top mobile-section-spacing-bottom"
             {...slideUp}
             transition={{ delay: 0.6 }}
           >
