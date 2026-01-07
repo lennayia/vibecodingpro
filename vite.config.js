@@ -27,11 +27,18 @@ export default defineConfig({
     },
     // Increase chunk size warning limit
     chunkSizeWarningLimit: 600,
-    // Enable minification with esbuild (faster than terser, built-in)
-    minify: 'esbuild',
-    // Remove console.logs in production
-    esbuild: {
-      drop: ['console', 'debugger']
+    // Use terser for better tree-shaking and dead code elimination (slower build, smaller bundle)
+    minify: 'terser',
+    terserOptions: {
+      compress: {
+        drop_console: true,
+        drop_debugger: true,
+        pure_funcs: ['console.log', 'console.info'],
+        passes: 2 // Multiple passes for better optimization
+      },
+      mangle: {
+        safari10: true // Better mobile Safari compatibility
+      }
     }
   }
 })
