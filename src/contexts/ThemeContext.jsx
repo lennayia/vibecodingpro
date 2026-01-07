@@ -13,23 +13,16 @@ export function ThemeProvider({ children }) {
     // Apply theme class to document
     if (isDark) {
       document.documentElement.classList.add('dark')
-    } else {
-      document.documentElement.classList.remove('dark')
-    }
-  }, [])
-
-  const toggleTheme = () => {
-    const newIsDark = !isDark
-    setIsDark(newIsDark)
-
-    if (newIsDark) {
-      document.documentElement.classList.add('dark')
       localStorage.setItem('theme', 'dark')
     } else {
       document.documentElement.classList.remove('dark')
       localStorage.setItem('theme', 'light')
     }
+  }, [isDark])
 
+  const toggleTheme = () => {
+    setIsDark(!isDark)
+    // useEffect will handle DOM and localStorage updates
     // Dispatch custom event for theme change
     window.dispatchEvent(new Event('themeChange'))
   }

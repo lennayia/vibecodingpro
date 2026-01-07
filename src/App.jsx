@@ -1,4 +1,4 @@
-import { useEffect, lazy, Suspense } from 'react'
+import { lazy, Suspense } from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import ErrorBoundary from './components/ErrorBoundary'
 
@@ -15,18 +15,6 @@ const TermsPage = lazy(() => import('./pages/TermsPage'))
 const GdprPage = lazy(() => import('./pages/GdprPage'))
 
 function App() {
-  // Initialize theme from localStorage
-  useEffect(() => {
-    const savedTheme = localStorage.getItem('theme')
-    const prefersDark = savedTheme === 'dark' || !savedTheme
-
-    if (prefersDark) {
-      document.documentElement.classList.add('dark')
-    } else {
-      document.documentElement.classList.remove('dark')
-    }
-  }, [])
-
   return (
     <ErrorBoundary>
       <BrowserRouter>
