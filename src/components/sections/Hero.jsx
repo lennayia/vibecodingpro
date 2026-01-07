@@ -138,7 +138,7 @@ function Hero() {
             <span className="text-gradient-always">
               {textParts.second}
             </span>
-            {showCursor && (
+            {showCursor && !isMobile && (
               <span className="inline-block w-1 h-[0.9em] bg-accent ml-1 animate-pulse" style={{ willChange: 'opacity' }} />
             )}
           </span>
