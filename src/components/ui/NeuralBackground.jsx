@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState, useMemo, memo } from 'react'
+import { useTheme } from '../../contexts/ThemeContext'
 
 function NeuralBackground({ nodeCount = 15 }) {
   const canvasRef = useRef(null)
@@ -8,12 +9,7 @@ function NeuralBackground({ nodeCount = 15 }) {
   const animationFrameId = useRef(null)
   const isVisibleRef = useRef(true)
   const [isMobile, setIsMobile] = useState(false)
-  const [isDark, setIsDark] = useState(() => {
-    if (typeof window !== 'undefined') {
-      return document.documentElement.classList.contains('dark')
-    }
-    return true
-  })
+  const { isDark } = useTheme()
 
   // Detect mobile
   useEffect(() => {
@@ -23,18 +19,6 @@ function NeuralBackground({ nodeCount = 15 }) {
     checkMobile()
     window.addEventListener('resize', checkMobile)
     return () => window.removeEventListener('resize', checkMobile)
-  }, [])
-
-  // Track theme changes
-  useEffect(() => {
-    const checkTheme = () => {
-      setIsDark(document.documentElement.classList.contains('dark'))
-    }
-    checkTheme()
-
-    const handleThemeChange = () => checkTheme()
-    window.addEventListener('themeChange', handleThemeChange)
-    return () => window.removeEventListener('themeChange', handleThemeChange)
   }, [])
 
   // Generate neural network structure
@@ -150,8 +134,7 @@ function NeuralBackground({ nodeCount = 15 }) {
     }
 
     // Get connection opacity based on theme
-    const getConnectionOpacity = () => {
-      const isDark = document.documentElement.classList.contains('dark')
+    const getConnectionOpacity = (isDark) => {
       return isDark
         ? { start: 0.05, middle: 0.15, end: 0.05 }  // Dark mode - subtle
         : { start: 0.25, middle: 0.4, end: 0.25 }   // Light mode - more visible
@@ -170,8 +153,7 @@ function NeuralBackground({ nodeCount = 15 }) {
     }
 
     // Get node opacity multiplier based on theme
-    const getNodeOpacityMultiplier = () => {
-      const isDark = document.documentElement.classList.contains('dark')
+    const getNodeOpacityMultiplier = (isDark) => {
       return isDark ? 1.0 : 1.5 // Higher opacity for light mode nodes
     }
 
@@ -226,10 +208,9 @@ function NeuralBackground({ nodeCount = 15 }) {
       }
 
       // Get current node color and opacity based on theme
-      const isDark = document.documentElement.classList.contains('dark')
       const nodeColor = getNodeColor()
-      const connectionOpacity = getConnectionOpacity()
-      const nodeOpacityMultiplier = getNodeOpacityMultiplier()
+      const connectionOpacity = getConnectionOpacity(isDark)
+      const nodeOpacityMultiplier = getNodeOpacityMultiplier(isDark)
 
       ctx.clearRect(0, 0, width, height)
 

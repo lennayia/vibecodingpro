@@ -6,6 +6,7 @@ import Button from '../ui/Button'
 import { fadeIn, slideUp } from '../../constants/animations'
 import { scrollToSection } from '../../utils/scroll'
 import { SECTION_IDS } from '../../constants/data'
+import { useTheme } from '../../contexts/ThemeContext'
 import '../../styles/shared.css'
 
 // Audio configuration
@@ -98,25 +99,8 @@ const benefits = [
 function WhyOwnAppSeo() {
   const [isVisible, setIsVisible] = useState(false)
   const [animationKey, setAnimationKey] = useState(0)
-  const [isDark, setIsDark] = useState(() => {
-    if (typeof window !== 'undefined') {
-      return document.documentElement.classList.contains('dark')
-    }
-    return true
-  })
+  const { isDark } = useTheme()
   const sectionRef = useRef(null)
-
-  // Track theme changes
-  useEffect(() => {
-    const checkTheme = () => {
-      setIsDark(document.documentElement.classList.contains('dark'))
-    }
-    checkTheme()
-
-    const handleThemeChange = () => checkTheme()
-    window.addEventListener('themeChange', handleThemeChange)
-    return () => window.removeEventListener('themeChange', handleThemeChange)
-  }, [])
 
   const handleClick = useCallback(() => {
     scrollToSection(SECTION_IDS.PROCESS)

@@ -1,6 +1,7 @@
 import { motion, AnimatePresence } from 'framer-motion'
 import { useState, useCallback, useRef, useEffect, memo } from 'react'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
+import { useTheme } from '../../contexts/ThemeContext'
 
 // Performance: Animation objects outside component
 const mobileCardAnimation = {
@@ -70,12 +71,7 @@ function Carousel({
   const carouselId = `carousel-${Math.random().toString(36).substr(2, 9)}`
 
   const [currentSlide, setCurrentSlide] = useState(initialSlide)
-  const [isDark, setIsDark] = useState(() => {
-    if (typeof window !== 'undefined') {
-      return document.documentElement.classList.contains('dark')
-    }
-    return true
-  })
+  const { isDark } = useTheme()
   const scrollContainerRef = useRef(null)
   const touchStartX = useRef(0)
   const touchEndX = useRef(0)
@@ -105,18 +101,6 @@ function Carousel({
       clearTimeout(resizeTimer)
     }
   }, [slides])
-
-  // Track GLOBAL theme changes (not parent .dark class)
-  useEffect(() => {
-    const checkTheme = () => {
-      setIsDark(document.documentElement.classList.contains('dark'))
-    }
-    checkTheme()
-
-    const handleThemeChange = () => checkTheme()
-    window.addEventListener('themeChange', handleThemeChange)
-    return () => window.removeEventListener('themeChange', handleThemeChange)
-  }, [])
 
   const nextSlide = useCallback(() => {
     setCurrentSlide((prev) => (prev + 1) % slides.length)

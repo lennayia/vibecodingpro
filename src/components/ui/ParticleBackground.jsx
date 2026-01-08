@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState, memo } from 'react'
+import { useTheme } from '../../contexts/ThemeContext'
 
 function ParticleBackground({
   particleCount: customParticleCount,
@@ -12,12 +13,7 @@ function ParticleBackground({
   const animationFrameId = useRef(null)
   const isVisibleRef = useRef(true)
   const [isMobile, setIsMobile] = useState(false)
-  const [isDark, setIsDark] = useState(() => {
-    if (typeof window !== 'undefined') {
-      return document.documentElement.classList.contains('dark')
-    }
-    return true
-  })
+  const { isDark } = useTheme()
 
   // Detect mobile
   useEffect(() => {
@@ -27,18 +23,6 @@ function ParticleBackground({
     checkMobile()
     window.addEventListener('resize', checkMobile)
     return () => window.removeEventListener('resize', checkMobile)
-  }, [])
-
-  // Track theme changes
-  useEffect(() => {
-    const checkTheme = () => {
-      setIsDark(document.documentElement.classList.contains('dark'))
-    }
-    checkTheme()
-
-    const handleThemeChange = () => checkTheme()
-    window.addEventListener('themeChange', handleThemeChange)
-    return () => window.removeEventListener('themeChange', handleThemeChange)
   }, [])
 
   useEffect(() => {

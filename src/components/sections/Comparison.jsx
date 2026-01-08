@@ -1,10 +1,11 @@
 import { motion } from 'framer-motion'
-import { useState, useEffect, useMemo, memo } from 'react'
+import { useMemo, memo } from 'react'
 import Section from '../layout/Section'
 import ComparisonCard from '../ui/ComparisonCard'
 import Carousel from '../ui/Carousel'
 import { comparisonData } from '../../constants/data'
 import { fadeIn } from '../../constants/animations'
+import { useTheme } from '../../contexts/ThemeContext'
 
 // Carousel configuration
 const CAROUSEL_CONFIG = {
@@ -122,29 +123,10 @@ const colorShiftAnimation = {
 }
 
 function ComparisonSeo() {
-  // Initialize based on actual dark mode state (safe for SSR)
-  // Default to dark mode for SSR to prevent flash of light mode colors
-  const [isDark, setIsDark] = useState(() => {
-    if (typeof window !== 'undefined') {
-      return document.documentElement.classList.contains('dark')
-    }
-    return true
-  })
+  const { isDark } = useTheme()
 
   // Performance: Memoize slides array
   const slides = useMemo(() => [comparisonData.martina, comparisonData.julie], [])
-
-  // Track theme changes
-  useEffect(() => {
-    const checkTheme = () => {
-      setIsDark(document.documentElement.classList.contains('dark'))
-    }
-    checkTheme()
-
-    const handleThemeChange = () => checkTheme()
-    window.addEventListener('themeChange', handleThemeChange)
-    return () => window.removeEventListener('themeChange', handleThemeChange)
-  }, [])
 
   // Section is always dark, but colors adapt to theme
   const primaryColor = isDark ? THEME_COLORS.PRIMARY.DARK : THEME_COLORS.PRIMARY.LIGHT

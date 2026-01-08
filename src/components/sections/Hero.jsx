@@ -35,21 +35,13 @@ function Hero() {
   // Mobile detection
   const [isMobile, setIsMobile] = useState(false)
 
-  // Dark mode detection
-  const [isDark, setIsDark] = useState(true)
-
   useEffect(() => {
     const checkMobile = () => setIsMobile(window.innerWidth < 768)
     checkMobile()
     window.addEventListener('resize', checkMobile)
 
-    const checkDark = () => setIsDark(document.documentElement.classList.contains('dark'))
-    checkDark()
-    window.addEventListener('themeChange', checkDark)
-
     return () => {
       window.removeEventListener('resize', checkMobile)
-      window.removeEventListener('themeChange', checkDark)
     }
   }, [])
 
