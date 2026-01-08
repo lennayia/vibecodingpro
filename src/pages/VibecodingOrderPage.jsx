@@ -10,11 +10,6 @@ export default function VibecodingOrderPage() {
       resultText="Rozumíte, PLUS máte kus hotovo - nástroje běží, projekt existuje, první kód je napsaný. Ušetříte desítky hodin zkoušení."
       simpleShopFormId="n0z4z"
       pageTitle="Objednávka VIBE+CODING | Vibecoding"
-      badge={
-        <div className="inline-block bg-accent text-white px-4 py-1.5 rounded-full text-sm font-semibold mb-4">
-          OBLÍBENĚJŠÍ
-        </div>
-      }
     />
   )
 }

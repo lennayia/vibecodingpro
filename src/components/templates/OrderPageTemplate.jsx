@@ -15,8 +15,7 @@ const OrderPageTemplate = memo(function OrderPageTemplate({
   capacity,
   resultText,
   simpleShopFormId,
-  pageTitle,
-  badge = null
+  pageTitle
 }) {
   useEffect(() => {
     // Set page title
@@ -58,8 +57,6 @@ const OrderPageTemplate = memo(function OrderPageTemplate({
                 Objednávka
               </h1>
             </div>
-
-            {badge && badge}
 
             <div className="relative inline-block mx-auto mb-6">
               <div className="absolute inset-0 bg-accent/10 blur-lg animate-pulse" />
