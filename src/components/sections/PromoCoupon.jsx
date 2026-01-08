@@ -125,7 +125,7 @@ function PromoCoupon() {
                       />
                     </div>
                     <p className="text-xl font-semibold mb-fluid-promo-xxs">Limitovaná nabídka</p>
-                    <p className="font-light promo-text-fluid-sm">Platí do 11. 1. 2026 23:59</p>
+                    <p className="font-light promo-text-fluid-sm">Platí do 12. 1. 2026 23:59</p>
                   </div>
                   <div className="text-center">
                     <div className="flex justify-center mb-fluid-promo-xs">
