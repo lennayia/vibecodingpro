@@ -811,6 +811,11 @@
     font-size: clamp(2.5rem, 2.5vh + 2.5vw, 3.75rem);
   }
 
+  /* Dark mode: větší font pro lepší čitelnost */
+  .dark .text-fluid-order-package {
+    font-size: clamp(3rem, 3vh + 3vw, 4.5rem);
+  }
+
   .text-fluid-order-info {
     font-size: clamp(0.875rem, 0.75vh + 0.75vw, 1.125rem);
   }

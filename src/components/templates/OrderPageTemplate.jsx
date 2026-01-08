@@ -63,9 +63,9 @@ const OrderPageTemplate = memo(function OrderPageTemplate({
 
             <div className="relative inline-block mx-auto mb-6">
               <div className="absolute inset-0 bg-accent/10 blur-lg animate-pulse" />
-              <h2 className="relative font-display font-bold text-fluid-order-package text-accent drop-shadow-[0_0_20px_rgba(0,255,136,0.6)]">
+              <h3 className="relative font-display font-bold text-fluid-order-package text-accent drop-shadow-[0_0_20px_rgba(0,255,136,0.6)]">
                 {packageName}
-              </h2>
+              </h3>
             </div>
 
             <div className="order-details-mb">
