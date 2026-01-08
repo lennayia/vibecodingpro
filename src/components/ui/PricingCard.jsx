@@ -57,8 +57,8 @@ function PricingCard({
     const centerX = rect.width / 2
     const centerY = rect.height / 2
 
-    const rotateXValue = ((y - centerY) / centerY) * -8
-    const rotateYValue = ((x - centerX) / centerX) * 8
+    const rotateXValue = ((y - centerY) / centerY) * -2
+    const rotateYValue = ((x - centerX) / centerX) * 2
 
     setRotateX(rotateXValue)
     setRotateY(rotateYValue)
