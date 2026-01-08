@@ -34,7 +34,7 @@ function CaseStudySeo() {
   return (
     <Section background="holographic" centered={true} className="relative overflow-hidden" showScrollIndicator={true}>
       <PhoneMockup
-        imageSrc="/coachpro-black.webp"
+        imageSrc="/thumbnails/coachpro-black.webp"
         imageAlt="CoachPro App"
       />
 

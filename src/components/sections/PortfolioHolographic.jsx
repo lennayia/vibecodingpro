@@ -1,6 +1,7 @@
 import { motion, useScroll, useTransform, useMotionValue, useSpring } from 'framer-motion'
 import { useRef, useState, memo, useMemo, useEffect, useCallback } from 'react'
 import Section from '../layout/Section'
+import Lightbox from '../ui/Lightbox'
 import { fadeIn, slideUp } from '../../constants/animations'
 import { portfolioHolographicContent } from '../../constants/data'
 import '../../styles/portfolio-holographic.css'
@@ -59,6 +60,8 @@ function PortfolioHolographic() {
   const containerRef = useRef(null)
   const [isDragging, setIsDragging] = useState(false)
   const [isVisible, setIsVisible] = useState(false)
+  const [lightboxOpen, setLightboxOpen] = useState(false)
+  const [selectedImage, setSelectedImage] = useState({ src: '', alt: '' })
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -66,6 +69,16 @@ function PortfolioHolographic() {
   })
 
   const projects = portfolioHolographicContent.projects
+
+  // Lightbox handlers
+  const openLightbox = useCallback((imagePath, imageAlt) => {
+    setSelectedImage({ src: imagePath, alt: imageAlt })
+    setLightboxOpen(true)
+  }, [])
+
+  const closeLightbox = useCallback(() => {
+    setLightboxOpen(false)
+  }, [])
 
   const dragX = useMotionValue(0)
   const springConfig = useMemo(() => ({ damping: 30, stiffness: 200 }), [])
@@ -148,13 +161,14 @@ function PortfolioHolographic() {
                 {projects.map((project, index) => (
                   <motion.div
                     key={index}
-                    className="flex-shrink-0 w-[260px]"
+                    className="flex-shrink-0 w-[260px] cursor-pointer"
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
+                    onClick={() => openLightbox(`/images/full${project.image}`, project.name)}
                   >
                     <div className="relative overflow-hidden rounded-lg aspect-[4/3] border-2 border-holo/30">
                       <img
-                        src={project.image}
+                        src={`/thumbnails${project.image}`}
                         alt={project.name}
                         width={project.width}
                         height={project.height}
@@ -198,6 +212,7 @@ function PortfolioHolographic() {
                       rotation={rotation}
                       dragRotation={dragRotation}
                       totalProjects={projects.length}
+                      openLightbox={openLightbox}
                     />
                   ))}
                 </div>
@@ -220,12 +235,20 @@ function PortfolioHolographic() {
       </motion.div>
 
       <span className="copper-divider-line mobile-only mx-auto block mt-8" />
+
+      {/* Lightbox for full-size images */}
+      <Lightbox
+        isOpen={lightboxOpen}
+        onClose={closeLightbox}
+        imageSrc={selectedImage.src}
+        imageAlt={selectedImage.alt}
+      />
     </Section>
   )
 }
 
 // Carousel Item component - extracted to use hooks properly
-const CarouselItem = memo(function CarouselItem({ project, index, rotation, dragRotation, totalProjects }) {
+const CarouselItem = memo(function CarouselItem({ project, index, rotation, dragRotation, totalProjects, openLightbox }) {
   const angle = (360 / totalProjects) * index
   // Responsive radius: smaller on mobile for better performance
   const radius = typeof window !== 'undefined' && window.innerWidth < 768
@@ -271,12 +294,12 @@ const CarouselItem = memo(function CarouselItem({ project, index, rotation, drag
         willChange: 'transform, opacity'
       }}
     >
-      <HolographicCard project={project} zDepth={z} />
+      <HolographicCard project={project} zDepth={z} openLightbox={openLightbox} />
     </motion.div>
   )
 })
 
-const HolographicCard = memo(function HolographicCard({ project, zDepth }) {
+const HolographicCard = memo(function HolographicCard({ project, zDepth, openLightbox }) {
   const [isHovered, setIsHovered] = useState(false)
 
   const glowOpacity = useTransform(
@@ -287,12 +310,16 @@ const HolographicCard = memo(function HolographicCard({ project, zDepth }) {
 
   const handleHoverStart = useCallback(() => setIsHovered(true), [])
   const handleHoverEnd = useCallback(() => setIsHovered(false), [])
+  const handleClick = useCallback(() => {
+    openLightbox(`/images/full${project.image}`, project.name)
+  }, [openLightbox, project.image, project.name])
 
   return (
     <motion.div
-      className="relative w-[280px] md:w-[380px] aspect-[4/3] will-change-transform"
+      className="relative w-[280px] md:w-[380px] aspect-[4/3] will-change-transform cursor-pointer"
       onHoverStart={handleHoverStart}
       onHoverEnd={handleHoverEnd}
+      onClick={handleClick}
       whileHover={{ scale: 1.05 }}
       transition={cardHoverTransition}
     >
@@ -335,7 +362,7 @@ const HolographicCard = memo(function HolographicCard({ project, zDepth }) {
         {/* Project image background */}
         <div className="absolute inset-0">
           <img
-            src={project.image}
+            src={`/thumbnails${project.image}`}
             alt={project.name}
             width={project.width}
             height={project.height}

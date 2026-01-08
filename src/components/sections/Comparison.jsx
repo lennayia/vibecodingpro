@@ -187,7 +187,7 @@ function ComparisonSeo() {
         {/* Background image LEFT */}
         <div className="hidden md:flex absolute inset-0 items-start justify-start -ml-12 pt-6">
           <motion.img
-            src="/Vibecoding-koucka-jana.webp"
+            src="/thumbnails/Vibecoding-koucka-jana.webp"
             alt=""
             width="400"
             height="400"
@@ -216,7 +216,7 @@ function ComparisonSeo() {
         {/* Background image RIGHT - original */}
         <div className="hidden md:flex absolute inset-0 items-start justify-end -mr-12 pt-6">
           <motion.img
-            src="/koucka.webp"
+            src="/thumbnails/koucka.webp"
             alt=""
             width="368"
             height="385"
