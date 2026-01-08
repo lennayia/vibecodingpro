@@ -233,10 +233,11 @@ function WhyOwnAppSeo() {
                             <motion.span
                               className="text-[clamp(0.75rem,1.2vw,1rem)] text-accent font-semibold"
                               animate={{
-                                opacity: [1, 0.6, 1]
+                                opacity: [1, 0.4, 1],
+                                scale: [1, 1.05, 1]
                               }}
                               transition={{
-                                duration: 2,
+                                duration: 1.5,
                                 repeat: Infinity,
                                 ease: "easeInOut"
                               }}

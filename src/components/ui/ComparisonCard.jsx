@@ -34,7 +34,7 @@ function ComparisonCard({ data, direction, delay, background = "light" }) {
 
       <div className="pt-4 border-t border-holo/40 dark:border-holo/20">
         <p className="italic text-left text-white">
-          „{quote}"
+          {quote}
         </p>
       </div>
     </Card>
