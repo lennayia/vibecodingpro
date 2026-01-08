@@ -46,8 +46,8 @@ function Navigation() {
         <img
           src={isDark ? "/vibecoding-logo-bile.webp" : "/vibecoding-logo.webp"}
           alt="Vibecoding"
-          width="36"
-          height="36"
+          width="50"
+          height="50"
           loading="lazy"
           className="nav-logo-fluid"
         />

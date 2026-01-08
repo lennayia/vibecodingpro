@@ -73,6 +73,8 @@ function PhoneMockup({ imageSrc, imageAlt = 'App Screenshot' }) {
                   <motion.img
                     src={imageSrc}
                     alt={imageAlt}
+                    width="400"
+                    height="984"
                     className="w-full h-full object-cover relative z-10"
                     loading="lazy"
                     style={{

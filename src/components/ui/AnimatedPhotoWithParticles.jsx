@@ -53,7 +53,7 @@ const AnimatedPhotoWithParticles = memo(function AnimatedPhotoWithParticles() {
           {/* Přední strana */}
           <div className="absolute inset-0 photo-face">
             <img
-              src="/thumbnails/lenka.webp"
+              src="/lenka.webp"
               alt=""
               width="832"
               height="1248"
@@ -69,7 +69,7 @@ const AnimatedPhotoWithParticles = memo(function AnimatedPhotoWithParticles() {
           {/* Zadní strana - zrcadlově */}
           <div className="absolute inset-0 photo-face-back">
             <img
-              src="/thumbnails/lenka.webp"
+              src="/lenka.webp"
               alt=""
               width="832"
               height="1248"
