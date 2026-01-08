@@ -25,6 +25,10 @@ const BonusCard = memo(function BonusCard({ item, index, pkg, pkgIndex }) {
     const increment = currentValue - previousValue
     discountDisplay = `Kupón ${increment} (celkem ${currentValue})`
     isIncrementalDiscount = true
+  } else if (!item.isPreviousPackage && value !== true && item.icon === Tag) {
+    // For first package with Tag icon
+    discountDisplay = `Kupón ${value}`
+    isIncrementalDiscount = true
   }
 
   return (
@@ -51,9 +55,10 @@ const BonusCard = memo(function BonusCard({ item, index, pkg, pkgIndex }) {
             )}
           </div>
           {item.description && (
-            <p className="font-light text-gray-700 dark:text-gray-300">
-              {item.description}
-            </p>
+            <p
+              className="font-light text-gray-700 dark:text-gray-300"
+              dangerouslySetInnerHTML={{ __html: item.description }}
+            />
           )}
         </div>
       </div>

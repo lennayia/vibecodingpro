@@ -24,11 +24,11 @@ function Pricing() {
             <div className="rounded-2xl border border-accent/20 dark:border-gray-700 p-8 md:p-fluid-pricing-lg">
               <div className="flex items-center justify-center gap-4 md:gap-fluid-pricing-sm mb-6 md:mb-fluid-pricing-md">
                 <Clock className="w-6 h-6" strokeWidth={2} />
-                <h3 className="font-display font-bold">Zaváděcí ceny</h3>
+                <h3 className="font-display font-bold">Využijte zaváděcí ceny</h3>
               </div>
 
               <p className="text-center text-xl font-light mb-6 md:mb-fluid-pricing-md pb-8 md:pb-fluid-pricing-lg">
-                platí pro objednání do 11. 1. 2026 do 23:59 hod. Počet míst je omezený.
+                Platí pro objednání do 11. 1. 2026 do 23:59 hod. Počet míst je omezený.
               </p>
 
               <div className="mb-6 md:mb-fluid-pricing-md">

@@ -137,12 +137,12 @@ export const caseStudyCards = [
     border: "border-2 border-accent/30",
     paragraphs: [
       {
-        text: "„Pomáhám téměř 320 klientkám měsíčně místo 80. A to jsem s aplikací teprv na začátku.",
+        text: "Pomáhá téměř 320 klientkám měsíčně místo 80. A to je s aplikací teprv na začátku.",
         highlight: null,
         rest: ""
       },
       {
-        text: 'Cítím se svobodná. Moje práce pomáhá lidem, i když spím. A já mám konečně čas žít. To je nejvíc."',
+        text: 'Cítí se svobodná. Její práce pomáhá lidem, i když spí. A ona má konečně čas žít. To je nejvíc.',
         highlight: null,
         rest: ""
       }
@@ -222,8 +222,7 @@ export const pricingPackages = [
     resultDescription: "Jasná roadmapa, víte přesně, co a jak – a jestli je to pro vás.<br />Vyhnete se bloudění.",
     testimonials: [
       {
-        quote: '„Za 3 hodiny jsem pochopila víc než za měsíc googlování."',
-        author: ""
+        feedback: 'Za 3 hodiny pochopíte víc než za měsíc googlování.'
       },
     ],
     bonuses: [
@@ -244,8 +243,7 @@ export const pricingPackages = [
     resultDescription: "Rozumíte, PLUS máte kus hotovo - nástroje běží, projekt existuje, první kód je napsaný.<br />Ušetříte desítky hodin zkoušení.",
     testimonials: [
       {
-        quote: '„Konečně mi někdo vysvětlil, o co go."',
-        author: ""
+        feedback: 'Konečně vám někdo vysvětlí, o co go.'
       }
     ],
     bonuses: [
@@ -268,11 +266,10 @@ export const pricingPackages = [
     price: "19 900 Kč",
     description: "Pro 1 ženu, která chce pochopit,<br />začít a dokončit",
     resultTitle: "Výsledek:",
-    resultDescription: "Funkční produkt. Rozumíte mu, umíte ho rozvíjet. Garantovaný výsledek. Přímá linka k mentorce. Osobní vztah.",
+    resultDescription: "Funkční produkt. Rozumíte mu, umíte ho rozvíjet. Garantovaný výsledek, přímá linka k mentorce, osobní vztah.",
     testimonials: [
       {
-        quote: '„Přišla jsem s nápadem, odcházela s rozjetým projektem. Nejlepší investice do podnikání, co jsem kdy udělala."',
-        author: ""
+        feedback: 'Přijdete s nápadem, odejdete s rozjetým projektem.'
       }
     ],
     bonuses: [
@@ -545,7 +542,7 @@ export const bonusItems = [
   },
   {
     name: "2 týdny e-mailová podpora",
-    description: "Když se zaseknete a nebudete si vědět rady, napište mi. Odpovím do 24 hodin.",
+    description: 'Když se zaseknete a nebudete si vědět rady, <a href="mailto:lenna@online-byznys.cz" class="text-accent hover:underline">napište mi</a>. Odpovím do 24 hodin.',
     icon: Mail,
     vibe: false,
     vibeCode: true,
@@ -568,7 +565,7 @@ export const bonusItems = [
     vibeCoding: true
   },
   {
-    name: "Sleva na další konzultaci",
+    name: "Sleva na další konzultaci v Kč",
     description: "Chcete pokračovat? Máte zvýhodněnou cenu na další spolupráci v rámci 2hodinové konzultace (z hodnoty 3 900 Kč) a platí 3 měsíce od data zakoupení spolupráce v níže popsaných variantách.",
     icon: Tag,
     vibe: "300",

@@ -418,6 +418,15 @@
     filter: drop-shadow(0 0 20px rgba(var(--glow-shadow), 0.6));
   }
 
+  /* 3D transform utilities for PricingCard */
+  .perspective-1000 {
+    perspective: 1000px;
+  }
+
+  .transform-3d {
+    transform-style: preserve-3d;
+  }
+
   /* PromoCoupon fluid sizing utilities */
   .promo-icon-fluid {
     width: min(calc(1.25rem + 0.4vw + 0.2vh), 2rem);

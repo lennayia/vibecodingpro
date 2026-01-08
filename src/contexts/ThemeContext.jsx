@@ -4,9 +4,13 @@ const ThemeContext = createContext(null)
 
 export function ThemeProvider({ children }) {
   const [isDark, setIsDark] = useState(() => {
-    // Initialize from localStorage synchronously to prevent flash
+    // Force dark mode as default - remove any light mode from localStorage
     const savedTheme = localStorage.getItem('theme')
-    return savedTheme === 'dark' || !savedTheme // Default to dark mode
+    if (!savedTheme || savedTheme !== 'dark') {
+      localStorage.setItem('theme', 'dark')
+      document.documentElement.classList.add('dark')
+    }
+    return true // Always start with dark mode
   })
 
   useEffect(() => {

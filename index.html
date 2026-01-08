@@ -93,11 +93,13 @@
     <!-- Dark mode initialization - prevents flash of wrong colors -->
     <script>
       (function() {
+        // ALWAYS force dark mode as default - override any light mode in localStorage
         const savedTheme = localStorage.getItem('theme');
-        const prefersDark = savedTheme === 'dark' || !savedTheme;
-        if (prefersDark) {
-          document.documentElement.classList.add('dark');
+        if (!savedTheme || savedTheme !== 'dark') {
+          localStorage.setItem('theme', 'dark');
         }
+        // Always add dark class by default
+        document.documentElement.classList.add('dark');
       })();
     </script>
 

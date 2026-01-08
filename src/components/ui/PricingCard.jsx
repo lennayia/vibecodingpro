@@ -34,7 +34,6 @@ function PricingCard({
   delay = 0
 }) {
   const cardRef = useRef(null)
-  const [rotateX, setRotateX] = useState(0)
   const [rotateY, setRotateY] = useState(0)
   const [shinePosition, setShinePosition] = useState({ x: 50, y: 50 })
   const rectCacheRef = useRef(null)
@@ -55,12 +54,9 @@ function PricingCard({
     const y = e.clientY - rect.top
 
     const centerX = rect.width / 2
-    const centerY = rect.height / 2
 
-    const rotateXValue = ((y - centerY) / centerY) * -2
-    const rotateYValue = ((x - centerX) / centerX) * 2
+    const rotateYValue = ((x - centerX) / centerX) * 3
 
-    setRotateX(rotateXValue)
     setRotateY(rotateYValue)
     setShinePosition({
       x: (x / rect.width) * 100,
@@ -69,7 +65,6 @@ function PricingCard({
   }, [])
 
   const handleMouseLeave = useCallback(() => {
-    setRotateX(0)
     setRotateY(0)
     setShinePosition({ x: 50, y: 50 })
   }, [])
@@ -130,7 +125,6 @@ function PricingCard({
       <motion.div
         className="h-full transform-3d"
         animate={{
-          rotateX,
           rotateY
         }}
         transition={{
@@ -295,10 +289,7 @@ function PricingCard({
 
           {testimonials && testimonials.map((testimonial, index) => (
             <div key={index} className="border-t border-accent/20 mt-[clamp(0.75rem,1.5vh,1.5rem)] pt-[clamp(0.75rem,1.5vh,1.5rem)]">
-              <p className="italic text-fluid-pricing-sm font-light">{testimonial.quote}</p>
-              {testimonial.author && (
-                <p className="text-fluid-pricing-xs font-light mt-clamp-phases">– {testimonial.author}</p>
-              )}
+              <p className="italic text-fluid-pricing-sm font-light">{testimonial.feedback}</p>
             </div>
           ))}
         </div>
