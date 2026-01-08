@@ -238,7 +238,7 @@ export const pricingPackages = [
     availableSpots: 3,
     serviceType: "6x 60 min mentoring",
     price: "9 900 Kč",
-    description: "Pro 3 ženy, které chtějí pochopit<br />a rovnou začít",
+    description: "Pro 2 ženy, které chtějí pochopit<br />a rovnou začít",
     resultTitle: "Výsledek:",
     resultDescription: "Rozumíte, PLUS máte kus hotovo - nástroje běží, projekt existuje, první kód je napsaný.<br />Ušetříte desítky hodin zkoušení.",
     testimonials: [
@@ -517,6 +517,14 @@ export const bonusItems = [
     vibeCoding: true
   },
   {
+    name: "Nahrávky schůzek",
+    description: "Můžete se k nim libovolně vracet. Nic vám neuteče ani v případě, že to hned nepochytíte.",
+    icon: Video,
+    vibe: true,
+    vibeCode: true,
+    vibeCoding: true
+  },
+  {
     name: "Kompletní dokumentace v PDF",
     description: "Zadání projektu a technický základ v PDF. Máte všechno černé na bílém k dispozici na pořád.",
     icon: FileCheck,
@@ -528,14 +536,6 @@ export const bonusItems = [
     name: "6 návodů krok za krokem + tahák pro AI",
     description: "Jednoduché návody na další nástroje, které je fajn používat + tahák pro komunikaci s AI.",
     icon: BookOpen,
-    vibe: false,
-    vibeCode: true,
-    vibeCoding: true
-  },
-  {
-    name: "Nahrávky schůzek",
-    description: "Můžete se k nim libovolně vracet. Nic vám neuteče ani v případě, že to hned nepochytíte.",
-    icon: Video,
     vibe: false,
     vibeCode: true,
     vibeCoding: true

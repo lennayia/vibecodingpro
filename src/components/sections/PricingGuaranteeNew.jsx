@@ -24,7 +24,7 @@ const PricingGuaranteeNew = memo(function PricingGuaranteeNew() {
           transition={{ delay: 0.3 }}
         >
           <p className="text-fluid-guarantee-help font-light">
-            Nevíte si rady? <a href="#" className="underline hover:no-underline font-semibold">Napište mi,</a> pomůžu vám vybrat. Možná vás podpoří záruka vrácení peněz nebo odpovědi na otázky, které můžou vzbuzovat obavy.
+            Nevíte si rady? <a href="mailto:lenna@online-byznys.cz" className="underline hover:no-underline font-semibold">Napište mi,</a> pomůžu vám vybrat. Možná vás podpoří záruka vrácení peněz nebo odpovědi na otázky, které můžou vzbuzovat obavy.
           </p>
         </motion.div>
 
