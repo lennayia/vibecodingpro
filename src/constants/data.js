@@ -179,7 +179,7 @@ export const whyConsultationSlides = [
 
 export const comparisonData = {
   heading: "Dobré nástroje posouvají",
-  subheading: "Dvě ženy, jeden obor, dvě cesty.",
+  subheading: "Představme si dvě ženy, jeden obor, dvě cesty.",
   intro: {
     line1: "Martina a Julie: obě učí klientky zdravě spát.",
     line2: "Stejné znalosti, stejná vášeň pomáhat.",
@@ -195,7 +195,7 @@ export const comparisonData = {
       { text: "Říká NE ženám, kterým by chtěla pomoct." },
       { text: "Večer padne – a na rodinu zbývá to, co zbylo z ní." }
     ],
-    quote: "Pomáhám lidem s energií a sama jsem vyčerpaná."
+    quote: "Pomáhá lidem s energií a sama je vyčerpaná."
   },
   julie: {
     name: "Lektorka Julie",
@@ -207,7 +207,7 @@ export const comparisonData = {
       { text: "2-3 konzultace týdně s těmi, které si vybere." },
       { text: "Měsíc na Bali? Aplikace běží, klientky jsou spokojené, příjem roste." }
     ],
-    quote: "Konečně můžu pomoct víc lidem – a přitom žiju svůj život."
+    quote: "Konečně může pomoct víc lidem → a přitom žít fajn život."
   }
 }
 
@@ -215,7 +215,7 @@ export const pricingPackages = [
   {
     title: "VIBE",
     availableSpots: 5,
-    serviceType: "3x 55 min konzultace",
+    serviceType: "3x 60 min konzultace",
     price: "3 900 Kč",
     description: "Pro 5 žen, které chtějí pochopit<br />a rozhodnout se",
     resultTitle: "Výsledek:",
@@ -237,7 +237,7 @@ export const pricingPackages = [
   {
     title: "VIBE+CODING",
     availableSpots: 3,
-    serviceType: "6x 55 min mentoring",
+    serviceType: "6x 60 min mentoring",
     price: "9 900 Kč",
     description: "Pro 3 ženy, které chtějí pochopit<br />a rovnou začít",
     resultTitle: "Výsledek:",
@@ -264,7 +264,7 @@ export const pricingPackages = [
   {
     title: "VIBECODING VIP",
     availableSpots: 1,
-    serviceType: "10x 55 min VIP mentoring",
+    serviceType: "10x 60 min VIP mentoring",
     price: "19 900 Kč",
     description: "Pro 1 ženu, která chce pochopit,<br />začít a dokončit",
     resultTitle: "Výsledek:",

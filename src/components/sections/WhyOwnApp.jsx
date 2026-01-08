@@ -230,7 +230,19 @@ function WhyOwnAppSeo() {
                               </motion.div>
                               <span>3:12</span>
                             </motion.div>
-                            <span className="text-[clamp(0.75rem,1.2vw,1rem)] text-accent font-semibold">Nová registrace</span>
+                            <motion.span
+                              className="text-[clamp(0.75rem,1.2vw,1rem)] text-accent font-semibold"
+                              animate={{
+                                opacity: [1, 0.6, 1]
+                              }}
+                              transition={{
+                                duration: 2,
+                                repeat: Infinity,
+                                ease: "easeInOut"
+                              }}
+                            >
+                              Nová registrace
+                            </motion.span>
                           </motion.div>
                         )}
                       </div>
