@@ -99,7 +99,7 @@ const PackageHeader = memo(({ packageName, phasesCount, isExpanded, onToggle }) 
       className="relative flex flex-col items-center mb-6 mb-fluid-phases-md"
     >
       <div className="absolute inset-0 bg-accent/10 blur-lg" />
-      <h3 className="relative font-display font-bold text-accent text-fluid-package-header drop-shadow-package-header mb-4">
+      <h3 className="relative font-display font-bold text-accent drop-shadow-package-header mb-4">
         varianta {packageName}
       </h3>
 

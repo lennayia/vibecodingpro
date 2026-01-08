@@ -98,7 +98,7 @@ const BonusPackageHeader = memo(function BonusPackageHeader({ packageName }) {
       className="relative min-w-[200px] flex justify-center"
     >
       <div className="absolute inset-0 bg-accent/10 blur-lg animate-pulse" style={{ willChange: 'opacity' }} />
-      <h3 className="relative font-display font-bold text-accent text-fluid-package-header drop-shadow-package-header">
+      <h3 className="relative font-display font-bold text-accent drop-shadow-package-header">
         varianta {packageName}
       </h3>
     </motion.div>
