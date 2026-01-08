@@ -37,7 +37,8 @@ function Pricing() {
 
               <div className="text-center flex flex-col gap-4 md:gap-fluid-pricing-sm">
                 <p className="font-semibold pb-12 md:pb-fluid-pricing-xxl">
-                  Pak se ceny začnou zvyšovat až na 5 500 / 13 900 / 29 900 Kč podle variant.
+                  Pak se ceny začnou zvyšovat<br />
+                  až na 5 500 / 13 900 / 29 900 Kč podle variant.
                 </p>
                 <ul className="text-xl font-light mx-auto max-w-fit flex flex-col gap-2 md:gap-fluid-pricing-xs">
                   <li className="flex items-center justify-center gap-4 md:gap-fluid-pricing-sm">
