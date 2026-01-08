@@ -1,6 +1,7 @@
 import { lazy, Suspense } from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import ErrorBoundary from './components/ErrorBoundary'
+import ScrollToTopOnNavigation from './components/ScrollToTopOnNavigation'
 
 // HomePage - eager load (critical path)
 import HomePage from './pages/HomePage'
@@ -18,6 +19,7 @@ function App() {
   return (
     <ErrorBoundary>
       <BrowserRouter>
+        <ScrollToTopOnNavigation />
         <Suspense fallback={
           <div className="min-h-screen flex items-center justify-center bg-white dark:bg-[#05050f]">
             <div className="text-center">
