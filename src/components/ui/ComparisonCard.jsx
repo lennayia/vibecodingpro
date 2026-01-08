@@ -3,7 +3,7 @@ import Card from './Card'
 import FeatureListItem from './FeatureListItem'
 
 function ComparisonCard({ data, direction, delay, background = "light" }) {
-  const { name, subtitle, type, features, quote } = data
+  const { name, subtitle, type, features, statement } = data
 
   return (
     <Card
@@ -34,7 +34,7 @@ function ComparisonCard({ data, direction, delay, background = "light" }) {
 
       <div className="pt-4 border-t border-holo/40 dark:border-holo/20">
         <p className="italic text-left text-white">
-          {quote}
+          {statement}
         </p>
       </div>
     </Card>

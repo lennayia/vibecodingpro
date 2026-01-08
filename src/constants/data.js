@@ -195,7 +195,7 @@ export const comparisonData = {
       { text: "Říká NE ženám, kterým by chtěla pomoct." },
       { text: "Večer padne – a na rodinu zbývá to, co zbylo z ní." }
     ],
-    quote: "Pomáhá lidem s energií a sama je vyčerpaná."
+    statement: "Pomáhá lidem s energií a sama je vyčerpaná."
   },
   julie: {
     name: "Lektorka Julie",
@@ -207,7 +207,7 @@ export const comparisonData = {
       { text: "2-3 konzultace týdně s těmi, které si vybere." },
       { text: "Měsíc na Bali? Aplikace běží, klientky jsou spokojené, příjem roste." }
     ],
-    quote: "Konečně může pomoct víc lidem → a přitom žít fajn život."
+    statement: "Konečně může pomoct víc lidem → a přitom žít fajn život."
   }
 }
 
