@@ -819,7 +819,7 @@
   }
 
   .text-fluid-order-package {
-    font-size: clamp(3rem, 3vh + 3vw, 4.5rem);
+    font-size: clamp(3rem, 3vh + 3vw, 4.5rem) !important;
   }
 
   .text-fluid-order-info {
